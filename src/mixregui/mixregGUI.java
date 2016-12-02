@@ -10,7 +10,7 @@ package mixregui;
 import javax.swing.JFrame;
 
 /**
- *
+ *d
  * @author adityaponnada
  */
 public class mixregGUI extends javax.swing.JFrame {
