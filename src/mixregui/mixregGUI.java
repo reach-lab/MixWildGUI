@@ -5,7 +5,7 @@
  */
 package mixregui;
 
-//import def_lib.DefinitionHelper;
+import def_lib.DefinitionHelper;
 //import def_lib.DefinitionHelper;
 import javax.swing.JFrame;
 
@@ -19,7 +19,7 @@ public class mixregGUI extends javax.swing.JFrame {
    advancedOptions advancedOptions_view = new advancedOptions();
    stageOneRegs stage_1_regs = new stageOneRegs();
    stageTwoRegs stage_2_regs = new stageTwoRegs();   
-   //DefinitionHelper defFile; 
+   DefinitionHelper defFile; 
    //public boolean submitClicked = true;
     
 
