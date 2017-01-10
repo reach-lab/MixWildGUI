@@ -82,6 +82,7 @@ public class NewModel extends javax.swing.JFrame {
 
         jLabel5.setText("Stage 2 Outcome Type:");
 
+        buttonGroup1.add(jRadioButton1);
         jRadioButton1.setText("Continuous");
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,6 +90,7 @@ public class NewModel extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(jRadioButton2);
         jRadioButton2.setText("Dichotomous/Ordinal");
 
         newModelSubmit.setText("Submit");
