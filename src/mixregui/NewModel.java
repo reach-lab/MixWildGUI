@@ -78,6 +78,8 @@ public class NewModel extends javax.swing.JFrame {
 
         jLabel4.setText("Random Location Effects:");
 
+        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+
         jLabel5.setText("Stage 2 Outcome Type:");
 
         jRadioButton1.setText("Continuous");
