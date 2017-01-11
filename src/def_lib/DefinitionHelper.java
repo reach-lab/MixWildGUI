@@ -393,6 +393,25 @@ public class DefinitionHelper {
         }
     }
     
+    /**
+     * inherits parameters of setValidator, loops until all true, otherwise throws Exception
+     * @param validationMessage
+     * @param lineMessage
+     * @param validationInteger String array to test
+     * @param minValue
+     * @param maxValue
+     * @return returns true
+     * @throws Exception inherited Exception from setValidator
+     */
+    private boolean loopSetValidator(String validationMessage, String lineMessage, String[] validationInteger, int minValue, int maxValue) throws Exception {
+        for(String testInteger: validationInteger){
+            if(!setValidator(validationMessage, lineMessage, testInteger, minValue, maxValue)){
+              return Boolean.FALSE;
+            }
+        }
+        return Boolean.TRUE;
+    }
+    
     public String getModelTitle() {
         return modelTitle;
     }
@@ -618,72 +637,92 @@ public class DefinitionHelper {
         return modelBetweenCount;
     }
 
-    public void setModelBetweenCount(String modelBetweenCount) {
-        this.modelBetweenCount = modelBetweenCount;
+    public void setModelBetweenCount(String modelBetweenCount) throws Exception {
+        if(setValidator("number of between-subject variance regressors", "5", modelBetweenCount, 0, 255)){
+            this.modelBetweenCount = modelBetweenCount;
+        }
     }
 
     public String getModelWithinCount() {
         return modelWithinCount;
     }
 
-    public void setModelWithinCount(String modelWithinCount) {
-        this.modelWithinCount = modelWithinCount;
+    public void setModelWithinCount(String modelWithinCount) throws Exception {
+        if(setValidator("number of within-subject variance regressors", "5", modelWithinCount, 0, 255)){
+            this.modelWithinCount = modelWithinCount;
+        }
     }
 
     public String getModelBetweenInt() {
         return modelBetweenInt;
     }
 
-    public void setModelBetweenInt(String modelBetweenInt) {
-        this.modelBetweenInt = modelBetweenInt;
+    public void setModelBetweenInt(String modelBetweenInt) throws Exception {
+        if(setValidator("between-subject variance intercept", "5", modelBetweenInt, 0, 1)){
+            this.modelBetweenInt = modelBetweenInt;
+        }
     }
 
     public String getModelWithinInt() {
         return modelWithinInt;
     }
 
-    public void setModelWithinInt(String modelWithinInt) {
-        this.modelWithinInt = modelWithinInt;
+    public void setModelWithinInt(String modelWithinInt) throws Exception {
+        if(setValidator("within-subject variance intercept", "5", modelWithinInt, 0, 1)){
+            this.modelWithinInt = modelWithinInt;
+        }
     }
 
     public String getDecompBSCount() {
         return decompBSCount;
     }
 
-    public void setDecompBSCount(String decompBSCount) {
-        this.decompBSCount = decompBSCount;
+    public void setDecompBSCount(String decompBSCount) throws Exception {
+        if(setValidator("number of between-subject variance regressors for BS/WS decomposition", "5", decompBSCount, 0, 255)){
+            this.decompBSCount = decompBSCount;
+        }
     }
 
     public String getDecompWSCount() {
         return decompWSCount;
     }
 
-    public void setDecompWSCount(String decompWSCount) {
-        this.decompWSCount = decompWSCount;
+    public void setDecompWSCount(String decompWSCount) throws Exception {
+        if(setValidator("number of within-subject variance regressors for BS/WS decomposition", "5", decompWSCount, 0, 255)){
+            this.decompWSCount = decompWSCount;
+        }
     }
 
     public String getAdvancedEffectMeanWS() {
         return advancedEffectMeanWS;
     }
 
-    public void setAdvancedEffectMeanWS(String advancedEffectMeanWS) {
-        this.advancedEffectMeanWS = advancedEffectMeanWS;
+    public void setAdvancedEffectMeanWS(String advancedEffectMeanWS) throws Exception {
+        if(setValidator("effect of mean on WS variance", "5", decompWSCount, 0, 2)){
+            this.decompWSCount = decompWSCount;
+        }
     }
 
     public String[] getIdOutcome() {
         return idOutcome;
     }
 
-    public void setIdOutcome(String[] idOutcome) {
-        this.idOutcome = idOutcome;
+    public void setIdOutcome(String[] idOutcome) throws Exception {
+        if(setValidator("id location", "6", idOutcome[0], 0, 255)){
+            if(setValidator("outcome location", "6", idOutcome[1], 0, 255)){
+                this.idOutcome = idOutcome;
+            }
+        }
     }
 
     public String[] getFieldModelMeanRegressors() {
         return fieldModelMeanRegressors;
     }
 
-    public void setFieldModelMeanRegressors(String[] fieldModelMeanRegressors) {
-        this.fieldModelMeanRegressors = fieldModelMeanRegressors;
+    public void setFieldModelMeanRegressors(String[] fieldModelMeanRegressors) throws Exception {
+        if(loopSetValidator("model mean regressor fields", "7", fieldModelMeanRegressors, 0, 255)){
+            this.fieldModelMeanRegressors = fieldModelMeanRegressors;
+        }
     }
 
     public String[] getFieldModelBSRegressors() {
