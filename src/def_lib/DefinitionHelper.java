@@ -164,7 +164,7 @@ public class DefinitionHelper {
      * try/catch these exceptions in order
      * @throws FileNotFoundException
      * @throws IOException
-     * @throws Exception 
+     * @throws Exception display error message for this exception to user, do not execute program until this is resolved
      */
     public void readDefinitionFile(File defFile, List<String> varNames) throws FileNotFoundException, IOException, Exception {
         try (BufferedReader br = new BufferedReader(new FileReader(defFile))) {
@@ -189,6 +189,11 @@ public class DefinitionHelper {
         }
     }
     
+    /**
+     * 
+     * @param readDefinitionFile the definition file as a List<String>
+     * @throws Exception display error message for this exception to user, do not execute program until this is resolved
+     */
     private void assignDefinitionVariables(List<String> readDefinitionFile) throws Exception {
         setModelTitle(readDefinitionFile.get(0));
         setModelSubtitle(readDefinitionFile.get(1));
@@ -365,7 +370,29 @@ public class DefinitionHelper {
             }
         }
     }
-
+    
+    /**
+     * 
+     * @param validationMessage line name to throw in Exception message
+     * @param lineMessage line number to throw in Exception message
+     * @param validationInteger String variable that will be tested as Integer
+     * @param minValue minimum value expressed as integer
+     * @param maxValue maximum value expressed as integer
+     * @return only returns true, otherwise throws Exception
+     * @throws Exception inherited exception
+     */
+    private boolean setValidator(String validationMessage, String lineMessage, String validationInteger, int minValue, int maxValue) throws Exception {
+        try { 
+            if(Integer.parseInt(validationInteger)>= minValue && Integer.parseInt(validationInteger) <= maxValue){
+                return Boolean.TRUE;
+            }
+            else {throw new Exception("Invalid " + validationMessage + " in .dat file specified, line " + lineMessage);}
+        }
+        catch(NumberFormatException nfe) {
+            throw new Exception("Invalid character for " + validationMessage + " in .dat file specified, line " + lineMessage);
+        }
+    }
+    
     public String getModelTitle() {
         return modelTitle;
     }
@@ -388,8 +415,11 @@ public class DefinitionHelper {
         return dataFilename;
     }
 
-    public void setDataFilename(String dataFilename) {
-        this.dataFilename = dataFilename;
+    public void setDataFilename(String dataFilename) throws Exception {
+        if(dataFilename.endsWith(".dat") || dataFilename.endsWith(".csv")){
+           this.dataFilename = dataFilename;
+        }
+        else {throw new Exception("Filename is not a valid .dat or .csv file, line 3");}
     }
 
     public String getOutputPrefix() {
@@ -397,6 +427,8 @@ public class DefinitionHelper {
     }
 
     public void setOutputPrefix(String outputPrefix) {
+        if(outputPrefix.length()>72){this.outputPrefix = outputPrefix.substring(0, 200);}
+        else{this.outputPrefix = outputPrefix;}
         this.outputPrefix = outputPrefix;
     }
 
@@ -404,136 +436,182 @@ public class DefinitionHelper {
         return dataVariableCount;
     }
 
-    public void setDataVariableCount(String dataVariableCount) {
-        this.dataVariableCount = dataVariableCount;
+    public void setDataVariableCount(String dataVariableCount) throws Exception {
+        if(setValidator("number of variables", "5", dataVariableCount, 2, 255)){
+            this.dataVariableCount = dataVariableCount;
+        }
     }
 
     public String getModelMeanCount() {
         return modelMeanCount;
     }
 
-    public void setModelMeanCount(String modelMeanCount) {
-        this.modelMeanCount = modelMeanCount;
+    public void setModelMeanCount(String modelMeanCount) throws Exception {
+        if(setValidator("number of mean regressors", "5", modelMeanCount, 1, 255)){
+            this.modelMeanCount = modelMeanCount;
+        }
     }
 
     public String getModelLocRanCount() {
         return modelLocRanCount;
     }
 
-    public void setModelLocRanCount(String modelLocRanCount) {
-        this.modelLocRanCount = modelLocRanCount;
+    public void setModelLocRanCount(String modelLocRanCount) throws Exception {
+        if(setValidator("number of location random effects", "5", modelLocRanCount, 0, 255)){
+            this.modelLocRanCount = modelLocRanCount;
+        }
     }
-
+    
     public String getModelScaleCount() {
         return modelScaleCount;
     }
 
-    public void setModelScaleCount(String modelScaleCount) {
-        this.modelScaleCount = modelScaleCount;
+    public void setModelScaleCount(String modelScaleCount) throws Exception {
+        if(setValidator("number of scale regressors", "5", modelScaleCount, 0, 255)){
+            this.modelScaleCount = modelScaleCount;
+        }
     }
 
     public String getModelFixedInt() {
         return modelFixedInt;
     }
 
-    public void setModelFixedInt(String modelFixedInt) {
-        this.modelFixedInt = modelFixedInt;
+    public void setModelFixedInt(String modelFixedInt) throws Exception {
+        if(setValidator("fixed intercept", "5", modelFixedInt, 0, 1)){
+            this.modelFixedInt = modelFixedInt;
+        }
     }
 
     public String getModelRandomInt() {
         return modelRandomInt;
     }
 
-    public void setModelRandomInt(String modelRandomInt) {
-        this.modelRandomInt = modelRandomInt;
+    public void setModelRandomInt(String modelRandomInt) throws Exception {
+        if(setValidator("random intercept", "5", modelRandomInt, 0, 1)){
+            this.modelRandomInt = modelRandomInt;
+        }
     }
 
     public String getModelScaleInt() {
         return modelScaleInt;
     }
 
-    public void setModelScaleInt(String modelScaleInt) {
-        this.modelScaleInt = modelScaleInt;
+    public void setModelScaleInt(String modelScaleInt) throws Exception {
+        if(setValidator("scale intercept", "5", modelScaleInt, 0, 1)){
+            this.modelScaleInt = modelScaleInt;
+        }
     }
 
     public String getDecompMeanCount() {
         return decompMeanCount;
     }
 
-    public void setDecompMeanCount(String decompMeanCount) {
-        this.decompMeanCount = decompMeanCount;
+    public void setDecompMeanCount(String decompMeanCount) throws Exception {
+        if(setValidator("number of mean regressors for BS/WS decomposition", "5", decompMeanCount, 0, 255)){
+            this.decompMeanCount = decompMeanCount;
+        }
     }
 
     public String getDecompLocRanCount() {
         return decompLocRanCount;
     }
 
-    public void setDecompLocRanCount(String decompLocRanCount) {
-        this.decompLocRanCount = decompLocRanCount;
+    public void setDecompLocRanCount(String decompLocRanCount) throws Exception {
+        if(setValidator("number of location random effects for BS/WS decomposition", "5", decompLocRanCount, 0, 255)){
+            this.decompLocRanCount = decompLocRanCount;
+        }
     }
 
     public String getDecompScaleCount() {
         return decompScaleCount;
     }
 
-    public void setDecompScaleCount(String decompScaleCount) {
-        this.decompScaleCount = decompScaleCount;
+    public void setDecompScaleCount(String decompScaleCount) throws Exception {
+        if(setValidator("number of scale regressors for BS/WS decomposition", "5", decompScaleCount, 0, 255)){
+            this.decompScaleCount = decompScaleCount;
+        }
     }
 
     public String getAdvancedConvergence() {
         return advancedConvergence;
     }
 
-    public void setAdvancedConvergence(String advancedConvergence) {
-        this.advancedConvergence = advancedConvergence;
+    public void setAdvancedConvergence(String advancedConvergence) throws Exception {
+        try { 
+            if(Double.parseDouble(advancedConvergence)>=0 && Double.parseDouble(advancedConvergence)<=1){
+                this.advancedConvergence = advancedConvergence;
+            }
+            else {throw new Exception("Invalid convergence criteria in .dat file specified, line 5");}
+        }
+        catch(NumberFormatException nfe) {
+            throw new Exception("Invalid character for convergence criteria in .dat file specified, line 5");
+        }
     }
 
     public String getAdvancedQuadPoints() {
         return advancedQuadPoints;
     }
 
-    public void setAdvancedQuadPoints(String advancedQuadPoints) {
-        this.advancedQuadPoints = advancedQuadPoints;
+    public void setAdvancedQuadPoints(String advancedQuadPoints) throws Exception {
+        if(setValidator("number of quadrature points", "5", advancedQuadPoints, 1, 255)){
+            this.advancedQuadPoints = advancedQuadPoints;
+        }
     }
 
     public String getAdvancedAdaptiveQuad() {
         return advancedAdaptiveQuad;
     }
 
-    public void setAdvancedAdaptiveQuad(String advancedAdaptiveQuad) {
-        this.advancedAdaptiveQuad = advancedAdaptiveQuad;
+    public void setAdvancedAdaptiveQuad(String advancedAdaptiveQuad) throws Exception {
+        if(setValidator("adaptive quadrature", "5", advancedAdaptiveQuad, 0, 1)){
+            this.advancedAdaptiveQuad = advancedAdaptiveQuad;
+        }
     }
 
     public String getAdvancedMaxIteration() {
         return advancedMaxIteration;
     }
 
-    public void setAdvancedMaxIteration(String advancedMaxIteration) {
-        this.advancedMaxIteration = advancedMaxIteration;
+    public void setAdvancedMaxIteration(String advancedMaxIteration) throws Exception {
+        if(setValidator("maximum iterations", "5", advancedMaxIteration, 1, Integer.MAX_VALUE)){
+            this.advancedMaxIteration = advancedMaxIteration;
+        }
     }
 
     public String getAdvancedMissingValue() {
         return advancedMissingValue;
     }
 
-    public void setAdvancedMissingValue(String advancedMissingValue) {
-        this.advancedMissingValue = advancedMissingValue;
+    public void setAdvancedMissingValue(String advancedMissingValue) throws Exception {
+        if(setValidator("missing value", "5", advancedMissingValue, Integer.MIN_VALUE, Integer.MAX_VALUE)){
+            this.advancedMissingValue = advancedMissingValue;
+        }
     }
 
     public String getAdvancedCenterScale() {
         return advancedCenterScale;
     }
 
-    public void setAdvancedCenterScale(String advancedCenterScale) {
-        this.advancedCenterScale = advancedCenterScale;
+    public void setAdvancedCenterScale(String advancedCenterScale) throws Exception {
+        if(setValidator("scale centering", "5", advancedCenterScale, 0, 1)){
+            this.advancedCenterScale = advancedCenterScale;
+        }
     }
 
     public String getAdvancedRidge() {
         return advancedRidge;
     }
 
-    public void setAdvancedRidge(String advancedRidge) {
-        this.advancedRidge = advancedRidge;
+    public void setAdvancedRidge(String advancedRidge) throws Exception {
+        try { 
+            if(Double.parseDouble(advancedRidge)>=0 && Double.parseDouble(advancedRidge)<=1){
+                this.advancedRidge = advancedRidge;
+            }
+            else {throw new Exception("Invalid initial ridge value in .dat file specified, line 5");}
+        }
+        catch(NumberFormatException nfe) {
+            throw new Exception("Invalid character for initial ridge value in .dat file specified, line 5");
+        }
     }
 
     public String getModelBetweenCount() {
