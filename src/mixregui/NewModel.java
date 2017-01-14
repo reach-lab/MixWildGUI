@@ -6,6 +6,7 @@
 package mixregui;
 
 import java.io.File;
+import java.io.IOException;
 import javax.swing.JFileChooser;
 
 /**
@@ -15,6 +16,7 @@ import javax.swing.JFileChooser;
 public class NewModel extends javax.swing.JFrame {
     
 //    mixregGUI mixreg_1 = new mixregGUI();
+    JFileChooser fileChooser = new JFileChooser();
 
     /**
      * Creates new form NewModel
@@ -115,35 +117,37 @@ public class NewModel extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(31, 31, 31)
-                        .addComponent(jRadioButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jRadioButton2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(26, 26, 26)
-                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(newModelCancel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(newModelSubmit)
+                        .addGap(64, 64, 64))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(filePath, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton1))
-                            .addComponent(jTextField2)
-                            .addComponent(jTextField3))))
-                .addContainerGap(38, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(newModelCancel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(newModelSubmit)
-                .addGap(64, 64, 64))
+                                .addComponent(jLabel5)
+                                .addGap(31, 31, 31)
+                                .addComponent(jRadioButton1)
+                                .addGap(18, 18, 18)
+                                .addComponent(jRadioButton2))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(26, 26, 26)
+                                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(filePath, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jButton1))
+                                    .addComponent(jTextField2)
+                                    .addComponent(jTextField3))))
+                        .addContainerGap(55, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,11 +174,11 @@ public class NewModel extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(jRadioButton1)
                     .addComponent(jRadioButton2))
-                .addGap(46, 46, 46)
+                .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(newModelSubmit)
                     .addComponent(newModelCancel))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
@@ -185,16 +189,16 @@ public class NewModel extends javax.swing.JFrame {
     }//GEN-LAST:event_filePathActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.showOpenDialog(null);
+        //JFileChooser fileChooser = new JFileChooser();
+        //fileChooser.showOpenDialog(null);
+        
+        fileOpen();
         
         File file = fileChooser.getSelectedFile();
         
         String fileName = file.getAbsolutePath();
         
         filePath.setText(fileName);
-        
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
@@ -208,6 +212,8 @@ public class NewModel extends javax.swing.JFrame {
     private void newModelSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModelSubmitActionPerformed
         // TODO add your handling code here:
        // mainImage.setVisible(false);
+       
+       
        
        //mixreg_1.isSubmitClicked();
        mixregGUI mxr = new mixregGUI();
@@ -263,6 +269,19 @@ public class NewModel extends javax.swing.JFrame {
         });
     }
 
+    private void fileOpen() {
+    int returnVal = fileChooser.showOpenDialog(this);
+    if (returnVal == JFileChooser.APPROVE_OPTION) {
+        File file = fileChooser.getSelectedFile();
+        // What to do with the file, e.g. display it in a TextArea
+        //textarea.read( new FileReader( file.getAbsolutePath() ), null );
+        
+        System.out.println(file.getAbsolutePath());
+    } else {
+        System.out.println("File access cancelled by user.");
+    }
+} 
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JTextField filePath;
