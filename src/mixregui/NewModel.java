@@ -22,6 +22,7 @@ public class NewModel extends javax.swing.JFrame {
 //    mixregGUI mixreg_1 = new mixregGUI();
     JFileChooser fileChooser = new JFileChooser();
     File file;
+    String[] variableArray;
 
     /**
      * Creates new form NewModel
@@ -228,7 +229,7 @@ public class NewModel extends javax.swing.JFrame {
             
             System.out.println(variableNames + "**");
             
-            String[] variableArray = variableNames.split(",");
+            variableArray = variableNames.split(",");
             
             for (int i = 0; i < variableArray.length; i++){
                 
@@ -240,9 +241,6 @@ public class NewModel extends javax.swing.JFrame {
         }
         
         
-       
-       
-       
        //mixreg_1.isSubmitClicked();
        mixregGUI mxr = new mixregGUI();
        mxr.isSubmitClicked();
@@ -250,8 +248,6 @@ public class NewModel extends javax.swing.JFrame {
        
        //mxr.add(new );
       // mxr.add(new stageOneTabs());
-       
-      
        
         this.dispose();
     }//GEN-LAST:event_newModelSubmitActionPerformed
