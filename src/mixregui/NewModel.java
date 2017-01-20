@@ -6,7 +6,11 @@
 package mixregui;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 
 /**
@@ -17,6 +21,7 @@ public class NewModel extends javax.swing.JFrame {
     
 //    mixregGUI mixreg_1 = new mixregGUI();
     JFileChooser fileChooser = new JFileChooser();
+    File file;
 
     /**
      * Creates new form NewModel
@@ -194,7 +199,7 @@ public class NewModel extends javax.swing.JFrame {
         
         fileOpen();
         
-        File file = fileChooser.getSelectedFile();
+        file = fileChooser.getSelectedFile();
         
         String fileName = file.getAbsolutePath();
         
@@ -210,8 +215,24 @@ public class NewModel extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void newModelSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModelSubmitActionPerformed
-        // TODO add your handling code here:
-       // mainImage.setVisible(false);
+        try {
+            // TODO add your handling code here:
+            // mainImage.setVisible(false);
+            
+            //TODO: read the variables from csv file here ....
+            //Print them in the output
+
+            Scanner inputStream = new Scanner(file);
+            
+            String variableNames = inputStream.next();
+            
+            System.out.println(variableNames + "**");
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
        
        
        
