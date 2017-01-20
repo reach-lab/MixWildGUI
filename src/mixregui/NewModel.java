@@ -228,6 +228,13 @@ public class NewModel extends javax.swing.JFrame {
             
             System.out.println(variableNames + "**");
             
+            String[] variableArray = variableNames.split(",");
+            
+            for (int i = 0; i < variableArray.length; i++){
+                
+                System.out.println(variableArray[i]);
+        }
+            
         } catch (FileNotFoundException ex) {
             Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
         }
