@@ -5,7 +5,11 @@
  */
 package mixregui;
 
-//import def_lib.DefinitionHelper;
+import def_lib.DefinitionHelper;
+import java.awt.Desktop;
+import java.net.URL;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 //import def_lib.DefinitionHelper;
 import javax.swing.JFrame;
 
@@ -19,8 +23,21 @@ public class mixregGUI extends javax.swing.JFrame {
    advancedOptions advancedOptions_view = new advancedOptions();
    stageOneRegs stage_1_regs = new stageOneRegs();
    stageTwoRegs stage_2_regs = new stageTwoRegs();   
-   //DefinitionHelper defFile; 
+   DefinitionHelper defFile; 
    //public boolean submitClicked = true;
+   int i;
+   
+   String[] variableNamesCombo = newModel.getVariableNames();
+    
+    DefaultComboBoxModel<String> IDList = new DefaultComboBoxModel<String>();
+    
+    DefaultComboBoxModel<String> StageOneList = new DefaultComboBoxModel<String>();
+    
+    DefaultComboBoxModel<String> StageTwoList = new DefaultComboBoxModel<String>();
+  
+   
+  
+   
     
 
     /**
@@ -29,9 +46,24 @@ public class mixregGUI extends javax.swing.JFrame {
     
     public mixregGUI() {
         initComponents();
+        i = newModel.getRLE();
+        System.out.println(String.valueOf(i));
         
-        
+        if (i >1){
+        NoAssociationRadio.setVisible(false);
+        LinearAssociationRadio.setVisible(false);
+        QuadraticAssociationRadio.setVisible(false);
+        associationLabel.setVisible(false);
+        }
+    
     }
+    
+   /* if (newModel.getRLE() > 1){
+       // make radioButtons invisible here.
+   } */
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -43,17 +75,18 @@ public class mixregGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jFrame1 = new javax.swing.JFrame();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         parentPanel = new javax.swing.JPanel();
         imageView = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        jLabel22 = new javax.swing.JLabel();
         stageOneTabs = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        IDvariableCombo = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        StageOneVariableCombo = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        StageTwoVariableCombo = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -85,6 +118,10 @@ public class mixregGUI extends javax.swing.JFrame {
         jCheckBox9 = new javax.swing.JCheckBox();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
+        associationLabel = new javax.swing.JLabel();
+        NoAssociationRadio = new javax.swing.JRadioButton();
+        LinearAssociationRadio = new javax.swing.JRadioButton();
+        QuadraticAssociationRadio = new javax.swing.JRadioButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
@@ -109,7 +146,7 @@ public class mixregGUI extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        diagramMenu = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
@@ -131,25 +168,26 @@ public class mixregGUI extends javax.swing.JFrame {
 
         parentPanel.setLayout(new java.awt.CardLayout());
 
-        imageView.setBackground(new java.awt.Color(255, 153, 153));
+        imageView.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton1.setText("jButton1");
+        jLabel22.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel22.setIcon(new javax.swing.ImageIcon("/Users/adityaponnada/Desktop/Screen Shot 2017-01-10 at 12.45.36 PM.png")); // NOI18N
 
         javax.swing.GroupLayout imageViewLayout = new javax.swing.GroupLayout(imageView);
         imageView.setLayout(imageViewLayout);
         imageViewLayout.setHorizontalGroup(
             imageViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(imageViewLayout.createSequentialGroup()
-                .addGap(311, 311, 311)
-                .addComponent(jButton1)
-                .addContainerGap(816, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, imageViewLayout.createSequentialGroup()
+                .addContainerGap(244, Short.MAX_VALUE)
+                .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 1054, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         imageViewLayout.setVerticalGroup(
             imageViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(imageViewLayout.createSequentialGroup()
-                .addGap(204, 204, 204)
-                .addComponent(jButton1)
-                .addContainerGap(567, Short.MAX_VALUE))
+                .addGap(55, 55, 55)
+                .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(643, Short.MAX_VALUE))
         );
 
         parentPanel.add(imageView, "card3");
@@ -158,15 +196,15 @@ public class mixregGUI extends javax.swing.JFrame {
 
         jLabel1.setText("ID Variable:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        IDvariableCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel2.setText("Stage 1 DV:");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        StageOneVariableCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel3.setText("Stage 2 DV:");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        StageTwoVariableCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jButton2.setText("Add Stage 1 Regressors ...");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -401,6 +439,22 @@ public class mixregGUI extends javax.swing.JFrame {
                 .addGap(19, 19, 19))
         );
 
+        associationLabel.setText("Specify the relationship between the random location and within subject variance tested below (i.e. relation between variance and slope) ");
+
+        buttonGroup1.add(NoAssociationRadio);
+        NoAssociationRadio.setText("No Association");
+        NoAssociationRadio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NoAssociationRadioActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(LinearAssociationRadio);
+        LinearAssociationRadio.setText("Linear Association");
+
+        buttonGroup1.add(QuadraticAssociationRadio);
+        QuadraticAssociationRadio.setText("Quadratic Association");
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -412,21 +466,33 @@ public class mixregGUI extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
-                .addComponent(jLabel11))
+                            .addComponent(jLabel5)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
+                        .addComponent(jLabel11))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(NoAssociationRadio)
+                                .addGap(35, 35, 35)
+                                .addComponent(LinearAssociationRadio)
+                                .addGap(28, 28, 28)
+                                .addComponent(QuadraticAssociationRadio))
+                            .addComponent(associationLabel))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -448,7 +514,14 @@ public class mixregGUI extends javax.swing.JFrame {
                         .addComponent(jLabel8))
                     .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addGap(29, 29, 29)
+                .addComponent(associationLabel)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(NoAssociationRadio)
+                    .addComponent(LinearAssociationRadio)
+                    .addComponent(QuadraticAssociationRadio))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         jButton5.setText("Run Stage 1 + 2");
@@ -501,9 +574,9 @@ public class mixregGUI extends javax.swing.JFrame {
                                     .addComponent(jLabel3))
                                 .addGap(26, 26, 26)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jComboBox1, 0, 203, Short.MAX_VALUE)
-                                    .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addComponent(IDvariableCombo, 0, 203, Short.MAX_VALUE)
+                                    .addComponent(StageOneVariableCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(StageTwoVariableCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(21, 21, 21))
@@ -516,15 +589,15 @@ public class mixregGUI extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(IDvariableCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(StageOneVariableCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(StageTwoVariableCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(50, 50, 50)
                         .addComponent(jButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -532,12 +605,12 @@ public class mixregGUI extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton5)
                     .addComponent(jButton6)
                     .addComponent(jButton7))
-                .addContainerGap(337, Short.MAX_VALUE))
+                .addContainerGap(757, Short.MAX_VALUE))
         );
 
         stageOneTabs.addTab("Configuration", jPanel1);
@@ -568,14 +641,14 @@ public class mixregGUI extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(557, 557, 557)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(521, Short.MAX_VALUE))
+                .addContainerGap(601, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(106, 106, 106)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(548, Short.MAX_VALUE))
+                .addContainerGap(968, Short.MAX_VALUE))
         );
 
         stageOneTabs.addTab("View Model", jPanel2);
@@ -624,7 +697,7 @@ public class mixregGUI extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(181, 181, 181)
                         .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(199, Short.MAX_VALUE))
+                .addContainerGap(279, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -635,7 +708,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton8)
                     .addComponent(jButton9))
-                .addContainerGap(316, Short.MAX_VALUE))
+                .addContainerGap(736, Short.MAX_VALUE))
         );
 
         stageOneTabs.addTab("Stage 1 Results", jPanel3);
@@ -696,7 +769,7 @@ public class mixregGUI extends javax.swing.JFrame {
                     .addComponent(jButton10)
                     .addComponent(jButton11)
                     .addComponent(jButton12))
-                .addContainerGap(330, Short.MAX_VALUE))
+                .addContainerGap(750, Short.MAX_VALUE))
         );
 
         stageOneTabs.addTab("Stage 2 Results", jPanel4);
@@ -738,8 +811,13 @@ public class mixregGUI extends javax.swing.JFrame {
 
         jMenu2.setText("Help");
 
-        jMenuItem5.setText("Diagram");
-        jMenu2.add(jMenuItem5);
+        diagramMenu.setText("Diagram");
+        diagramMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                diagramMenuActionPerformed(evt);
+            }
+        });
+        jMenu2.add(diagramMenu);
 
         jMenuItem6.setText("Guide");
         jMenu2.add(jMenuItem6);
@@ -790,6 +868,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         stage_1_regs.setVisible(true);
+        stage_1_regs.updateAllVariables();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
@@ -831,11 +910,12 @@ public class mixregGUI extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         stageOneTabs.setSelectedIndex(3);
        
-        
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+        
+        
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -856,6 +936,16 @@ public class mixregGUI extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         stage_2_regs.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void NoAssociationRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoAssociationRadioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NoAssociationRadioActionPerformed
+
+    private void diagramMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_diagramMenuActionPerformed
+        // TODO add your handling code here:
+        openWebpage("http://myquitadmin.usc.edu/mixsuite.php");
+        
+    }//GEN-LAST:event_diagramMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -890,11 +980,21 @@ public class mixregGUI extends javax.swing.JFrame {
                 new mixregGUI().setVisible(true);
             }
         });
+        
+       
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> IDvariableCombo;
+    private javax.swing.JRadioButton LinearAssociationRadio;
+    private javax.swing.JRadioButton NoAssociationRadio;
+    private javax.swing.JRadioButton QuadraticAssociationRadio;
+    private javax.swing.JComboBox<String> StageOneVariableCombo;
+    private javax.swing.JComboBox<String> StageTwoVariableCombo;
+    private javax.swing.JLabel associationLabel;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JMenuItem diagramMenu;
     private javax.swing.JPanel imageView;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
@@ -915,9 +1015,6 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox7;
     private javax.swing.JCheckBox jCheckBox8;
     private javax.swing.JCheckBox jCheckBox9;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -933,6 +1030,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -947,7 +1045,6 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
@@ -975,6 +1072,34 @@ public class mixregGUI extends javax.swing.JFrame {
             parentPanel.add(stageOneTabs);
             parentPanel.repaint();
             parentPanel.revalidate();
+}
+    
+   public void updateComboBoxes(){
+    
+    
+    for (int j=0; j<variableNamesCombo.length; j++){
+        IDList.addElement(variableNamesCombo[j]);
+        StageOneList.addElement(variableNamesCombo[j]);
+        StageTwoList.addElement(variableNamesCombo[j]);
+    }
+    
+    
+    IDvariableCombo.setModel(IDList);
+    IDvariableCombo.setSelectedIndex(0);
+    
+    StageOneVariableCombo.setModel(StageOneList);
+    StageOneVariableCombo.setSelectedIndex(0);
+    
+    StageTwoVariableCombo.setModel(StageTwoList);
+    StageTwoVariableCombo.setSelectedIndex(0);
+}
+   
+   public static void openWebpage(String urlString) {
+    try {
+        Desktop.getDesktop().browse(new URL(urlString).toURI());
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
 }
 
 }
