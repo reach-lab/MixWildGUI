@@ -17,6 +17,8 @@ public class stageOneRegs extends javax.swing.JFrame {
     
     NewModel newModel2 = new NewModel();
     
+    stageTwoRegs stageTwo = new stageTwoRegs();
+    
     String[] variableNamesList = newModel2.getVariableNames();
     
     DefaultListModel<String> varList = new DefaultListModel<String>();
@@ -25,12 +27,6 @@ public class stageOneRegs extends javax.swing.JFrame {
     
     DefaultListModel<String> levelTwoList = new DefaultListModel<String>();
     
-    
-    
-    
-    
-    
-
     /**
      * Creates new form stageOneRegs
      */
@@ -84,7 +80,7 @@ public class stageOneRegs extends javax.swing.JFrame {
 
         jLabel2.setText("Level-I (Time Variant)");
 
-        jLabel3.setText("Level-I (Time Variant)");
+        jLabel3.setText("Level-II (Time Invariant)");
 
         jLabel4.setText("Disaggregate Variance");
 
@@ -130,25 +126,10 @@ public class stageOneRegs extends javax.swing.JFrame {
             }
         });
 
-        AllVariablesList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane1.setViewportView(AllVariablesList);
 
-        StageOneLevelOneList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane2.setViewportView(StageOneLevelOneList);
 
-        StageOneLevelTwoList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane3.setViewportView(StageOneLevelTwoList);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -162,10 +143,10 @@ public class stageOneRegs extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
-                            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)))
+                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(103, 103, 103)
                         .addComponent(jLabel1)))
@@ -185,7 +166,7 @@ public class stageOneRegs extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addGap(43, 43, 43))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2)
                             .addComponent(jScrollPane3))
                         .addGap(61, 61, 61))))
         );
@@ -228,6 +209,9 @@ public class stageOneRegs extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       
+        stageTwo.updateStageTwoVariables();
+        
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -344,15 +328,17 @@ public class stageOneRegs extends javax.swing.JFrame {
 
 public void updateAllVariables(){
     
-    
     for (int j=0; j<variableNamesList.length; j++){
         varList.addElement(variableNamesList[j]);
     }
-    
-    
+   
     AllVariablesList.setModel(varList);
     AllVariablesList.setSelectedIndex(0);
 }
 
+public DefaultListModel<String> getListModel(){
+
+    return varList;
+}
 
 }
