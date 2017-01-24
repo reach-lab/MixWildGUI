@@ -21,6 +21,11 @@ public class mixregGUI extends javax.swing.JFrame {
    stageTwoRegs stage_2_regs = new stageTwoRegs();   
    DefinitionHelper defFile; 
    //public boolean submitClicked = true;
+   int i;
+  
+   
+  
+   
     
 
     /**
@@ -29,9 +34,24 @@ public class mixregGUI extends javax.swing.JFrame {
     
     public mixregGUI() {
         initComponents();
+        i = newModel.getRLE();
+        System.out.println(String.valueOf(i));
         
-        
+        if (i >1){
+        NoAssociationRadio.setVisible(false);
+        LinearAssociationRadio.setVisible(false);
+        QuadraticAssociationRadio.setVisible(false);
+        associationLabel.setVisible(false);
+        }
+    
     }
+    
+   /* if (newModel.getRLE() > 1){
+       // make radioButtons invisible here.
+   } */
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -86,10 +106,10 @@ public class mixregGUI extends javax.swing.JFrame {
         jCheckBox9 = new javax.swing.JCheckBox();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
+        associationLabel = new javax.swing.JLabel();
+        NoAssociationRadio = new javax.swing.JRadioButton();
+        LinearAssociationRadio = new javax.swing.JRadioButton();
+        QuadraticAssociationRadio = new javax.swing.JRadioButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
@@ -407,21 +427,21 @@ public class mixregGUI extends javax.swing.JFrame {
                 .addGap(19, 19, 19))
         );
 
-        jLabel23.setText("Specify the relationship between the random location and within subject variance tested below (i.e. relation between variance and slope) ");
+        associationLabel.setText("Specify the relationship between the random location and within subject variance tested below (i.e. relation between variance and slope) ");
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setText("No Association");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(NoAssociationRadio);
+        NoAssociationRadio.setText("No Association");
+        NoAssociationRadio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                NoAssociationRadioActionPerformed(evt);
             }
         });
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("Linear Association");
+        buttonGroup1.add(LinearAssociationRadio);
+        LinearAssociationRadio.setText("Linear Association");
 
-        buttonGroup1.add(jRadioButton3);
-        jRadioButton3.setText("Quadratic Association");
+        buttonGroup1.add(QuadraticAssociationRadio);
+        QuadraticAssociationRadio.setText("Quadratic Association");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -454,12 +474,12 @@ public class mixregGUI extends javax.swing.JFrame {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jRadioButton1)
+                                .addComponent(NoAssociationRadio)
                                 .addGap(35, 35, 35)
-                                .addComponent(jRadioButton2)
+                                .addComponent(LinearAssociationRadio)
                                 .addGap(28, 28, 28)
-                                .addComponent(jRadioButton3))
-                            .addComponent(jLabel23))
+                                .addComponent(QuadraticAssociationRadio))
+                            .addComponent(associationLabel))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel5Layout.setVerticalGroup(
@@ -483,12 +503,12 @@ public class mixregGUI extends javax.swing.JFrame {
                     .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(29, 29, 29)
-                .addComponent(jLabel23)
+                .addComponent(associationLabel)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton3))
+                    .addComponent(NoAssociationRadio)
+                    .addComponent(LinearAssociationRadio)
+                    .addComponent(QuadraticAssociationRadio))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
 
@@ -872,7 +892,6 @@ public class mixregGUI extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         stageOneTabs.setSelectedIndex(3);
        
-        
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -898,9 +917,9 @@ public class mixregGUI extends javax.swing.JFrame {
         stage_2_regs.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void NoAssociationRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoAssociationRadioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_NoAssociationRadioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -935,9 +954,15 @@ public class mixregGUI extends javax.swing.JFrame {
                 new mixregGUI().setVisible(true);
             }
         });
+        
+       
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton LinearAssociationRadio;
+    private javax.swing.JRadioButton NoAssociationRadio;
+    private javax.swing.JRadioButton QuadraticAssociationRadio;
+    private javax.swing.JLabel associationLabel;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel imageView;
     private javax.swing.JButton jButton10;
@@ -979,7 +1004,6 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1010,9 +1034,6 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JPanel parentPanel;
     private javax.swing.JTabbedPane stageOneTabs;
     // End of variables declaration//GEN-END:variables
