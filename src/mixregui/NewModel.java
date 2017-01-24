@@ -22,7 +22,7 @@ public class NewModel extends javax.swing.JFrame {
 //    mixregGUI mixreg_1 = new mixregGUI();
     JFileChooser fileChooser = new JFileChooser();
     File file;
-    String[] variableArray;
+    static String[] variableArray;
     static int RLE;
     
 
@@ -229,14 +229,16 @@ public class NewModel extends javax.swing.JFrame {
             
             String variableNames = inputStream.next();
             
-            System.out.println(variableNames + "**");
+           // System.out.println(variableNames + "**");
             
             variableArray = variableNames.split(",");
             
-            for (int i = 0; i < variableArray.length; i++){
+            String[] varTemp = getVariableNames();
+            
+          /* for (int i = 0; i < varTemp.length; i++){
                 
-                System.out.println(variableArray[i]);
-        }
+                System.out.println(varTemp[i]);
+        }*/
             
         } catch (FileNotFoundException ex) {
             Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
@@ -335,5 +337,10 @@ public class NewModel extends javax.swing.JFrame {
 public int getRLE(){
     return RLE;
     }
+
+public String[] getVariableNames(){
+
+return variableArray;
+}
 
 }
