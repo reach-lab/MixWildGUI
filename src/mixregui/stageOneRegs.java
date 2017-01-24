@@ -19,6 +19,8 @@ public class stageOneRegs extends javax.swing.JFrame {
     
     String[] variableNamesList = newModel2.getVariableNames();
     
+    DefaultListModel<String> levelOneList = new DefaultListModel<String>();
+    
     
     
     
@@ -208,7 +210,14 @@ public class stageOneRegs extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         
-        updateAllVariables();
+        //updateAllVariables();
+        
+        
+        levelOneList.addElement(AllVariablesList.getSelectedValue());
+        StageOneLevelOneList.setModel(levelOneList);
+        
+        
+        
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
