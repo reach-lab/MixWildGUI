@@ -23,6 +23,8 @@ public class stageOneRegs extends javax.swing.JFrame {
     
     DefaultListModel<String> levelOneList = new DefaultListModel<String>();
     
+    DefaultListModel<String> levelTwoList = new DefaultListModel<String>();
+    
     
     
     
@@ -96,6 +98,11 @@ public class stageOneRegs extends javax.swing.JFrame {
         jButton2.setText("Reset");
 
         jButton3.setText("Remove");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Add");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -105,8 +112,18 @@ public class stageOneRegs extends javax.swing.JFrame {
         });
 
         jButton5.setText("Remove");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setText("Add");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         AllVariablesList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -217,12 +234,44 @@ public class stageOneRegs extends javax.swing.JFrame {
         StageOneLevelOneList.setModel(levelOneList);
         
         varList.remove(AllVariablesList.getSelectedIndex());
-       // AllVariablesList.remove(AllVariablesList.getSelectedIndex());
-       
-        
-        
+       // AllVariablesList.remove(AllVariablesList.getSelectedIndex())
         
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        levelTwoList.addElement(AllVariablesList.getSelectedValue());
+        StageOneLevelTwoList.setModel(levelTwoList);
+        
+        varList.remove(AllVariablesList.getSelectedIndex());
+        
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        varList.addElement(StageOneLevelOneList.getSelectedValue());
+        
+        //levelTwoList.addElement(AllVariablesList.getSelectedValue());
+        //StageOneLevelTwoList.setModel(levelTwoList);
+        
+        AllVariablesList.setModel(varList);
+        
+        levelOneList.remove(StageOneLevelOneList.getSelectedIndex());
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        
+        varList.addElement(StageOneLevelTwoList.getSelectedValue());
+        
+        //levelTwoList.addElement(AllVariablesList.getSelectedValue());
+        //StageOneLevelTwoList.setModel(levelTwoList);
+        
+        AllVariablesList.setModel(varList);
+        
+        levelTwoList.remove(StageOneLevelTwoList.getSelectedIndex());
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
