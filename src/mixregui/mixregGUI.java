@@ -945,7 +945,6 @@ public class mixregGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         openWebpage("http://myquitadmin.usc.edu/mixsuite.php");
         
-        
     }//GEN-LAST:event_diagramMenuActionPerformed
 
     /**
