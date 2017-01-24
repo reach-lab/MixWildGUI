@@ -96,6 +96,11 @@ public class stageOneRegs extends javax.swing.JFrame {
         });
 
         jButton2.setText("Reset");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Remove");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -272,6 +277,15 @@ public class stageOneRegs extends javax.swing.JFrame {
         
         levelTwoList.remove(StageOneLevelTwoList.getSelectedIndex());
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        
+        updateAllVariables();
+        
+        levelOneList.clear();
+        levelTwoList.clear();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
