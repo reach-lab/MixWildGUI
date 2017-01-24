@@ -25,6 +25,8 @@ public class NewModel extends javax.swing.JFrame {
     static String[] variableArray;
     static int RLE;
     
+    //mixregGUI mxrGUI = new mixregGUI();
+    
 
     /**
      * Creates new form NewModel
@@ -246,6 +248,10 @@ public class NewModel extends javax.swing.JFrame {
         
         RLE = (Integer) randomLocationEffects.getValue();
         
+        
+        
+        
+        
        // System.out.println(String.valueOf(RLE));
         
         
@@ -253,6 +259,9 @@ public class NewModel extends javax.swing.JFrame {
        mixregGUI mxr = new mixregGUI();
        mxr.isSubmitClicked();
        mxr.setVisible(true);
+       mxr.updateComboBoxes();
+       
+      // mxrGUI.updateComboBoxes();
        
        //mxr.add(new );
       // mxr.add(new stageOneTabs());
