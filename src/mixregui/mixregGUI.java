@@ -6,6 +6,8 @@
 package mixregui;
 
 import def_lib.DefinitionHelper;
+import java.awt.Desktop;
+import java.net.URL;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 //import def_lib.DefinitionHelper;
@@ -144,7 +146,7 @@ public class mixregGUI extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        diagramMenu = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
@@ -809,8 +811,13 @@ public class mixregGUI extends javax.swing.JFrame {
 
         jMenu2.setText("Help");
 
-        jMenuItem5.setText("Diagram");
-        jMenu2.add(jMenuItem5);
+        diagramMenu.setText("Diagram");
+        diagramMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                diagramMenuActionPerformed(evt);
+            }
+        });
+        jMenu2.add(diagramMenu);
 
         jMenuItem6.setText("Guide");
         jMenu2.add(jMenuItem6);
@@ -907,6 +914,8 @@ public class mixregGUI extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+        
+        
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -931,6 +940,13 @@ public class mixregGUI extends javax.swing.JFrame {
     private void NoAssociationRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoAssociationRadioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_NoAssociationRadioActionPerformed
+
+    private void diagramMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_diagramMenuActionPerformed
+        // TODO add your handling code here:
+        openWebpage("http://myquitadmin.usc.edu/mixsuite.php");
+        
+        
+    }//GEN-LAST:event_diagramMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -978,6 +994,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> StageTwoVariableCombo;
     private javax.swing.JLabel associationLabel;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JMenuItem diagramMenu;
     private javax.swing.JPanel imageView;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -1029,7 +1046,6 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
@@ -1077,6 +1093,14 @@ public class mixregGUI extends javax.swing.JFrame {
     
     StageTwoVariableCombo.setModel(StageTwoList);
     StageTwoVariableCombo.setSelectedIndex(0);
+}
+   
+   public static void openWebpage(String urlString) {
+    try {
+        Desktop.getDesktop().browse(new URL(urlString).toURI());
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
 }
 
 }
