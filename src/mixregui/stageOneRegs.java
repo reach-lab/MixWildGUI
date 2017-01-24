@@ -19,6 +19,8 @@ public class stageOneRegs extends javax.swing.JFrame {
     
     String[] variableNamesList = newModel2.getVariableNames();
     
+    DefaultListModel<String> varList = new DefaultListModel<String>();
+    
     DefaultListModel<String> levelOneList = new DefaultListModel<String>();
     
     
@@ -211,10 +213,12 @@ public class stageOneRegs extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         //updateAllVariables();
-        
-        
         levelOneList.addElement(AllVariablesList.getSelectedValue());
         StageOneLevelOneList.setModel(levelOneList);
+        
+        varList.remove(AllVariablesList.getSelectedIndex());
+       // AllVariablesList.remove(AllVariablesList.getSelectedIndex());
+       
         
         
         
@@ -276,7 +280,7 @@ public class stageOneRegs extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
 public void updateAllVariables(){
-    DefaultListModel<String> varList = new DefaultListModel<String>();
+    
     
     for (int j=0; j<variableNamesList.length; j++){
         varList.addElement(variableNamesList[j]);
