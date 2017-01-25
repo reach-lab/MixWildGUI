@@ -17,21 +17,21 @@ import javax.swing.DefaultComboBoxModel;
  */
 public class mixregGUI extends javax.swing.JFrame {
     
-   NewModel newModel = new NewModel();
-   advancedOptions advancedOptions_view = new advancedOptions();
-   stageOneRegs stage_1_regs = new stageOneRegs();
-   stageTwoRegs stage_2_regs = new stageTwoRegs();   
-   //DefinitionHelper defFile; 
+   NewModel newModel;
+   advancedOptions advancedOptions_view;
+   stageOneRegs stage_1_regs;
+   stageTwoRegs stage_2_regs;
+   DefinitionHelper defFile; 
    //public boolean submitClicked = true;
    int i;
    
-   String[] variableNamesCombo = newModel.getVariableNames();
+   String[] variableNamesCombo;
     
-    DefaultComboBoxModel<String> IDList = new DefaultComboBoxModel<String>();
+    DefaultComboBoxModel<String> IDList;
     
-    DefaultComboBoxModel<String> StageOneList = new DefaultComboBoxModel<String>();
+    DefaultComboBoxModel<String> StageOneList;
     
-    DefaultComboBoxModel<String> StageTwoList = new DefaultComboBoxModel<String>();
+    DefaultComboBoxModel<String> StageTwoList;
 
     /**
      * Creates new form mixregGUI
@@ -39,8 +39,19 @@ public class mixregGUI extends javax.swing.JFrame {
     
     public mixregGUI() {
         initComponents();
+        newModel = new NewModel();
+        variableNamesCombo = newModel.getVariableNames();
+        
+        IDList = new DefaultComboBoxModel<String>();
+        StageOneList = new DefaultComboBoxModel<String>();
+        StageTwoList = new DefaultComboBoxModel<String>();
+        
+        
+        
         i = newModel.getRLE();
         System.out.println(String.valueOf(i));
+        
+        
         
         if (i >1){
         NoAssociationRadio.setVisible(false);
@@ -926,15 +937,20 @@ public class mixregGUI extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-
+        advancedOptions_view = new advancedOptions();
+        
         advancedOptions_view.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+       stage_2_regs = new stageTwoRegs();
+        
         stage_2_regs.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+        stage_1_regs = new stageOneRegs();
         stage_1_regs.setVisible(true);
         stage_1_regs.updateAllVariables();
     }//GEN-LAST:event_jButton2ActionPerformed

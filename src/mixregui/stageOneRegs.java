@@ -15,23 +15,33 @@ import javax.swing.JList;
  */
 public class stageOneRegs extends javax.swing.JFrame {
     
-    NewModel newModel2 = new NewModel();
+    NewModel newModel2;
     
-    stageTwoRegs stageTwo = new stageTwoRegs();
+    stageTwoRegs stageTwo;
     
-    String[] variableNamesList = newModel2.getVariableNames();
+    String[] variableNamesList;
     
-    DefaultListModel<String> varList = new DefaultListModel<String>();
+    DefaultListModel<String> varList;
     
-    DefaultListModel<String> levelOneList = new DefaultListModel<String>();
+    DefaultListModel<String> levelOneList;
     
-    DefaultListModel<String> levelTwoList = new DefaultListModel<String>();
+    DefaultListModel<String> levelTwoList;
     
     /**
      * Creates new form stageOneRegs
      */
     public stageOneRegs() {
        initComponents();
+       
+       newModel2 = new NewModel();
+       variableNamesList = newModel2.getVariableNames();
+       
+       varList = new DefaultListModel<String>();
+       levelOneList = new DefaultListModel<String>();
+       levelTwoList = new DefaultListModel<String>();
+       
+       
+       
        
     
        //variableNamesList = newModel2.getVariableNames();
@@ -210,6 +220,7 @@ public class stageOneRegs extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        
+        stageTwo = new stageTwoRegs();
        // stageTwo.updateStageTwoVariables();
         
         this.dispose();
@@ -336,8 +347,8 @@ public void updateAllVariables(){
     AllVariablesList.setSelectedIndex(0);
 }
 
-/*public DefaultListModel<String> getListModel(){
+public DefaultListModel<String> getListModel(){
 
     return varList;
-}*/
+}
 }
