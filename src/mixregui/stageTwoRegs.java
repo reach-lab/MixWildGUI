@@ -13,7 +13,7 @@ import javax.swing.DefaultListModel;
  */
 public class stageTwoRegs extends javax.swing.JFrame {
     
-    stageOneRegs stageOne = new stageOneRegs();
+    stageOneRegs stageOne;
     
    DefaultListModel<String> stageTwoListModel;
 
@@ -23,7 +23,10 @@ public class stageTwoRegs extends javax.swing.JFrame {
     public stageTwoRegs() {
         initComponents();
         
-        stageTwoListModel = new DefaultListModel<>();
+       // stageTwoListModel = new DefaultListModel<>();
+       // updateStageTwoVariables();
+        
+        
     }
 
     /**
@@ -197,14 +200,25 @@ public class stageTwoRegs extends javax.swing.JFrame {
 
 
     
-  public void updateStageTwoVariables(){
+  public void updateStageTwoVariables(DefaultListModel<String> defaultListModel){
+      
+      System.out.println("Before declaration");
     
-    stageOne = new stageOneRegs();
-      stageTwoListModel = stageOne.getListModel();
+   // stageOne = new stageOneRegs();
+    
+    System.out.println("After declaration");
+    
+      //stageTwoListModel = stageOne.getListModel();
+      
+      System.out.println("gets the model");
     
         //stageTwoListModel = defaultListModel;
         
-    StageTwoAllVariables.setModel(stageTwoListModel);
+    StageTwoAllVariables.setModel(defaultListModel);
+//    System.out.println(stageTwoListModel.get(0));
+    
+    System.out.println("Sets the model");
+    
     StageTwoAllVariables.setSelectedIndex(0);
 }
 

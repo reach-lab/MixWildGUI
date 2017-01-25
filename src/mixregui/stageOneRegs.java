@@ -21,7 +21,7 @@ public class stageOneRegs extends javax.swing.JFrame {
     
     String[] variableNamesList;
     
-    DefaultListModel<String> varList;
+    static DefaultListModel<String> varList;
     
     DefaultListModel<String> levelOneList;
     
@@ -349,6 +349,8 @@ public void updateAllVariables(){
 
 public DefaultListModel<String> getListModel(){
 
+    System.out.println("inside getListModel()");
+    
     return varList;
 }
 }

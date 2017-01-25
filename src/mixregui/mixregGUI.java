@@ -9,6 +9,7 @@ import def_lib.DefinitionHelper;
 import java.awt.Desktop;
 import java.net.URL;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 //import def_lib.DefinitionHelper;
 
 /**
@@ -32,6 +33,8 @@ public class mixregGUI extends javax.swing.JFrame {
     DefaultComboBoxModel<String> StageOneList;
     
     DefaultComboBoxModel<String> StageTwoList;
+    
+    DefaultListModel<String> savedVariablesStageOne;
 
     /**
      * Creates new form mixregGUI
@@ -46,12 +49,8 @@ public class mixregGUI extends javax.swing.JFrame {
         StageOneList = new DefaultComboBoxModel<String>();
         StageTwoList = new DefaultComboBoxModel<String>();
         
-        
-        
         i = newModel.getRLE();
         System.out.println(String.valueOf(i));
-        
-        
         
         if (i >1){
         NoAssociationRadio.setVisible(false);
@@ -943,9 +942,10 @@ public class mixregGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       stage_2_regs = new stageTwoRegs();
+        stage_2_regs = new stageTwoRegs();
         
         stage_2_regs.setVisible(true);
+        stage_2_regs.updateStageTwoVariables(getSavedVariables());
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -1109,5 +1109,13 @@ public class mixregGUI extends javax.swing.JFrame {
         e.printStackTrace();
     }
 }
+   
+   public DefaultListModel<String> getSavedVariables(){
+   
+       savedVariablesStageOne = stage_1_regs.getListModel();
+       
+   return savedVariablesStageOne;
+   
+   }
 
 }
