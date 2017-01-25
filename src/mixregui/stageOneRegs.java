@@ -210,7 +210,7 @@ public class stageOneRegs extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        
-        stageTwo.updateStageTwoVariables();
+       // stageTwo.updateStageTwoVariables();
         
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -336,9 +336,8 @@ public void updateAllVariables(){
     AllVariablesList.setSelectedIndex(0);
 }
 
-public DefaultListModel<String> getListModel(){
+/*public DefaultListModel<String> getListModel(){
 
     return varList;
-}
-
+}*/
 }
