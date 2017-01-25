@@ -16,6 +16,7 @@ public class stageTwoRegs extends javax.swing.JFrame {
     stageOneRegs stageOne;
     
    DefaultListModel<String> stageTwoListModel;
+   DefaultListModel<String> stageTwoLevelTwo;
 
     /**
      * Creates new form stageTwoRegs
@@ -25,6 +26,7 @@ public class stageTwoRegs extends javax.swing.JFrame {
         
        // stageTwoListModel = new DefaultListModel<>();
        // updateStageTwoVariables();
+       stageTwoLevelTwo = new DefaultListModel();
         
         
     }
@@ -63,6 +65,11 @@ public class stageTwoRegs extends javax.swing.JFrame {
         });
 
         jButton2.setText("Remove");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Reset");
 
@@ -148,7 +155,19 @@ public class stageTwoRegs extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
+        stageTwoLevelTwo.addElement(StageTwoAllVariables.getSelectedValue());
+        StageTwoLevelTwoVariables.setModel(stageTwoLevelTwo);
+        
+       // stageTwoListModel.remove(StageTwoAllVariables.getSelectedIndex());
+        
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        
+        stageTwoLevelTwo.remove(StageTwoLevelTwoVariables.getSelectedIndex());
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -219,7 +238,7 @@ public class stageTwoRegs extends javax.swing.JFrame {
     
     System.out.println("Sets the model");
     
-    StageTwoAllVariables.setSelectedIndex(0);
+    StageTwoAllVariables.setSelectedIndex(2);
 }
 
 }
