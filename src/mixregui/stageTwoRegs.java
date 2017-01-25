@@ -15,7 +15,7 @@ public class stageTwoRegs extends javax.swing.JFrame {
     
     stageOneRegs stageOne = new stageOneRegs();
     
-    DefaultListModel<String> stageTwoListModel = new DefaultListModel<String>();
+   // DefaultListModel<String> stageTwoListModel = new DefaultListModel<>();
 
     /**
      * Creates new form stageTwoRegs
@@ -195,13 +195,13 @@ public class stageTwoRegs extends javax.swing.JFrame {
 
 
     
-    public void updateStageTwoVariables(){
+  /*  public void updateStageTwoVariables(){
     
-        stageTwoListModel = stageOne.getListModel();
+    stageTwoListModel = stageOne.getListModel();
         //stageTwoListModel = defaultListModel;
         
     StageTwoAllVariables.setModel(stageTwoListModel);
     StageTwoAllVariables.setSelectedIndex(0);
-}
+}*/
 
 }
