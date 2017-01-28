@@ -6,6 +6,7 @@
 package mixregui;
 
 import java.awt.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 
@@ -16,6 +17,8 @@ import javax.swing.JList;
 public class stageOneRegs extends javax.swing.JFrame {
     
     NewModel newModel2;
+    
+    mixregGUI mixregStageOne;
     
     stageTwoRegs stageTwo;
     
@@ -221,6 +224,12 @@ public class stageOneRegs extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        
         stageTwo = new stageTwoRegs();
+        
+        mixregStageOne = newModel2.getMixReg();
+        
+        mixregStageOne.updateRegressors(getSelectedLevelOneVars(), getSelectedLevelTwoVars());
+        
+        
        // stageTwo.updateStageTwoVariables();
         
         this.dispose();
@@ -353,4 +362,36 @@ public DefaultListModel<String> getListModel(){
     
     return varList;
 }
+
+
+public DefaultComboBoxModel<String> getSelectedLevelOneVars(){
+
+//DefaultComboBoxList<String> levelOneCombo = (DefaultComboBoxModel) levelOneList;
+
+DefaultComboBoxModel<String> levelOneCombo = new DefaultComboBoxModel();
+
+for (int j = 0; j< levelOneList.getSize(); j++){
+    
+    levelOneCombo.addElement(levelOneList.getElementAt(j));
+
+}
+
+return levelOneCombo;
+
+}
+
+public DefaultComboBoxModel<String> getSelectedLevelTwoVars(){
+
+DefaultComboBoxModel<String> levelTwoCombo = new DefaultComboBoxModel();
+    
+    for (int j = 0; j< levelTwoList.getSize(); j++){
+    
+    levelTwoCombo.addElement(levelTwoList.getElementAt(j));
+
+}
+return levelTwoCombo;
+
+}
+
+
 }

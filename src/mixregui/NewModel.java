@@ -24,6 +24,7 @@ public class NewModel extends javax.swing.JFrame {
     File file;
     static String[] variableArray;
     static int RLE;
+    static mixregGUI mxr;
     
     //mixregGUI mxrGUI = new mixregGUI();
     
@@ -253,7 +254,7 @@ public class NewModel extends javax.swing.JFrame {
         
         
        //mixreg_1.isSubmitClicked();
-       mixregGUI mxr = new mixregGUI();
+       mxr = new mixregGUI();
        mxr.isSubmitClicked();
        mxr.setVisible(true);
        mxr.updateComboBoxes();
@@ -347,6 +348,11 @@ public int getRLE(){
 public String[] getVariableNames(){
 
 return variableArray;
+}
+
+public mixregGUI getMixReg(){
+
+return mxr;
 }
 
 }
