@@ -6,6 +6,7 @@
 package mixregui;
 
 import java.awt.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 
@@ -15,23 +16,35 @@ import javax.swing.JList;
  */
 public class stageOneRegs extends javax.swing.JFrame {
     
-    NewModel newModel2 = new NewModel();
+    NewModel newModel2;
     
-    stageTwoRegs stageTwo = new stageTwoRegs();
+    mixregGUI mixregStageOne;
     
-    String[] variableNamesList = newModel2.getVariableNames();
+    stageTwoRegs stageTwo;
     
-    DefaultListModel<String> varList = new DefaultListModel<String>();
+    String[] variableNamesList;
     
-    DefaultListModel<String> levelOneList = new DefaultListModel<String>();
+    static DefaultListModel<String> varList;
     
-    DefaultListModel<String> levelTwoList = new DefaultListModel<String>();
+    DefaultListModel<String> levelOneList;
+    
+    DefaultListModel<String> levelTwoList;
     
     /**
      * Creates new form stageOneRegs
      */
     public stageOneRegs() {
        initComponents();
+       
+       newModel2 = new NewModel();
+       variableNamesList = newModel2.getVariableNames();
+       
+       varList = new DefaultListModel<String>();
+       levelOneList = new DefaultListModel<String>();
+       levelTwoList = new DefaultListModel<String>();
+       
+       
+       
        
     
        //variableNamesList = newModel2.getVariableNames();
@@ -210,6 +223,13 @@ public class stageOneRegs extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        
+        stageTwo = new stageTwoRegs();
+        
+        mixregStageOne = newModel2.getMixReg();
+        
+        mixregStageOne.updateRegressors(getSelectedLevelOneVars(), getSelectedLevelTwoVars());
+        
+        
        // stageTwo.updateStageTwoVariables();
         
         this.dispose();
@@ -336,8 +356,42 @@ public void updateAllVariables(){
     AllVariablesList.setSelectedIndex(0);
 }
 
-/*public DefaultListModel<String> getListModel(){
+public DefaultListModel<String> getListModel(){
 
+    System.out.println("inside getListModel()");
+    
     return varList;
-}*/
+}
+
+
+public DefaultComboBoxModel<String> getSelectedLevelOneVars(){
+
+//DefaultComboBoxList<String> levelOneCombo = (DefaultComboBoxModel) levelOneList;
+
+DefaultComboBoxModel<String> levelOneCombo = new DefaultComboBoxModel();
+
+for (int j = 0; j< levelOneList.getSize(); j++){
+    
+    levelOneCombo.addElement(levelOneList.getElementAt(j));
+
+}
+
+return levelOneCombo;
+
+}
+
+public DefaultComboBoxModel<String> getSelectedLevelTwoVars(){
+
+DefaultComboBoxModel<String> levelTwoCombo = new DefaultComboBoxModel();
+    
+    for (int j = 0; j< levelTwoList.getSize(); j++){
+    
+    levelTwoCombo.addElement(levelTwoList.getElementAt(j));
+
+}
+return levelTwoCombo;
+
+}
+
+
 }
