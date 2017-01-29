@@ -61,6 +61,10 @@ public class mixregGUI extends javax.swing.JFrame {
         LinearAssociationRadio.setVisible(false);
         QuadraticAssociationRadio.setVisible(false);
         associationLabel.setVisible(false);
+        alphaWSOne.setVisible(false);
+        alphaBSOne.setVisible(false);
+        alphaLabelOne.setText("text1");
+        alphaLabelTwo.setText("text2");
         }
     
     }
@@ -109,19 +113,19 @@ public class mixregGUI extends javax.swing.JFrame {
         levelTwoSelectedRegs = new javax.swing.JComboBox<>();
         canvas1 = new java.awt.Canvas();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        alphaLabelOne = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
+        alphaLabelTwo = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
+        alphaWSOne = new javax.swing.JCheckBox();
         jCheckBox3 = new javax.swing.JCheckBox();
         jCheckBox4 = new javax.swing.JCheckBox();
         jCheckBox5 = new javax.swing.JCheckBox();
-        jCheckBox6 = new javax.swing.JCheckBox();
+        alphaBSOne = new javax.swing.JCheckBox();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
         jButton5 = new javax.swing.JButton();
@@ -262,7 +266,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
         jLabel9.setText("Beta Mean Submodel ");
 
-        jLabel10.setText("Alpha BS Variance Submodel");
+        alphaLabelOne.setText("Alpha BS Variance Submodel");
 
         jLabel12.setText("Tau WS Variance Submodel");
 
@@ -270,7 +274,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
         jLabel13.setText("Beta Mean Submodel ");
 
-        jLabel14.setText("Alpha BS Variance Submodel");
+        alphaLabelTwo.setText("Alpha BS Variance Submodel");
 
         jLabel15.setText("Tau WS Variance Submodel");
 
@@ -281,10 +285,10 @@ public class mixregGUI extends javax.swing.JFrame {
             }
         });
 
-        jCheckBox2.setText("Within Subject");
-        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+        alphaWSOne.setText("Within Subject");
+        alphaWSOne.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox2ActionPerformed(evt);
+                alphaWSOneActionPerformed(evt);
             }
         });
 
@@ -299,10 +303,10 @@ public class mixregGUI extends javax.swing.JFrame {
 
         jCheckBox5.setText("Between Subject");
 
-        jCheckBox6.setText("Between Subject");
-        jCheckBox6.addActionListener(new java.awt.event.ActionListener() {
+        alphaBSOne.setText("Between Subject");
+        alphaBSOne.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox6ActionPerformed(evt);
+                alphaBSOneActionPerformed(evt);
             }
         });
 
@@ -348,8 +352,8 @@ public class mixregGUI extends javax.swing.JFrame {
                                                         .addComponent(jCheckBox1)
                                                         .addGap(51, 51, 51)))
                                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel10)
-                                                    .addComponent(jCheckBox2))
+                                                    .addComponent(alphaLabelOne)
+                                                    .addComponent(alphaWSOne))
                                                 .addGap(33, 33, 33)
                                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(jLabel12)
@@ -365,8 +369,8 @@ public class mixregGUI extends javax.swing.JFrame {
                                         .addComponent(jCheckBox4)))
                                 .addGap(30, 30, 30)
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jCheckBox6)
-                                    .addComponent(jLabel14))
+                                    .addComponent(alphaBSOne)
+                                    .addComponent(alphaLabelTwo))
                                 .addGap(39, 39, 39)
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel15)
@@ -400,7 +404,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel9)
-                        .addComponent(jLabel10)
+                        .addComponent(alphaLabelOne)
                         .addComponent(jLabel12))
                     .addComponent(jLabel11))
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -410,7 +414,7 @@ public class mixregGUI extends javax.swing.JFrame {
                             .addComponent(jCheckBox3)
                             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jCheckBox1)
-                                .addComponent(jCheckBox2))))
+                                .addComponent(alphaWSOne))))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addComponent(jLabel5)
@@ -421,7 +425,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(jLabel14)
+                    .addComponent(alphaLabelTwo)
                     .addComponent(jLabel15))
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
@@ -434,7 +438,7 @@ public class mixregGUI extends javax.swing.JFrame {
                         .addGap(38, 38, 38)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jCheckBox4)
-                            .addComponent(jCheckBox6)
+                            .addComponent(alphaBSOne)
                             .addComponent(jCheckBox5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -852,17 +856,17 @@ public class mixregGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_NoAssociationRadioActionPerformed
 
-    private void jCheckBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox6ActionPerformed
+    private void alphaBSOneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alphaBSOneActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox6ActionPerformed
+    }//GEN-LAST:event_alphaBSOneActionPerformed
 
     private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox3ActionPerformed
 
-    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+    private void alphaWSOneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alphaWSOneActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox2ActionPerformed
+    }//GEN-LAST:event_alphaWSOneActionPerformed
 
     /**
      * @param args the command line arguments
@@ -908,6 +912,10 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JRadioButton QuadraticAssociationRadio;
     private javax.swing.JComboBox<String> StageOneVariableCombo;
     private javax.swing.JComboBox<String> StageTwoVariableCombo;
+    private javax.swing.JCheckBox alphaBSOne;
+    private javax.swing.JLabel alphaLabelOne;
+    private javax.swing.JLabel alphaLabelTwo;
+    private javax.swing.JCheckBox alphaWSOne;
     private javax.swing.JLabel associationLabel;
     private javax.swing.ButtonGroup buttonGroup1;
     private java.awt.Canvas canvas1;
@@ -925,18 +933,14 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JCheckBox jCheckBox5;
-    private javax.swing.JCheckBox jCheckBox6;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
