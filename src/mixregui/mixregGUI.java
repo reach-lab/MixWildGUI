@@ -63,8 +63,8 @@ public class mixregGUI extends javax.swing.JFrame {
         associationLabel.setVisible(false);
         alphaWSOne.setVisible(false);
         alphaBSOne.setVisible(false);
-        alphaLabelOne.setText("text1");
-        alphaLabelTwo.setText("text2");
+        alphaLabelOne.setText("<html>Test whether the <br>association between regressor & <br>dependent variable <br>(i.e., slope) varies?</html>");
+        alphaLabelTwo.setText("<html>Test whether the <br>association between regressor & <br>dependent variable <br>(i.e., slope) varies?</html>");
         }
     
     }
