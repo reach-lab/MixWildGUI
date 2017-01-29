@@ -20,10 +20,11 @@ import javax.swing.JFileChooser;
 public class NewModel extends javax.swing.JFrame {
     
 //    mixregGUI mixreg_1 = new mixregGUI();
-    JFileChooser fileChooser = new JFileChooser();
+    JFileChooser fileChooser; 
     File file;
     static String[] variableArray;
     static int RLE;
+    static mixregGUI mxr;
     
     //mixregGUI mxrGUI = new mixregGUI();
     
@@ -33,6 +34,7 @@ public class NewModel extends javax.swing.JFrame {
      */
     public NewModel() {
         initComponents();
+        fileChooser = new JFileChooser();
     }
 
     /**
@@ -248,15 +250,11 @@ public class NewModel extends javax.swing.JFrame {
         
         RLE = (Integer) randomLocationEffects.getValue();
         
-        
-        
-        
-        
        // System.out.println(String.valueOf(RLE));
         
         
        //mixreg_1.isSubmitClicked();
-       mixregGUI mxr = new mixregGUI();
+       mxr = new mixregGUI();
        mxr.isSubmitClicked();
        mxr.setVisible(true);
        mxr.updateComboBoxes();
@@ -350,6 +348,11 @@ public int getRLE(){
 public String[] getVariableNames(){
 
 return variableArray;
+}
+
+public mixregGUI getMixReg(){
+
+return mxr;
 }
 
 }
