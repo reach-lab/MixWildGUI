@@ -16,6 +16,8 @@ import javax.swing.JList;
  */
 public class stageOneRegs extends javax.swing.JFrame {
     
+   // declare required jFrame
+    
     NewModel newModel2;
     
     mixregGUI mixregStageOne;
@@ -37,22 +39,13 @@ public class stageOneRegs extends javax.swing.JFrame {
        initComponents();
        
        newModel2 = new NewModel();
+       
+       //get variable names from the data set
        variableNamesList = newModel2.getVariableNames();
        
        varList = new DefaultListModel<String>();
        levelOneList = new DefaultListModel<String>();
        levelTwoList = new DefaultListModel<String>();
-       
-       
-       
-       
-    
-       //variableNamesList = newModel2.getVariableNames();
-        
-      /* for (int j = 0; j < variableNamesList.length; j++){
-                
-                System.out.println(variableNamesList[j]);
-        }*/
         
      
     }
@@ -225,30 +218,27 @@ public class stageOneRegs extends javax.swing.JFrame {
        
         stageTwo = new stageTwoRegs();
         
+        
+        //get the instance of the mixReg model declared
         mixregStageOne = newModel2.getMixReg();
         
+        //update regressors on stage one regressors window
         mixregStageOne.updateRegressors(getSelectedLevelOneVars(), getSelectedLevelTwoVars());
-        
-        
-       // stageTwo.updateStageTwoVariables();
         
         this.dispose();
     }//GEN-LAST:event_stageOneSubmitButtonActionPerformed
 
     private void levelOneAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_levelOneAddButtonActionPerformed
-        // TODO add your handling code here:
         
-        //updateAllVariables();
         levelOneList.addElement(AllVariablesList.getSelectedValue());
         StageOneLevelOneList.setModel(levelOneList);
-        
+        //remove the variable once it is added to levelOne regressors
         varList.remove(AllVariablesList.getSelectedIndex());
-       // AllVariablesList.remove(AllVariablesList.getSelectedIndex())
-        
+       
     }//GEN-LAST:event_levelOneAddButtonActionPerformed
 
     private void addLevelTwoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addLevelTwoButtonActionPerformed
-        // TODO add your handling code here:
+        
         levelTwoList.addElement(AllVariablesList.getSelectedValue());
         StageOneLevelTwoList.setModel(levelTwoList);
         
@@ -257,11 +247,8 @@ public class stageOneRegs extends javax.swing.JFrame {
     }//GEN-LAST:event_addLevelTwoButtonActionPerformed
 
     private void removeLevelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeLevelButtonActionPerformed
-        // TODO add your handling code here:
-        varList.addElement(StageOneLevelOneList.getSelectedValue());
         
-        //levelTwoList.addElement(AllVariablesList.getSelectedValue());
-        //StageOneLevelTwoList.setModel(levelTwoList);
+        varList.addElement(StageOneLevelOneList.getSelectedValue());
         
         AllVariablesList.setModel(varList);
         
@@ -270,12 +257,8 @@ public class stageOneRegs extends javax.swing.JFrame {
     }//GEN-LAST:event_removeLevelButtonActionPerformed
 
     private void removeLevelTwoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeLevelTwoButtonActionPerformed
-        // TODO add your handling code here:
         
         varList.addElement(StageOneLevelTwoList.getSelectedValue());
-        
-        //levelTwoList.addElement(AllVariablesList.getSelectedValue());
-        //StageOneLevelTwoList.setModel(levelTwoList);
         
         AllVariablesList.setModel(varList);
         
@@ -283,7 +266,8 @@ public class stageOneRegs extends javax.swing.JFrame {
     }//GEN-LAST:event_removeLevelTwoButtonActionPerformed
 
     private void stageOneResetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneResetButtonActionPerformed
-        // TODO add your handling code here:
+       
+        //clear lists on reset
         
         updateAllVariables();
         
@@ -365,8 +349,6 @@ public DefaultListModel<String> getListModel(){
 
 
 public DefaultComboBoxModel<String> getSelectedLevelOneVars(){
-
-//DefaultComboBoxList<String> levelOneCombo = (DefaultComboBoxModel) levelOneList;
 
 DefaultComboBoxModel<String> levelOneCombo = new DefaultComboBoxModel();
 

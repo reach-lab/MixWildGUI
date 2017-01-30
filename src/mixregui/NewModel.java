@@ -19,14 +19,16 @@ import javax.swing.JFileChooser;
  */
 public class NewModel extends javax.swing.JFrame {
     
-//    mixregGUI mixreg_1 = new mixregGUI();
+
+    //Object declarations
+    
     JFileChooser fileChooser; 
     File file;
     static String[] variableArray;
     static int RLE;
     static mixregGUI mxr;
     
-    //mixregGUI mxrGUI = new mixregGUI();
+    
     
 
     /**
@@ -34,6 +36,7 @@ public class NewModel extends javax.swing.JFrame {
      */
     public NewModel() {
         initComponents();
+        
         fileChooser = new JFileChooser();
     }
 
@@ -206,8 +209,10 @@ public class NewModel extends javax.swing.JFrame {
         
         fileOpen();
         
+        //Select file from the file object
         file = fileChooser.getSelectedFile();
         
+        //get file path to display on the text box
         String fileName = file.getAbsolutePath();
         
         filePath.setText(fileName);
@@ -223,19 +228,19 @@ public class NewModel extends javax.swing.JFrame {
 
     private void newModelSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModelSubmitActionPerformed
         try {
-            // TODO add your handling code here:
-            // mainImage.setVisible(false);
             
-            //TODO: read the variables from csv file here ....
-            //Print them in the output
-
+            // Read file contents
             Scanner inputStream = new Scanner(file);
             
+           
+            // Read variable names from row 1
             String variableNames = inputStream.next();
             
            // System.out.println(variableNames + "**");
             
             variableArray = variableNames.split(",");
+            
+           // save all variables in an array
             
             String[] varTemp = getVariableNames();
             
@@ -248,21 +253,18 @@ public class NewModel extends javax.swing.JFrame {
             Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+       
+        // Read random location effects from new Model
         RLE = (Integer) randomLocationEffects.getValue();
         
        // System.out.println(String.valueOf(RLE));
         
-        
-       //mixreg_1.isSubmitClicked();
        mxr = new mixregGUI();
        mxr.isSubmitClicked();
        mxr.setVisible(true);
+       //Update ID, stage one and stage two variable comboboxes
        mxr.updateComboBoxes();
-       
-      // mxrGUI.updateComboBoxes();
-       
-       //mxr.add(new );
-      // mxr.add(new stageOneTabs());
+      
        
         this.dispose();
     }//GEN-LAST:event_newModelSubmitActionPerformed
@@ -308,6 +310,8 @@ public class NewModel extends javax.swing.JFrame {
         });
     }
 
+    
+    //Open data file
     private void fileOpen() {
     int returnVal = fileChooser.showOpenDialog(this);
     if (returnVal == JFileChooser.APPROVE_OPTION) {
@@ -341,15 +345,20 @@ public class NewModel extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
 
+
+//get the number of random location effects    
 public int getRLE(){
     return RLE;
     }
 
+
+//get the variable names from the data file
 public String[] getVariableNames(){
 
 return variableArray;
 }
 
+//get the instance of the model mixReg declared in newModel
 public mixregGUI getMixReg(){
 
 return mxr;

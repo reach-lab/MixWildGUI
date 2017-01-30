@@ -13,7 +13,7 @@ import javax.swing.DefaultListModel;
  */
 public class stageTwoRegs extends javax.swing.JFrame {
     
-    stageOneRegs stageOne;
+   stageOneRegs stageOne;
     
    DefaultListModel<String> stageTwoListModel;
    DefaultListModel<String> stageTwoLevelTwo;
@@ -23,12 +23,8 @@ public class stageTwoRegs extends javax.swing.JFrame {
      */
     public stageTwoRegs() {
         initComponents();
-        
-       // stageTwoListModel = new DefaultListModel<>();
-       // updateStageTwoVariables();
+        //create list models
        stageTwoLevelTwo = new DefaultListModel();
-        
-        
     }
 
     /**
@@ -72,6 +68,11 @@ public class stageTwoRegs extends javax.swing.JFrame {
         });
 
         stageTwoResetButton.setText("Reset");
+        stageTwoResetButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stageTwoResetButtonActionPerformed(evt);
+            }
+        });
 
         stageTwoSubmitButton.setText("Submit");
         stageTwoSubmitButton.addActionListener(new java.awt.event.ActionListener() {
@@ -150,24 +151,27 @@ public class stageTwoRegs extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void stageTwoSubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoSubmitButtonActionPerformed
+        //dispose closes the window
         this.dispose();
     }//GEN-LAST:event_stageTwoSubmitButtonActionPerformed
 
     private void stageTwoAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoAddButtonActionPerformed
-        // TODO add your handling code here:
         
+        //Add items to the model and then copy it to the UI list
         stageTwoLevelTwo.addElement(StageTwoAllVariables.getSelectedValue());
         StageTwoLevelTwoVariables.setModel(stageTwoLevelTwo);
-        
-       // stageTwoListModel.remove(StageTwoAllVariables.getSelectedIndex());
         
     }//GEN-LAST:event_stageTwoAddButtonActionPerformed
 
     private void stageTwoRemoveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoRemoveButtonActionPerformed
-        // TODO add your handling code here:
         
+        //Remove an item from the model
         stageTwoLevelTwo.remove(StageTwoLevelTwoVariables.getSelectedIndex());
     }//GEN-LAST:event_stageTwoRemoveButtonActionPerformed
+
+    private void stageTwoResetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoResetButtonActionPerformed
+        stageTwoLevelTwo.clear();
+    }//GEN-LAST:event_stageTwoResetButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -221,22 +225,9 @@ public class stageTwoRegs extends javax.swing.JFrame {
     
   public void updateStageTwoVariables(DefaultListModel<String> defaultListModel){
       
-      System.out.println("Before declaration");
-    
-   // stageOne = new stageOneRegs();
-    
-    System.out.println("After declaration");
-    
-      //stageTwoListModel = stageOne.getListModel();
-      
-      System.out.println("gets the model");
-    
-        //stageTwoListModel = defaultListModel;
-        
+     //updates variables in stage two list (to add regressors)
+    //Add model to stage two variables, to display items    
     StageTwoAllVariables.setModel(defaultListModel);
-//    System.out.println(stageTwoListModel.get(0));
-    
-    System.out.println("Sets the model");
     
     StageTwoAllVariables.setSelectedIndex(2);
 }
