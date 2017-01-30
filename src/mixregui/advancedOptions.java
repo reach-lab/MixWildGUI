@@ -488,4 +488,137 @@ public class advancedOptions extends javax.swing.JFrame {
     private javax.swing.JSpinner ridgeSpinner;
     private javax.swing.JCheckBox standardizedCoeff;
     // End of variables declaration//GEN-END:variables
+
+
+//check if mean sub model is checked in advanced options    
+public boolean isMeanSubModelChecked(){
+
+    boolean checked = false;
+    
+    if (meanSubmodelCheckBox.isSelected() == true){
+        checked = true;
+    }
+    else {
+        checked = false;
+    }
+    
+    return checked;
+}
+
+
+
+// check if BS variance is checked
+public boolean isBSVarianceChecked(){
+
+    boolean checked = false;
+    
+    if (BSVarianceCheckBox.isSelected() == true){
+        checked = true;
+    }
+    else {
+        checked = false;
+    }
+    
+    return checked;
+}
+
+// check if BS variance is checked
+public boolean isWSVarianceChecked(){
+
+    boolean checked = false;
+    
+    if (WSVarianceCheckBox.isSelected() == true){
+        checked = true;
+    }
+    else {
+        checked = false;
+    }
+    
+    return checked;
+}
+
+// get the convergence criteria
+public double getConvergenceCriteria(){
+
+    return (double) convergenceCriteria.getValue();
+
+}
+
+// get Quadriture points
+public double getQuadriturePoints(){
+
+    return (double) quadriturePoints.getValue();
+}
+
+
+// check if adaptive quadriture is checked
+public boolean isAdaptiveQuadritureChecked(){
+    boolean checked = false;
+    
+    if (adaptiveQuadritureCheckBox.isSelected() == true){
+        checked = true;
+    }
+    else {
+    
+        checked = false;
+    }
+    
+    return checked;  
+}
+
+// get the convergence criteria
+public double getMaximumIterations(){
+
+    return (double) maximumIterations.getValue();
+
+}
+
+//check if the data set has missing values
+public boolean isMissingValuesChecked(){
+    boolean checked = false;
+    
+    if (missingValuesCheckBox.isSelected() == true){
+        checked = true;
+    }
+    else {
+    
+        checked = false;
+    }
+    
+    return checked;  
+}
+
+// get missing value code
+public double getMissingValueCode(){
+    double missingValue;
+    
+    //missingValue = (double) missingValueCode.getText().toString();
+    
+    missingValue = Double.parseDouble(missingValueCode.getText().toString());
+    
+    return missingValue;
+}
+
+//check if standardized coefficients is checked
+public boolean isStandardizedCoefChecked(){
+    boolean checked = false;
+    
+    if (standardizedCoeff.isSelected() == true){
+        checked = true;
+    }
+    else {
+    
+        checked = false;
+    }
+    
+    return checked;  
+}
+
+// get the ridge value
+public double getRidge(){
+
+    return (double) ridgeSpinner.getValue();
+
+}
+
 }
