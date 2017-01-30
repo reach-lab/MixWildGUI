@@ -42,10 +42,10 @@ public class stageTwoRegs extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        stageTwoAddButton = new javax.swing.JButton();
+        stageTwoRemoveButton = new javax.swing.JButton();
+        stageTwoResetButton = new javax.swing.JButton();
+        stageTwoSubmitButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         StageTwoAllVariables = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -57,26 +57,26 @@ public class stageTwoRegs extends javax.swing.JFrame {
 
         jLabel2.setText("Level-II (Time Invariant)");
 
-        jButton1.setText("Add");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        stageTwoAddButton.setText("Add");
+        stageTwoAddButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                stageTwoAddButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Remove");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        stageTwoRemoveButton.setText("Remove");
+        stageTwoRemoveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                stageTwoRemoveButtonActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Reset");
+        stageTwoResetButton.setText("Reset");
 
-        jButton4.setText("Submit");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        stageTwoSubmitButton.setText("Submit");
+        stageTwoSubmitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                stageTwoSubmitButtonActionPerformed(evt);
             }
         });
 
@@ -90,7 +90,7 @@ public class stageTwoRegs extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(stageTwoResetButton, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(140, 140, 140))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,8 +103,8 @@ public class stageTwoRegs extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(stageTwoAddButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(stageTwoRemoveButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(35, 35, 35)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
@@ -113,7 +113,7 @@ public class stageTwoRegs extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(422, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(stageTwoSubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(43, 43, 43)))
         );
         layout.setVerticalGroup(
@@ -129,12 +129,12 @@ public class stageTwoRegs extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(30, 30, 30)
-                                .addComponent(jButton1)
+                                .addComponent(stageTwoAddButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2))
+                                .addComponent(stageTwoRemoveButton))
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3)
+                        .addComponent(stageTwoResetButton)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -142,18 +142,18 @@ public class stageTwoRegs extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(494, Short.MAX_VALUE)
-                    .addComponent(jButton4)
+                    .addComponent(stageTwoSubmitButton)
                     .addGap(5, 5, 5)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void stageTwoSubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoSubmitButtonActionPerformed
         this.dispose();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_stageTwoSubmitButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void stageTwoAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoAddButtonActionPerformed
         // TODO add your handling code here:
         
         stageTwoLevelTwo.addElement(StageTwoAllVariables.getSelectedValue());
@@ -161,13 +161,13 @@ public class stageTwoRegs extends javax.swing.JFrame {
         
        // stageTwoListModel.remove(StageTwoAllVariables.getSelectedIndex());
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_stageTwoAddButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void stageTwoRemoveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoRemoveButtonActionPerformed
         // TODO add your handling code here:
         
         stageTwoLevelTwo.remove(StageTwoLevelTwoVariables.getSelectedIndex());
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_stageTwoRemoveButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -207,14 +207,14 @@ public class stageTwoRegs extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JList<String> StageTwoAllVariables;
     private javax.swing.JList<String> StageTwoLevelTwoVariables;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JButton stageTwoAddButton;
+    private javax.swing.JButton stageTwoRemoveButton;
+    private javax.swing.JButton stageTwoResetButton;
+    private javax.swing.JButton stageTwoSubmitButton;
     // End of variables declaration//GEN-END:variables
 
 

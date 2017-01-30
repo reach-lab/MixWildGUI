@@ -21,12 +21,12 @@
     </Component>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
-        <Menu class="javax.swing.JMenu" name="jMenu1">
+        <Menu class="javax.swing.JMenu" name="fileMenu">
           <Properties>
             <Property name="text" type="java.lang.String" value="File"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+            <MenuItem class="javax.swing.JMenuItem" name="newModelMenu">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="Ctrl+N"/>
@@ -34,23 +34,23 @@
                 <Property name="text" type="java.lang.String" value="New Model"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newModelMenuActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
+            <MenuItem class="javax.swing.JMenuItem" name="modifyStageOneMenu">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Modify Stage 1 and 2"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="modifyStageOneMenuActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
+            <MenuItem class="javax.swing.JMenuItem" name="modifyStageTwoMenu">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Modify Stage 2 Only"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">
+            <MenuItem class="javax.swing.JMenuItem" name="exitMenu">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="Ctrl+Q"/>
@@ -58,12 +58,12 @@
                 <Property name="text" type="java.lang.String" value="Exit"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem4ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exitMenuActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu2">
+        <Menu class="javax.swing.JMenu" name="helpMenu">
           <Properties>
             <Property name="text" type="java.lang.String" value="Help"/>
           </Properties>
@@ -217,11 +217,11 @@
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="jButton7" min="-2" pref="147" max="-2" attributes="0"/>
+                                  <Component id="goBackMxrButton" min="-2" pref="147" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                                  <Component id="jButton5" min="-2" max="-2" attributes="0"/>
+                                  <Component id="runStageOneTwoButton" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                                  <Component id="jButton6" min="-2" pref="135" max="-2" attributes="0"/>
+                                  <Component id="resetButton" min="-2" pref="135" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -242,9 +242,9 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="2" attributes="0">
-                                              <Component id="jButton2" alignment="2" max="32767" attributes="0"/>
-                                              <Component id="jButton3" alignment="2" max="32767" attributes="0"/>
-                                              <Component id="jButton4" alignment="2" max="32767" attributes="0"/>
+                                              <Component id="addStageOneButton" alignment="2" max="32767" attributes="0"/>
+                                              <Component id="addStageTwoButton" alignment="2" max="32767" attributes="0"/>
+                                              <Component id="advancedOptionsButton" alignment="2" max="32767" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                                       </Group>
@@ -277,19 +277,19 @@
                                       <Component id="StageTwoVariableCombo" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                                  <Component id="jButton2" min="-2" pref="35" max="-2" attributes="0"/>
+                                  <Component id="addStageOneButton" min="-2" pref="35" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jButton3" min="-2" pref="35" max="-2" attributes="0"/>
+                                  <Component id="addStageTwoButton" min="-2" pref="35" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jButton4" min="-2" pref="37" max="-2" attributes="0"/>
+                                  <Component id="advancedOptionsButton" min="-2" pref="37" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jPanel5" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jButton7" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jButton6" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jButton5" min="-2" max="-2" attributes="0"/>
+                              <Component id="goBackMxrButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="resetButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="runStageOneTwoButton" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="193" max="32767" attributes="0"/>
                       </Group>
@@ -357,28 +357,28 @@
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton2">
+                <Component class="javax.swing.JButton" name="addStageOneButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Add Stage 1 Regressors ..."/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addStageOneButtonActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton3">
+                <Component class="javax.swing.JButton" name="addStageTwoButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Add Stage 2 Regressors ..."/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addStageTwoButtonActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton4">
+                <Component class="javax.swing.JButton" name="advancedOptionsButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Advanced Options ..."/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="advancedOptionsButtonActionPerformed"/>
                   </Events>
                 </Component>
                 <Container class="javax.swing.JPanel" name="jPanel5">
@@ -435,18 +435,18 @@
                                                                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                                                                   </Group>
                                                                   <Group type="102" alignment="0" attributes="0">
-                                                                      <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
+                                                                      <Component id="levelOneBeta" min="-2" max="-2" attributes="0"/>
                                                                       <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                                                                   </Group>
                                                               </Group>
                                                               <Group type="103" groupAlignment="0" attributes="0">
                                                                   <Component id="alphaLabelOne" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                                  <Component id="alphaWSOne" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                                  <Component id="levelOneAlpha" alignment="0" min="-2" max="-2" attributes="0"/>
                                                               </Group>
                                                               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                                                               <Group type="103" groupAlignment="0" attributes="0">
                                                                   <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                                                                  <Component id="jCheckBox3" min="-2" max="-2" attributes="0"/>
+                                                                  <Component id="levelOneTau" min="-2" max="-2" attributes="0"/>
                                                               </Group>
                                                           </Group>
                                                           <Component id="jSeparator3" min="-2" pref="282" max="-2" attributes="0"/>
@@ -461,18 +461,18 @@
                                                   <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                                      <Component id="jCheckBox4" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="levelTwoBeta" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
                                               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="alphaBSOne" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="levelTwoAlpha" min="-2" max="-2" attributes="0"/>
                                                   <Component id="alphaLabelTwo" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jCheckBox5" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="levelTwoTau" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace max="32767" attributes="0"/>
                                           </Group>
@@ -522,10 +522,10 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jCheckBox3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="levelOneTau" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="jCheckBox1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="alphaWSOne" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="levelOneBeta" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="levelOneAlpha" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -555,9 +555,9 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jCheckBox4" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="alphaBSOne" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jCheckBox5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="levelTwoBeta" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="levelTwoAlpha" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="levelTwoTau" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="32767" attributes="0"/>
                                   </Group>
@@ -689,46 +689,46 @@
                         <Property name="text" type="java.lang.String" value="Tau WS Variance Submodel"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox1">
+                    <Component class="javax.swing.JCheckBox" name="levelOneBeta">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Within Subject"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox1ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="levelOneBetaActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="alphaWSOne">
+                    <Component class="javax.swing.JCheckBox" name="levelOneAlpha">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Within Subject"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="alphaWSOneActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="levelOneAlphaActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox3">
+                    <Component class="javax.swing.JCheckBox" name="levelOneTau">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Within Subject"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox3ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="levelOneTauActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox4">
+                    <Component class="javax.swing.JCheckBox" name="levelTwoBeta">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Between Subject"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox5">
+                    <Component class="javax.swing.JCheckBox" name="levelTwoTau">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Between Subject"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="alphaBSOne">
+                    <Component class="javax.swing.JCheckBox" name="levelTwoAlpha">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Between Subject"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="alphaBSOneActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="levelTwoAlphaActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JSeparator" name="jSeparator2">
@@ -737,28 +737,28 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JButton" name="jButton5">
+                <Component class="javax.swing.JButton" name="runStageOneTwoButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Run Stage 1 + 2"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="runStageOneTwoButtonActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton6">
+                <Component class="javax.swing.JButton" name="resetButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Reset"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="resetButtonActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton7">
+                <Component class="javax.swing.JButton" name="goBackMxrButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Go Back"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton7ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="goBackMxrButtonActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>

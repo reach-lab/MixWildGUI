@@ -49,16 +49,16 @@ public class NewModel extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         filePath = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        fileBrowseButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        titleField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        subtitleField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         randomLocationEffects = new javax.swing.JSpinner();
         jLabel5 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        continuousRadio = new javax.swing.JRadioButton();
+        dichotomousRadio = new javax.swing.JRadioButton();
         newModelSubmit = new javax.swing.JButton();
         newModelCancel = new javax.swing.JButton();
 
@@ -73,10 +73,10 @@ public class NewModel extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Browse");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        fileBrowseButton.setText("Browse");
+        fileBrowseButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                fileBrowseButtonActionPerformed(evt);
             }
         });
 
@@ -84,9 +84,9 @@ public class NewModel extends javax.swing.JFrame {
 
         jLabel3.setText("Subtitle:");
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        subtitleField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                subtitleFieldActionPerformed(evt);
             }
         });
 
@@ -96,16 +96,16 @@ public class NewModel extends javax.swing.JFrame {
 
         jLabel5.setText("Stage 2 Outcome Type:");
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setText("Continuous");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(continuousRadio);
+        continuousRadio.setText("Continuous");
+        continuousRadio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                continuousRadioActionPerformed(evt);
             }
         });
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("Dichotomous/Ordinal");
+        buttonGroup1.add(dichotomousRadio);
+        dichotomousRadio.setText("Dichotomous/Ordinal");
 
         newModelSubmit.setText("Submit");
         newModelSubmit.addActionListener(new java.awt.event.ActionListener() {
@@ -139,9 +139,9 @@ public class NewModel extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addGap(31, 31, 31)
-                                .addComponent(jRadioButton1)
+                                .addComponent(continuousRadio)
                                 .addGap(18, 18, 18)
-                                .addComponent(jRadioButton2))
+                                .addComponent(dichotomousRadio))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addGap(26, 26, 26)
@@ -156,9 +156,9 @@ public class NewModel extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(filePath, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jButton1))
-                                    .addComponent(jTextField2)
-                                    .addComponent(jTextField3))))
+                                        .addComponent(fileBrowseButton))
+                                    .addComponent(titleField)
+                                    .addComponent(subtitleField))))
                         .addContainerGap(55, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -168,15 +168,15 @@ public class NewModel extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(filePath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(fileBrowseButton))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(titleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(subtitleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -184,8 +184,8 @@ public class NewModel extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2))
+                    .addComponent(continuousRadio)
+                    .addComponent(dichotomousRadio))
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(newModelSubmit)
@@ -200,7 +200,7 @@ public class NewModel extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_filePathActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void fileBrowseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileBrowseButtonActionPerformed
         //JFileChooser fileChooser = new JFileChooser();
         //fileChooser.showOpenDialog(null);
         
@@ -211,15 +211,15 @@ public class NewModel extends javax.swing.JFrame {
         String fileName = file.getAbsolutePath();
         
         filePath.setText(fileName);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_fileBrowseButtonActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void subtitleFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subtitleFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_subtitleFieldActionPerformed
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void continuousRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuousRadioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_continuousRadioActionPerformed
 
     private void newModelSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModelSubmitActionPerformed
         try {
@@ -324,20 +324,20 @@ public class NewModel extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JRadioButton continuousRadio;
+    private javax.swing.JRadioButton dichotomousRadio;
+    private javax.swing.JButton fileBrowseButton;
     private javax.swing.JTextField filePath;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JButton newModelCancel;
     private javax.swing.JButton newModelSubmit;
     private javax.swing.JSpinner randomLocationEffects;
+    private javax.swing.JTextField subtitleField;
+    private javax.swing.JTextField titleField;
     // End of variables declaration//GEN-END:variables
 
 

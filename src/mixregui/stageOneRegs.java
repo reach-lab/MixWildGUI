@@ -71,12 +71,12 @@ public class stageOneRegs extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        stageOneSubmitButton = new javax.swing.JButton();
+        stageOneResetButton = new javax.swing.JButton();
+        removeLevelButton = new javax.swing.JButton();
+        levelOneAddButton = new javax.swing.JButton();
+        removeLevelTwoButton = new javax.swing.JButton();
+        addLevelTwoButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         AllVariablesList = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -97,45 +97,45 @@ public class stageOneRegs extends javax.swing.JFrame {
 
         jLabel4.setText("Disaggregate Variance");
 
-        jButton1.setText("Submit");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        stageOneSubmitButton.setText("Submit");
+        stageOneSubmitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                stageOneSubmitButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Reset");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        stageOneResetButton.setText("Reset");
+        stageOneResetButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                stageOneResetButtonActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Remove");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        removeLevelButton.setText("Remove");
+        removeLevelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                removeLevelButtonActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Add");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        levelOneAddButton.setText("Add");
+        levelOneAddButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                levelOneAddButtonActionPerformed(evt);
             }
         });
 
-        jButton5.setText("Remove");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        removeLevelTwoButton.setText("Remove");
+        removeLevelTwoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                removeLevelTwoButtonActionPerformed(evt);
             }
         });
 
-        jButton6.setText("Add");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        addLevelTwoButton.setText("Add");
+        addLevelTwoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                addLevelTwoButtonActionPerformed(evt);
             }
         });
 
@@ -156,10 +156,10 @@ public class stageOneRegs extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(removeLevelButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(levelOneAddButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(removeLevelTwoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(addLevelTwoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(103, 103, 103)
                         .addComponent(jLabel1)))
@@ -169,9 +169,9 @@ public class stageOneRegs extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addGap(97, 97, 97))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(stageOneResetButton, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1)
+                        .addComponent(stageOneSubmitButton)
                         .addGap(57, 57, 57))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -187,17 +187,17 @@ public class stageOneRegs extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(90, 90, 90)
-                .addComponent(jButton4)
+                .addComponent(levelOneAddButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
+                .addComponent(removeLevelButton)
                 .addGap(156, 156, 156)
-                .addComponent(jButton6)
+                .addComponent(addLevelTwoButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton5)
+                .addComponent(removeLevelTwoButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(stageOneSubmitButton)
+                    .addComponent(stageOneResetButton))
                 .addGap(23, 23, 23))
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
@@ -221,7 +221,7 @@ public class stageOneRegs extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void stageOneSubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneSubmitButtonActionPerformed
        
         stageTwo = new stageTwoRegs();
         
@@ -233,9 +233,9 @@ public class stageOneRegs extends javax.swing.JFrame {
        // stageTwo.updateStageTwoVariables();
         
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_stageOneSubmitButtonActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void levelOneAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_levelOneAddButtonActionPerformed
         // TODO add your handling code here:
         
         //updateAllVariables();
@@ -245,18 +245,18 @@ public class stageOneRegs extends javax.swing.JFrame {
         varList.remove(AllVariablesList.getSelectedIndex());
        // AllVariablesList.remove(AllVariablesList.getSelectedIndex())
         
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_levelOneAddButtonActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void addLevelTwoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addLevelTwoButtonActionPerformed
         // TODO add your handling code here:
         levelTwoList.addElement(AllVariablesList.getSelectedValue());
         StageOneLevelTwoList.setModel(levelTwoList);
         
         varList.remove(AllVariablesList.getSelectedIndex());
         
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_addLevelTwoButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void removeLevelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeLevelButtonActionPerformed
         // TODO add your handling code here:
         varList.addElement(StageOneLevelOneList.getSelectedValue());
         
@@ -267,9 +267,9 @@ public class stageOneRegs extends javax.swing.JFrame {
         
         levelOneList.remove(StageOneLevelOneList.getSelectedIndex());
         
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_removeLevelButtonActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void removeLevelTwoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeLevelTwoButtonActionPerformed
         // TODO add your handling code here:
         
         varList.addElement(StageOneLevelTwoList.getSelectedValue());
@@ -280,16 +280,16 @@ public class stageOneRegs extends javax.swing.JFrame {
         AllVariablesList.setModel(varList);
         
         levelTwoList.remove(StageOneLevelTwoList.getSelectedIndex());
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_removeLevelTwoButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void stageOneResetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneResetButtonActionPerformed
         // TODO add your handling code here:
         
         updateAllVariables();
         
         levelOneList.clear();
         levelTwoList.clear();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_stageOneResetButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -330,12 +330,7 @@ public class stageOneRegs extends javax.swing.JFrame {
     private javax.swing.JList<String> AllVariablesList;
     private javax.swing.JList<String> StageOneLevelOneList;
     private javax.swing.JList<String> StageOneLevelTwoList;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton addLevelTwoButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -344,6 +339,11 @@ public class stageOneRegs extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private java.awt.Label label1;
+    private javax.swing.JButton levelOneAddButton;
+    private javax.swing.JButton removeLevelButton;
+    private javax.swing.JButton removeLevelTwoButton;
+    private javax.swing.JButton stageOneResetButton;
+    private javax.swing.JButton stageOneSubmitButton;
     // End of variables declaration//GEN-END:variables
 
 public void updateAllVariables(){

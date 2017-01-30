@@ -61,8 +61,8 @@ public class mixregGUI extends javax.swing.JFrame {
         LinearAssociationRadio.setVisible(false);
         QuadraticAssociationRadio.setVisible(false);
         associationLabel.setVisible(false);
-        alphaWSOne.setVisible(false);
-        alphaBSOne.setVisible(false);
+        levelOneAlpha.setVisible(false);
+        levelTwoAlpha.setVisible(false);
         alphaLabelOne.setText("<html>Test whether the <br>association between regressor & <br>dependent variable <br>(i.e., slope) varies?</html>");
         alphaLabelTwo.setText("<html>Test whether the <br>association between regressor & <br>dependent variable <br>(i.e., slope) varies?</html>");
         }
@@ -98,9 +98,9 @@ public class mixregGUI extends javax.swing.JFrame {
         StageOneVariableCombo = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         StageTwoVariableCombo = new javax.swing.JComboBox<>();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        addStageOneButton = new javax.swing.JButton();
+        addStageTwoButton = new javax.swing.JButton();
+        advancedOptionsButton = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -120,17 +120,17 @@ public class mixregGUI extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         alphaLabelTwo = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        alphaWSOne = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jCheckBox4 = new javax.swing.JCheckBox();
-        jCheckBox5 = new javax.swing.JCheckBox();
-        alphaBSOne = new javax.swing.JCheckBox();
+        levelOneBeta = new javax.swing.JCheckBox();
+        levelOneAlpha = new javax.swing.JCheckBox();
+        levelOneTau = new javax.swing.JCheckBox();
+        levelTwoBeta = new javax.swing.JCheckBox();
+        levelTwoTau = new javax.swing.JCheckBox();
+        levelTwoAlpha = new javax.swing.JCheckBox();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        runStageOneTwoButton = new javax.swing.JButton();
+        resetButton = new javax.swing.JButton();
+        goBackMxrButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
@@ -146,12 +146,12 @@ public class mixregGUI extends javax.swing.JFrame {
         jButton11 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        fileMenu = new javax.swing.JMenu();
+        newModelMenu = new javax.swing.JMenuItem();
+        modifyStageOneMenu = new javax.swing.JMenuItem();
+        modifyStageTwoMenu = new javax.swing.JMenuItem();
+        exitMenu = new javax.swing.JMenuItem();
+        helpMenu = new javax.swing.JMenu();
         diagramMenu = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
@@ -212,24 +212,24 @@ public class mixregGUI extends javax.swing.JFrame {
 
         StageTwoVariableCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jButton2.setText("Add Stage 1 Regressors ...");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        addStageOneButton.setText("Add Stage 1 Regressors ...");
+        addStageOneButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                addStageOneButtonActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Add Stage 2 Regressors ...");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        addStageTwoButton.setText("Add Stage 2 Regressors ...");
+        addStageTwoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                addStageTwoButtonActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Advanced Options ...");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        advancedOptionsButton.setText("Advanced Options ...");
+        advancedOptionsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                advancedOptionsButtonActionPerformed(evt);
             }
         });
 
@@ -278,35 +278,35 @@ public class mixregGUI extends javax.swing.JFrame {
 
         jLabel15.setText("Tau WS Variance Submodel");
 
-        jCheckBox1.setText("Within Subject");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        levelOneBeta.setText("Within Subject");
+        levelOneBeta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                levelOneBetaActionPerformed(evt);
             }
         });
 
-        alphaWSOne.setText("Within Subject");
-        alphaWSOne.addActionListener(new java.awt.event.ActionListener() {
+        levelOneAlpha.setText("Within Subject");
+        levelOneAlpha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                alphaWSOneActionPerformed(evt);
+                levelOneAlphaActionPerformed(evt);
             }
         });
 
-        jCheckBox3.setText("Within Subject");
-        jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
+        levelOneTau.setText("Within Subject");
+        levelOneTau.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox3ActionPerformed(evt);
+                levelOneTauActionPerformed(evt);
             }
         });
 
-        jCheckBox4.setText("Between Subject");
+        levelTwoBeta.setText("Between Subject");
 
-        jCheckBox5.setText("Between Subject");
+        levelTwoTau.setText("Between Subject");
 
-        alphaBSOne.setText("Between Subject");
-        alphaBSOne.addActionListener(new java.awt.event.ActionListener() {
+        levelTwoAlpha.setText("Between Subject");
+        levelTwoAlpha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                alphaBSOneActionPerformed(evt);
+                levelTwoAlphaActionPerformed(evt);
             }
         });
 
@@ -349,15 +349,15 @@ public class mixregGUI extends javax.swing.JFrame {
                                                         .addComponent(jLabel9)
                                                         .addGap(40, 40, 40))
                                                     .addGroup(jPanel5Layout.createSequentialGroup()
-                                                        .addComponent(jCheckBox1)
+                                                        .addComponent(levelOneBeta)
                                                         .addGap(51, 51, 51)))
                                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(alphaLabelOne)
-                                                    .addComponent(alphaWSOne))
+                                                    .addComponent(levelOneAlpha))
                                                 .addGap(33, 33, 33)
                                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(jLabel12)
-                                                    .addComponent(jCheckBox3)))
+                                                    .addComponent(levelOneTau)))
                                             .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(0, 0, Short.MAX_VALUE)))
                                 .addComponent(jLabel11))
@@ -366,15 +366,15 @@ public class mixregGUI extends javax.swing.JFrame {
                                     .addComponent(jLabel13)
                                     .addGroup(jPanel5Layout.createSequentialGroup()
                                         .addGap(1, 1, 1)
-                                        .addComponent(jCheckBox4)))
+                                        .addComponent(levelTwoBeta)))
                                 .addGap(30, 30, 30)
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(alphaBSOne)
+                                    .addComponent(levelTwoAlpha)
                                     .addComponent(alphaLabelTwo))
                                 .addGap(39, 39, 39)
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel15)
-                                    .addComponent(jCheckBox5))
+                                    .addComponent(levelTwoTau))
                                 .addContainerGap())))))
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
@@ -411,10 +411,10 @@ public class mixregGUI extends javax.swing.JFrame {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBox3)
+                            .addComponent(levelOneTau)
                             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jCheckBox1)
-                                .addComponent(alphaWSOne))))
+                                .addComponent(levelOneBeta)
+                                .addComponent(levelOneAlpha))))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addComponent(jLabel5)
@@ -437,9 +437,9 @@ public class mixregGUI extends javax.swing.JFrame {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(38, 38, 38)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jCheckBox4)
-                            .addComponent(alphaBSOne)
-                            .addComponent(jCheckBox5))
+                            .addComponent(levelTwoBeta)
+                            .addComponent(levelTwoAlpha)
+                            .addComponent(levelTwoTau))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -454,24 +454,24 @@ public class mixregGUI extends javax.swing.JFrame {
                 .addGap(55, 55, 55))
         );
 
-        jButton5.setText("Run Stage 1 + 2");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        runStageOneTwoButton.setText("Run Stage 1 + 2");
+        runStageOneTwoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                runStageOneTwoButtonActionPerformed(evt);
             }
         });
 
-        jButton6.setText("Reset");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        resetButton.setText("Reset");
+        resetButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                resetButtonActionPerformed(evt);
             }
         });
 
-        jButton7.setText("Go Back");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        goBackMxrButton.setText("Go Back");
+        goBackMxrButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                goBackMxrButtonActionPerformed(evt);
             }
         });
 
@@ -483,11 +483,11 @@ public class mixregGUI extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(goBackMxrButton, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(38, 38, 38)
-                        .addComponent(jButton5)
+                        .addComponent(runStageOneTwoButton)
                         .addGap(30, 30, 30)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(resetButton, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -504,9 +504,9 @@ public class mixregGUI extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(65, 65, 65)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(addStageOneButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(addStageTwoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(advancedOptionsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(61, 61, 61)))
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(73, 73, 73))
@@ -529,17 +529,17 @@ public class mixregGUI extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addComponent(StageTwoVariableCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(50, 50, 50)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(addStageOneButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(addStageTwoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(advancedOptionsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton7)
-                    .addComponent(jButton6)
-                    .addComponent(jButton5))
+                    .addComponent(goBackMxrButton)
+                    .addComponent(resetButton)
+                    .addComponent(runStageOneTwoButton))
                 .addContainerGap(193, Short.MAX_VALUE))
         );
 
@@ -706,40 +706,40 @@ public class mixregGUI extends javax.swing.JFrame {
 
         parentPanel.add(stageOneTabs, "card2");
 
-        jMenu1.setText("File");
+        fileMenu.setText("File");
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem1.setText("New Model");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        newModelMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
+        newModelMenu.setText("New Model");
+        newModelMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                newModelMenuActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        fileMenu.add(newModelMenu);
 
-        jMenuItem2.setText("Modify Stage 1 and 2");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        modifyStageOneMenu.setText("Modify Stage 1 and 2");
+        modifyStageOneMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                modifyStageOneMenuActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        fileMenu.add(modifyStageOneMenu);
 
-        jMenuItem3.setText("Modify Stage 2 Only");
-        jMenu1.add(jMenuItem3);
+        modifyStageTwoMenu.setText("Modify Stage 2 Only");
+        fileMenu.add(modifyStageTwoMenu);
 
-        jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem4.setText("Exit");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        exitMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_MASK));
+        exitMenu.setText("Exit");
+        exitMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                exitMenuActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem4);
+        fileMenu.add(exitMenu);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(fileMenu);
 
-        jMenu2.setText("Help");
+        helpMenu.setText("Help");
 
         diagramMenu.setText("Diagram");
         diagramMenu.addActionListener(new java.awt.event.ActionListener() {
@@ -747,21 +747,21 @@ public class mixregGUI extends javax.swing.JFrame {
                 diagramMenuActionPerformed(evt);
             }
         });
-        jMenu2.add(diagramMenu);
+        helpMenu.add(diagramMenu);
 
         jMenuItem6.setText("Guide");
-        jMenu2.add(jMenuItem6);
+        helpMenu.add(jMenuItem6);
 
         jMenuItem7.setText("Citations");
-        jMenu2.add(jMenuItem7);
+        helpMenu.add(jMenuItem7);
 
         jMenuItem8.setText("Documentation");
-        jMenu2.add(jMenuItem8);
+        helpMenu.add(jMenuItem8);
 
         jMenuItem9.setText("About");
-        jMenu2.add(jMenuItem9);
+        helpMenu.add(jMenuItem9);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(helpMenu);
 
         setJMenuBar(jMenuBar1);
 
@@ -781,22 +781,22 @@ public class mixregGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void newModelMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModelMenuActionPerformed
         //new NewModel().setVisible(true);
         
        
        newModel.setVisible(true);
       // imageView.setVisible(false);
         //this.setVisible(false);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_newModelMenuActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void exitMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_exitMenuActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void modifyStageOneMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyStageOneMenuActionPerformed
         isSubmitClicked();
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_modifyStageOneMenuActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
@@ -808,45 +808,45 @@ public class mixregGUI extends javax.swing.JFrame {
         
     }//GEN-LAST:event_diagramMenuActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void goBackMxrButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackMxrButtonActionPerformed
         // TODO add your handling code here:
         newModel.setVisible(true);
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_goBackMxrButtonActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
         // TODO add your handling code here:
 
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_resetButtonActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void runStageOneTwoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_runStageOneTwoButtonActionPerformed
         stageOneTabs.setSelectedIndex(3);
 
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_runStageOneTwoButtonActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void advancedOptionsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_advancedOptionsButtonActionPerformed
         // TODO add your handling code here:
         advancedOptions_view = new advancedOptions();
         
         advancedOptions_view.setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_advancedOptionsButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void addStageTwoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStageTwoButtonActionPerformed
         stage_2_regs = new stageTwoRegs();
         
         stage_2_regs.setVisible(true);
         stage_2_regs.updateStageTwoVariables(getSavedVariables());
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_addStageTwoButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void addStageOneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStageOneButtonActionPerformed
         
         stage_1_regs = new stageOneRegs();
         stage_1_regs.setVisible(true);
         stage_1_regs.updateAllVariables();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_addStageOneButtonActionPerformed
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+    private void levelOneBetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_levelOneBetaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    }//GEN-LAST:event_levelOneBetaActionPerformed
 
     private void levelOneSelectedRegsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_levelOneSelectedRegsActionPerformed
         // TODO add your handling code here:
@@ -856,17 +856,17 @@ public class mixregGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_NoAssociationRadioActionPerformed
 
-    private void alphaBSOneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alphaBSOneActionPerformed
+    private void levelTwoAlphaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_levelTwoAlphaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_alphaBSOneActionPerformed
+    }//GEN-LAST:event_levelTwoAlphaActionPerformed
 
-    private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
+    private void levelOneTauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_levelOneTauActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox3ActionPerformed
+    }//GEN-LAST:event_levelOneTauActionPerformed
 
-    private void alphaWSOneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alphaWSOneActionPerformed
+    private void levelOneAlphaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_levelOneAlphaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_alphaWSOneActionPerformed
+    }//GEN-LAST:event_levelOneAlphaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -912,30 +912,25 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JRadioButton QuadraticAssociationRadio;
     private javax.swing.JComboBox<String> StageOneVariableCombo;
     private javax.swing.JComboBox<String> StageTwoVariableCombo;
-    private javax.swing.JCheckBox alphaBSOne;
+    private javax.swing.JButton addStageOneButton;
+    private javax.swing.JButton addStageTwoButton;
+    private javax.swing.JButton advancedOptionsButton;
     private javax.swing.JLabel alphaLabelOne;
     private javax.swing.JLabel alphaLabelTwo;
-    private javax.swing.JCheckBox alphaWSOne;
     private javax.swing.JLabel associationLabel;
     private javax.swing.ButtonGroup buttonGroup1;
     private java.awt.Canvas canvas1;
     private javax.swing.JMenuItem diagramMenu;
+    private javax.swing.JMenuItem exitMenu;
+    private javax.swing.JMenu fileMenu;
+    private javax.swing.JButton goBackMxrButton;
+    private javax.swing.JMenu helpMenu;
     private javax.swing.JPanel imageView;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
-    private javax.swing.JCheckBox jCheckBox5;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
@@ -952,13 +947,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
@@ -974,9 +963,20 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JCheckBox levelOneAlpha;
+    private javax.swing.JCheckBox levelOneBeta;
     private javax.swing.JComboBox<String> levelOneSelectedRegs;
+    private javax.swing.JCheckBox levelOneTau;
+    private javax.swing.JCheckBox levelTwoAlpha;
+    private javax.swing.JCheckBox levelTwoBeta;
     private javax.swing.JComboBox<String> levelTwoSelectedRegs;
+    private javax.swing.JCheckBox levelTwoTau;
+    private javax.swing.JMenuItem modifyStageOneMenu;
+    private javax.swing.JMenuItem modifyStageTwoMenu;
+    private javax.swing.JMenuItem newModelMenu;
     private javax.swing.JPanel parentPanel;
+    private javax.swing.JButton resetButton;
+    private javax.swing.JButton runStageOneTwoButton;
     private javax.swing.JTabbedPane stageOneTabs;
     // End of variables declaration//GEN-END:variables
 
