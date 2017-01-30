@@ -85,6 +85,12 @@ public class NewModel extends javax.swing.JFrame {
 
         jLabel2.setText("Title:");
 
+        titleField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                titleFieldActionPerformed(evt);
+            }
+        });
+
         jLabel3.setText("Subtitle:");
 
         subtitleField.addActionListener(new java.awt.event.ActionListener() {
@@ -257,6 +263,8 @@ public class NewModel extends javax.swing.JFrame {
         // Read random location effects from new Model
         RLE = (Integer) randomLocationEffects.getValue();
         
+        System.out.println(String.valueOf(isOutcomeContinous()));
+        
        // System.out.println(String.valueOf(RLE));
         
        mxr = new mixregGUI();
@@ -274,6 +282,10 @@ public class NewModel extends javax.swing.JFrame {
         //Close(NewModel);
         this.dispose();
     }//GEN-LAST:event_newModelCancelActionPerformed
+
+    private void titleFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_titleFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_titleFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -362,6 +374,44 @@ return variableArray;
 public mixregGUI getMixReg(){
 
 return mxr;
+}
+
+
+//get title from the text box
+public String getTitle(){
+
+    String titleString = titleField.getText().toString();
+
+    return titleString;
+    
+}
+
+//get subtitle from the text box
+public String getSubTitle(){
+
+       String SubTitleString = subtitleField.getText().toString();
+
+       return SubTitleString;
+    
+}
+
+
+
+//check if the outcome type is selected as continuos or dichotomous
+public boolean isOutcomeContinous(){
+    
+    boolean selection = true;
+    
+    if (continuousRadio.isSelected() == true){
+    
+    selection = true;
+            }
+    else if (dichotomousRadio.isSelected() == true){
+    
+    selection = false;
+    }
+
+    return selection;
 }
 
 }
