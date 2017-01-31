@@ -238,7 +238,7 @@ public class NewModel extends javax.swing.JFrame {
         if (filePath.getText().toString().equals("")){
         
         JOptionPane.showMessageDialog(null, "Please upload a datafile to start your analysis", "Caution!", JOptionPane.INFORMATION_MESSAGE);
-        }
+        } else {
         
         try {
             
@@ -282,6 +282,7 @@ public class NewModel extends javax.swing.JFrame {
       
        
         this.dispose();
+        }
     }//GEN-LAST:event_newModelSubmitActionPerformed
 
     private void newModelCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModelCancelActionPerformed
