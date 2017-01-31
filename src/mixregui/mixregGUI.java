@@ -1035,5 +1035,162 @@ public class mixregGUI extends javax.swing.JFrame {
        levelTwoSelectedRegs.setSelectedIndex(0);
    
    }
-
+   
+   
+   //get ID variable selected by the user
+   public String getIDVariable(){
+       String ID;
+       
+       ID = IDvariableCombo.getItemAt(IDvariableCombo.getSelectedIndex());
+       
+       return ID;
+   
+   }
+   
+   //get Stage One DV variable selected by the user
+   public String getStageOneDV(){
+       String StageOneDV;
+       
+       StageOneDV = StageOneVariableCombo.getItemAt(StageOneVariableCombo.getSelectedIndex());
+       
+       return StageOneDV;
+   
+   }
+   
+    //get Stage Two variable selected by the user
+   public String getStageTwoDV(){
+       String StageTwoDV;
+       
+       StageTwoDV = StageTwoVariableCombo.getItemAt(StageTwoVariableCombo.getSelectedIndex());
+       
+       return StageTwoDV;
+   
+   }
+   
+    //get Level One Regressor variable selected by the user
+   public String getLevelOneRegressor(){
+       String levelOne;
+       
+       levelOne = levelOneSelectedRegs.getItemAt(levelOneSelectedRegs.getSelectedIndex());
+       
+       return levelOne;
+   
+   }
+   
+   
+     //get Level Two Regressor variable selected by the user
+   public String getLeveltwoRegressor(){
+       String levelOne;
+       
+       levelOne = levelTwoSelectedRegs.getItemAt(levelTwoSelectedRegs.getSelectedIndex());
+       
+       return levelOne;
+   
+   }
+   
+   
+   //check if level one beta is selected for a selected regressor
+   public boolean isLevelOneBetaChecked(){
+       boolean checked = false;
+       
+       if (levelOneBeta.isSelected() == true){
+       checked = true;
+       }
+       else
+       {
+       checked = false;
+       }
+       
+       return checked;
+   }
+   
+   
+   public boolean isLevelTwoBetaChecked(){
+       boolean checked = false;
+       
+       if (levelTwoBeta.isSelected() == true){
+       checked = true;
+       }
+       else
+       {
+       checked = false;
+       }
+       
+       return checked;
+   }
+   
+   
+   public boolean isLevelOneAlphaChecked(){
+       boolean checked = false;
+       
+       if (levelOneAlpha.isSelected() == true){
+       checked = true;
+       }
+       else
+       {
+       checked = false;
+       }
+       
+       return checked;
+   }
+   
+   public boolean isLevelTwoAlphaChecked(){
+       boolean checked = false;
+       
+       if (levelTwoAlpha.isSelected() == true){
+       checked = true;
+       }
+       else
+       {
+       checked = false;
+       }
+       
+       return checked;
+   }
+   
+   public boolean isLevelOneTauChecked(){
+       boolean checked = false;
+       
+       if (levelOneTau.isSelected() == true){
+       checked = true;
+       }
+       else
+       {
+       checked = false;
+       }
+       
+       return checked;
+   }
+   
+   public boolean isLevelTwoTauChecked(){
+       boolean checked = false;
+       
+       if (levelTwoTau.isSelected() == true){
+       checked = true;
+       }
+       else
+       {
+       checked = false;
+       }
+       
+       return checked;
+   }
+   
+   public int getAssociationType(){
+       
+       int radioID = 0;
+       
+       if (NoAssociationRadio.isSelected() == true){
+           radioID = 1;
+       } else if (LinearAssociationRadio.isSelected() == true){
+           radioID = 2;
+       } else if (QuadraticAssociationRadio.isSelected() == true){
+           radioID = 3;
+       }
+       
+     
+       return radioID;
+   }
+   
+  
 }
