@@ -8,6 +8,7 @@ package mixregui;
 import def_lib.DefinitionHelper;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -426,15 +427,19 @@ public class advancedOptions extends javax.swing.JFrame {
         try {
             defFile3.setAdvancedConvergence(String.valueOf(convergenceCriteria.getValue()));
             System.out.println(defFile3.getAdvancedConvergence());
+            
             defFile3.setAdvancedAdaptiveQuad(String.valueOf(quadriturePoints.getValue()));
             System.out.println(defFile3.getAdvancedAdaptiveQuad());
+            
+            this.dispose();
         } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "invalid Convergence Criteria!", "Caution!", JOptionPane.INFORMATION_MESSAGE);
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         
         
-        this.dispose();
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
