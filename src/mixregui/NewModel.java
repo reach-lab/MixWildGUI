@@ -433,4 +433,10 @@ public boolean isOutcomeContinous(){
     return selection;
 }
 
+
+public DefinitionHelper getDefFile(){
+
+return defFile;
+}
+
 }

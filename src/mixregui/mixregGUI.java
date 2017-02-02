@@ -10,7 +10,7 @@ import java.awt.Desktop;
 import java.net.URL;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
-//import def_lib.DefinitionHelper;
+import def_lib.DefinitionHelper;
 
 /**
  *d
@@ -819,6 +819,11 @@ public class mixregGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_resetButtonActionPerformed
 
     private void runStageOneTwoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_runStageOneTwoButtonActionPerformed
+        
+        DefinitionHelper defFile2 = newModel.getDefFile();
+        
+        //defFile2.setIdOutcome(StageOneVariableCombo.getItemAt(StageOneVariableCombo.getSelectedIndex()));
+        
         stageOneTabs.setSelectedIndex(3);
 
     }//GEN-LAST:event_runStageOneTwoButtonActionPerformed

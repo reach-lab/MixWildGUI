@@ -111,10 +111,8 @@
                               </Group>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="quadriturePoints" min="-2" pref="69" max="-2" attributes="0"/>
-                                  <Component id="convergenceCriteria" min="-2" pref="69" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="quadriturePoints" min="-2" pref="69" max="-2" attributes="0"/>
+                              <Component id="convergenceCriteria" min="-2" pref="69" max="-2" attributes="0"/>
                               <Component id="adaptiveQuadritureCheckBox" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>

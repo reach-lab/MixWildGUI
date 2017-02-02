@@ -5,11 +5,17 @@
  */
 package mixregui;
 
+import def_lib.DefinitionHelper;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author adityaponnada
  */
 public class advancedOptions extends javax.swing.JFrame {
+    
+    DefinitionHelper defFile3;
 
     /**
      * Creates new form advancedOptions
@@ -415,6 +421,17 @@ public class advancedOptions extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        defFile3 = NewModel.defFile;
+        
+        try {
+            defFile3.setAdvancedConvergence(String.valueOf(convergenceCriteria.getValue()));
+            System.out.println(defFile3.getAdvancedConvergence());
+        } catch (Exception ex) {
+            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
