@@ -426,6 +426,8 @@ public class advancedOptions extends javax.swing.JFrame {
         try {
             defFile3.setAdvancedConvergence(String.valueOf(convergenceCriteria.getValue()));
             System.out.println(defFile3.getAdvancedConvergence());
+            defFile3.setAdvancedAdaptiveQuad(String.valueOf(quadriturePoints.getValue()));
+            System.out.println(defFile3.getAdvancedAdaptiveQuad());
         } catch (Exception ex) {
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
         }
