@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import def_lib.DefinitionHelper;
 
 /**
  *
@@ -29,6 +30,8 @@ public class NewModel extends javax.swing.JFrame {
     static int RLE;
     static mixregGUI mxr;
     
+    static DefinitionHelper defFile;
+    
     
     
 
@@ -39,6 +42,7 @@ public class NewModel extends javax.swing.JFrame {
         initComponents();
         
         fileChooser = new JFileChooser();
+       // defFile = new DefinitionHelper();
     }
 
     /**
@@ -235,6 +239,8 @@ public class NewModel extends javax.swing.JFrame {
 
     private void newModelSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModelSubmitActionPerformed
         
+        defFile = new DefinitionHelper(RLE, isOutcomeContinous());
+        
         if (filePath.getText().toString().equals("")){
         
         JOptionPane.showMessageDialog(null, "Please upload a datafile to start your analysis", "Caution!", JOptionPane.INFORMATION_MESSAGE);
@@ -256,11 +262,7 @@ public class NewModel extends javax.swing.JFrame {
            // save all variables in an array
             
             String[] varTemp = getVariableNames();
-            
-          /* for (int i = 0; i < varTemp.length; i++){
-                
-                System.out.println(varTemp[i]);
-        }*/
+        
             
         } catch (FileNotFoundException ex) {
             Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
@@ -272,7 +274,12 @@ public class NewModel extends javax.swing.JFrame {
         
         System.out.println(String.valueOf(isOutcomeContinous()));
         
-       // System.out.println(String.valueOf(RLE));
+       // set Values in def helper
+       defFile.setModelTitle(getTitle());
+       System.out.println(defFile.getModelTitle());
+       
+       defFile.setModelSubtitle(getSubTitle());
+       System.out.println(defFile.getModelSubtitle());
         
        mxr = new mixregGUI();
        mxr.isSubmitClicked();

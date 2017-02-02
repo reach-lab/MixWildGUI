@@ -22,7 +22,7 @@ public class mixregGUI extends javax.swing.JFrame {
    advancedOptions advancedOptions_view;
    stageOneRegs stage_1_regs;
    stageTwoRegs stage_2_regs;
-   DefinitionHelper defFile; 
+    
    //public boolean submitClicked = true;
    int i;
    
