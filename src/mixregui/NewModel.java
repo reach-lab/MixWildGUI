@@ -262,11 +262,15 @@ public class NewModel extends javax.swing.JFrame {
            // save all variables in an array
             
             String[] varTemp = getVariableNames();
+            
+           defFile.setDataFilename(file.getAbsolutePath());
         
             
         } catch (FileNotFoundException ex) {
             Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }   catch (Exception ex) {
+                Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
+            }
         
        
         // Read random location effects from new Model
