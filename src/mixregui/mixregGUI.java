@@ -1034,10 +1034,10 @@ public class mixregGUI extends javax.swing.JFrame {
    public void updateRegressors(DefaultComboBoxModel<String> levelOne, DefaultComboBoxModel<String> levelTwo){
    
        levelOneSelectedRegs.setModel(levelOne);
-       levelOneSelectedRegs.setSelectedIndex(0);
+      // levelOneSelectedRegs.setSelectedIndex(0);
        
        levelTwoSelectedRegs.setModel(levelTwo);
-       levelTwoSelectedRegs.setSelectedIndex(0);
+      // levelTwoSelectedRegs.setSelectedIndex(0);
    
    }
    

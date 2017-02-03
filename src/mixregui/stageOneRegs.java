@@ -46,6 +46,7 @@ public class stageOneRegs extends javax.swing.JFrame {
        varList = new DefaultListModel<String>();
        levelOneList = new DefaultListModel<String>();
        levelTwoList = new DefaultListModel<String>();
+       stageOneSubmitButton.setEnabled(false);
         
      
     }
@@ -234,6 +235,8 @@ public class stageOneRegs extends javax.swing.JFrame {
         StageOneLevelOneList.setModel(levelOneList);
         //remove the variable once it is added to levelOne regressors
         varList.remove(AllVariablesList.getSelectedIndex());
+        
+        stageOneSubmitButton.setEnabled(true);
        
     }//GEN-LAST:event_levelOneAddButtonActionPerformed
 
