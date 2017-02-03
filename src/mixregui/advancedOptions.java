@@ -431,14 +431,24 @@ public class advancedOptions extends javax.swing.JFrame {
             defFile3.setAdvancedAdaptiveQuad(String.valueOf(quadriturePoints.getValue()));
             System.out.println(defFile3.getAdvancedAdaptiveQuad());
             
+            defFile3.setAdvancedMaxIteration(String.valueOf(getMaximumIterations()));
+            System.out.println(defFile3.getAdvancedMaxIteration());
+            
+            defFile3.setAdvancedMissingValue(String.valueOf(getMissingValueCode()));
+            System.out.println(defFile3.getAdvancedMissingValue());
+            
+            defFile3.setAdvancedRidge(String.valueOf(getRidge()));
+            System.out.println(defFile3.getAdvancedRidge());
+            
+            
+            
             this.dispose();
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "invalid Convergence Criteria!", "Caution!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Invalid entry. Please follow the guidelines", "Caution!", JOptionPane.INFORMATION_MESSAGE);
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        
-        
+            
         
     }//GEN-LAST:event_jButton1ActionPerformed
 

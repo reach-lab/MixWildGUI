@@ -43,6 +43,13 @@ public class NewModel extends javax.swing.JFrame {
         
         fileChooser = new JFileChooser();
        // defFile = new DefinitionHelper();
+       
+       titleField.setEnabled(false);
+       subtitleField.setEnabled(false);
+       continuousRadio.setEnabled(false);
+       dichotomousRadio.setEnabled(false);
+       randomLocationEffects.setEnabled(false);
+       newModelSubmit.setEnabled(false);
     }
 
     /**
@@ -227,6 +234,16 @@ public class NewModel extends javax.swing.JFrame {
         String fileName = file.getAbsolutePath();
         
         filePath.setText(fileName);
+        
+        //enable other buttons here:
+        titleField.setEnabled(true);
+        subtitleField.setEnabled(true);
+        randomLocationEffects.setEnabled(true);
+        continuousRadio.setEnabled(true);
+        dichotomousRadio.setEnabled(true);
+        randomLocationEffects.setEnabled(true);
+        newModelSubmit.setEnabled(true);
+        
     }//GEN-LAST:event_fileBrowseButtonActionPerformed
 
     private void subtitleFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subtitleFieldActionPerformed
