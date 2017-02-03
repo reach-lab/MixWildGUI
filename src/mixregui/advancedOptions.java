@@ -23,6 +23,8 @@ public class advancedOptions extends javax.swing.JFrame {
      */
     public advancedOptions() {
         initComponents();
+        
+        missingValueCode.setEnabled(false);
     }
 
     /**
@@ -398,6 +400,13 @@ public class advancedOptions extends javax.swing.JFrame {
 
     private void missingValuesCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_missingValuesCheckBoxActionPerformed
         // TODO add your handling code here:
+        
+        if (missingValuesCheckBox.isSelected() == true){
+            missingValueCode.setEnabled(true);
+        } else {
+            missingValueCode.setEnabled(false);
+        }
+        
     }//GEN-LAST:event_missingValuesCheckBoxActionPerformed
 
     private void missingValueCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_missingValueCodeActionPerformed
