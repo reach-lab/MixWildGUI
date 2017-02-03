@@ -6,12 +6,15 @@
 package mixregui;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JFrame;
 
 /**
  *
  * @author adityaponnada
  */
 public class stageTwoRegs extends javax.swing.JFrame {
+    
+    //setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     
    stageOneRegs stageOne;
     
@@ -25,6 +28,8 @@ public class stageTwoRegs extends javax.swing.JFrame {
         initComponents();
         //create list models
        stageTwoLevelTwo = new DefaultListModel();
+       stageTwoSubmitButton.setEnabled(false);
+       setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -160,6 +165,8 @@ public class stageTwoRegs extends javax.swing.JFrame {
         //Add items to the model and then copy it to the UI list
         stageTwoLevelTwo.addElement(StageTwoAllVariables.getSelectedValue());
         StageTwoLevelTwoVariables.setModel(stageTwoLevelTwo);
+        
+        stageTwoSubmitButton.setEnabled(true);
         
     }//GEN-LAST:event_stageTwoAddButtonActionPerformed
 

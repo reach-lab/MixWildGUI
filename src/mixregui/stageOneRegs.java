@@ -8,6 +8,7 @@ package mixregui;
 import java.awt.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JFrame;
 import javax.swing.JList;
 
 /**
@@ -39,6 +40,7 @@ public class stageOneRegs extends javax.swing.JFrame {
        initComponents();
        
        newModel2 = new NewModel();
+       setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
        
        //get variable names from the data set
        variableNamesList = newModel2.getVariableNames();

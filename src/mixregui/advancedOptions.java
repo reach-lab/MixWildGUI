@@ -8,6 +8,7 @@ package mixregui;
 import def_lib.DefinitionHelper;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,6 +25,7 @@ public class advancedOptions extends javax.swing.JFrame {
     public advancedOptions() {
         initComponents();
         
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         missingValueCode.setEnabled(false);
     }
 

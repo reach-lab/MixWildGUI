@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import def_lib.DefinitionHelper;
+import javax.swing.JFrame;
 
 /**
  *
@@ -40,6 +41,8 @@ public class NewModel extends javax.swing.JFrame {
      */
     public NewModel() {
         initComponents();
+        
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
         fileChooser = new JFileChooser();
        // defFile = new DefinitionHelper();
