@@ -115,7 +115,7 @@ public class advancedOptions extends javax.swing.JFrame {
 
         convergenceCriteria.setModel(new javax.swing.SpinnerNumberModel(0.001d, 0.0d, 1.0d, 0.001d));
 
-        quadriturePoints.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        quadriturePoints.setModel(new javax.swing.SpinnerNumberModel(11, 1, 255, 1));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
