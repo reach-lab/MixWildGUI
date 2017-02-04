@@ -214,7 +214,9 @@ public class advancedOptions extends javax.swing.JFrame {
 
         jLabel11.setText("Ridge:");
 
-        maximumIterations.setModel(new javax.swing.SpinnerNumberModel(199, 0, null, 1));
+        maximumIterations.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+
+        ridgeSpinner.setModel(new javax.swing.SpinnerNumberModel(0.15d, 0.0d, 1.0d, 0.01d));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -404,6 +406,7 @@ public class advancedOptions extends javax.swing.JFrame {
         
         if (missingValuesCheckBox.isSelected() == true){
             missingValueCode.setEnabled(true);
+            missingValueCode.setText("-9999");
         } else {
             missingValueCode.setEnabled(false);
         }
