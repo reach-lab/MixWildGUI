@@ -113,7 +113,7 @@ public class advancedOptions extends javax.swing.JFrame {
             }
         });
 
-        convergenceCriteria.setModel(new javax.swing.SpinnerNumberModel(0.001d, 0.001d, null, 1.0d));
+        convergenceCriteria.setModel(new javax.swing.SpinnerNumberModel(0.001d, 0.0d, 1.0d, 0.001d));
 
         quadriturePoints.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
 
@@ -147,9 +147,8 @@ public class advancedOptions extends javax.swing.JFrame {
                                     .addComponent(jLabel6))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(quadriturePoints, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(convergenceCriteria, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(quadriturePoints, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(convergenceCriteria, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(adaptiveQuadritureCheckBox, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
         );

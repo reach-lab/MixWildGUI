@@ -184,7 +184,7 @@ public class mixregGUI extends javax.swing.JFrame {
         imageViewLayout.setHorizontalGroup(
             imageViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, imageViewLayout.createSequentialGroup()
-                .addContainerGap(244, Short.MAX_VALUE)
+                .addContainerGap(165, Short.MAX_VALUE)
                 .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 1054, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -203,6 +203,11 @@ public class mixregGUI extends javax.swing.JFrame {
         jLabel1.setText("ID Variable:");
 
         IDvariableCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        IDvariableCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IDvariableComboActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Stage 1 DV:");
 
@@ -873,6 +878,12 @@ public class mixregGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_levelOneAlphaActionPerformed
 
+    private void IDvariableComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDvariableComboActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_IDvariableComboActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1192,7 +1203,6 @@ public class mixregGUI extends javax.swing.JFrame {
        } else if (QuadraticAssociationRadio.isSelected() == true){
            radioID = 3;
        }
-       
      
        return radioID;
    }
