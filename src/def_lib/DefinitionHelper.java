@@ -441,16 +441,19 @@ public class DefinitionHelper {
     public String getModelTitle() {
         return modelTitle;
     }
-
+    
+    // read model title in this function
     public void setModelTitle(String modelTitle) {
         if(modelTitle.length()>72){this.modelTitle = modelTitle.substring(0, 71);}
         else{this.modelTitle = modelTitle;}
     }
-
+    
+    
     public String getModelSubtitle() {
         return modelSubtitle;
     }
-
+    
+    // read subtitle in this function
     public void setModelSubtitle(String modelSubtitle) {
         if(modelSubtitle.length()>72){this.modelSubtitle = modelSubtitle.substring(0, 71);}
         else{this.modelSubtitle = modelSubtitle;}
@@ -460,6 +463,7 @@ public class DefinitionHelper {
         return dataFilename;
     }
 
+    // read fileName
     public void setDataFilename(String dataFilename) throws Exception {
         if(dataFilename.endsWith(".dat") || dataFilename.endsWith(".csv")){
            this.dataFilename = dataFilename;
@@ -471,16 +475,19 @@ public class DefinitionHelper {
         return outputPrefix;
     }
 
+    // check what is this function needed for?
     public void setOutputPrefix(String outputPrefix) {
         if(outputPrefix.length()>72){this.outputPrefix = outputPrefix.substring(0, 200);}
         else{this.outputPrefix = outputPrefix;}
         this.outputPrefix = outputPrefix;
     }
 
+    
     public String getDataVariableCount() {
         return dataVariableCount;
     }
 
+    // read variable array size into this one
     public void setDataVariableCount(String dataVariableCount) throws Exception {
         if(setValidator("number of variables", "5", dataVariableCount, 2, 255, MIX_INTEGER)){
             this.dataVariableCount = dataVariableCount;
@@ -491,6 +498,8 @@ public class DefinitionHelper {
         return modelMeanCount;
     }
 
+    
+    // what should this do?
     public void setModelMeanCount(String modelMeanCount) throws Exception {
         if(setValidator("number of mean regressors", "5", modelMeanCount, 1, 255, MIX_INTEGER)){
             this.modelMeanCount = modelMeanCount;
@@ -501,6 +510,7 @@ public class DefinitionHelper {
         return modelLocRanCount;
     }
 
+    // read RLE into this one
     public void setModelLocRanCount(String modelLocRanCount) throws Exception {
         if(setValidator("number of location random effects", "5", modelLocRanCount, 0, 255, MIX_INTEGER)){
             this.modelLocRanCount = modelLocRanCount;
@@ -511,6 +521,7 @@ public class DefinitionHelper {
         return modelScaleCount;
     }
 
+    // What does this do?
     public void setModelScaleCount(String modelScaleCount) throws Exception {
         if(setValidator("number of scale regressors", "5", modelScaleCount, 0, 255, MIX_INTEGER)){
             this.modelScaleCount = modelScaleCount;
@@ -521,6 +532,7 @@ public class DefinitionHelper {
         return modelFixedInt;
     }
 
+    // what does this do?
     public void setModelFixedInt(String modelFixedInt) throws Exception {
         if(setValidator("fixed intercept", "5", modelFixedInt, 0, 1, MIX_INTEGER)){
             this.modelFixedInt = modelFixedInt;
@@ -531,6 +543,7 @@ public class DefinitionHelper {
         return modelRandomInt;
     }
 
+    // what does this do?
     public void setModelRandomInt(String modelRandomInt) throws Exception {
         if(setValidator("random intercept", "5", modelRandomInt, 0, 1, MIX_INTEGER)){
             this.modelRandomInt = modelRandomInt;
@@ -541,6 +554,7 @@ public class DefinitionHelper {
         return modelScaleInt;
     }
 
+    // What does this do?
     public void setModelScaleInt(String modelScaleInt) throws Exception {
         if(setValidator("scale intercept", "5", modelScaleInt, 0, 1, MIX_INTEGER)){
             this.modelScaleInt = modelScaleInt;
@@ -551,6 +565,7 @@ public class DefinitionHelper {
         return decompMeanCount;
     }
 
+    // What does this do?
     public void setDecompMeanCount(String decompMeanCount) throws Exception {
         if(setValidator("number of mean regressors for BS/WS decomposition", "5", decompMeanCount, 0, 255, MIX_INTEGER)){
             this.decompMeanCount = decompMeanCount;
@@ -581,6 +596,8 @@ public class DefinitionHelper {
         return advancedConvergence;
     }
 
+    
+    // read from advanced options
     public void setAdvancedConvergence(String advancedConvergence) throws Exception {
         try { 
             if(Double.parseDouble(advancedConvergence)>=0 && Double.parseDouble(advancedConvergence)<=1){
@@ -597,6 +614,7 @@ public class DefinitionHelper {
         return advancedQuadPoints;
     }
 
+    // read from advanced options
     public void setAdvancedQuadPoints(String advancedQuadPoints) throws Exception {
         if(setValidator("number of quadrature points", "5", advancedQuadPoints, 1, 255, MIX_INTEGER)){
             this.advancedQuadPoints = advancedQuadPoints;
@@ -607,6 +625,7 @@ public class DefinitionHelper {
         return advancedAdaptiveQuad;
     }
 
+    // read from advanced options
     public void setAdvancedAdaptiveQuad(String advancedAdaptiveQuad) throws Exception {
         if(setValidator("adaptive quadrature", "5", advancedAdaptiveQuad, 0, 1, MIX_INTEGER)){
             this.advancedAdaptiveQuad = advancedAdaptiveQuad;
@@ -617,6 +636,7 @@ public class DefinitionHelper {
         return advancedMaxIteration;
     }
 
+    // read from advanced options
     public void setAdvancedMaxIteration(String advancedMaxIteration) throws Exception {
         if(setValidator("maximum iterations", "5", advancedMaxIteration, 1, Integer.MAX_VALUE, MIX_INTEGER)){
             this.advancedMaxIteration = advancedMaxIteration;
@@ -627,6 +647,7 @@ public class DefinitionHelper {
         return advancedMissingValue;
     }
 
+    // read from advanced options
     public void setAdvancedMissingValue(String advancedMissingValue) throws Exception {
         if(setValidator("missing value", "5", advancedMissingValue, Integer.MIN_VALUE, Integer.MAX_VALUE, MIX_INTEGER)){
             this.advancedMissingValue = advancedMissingValue;
@@ -637,6 +658,7 @@ public class DefinitionHelper {
         return advancedCenterScale;
     }
 
+    // read from advanced options
     public void setAdvancedCenterScale(String advancedCenterScale) throws Exception {
         if(setValidator("scale centering", "5", advancedCenterScale, 0, 1, MIX_INTEGER)){
             this.advancedCenterScale = advancedCenterScale;
@@ -647,6 +669,7 @@ public class DefinitionHelper {
         return advancedRidge;
     }
 
+    // read from advanced options
     public void setAdvancedRidge(String advancedRidge) throws Exception {
         try { 
             if(Double.parseDouble(advancedRidge)>=0 && Double.parseDouble(advancedRidge)<=1){
@@ -663,6 +686,7 @@ public class DefinitionHelper {
         return modelBetweenCount;
     }
 
+    // What does this do?
     public void setModelBetweenCount(String modelBetweenCount) throws Exception {
         if(setValidator("number of between-subject variance regressors", "5", modelBetweenCount, 0, 255, MIX_INTEGER)){
             this.modelBetweenCount = modelBetweenCount;
@@ -673,6 +697,7 @@ public class DefinitionHelper {
         return modelWithinCount;
     }
 
+    // what does it do?
     public void setModelWithinCount(String modelWithinCount) throws Exception {
         if(setValidator("number of within-subject variance regressors", "5", modelWithinCount, 0, 255, MIX_INTEGER)){
             this.modelWithinCount = modelWithinCount;
@@ -683,6 +708,7 @@ public class DefinitionHelper {
         return modelBetweenInt;
     }
 
+    
     public void setModelBetweenInt(String modelBetweenInt) throws Exception {
         if(setValidator("between-subject variance intercept", "5", modelBetweenInt, 0, 1, MIX_INTEGER)){
             this.modelBetweenInt = modelBetweenInt;
