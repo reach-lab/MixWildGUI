@@ -881,8 +881,10 @@ public class DefinitionHelper {
         return labelModelMeanRegressors;
     }
 
-    public void setLabelModelMeanRegressors(String[] labelModelMeanRegressors) {
-        this.labelModelMeanRegressors = labelModelMeanRegressors;
+    public void setLabelModelMeanRegressors(String[] labelModelMeanRegressors) throws Exception {
+        if(loopSetValidator("model mean regressor labels", "14", labelModelMeanRegressors, 1, 255, MIX_STRING)){
+            this.labelModelMeanRegressors = labelModelMeanRegressors;
+        }
     }
 
     public String[] getLabelModelLocRanRegressors() {
