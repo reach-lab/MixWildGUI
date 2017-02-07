@@ -284,6 +284,9 @@ public class NewModel extends javax.swing.JFrame {
             String[] varTemp = getVariableNames();
             
            defFile.setDataFilename(file.getAbsolutePath());
+           
+           defFile.setDataVariableCount(String.valueOf(variableArray.length));
+           System.out.println(defFile.getDataVariableCount());
         
             
         } catch (FileNotFoundException ex) {

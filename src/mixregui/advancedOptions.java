@@ -441,8 +441,8 @@ public class advancedOptions extends javax.swing.JFrame {
             defFile3.setAdvancedConvergence(String.valueOf(convergenceCriteria.getValue()));
             System.out.println(defFile3.getAdvancedConvergence());
             
-            defFile3.setAdvancedAdaptiveQuad(String.valueOf(quadriturePoints.getValue()));
-            System.out.println(defFile3.getAdvancedAdaptiveQuad());
+            defFile3.setAdvancedQuadPoints(String.valueOf(quadriturePoints.getValue()));
+            System.out.println(defFile3.getAdvancedQuadPoints());
             
             defFile3.setAdvancedMaxIteration(String.valueOf(getMaximumIterations()));
             System.out.println(defFile3.getAdvancedMaxIteration());
