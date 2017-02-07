@@ -66,7 +66,6 @@ public class stageOneRegs extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         stageOneSubmitButton = new javax.swing.JButton();
         stageOneResetButton = new javax.swing.JButton();
         removeLevelButton = new javax.swing.JButton();
@@ -79,6 +78,7 @@ public class stageOneRegs extends javax.swing.JFrame {
         StageOneLevelOneList = new javax.swing.JList<>();
         jScrollPane3 = new javax.swing.JScrollPane();
         StageOneLevelTwoList = new javax.swing.JList<>();
+        disaggVarianceCheckBox = new javax.swing.JCheckBox();
 
         label1.setText("label1");
 
@@ -90,8 +90,6 @@ public class stageOneRegs extends javax.swing.JFrame {
         jLabel2.setText("Level-I (Time Variant)");
 
         jLabel3.setText("Level-II (Time Invariant)");
-
-        jLabel4.setText("Disaggregate Variance");
 
         stageOneSubmitButton.setText("Submit");
         stageOneSubmitButton.addActionListener(new java.awt.event.ActionListener() {
@@ -141,6 +139,8 @@ public class stageOneRegs extends javax.swing.JFrame {
 
         jScrollPane3.setViewportView(StageOneLevelTwoList);
 
+        disaggVarianceCheckBox.setText("Disaggregate Variance");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -169,15 +169,17 @@ public class stageOneRegs extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(stageOneSubmitButton)
                         .addGap(57, 57, 57))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(43, 43, 43))
-                            .addComponent(jScrollPane2)
-                            .addComponent(jScrollPane3))
-                        .addGap(61, 61, 61))))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(jLabel3)
+                            .addGap(104, 104, 104))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(disaggVarianceCheckBox)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane3)))
+                            .addGap(92, 92, 92)))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,18 +202,18 @@ public class stageOneRegs extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
-                .addGap(6, 6, 6)
-                .addComponent(jLabel4)
-                .addGap(5, 5, 5)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(disaggVarianceCheckBox)
+                .addGap(7, 7, 7)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(27, 27, 27)
                         .addComponent(jLabel3)
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
 
         pack();
@@ -320,10 +322,10 @@ public class stageOneRegs extends javax.swing.JFrame {
     private javax.swing.JList<String> StageOneLevelOneList;
     private javax.swing.JList<String> StageOneLevelTwoList;
     private javax.swing.JButton addLevelTwoButton;
+    private javax.swing.JCheckBox disaggVarianceCheckBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -377,6 +379,22 @@ DefaultComboBoxModel<String> levelTwoCombo = new DefaultComboBoxModel();
 
 }
 return levelTwoCombo;
+
+}
+
+public boolean isDisaggVarianceChecked(){
+    
+    boolean checked = false;
+    
+    if (disaggVarianceCheckBox.isSelected() == true){
+        checked = true;
+    
+    } else {
+        checked = false;
+    
+    }
+    
+    return checked;
 
 }
 

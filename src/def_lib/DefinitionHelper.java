@@ -686,7 +686,7 @@ public class DefinitionHelper {
         return modelBetweenCount;
     }
 
-    // What does this do?
+    // based on the counts from the table
     public void setModelBetweenCount(String modelBetweenCount) throws Exception {
         if(setValidator("number of between-subject variance regressors", "5", modelBetweenCount, 0, 255, MIX_INTEGER)){
             this.modelBetweenCount = modelBetweenCount;
