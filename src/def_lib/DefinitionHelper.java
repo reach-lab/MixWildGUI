@@ -196,6 +196,20 @@ public class DefinitionHelper {
         }
     }
     
+    private boolean validateFieldLabels(String fieldCountVariable, String[] labelLine){
+        int field = Integer.parseInt(fieldCountVariable);
+        int labels = labelLine.length;
+        return field==labels;
+    }
+    
+    public List<String> buildStageOneDefinitonFile(){
+        List<String> newDefinitionFile = new ArrayList();
+        newDefinitionFile.add(getModelTitle());
+        newDefinitionFile.add(getModelSubtitle());
+        
+        return newDefinitionFile;
+    }
+    
     /**
      * 
      * @param readDefinitionFile the definition file as a List<String>
@@ -204,173 +218,173 @@ public class DefinitionHelper {
     private void assignDefinitionVariables(List<String> readDefinitionFile) throws Exception {
         setModelTitle(readDefinitionFile.get(0));
         setModelSubtitle(readDefinitionFile.get(1));
-        dataFilename = readDefinitionFile.get(2);
-        outputPrefix = readDefinitionFile.get(3);
+        setDataFilename(readDefinitionFile.get(2));
+        setOutputPrefix(readDefinitionFile.get(3));
         
         advancedVariableAssignment(1,readDefinitionFile.get(4).split(" "));
         
-        idOutcome = readDefinitionFile.get(5).split(" ");
-        fieldModelMeanRegressors = readDefinitionFile.get(6).split(" ");
-        fieldDecompMeanRegressors = readDefinitionFile.get(9).split(" ");
-        labelModelOutcome = readDefinitionFile.get(12);
-        labelModelMeanRegressors = readDefinitionFile.get(13).split(" ");
-        labelDecompMeanRegressors = readDefinitionFile.get(16).split(" "); 
+        setIdOutcome(readDefinitionFile.get(5).split(" "));
+        setFieldModelMeanRegressors(readDefinitionFile.get(6).split(" "));
+        setFieldDecompMeanRegressors(readDefinitionFile.get(9).split(" "));
+        setLabelModelOutcome(readDefinitionFile.get(12));
+        setLabelModelMeanRegressors(readDefinitionFile.get(13).split(" "));
+        setLabelDecompMeanRegressors(readDefinitionFile.get(16).split(" ")); 
         advancedVariableAssignment(2,readDefinitionFile.get(19).split(" ")); 
-        stageTwoOutcomeField = readDefinitionFile.get(20);
+        setStageTwoOutcomeField(readDefinitionFile.get(20));
         switch(sequenceDecision()){
             case MIXREGLS_MIXREG_KEY:
-                fieldModelBSRegressors = readDefinitionFile.get(7).split(" ");
-                fieldModelWSRegressors = readDefinitionFile.get(8).split(" ");
-                fieldDecompBSRegressors = readDefinitionFile.get(10).split(" ");
-                fieldDecompWSRegressors = readDefinitionFile.get(11).split(" ");
-                labelModelBSRegressors = readDefinitionFile.get(14).split(" ");
-                labelModelWSRegressors = readDefinitionFile.get(15).split(" ");
-                labelDecompBSRegressors = readDefinitionFile.get(17).split(" ");
-                labelDecompWSRegressors = readDefinitionFile.get(18).split(" ");
-                stageTwoFixedFields = readDefinitionFile.get(21).split(" ");
-                stageTwoLocRanIntFields = readDefinitionFile.get(22).split(" ");
-                stageTwoScaleIntFields = readDefinitionFile.get(23).split(" ");
-                stageTwoFirstIntFields = readDefinitionFile.get(24).split(" ");
-                stageTwoOutcomeLabel = readDefinitionFile.get(25);
-                stageTwoFixedLabels = readDefinitionFile.get(26).split(" ");
-                stageTwoLocRanIntLabels = readDefinitionFile.get(27).split(" ");
-                stageTwoScaleIntLabels = readDefinitionFile.get(28).split(" ");
-                stageTwoFirstIntLabels = readDefinitionFile.get(29).split(" ");
+                setFieldModelBSRegressors(readDefinitionFile.get(7).split(" "));
+                setFieldModelWSRegressors(readDefinitionFile.get(8).split(" "));
+                setFieldDecompBSRegressors(readDefinitionFile.get(10).split(" "));
+                setFieldDecompWSRegressors(readDefinitionFile.get(11).split(" "));
+                setLabelModelBSRegressors(readDefinitionFile.get(14).split(" "));
+                setLabelModelWSRegressors(readDefinitionFile.get(15).split(" "));
+                setLabelDecompBSRegressors(readDefinitionFile.get(17).split(" "));
+                setLabelDecompWSRegressors(readDefinitionFile.get(18).split(" "));
+                setStageTwoFixedFields(readDefinitionFile.get(21).split(" "));
+                setStageTwoLocRanIntFields(readDefinitionFile.get(22).split(" "));
+                setStageTwoScaleIntFields(readDefinitionFile.get(23).split(" "));
+                setStageTwoFirstIntFields(readDefinitionFile.get(24).split(" "));
+                setStageTwoOutcomeLabel(readDefinitionFile.get(25));
+                setStageTwoFixedLabels(readDefinitionFile.get(26).split(" "));
+                setStageTwoLocRanIntLabels(readDefinitionFile.get(27).split(" "));
+                setStageTwoScaleIntLabels(readDefinitionFile.get(28).split(" "));
+                setStageTwoFirstIntLabels(readDefinitionFile.get(29).split(" "));
                 break;
             case MIXREGLS_MIXOR_KEY:
-                fieldModelBSRegressors = readDefinitionFile.get(7).split(" ");
-                fieldModelWSRegressors = readDefinitionFile.get(8).split(" ");
-                fieldDecompBSRegressors = readDefinitionFile.get(10).split(" ");
-                fieldDecompWSRegressors = readDefinitionFile.get(11).split(" ");
-                labelModelBSRegressors = readDefinitionFile.get(14).split(" ");
-                labelModelWSRegressors = readDefinitionFile.get(15).split(" ");
-                labelDecompBSRegressors = readDefinitionFile.get(17).split(" ");
-                labelDecompWSRegressors = readDefinitionFile.get(18).split(" ");
-                stageTwoFixedFields = readDefinitionFile.get(22).split(" ");
-                stageTwoLocRanIntFields = readDefinitionFile.get(23).split(" ");
-                stageTwoScaleIntFields = readDefinitionFile.get(24).split(" ");
-                stageTwoFirstIntFields = readDefinitionFile.get(25).split(" ");
-                stageTwoOutcomeLabel = readDefinitionFile.get(26);
-                stageTwoFixedLabels = readDefinitionFile.get(27).split(" ");
-                stageTwoLocRanIntLabels = readDefinitionFile.get(28).split(" ");
-                stageTwoScaleIntLabels = readDefinitionFile.get(29).split(" ");
-                stageTwoFirstIntLabels = readDefinitionFile.get(30).split(" ");
+                setFieldModelBSRegressors(readDefinitionFile.get(7).split(" "));
+                setFieldModelWSRegressors(readDefinitionFile.get(8).split(" "));
+                setFieldDecompBSRegressors(readDefinitionFile.get(10).split(" "));
+                setFieldDecompWSRegressors(readDefinitionFile.get(11).split(" "));
+                setLabelModelBSRegressors(readDefinitionFile.get(14).split(" "));
+                setLabelModelWSRegressors(readDefinitionFile.get(15).split(" "));
+                setLabelDecompBSRegressors(readDefinitionFile.get(17).split(" "));
+                setLabelDecompWSRegressors(readDefinitionFile.get(18).split(" "));
+                setStageTwoFixedFields(readDefinitionFile.get(22).split(" "));
+                setStageTwoLocRanIntFields(readDefinitionFile.get(23).split(" "));
+                setStageTwoScaleIntFields(readDefinitionFile.get(24).split(" "));
+                setStageTwoFirstIntFields(readDefinitionFile.get(25).split(" "));
+                setStageTwoOutcomeLabel(readDefinitionFile.get(26));
+                setStageTwoFixedLabels(readDefinitionFile.get(27).split(" "));
+                setStageTwoLocRanIntLabels(readDefinitionFile.get(28).split(" "));
+                setStageTwoScaleIntLabels(readDefinitionFile.get(29).split(" "));
+                setStageTwoFirstIntLabels(readDefinitionFile.get(30).split(" "));
                 break;
             case MIXREGMLS_MIXREG_KEY:
-                fieldModelLocRanRegressors = readDefinitionFile.get(7).split(" ");
-                fieldModelScaleRegressors = readDefinitionFile.get(8).split(" ");
-                fieldDecompLocRanRegressors = readDefinitionFile.get(10).split(" ");
-                fieldDecompScaleRegressors = readDefinitionFile.get(11).split(" ");
-                labelModelLocRanRegressors = readDefinitionFile.get(14).split(" ");
-                labelModelScaleRegressors = readDefinitionFile.get(15).split(" ");
-                labelDecompLocRanRegressors = readDefinitionFile.get(17).split(" ");
-                labelDecompScaleRegressors = readDefinitionFile.get(18).split(" ");
-                stageTwoFixedFields = readDefinitionFile.get(21).split(" ");
-                stageTwoLocRanIntFields = readDefinitionFile.get(22).split(" ");
-                stageTwoScaleIntFields = readDefinitionFile.get(23).split(" ");
-                stageTwoFirstIntFields = readDefinitionFile.get(24).split(" ");
-                stageTwoOutcomeLabel = readDefinitionFile.get(25);
-                stageTwoFixedLabels = readDefinitionFile.get(26).split(" ");
-                stageTwoLocRanIntLabels = readDefinitionFile.get(27).split(" ");
-                stageTwoScaleIntLabels = readDefinitionFile.get(28).split(" ");
-                stageTwoFirstIntLabels = readDefinitionFile.get(29).split(" ");
+                setFieldModelLocRanRegressors(readDefinitionFile.get(7).split(" "));
+                setFieldModelScaleRegressors(readDefinitionFile.get(8).split(" "));
+                setFieldDecompLocRanRegressors(readDefinitionFile.get(10).split(" "));
+                setFieldDecompScaleRegressors(readDefinitionFile.get(11).split(" "));
+                setLabelModelLocRanRegressors(readDefinitionFile.get(14).split(" "));
+                setLabelModelScaleRegressors(readDefinitionFile.get(15).split(" "));
+                setLabelDecompLocRanRegressors(readDefinitionFile.get(17).split(" "));
+                setLabelDecompScaleRegressors(readDefinitionFile.get(18).split(" "));
+                setStageTwoFixedFields(readDefinitionFile.get(21).split(" "));
+                setStageTwoLocRanIntFields(readDefinitionFile.get(22).split(" "));
+                setStageTwoScaleIntFields(readDefinitionFile.get(23).split(" "));
+                setStageTwoFirstIntFields(readDefinitionFile.get(24).split(" "));
+                setStageTwoOutcomeLabel(readDefinitionFile.get(25));
+                setStageTwoFixedLabels(readDefinitionFile.get(26).split(" "));
+                setStageTwoLocRanIntLabels(readDefinitionFile.get(27).split(" "));
+                setStageTwoScaleIntLabels(readDefinitionFile.get(28).split(" "));
+                setStageTwoFirstIntLabels(readDefinitionFile.get(29).split(" "));
                 break;
             case MIXREGMLS_MIXOR_KEY:
-                fieldModelLocRanRegressors = readDefinitionFile.get(7).split(" ");
-                fieldModelScaleRegressors = readDefinitionFile.get(8).split(" ");
-                fieldDecompLocRanRegressors = readDefinitionFile.get(10).split(" ");
-                fieldDecompScaleRegressors = readDefinitionFile.get(11).split(" ");
-                labelModelLocRanRegressors = readDefinitionFile.get(14).split(" ");
-                labelModelScaleRegressors = readDefinitionFile.get(15).split(" ");
-                labelDecompLocRanRegressors = readDefinitionFile.get(17).split(" ");
-                labelDecompScaleRegressors = readDefinitionFile.get(18).split(" ");
-                stageTwoFixedFields = readDefinitionFile.get(22).split(" ");
-                stageTwoLocRanIntFields = readDefinitionFile.get(23).split(" ");
-                stageTwoScaleIntFields = readDefinitionFile.get(24).split(" ");
-                stageTwoFirstIntFields = readDefinitionFile.get(25).split(" ");
-                stageTwoOutcomeLabel = readDefinitionFile.get(26);
-                stageTwoFixedLabels = readDefinitionFile.get(27).split(" ");
-                stageTwoLocRanIntLabels = readDefinitionFile.get(28).split(" ");
-                stageTwoScaleIntLabels = readDefinitionFile.get(29).split(" ");
-                stageTwoFirstIntLabels = readDefinitionFile.get(30).split(" ");              
+                setFieldModelLocRanRegressors(readDefinitionFile.get(7).split(" "));
+                setFieldModelScaleRegressors(readDefinitionFile.get(8).split(" "));
+                setFieldDecompLocRanRegressors(readDefinitionFile.get(10).split(" "));
+                setFieldDecompScaleRegressors(readDefinitionFile.get(11).split(" "));
+                setLabelModelLocRanRegressors(readDefinitionFile.get(14).split(" "));
+                setLabelModelScaleRegressors(readDefinitionFile.get(15).split(" "));
+                setLabelDecompLocRanRegressors(readDefinitionFile.get(17).split(" "));
+                setLabelDecompScaleRegressors(readDefinitionFile.get(18).split(" "));
+                setStageTwoFixedFields(readDefinitionFile.get(22).split(" "));
+                setStageTwoLocRanIntFields(readDefinitionFile.get(23).split(" "));
+                setStageTwoScaleIntFields(readDefinitionFile.get(24).split(" "));
+                setStageTwoFirstIntFields(readDefinitionFile.get(25).split(" "));
+                setStageTwoOutcomeLabel(readDefinitionFile.get(26));
+                setStageTwoFixedLabels(readDefinitionFile.get(27).split(" "));
+                setStageTwoLocRanIntLabels(readDefinitionFile.get(28).split(" "));
+                setStageTwoScaleIntLabels(readDefinitionFile.get(29).split(" "));
+                setStageTwoFirstIntLabels(readDefinitionFile.get(30).split(" "));              
                 break;
             default:
                 //TODO: Log this error     
         }
     }
     
-    private void advancedVariableAssignment(int stage, String[] advancedVars){
+    private void advancedVariableAssignment(int stage, String[] advancedVars) throws Exception {
         if(stage==1){
-            dataVariableCount = advancedVars[0];
-            modelMeanCount = advancedVars[1];
-            modelFixedInt = advancedVars[4]; 
-            decompMeanCount = advancedVars[7];
-            advancedConvergence = advancedVars[10];
-            advancedQuadPoints = advancedVars[11];
-            advancedAdaptiveQuad = advancedVars[12];
-            advancedMaxIteration = advancedVars[13];
-            advancedMissingValue = advancedVars[14];
-            advancedCenterScale = advancedVars[15];
+            setDataVariableCount(advancedVars[0]);
+            setModelMeanCount(advancedVars[1]);
+            setModelFixedInt(advancedVars[4]); 
+            setDecompMeanCount(advancedVars[7]);
+            setAdvancedConvergence(advancedVars[10]);
+            setAdvancedQuadPoints(advancedVars[11]);
+            setAdvancedAdaptiveQuad(advancedVars[12]);
+            setAdvancedMaxIteration(advancedVars[13]);
+            setAdvancedMissingValue(advancedVars[14]);
+            setAdvancedCenterScale(advancedVars[15]);
 
             switch(sequenceDecision()){
                 case MIXREGLS_MIXREG_KEY:
-                    modelBetweenCount = advancedVars[2];
-                    modelWithinCount = advancedVars[3];
-                    modelBetweenInt = advancedVars[5];
-                    modelWithinInt = advancedVars[6];
-                    decompBSCount = advancedVars[8];
-                    decompWSCount = advancedVars[9];
-                    advancedEffectMeanWS = advancedVars[16];
-                    advancedRidge = advancedVars[17];
+                    setModelBetweenCount(advancedVars[2]);
+                    setModelWithinCount(advancedVars[3]);
+                    setModelBetweenInt(advancedVars[5]);
+                    setModelWithinInt(advancedVars[6]);
+                    setDecompBSCount(advancedVars[8]);
+                    setDecompWSCount(advancedVars[9]);
+                    setAdvancedEffectMeanWS(advancedVars[16]);
+                    setAdvancedRidge(advancedVars[17]);
                     break;
                 case MIXREGLS_MIXOR_KEY:
-                    modelBetweenCount = advancedVars[2];
-                    modelWithinCount = advancedVars[3];
-                    modelBetweenInt = advancedVars[5];
-                    modelWithinInt = advancedVars[6];
-                    decompBSCount = advancedVars[8];
-                    decompWSCount = advancedVars[9];
-                    advancedEffectMeanWS = advancedVars[16];
-                    advancedRidge = advancedVars[17];
+                    setModelBetweenCount(advancedVars[2]);
+                    setModelWithinCount(advancedVars[3]);
+                    setModelBetweenInt(advancedVars[5]);
+                    setModelWithinInt(advancedVars[6]);
+                    setDecompBSCount(advancedVars[8]);
+                    setDecompWSCount(advancedVars[9]);
+                    setAdvancedEffectMeanWS(advancedVars[16]);
+                    setAdvancedRidge(advancedVars[17]);
                     break;
                 case MIXREGMLS_MIXREG_KEY:
-                    modelLocRanCount = advancedVars[2];
-                    modelScaleCount = advancedVars[3];
-                    modelRandomInt = advancedVars[5];
-                    modelScaleInt = advancedVars[6];
-                    decompLocRanCount = advancedVars[8];
-                    decompScaleCount = advancedVars[9];
-                    advancedRidge = advancedVars[16];
+                    setModelLocRanCount(advancedVars[2]);
+                    setModelScaleCount(advancedVars[3]);
+                    setModelRandomInt(advancedVars[5]);
+                    setModelScaleInt(advancedVars[6]);
+                    setDecompLocRanCount(advancedVars[8]);
+                    setDecompScaleCount(advancedVars[9]);
+                    setAdvancedRidge(advancedVars[16]);
                     break;
                 case MIXREGMLS_MIXOR_KEY:
-                    modelLocRanCount = advancedVars[2];
-                    modelScaleCount = advancedVars[3];
-                    modelRandomInt = advancedVars[5];
-                    modelScaleInt = advancedVars[6];
-                    decompLocRanCount = advancedVars[8];
-                    decompScaleCount = advancedVars[9];
-                    advancedRidge = advancedVars[16];
+                    setModelLocRanCount(advancedVars[2]);
+                    setModelScaleCount(advancedVars[3]);
+                    setModelRandomInt(advancedVars[5]);
+                    setModelScaleInt(advancedVars[6]);
+                    setDecompLocRanCount(advancedVars[8]);
+                    setDecompScaleCount(advancedVars[9]);
+                    setAdvancedRidge(advancedVars[16]);
                     break;
             default:
                 //TODO: Log this error 
             }
         }
         else{
-            stageTwoFixedCount = advancedVars[0];
-            stageTwoLocRanInteractions = advancedVars[1];
-            stageTwoScaleInteractions = advancedVars[2];
-            stageTwoIntOfInteraction = advancedVars[3];
+            setStageTwoFixedCount(advancedVars[0]);
+            setStageTwoLocRanInteractions(advancedVars[1]);
+            setStageTwoScaleInteractions(advancedVars[2]);
+            setStageTwoIntOfInteraction(advancedVars[3]);
             
             switch(sequenceDecision()){
                 case MIXREGLS_MIXREG_KEY:                  
                     break;
                 case MIXREGLS_MIXOR_KEY:
-                    stageTwoOutcomeCatCount = advancedVars[4];                  
+                    setStageTwoOutcomeCatCount(advancedVars[4]);                  
                     break;
                 case MIXREGMLS_MIXREG_KEY:
                     break;
                 case MIXREGMLS_MIXOR_KEY:
-                    stageTwoOutcomeCatCount = advancedVars[4];               
+                    setStageTwoOutcomeCatCount(advancedVars[4]);               
                     break;
             default:
                 //TODO: Log this error 
@@ -1041,80 +1055,100 @@ public class DefinitionHelper {
         return stageTwoOutcomeCatLabel;
     }
 
-    public void setStageTwoOutcomeCatLabel(String[] stageTwoOutcomeCatLabel) {
-        this.stageTwoOutcomeCatLabel = stageTwoOutcomeCatLabel;
+    public void setStageTwoOutcomeCatLabel(String[] stageTwoOutcomeCatLabel) throws Exception {
+        if(loopSetValidator("numeric categories of outcome variable", "21", stageTwoOutcomeCatLabel, 0, 255, MIX_INTEGER)){
+            this.stageTwoOutcomeCatLabel = stageTwoOutcomeCatLabel;
+        }
     }
 
     public String[] getStageTwoFixedFields() {
         return stageTwoFixedFields;
     }
 
-    public void setStageTwoFixedFields(String[] stageTwoFixedFields) {
-        this.stageTwoFixedFields = stageTwoFixedFields;
+    public void setStageTwoFixedFields(String[] stageTwoFixedFields) throws Exception {
+        if(loopSetValidator("fields of fixed regressors", "22(mixreg)/23((mixor)", stageTwoFixedFields, 1, 255, MIX_INTEGER)){
+            this.stageTwoFixedFields = stageTwoFixedFields;
+        }
     }
 
     public String[] getStageTwoLocRanIntFields() {
         return stageTwoLocRanIntFields;
     }
 
-    public void setStageTwoLocRanIntFields(String[] stageTwoLocRanIntFields) {
-        this.stageTwoLocRanIntFields = stageTwoLocRanIntFields;
+    public void setStageTwoLocRanIntFields(String[] stageTwoLocRanIntFields) throws Exception {
+        if(loopSetValidator("fields of regressors to interact with location random effects", "23(mixreg)/24((mixor)", stageTwoLocRanIntFields, 1, 255, MIX_INTEGER)){
+            this.stageTwoLocRanIntFields = stageTwoLocRanIntFields;
+        }
     }
 
     public String[] getStageTwoScaleIntFields() {
         return stageTwoScaleIntFields;
     }
 
-    public void setStageTwoScaleIntFields(String[] stageTwoScaleIntFields) {
-        this.stageTwoScaleIntFields = stageTwoScaleIntFields;
+    public void setStageTwoScaleIntFields(String[] stageTwoScaleIntFields) throws Exception {
+        if(loopSetValidator("fields of regressors to interact with scale random effects", "24(mixreg)/25((mixor)", stageTwoScaleIntFields, 1, 255, MIX_INTEGER)){
+            this.stageTwoScaleIntFields = stageTwoScaleIntFields;
+        }
     }
 
     public String[] getStageTwoFirstIntFields() {
         return stageTwoFirstIntFields;
     }
 
-    public void setStageTwoFirstIntFields(String[] stageTwoFirstIntFields) {
-        this.stageTwoFirstIntFields = stageTwoFirstIntFields;
+    public void setStageTwoFirstIntFields(String[] stageTwoFirstIntFields) throws Exception {
+        if(loopSetValidator("fields of regressors to interact with the interaction of the location random effects", "25(mixreg)/26((mixor)", stageTwoFirstIntFields, 1, 255, MIX_INTEGER)){
+            this.stageTwoFirstIntFields = stageTwoFirstIntFields;
+        }
     }
 
     public String getStageTwoOutcomeLabel() {
         return stageTwoOutcomeLabel;
     }
 
-    public void setStageTwoOutcomeLabel(String stageTwoOutcomeLabel) {
-        this.stageTwoOutcomeLabel = stageTwoOutcomeLabel;
+    public void setStageTwoOutcomeLabel(String stageTwoOutcomeLabel) throws Exception {
+        if(setValidator("label of stage two outcome", "26(mixreg)/27((mixor)", stageTwoOutcomeLabel, 1, 255, MIX_STRING)){
+            this.stageTwoOutcomeLabel = stageTwoOutcomeLabel;
+        }
     }
 
     public String[] getStageTwoFixedLabels() {
         return stageTwoFixedLabels;
     }
 
-    public void setStageTwoFixedLabels(String[] stageTwoFixedLabels) {
-        this.stageTwoFixedLabels = stageTwoFixedLabels;
+    public void setStageTwoFixedLabels(String[] stageTwoFixedLabels) throws Exception {
+        if(loopSetValidator("label of stage two fixed regressors", "27(mixreg)/28((mixor)", stageTwoFixedLabels, 1, 255, MIX_STRING)){
+            this.stageTwoFixedLabels = stageTwoFixedLabels;
+        }
     }
 
     public String[] getStageTwoLocRanIntLabels() {
         return stageTwoLocRanIntLabels;
     }
 
-    public void setStageTwoLocRanIntLabels(String[] stageTwoLocRanIntLabels) {
-        this.stageTwoLocRanIntLabels = stageTwoLocRanIntLabels;
+    public void setStageTwoLocRanIntLabels(String[] stageTwoLocRanIntLabels) throws Exception {
+        if(loopSetValidator("labels of stage two regressors to interact with location random effect", "28(mixreg)/29((mixor)", stageTwoLocRanIntLabels, 1, 255, MIX_STRING)){
+            this.stageTwoLocRanIntLabels = stageTwoLocRanIntLabels;
+        }
     }
 
     public String[] getStageTwoScaleIntLabels() {
         return stageTwoScaleIntLabels;
     }
 
-    public void setStageTwoScaleIntLabels(String[] stageTwoScaleIntLabels) {
-        this.stageTwoScaleIntLabels = stageTwoScaleIntLabels;
+    public void setStageTwoScaleIntLabels(String[] stageTwoScaleIntLabels) throws Exception {
+        if(loopSetValidator("labels of stage two regressors to interact with scale effect", "29(mixreg)/30((mixor)", stageTwoScaleIntLabels, 1, 255, MIX_STRING)){
+            this.stageTwoScaleIntLabels = stageTwoScaleIntLabels;
+        }
     }
 
     public String[] getStageTwoFirstIntLabels() {
         return stageTwoFirstIntLabels;
     }
 
-    public void setStageTwoFirstIntLabels(String[] stageTwoFirstIntLabels) {
-        this.stageTwoFirstIntLabels = stageTwoFirstIntLabels;
+    public void setStageTwoFirstIntLabels(String[] stageTwoFirstIntLabels) throws Exception {
+        if(loopSetValidator("labels of stage two regressors to interact with the interaction of the location random effect", "30(mixreg)/31(mixor)", stageTwoFirstIntLabels, 1, 255, MIX_STRING)){
+            this.stageTwoFirstIntLabels = stageTwoFirstIntLabels;
+        }
     }
 
 }
