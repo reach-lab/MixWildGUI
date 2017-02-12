@@ -891,72 +891,90 @@ public class DefinitionHelper {
         return labelModelLocRanRegressors;
     }
 
-    public void setLabelModelLocRanRegressors(String[] labelModelLocRanRegressors) {
-        this.labelModelLocRanRegressors = labelModelLocRanRegressors;
+    public void setLabelModelLocRanRegressors(String[] labelModelLocRanRegressors) throws Exception {
+        if(loopSetValidator("model random regressor labels", "15", labelModelLocRanRegressors, 1, 255, MIX_STRING)){
+            this.labelModelLocRanRegressors = labelModelLocRanRegressors;
+        }
     }
 
     public String[] getLabelModelScaleRegressors() {
         return labelModelScaleRegressors;
     }
 
-    public void setLabelModelScaleRegressors(String[] labelModelScaleRegressors) {
-        this.labelModelScaleRegressors = labelModelScaleRegressors;
+    public void setLabelModelScaleRegressors(String[] labelModelScaleRegressors) throws Exception {
+        if(loopSetValidator("model scale regressor labels", "16", labelModelScaleRegressors, 1, 255, MIX_STRING)){
+            this.labelModelScaleRegressors = labelModelScaleRegressors;
+        }
     }
 
     public String[] getLabelModelBSRegressors() {
         return labelModelBSRegressors;
     }
 
-    public void setLabelModelBSRegressors(String[] labelModelBSRegressors) {
-        this.labelModelBSRegressors = labelModelBSRegressors;
+    public void setLabelModelBSRegressors(String[] labelModelBSRegressors) throws Exception {
+        if(loopSetValidator("model BS variance regressor labels", "15", labelModelBSRegressors, 1, 255, MIX_STRING)){
+            this.labelModelBSRegressors = labelModelBSRegressors;
+        }
     }
 
     public String[] getLabelModelWSRegressors() {
         return labelModelWSRegressors;
     }
 
-    public void setLabelModelWSRegressors(String[] labelModelWSRegressors) {
-        this.labelModelWSRegressors = labelModelWSRegressors;
+    public void setLabelModelWSRegressors(String[] labelModelWSRegressors) throws Exception {
+        if(loopSetValidator("model WS variance regressor labels", "16", labelModelWSRegressors, 1, 255, MIX_STRING)){
+            this.labelModelWSRegressors = labelModelWSRegressors;
+        }
     }
 
     public String[] getLabelDecompMeanRegressors() {
         return labelDecompMeanRegressors;
     }
 
-    public void setLabelDecompMeanRegressors(String[] labelDecompMeanRegressors) {
-        this.labelDecompMeanRegressors = labelDecompMeanRegressors;
+    public void setLabelDecompMeanRegressors(String[] labelDecompMeanRegressors) throws Exception {
+        if(loopSetValidator("model mean regressor for BS/WS decomposition labels", "17", labelDecompMeanRegressors, 1, 255, MIX_STRING)){
+            this.labelDecompMeanRegressors = labelDecompMeanRegressors;
+        }
     }
 
     public String[] getLabelDecompLocRanRegressors() {
         return labelDecompLocRanRegressors;
     }
 
-    public void setLabelDecompLocRanRegressors(String[] labelDecompLocRanRegressors) {
-        this.labelDecompLocRanRegressors = labelDecompLocRanRegressors;
+    public void setLabelDecompLocRanRegressors(String[] labelDecompLocRanRegressors) throws Exception {
+        if(loopSetValidator("model random regressor for BS/WS decomposition labels", "18", labelDecompLocRanRegressors, 1, 255, MIX_STRING)){
+            this.labelDecompLocRanRegressors = labelDecompLocRanRegressors;
+        }
     }
 
     public String[] getLabelDecompScaleRegressors() {
         return labelDecompScaleRegressors;
     }
 
-    public void setLabelDecompScaleRegressors(String[] labelDecompScaleRegressors) {
-        this.labelDecompScaleRegressors = labelDecompScaleRegressors;
+    public void setLabelDecompScaleRegressors(String[] labelDecompScaleRegressors) throws Exception {
+        if(loopSetValidator("model scale regressor for BS/WS decomposition labels", "19", labelDecompScaleRegressors, 1, 255, MIX_STRING)){
+            this.labelDecompScaleRegressors = labelDecompScaleRegressors;
+        }
     }
 
     public String[] getLabelDecompBSRegressors() {
         return labelDecompBSRegressors;
     }
 
-    public void setLabelDecompBSRegressors(String[] labelDecompBSRegressors) {
-        this.labelDecompBSRegressors = labelDecompBSRegressors;
+    public void setLabelDecompBSRegressors(String[] labelDecompBSRegressors) throws Exception {
+        if(loopSetValidator("model BS variance regressor for BS/WS decomposition labels", "18", labelDecompBSRegressors, 1, 255, MIX_STRING)){
+            this.labelDecompBSRegressors = labelDecompBSRegressors;
+        }
     }
 
     public String[] getLabelDecompWSRegressors() {
         return labelDecompWSRegressors;
     }
 
-    public void setLabelDecompWSRegressors(String[] labelDecompWSRegressors) {
-        this.labelDecompWSRegressors = labelDecompWSRegressors;
+    public void setLabelDecompWSRegressors(String[] labelDecompWSRegressors) throws Exception {
+        if(loopSetValidator("model WS variance regressor for BS/WS decomposition labels", "19", labelDecompWSRegressors, 1, 255, MIX_STRING)){
+            this.labelDecompWSRegressors = labelDecompWSRegressors;
+        }
     }
 
     public String getStageTwoFixedCount() {
