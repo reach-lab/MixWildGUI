@@ -393,10 +393,6 @@ public boolean isDisaggVarianceChecked(){
         checked = false;
     
     }
-    
     return checked;
-
 }
-
-
 }
