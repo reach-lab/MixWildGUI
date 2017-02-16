@@ -1015,9 +1015,25 @@ public class mixregGUI extends javax.swing.JFrame {
            levelOneGrid.add(new JCheckBox());
        
        }
-       
-       
+
+   }
    
+   public void updateLevelTwoRegGrid(DefaultListModel<String> defaultListModel){
+   
+       int regSize = defaultListModel.getSize();
+       
+       levelTwoGrid.setLayout(new GridLayout(regSize, 4, 5, 20));
+       
+       levelTwoGrid.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+       
+       for (int j=0; j<regSize; j++){
+           levelTwoGrid.add(new JLabel(defaultListModel.getElementAt(j)));
+           levelTwoGrid.add(new JCheckBox());
+           levelTwoGrid.add(new JCheckBox());
+           levelTwoGrid.add(new JCheckBox());
+       
+       }
+
    }
    
   

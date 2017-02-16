@@ -230,6 +230,7 @@ public class stageOneRegs extends javax.swing.JFrame {
         //update regressors on stage one regressors window
        // mixregStageOne.updateRegressors(getSelectedLevelOneVars(), getSelectedLevelTwoVars());
        mixregStageOne.updateLevelOneRegGrid(levelOneList);
+       mixregStageOne.updateLevelTwoRegGrid(levelTwoList);
         
         this.dispose();
     }//GEN-LAST:event_stageOneSubmitButtonActionPerformed
