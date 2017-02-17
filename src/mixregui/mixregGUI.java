@@ -264,7 +264,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 runStageOneTwoButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(runStageOneTwoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(877, 527, -1, -1));
+        jPanel1.add(runStageOneTwoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 550, -1, -1));
 
         resetButton.setText("Reset");
         resetButton.addActionListener(new java.awt.event.ActionListener() {
@@ -272,7 +272,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 resetButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1051, 527, 135, -1));
+        jPanel1.add(resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 550, 135, -1));
 
         goBackMxrButton.setText("Go Back");
         goBackMxrButton.addActionListener(new java.awt.event.ActionListener() {
@@ -280,7 +280,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 goBackMxrButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(goBackMxrButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(692, 527, 147, -1));
+        jPanel1.add(goBackMxrButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 550, 147, -1));
 
         associationPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -358,15 +358,15 @@ public class mixregGUI extends javax.swing.JFrame {
 
         jLabel12.setText("Tau");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 140, -1, -1));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 510, 830, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 530, 830, -1));
 
         levelOneGrid.setBorder(javax.swing.BorderFactory.createTitledBorder("Level-1 Regressors"));
-        levelOneGrid.setLayout(new java.awt.GridLayout());
-        jPanel1.add(levelOneGrid, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, 370, 340));
+        levelOneGrid.setLayout(new java.awt.GridLayout(1, 0));
+        jPanel1.add(levelOneGrid, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, 370, 360));
 
         levelTwoGrid.setBorder(javax.swing.BorderFactory.createTitledBorder("Level-2 Regressors"));
-        levelTwoGrid.setLayout(new java.awt.GridLayout());
-        jPanel1.add(levelTwoGrid, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 160, 400, 340));
+        levelTwoGrid.setLayout(new java.awt.GridLayout(1, 0));
+        jPanel1.add(levelTwoGrid, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 160, 400, 360));
 
         stageOneTabs.addTab("Configuration", jPanel1);
 
@@ -1022,7 +1022,7 @@ public class mixregGUI extends javax.swing.JFrame {
    
        int regSize = defaultListModel.getSize();
        
-       levelTwoGrid.setLayout(new GridLayout(regSize, 4, 5, 20));
+       levelTwoGrid.setLayout(new GridLayout(regSize, 4, 25, 5));
        
        levelTwoGrid.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
        
