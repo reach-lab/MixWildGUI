@@ -11,6 +11,10 @@ import java.net.URL;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import def_lib.DefinitionHelper;
+import java.awt.ComponentOrientation;
+import java.awt.GridLayout;
+import javax.swing.JCheckBox;
+import javax.swing.JLabel;
 
 /**
  *d
@@ -57,16 +61,30 @@ public class mixregGUI extends javax.swing.JFrame {
         System.out.println(String.valueOf(i));
         
         if (i >1){
+        associationPanel.setVisible(false);
         NoAssociationRadio.setVisible(false);
         LinearAssociationRadio.setVisible(false);
         QuadraticAssociationRadio.setVisible(false);
         associationLabel.setVisible(false);
-        levelOneAlpha.setVisible(false);
-        levelTwoAlpha.setVisible(false);
-        alphaLabelOne.setText("<html>Test whether the <br>association between regressor & <br>dependent variable <br>(i.e., slope) varies?</html>");
-        alphaLabelTwo.setText("<html>Test whether the <br>association between regressor & <br>dependent variable <br>(i.e., slope) varies?</html>");
+        //levelOneAlpha.setVisible(false);
+       // levelTwoAlpha.setVisible(false);
+       // alphaLabelOne.setText("<html>Test whether the <br>association between regressor & <br>dependent variable <br>(i.e., slope) varies?</html>");
+        //alphaLabelTwo.setText("<html>Test whether the <br>association between regressor & <br>dependent variable <br>(i.e., slope) varies?</html>");
         }
-    
+        
+        /*varianceGrid.setLayout(new GridLayout(2, 2, 5, 5));
+        varianceGrid.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+        JLabel label1 = new JLabel("Q1");
+        JLabel label2 = new JLabel("Q2");
+        JLabel label3 = new JLabel("Q3");
+        JLabel label4 = new JLabel("Q4");
+        
+        varianceGrid.add(label1);
+        varianceGrid.add(label2);
+        varianceGrid.add(label3);
+        varianceGrid.add(label4);*/
+       
+        
     }
     
    /* if (newModel.getRLE() > 1){
@@ -101,36 +119,26 @@ public class mixregGUI extends javax.swing.JFrame {
         addStageOneButton = new javax.swing.JButton();
         addStageTwoButton = new javax.swing.JButton();
         advancedOptionsButton = new javax.swing.JButton();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        runStageOneTwoButton = new javax.swing.JButton();
+        resetButton = new javax.swing.JButton();
+        goBackMxrButton = new javax.swing.JButton();
+        associationPanel = new javax.swing.JPanel();
         associationLabel = new javax.swing.JLabel();
         NoAssociationRadio = new javax.swing.JRadioButton();
         LinearAssociationRadio = new javax.swing.JRadioButton();
         QuadraticAssociationRadio = new javax.swing.JRadioButton();
-        levelOneSelectedRegs = new javax.swing.JComboBox<>();
-        levelTwoSelectedRegs = new javax.swing.JComboBox<>();
-        canvas1 = new java.awt.Canvas();
-        jLabel9 = new javax.swing.JLabel();
-        alphaLabelOne = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel13 = new javax.swing.JLabel();
-        alphaLabelTwo = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        levelOneBeta = new javax.swing.JCheckBox();
-        levelOneAlpha = new javax.swing.JCheckBox();
-        levelOneTau = new javax.swing.JCheckBox();
-        levelTwoBeta = new javax.swing.JCheckBox();
-        levelTwoTau = new javax.swing.JCheckBox();
-        levelTwoAlpha = new javax.swing.JCheckBox();
-        jSeparator2 = new javax.swing.JSeparator();
-        jSeparator3 = new javax.swing.JSeparator();
-        runStageOneTwoButton = new javax.swing.JButton();
-        resetButton = new javax.swing.JButton();
-        goBackMxrButton = new javax.swing.JButton();
+        levelOneGrid = new javax.swing.JPanel();
+        levelTwoGrid = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
@@ -198,9 +206,13 @@ public class mixregGUI extends javax.swing.JFrame {
 
         parentPanel.add(imageView, "card3");
 
+        stageOneTabs.setFocusTraversalKeysEnabled(false);
         stageOneTabs.setPreferredSize(new java.awt.Dimension(1280, 800));
 
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel1.setText("ID Variable:");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 32, -1, -1));
 
         IDvariableCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         IDvariableCombo.addActionListener(new java.awt.event.ActionListener() {
@@ -208,14 +220,19 @@ public class mixregGUI extends javax.swing.JFrame {
                 IDvariableComboActionPerformed(evt);
             }
         });
+        jPanel1.add(IDvariableCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(131, 28, 203, -1));
 
         jLabel2.setText("Stage 1 DV:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 71, -1, -1));
 
         StageOneVariableCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(StageOneVariableCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(131, 67, 203, -1));
 
         jLabel3.setText("Stage 2 DV:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 116, -1, -1));
 
         StageTwoVariableCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(StageTwoVariableCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(131, 112, 203, -1));
 
         addStageOneButton.setText("Add Stage 1 Regressors ...");
         addStageOneButton.addActionListener(new java.awt.event.ActionListener() {
@@ -223,6 +240,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 addStageOneButtonActionPerformed(evt);
             }
         });
+        jPanel1.add(addStageOneButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 165, 225, 35));
 
         addStageTwoButton.setText("Add Stage 2 Regressors ...");
         addStageTwoButton.addActionListener(new java.awt.event.ActionListener() {
@@ -230,6 +248,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 addStageTwoButtonActionPerformed(evt);
             }
         });
+        jPanel1.add(addStageTwoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 206, 225, 35));
 
         advancedOptionsButton.setText("Advanced Options ...");
         advancedOptionsButton.addActionListener(new java.awt.event.ActionListener() {
@@ -237,14 +256,35 @@ public class mixregGUI extends javax.swing.JFrame {
                 advancedOptionsButtonActionPerformed(evt);
             }
         });
+        jPanel1.add(advancedOptionsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 247, 225, 37));
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        runStageOneTwoButton.setText("Run Stage 1 + 2");
+        runStageOneTwoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                runStageOneTwoButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(runStageOneTwoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 550, -1, -1));
 
-        jLabel4.setText("Mean and Within Subject Variance Model");
+        resetButton.setText("Reset");
+        resetButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 550, 135, -1));
 
-        jLabel5.setText("Selected Level-1 Regressors");
+        goBackMxrButton.setText("Go Back");
+        goBackMxrButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                goBackMxrButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(goBackMxrButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 550, 147, -1));
 
-        associationLabel.setText("Specify the relationship between the random location and within subject variance tested below (i.e. relation between variance and slope) ");
+        associationPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        associationLabel.setText("<html>Specify the relationship between the <br>random location and within subject variance tested below <br>(i.e. relation between variance and slope) </html>");
 
         buttonGroup1.add(NoAssociationRadio);
         NoAssociationRadio.setText("No Association");
@@ -260,293 +300,73 @@ public class mixregGUI extends javax.swing.JFrame {
         buttonGroup1.add(QuadraticAssociationRadio);
         QuadraticAssociationRadio.setText("Quadratic Association");
 
-        levelOneSelectedRegs.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select ..." }));
-        levelOneSelectedRegs.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                levelOneSelectedRegsActionPerformed(evt);
-            }
-        });
-
-        levelTwoSelectedRegs.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select ..." }));
-
-        jLabel9.setText("Beta Mean Submodel ");
-
-        alphaLabelOne.setText("Alpha BS Variance Submodel");
-
-        jLabel12.setText("Tau WS Variance Submodel");
-
-        jLabel6.setText("Selected Level-2 Regressors");
-
-        jLabel13.setText("Beta Mean Submodel ");
-
-        alphaLabelTwo.setText("Alpha BS Variance Submodel");
-
-        jLabel15.setText("Tau WS Variance Submodel");
-
-        levelOneBeta.setText("Within Subject");
-        levelOneBeta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                levelOneBetaActionPerformed(evt);
-            }
-        });
-
-        levelOneAlpha.setText("Within Subject");
-        levelOneAlpha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                levelOneAlphaActionPerformed(evt);
-            }
-        });
-
-        levelOneTau.setText("Within Subject");
-        levelOneTau.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                levelOneTauActionPerformed(evt);
-            }
-        });
-
-        levelTwoBeta.setText("Between Subject");
-
-        levelTwoTau.setText("Between Subject");
-
-        levelTwoAlpha.setText("Between Subject");
-        levelTwoAlpha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                levelTwoAlphaActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel4)
-                        .addGap(300, 300, 300))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 791, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(18, Short.MAX_VALUE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(levelOneSelectedRegs, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jLabel5)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addGap(35, 35, 35)
-                                        .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                                                        .addComponent(jLabel9)
-                                                        .addGap(40, 40, 40))
-                                                    .addGroup(jPanel5Layout.createSequentialGroup()
-                                                        .addComponent(levelOneBeta)
-                                                        .addGap(51, 51, 51)))
-                                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(alphaLabelOne)
-                                                    .addComponent(levelOneAlpha))
-                                                .addGap(33, 33, 33)
-                                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel12)
-                                                    .addComponent(levelOneTau)))
-                                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(0, 0, Short.MAX_VALUE)))
-                                .addComponent(jLabel11))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel13)
-                                    .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addGap(1, 1, 1)
-                                        .addComponent(levelTwoBeta)))
-                                .addGap(30, 30, 30)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(levelTwoAlpha)
-                                    .addComponent(alphaLabelTwo))
-                                .addGap(39, 39, 39)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel15)
-                                    .addComponent(levelTwoTau))
-                                .addContainerGap())))))
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(NoAssociationRadio)
-                        .addGap(26, 26, 26)
-                        .addComponent(LinearAssociationRadio)
-                        .addGap(28, 28, 28)
-                        .addComponent(QuadraticAssociationRadio))
-                    .addComponent(levelTwoSelectedRegs, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(associationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 611, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 798, javax.swing.GroupLayout.PREFERRED_SIZE)
+        javax.swing.GroupLayout associationPanelLayout = new javax.swing.GroupLayout(associationPanel);
+        associationPanel.setLayout(associationPanelLayout);
+        associationPanelLayout.setHorizontalGroup(
+            associationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(associationPanelLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(associationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(associationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(associationPanelLayout.createSequentialGroup()
+                        .addGroup(associationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(QuadraticAssociationRadio)
+                            .addComponent(LinearAssociationRadio)
+                            .addComponent(NoAssociationRadio))
+                        .addGap(0, 88, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jLabel4)
-                .addGap(3, 3, 3)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel9)
-                        .addComponent(alphaLabelOne)
-                        .addComponent(jLabel12))
-                    .addComponent(jLabel11))
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(levelOneTau)
-                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(levelOneBeta)
-                                .addComponent(levelOneAlpha))))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(levelOneSelectedRegs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(20, 20, 20)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(alphaLabelTwo)
-                    .addComponent(jLabel15))
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                        .addComponent(jLabel6)
-                        .addGap(3, 3, 3)
-                        .addComponent(levelTwoSelectedRegs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(levelTwoBeta)
-                            .addComponent(levelTwoAlpha)
-                            .addComponent(levelTwoTau))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(associationLabel)
+        associationPanelLayout.setVerticalGroup(
+            associationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(associationPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(associationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(NoAssociationRadio)
-                    .addComponent(LinearAssociationRadio)
-                    .addComponent(QuadraticAssociationRadio))
-                .addGap(55, 55, 55))
+                .addComponent(NoAssociationRadio)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LinearAssociationRadio)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(QuadraticAssociationRadio)
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
-        runStageOneTwoButton.setText("Run Stage 1 + 2");
-        runStageOneTwoButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                runStageOneTwoButtonActionPerformed(evt);
-            }
-        });
+        jPanel1.add(associationPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 296, -1, -1));
 
-        resetButton.setText("Reset");
-        resetButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resetButtonActionPerformed(evt);
-            }
-        });
+        jLabel4.setText("Between and within subject variance models");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 40, -1, -1));
 
-        goBackMxrButton.setText("Go Back");
-        goBackMxrButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                goBackMxrButtonActionPerformed(evt);
-            }
-        });
+        jLabel5.setText("Level-1 regressors (Within Subjects)");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 100, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(goBackMxrButton, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)
-                        .addComponent(runStageOneTwoButton)
-                        .addGap(30, 30, 30)
-                        .addComponent(resetButton, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(33, 33, 33)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3))
-                                .addGap(26, 26, 26)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(IDvariableCombo, 0, 203, Short.MAX_VALUE)
-                                    .addComponent(StageOneVariableCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(StageTwoVariableCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(65, 65, 65)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                                    .addComponent(addStageOneButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(addStageTwoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(advancedOptionsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(61, 61, 61)))
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(73, 73, 73))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(IDvariableCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(StageOneVariableCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(StageTwoVariableCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(50, 50, 50)
-                        .addComponent(addStageOneButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(addStageTwoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(advancedOptionsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(goBackMxrButton)
-                    .addComponent(resetButton)
-                    .addComponent(runStageOneTwoButton))
-                .addContainerGap(193, Short.MAX_VALUE))
-        );
+        jLabel6.setText("Level-2 regressors (Between Subjects)");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 100, -1, -1));
+
+        jLabel7.setText("Beta");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 140, -1, -1));
+
+        jLabel8.setText("Alpha");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 140, -1, -1));
+
+        jLabel9.setText("Tau");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 140, -1, -1));
+
+        jLabel10.setText("Beta");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 140, -1, -1));
+
+        jLabel11.setText("Alpha");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 140, -1, -1));
+
+        jLabel12.setText("Tau");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 140, -1, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 530, 830, -1));
+
+        levelOneGrid.setBorder(javax.swing.BorderFactory.createTitledBorder("Level-1 Regressors"));
+        levelOneGrid.setLayout(new java.awt.GridLayout(1, 0));
+        jPanel1.add(levelOneGrid, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, 370, 360));
+
+        levelTwoGrid.setBorder(javax.swing.BorderFactory.createTitledBorder("Level-2 Regressors"));
+        levelTwoGrid.setLayout(new java.awt.GridLayout(1, 0));
+        jPanel1.add(levelTwoGrid, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 160, 400, 360));
 
         stageOneTabs.addTab("Configuration", jPanel1);
 
@@ -576,7 +396,7 @@ public class mixregGUI extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(557, 557, 557)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(559, Short.MAX_VALUE))
+                .addContainerGap(577, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -632,7 +452,7 @@ public class mixregGUI extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(181, 181, 181)
                         .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(237, Short.MAX_VALUE))
+                .addContainerGap(255, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -854,35 +674,15 @@ public class mixregGUI extends javax.swing.JFrame {
         stage_1_regs.updateAllVariables();
     }//GEN-LAST:event_addStageOneButtonActionPerformed
 
-    private void levelOneBetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_levelOneBetaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_levelOneBetaActionPerformed
-
-    private void levelOneSelectedRegsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_levelOneSelectedRegsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_levelOneSelectedRegsActionPerformed
-
-    private void NoAssociationRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoAssociationRadioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NoAssociationRadioActionPerformed
-
-    private void levelTwoAlphaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_levelTwoAlphaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_levelTwoAlphaActionPerformed
-
-    private void levelOneTauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_levelOneTauActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_levelOneTauActionPerformed
-
-    private void levelOneAlphaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_levelOneAlphaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_levelOneAlphaActionPerformed
-
     private void IDvariableComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDvariableComboActionPerformed
         // TODO add your handling code here:
         
         
     }//GEN-LAST:event_IDvariableComboActionPerformed
+
+    private void NoAssociationRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoAssociationRadioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NoAssociationRadioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -931,11 +731,9 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JButton addStageOneButton;
     private javax.swing.JButton addStageTwoButton;
     private javax.swing.JButton advancedOptionsButton;
-    private javax.swing.JLabel alphaLabelOne;
-    private javax.swing.JLabel alphaLabelTwo;
     private javax.swing.JLabel associationLabel;
+    private javax.swing.JPanel associationPanel;
     private javax.swing.ButtonGroup buttonGroup1;
-    private java.awt.Canvas canvas1;
     private javax.swing.JMenuItem diagramMenu;
     private javax.swing.JMenuItem exitMenu;
     private javax.swing.JMenu fileMenu;
@@ -949,10 +747,9 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton9;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
@@ -962,6 +759,8 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem6;
@@ -974,19 +773,10 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JCheckBox levelOneAlpha;
-    private javax.swing.JCheckBox levelOneBeta;
-    private javax.swing.JComboBox<String> levelOneSelectedRegs;
-    private javax.swing.JCheckBox levelOneTau;
-    private javax.swing.JCheckBox levelTwoAlpha;
-    private javax.swing.JCheckBox levelTwoBeta;
-    private javax.swing.JComboBox<String> levelTwoSelectedRegs;
-    private javax.swing.JCheckBox levelTwoTau;
+    private javax.swing.JPanel levelOneGrid;
+    private javax.swing.JPanel levelTwoGrid;
     private javax.swing.JMenuItem modifyStageOneMenu;
     private javax.swing.JMenuItem modifyStageTwoMenu;
     private javax.swing.JMenuItem newModelMenu;
@@ -1044,10 +834,10 @@ public class mixregGUI extends javax.swing.JFrame {
    
    public void updateRegressors(DefaultComboBoxModel<String> levelOne, DefaultComboBoxModel<String> levelTwo){
    
-       levelOneSelectedRegs.setModel(levelOne);
+       //levelOneSelectedRegs.setModel(levelOne);
       // levelOneSelectedRegs.setSelectedIndex(0);
        
-       levelTwoSelectedRegs.setModel(levelTwo);
+      // levelTwoSelectedRegs.setModel(levelTwo);
       // levelTwoSelectedRegs.setSelectedIndex(0);
    
    }
@@ -1084,29 +874,31 @@ public class mixregGUI extends javax.swing.JFrame {
    }
    
     //get Level One Regressor variable selected by the user
-   public String getLevelOneRegressor(){
+  /* public String getLevelOneRegressor(){
        String levelOne;
        
-       levelOne = levelOneSelectedRegs.getItemAt(levelOneSelectedRegs.getSelectedIndex());
+//       levelOne = levelOneSelectedRegs.getItemAt(levelOneSelectedRegs.getSelectedIndex());
        
-       return levelOne;
+      // return levelOne;
    
-   }
+   }*/
    
    
      //get Level Two Regressor variable selected by the user
+   /*
    public String getLeveltwoRegressor(){
        String levelOne;
        
-       levelOne = levelTwoSelectedRegs.getItemAt(levelTwoSelectedRegs.getSelectedIndex());
+      levelOne = levelTwoSelectedRegs.getItemAt(levelTwoSelectedRegs.getSelectedIndex());
        
        return levelOne;
    
    }
+*/
    
    
    //check if level one beta is selected for a selected regressor
-   public boolean isLevelOneBetaChecked(){
+   /*public boolean isLevelOneBetaChecked(){
        boolean checked = false;
        
        if (levelOneBeta.isSelected() == true){
@@ -1118,10 +910,10 @@ public class mixregGUI extends javax.swing.JFrame {
        }
        
        return checked;
-   }
+   }*/
    
    
-   public boolean isLevelTwoBetaChecked(){
+  /* public boolean isLevelTwoBetaChecked(){
        boolean checked = false;
        
        if (levelTwoBeta.isSelected() == true){
@@ -1133,10 +925,10 @@ public class mixregGUI extends javax.swing.JFrame {
        }
        
        return checked;
-   }
+   }*/
    
    
-   public boolean isLevelOneAlphaChecked(){
+  /* public boolean isLevelOneAlphaChecked(){
        boolean checked = false;
        
        if (levelOneAlpha.isSelected() == true){
@@ -1148,9 +940,9 @@ public class mixregGUI extends javax.swing.JFrame {
        }
        
        return checked;
-   }
+   }*/
    
-   public boolean isLevelTwoAlphaChecked(){
+  /* public boolean isLevelTwoAlphaChecked(){
        boolean checked = false;
        
        if (levelTwoAlpha.isSelected() == true){
@@ -1162,9 +954,9 @@ public class mixregGUI extends javax.swing.JFrame {
        }
        
        return checked;
-   }
+   }*/
    
-   public boolean isLevelOneTauChecked(){
+  /* public boolean isLevelOneTauChecked(){
        boolean checked = false;
        
        if (levelOneTau.isSelected() == true){
@@ -1190,7 +982,7 @@ public class mixregGUI extends javax.swing.JFrame {
        }
        
        return checked;
-   }
+   }*/
    
    public int getAssociationType(){
        
@@ -1205,6 +997,43 @@ public class mixregGUI extends javax.swing.JFrame {
        }
      
        return radioID;
+   }
+   
+   
+   public void updateLevelOneRegGrid(DefaultListModel<String> defaultListModel){
+   
+       int regSize = defaultListModel.getSize();
+       
+       levelOneGrid.setLayout(new GridLayout(regSize, 4, 5, 20));
+       
+       levelOneGrid.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+       
+       for (int j=0; j<regSize; j++){
+           levelOneGrid.add(new JLabel(defaultListModel.getElementAt(j)));
+           levelOneGrid.add(new JCheckBox());
+           levelOneGrid.add(new JCheckBox());
+           levelOneGrid.add(new JCheckBox());
+       
+       }
+
+   }
+   
+   public void updateLevelTwoRegGrid(DefaultListModel<String> defaultListModel){
+   
+       int regSize = defaultListModel.getSize();
+       
+       levelTwoGrid.setLayout(new GridLayout(regSize, 4, 25, 5));
+       
+       levelTwoGrid.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+       
+       for (int j=0; j<regSize; j++){
+           levelTwoGrid.add(new JLabel(defaultListModel.getElementAt(j)));
+           levelTwoGrid.add(new JCheckBox());
+           levelTwoGrid.add(new JCheckBox());
+           levelTwoGrid.add(new JCheckBox());
+       
+       }
+
    }
    
   

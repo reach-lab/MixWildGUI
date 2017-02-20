@@ -228,7 +228,9 @@ public class stageOneRegs extends javax.swing.JFrame {
         mixregStageOne = newModel2.getMixReg();
         
         //update regressors on stage one regressors window
-        mixregStageOne.updateRegressors(getSelectedLevelOneVars(), getSelectedLevelTwoVars());
+       // mixregStageOne.updateRegressors(getSelectedLevelOneVars(), getSelectedLevelTwoVars());
+       mixregStageOne.updateLevelOneRegGrid(levelOneList);
+       mixregStageOne.updateLevelTwoRegGrid(levelTwoList);
         
         this.dispose();
     }//GEN-LAST:event_stageOneSubmitButtonActionPerformed
@@ -393,10 +395,6 @@ public boolean isDisaggVarianceChecked(){
         checked = false;
     
     }
-    
     return checked;
-
 }
-
-
 }
