@@ -202,10 +202,19 @@ public class DefinitionHelper {
         return field==labels;
     }
     
-    public List<String> buildStageOneDefinitonFile(){
+    public List<String> buildStageOneDefinitonList(){
         List<String> newDefinitionFile = new ArrayList();
         newDefinitionFile.add(getModelTitle());
         newDefinitionFile.add(getModelSubtitle());
+        newDefinitionFile.add(getDataFilename());
+        newDefinitionFile.add(getOutputPrefix());
+        newDefinitionFile.add(getDataFilename());
+        
+        String[] advancedOptions = new String[]{
+        
+        };
+        
+        
         
         return newDefinitionFile;
     }
@@ -311,6 +320,126 @@ public class DefinitionHelper {
             default:
                 //TODO: Log this error     
         }
+    }
+    
+    /**
+     * TODO: Not yet finished, returns null
+     * @param stage
+     * @return 
+     */
+    private String[] advancedVariableBuild(int stage) {
+        List<String> advancedVars = new ArrayList();
+        if(stage==1){
+            switch(sequenceDecision()){
+                case MIXREGLS_MIXREG_KEY:
+                    advancedVars.add(getDataVariableCount());
+                    advancedVars.add(getModelMeanCount());
+                    advancedVars.add(getModelBetweenCount());
+                    advancedVars.add(getModelWithinCount());
+                    advancedVars.add(getModelFixedInt()); 
+                    advancedVars.add(getModelBetweenInt());
+                    advancedVars.add(getModelWithinInt());
+                    advancedVars.add(getDecompMeanCount());
+                    advancedVars.add(getDecompBSCount());
+                    advancedVars.add(getDecompWSCount());
+                    advancedVars.add(getAdvancedConvergence());
+                    advancedVars.add(getAdvancedQuadPoints());
+                    advancedVars.add(getAdvancedAdaptiveQuad());
+                    advancedVars.add(getAdvancedMaxIteration());
+                    advancedVars.add(getAdvancedMissingValue());
+                    advancedVars.add(getAdvancedCenterScale());
+                    advancedVars.add(getAdvancedEffectMeanWS());
+                    advancedVars.add(getAdvancedRidge());
+                    break;
+                case MIXREGLS_MIXOR_KEY:
+                    advancedVars.add(getDataVariableCount());
+                    advancedVars.add(getModelMeanCount());
+                    advancedVars.add(getModelBetweenCount());
+                    advancedVars.add(getModelWithinCount());
+                    advancedVars.add(getModelFixedInt()); 
+                    advancedVars.add(getModelBetweenInt());
+                    advancedVars.add(getModelWithinInt());
+                    advancedVars.add(getDecompMeanCount());
+                    advancedVars.add(getDecompBSCount());
+                    advancedVars.add(getDecompWSCount());
+                    advancedVars.add(getAdvancedConvergence());
+                    advancedVars.add(getAdvancedQuadPoints());
+                    advancedVars.add(getAdvancedAdaptiveQuad());
+                    advancedVars.add(getAdvancedMaxIteration());
+                    advancedVars.add(getAdvancedMissingValue());
+                    advancedVars.add(getAdvancedCenterScale());
+                    advancedVars.add(getAdvancedEffectMeanWS());
+                    advancedVars.add(getAdvancedRidge());
+                    break;
+                case MIXREGMLS_MIXREG_KEY:
+                    advancedVars.add(getDataVariableCount());
+                    advancedVars.add(getModelMeanCount());
+                    advancedVars.add(getModelLocRanCount());
+                    advancedVars.add(getModelScaleCount());
+                    advancedVars.add(getModelFixedInt()); 
+                    advancedVars.add(getModelRandomInt());
+                    advancedVars.add(getModelScaleInt());
+                    advancedVars.add(getDecompMeanCount());
+                    advancedVars.add(getDecompLocRanCount());
+                    advancedVars.add(getDecompScaleCount());
+                    advancedVars.add(getAdvancedRidge());
+                    break;
+                case MIXREGMLS_MIXOR_KEY:
+                    advancedVars.add(getDataVariableCount());
+                    advancedVars.add(getModelMeanCount());
+                    advancedVars.add(getModelLocRanCount());
+                    advancedVars.add(getModelScaleCount());
+                    advancedVars.add(getModelFixedInt()); 
+                    advancedVars.add(getModelRandomInt());
+                    advancedVars.add(getModelScaleInt());
+                    advancedVars.add(getDecompMeanCount());
+                    advancedVars.add(getDecompLocRanCount());
+                    advancedVars.add(getDecompScaleCount());
+                    advancedVars.add(getAdvancedConvergence());
+                    advancedVars.add(getAdvancedQuadPoints());
+                    advancedVars.add(getAdvancedAdaptiveQuad());
+                    advancedVars.add(getAdvancedMaxIteration());
+                    advancedVars.add(getAdvancedMissingValue());
+                    advancedVars.add(getAdvancedCenterScale());
+                    advancedVars.add(getAdvancedRidge());
+                    break;
+            default:
+                //TODO: Log this error 
+            }
+        }
+        else{
+            switch(sequenceDecision()){
+                case MIXREGLS_MIXREG_KEY: 
+                    advancedVars.add(getStageTwoFixedCount());
+                    advancedVars.add(getStageTwoLocRanInteractions());
+                    advancedVars.add(getStageTwoScaleInteractions());
+                    advancedVars.add(getStageTwoIntOfInteraction());
+                    break;
+                case MIXREGLS_MIXOR_KEY:
+                    advancedVars.add(getStageTwoFixedCount());
+                    advancedVars.add(getStageTwoLocRanInteractions());
+                    advancedVars.add(getStageTwoScaleInteractions());
+                    advancedVars.add(getStageTwoIntOfInteraction());
+                    advancedVars.add(getStageTwoOutcomeCatCount());                  
+                    break;
+                case MIXREGMLS_MIXREG_KEY:
+                    advancedVars.add(getStageTwoFixedCount());
+                    advancedVars.add(getStageTwoLocRanInteractions());
+                    advancedVars.add(getStageTwoScaleInteractions());
+                    advancedVars.add(getStageTwoIntOfInteraction());
+                    break;
+                case MIXREGMLS_MIXOR_KEY:
+                    advancedVars.add(getStageTwoFixedCount());
+                    advancedVars.add(getStageTwoLocRanInteractions());
+                    advancedVars.add(getStageTwoScaleInteractions());
+                    advancedVars.add(getStageTwoIntOfInteraction());
+                    advancedVars.add(getStageTwoOutcomeCatCount());               
+                    break;
+            default:
+                //TODO: Log this error 
+            }
+        }
+        return null;
     }
     
     private void advancedVariableAssignment(int stage, String[] advancedVars) throws Exception {
