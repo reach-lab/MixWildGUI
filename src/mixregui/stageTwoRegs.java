@@ -17,6 +17,8 @@ public class stageTwoRegs extends javax.swing.JFrame {
     //setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     
    stageOneRegs stageOne;
+   NewModel newModel2;
+   mixregGUI mixregGUIStageTwo;
     
    DefaultListModel<String> stageTwoListModel;
    DefaultListModel<String> stageTwoLevelTwo;
@@ -29,6 +31,8 @@ public class stageTwoRegs extends javax.swing.JFrame {
         //create list models
        stageTwoLevelTwo = new DefaultListModel();
        stageTwoSubmitButton.setEnabled(false);
+       newModel2 = new NewModel();
+      
        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
@@ -157,6 +161,9 @@ public class stageTwoRegs extends javax.swing.JFrame {
 
     private void stageTwoSubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoSubmitButtonActionPerformed
         //dispose closes the window
+        //mixregGUI.
+        mixregGUIStageTwo = newModel2.getMixReg();
+        mixregGUIStageTwo.updateStageTwoGrid(stageTwoLevelTwo);
         this.dispose();
     }//GEN-LAST:event_stageTwoSubmitButtonActionPerformed
 
