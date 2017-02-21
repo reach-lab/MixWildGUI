@@ -32,12 +32,6 @@ public class DefinitionHelper {
     public static final int S2_ADVANCED_KEY = 4;
     public static final int S2_MODEL_KEY = 5;
 
-    // TODO: Deprecate
-    private List<String> initParameters = new ArrayList<>();
-    private List<String> stageOneVariables = new ArrayList<>();
-    private List<String> stageTwoVariables = new ArrayList<>();
-    private List<String> advancedOptions = new ArrayList<>();
-    
     private int randomLocationEffects = 1;
     private boolean stageTwoBinary = Boolean.FALSE;
     
