@@ -57,6 +57,10 @@ public class NewModel extends javax.swing.JFrame {
        dataFileLabel.setToolTipText("Insert a data file in .csv format");
        fileBrowseButton.setToolTipText("Insert a data file in .csv format");
        
+       filePath.setToolTipText("Insert a data file in .csv format");
+       titleField.setToolTipText("Insert title for the model");
+       subtitleField.setToolTipText("Insert subtitle for the model");
+       randomLocationEffects.setToolTipText("Select the number of random location effects. Minimum value is 1");
        
        
        
