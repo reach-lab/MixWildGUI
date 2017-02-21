@@ -17,9 +17,13 @@ public class stageTwoRegs extends javax.swing.JFrame {
     //setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     
    stageOneRegs stageOne;
+   NewModel newModel2;
+   mixregGUI mixregGUIStageTwo;
     
-   DefaultListModel<String> stageTwoListModel;
-   DefaultListModel<String> stageTwoLevelTwo;
+   static DefaultListModel<String> stageTwoListModel;
+   static DefaultListModel<String> stageTwoLevelTwo;
+   
+   static boolean isStageTwoSubmitClicked = false;
 
     /**
      * Creates new form stageTwoRegs
@@ -27,8 +31,22 @@ public class stageTwoRegs extends javax.swing.JFrame {
     public stageTwoRegs() {
         initComponents();
         //create list models
-       stageTwoLevelTwo = new DefaultListModel();
+        
+        newModel2 = new NewModel();
+        
+        if (!isStageTwoSubmitClicked){
+            stageTwoListModel = new DefaultListModel<String>();
+            stageTwoLevelTwo = new DefaultListModel<String>();
+        
+        } else {
+        StageTwoAllVariables.setModel(stageTwoListModel);
+        StageTwoLevelTwoVariables.setModel(stageTwoLevelTwo);
+        
+        }
+       
        stageTwoSubmitButton.setEnabled(false);
+       
+      
        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
@@ -157,6 +175,11 @@ public class stageTwoRegs extends javax.swing.JFrame {
 
     private void stageTwoSubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoSubmitButtonActionPerformed
         //dispose closes the window
+        //mixregGUI.
+        isStageTwoSubmitClicked = true;
+        
+        mixregGUIStageTwo = newModel2.getMixReg();
+        mixregGUIStageTwo.updateStageTwoGrid(stageTwoLevelTwo);
         this.dispose();
     }//GEN-LAST:event_stageTwoSubmitButtonActionPerformed
 
@@ -173,6 +196,7 @@ public class stageTwoRegs extends javax.swing.JFrame {
     private void stageTwoRemoveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoRemoveButtonActionPerformed
         
         //Remove an item from the model
+        stageTwoSubmitButton.setEnabled(true);
         stageTwoLevelTwo.remove(StageTwoLevelTwoVariables.getSelectedIndex());
     }//GEN-LAST:event_stageTwoRemoveButtonActionPerformed
 

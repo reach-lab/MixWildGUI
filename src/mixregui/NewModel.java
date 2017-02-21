@@ -53,6 +53,17 @@ public class NewModel extends javax.swing.JFrame {
        dichotomousRadio.setEnabled(false);
        randomLocationEffects.setEnabled(false);
        newModelSubmit.setEnabled(false);
+       
+       dataFileLabel.setToolTipText("Insert a data file in .csv format");
+       fileBrowseButton.setToolTipText("Insert a data file in .csv format");
+       
+       filePath.setToolTipText("Insert a data file in .csv format");
+       titleField.setToolTipText("Insert title for the model");
+       subtitleField.setToolTipText("Insert subtitle for the model");
+       randomLocationEffects.setToolTipText("Select the number of random location effects. Minimum value is 1");
+       
+       
+       
     }
 
     /**
@@ -65,7 +76,7 @@ public class NewModel extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        jLabel1 = new javax.swing.JLabel();
+        dataFileLabel = new javax.swing.JLabel();
         filePath = new javax.swing.JTextField();
         fileBrowseButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -83,7 +94,7 @@ public class NewModel extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("New Model for Stage 1 Analysis");
 
-        jLabel1.setText("Data File: ");
+        dataFileLabel.setText("Data File: ");
 
         filePath.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,7 +183,7 @@ public class NewModel extends javax.swing.JFrame {
                                 .addComponent(randomLocationEffects, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
+                                    .addComponent(dataFileLabel)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel3))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -190,7 +201,7 @@ public class NewModel extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(dataFileLabel)
                     .addComponent(filePath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fileBrowseButton))
                 .addGap(18, 18, 18)
@@ -383,10 +394,10 @@ public class NewModel extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JRadioButton continuousRadio;
+    private javax.swing.JLabel dataFileLabel;
     private javax.swing.JRadioButton dichotomousRadio;
     private javax.swing.JButton fileBrowseButton;
     private javax.swing.JTextField filePath;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
