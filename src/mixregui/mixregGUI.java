@@ -914,6 +914,9 @@ public class mixregGUI extends javax.swing.JFrame {
    public void updateLevelOneRegGrid(DefaultListModel<String> defaultListModel){
    
        int regSize = defaultListModel.getSize();
+       System.out.println(String.valueOf(regSize) + " is the regSize");
+       
+       levelOneGrid.removeAll();
        
        levelOneGrid.setLayout(new GridLayout(regSize, 4, 5, 5));
        
@@ -921,6 +924,7 @@ public class mixregGUI extends javax.swing.JFrame {
        
        for (int j=0; j<regSize; j++){
            levelOneGrid.add(new JLabel(defaultListModel.getElementAt(j)));
+           System.out.print(j);
            levelOneGrid.add(new JCheckBox());
            levelOneGrid.add(new JCheckBox());
            levelOneGrid.add(new JCheckBox());
@@ -933,6 +937,8 @@ public class mixregGUI extends javax.swing.JFrame {
    public void updateLevelTwoRegGrid(DefaultListModel<String> defaultListModel){
    
        int regSize = defaultListModel.getSize();
+       
+       levelTwoGrid.removeAll();
        
        levelTwoGrid.setLayout(new GridLayout(regSize, 4, 5, 5));
        
@@ -952,6 +958,8 @@ public class mixregGUI extends javax.swing.JFrame {
    public void updateStageTwoGrid(DefaultListModel<String> defaultListModel){
    
        int regSize = defaultListModel.getSize();
+       
+       stageTwoGrid.removeAll();
        
        stageTwoGrid.setLayout(new GridLayout(regSize, 4, 5, 5));
        
