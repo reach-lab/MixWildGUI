@@ -25,13 +25,15 @@ public class stageOneRegs extends javax.swing.JFrame {
     
     stageTwoRegs stageTwo;
     
-    String[] variableNamesList;
+    static String[] variableNamesList;
     
     static DefaultListModel<String> varList;
     
-    DefaultListModel<String> levelOneList;
+    static DefaultListModel<String> levelOneList;
     
-    DefaultListModel<String> levelTwoList;
+    static DefaultListModel<String> levelTwoList;
+    
+    static boolean isSubmitClicked = false;
     
     /**
      * Creates new form stageOneRegs
@@ -45,9 +47,22 @@ public class stageOneRegs extends javax.swing.JFrame {
        //get variable names from the data set
        variableNamesList = newModel2.getVariableNames();
        
+       if (!isSubmitClicked){
        varList = new DefaultListModel<String>();
        levelOneList = new DefaultListModel<String>();
        levelTwoList = new DefaultListModel<String>();
+       
+       } else{
+           AllVariablesList.removeAll();
+        AllVariablesList.setModel(varList);
+        AllVariablesList.setSelectedIndex(0);
+        StageOneLevelOneList.removeAll();
+        StageOneLevelOneList.setModel(levelOneList);
+        StageOneLevelTwoList.removeAll();
+        StageOneLevelTwoList.setModel(levelTwoList);
+       }
+       
+       
        stageOneSubmitButton.setEnabled(false);
         
      
@@ -78,7 +93,6 @@ public class stageOneRegs extends javax.swing.JFrame {
         StageOneLevelOneList = new javax.swing.JList<>();
         jScrollPane3 = new javax.swing.JScrollPane();
         StageOneLevelTwoList = new javax.swing.JList<>();
-        disaggVarianceCheckBox = new javax.swing.JCheckBox();
 
         label1.setText("label1");
 
@@ -139,8 +153,6 @@ public class stageOneRegs extends javax.swing.JFrame {
 
         jScrollPane3.setViewportView(StageOneLevelTwoList);
 
-        disaggVarianceCheckBox.setText("Disaggregate Variance");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -174,11 +186,9 @@ public class stageOneRegs extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addGap(104, 104, 104))
                         .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(disaggVarianceCheckBox)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
-                                    .addComponent(jScrollPane3)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+                                .addComponent(jScrollPane3))
                             .addGap(92, 92, 92)))))
         );
         layout.setVerticalGroup(
@@ -202,9 +212,7 @@ public class stageOneRegs extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(disaggVarianceCheckBox)
-                .addGap(7, 7, 7)
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -222,6 +230,7 @@ public class stageOneRegs extends javax.swing.JFrame {
     private void stageOneSubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneSubmitButtonActionPerformed
        
         stageTwo = new stageTwoRegs();
+        isSubmitClicked = true;
         
         
         //get the instance of the mixReg model declared
@@ -248,6 +257,8 @@ public class stageOneRegs extends javax.swing.JFrame {
 
     private void addLevelTwoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addLevelTwoButtonActionPerformed
         
+        stageOneSubmitButton.setEnabled(true);
+        
         levelTwoList.addElement(AllVariablesList.getSelectedValue());
         StageOneLevelTwoList.setModel(levelTwoList);
         
@@ -256,6 +267,8 @@ public class stageOneRegs extends javax.swing.JFrame {
     }//GEN-LAST:event_addLevelTwoButtonActionPerformed
 
     private void removeLevelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeLevelButtonActionPerformed
+        
+        stageOneSubmitButton.setEnabled(true);
         
         varList.addElement(StageOneLevelOneList.getSelectedValue());
         
@@ -266,6 +279,8 @@ public class stageOneRegs extends javax.swing.JFrame {
     }//GEN-LAST:event_removeLevelButtonActionPerformed
 
     private void removeLevelTwoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeLevelTwoButtonActionPerformed
+        
+        stageOneSubmitButton.setEnabled(true);
         
         varList.addElement(StageOneLevelTwoList.getSelectedValue());
         
@@ -324,7 +339,6 @@ public class stageOneRegs extends javax.swing.JFrame {
     private javax.swing.JList<String> StageOneLevelOneList;
     private javax.swing.JList<String> StageOneLevelTwoList;
     private javax.swing.JButton addLevelTwoButton;
-    private javax.swing.JCheckBox disaggVarianceCheckBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -384,6 +398,7 @@ return levelTwoCombo;
 
 }
 
+/*
 public boolean isDisaggVarianceChecked(){
     
     boolean checked = false;
@@ -396,5 +411,5 @@ public boolean isDisaggVarianceChecked(){
     
     }
     return checked;
-}
+}*/
 }
