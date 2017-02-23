@@ -668,6 +668,9 @@ public class mixregGUI extends javax.swing.JFrame {
     private void runStageOneTwoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_runStageOneTwoButtonActionPerformed
         
         System.out.println("Total selected beta means model in level one: " + String.valueOf(countLevelOneBeta()));
+        System.out.println("Total selected alpha means model in level one: " + String.valueOf(countLevelOneAlpha()));
+        System.out.println("Total selected tau means model in level one: " + String.valueOf(countLevelOneTau()));
+        System.out.println("Total selected disagg. variance in level one: " + String.valueOf(countLevelOneDisagg()));
         
         DefinitionHelper defFile2 = newModel.getDefFile();
         
@@ -924,7 +927,7 @@ public class mixregGUI extends javax.swing.JFrame {
    
        int regSize = defaultListModel.getSize();
        levelOneRegSize = regSize;
-       System.out.println(String.valueOf(regSize) + " is the regSize");
+      // System.out.println(String.valueOf(regSize) + " is the regSize");
        
        levelOneBoxes = new ArrayList<ArrayList<JCheckBox>>();
        
@@ -936,7 +939,7 @@ public class mixregGUI extends javax.swing.JFrame {
        
        for (int j=0; j<regSize; j++){
            levelOneGrid.add(new JLabel(defaultListModel.getElementAt(j)));
-           System.out.print(j);
+           //System.out.print(j);
            
           levelOneBoxes.add(j, new ArrayList<JCheckBox>());
            
@@ -946,7 +949,6 @@ public class mixregGUI extends javax.swing.JFrame {
                    levelOneGrid.add(levelOneBoxes.get(j).get(k));
       
                 }
-       
        }
 
    }
@@ -1021,6 +1023,38 @@ public class mixregGUI extends javax.swing.JFrame {
        }
    
    return levelOneAlpha;
+   
+   }
+   
+   public int countLevelOneTau(){
+       
+       int levelOneTau = 0;
+       
+       for (int p = 0; p<levelOneRegSize; p++){
+           
+           if (levelOneBoxes.get(p).get(2).isSelected()){
+           
+               levelOneTau = levelOneTau+1;
+           }
+       }
+   
+   return levelOneTau;
+   
+   }
+   
+   public int countLevelOneDisagg(){
+       
+       int levelOneDisagg = 0;
+       
+       for (int p = 0; p<levelOneRegSize; p++){
+           
+           if (levelOneBoxes.get(p).get(3).isSelected()){
+           
+               levelOneDisagg = levelOneDisagg + 1;
+           }
+       }
+   
+   return levelOneDisagg;
    
    }
    
