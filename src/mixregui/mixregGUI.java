@@ -681,6 +681,11 @@ public class mixregGUI extends javax.swing.JFrame {
         System.out.println("Total selected tau means model in level two: " + String.valueOf(countLevelTwoTau()));
         System.out.println("Total selected disagg. variance in level two: " + String.valueOf(countLevelTwoDisagg()));
         
+        System.out.println("Total selected beta means model in stage two: " + String.valueOf(countStageTwoBeta()));
+        System.out.println("Total selected alpha means model in stage two: " + String.valueOf(countStageTwoAlpha()));
+        System.out.println("Total selected tau means model in stage two: " + String.valueOf(countStageTwoTau()));
+        
+        
         
         
         DefinitionHelper defFile2 = newModel.getDefFile();
@@ -996,6 +1001,8 @@ public class mixregGUI extends javax.swing.JFrame {
    public void updateStageTwoGrid(DefaultListModel<String> defaultListModel){
    
        int regSize = defaultListModel.getSize();
+       stageTwoBoxes = new ArrayList<ArrayList<JCheckBox>>();
+       stageTwoRegSize = regSize;
        
        stageTwoGrid.removeAll();
        stageTwoGrid.setLayout(new GridLayout(regSize, 4, 5, 5));
@@ -1004,9 +1011,15 @@ public class mixregGUI extends javax.swing.JFrame {
        
        for (int j=0; j<regSize; j++){
            stageTwoGrid.add(new JLabel(defaultListModel.getElementAt(j)));
-           stageTwoGrid.add(new JCheckBox());
-           stageTwoGrid.add(new JCheckBox());
-           stageTwoGrid.add(new JCheckBox());
+           stageTwoBoxes.add(j, new ArrayList<JCheckBox>());
+           
+           for(int k=0; k<3;k++){
+                
+                   stageTwoBoxes.get(j).add(k, new JCheckBox());
+                   stageTwoGrid.add(stageTwoBoxes.get(j).get(k));
+      
+                }
+          
        
        }
 
@@ -1045,6 +1058,22 @@ public class mixregGUI extends javax.swing.JFrame {
    
    }
    
+   public int countStageTwoBeta(){
+       
+       int stageTwoBeta = 0;
+       
+       for (int p = 0; p<stageTwoRegSize; p++){
+           
+           if (stageTwoBoxes.get(p).get(0).isSelected()){
+           
+               stageTwoBeta = stageTwoBeta+1;
+           }
+       }
+   
+   return stageTwoBeta;
+   
+   }
+   
    public int countLevelOneAlpha(){
        
        int levelOneAlpha = 0;
@@ -1078,6 +1107,22 @@ public class mixregGUI extends javax.swing.JFrame {
    
    }
    
+   public int countStageTwoAlpha(){
+       
+       int stageTwoAlpha = 0;
+       
+       for (int p = 0; p<stageTwoRegSize; p++){
+           
+           if (stageTwoBoxes.get(p).get(1).isSelected()){
+           
+               stageTwoAlpha = stageTwoAlpha+1;
+           }
+       }
+   
+   return stageTwoAlpha;
+   
+   }
+   
    
    public int countLevelOneTau(){
        
@@ -1108,6 +1153,23 @@ public class mixregGUI extends javax.swing.JFrame {
        }
    
    return levelTwoTau;
+   
+   }
+   
+   
+   public int countStageTwoTau(){
+       
+       int stageTwoTau = 0;
+       
+       for (int p = 0; p<stageTwoRegSize; p++){
+           
+           if (stageTwoBoxes.get(p).get(2).isSelected()){
+           
+               stageTwoTau = stageTwoTau+1;
+           }
+       }
+   
+   return stageTwoTau;
    
    }
    
