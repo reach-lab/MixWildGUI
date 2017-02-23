@@ -13,6 +13,7 @@ import javax.swing.DefaultListModel;
 import def_lib.DefinitionHelper;
 import java.awt.ComponentOrientation;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 
@@ -30,6 +31,8 @@ public class mixregGUI extends javax.swing.JFrame {
    //public boolean submitClicked = true;
    int i;
    
+   int levelOneRegSize, levelTwoRegSize, stageTwoRegSize;
+   
    String[] variableNamesCombo;
     
     DefaultComboBoxModel<String> IDList;
@@ -43,6 +46,8 @@ public class mixregGUI extends javax.swing.JFrame {
     DefaultComboBoxModel<String> regressorsLevelOne;
     
     DefaultComboBoxModel<String> regressorsLevelTwo;
+    
+    ArrayList<ArrayList<JCheckBox>> levelOneBoxes;
 
     /**
      * Creates new form mixregGUI
@@ -662,7 +667,11 @@ public class mixregGUI extends javax.swing.JFrame {
 
     private void runStageOneTwoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_runStageOneTwoButtonActionPerformed
         
+        System.out.println("Total selected beta means model in level one: " + String.valueOf(countLevelOneBeta()));
+        
         DefinitionHelper defFile2 = newModel.getDefFile();
+        
+        
         
         //defFile2.setIdOutcome(StageOneVariableCombo.getItemAt(StageOneVariableCombo.getSelectedIndex()));
         
@@ -914,7 +923,10 @@ public class mixregGUI extends javax.swing.JFrame {
    public void updateLevelOneRegGrid(DefaultListModel<String> defaultListModel){
    
        int regSize = defaultListModel.getSize();
+       levelOneRegSize = regSize;
        System.out.println(String.valueOf(regSize) + " is the regSize");
+       
+       levelOneBoxes = new ArrayList<ArrayList<JCheckBox>>();
        
        levelOneGrid.removeAll();
        
@@ -925,10 +937,15 @@ public class mixregGUI extends javax.swing.JFrame {
        for (int j=0; j<regSize; j++){
            levelOneGrid.add(new JLabel(defaultListModel.getElementAt(j)));
            System.out.print(j);
-           levelOneGrid.add(new JCheckBox());
-           levelOneGrid.add(new JCheckBox());
-           levelOneGrid.add(new JCheckBox());
-           levelOneGrid.add(new JCheckBox());
+           
+          levelOneBoxes.add(j, new ArrayList<JCheckBox>());
+           
+           for(int k=0; k<4;k++){
+                
+                   levelOneBoxes.get(j).add(k, new JCheckBox());
+                   levelOneGrid.add(levelOneBoxes.get(j).get(k));
+      
+                }
        
        }
 
@@ -946,6 +963,7 @@ public class mixregGUI extends javax.swing.JFrame {
        
        for (int j=0; j<regSize; j++){
            levelTwoGrid.add(new JLabel(defaultListModel.getElementAt(j)));
+           
            levelTwoGrid.add(new JCheckBox());
            levelTwoGrid.add(new JCheckBox());
            levelTwoGrid.add(new JCheckBox());
@@ -960,7 +978,6 @@ public class mixregGUI extends javax.swing.JFrame {
        int regSize = defaultListModel.getSize();
        
        stageTwoGrid.removeAll();
-       
        stageTwoGrid.setLayout(new GridLayout(regSize, 4, 5, 5));
        
        stageTwoGrid.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
@@ -971,9 +988,40 @@ public class mixregGUI extends javax.swing.JFrame {
            stageTwoGrid.add(new JCheckBox());
            stageTwoGrid.add(new JCheckBox());
        
-       
        }
 
+   }
+   
+   public int countLevelOneBeta(){
+       
+       int levelOneBeta = 0;
+       
+       for (int p = 0; p<levelOneRegSize; p++){
+           
+           if (levelOneBoxes.get(p).get(0).isSelected()){
+           
+               levelOneBeta = levelOneBeta+1;
+           }
+       }
+   
+   return levelOneBeta;
+   
+   }
+   
+   public int countLevelOneAlpha(){
+       
+       int levelOneAlpha = 0;
+       
+       for (int p = 0; p<levelOneRegSize; p++){
+           
+           if (levelOneBoxes.get(p).get(1).isSelected()){
+           
+               levelOneAlpha = levelOneAlpha+1;
+           }
+       }
+   
+   return levelOneAlpha;
+   
    }
    
   
