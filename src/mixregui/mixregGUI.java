@@ -48,6 +48,10 @@ public class mixregGUI extends javax.swing.JFrame {
     DefaultComboBoxModel<String> regressorsLevelTwo;
     
     ArrayList<ArrayList<JCheckBox>> levelOneBoxes;
+    
+    ArrayList<ArrayList<JCheckBox>> levelTwoBoxes;
+    
+    ArrayList<ArrayList<JCheckBox>> stageTwoBoxes;
 
     /**
      * Creates new form mixregGUI
@@ -672,6 +676,13 @@ public class mixregGUI extends javax.swing.JFrame {
         System.out.println("Total selected tau means model in level one: " + String.valueOf(countLevelOneTau()));
         System.out.println("Total selected disagg. variance in level one: " + String.valueOf(countLevelOneDisagg()));
         
+        System.out.println("Total selected beta means model in level two: " + String.valueOf(countLevelTwoBeta()));
+        System.out.println("Total selected alpha means model in level two: " + String.valueOf(countLevelTwoAlpha()));
+        System.out.println("Total selected tau means model in level two: " + String.valueOf(countLevelTwoTau()));
+        System.out.println("Total selected disagg. variance in level two: " + String.valueOf(countLevelTwoDisagg()));
+        
+        
+        
         DefinitionHelper defFile2 = newModel.getDefFile();
         
         
@@ -957,6 +968,10 @@ public class mixregGUI extends javax.swing.JFrame {
    
        int regSize = defaultListModel.getSize();
        
+       levelTwoBoxes = new ArrayList<ArrayList<JCheckBox>>();
+       
+       levelTwoRegSize = regSize;
+       
        levelTwoGrid.removeAll();
        
        levelTwoGrid.setLayout(new GridLayout(regSize, 4, 5, 5));
@@ -965,11 +980,14 @@ public class mixregGUI extends javax.swing.JFrame {
        
        for (int j=0; j<regSize; j++){
            levelTwoGrid.add(new JLabel(defaultListModel.getElementAt(j)));
+           levelTwoBoxes.add(j, new ArrayList<JCheckBox>());
            
-           levelTwoGrid.add(new JCheckBox());
-           levelTwoGrid.add(new JCheckBox());
-           levelTwoGrid.add(new JCheckBox());
-           levelTwoGrid.add(new JCheckBox());
+           for(int k=0; k<4;k++){
+                
+                   levelTwoBoxes.get(j).add(k, new JCheckBox());
+                   levelTwoGrid.add(levelTwoBoxes.get(j).get(k));
+      
+                }
        
        }
 
@@ -1010,6 +1028,23 @@ public class mixregGUI extends javax.swing.JFrame {
    
    }
    
+   
+   public int countLevelTwoBeta(){
+       
+       int levelTwoBeta = 0;
+       
+       for (int p = 0; p<levelTwoRegSize; p++){
+           
+           if (levelTwoBoxes.get(p).get(0).isSelected()){
+           
+               levelTwoBeta = levelTwoBeta+1;
+           }
+       }
+   
+   return levelTwoBeta;
+   
+   }
+   
    public int countLevelOneAlpha(){
        
        int levelOneAlpha = 0;
@@ -1026,6 +1061,24 @@ public class mixregGUI extends javax.swing.JFrame {
    
    }
    
+   
+   public int countLevelTwoAlpha(){
+       
+       int levelTwoAlpha = 0;
+       
+       for (int p = 0; p<levelTwoRegSize; p++){
+           
+           if (levelTwoBoxes.get(p).get(1).isSelected()){
+           
+               levelTwoAlpha = levelTwoAlpha+1;
+           }
+       }
+   
+   return levelTwoAlpha;
+   
+   }
+   
+   
    public int countLevelOneTau(){
        
        int levelOneTau = 0;
@@ -1039,6 +1092,22 @@ public class mixregGUI extends javax.swing.JFrame {
        }
    
    return levelOneTau;
+   
+   }
+   
+   public int countLevelTwoTau(){
+       
+       int levelTwoTau = 0;
+       
+       for (int p = 0; p<levelTwoRegSize; p++){
+           
+           if (levelTwoBoxes.get(p).get(2).isSelected()){
+           
+               levelTwoTau = levelTwoTau+1;
+           }
+       }
+   
+   return levelTwoTau;
    
    }
    
@@ -1058,5 +1127,21 @@ public class mixregGUI extends javax.swing.JFrame {
    
    }
    
+   
+   public int countLevelTwoDisagg(){
+       
+       int levelTwoDisagg = 0;
+       
+       for (int p = 0; p<levelTwoRegSize; p++){
+           
+           if (levelTwoBoxes.get(p).get(3).isSelected()){
+           
+               levelTwoDisagg = levelTwoDisagg + 1;
+           }
+       }
+   
+   return levelTwoDisagg;
+   
+   }
   
 }
