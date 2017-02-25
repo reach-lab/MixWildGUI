@@ -7,8 +7,17 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Exposed Classes:
+ * readDefinitionFile: takes File as parameter, assigns all variables and then attempts to validate file
+ * buildStageOneDefinitionList: returns ArrayList<String> that can be passed to a FileWriter class, validates first
+ * @note: Both classes should pass Exceptions to the view and interrupt until user fixes error  
+ * 
+ * @author Eldin Dzubur
+ */
 public class DefinitionHelper {
     /**
      * Private Class Keys
@@ -47,15 +56,15 @@ public class DefinitionHelper {
      * Stage 1 Advanced Options
      */
     private String dataVariableCount;
-    private String modelMeanCount;
-    private String modelLocRanCount;
-    private String modelScaleCount;
+    private String modelMeanCount = "0";
+    private String modelLocRanCount = "0";
+    private String modelScaleCount = "0";
     private String modelFixedInt;
     private String modelRandomInt;
     private String modelScaleInt;
-    private String decompMeanCount;
-    private String decompLocRanCount;
-    private String decompScaleCount;
+    private String decompMeanCount = "0";
+    private String decompLocRanCount = "0";
+    private String decompScaleCount = "0";
     private String advancedConvergence;
     private String advancedQuadPoints;
     private String advancedAdaptiveQuad;
@@ -63,12 +72,12 @@ public class DefinitionHelper {
     private String advancedMissingValue;
     private String advancedCenterScale;
     private String advancedRidge;           
-    private String modelBetweenCount;
-    private String modelWithinCount;            
-    private String modelBetweenInt;
-    private String modelWithinInt;    
-    private String decompBSCount;
-    private String decompWSCount;          
+    private String modelBetweenCount = "0";
+    private String modelWithinCount = "0";            
+    private String modelBetweenInt = "0";
+    private String modelWithinInt = "0";    
+    private String decompBSCount = "0";
+    private String decompWSCount = "0";          
     private String advancedEffectMeanWS;
 
     /**
@@ -100,10 +109,10 @@ public class DefinitionHelper {
     /**
      * Stage 2 Advanced Options
      */
-    private String stageTwoFixedCount;
-    private String stageTwoLocRanInteractions;
-    private String stageTwoScaleInteractions;
-    private String stageTwoIntOfInteraction;
+    private String stageTwoFixedCount = "0";
+    private String stageTwoLocRanInteractions = "0";
+    private String stageTwoScaleInteractions = "0";
+    private String stageTwoIntOfInteraction = "0";
     private String stageTwoOutcomeCatCount;
     
     /**
@@ -190,13 +199,107 @@ public class DefinitionHelper {
         }
     }
     
-    private boolean validateFieldLabels(String fieldCountVariable, String[] labelLine){
-        int field = Integer.parseInt(fieldCountVariable);
-        int labels = labelLine.length;
+    private boolean validateFieldLabels(String countVariable, String[] fieldLabelLine){
+        int field = Integer.parseInt(countVariable);
+        int labels = fieldLabelLine.length;
         return field==labels;
     }
     
-    public List<String> buildStageOneDefinitonList(){
+    private void exportValidatorStageOne() throws Exception {
+         if(!validateFieldLabels(getModelMeanCount(),getFieldModelMeanRegressors())){
+             throw new Exception("Fatal model error: number of MEAN regressors does not equal MEAN fields");
+         }
+         if(!validateFieldLabels(getModelMeanCount(),getLabelModelMeanRegressors())){
+             throw new Exception("Fatal model error: number of MEAN regressors does not equal MEAN labels");
+         }
+         if(!validateFieldLabels(getModelBetweenCount(),getFieldModelBSRegressors())){
+             throw new Exception("Fatal model error: number of BS regressors does not equal BS fields");
+         }
+         if(!validateFieldLabels(getModelBetweenCount(),getLabelModelBSRegressors())){
+             throw new Exception("Fatal model error: number of BS regressors does not equal BS labels");
+         }
+         if(!validateFieldLabels(getModelWithinCount(),getFieldModelWSRegressors())){
+             throw new Exception("Fatal model error: number of WS regressors does not equal WS fields");
+         }
+         if(!validateFieldLabels(getModelWithinCount(),getLabelModelWSRegressors())){
+             throw new Exception("Fatal model error: number of WS regressors does not equal WS labels");
+         }
+         if(!validateFieldLabels(getModelLocRanCount(),getFieldModelLocRanRegressors())){
+             throw new Exception("Fatal model error: number of LOCATION RANDOM regressors does not equal LOCATION RANDOM fields");
+         }
+         if(!validateFieldLabels(getModelLocRanCount(),getLabelModelLocRanRegressors())){
+             throw new Exception("Fatal model error: number of LOCATION RANDOM regressors does not equal LOCATION RANDOM labels");
+         }
+         if(!validateFieldLabels(getModelScaleCount(),getFieldModelScaleRegressors())){
+             throw new Exception("Fatal model error: number of SCALE regressors does not equal SCALE fields");
+         }
+         if(!validateFieldLabels(getModelScaleCount(),getLabelModelScaleRegressors())){
+             throw new Exception("Fatal model error: number of SCALE regressors does not equal SCALE labels");
+         }
+         if(!validateFieldLabels(getModelMeanCount(),getFieldModelMeanRegressors())){
+             throw new Exception("Fatal model error: number of MEAN regressors does not equal MEAN fields");
+         }
+         
+         if(!validateFieldLabels(getDecompMeanCount(),getLabelDecompMeanRegressors())){
+             throw new Exception("Fatal variance decomposition error: number of MEAN regressors does not equal MEAN labels");
+         }
+         if(!validateFieldLabels(getDecompBSCount(),getFieldDecompBSRegressors())){
+             throw new Exception("Fatal variance decomposition error: number of BS regressors does not equal BS fields");
+         }
+         if(!validateFieldLabels(getDecompBSCount(),getLabelDecompBSRegressors())){
+             throw new Exception("Fatal variance decomposition error: number of BS regressors does not equal BS labels");
+         }
+         if(!validateFieldLabels(getDecompWSCount(),getFieldDecompWSRegressors())){
+             throw new Exception("Fatal variance decomposition error: number of WS regressors does not equal WS fields");
+         }
+         if(!validateFieldLabels(getDecompWSCount(),getLabelDecompWSRegressors())){
+             throw new Exception("Fatal variance decomposition error: number of WS regressors does not equal WS labels");
+         }
+         if(!validateFieldLabels(getDecompLocRanCount(),getFieldDecompLocRanRegressors())){
+             throw new Exception("Fatal variance decomposition error: number of LOCATION RANDOM regressors does not equal LOCATION RANDOM fields");
+         }
+         if(!validateFieldLabels(getDecompLocRanCount(),getLabelDecompLocRanRegressors())){
+             throw new Exception("Fatal variance decomposition error: number of LOCATION RANDOM regressors does not equal LOCATION RANDOM labels");
+         }
+         if(!validateFieldLabels(getDecompScaleCount(),getFieldDecompScaleRegressors())){
+             throw new Exception("Fatal variance decomposition error: number of SCALE regressors does not equal SCALE fields");
+         }
+         if(!validateFieldLabels(getDecompScaleCount(),getLabelDecompScaleRegressors())){
+             throw new Exception("Fatal variance decomposition error: number of SCALE regressors does not equal SCALE labels");
+         }
+            
+         if(!validateFieldLabels(getStageTwoFixedCount(),getStageTwoFixedLabels())){
+             throw new Exception("Fatal stage two label error: number of FIXED regressors does not equal FIXED labels");
+         }
+         if(!validateFieldLabels(getStageTwoLocRanInteractions(),getStageTwoLocRanIntLabels())){
+             throw new Exception("Fatal stage two label error: number of LOCATION RANDOM INTERACTIONS does not equal LOCATION RANDOM INTERACTIONS labels");
+         }
+         if(!validateFieldLabels(getStageTwoScaleInteractions(),getStageTwoScaleIntLabels())){
+             throw new Exception("Fatal stage two label error: number of SCALE RANDOM INTERACTIONS does not equal SCALE RANDOM INTERACTIONS labels");
+         }
+         if(!validateFieldLabels(getStageTwoIntOfInteraction(),getStageTwoFirstIntLabels())){
+             throw new Exception("Fatal stage two label error: number of regressors THREE-WAY INTERACTION regressors to does not equal THREE-WAY INTERACTION labels");
+         }
+         if(!validateFieldLabels(getStageTwoFixedCount(),getStageTwoFixedFields())){
+             throw new Exception("Fatal stage two field error: number of FIXED regressors does not equal FIXED fields");
+         }
+         if(!validateFieldLabels(getStageTwoLocRanInteractions(),getStageTwoLocRanIntFields())){
+             throw new Exception("Fatal stage two field error: number of LOCATION RANDOM INTERACTIONS does not equal LOCATION RANDOM INTERACTIONS fields");
+         }
+         if(!validateFieldLabels(getStageTwoScaleInteractions(),getStageTwoScaleIntFields())){
+             throw new Exception("Fatal stage two field error: number of SCALE RANDOM INTERACTIONS does not equal SCALE RANDOM INTERACTIONS fields");
+         }
+         if(!validateFieldLabels(getStageTwoIntOfInteraction(),getStageTwoFirstIntFields())){
+             throw new Exception("Fatal stage two field error: number of regressors THREE-WAY INTERACTION regressors to does not equal THREE-WAY INTERACTION fields");
+         }
+         
+    }
+    
+    /**
+     * 
+     * @return 
+     */
+    public List<String> buildStageOneDefinitonList() throws Exception {
         List<String> newDefinitionFile = new ArrayList();
         newDefinitionFile.add(getModelTitle());
         newDefinitionFile.add(getModelSubtitle());
@@ -204,11 +307,102 @@ public class DefinitionHelper {
         newDefinitionFile.add(getOutputPrefix());
         newDefinitionFile.add(getDataFilename());
         
-        String[] advancedOptions = new String[]{
+        String[] advancedOptionsOne = advancedVariableBuild(1);
+        newDefinitionFile.add(Arrays.toString(advancedOptionsOne).replaceAll(",", " "));
         
-        };
+        newDefinitionFile.add(Arrays.toString(getIdOutcome()).replaceAll(",", " "));
+        newDefinitionFile.add(Arrays.toString(getFieldModelMeanRegressors()).replaceAll(",", " "));
+        newDefinitionFile.add(Arrays.toString(getFieldDecompMeanRegressors()).replaceAll(",", " "));
+        newDefinitionFile.add(getLabelModelOutcome());
+        newDefinitionFile.add(Arrays.toString(getLabelModelMeanRegressors()).replaceAll(",", " "));
+        newDefinitionFile.add(Arrays.toString(getLabelDecompMeanRegressors()).replaceAll(",", " ")); 
         
+        String[] advancedOptionsTwo = advancedVariableBuild(2);
+        newDefinitionFile.add(Arrays.toString(advancedOptionsTwo).replaceAll(",", " "));
         
+        newDefinitionFile.add(getStageTwoOutcomeField());
+        switch(sequenceDecision()){
+            case MIXREGLS_MIXREG_KEY:
+                newDefinitionFile.add(Arrays.toString(getFieldModelBSRegressors()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getFieldModelWSRegressors()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getFieldDecompBSRegressors()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getFieldDecompWSRegressors()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getLabelModelBSRegressors()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getLabelModelWSRegressors()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getLabelDecompBSRegressors()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getLabelDecompWSRegressors()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getStageTwoFixedFields()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getStageTwoLocRanIntFields()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getStageTwoScaleIntFields()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getStageTwoFirstIntFields()).replaceAll(",", " "));
+                newDefinitionFile.add(getStageTwoOutcomeLabel());
+                newDefinitionFile.add(Arrays.toString(getStageTwoFixedLabels()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getStageTwoLocRanIntLabels()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getStageTwoScaleIntLabels()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getStageTwoFirstIntLabels()).replaceAll(",", " "));
+                break;
+            case MIXREGLS_MIXOR_KEY:
+                newDefinitionFile.add(Arrays.toString(getFieldModelBSRegressors()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getFieldModelWSRegressors()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getFieldDecompBSRegressors()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getFieldDecompWSRegressors()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getLabelModelBSRegressors()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getLabelModelWSRegressors()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getLabelDecompBSRegressors()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getLabelDecompWSRegressors()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getStageTwoFixedFields()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getStageTwoLocRanIntFields()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getStageTwoScaleIntFields()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getStageTwoFirstIntFields()).replaceAll(",", " "));
+                newDefinitionFile.add(getStageTwoOutcomeLabel());
+                newDefinitionFile.add(Arrays.toString(getStageTwoFixedLabels()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getStageTwoLocRanIntLabels()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getStageTwoScaleIntLabels()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getStageTwoFirstIntLabels()).replaceAll(",", " "));
+                break;
+            case MIXREGMLS_MIXREG_KEY:
+                newDefinitionFile.add(Arrays.toString(getFieldModelLocRanRegressors()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getFieldModelScaleRegressors()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getFieldDecompLocRanRegressors()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getFieldDecompScaleRegressors()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getLabelModelLocRanRegressors()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getLabelModelScaleRegressors()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getLabelDecompLocRanRegressors()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getLabelDecompScaleRegressors()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getStageTwoFixedFields()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getStageTwoLocRanIntFields()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getStageTwoScaleIntFields()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getStageTwoFirstIntFields()).replaceAll(",", " "));
+                newDefinitionFile.add(getStageTwoOutcomeLabel());
+                newDefinitionFile.add(Arrays.toString(getStageTwoFixedLabels()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getStageTwoLocRanIntLabels()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getStageTwoScaleIntLabels()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getStageTwoFirstIntLabels()).replaceAll(",", " "));
+                break;
+            case MIXREGMLS_MIXOR_KEY:
+                newDefinitionFile.add(Arrays.toString(getFieldModelLocRanRegressors()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getFieldModelScaleRegressors()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getFieldDecompLocRanRegressors()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getFieldDecompScaleRegressors()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getLabelModelLocRanRegressors()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getLabelModelScaleRegressors()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getLabelDecompLocRanRegressors()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getLabelDecompScaleRegressors()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getStageTwoFixedFields()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getStageTwoLocRanIntFields()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getStageTwoScaleIntFields()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getStageTwoFirstIntFields()).replaceAll(",", " "));
+                newDefinitionFile.add(getStageTwoOutcomeLabel());
+                newDefinitionFile.add(Arrays.toString(getStageTwoFixedLabels()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getStageTwoLocRanIntLabels()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getStageTwoScaleIntLabels()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getStageTwoFirstIntLabels()).replaceAll(",", " "));              
+                break;
+            default:
+                //TODO: Log this error     
+        }      
+        
+        exportValidatorStageOne();
         
         return newDefinitionFile;
     }
@@ -314,11 +508,13 @@ public class DefinitionHelper {
             default:
                 //TODO: Log this error     
         }
+        
+        exportValidatorStageOne();
     }
     
     /**
-     * TODO: Not yet finished, returns null
-     * @param stage
+     * 
+     * @param stage: stage 1 or stage 2, internal call only
      * @return 
      */
     private String[] advancedVariableBuild(int stage) {
@@ -433,7 +629,13 @@ public class DefinitionHelper {
                 //TODO: Log this error 
             }
         }
-        return null;
+        String[] returnVars = new String[advancedVars.size()];
+        int iter = 0;
+        for(String iterate: advancedVars){
+            returnVars[iter] = iterate;
+            iter++;
+        };
+        return returnVars;
     }
     
     private void advancedVariableAssignment(int stage, String[] advancedVars) throws Exception {
