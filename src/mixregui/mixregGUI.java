@@ -989,6 +989,7 @@ public class mixregGUI extends javax.swing.JFrame {
        
        constraints.gridx = 0;
        constraints.gridy = 0;
+       constraints.anchor = GridBagConstraints.NORTH;
        //constraints.gridwidth = 4;
        
             GridBagConstraints separatorConstraint = new GridBagConstraints();
