@@ -13,6 +13,7 @@ import javax.swing.DefaultListModel;
 import def_lib.DefinitionHelper;
 import java.awt.Color;
 import java.awt.ComponentOrientation;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -21,6 +22,7 @@ import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
+import javax.swing.JSeparator;
 import javax.swing.border.MatteBorder;
 
 /**
@@ -989,7 +991,18 @@ public class mixregGUI extends javax.swing.JFrame {
        constraints.gridy = 0;
        //constraints.gridwidth = 4;
        
-       constraints.insets = new Insets(0,0,5,25);
+            GridBagConstraints separatorConstraint = new GridBagConstraints();
+            separatorConstraint.weightx = 1.0;
+            separatorConstraint.fill = GridBagConstraints.HORIZONTAL;
+            separatorConstraint.gridwidth = GridBagConstraints.REMAINDER;
+            separatorConstraint.gridx=0;
+       
+       
+       
+       constraints.insets = new Insets(3,0,5,25);
+       separatorConstraint.insets = new Insets(0,0,0,0);
+       //constraints.fill = GridBagConstraints.HORIZONTAL;
+       constraints.weightx = 1;
        
        levelOneBoxes = new ArrayList<ArrayList<JCheckBox>>();
        disaggVarianceBoxes = new ArrayList<ArrayList<JCheckBox>>();
@@ -1022,9 +1035,16 @@ public class mixregGUI extends javax.swing.JFrame {
                
                disaggVarianceBoxes.get(j).add(k, new JCheckBox());
                levelOneGrid.add(disaggVarianceBoxes.get(j).get(k), constraints);
+
            }
            
-           constraints.gridy++;   
+           constraints.gridy++;
+           //constraints.gridx = 0;
+           separatorConstraint.gridy = separatorConstraint.gridy + 3;
+           System.out.println("before seperator");
+           levelOneGrid.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
+           System.out.println("after seperator");
+           constraints.gridy++;
            
        }
    
