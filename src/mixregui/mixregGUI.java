@@ -11,11 +11,17 @@ import java.net.URL;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import def_lib.DefinitionHelper;
+import java.awt.Color;
 import java.awt.ComponentOrientation;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Insets;
 import java.util.ArrayList;
+import javax.swing.BorderFactory;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
+import javax.swing.border.MatteBorder;
 
 /**
  *d
@@ -52,6 +58,8 @@ public class mixregGUI extends javax.swing.JFrame {
     ArrayList<ArrayList<JCheckBox>> levelTwoBoxes;
     
     ArrayList<ArrayList<JCheckBox>> stageTwoBoxes;
+    
+    ArrayList<ArrayList<JCheckBox>> disaggVarianceBoxes;
 
     /**
      * Creates new form mixregGUI
@@ -368,7 +376,7 @@ public class mixregGUI extends javax.swing.JFrame {
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 100, -1, -1));
 
         levelOneGrid.setBorder(javax.swing.BorderFactory.createTitledBorder("Level-1 (WS)"));
-        levelOneGrid.setLayout(new java.awt.GridLayout(1, 0));
+        levelOneGrid.setLayout(new java.awt.GridBagLayout());
         jPanel1.add(levelOneGrid, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 110, 270, 360));
         levelOneGrid.getAccessibleContext().setAccessibleName("Level-1");
 
@@ -944,7 +952,8 @@ public class mixregGUI extends javax.swing.JFrame {
        
        levelOneGrid.removeAll();
        
-       levelOneGrid.setLayout(new GridLayout(regSize, 4, 20, 5));
+       levelOneGrid.setLayout(new GridLayout(regSize, 4));
+       
        
        levelOneGrid.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
        
@@ -958,10 +967,67 @@ public class mixregGUI extends javax.swing.JFrame {
                 
                    levelOneBoxes.get(j).add(k, new JCheckBox());
                    levelOneGrid.add(levelOneBoxes.get(j).get(k));
+                   //levelOneGrid.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+                   //levelOneGrid.setBorder(new MatteBorder(2,2,2,2, Color.BLACK));
       
                 }
        }
 
+   }
+   
+   public void updateLevelOneGrid_version2(DefaultListModel<String> defaultListModel){
+   
+   int regSize = defaultListModel.getSize();
+       levelOneRegSize = regSize;
+       
+       levelOneGrid.removeAll();
+       
+       levelOneGrid.setLayout(new GridBagLayout());
+       GridBagConstraints constraints = new GridBagConstraints();
+       
+       constraints.gridx = 0;
+       constraints.gridy = 0;
+       //constraints.gridwidth = 4;
+       
+       constraints.insets = new Insets(0,0,5,25);
+       
+       levelOneBoxes = new ArrayList<ArrayList<JCheckBox>>();
+       disaggVarianceBoxes = new ArrayList<ArrayList<JCheckBox>>();
+       
+       for (int j=0;j<regSize;j++){
+           constraints.gridx = 0;
+           constraints.anchor = GridBagConstraints.LINE_END;
+           levelOneGrid.add(new JLabel(defaultListModel.getElementAt(j)), constraints);
+           
+            levelOneBoxes.add(j, new ArrayList<JCheckBox>());
+                          
+           
+           for (int k=0; k<3;k++){
+               
+               constraints.gridx++;
+               constraints.anchor = GridBagConstraints.CENTER;
+               levelOneBoxes.get(j).add(k, new JCheckBox());
+               levelOneGrid.add(levelOneBoxes.get(j).get(k), constraints);
+           }
+           
+           constraints.gridy++;
+           constraints.gridx = 0;
+           
+           levelOneGrid.add(new JLabel("Disaggregate?"), constraints);
+           disaggVarianceBoxes.add(j, new ArrayList<JCheckBox>());
+           
+           for(int k=0;k<3;k++){
+               constraints.gridx++;
+               constraints.anchor = GridBagConstraints.CENTER;
+               
+               disaggVarianceBoxes.get(j).add(k, new JCheckBox());
+               levelOneGrid.add(disaggVarianceBoxes.get(j).get(k), constraints);
+           }
+           
+           constraints.gridy++;   
+           
+       }
+   
    }
    
    public void updateLevelTwoRegGrid(DefaultListModel<String> defaultListModel){
@@ -974,7 +1040,7 @@ public class mixregGUI extends javax.swing.JFrame {
        
        levelTwoGrid.removeAll();
        
-       levelTwoGrid.setLayout(new GridLayout(regSize, 4, 20, 5));
+       levelTwoGrid.setLayout(new GridLayout(regSize, 4, -1, -1));
        
        levelTwoGrid.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
        
@@ -1000,7 +1066,7 @@ public class mixregGUI extends javax.swing.JFrame {
        stageTwoRegSize = regSize;
        
        stageTwoGrid.removeAll();
-       stageTwoGrid.setLayout(new GridLayout(regSize, 4, 20, 5));
+       stageTwoGrid.setLayout(new GridLayout(regSize, 4, -1, -1));
        
        stageTwoGrid.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
        
