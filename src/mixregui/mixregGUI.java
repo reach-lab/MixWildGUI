@@ -43,7 +43,7 @@ public class mixregGUI extends javax.swing.JFrame {
    //public boolean submitClicked = true;
    int i;
    
-   int levelOneRegSize, levelTwoRegSize, stageTwoRegSize;
+   int levelOneRegSize, levelTwoRegSize, stageTwoRegSize, levelOneDisaggSize;
    
    String[] variableNamesCombo;
     
@@ -66,6 +66,8 @@ public class mixregGUI extends javax.swing.JFrame {
     ArrayList<ArrayList<JCheckBox>> stageTwoBoxes;
     
     ArrayList<ArrayList<JCheckBox>> disaggVarianceBoxes;
+    
+    int stageOneClicked = 0;
 
     /**
      * Creates new form mixregGUI
@@ -82,9 +84,6 @@ public class mixregGUI extends javax.swing.JFrame {
         
         i = newModel.getRLE();
         System.out.println(String.valueOf(i));
-       // level1_MeanReg.setText("<html>Mean<br>Regressor</html>");
-        //level1_MeanReg.setHorizontalAlignment(SwingConstants.CENTER);
-        //level1_MeanReg.setVerticalAlignment(SwingConstants.CENTER);
        
         
         if (i >1){
@@ -104,16 +103,13 @@ public class mixregGUI extends javax.swing.JFrame {
         jPanel6.setLayout(new BorderLayout());
         jPanel7.setLayout(new BorderLayout());
         
-      
-       
+        
+      //  System.out.println("Initialized");
+       // enableDisaggVariance();
+      // MyThread mt = new MyThread();
+       //mt.start();
         
     }
-    
-   /* if (newModel.getRLE() > 1){
-       // make radioButtons invisible here.
-   } */
-    
-    
     
 
     /**
@@ -748,7 +744,6 @@ public class mixregGUI extends javax.swing.JFrame {
         System.out.println("Total selected beta means model in level two: " + String.valueOf(countLevelTwoBeta()));
         System.out.println("Total selected alpha means model in level two: " + String.valueOf(countLevelTwoAlpha()));
         System.out.println("Total selected tau means model in level two: " + String.valueOf(countLevelTwoTau()));
-       // System.out.println("Total selected disagg. variance in level two: " + String.valueOf(countLevelTwoDisagg()));
         
         System.out.println("Total selected beta means model in stage two: " + String.valueOf(countStageTwoBeta()));
         System.out.println("Total selected alpha means model in stage two: " + String.valueOf(countStageTwoAlpha()));
@@ -782,7 +777,7 @@ public class mixregGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_addStageTwoButtonActionPerformed
 
     private void addStageOneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStageOneButtonActionPerformed
-        
+        stageOneClicked = 1;
         stage_1_regs = new stageOneRegs();
         stage_1_regs.setVisible(true);
         stage_1_regs.updateAllVariables();
@@ -807,6 +802,7 @@ public class mixregGUI extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -829,10 +825,11 @@ public class mixregGUI extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new mixregGUI().setVisible(true);
+                
+               
             }
         });
-        
-       
+      
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1053,6 +1050,7 @@ public class mixregGUI extends javax.swing.JFrame {
        
        int regSize = defaultListModel.getSize();
        levelOneRegSize = regSize;
+       levelOneDisaggSize = regSize;
        
        levelOneGrid.removeAll();
        
@@ -1331,6 +1329,22 @@ public class mixregGUI extends javax.swing.JFrame {
    
    }
    
+   public int countLevelOneDisagg(){
+       int levelOneDisagg = 0;
+       
+       for (int p=0; p<levelOneDisaggSize; p++){
+           
+           for(int k=0;k<3;k++){
+               if (disaggVarianceBoxes.get(p).get(k).isSelected()){
+               levelOneDisagg = levelOneDisagg + 1;
+           }
+           }
+      
+       }
+   
+       return levelOneDisagg;
+   }
+   
    
    public int countLevelTwoBeta(){
        
@@ -1462,39 +1476,31 @@ public class mixregGUI extends javax.swing.JFrame {
    return stageTwoTau;
    
    }
+
+   public void enableDisaggVariance(){
    
-   public int countLevelOneDisagg(){
+   for (int p=0; p<levelOneRegSize;p++){
        
-       int levelOneDisagg = 0;
-       
-       for (int p = 0; p<levelOneRegSize; p++){
-           
-           if (levelOneBoxes.get(p).get(3).isSelected()){
-           
-               levelOneDisagg = levelOneDisagg + 1;
-           }
+       for(int k=0; k<3;k++){
+   
+       if (levelOneBoxes.get(p).get(k).isSelected()){
+           disaggVarianceBoxes.get(p).get(k).setEnabled(true);
+       } else {
+           disaggVarianceBoxes.get(p).get(k).setEnabled(false);
        }
-   
-   return levelOneDisagg;
-   
+       }
+   }
    }
    
    
-   /*
-   public int countLevelTwoDisagg(){
-       
-       int levelTwoDisagg = 0;
-       
-       for (int p = 0; p<levelTwoRegSize; p++){
-           
-           if (levelTwoBoxes.get(p).get(3).isSelected()){
-           
-               levelTwoDisagg = levelTwoDisagg + 1;
-           }
-       }
-   
-   return levelTwoDisagg;
-   
+   /*public class MyThread extends Thread{
+       public void run(){
+            if (stageOneClicked ==0){
+                // do nothing
+            } else if (stageOneClicked == 1){
+                enableDisaggVariance();
+            }
+        }
    }*/
-  
+   
 }
