@@ -498,7 +498,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel9">
+                <Component class="javax.swing.JLabel" name="level1_WSVar">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="WS-Var."/>
                   </Properties>
@@ -508,7 +508,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel10">
+                <Component class="javax.swing.JLabel" name="level2_MeanReg">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Mean"/>
                   </Properties>
@@ -518,7 +518,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel11">
+                <Component class="javax.swing.JLabel" name="level2_BSVar">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="BS-Var."/>
                   </Properties>
@@ -528,7 +528,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel12">
+                <Component class="javax.swing.JLabel" name="level2_WSVar">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="WS-Var."/>
                   </Properties>
@@ -538,7 +538,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel5">
+                <Component class="javax.swing.JLabel" name="stage2_MeanReg">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Mean"/>
                   </Properties>
@@ -548,7 +548,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel6">
+                <Component class="javax.swing.JLabel" name="stage2_BSVar">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="BS-Var."/>
                   </Properties>
@@ -558,7 +558,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel15">
+                <Component class="javax.swing.JLabel" name="stage2_WSVar">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="WS-Var."/>
                   </Properties>
@@ -587,7 +587,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel8">
+                <Component class="javax.swing.JLabel" name="level1_BSVar">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="BS-Var."/>
                   </Properties>
@@ -692,7 +692,7 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="0" pref="4" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="6" max="32767" attributes="0"/>
                               <Component id="levelTwoGrid" min="-2" pref="284" max="-2" attributes="0"/>
                           </Group>
                       </Group>

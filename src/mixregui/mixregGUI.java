@@ -92,10 +92,14 @@ public class mixregGUI extends javax.swing.JFrame {
         LinearAssociationRadio.setVisible(false);
         QuadraticAssociationRadio.setVisible(false);
         associationLabel.setVisible(false);
-        //levelOneAlpha.setVisible(false);
-       // levelTwoAlpha.setVisible(false);
-       // alphaLabelOne.setText("<html>Test whether the <br>association between regressor & <br>dependent variable <br>(i.e., slope) varies?</html>");
-        //alphaLabelTwo.setText("<html>Test whether the <br>association between regressor & <br>dependent variable <br>(i.e., slope) varies?</html>");
+        
+        level1_BSVar.setText("Loc. eff.");
+        level1_WSVar.setText("Scale");
+        level2_BSVar.setText("Loc. eff.");
+        level2_WSVar.setText("Scale");
+        stage2_BSVar.setText("Loc. eff.");
+        stage2_WSVar.setText("Scale");
+
         }
         
         //levelOneBorderLayout.add(levelOneGrid);
@@ -157,16 +161,16 @@ public class mixregGUI extends javax.swing.JFrame {
         QuadraticAssociationRadio = new javax.swing.JRadioButton();
         jLabel4 = new javax.swing.JLabel();
         level1_MeanReg = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
+        level1_WSVar = new javax.swing.JLabel();
+        level2_MeanReg = new javax.swing.JLabel();
+        level2_BSVar = new javax.swing.JLabel();
+        level2_WSVar = new javax.swing.JLabel();
+        stage2_MeanReg = new javax.swing.JLabel();
+        stage2_BSVar = new javax.swing.JLabel();
+        stage2_WSVar = new javax.swing.JLabel();
         stageTwoGrid = new javax.swing.JPanel();
         jSeparator2 = new javax.swing.JSeparator();
-        jLabel8 = new javax.swing.JLabel();
+        level1_BSVar = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         levelOneGrid = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -384,33 +388,33 @@ public class mixregGUI extends javax.swing.JFrame {
         jPanel1.add(level1_MeanReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 100, -1, -1));
         level1_MeanReg.getAccessibleContext().setAccessibleName("");
 
-        jLabel9.setText("WS-Var.");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 100, -1, -1));
+        level1_WSVar.setText("WS-Var.");
+        jPanel1.add(level1_WSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 100, -1, -1));
 
-        jLabel10.setText("Mean");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 100, -1, -1));
+        level2_MeanReg.setText("Mean");
+        jPanel1.add(level2_MeanReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 100, -1, -1));
 
-        jLabel11.setText("BS-Var.");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 100, -1, -1));
+        level2_BSVar.setText("BS-Var.");
+        jPanel1.add(level2_BSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 100, -1, -1));
 
-        jLabel12.setText("WS-Var.");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 100, -1, -1));
+        level2_WSVar.setText("WS-Var.");
+        jPanel1.add(level2_WSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 100, -1, -1));
 
-        jLabel5.setText("Mean");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 100, -1, -1));
+        stage2_MeanReg.setText("Mean");
+        jPanel1.add(stage2_MeanReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 100, -1, -1));
 
-        jLabel6.setText("BS-Var.");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 100, -1, -1));
+        stage2_BSVar.setText("BS-Var.");
+        jPanel1.add(stage2_BSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 100, -1, -1));
 
-        jLabel15.setText("WS-Var.");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 100, -1, -1));
+        stage2_WSVar.setText("WS-Var.");
+        jPanel1.add(stage2_WSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 100, -1, -1));
 
         stageTwoGrid.setLayout(new java.awt.GridLayout(1, 0));
         jPanel1.add(stageTwoGrid, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 130, 270, 340));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 480, 900, -1));
 
-        jLabel8.setText("BS-Var.");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, -1, -1));
+        level1_BSVar.setText("BS-Var.");
+        jPanel1.add(level1_BSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, -1, -1));
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Level-1 (WS)"));
 
@@ -449,7 +453,7 @@ public class mixregGUI extends javax.swing.JFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addGap(0, 4, Short.MAX_VALUE)
+                .addGap(0, 6, Short.MAX_VALUE)
                 .addComponent(levelTwoGrid, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -893,11 +897,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton9;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
@@ -905,11 +905,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
@@ -931,7 +927,12 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JLabel level1_BSVar;
     private javax.swing.JLabel level1_MeanReg;
+    private javax.swing.JLabel level1_WSVar;
+    private javax.swing.JLabel level2_BSVar;
+    private javax.swing.JLabel level2_MeanReg;
+    private javax.swing.JLabel level2_WSVar;
     private javax.swing.JPanel levelOneGrid;
     private javax.swing.JPanel levelTwoGrid;
     private javax.swing.JMenuItem modifyStageOneMenu;
@@ -940,6 +941,9 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JPanel parentPanel;
     private javax.swing.JButton resetButton;
     private javax.swing.JButton runStageOneTwoButton;
+    private javax.swing.JLabel stage2_BSVar;
+    private javax.swing.JLabel stage2_MeanReg;
+    private javax.swing.JLabel stage2_WSVar;
     private javax.swing.JTabbedPane stageOneTabs;
     private javax.swing.JPanel stageTwoGrid;
     // End of variables declaration//GEN-END:variables
