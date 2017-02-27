@@ -102,6 +102,7 @@ public class mixregGUI extends javax.swing.JFrame {
         //levelOneBorderLayout.add(levelOneGrid);
         jPanel5.setLayout(new BorderLayout());
         jPanel6.setLayout(new BorderLayout());
+        jPanel7.setLayout(new BorderLayout());
         
       
        
@@ -169,6 +170,7 @@ public class mixregGUI extends javax.swing.JFrame {
         jSeparator4 = new javax.swing.JSeparator();
         jPanel6 = new javax.swing.JPanel();
         levelTwoGrid = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
@@ -377,13 +379,13 @@ public class mixregGUI extends javax.swing.JFrame {
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 100, -1, -1));
 
         jLabel10.setText("Mean");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 90, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 100, -1, -1));
 
         jLabel11.setText("BS-Var.");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 90, -1, -1));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 100, -1, -1));
 
         jLabel12.setText("WS-Var.");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 90, -1, -1));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 100, -1, -1));
 
         levelOneGrid.setLayout(new java.awt.BorderLayout());
         jPanel1.add(levelOneGrid, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 130, 250, 340));
@@ -398,9 +400,8 @@ public class mixregGUI extends javax.swing.JFrame {
         jLabel15.setText("WS-Var.");
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 100, -1, -1));
 
-        stageTwoGrid.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Stage-2"));
         stageTwoGrid.setLayout(new java.awt.GridLayout(1, 0));
-        jPanel1.add(stageTwoGrid, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 110, 250, 370));
+        jPanel1.add(stageTwoGrid, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 130, 250, 340));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 480, 830, -1));
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Level-1 (WS)"));
@@ -437,8 +438,8 @@ public class mixregGUI extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(levelTwoGrid, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
+                .addComponent(levelTwoGrid, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -446,6 +447,21 @@ public class mixregGUI extends javax.swing.JFrame {
         );
 
         jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 110, 270, 370));
+
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Stage-2"));
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 258, Short.MAX_VALUE)
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 346, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 110, 270, 370));
 
         stageOneTabs.addTab("Configuration", jPanel1);
 
@@ -475,7 +491,7 @@ public class mixregGUI extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(557, 557, 557)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(558, Short.MAX_VALUE))
+                .addContainerGap(577, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -531,7 +547,7 @@ public class mixregGUI extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(181, 181, 181)
                         .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(236, Short.MAX_VALUE))
+                .addContainerGap(255, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -875,6 +891,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
@@ -1163,22 +1180,7 @@ public class mixregGUI extends javax.swing.JFrame {
            }
            
            constraints.gridy++;
-           //constraints.gridx = 0;
            
-          // levelOneGrid.add(new JLabel("Disaggregate?"), constraints);
-          // disaggVarianceBoxes.add(j, new ArrayList<JCheckBox>());
-           
-           /*for(int k=0;k<3;k++){
-               constraints.gridx++;
-               constraints.anchor = GridBagConstraints.CENTER;
-               
-               disaggVarianceBoxes.get(j).add(k, new JCheckBox());
-               levelOneGrid.add(disaggVarianceBoxes.get(j).get(k), constraints);
-
-           }*/
-           
-           //constraints.gridy++;
-           //constraints.gridx = 0;
            separatorConstraint.gridy = separatorConstraint.gridy + 2;
            System.out.println("before seperator");
            levelTwoGrid.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
@@ -1188,6 +1190,72 @@ public class mixregGUI extends javax.swing.JFrame {
        }
        
        jPanel6.add(scrollpanel);
+   
+   }
+   
+   
+   public void updateStageTwoGrid_version2(DefaultListModel<String> defaultListModel){
+   
+       JScrollPane scrollpanel = new JScrollPane(stageTwoGrid);
+       
+       int regSize = defaultListModel.getSize();
+       stageTwoRegSize = regSize;
+       
+       stageTwoGrid.removeAll();
+       
+       stageTwoGrid.setLayout(new GridBagLayout());
+       GridBagConstraints constraints = new GridBagConstraints();
+       
+       constraints.gridx = 0;
+       constraints.gridy = 0;
+       constraints.weightx = 1.0;
+      // constraints.weighty = 1.0;
+       constraints.anchor = GridBagConstraints.NORTH;
+       //constraints.gridwidth = 4;
+       
+            GridBagConstraints separatorConstraint = new GridBagConstraints();
+            separatorConstraint.weightx = 1.0;
+            separatorConstraint.fill = GridBagConstraints.HORIZONTAL;
+            separatorConstraint.gridwidth = GridBagConstraints.REMAINDER;
+            separatorConstraint.gridx=0;
+       
+       
+       
+       constraints.insets = new Insets(3,0,5,25);
+       separatorConstraint.insets = new Insets(0,0,0,0);
+       //constraints.fill = GridBagConstraints.HORIZONTAL;
+       constraints.weightx = 1;
+       
+       stageTwoBoxes = new ArrayList<ArrayList<JCheckBox>>();
+       //disaggVarianceBoxes = new ArrayList<ArrayList<JCheckBox>>();
+       
+       for (int j=0;j<regSize;j++){
+           constraints.gridx = 0;
+           constraints.anchor = GridBagConstraints.LINE_END;
+           stageTwoGrid.add(new JLabel(defaultListModel.getElementAt(j)), constraints);
+           
+            stageTwoBoxes.add(j, new ArrayList<JCheckBox>());
+                          
+           
+           for (int k=0; k<3;k++){
+               
+               constraints.gridx++;
+               constraints.anchor = GridBagConstraints.CENTER;
+               stageTwoBoxes.get(j).add(k, new JCheckBox());
+               stageTwoGrid.add(stageTwoBoxes.get(j).get(k), constraints);
+           }
+           
+           constraints.gridy++;
+           
+           separatorConstraint.gridy = separatorConstraint.gridy + 2;
+           System.out.println("before seperator");
+           stageTwoGrid.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
+           System.out.println("after seperator");
+           constraints.gridy++;
+           
+       }
+       
+       jPanel7.add(scrollpanel);
    
    }
    
