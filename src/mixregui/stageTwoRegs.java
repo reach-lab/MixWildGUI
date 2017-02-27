@@ -189,6 +189,8 @@ public class stageTwoRegs extends javax.swing.JFrame {
         stageTwoLevelTwo.addElement(StageTwoAllVariables.getSelectedValue());
         StageTwoLevelTwoVariables.setModel(stageTwoLevelTwo);
         
+        
+        
         stageTwoSubmitButton.setEnabled(true);
         
     }//GEN-LAST:event_stageTwoAddButtonActionPerformed

@@ -108,6 +108,15 @@ public class mixregGUI extends javax.swing.JFrame {
        // enableDisaggVariance();
       // MyThread mt = new MyThread();
        //mt.start();
+       
+       if (stageOneClicked == 0){
+       
+       addStageTwoButton.setEnabled(false);
+       
+        } else {
+       
+           addStageTwoButton.setEnabled(true);
+       }
         
     }
     
@@ -778,6 +787,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
     private void addStageOneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStageOneButtonActionPerformed
         stageOneClicked = 1;
+        addStageTwoButton.setEnabled(true);
         stage_1_regs = new stageOneRegs();
         stage_1_regs.setVisible(true);
         stage_1_regs.updateAllVariables();
@@ -931,10 +941,10 @@ public class mixregGUI extends javax.swing.JFrame {
     IDvariableCombo.setSelectedIndex(0);
     
     StageOneVariableCombo.setModel(StageOneList);
-    StageOneVariableCombo.setSelectedIndex(0);
+    StageOneVariableCombo.setSelectedIndex(1);
     
     StageTwoVariableCombo.setModel(StageTwoList);
-    StageTwoVariableCombo.setSelectedIndex(0);
+    StageTwoVariableCombo.setSelectedIndex(2);
 }
    
    public static void openWebpage(String urlString) {
