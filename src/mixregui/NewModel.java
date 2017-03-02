@@ -31,8 +31,8 @@ public class NewModel extends javax.swing.JFrame {
     static int RLE;
     static mixregGUI mxr;
     
-    static DefinitionHelper defFile;
-    
+    public static def_lib.DefinitionHelper defFile;
+     
     
     
 
@@ -44,8 +44,10 @@ public class NewModel extends javax.swing.JFrame {
         
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
-        fileChooser = new JFileChooser();
-       // defFile = new DefinitionHelper();
+       fileChooser = new JFileChooser();
+      // defFile = new def_lib.DefinitionHelper();
+      
+      
        
        titleField.setEnabled(false);
        subtitleField.setEnabled(false);
@@ -61,9 +63,7 @@ public class NewModel extends javax.swing.JFrame {
        titleField.setToolTipText("Insert title for the model");
        subtitleField.setToolTipText("Insert subtitle for the model");
        randomLocationEffects.setToolTipText("Select the number of random location effects. Minimum value is 1");
-       
-       
-       
+      
     }
 
     /**
@@ -285,8 +285,6 @@ public class NewModel extends javax.swing.JFrame {
            
             // Read variable names from row 1
             String variableNames = inputStream.next();
-            
-           // System.out.println(variableNames + "**");
             
             variableArray = variableNames.split(",");
             
