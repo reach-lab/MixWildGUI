@@ -435,33 +435,74 @@ public class advancedOptions extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        defFile3 = NewModel.defFile;
+       //defFile3 = NewModel.defFile;
+       int tryCount = 0;
+       int catchCount = 0;
+       
+       //defFile
         
         try {
-            defFile3.setAdvancedConvergence(String.valueOf(convergenceCriteria.getValue()));
-            System.out.println(defFile3.getAdvancedConvergence());
+            NewModel.defFile.setAdvancedConvergence(String.valueOf(convergenceCriteria.getValue()));
+            System.out.println(NewModel.defFile.getAdvancedConvergence());
+            tryCount = 1;
             
-            defFile3.setAdvancedQuadPoints(String.valueOf(quadriturePoints.getValue()));
-            System.out.println(defFile3.getAdvancedQuadPoints());
-            
-            defFile3.setAdvancedMaxIteration(String.valueOf(getMaximumIterations()));
-            System.out.println(defFile3.getAdvancedMaxIteration());
-            
-            defFile3.setAdvancedMissingValue(String.valueOf(getMissingValueCode()));
-            System.out.println(defFile3.getAdvancedMissingValue());
-            
-            defFile3.setAdvancedRidge(String.valueOf(getRidge()));
-            System.out.println(defFile3.getAdvancedRidge());
-            
-            
-            
-            this.dispose();
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Invalid entry. Please follow the guidelines", "Caution!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Invalid entry in Convergence. Please follow the guidelines", "Caution!", JOptionPane.INFORMATION_MESSAGE);
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+            catchCount = 1;
         }
         
-            
+        
+        //set quadriture points
+        try {
+            NewModel.defFile.setAdvancedQuadPoints(String.valueOf(quadriturePoints.getValue()));
+            System.out.println(NewModel.defFile.getAdvancedQuadPoints());
+            tryCount = 1;
+        } catch (Exception ex) {
+            catchCount = 1;
+            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Invalid entry in advanced options. Please follow the guidelines", "Caution!", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        try {
+            NewModel.defFile.setAdvancedMaxIteration(String.valueOf(getMaximumIterations()));
+            System.out.println(NewModel.defFile.getAdvancedMaxIteration());
+            tryCount = 1;
+        } catch (Exception ex) {
+            catchCount = 1;
+            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Invalid entry in maximum iterations. Please follow the guidelines", "Caution!", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        
+        try {
+            NewModel.defFile.setAdvancedMissingValue(String.valueOf(getMissingValueCode()));
+            System.out.println(NewModel.defFile.getAdvancedMissingValue());
+            tryCount = 1;
+        } catch (Exception ex) {
+            catchCount = 1;
+            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Invalid entry in Missing Value. Please follow the guidelines", "Caution!", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        
+        try {
+            NewModel.defFile.setAdvancedRidge(String.valueOf(getRidge()));
+            System.out.println(NewModel.defFile.getAdvancedRidge());
+            tryCount = 1;
+        } catch (Exception ex) {
+            catchCount = 1;
+            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Invalid entry in Ridge. Please follow the guidelines", "Caution!", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        
+        if (catchCount == 0){
+            //do nothing
+            this.dispose();
+        }
+        
+        
         
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -31,7 +31,10 @@ public class NewModel extends javax.swing.JFrame {
     static int RLE;
     static mixregGUI mxr;
     
-    public static def_lib.DefinitionHelper defFile;
+    /**
+     *
+     */
+    public static DefinitionHelper defFile;
      
     
     
