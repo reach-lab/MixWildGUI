@@ -783,10 +783,13 @@ public class mixregGUI extends javax.swing.JFrame {
         System.out.println("Total selected alpha means model in stage two: " + String.valueOf(countStageTwoAlpha()));
         System.out.println("Total selected tau means model in stage two: " + String.valueOf(countStageTwoTau()));
         
+        //NewModel.defFile.setIdOutcome(IDvariableCombo.getSelectedIndex());
         
         
         
-        DefinitionHelper defFile2 = newModel.getDefFile();
+        
+        
+      //DefinitionHelper defFile2 = newModel.getDefFile();
         
         
         
