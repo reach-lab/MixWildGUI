@@ -926,6 +926,7 @@ public class DefinitionHelper {
         return decompLocRanCount;
     }
 
+    // level one BS
     public void setDecompLocRanCount(String decompLocRanCount) throws Exception {
         if(setValidator("number of location random effects for BS/WS decomposition", "5", decompLocRanCount, 0, 255, MIX_INTEGER)){
             this.decompLocRanCount = decompLocRanCount;
@@ -936,6 +937,7 @@ public class DefinitionHelper {
         return decompScaleCount;
     }
 
+    // level one WS
     public void setDecompScaleCount(String decompScaleCount) throws Exception {
         if(setValidator("number of scale regressors for BS/WS decomposition", "5", decompScaleCount, 0, 255, MIX_INTEGER)){
             this.decompScaleCount = decompScaleCount;
@@ -1036,7 +1038,7 @@ public class DefinitionHelper {
         return modelBetweenCount;
     }
 
-    // based on the counts from the table
+    // TOTAL LEVEL TWO REGS
     public void setModelBetweenCount(String modelBetweenCount) throws Exception {
         if(setValidator("number of between-subject variance regressors", "5", modelBetweenCount, 0, 255, MIX_INTEGER)){
             this.modelBetweenCount = modelBetweenCount;
@@ -1047,28 +1049,32 @@ public class DefinitionHelper {
         return modelWithinCount;
     }
 
-    // what does it do?
+    // TOTAL LEVEL ONE REGS
     public void setModelWithinCount(String modelWithinCount) throws Exception {
         if(setValidator("number of within-subject variance regressors", "5", modelWithinCount, 0, 255, MIX_INTEGER)){
             this.modelWithinCount = modelWithinCount;
         }
     }
 
+    // to do
     public String getModelBetweenInt() {
         return modelBetweenInt;
     }
 
     
+    // to do
     public void setModelBetweenInt(String modelBetweenInt) throws Exception {
         if(setValidator("between-subject variance intercept", "5", modelBetweenInt, 0, 1, MIX_INTEGER)){
             this.modelBetweenInt = modelBetweenInt;
         }
     }
 
+    // to do
     public String getModelWithinInt() {
         return modelWithinInt;
     }
 
+    // to do
     public void setModelWithinInt(String modelWithinInt) throws Exception {
         if(setValidator("within-subject variance intercept", "5", modelWithinInt, 0, 1, MIX_INTEGER)){
             this.modelWithinInt = modelWithinInt;
@@ -1079,6 +1085,7 @@ public class DefinitionHelper {
         return decompBSCount;
     }
 
+    // tested 
     public void setDecompBSCount(String decompBSCount) throws Exception {
         if(setValidator("number of between-subject variance regressors for BS/WS decomposition", "5", decompBSCount, 0, 255, MIX_INTEGER)){
             this.decompBSCount = decompBSCount;
@@ -1089,6 +1096,7 @@ public class DefinitionHelper {
         return decompWSCount;
     }
 
+    // tested
     public void setDecompWSCount(String decompWSCount) throws Exception {
         if(setValidator("number of within-subject variance regressors for BS/WS decomposition", "5", decompWSCount, 0, 255, MIX_INTEGER)){
             this.decompWSCount = decompWSCount;
@@ -1122,6 +1130,7 @@ public class DefinitionHelper {
         return fieldModelMeanRegressors;
     }
 
+    // to do
     public void setFieldModelMeanRegressors(String[] fieldModelMeanRegressors) throws Exception {
         if(loopSetValidator("model mean regressor fields", "7", fieldModelMeanRegressors, 0, 255, MIX_INTEGER)){
             this.fieldModelMeanRegressors = fieldModelMeanRegressors;
@@ -1132,6 +1141,7 @@ public class DefinitionHelper {
         return fieldModelBSRegressors;
     }
 
+    // to do
     public void setFieldModelBSRegressors(String[] fieldModelBSRegressors) throws Exception {
         if(loopSetValidator("model BS variance regressor fields", "8", fieldModelBSRegressors, 0, 255, MIX_INTEGER)){
             this.fieldModelBSRegressors = fieldModelBSRegressors;
@@ -1142,6 +1152,8 @@ public class DefinitionHelper {
         return fieldModelWSRegressors;
     }
 
+    
+    // to do
     public void setFieldModelWSRegressors(String[] fieldModelWSRegressors) throws Exception {
         if(loopSetValidator("model WS variance regressor fields", "9", fieldModelWSRegressors, 0, 255, MIX_INTEGER)){
             this.fieldModelWSRegressors = fieldModelWSRegressors;
@@ -1152,6 +1164,7 @@ public class DefinitionHelper {
         return fieldModelLocRanRegressors;
     }
 
+    // to do
     public void setFieldModelLocRanRegressors(String[] fieldModelLocRanRegressors) throws Exception {
         if(loopSetValidator("model random regressor fields", "8", fieldModelLocRanRegressors, 0, 255, MIX_INTEGER)){
             this.fieldModelLocRanRegressors = fieldModelLocRanRegressors;
@@ -1162,6 +1175,7 @@ public class DefinitionHelper {
         return fieldModelScaleRegressors;
     }
 
+    // to do
     public void setFieldModelScaleRegressors(String[] fieldModelScaleRegressors) throws Exception {
         if(loopSetValidator("model scale regressor fields", "9", fieldModelScaleRegressors, 0, 255, MIX_INTEGER)){
             this.fieldModelScaleRegressors = fieldModelScaleRegressors;
@@ -1172,6 +1186,7 @@ public class DefinitionHelper {
         return fieldDecompMeanRegressors;
     }
 
+    // to do
     public void setFieldDecompMeanRegressors(String[] fieldDecompMeanRegressors) throws Exception {
         if(loopSetValidator("model mean regressor for BS/WS decomposition fields", "10", fieldDecompMeanRegressors, 0, 255, MIX_INTEGER)){
             this.fieldDecompMeanRegressors = fieldDecompMeanRegressors;
@@ -1182,6 +1197,7 @@ public class DefinitionHelper {
         return fieldDecompBSRegressors;
     }
 
+    // to do
     public void setFieldDecompBSRegressors(String[] fieldDecompBSRegressors) throws Exception {
         if(loopSetValidator("model BS variance regressor for BS/WS decomposition fields", "11", fieldDecompBSRegressors, 0, 255, MIX_INTEGER)){
             this.fieldDecompBSRegressors = fieldDecompBSRegressors;
@@ -1192,6 +1208,7 @@ public class DefinitionHelper {
         return fieldDecompWSRegressors;
     }
 
+    // to do
     public void setFieldDecompWSRegressors(String[] fieldDecompWSRegressors) throws Exception {
         if(loopSetValidator("model WS variance regressor for BS/WS decomposition fields", "12", fieldDecompWSRegressors, 0, 255, MIX_INTEGER)){
             this.fieldDecompWSRegressors = fieldDecompWSRegressors;
@@ -1202,6 +1219,7 @@ public class DefinitionHelper {
         return fieldDecompLocRanRegressors;
     }
 
+    // to do
     public void setFieldDecompLocRanRegressors(String[] fieldDecompLocRanRegressors) throws Exception {
         if(loopSetValidator("model random regressor for BS/WS decomposition fields", "11", fieldDecompLocRanRegressors, 0, 255, MIX_INTEGER)){
             this.fieldDecompLocRanRegressors = fieldDecompLocRanRegressors;
@@ -1212,6 +1230,7 @@ public class DefinitionHelper {
         return fieldDecompScaleRegressors;
     }
 
+    // to do
     public void setFieldDecompScaleRegressors(String[] fieldDecompScaleRegressors) throws Exception {
         if(loopSetValidator("model scale regressor for BS/WS decomposition fields", "12", fieldDecompScaleRegressors, 0, 255, MIX_INTEGER)){
             this.fieldDecompScaleRegressors = fieldDecompScaleRegressors;
