@@ -799,6 +799,29 @@ public class mixregGUI extends javax.swing.JFrame {
            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
        }
        
+       
+       // i is the number of random location effects selected by the users
+       if (i ==1) {
+       
+           try {
+           NewModel.defFile.setDecompBSCount(String.valueOf(countLevelOneDicompBS()));
+           System.out.println("BS Variance Regressor Count: " + NewModel.defFile.getDecompBSCount().toString());
+       } catch (Exception ex) {
+           Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+           JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+       }
+       
+       try {
+           NewModel.defFile.setDecompWSCount(String.valueOf(countLevelOneDicompWS()));
+           System.out.println("WS Variance Regressor Count: " + NewModel.defFile.getDecompBSCount().toString());
+       } catch (Exception ex) {
+           Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+           JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+       }
+       
+       
+       } else if (i > 1){
+       
        try {
            NewModel.defFile.setDecompMeanCount(String.valueOf(countLevelOneDicompMean()));
            System.out.println("Decomp Model Mean Count: " + NewModel.defFile.getDecompMeanCount().toString());
@@ -823,6 +846,9 @@ public class mixregGUI extends javax.swing.JFrame {
            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
        }
        
+       }
+       
+       
        try {
            NewModel.defFile.setModelBetweenCount(String.valueOf(levelTwoRegSize));
            System.out.println("Model Between Count: " + NewModel.defFile.getModelBetweenCount().toString());
@@ -838,23 +864,6 @@ public class mixregGUI extends javax.swing.JFrame {
            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
        }
-       
-       try {
-           NewModel.defFile.setDecompBSCount(String.valueOf(countLevelOneBeta() + countLevelTwoBeta()));
-           System.out.println("BS Variance Regressor Count: " + NewModel.defFile.getDecompBSCount().toString());
-       } catch (Exception ex) {
-           Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-           JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
-       }
-       
-       try {
-           NewModel.defFile.setDecompWSCount(String.valueOf(countLevelOneTau() + countLevelTwoTau()));
-           System.out.println("WS Variance Regressor Count: " + NewModel.defFile.getDecompBSCount().toString());
-       } catch (Exception ex) {
-           Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-           JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
-       }
-        
        
        
         stageOneTabs.setSelectedIndex(3);
