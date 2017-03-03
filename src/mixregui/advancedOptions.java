@@ -470,7 +470,9 @@ public class advancedOptions extends javax.swing.JFrame {
         }
         
         
-        try {
+       if (missingValueCode.isEnabled()){
+       
+           try {
             NewModel.defFile.setAdvancedMissingValue(getMissingValueCode());
             System.out.println(NewModel.defFile.getAdvancedMissingValue());
             tryCount = 1;
@@ -479,7 +481,11 @@ public class advancedOptions extends javax.swing.JFrame {
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "Invalid entry in Missing Value. Please follow the guidelines", "Caution!", JOptionPane.INFORMATION_MESSAGE);
         }
-        
+       
+       } else {
+           // do nothing and go next
+       
+       }
         
         try {
             NewModel.defFile.setAdvancedRidge(String.valueOf(getRidge()));
@@ -636,16 +642,16 @@ public boolean isWSVarianceChecked(){
 }
 
 // get the convergence criteria
-public double getConvergenceCriteria(){
+public Double getConvergenceCriteria(){
 
-    return (double) convergenceCriteria.getValue();
+    return (Double) convergenceCriteria.getValue();
 
 }
 
 // get Quadriture points
-public double getQuadriturePoints(){
+public Double getQuadriturePoints(){
 
-    return (double) quadriturePoints.getValue();
+    return (Double) quadriturePoints.getValue();
 }
 
 
@@ -665,9 +671,9 @@ public boolean isAdaptiveQuadritureChecked(){
 }
 
 // get the convergence criteria
-public double getMaximumIterations(){
+public Double getMaximumIterations(){
 
-    return (double) maximumIterations.getValue();
+    return (Double) maximumIterations.getValue();
 
 }
 
