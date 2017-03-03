@@ -713,9 +713,9 @@ public boolean isStandardizedCoefChecked(){
 }
 
 // get the ridge value
-public double getRidge(){
+public Double getRidge(){
 
-    return (double) ridgeSpinner.getValue();
+    return (Double) ridgeSpinner.getValue();
 
 }
 
