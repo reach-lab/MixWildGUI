@@ -129,6 +129,8 @@ public class DefinitionHelper {
     private String[] stageTwoLocRanIntLabels;
     private String[] stageTwoScaleIntLabels;
     private String[] stageTwoFirstIntLabels;
+    
+  
 
     /**
      * 
@@ -777,6 +779,8 @@ public class DefinitionHelper {
         }
     }
     
+    
+    //read model title from NewModel.java
     public String getModelTitle() {
         return modelTitle;
     }
