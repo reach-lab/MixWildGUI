@@ -439,11 +439,11 @@ public class advancedOptions extends javax.swing.JFrame {
         
         try {
             NewModel.defFile.setAdvancedConvergence(String.valueOf(convergenceCriteria.getValue()));
-            System.out.println(NewModel.defFile.getAdvancedConvergence());
+            System.out.println("Convergence: " + NewModel.defFile.getAdvancedConvergence());
             tryCount = 1;
             
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Invalid entry in Convergence. Please follow the guidelines", "Caution!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
             catchCount = 1;
         }
@@ -451,22 +451,22 @@ public class advancedOptions extends javax.swing.JFrame {
         //set quadriture points
         try {
             NewModel.defFile.setAdvancedQuadPoints(String.valueOf(quadriturePoints.getValue()));
-            System.out.println(NewModel.defFile.getAdvancedQuadPoints());
+            System.out.println("Quadriture Points: " + NewModel.defFile.getAdvancedQuadPoints());
             tryCount = 1;
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "Invalid entry in advanced options. Please follow the guidelines", "Caution!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
         }
         
         try {
             NewModel.defFile.setAdvancedMaxIteration(String.valueOf(getMaximumIterations()));
-            System.out.println(NewModel.defFile.getAdvancedMaxIteration());
+            System.out.println("Maximum Iteraions: " + NewModel.defFile.getAdvancedMaxIteration());
             tryCount = 1;
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "Invalid entry in maximum iterations. Please follow the guidelines", "Caution!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
         }
         
         
@@ -474,12 +474,12 @@ public class advancedOptions extends javax.swing.JFrame {
        
            try {
             NewModel.defFile.setAdvancedMissingValue(getMissingValueCode());
-            System.out.println(NewModel.defFile.getAdvancedMissingValue());
+            System.out.println("Missing Value: " + NewModel.defFile.getAdvancedMissingValue());
             tryCount = 1;
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "Invalid entry in Missing Value. Please follow the guidelines", "Caution!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
         }
        
        } else {
@@ -489,21 +489,21 @@ public class advancedOptions extends javax.swing.JFrame {
         
         try {
             NewModel.defFile.setAdvancedRidge(String.valueOf(getRidge()));
-            System.out.println(NewModel.defFile.getAdvancedRidge());
+            System.out.println("Ridge: " + NewModel.defFile.getAdvancedRidge());
             tryCount = 1;
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "Invalid entry in Ridge. Please follow the guidelines", "Caution!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
         }
         
         try {
             NewModel.defFile.setAdvancedCenterScale(String.valueOf(isCenterRegressorChecked()));
-            System.out.println(NewModel.defFile.getAdvancedRidge());
+            System.out.println("Scale Regressor: " + NewModel.defFile.getAdvancedRidge());
             tryCount = 1;
         } catch (Exception ex) {
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, "Invalid entry in Center Scale. Please follow the guidelines", "Caution!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
         }
         
         
@@ -671,9 +671,9 @@ public boolean isAdaptiveQuadritureChecked(){
 }
 
 // get the convergence criteria
-public Double getMaximumIterations(){
+public Integer getMaximumIterations(){
 
-    return (Double) maximumIterations.getValue();
+    return (Integer) maximumIterations.getValue();
 
 }
 
