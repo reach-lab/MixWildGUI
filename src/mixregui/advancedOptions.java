@@ -471,7 +471,7 @@ public class advancedOptions extends javax.swing.JFrame {
         
         
         try {
-            NewModel.defFile.setAdvancedMissingValue(String.valueOf(getMissingValueCode()));
+            NewModel.defFile.setAdvancedMissingValue(getMissingValueCode());
             System.out.println(NewModel.defFile.getAdvancedMissingValue());
             tryCount = 1;
         } catch (Exception ex) {
@@ -687,12 +687,12 @@ public boolean isMissingValuesChecked(){
 }
 
 // get missing value code
-public double getMissingValueCode(){
-    double missingValue;
+public String getMissingValueCode(){
+    String missingValue;
     
     //missingValue = (double) missingValueCode.getText().toString();
     
-    missingValue = Double.parseDouble(missingValueCode.getText().toString());
+    missingValue = missingValueCode.getText().toString();
     
     return missingValue;
 }
