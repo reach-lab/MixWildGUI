@@ -792,7 +792,6 @@ public class mixregGUI extends javax.swing.JFrame {
         String[] idOutcome = {String.valueOf(IDvariableCombo.getSelectedIndex() + 1), String.valueOf(StageOneVariableCombo.getSelectedIndex() + 1)};
 
        try {
-           //NewModel.defFile.setIdOutcome();
            NewModel.defFile.setIdOutcome(idOutcome);
            System.out.println("ID and Outcome indices: " + Arrays.toString(NewModel.defFile.getIdOutcome()));
        } catch (Exception ex) {
@@ -801,7 +800,7 @@ public class mixregGUI extends javax.swing.JFrame {
        }
        
        try {
-           NewModel.defFile.setDecompMeanCount(String.valueOf(countLevelOneAlpha()));
+           NewModel.defFile.setDecompMeanCount(String.valueOf(countLevelOneDicompMean()));
            System.out.println("Decomp Model Mean Count: " + NewModel.defFile.getDecompMeanCount().toString());
        } catch (Exception ex) {
            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -809,7 +808,7 @@ public class mixregGUI extends javax.swing.JFrame {
        }
        
        try {
-           NewModel.defFile.setDecompLocRanCount(String.valueOf(countLevelOneBeta()));
+           NewModel.defFile.setDecompLocRanCount(String.valueOf(countLevelOneDicompBS()));
            System.out.println("Decomp Model Loc Random Count: " + NewModel.defFile.getDecompMeanCount().toString());
        } catch (Exception ex) {
            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -817,7 +816,7 @@ public class mixregGUI extends javax.swing.JFrame {
        }
        
        try {
-           NewModel.defFile.setDecompScaleCount(String.valueOf(countLevelOneTau()));
+           NewModel.defFile.setDecompScaleCount(String.valueOf(countLevelOneDicompWS()));
            System.out.println("Decomp Scale Count: " + NewModel.defFile.getDecompScaleCount().toString());
        } catch (Exception ex) {
            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -1061,12 +1060,7 @@ public class mixregGUI extends javax.swing.JFrame {
    }
    
    public void updateRegressors(DefaultComboBoxModel<String> levelOne, DefaultComboBoxModel<String> levelTwo){
-   
-       //levelOneSelectedRegs.setModel(levelOne);
-      // levelOneSelectedRegs.setSelectedIndex(0);
-       
-      // levelTwoSelectedRegs.setModel(levelTwo);
-      // levelTwoSelectedRegs.setSelectedIndex(0);
+   // delete this function
    
    }
    
