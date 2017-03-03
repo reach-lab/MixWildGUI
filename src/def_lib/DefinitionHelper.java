@@ -802,6 +802,7 @@ public class DefinitionHelper {
         else{this.modelSubtitle = modelSubtitle;}
     }
 
+    // print file name path
     public String getDataFilename() {
         return dataFilename;
     }
@@ -843,6 +844,7 @@ public class DefinitionHelper {
 
     
     // what should this do?
+    //todo // mean level 1 and level 2?
     public void setModelMeanCount(String modelMeanCount) throws Exception {
         if(setValidator("number of mean regressors", "5", modelMeanCount, 1, 255, MIX_INTEGER)){
             this.modelMeanCount = modelMeanCount;
@@ -865,6 +867,7 @@ public class DefinitionHelper {
     }
 
     // What does this do?
+    //todo 
     public void setModelScaleCount(String modelScaleCount) throws Exception {
         if(setValidator("number of scale regressors", "5", modelScaleCount, 0, 255, MIX_INTEGER)){
             this.modelScaleCount = modelScaleCount;
@@ -876,6 +879,7 @@ public class DefinitionHelper {
     }
 
     // what does this do?
+    //todo
     public void setModelFixedInt(String modelFixedInt) throws Exception {
         if(setValidator("fixed intercept", "5", modelFixedInt, 0, 1, MIX_INTEGER)){
             this.modelFixedInt = modelFixedInt;
@@ -887,6 +891,7 @@ public class DefinitionHelper {
     }
 
     // what does this do?
+    //todo
     public void setModelRandomInt(String modelRandomInt) throws Exception {
         if(setValidator("random intercept", "5", modelRandomInt, 0, 1, MIX_INTEGER)){
             this.modelRandomInt = modelRandomInt;
@@ -898,6 +903,7 @@ public class DefinitionHelper {
     }
 
     // What does this do?
+    //todo
     public void setModelScaleInt(String modelScaleInt) throws Exception {
         if(setValidator("scale intercept", "5", modelScaleInt, 0, 1, MIX_INTEGER)){
             this.modelScaleInt = modelScaleInt;
@@ -909,6 +915,7 @@ public class DefinitionHelper {
     }
 
     // What does this do?
+    // level 1 mean
     public void setDecompMeanCount(String decompMeanCount) throws Exception {
         if(setValidator("number of mean regressors for BS/WS decomposition", "5", decompMeanCount, 0, 255, MIX_INTEGER)){
             this.decompMeanCount = decompMeanCount;
@@ -1102,6 +1109,7 @@ public class DefinitionHelper {
         return idOutcome;
     }
 
+    // set ID and Outcome variable index numbers in the data set
     public void setIdOutcome(String[] idOutcome) throws Exception {
         if(setValidator("id location", "6", idOutcome[0], 0, 255, MIX_INTEGER)){
             if(setValidator("outcome location", "6", idOutcome[1], 0, 255, MIX_INTEGER)){

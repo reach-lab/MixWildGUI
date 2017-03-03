@@ -799,15 +799,14 @@ public class mixregGUI extends javax.swing.JFrame {
            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
        }
-        
-        
-        
-        
-      //DefinitionHelper defFile2 = newModel.getDefFile();
-        
-        
-        
-        //defFile2.setIdOutcome(StageOneVariableCombo.getItemAt(StageOneVariableCombo.getSelectedIndex()));
+       
+       try {
+           NewModel.defFile.setDecompMeanCount(String.valueOf(countLevelOneAlpha() /*+ countLevelTwoAlpha()*/));
+           System.out.println("Model Mean Count: " + NewModel.defFile.getDecompMeanCount().toString());
+       } catch (Exception ex) {
+           Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+           JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+       }
         
         stageOneTabs.setSelectedIndex(3);
 
@@ -1365,8 +1364,7 @@ public class mixregGUI extends javax.swing.JFrame {
                    stageTwoGrid.add(stageTwoBoxes.get(j).get(k));
       
                 }
-          
-       
+
        }
 
    }
@@ -1550,15 +1548,6 @@ public class mixregGUI extends javax.swing.JFrame {
    }
    }
    
-   
-   /*public class MyThread extends Thread{
-       public void run(){
-            if (stageOneClicked ==0){
-                // do nothing
-            } else if (stageOneClicked == 1){
-                enableDisaggVariance();
-            }
-        }
-   }*/
+
    
 }
