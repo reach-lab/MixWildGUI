@@ -20,9 +20,13 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
@@ -773,7 +777,7 @@ public class mixregGUI extends javax.swing.JFrame {
         System.out.println("Total selected beta means model in level one: " + String.valueOf(countLevelOneBeta()));
         System.out.println("Total selected alpha means model in level one: " + String.valueOf(countLevelOneAlpha()));
         System.out.println("Total selected tau means model in level one: " + String.valueOf(countLevelOneTau()));
-        System.out.println("Total selected disagg. variance in level one: " + String.valueOf(countLevelOneDisagg()));
+        System.out.println("Total selected disagg. variance in level one: " + String.valueOf(countLevelOneDicompMean()));
         
         System.out.println("Total selected beta means model in level two: " + String.valueOf(countLevelTwoBeta()));
         System.out.println("Total selected alpha means model in level two: " + String.valueOf(countLevelTwoAlpha()));
@@ -785,16 +789,115 @@ public class mixregGUI extends javax.swing.JFrame {
         
         //NewModel.defFile.setIdOutcome(IDvariableCombo.getSelectedIndex());
         
-        
-        
-        
-        
-      //DefinitionHelper defFile2 = newModel.getDefFile();
-        
-        
-        
-        //defFile2.setIdOutcome(StageOneVariableCombo.getItemAt(StageOneVariableCombo.getSelectedIndex()));
-        
+        String[] idOutcome = {String.valueOf(IDvariableCombo.getSelectedIndex() + 1), String.valueOf(StageOneVariableCombo.getSelectedIndex() + 1)};
+
+       try {
+           NewModel.defFile.setIdOutcome(idOutcome);
+           System.out.println("ID and Outcome indices: " + Arrays.toString(NewModel.defFile.getIdOutcome()));
+       } catch (Exception ex) {
+           Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+           JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+       }
+       
+       
+       // i is the number of random location effects selected by the users
+       if (i ==1) {
+       
+           try {
+           NewModel.defFile.setDecompBSCount(String.valueOf(countLevelOneDicompBS()));
+           System.out.println("BS Variance Regressor Count: " + NewModel.defFile.getDecompBSCount().toString());
+       } catch (Exception ex) {
+           Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+           JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+       }
+       
+       try {
+           NewModel.defFile.setDecompWSCount(String.valueOf(countLevelOneDicompWS()));
+           System.out.println("WS Variance Regressor Count: " + NewModel.defFile.getDecompBSCount().toString());
+       } catch (Exception ex) {
+           Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+           JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+       }
+       
+       
+       } else if (i > 1){
+       
+       try {
+           NewModel.defFile.setDecompMeanCount(String.valueOf(countLevelOneDicompMean()));
+           System.out.println("Decomp Model Mean Count: " + NewModel.defFile.getDecompMeanCount().toString());
+       } catch (Exception ex) {
+           Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+           JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+       }
+       
+       try {
+           NewModel.defFile.setDecompLocRanCount(String.valueOf(countLevelOneDicompBS()));
+           System.out.println("Decomp Model Loc Random Count: " + NewModel.defFile.getDecompMeanCount().toString());
+       } catch (Exception ex) {
+           Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+           JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+       }
+       
+       try {
+           NewModel.defFile.setDecompScaleCount(String.valueOf(countLevelOneDicompWS()));
+           System.out.println("Decomp Scale Count: " + NewModel.defFile.getDecompScaleCount().toString());
+       } catch (Exception ex) {
+           Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+           JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+       }
+       
+       }
+       
+       try {
+           
+           int MeanCount = countLevelOneBeta() + countLevelTwoBeta();
+           
+           
+           
+           NewModel.defFile.setModelMeanCount(String.valueOf(MeanCount));
+           System.out.println("Model Mean Count: " + NewModel.defFile.getModelMeanCount().toString());
+       } catch (Exception ex) {
+           Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+           JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+       }
+       
+       
+       try {
+           int LocRanCount = countLevelOneAlpha() + countLevelTwoAlpha();
+           NewModel.defFile.setModelLocRanCount(String.valueOf(LocRanCount));
+           System.out.println("Model Loc Ran Count: " + NewModel.defFile.getModelLocRanCount().toString());
+       } catch (Exception ex) {
+           Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+           JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+       }
+       
+       
+       try {
+           int ScaleCount = countLevelOneTau() + countLevelTwoTau();
+           NewModel.defFile.setModelScaleCount(String.valueOf(ScaleCount));
+           System.out.println("Model Scale Count: " + NewModel.defFile.getModelLocRanCount().toString());
+       } catch (Exception ex) {
+           Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+           JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+       }
+       
+       
+       try {
+           NewModel.defFile.setModelBetweenCount(String.valueOf(levelTwoRegSize));
+           System.out.println("Model Between Count: " + NewModel.defFile.getModelBetweenCount().toString());
+       } catch (Exception ex) {
+           Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+           JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+       }
+       
+       try {
+           NewModel.defFile.setModelWithinCount(String.valueOf(levelOneRegSize));
+           System.out.println("Model Within Count: " + NewModel.defFile.getModelBetweenCount().toString());
+       } catch (Exception ex) {
+           Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+           JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+       }
+      
         stageOneTabs.setSelectedIndex(3);
 
     }//GEN-LAST:event_runStageOneTwoButtonActionPerformed
@@ -998,12 +1101,7 @@ public class mixregGUI extends javax.swing.JFrame {
    }
    
    public void updateRegressors(DefaultComboBoxModel<String> levelOne, DefaultComboBoxModel<String> levelTwo){
-   
-       //levelOneSelectedRegs.setModel(levelOne);
-      // levelOneSelectedRegs.setSelectedIndex(0);
-       
-      // levelTwoSelectedRegs.setModel(levelTwo);
-      // levelTwoSelectedRegs.setSelectedIndex(0);
+   // delete this function
    
    }
    
@@ -1158,9 +1256,9 @@ public class mixregGUI extends javax.swing.JFrame {
            constraints.gridy++;
            //constraints.gridx = 0;
            separatorConstraint.gridy = separatorConstraint.gridy + 3;
-           System.out.println("before seperator");
+           //System.out.println("before seperator");
            levelOneGrid.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
-           System.out.println("after seperator");
+           //System.out.println("after seperator");
            constraints.gridy++;
            
        }
@@ -1224,9 +1322,9 @@ public class mixregGUI extends javax.swing.JFrame {
            constraints.gridy++;
            
            separatorConstraint.gridy = separatorConstraint.gridy + 2;
-           System.out.println("before seperator");
+          // System.out.println("before seperator");
            levelTwoGrid.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
-           System.out.println("after seperator");
+          // System.out.println("after seperator");
            constraints.gridy++;
            
        }
@@ -1351,8 +1449,7 @@ public class mixregGUI extends javax.swing.JFrame {
                    stageTwoGrid.add(stageTwoBoxes.get(j).get(k));
       
                 }
-          
-       
+
        }
 
    }
@@ -1373,15 +1470,41 @@ public class mixregGUI extends javax.swing.JFrame {
    
    }
    
-   public int countLevelOneDisagg(){
+   public int countLevelOneDicompMean(){
        int levelOneDisagg = 0;
        
-       for (int p=0; p<levelOneDisaggSize; p++){
+       for (int p=0; p<levelOneRegSize; p++){
            
-           for(int k=0;k<3;k++){
-               if (disaggVarianceBoxes.get(p).get(k).isSelected()){
+               if (disaggVarianceBoxes.get(p).get(0).isSelected()){
                levelOneDisagg = levelOneDisagg + 1;
            }
+      
+       }
+   
+       return levelOneDisagg;
+   }
+   
+   public int countLevelOneDicompBS(){
+       int levelOneDisagg = 0;
+       
+       for (int p=0; p<levelOneRegSize; p++){
+           
+               if (disaggVarianceBoxes.get(p).get(1).isSelected()){
+               levelOneDisagg = levelOneDisagg + 1;
+           }
+      
+       }
+   
+       return levelOneDisagg;
+   }
+   
+   public int countLevelOneDicompWS(){
+       int levelOneDisagg = 0;
+       
+       for (int p=0; p<levelOneRegSize; p++){
+           
+               if (disaggVarianceBoxes.get(p).get(2).isSelected()){
+               levelOneDisagg = levelOneDisagg + 1;
            }
       
        }
@@ -1536,15 +1659,6 @@ public class mixregGUI extends javax.swing.JFrame {
    }
    }
    
-   
-   /*public class MyThread extends Thread{
-       public void run(){
-            if (stageOneClicked ==0){
-                // do nothing
-            } else if (stageOneClicked == 1){
-                enableDisaggVariance();
-            }
-        }
-   }*/
+
    
 }
