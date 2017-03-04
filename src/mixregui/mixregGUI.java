@@ -852,8 +852,30 @@ public class mixregGUI extends javax.swing.JFrame {
            
            int MeanCount = countLevelOneBeta() + countLevelTwoBeta();
            
+           
+           
            NewModel.defFile.setModelMeanCount(String.valueOf(MeanCount));
            System.out.println("Model Mean Count: " + NewModel.defFile.getModelMeanCount().toString());
+       } catch (Exception ex) {
+           Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+           JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+       }
+       
+       
+       try {
+           int LocRanCount = countLevelOneAlpha() + countLevelTwoAlpha();
+           NewModel.defFile.setModelLocRanCount(String.valueOf(LocRanCount));
+           System.out.println("Model Loc Ran Count: " + NewModel.defFile.getModelLocRanCount().toString());
+       } catch (Exception ex) {
+           Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+           JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+       }
+       
+       
+       try {
+           int ScaleCount = countLevelOneTau() + countLevelTwoTau();
+           NewModel.defFile.setModelScaleCount(String.valueOf(ScaleCount));
+           System.out.println("Model Scale Count: " + NewModel.defFile.getModelLocRanCount().toString());
        } catch (Exception ex) {
            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
