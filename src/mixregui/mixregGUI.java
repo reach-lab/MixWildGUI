@@ -848,6 +848,17 @@ public class mixregGUI extends javax.swing.JFrame {
        
        }
        
+       try {
+           
+           int MeanCount = countLevelOneBeta() + countLevelTwoBeta();
+           
+           NewModel.defFile.setModelMeanCount(String.valueOf(MeanCount));
+           System.out.println("Model Mean Count: " + NewModel.defFile.getModelMeanCount().toString());
+       } catch (Exception ex) {
+           Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+           JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+       }
+       
        
        try {
            NewModel.defFile.setModelBetweenCount(String.valueOf(levelTwoRegSize));
@@ -864,8 +875,7 @@ public class mixregGUI extends javax.swing.JFrame {
            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
        }
-       
-       
+      
         stageOneTabs.setSelectedIndex(3);
 
     }//GEN-LAST:event_runStageOneTwoButtonActionPerformed

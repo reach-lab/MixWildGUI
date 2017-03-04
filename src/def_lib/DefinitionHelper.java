@@ -820,6 +820,7 @@ public class DefinitionHelper {
     }
 
     // check what is this function needed for?
+    // todo
     public void setOutputPrefix(String outputPrefix) {
         if(outputPrefix.length()>72){this.outputPrefix = outputPrefix.substring(0, 200);}
         else{this.outputPrefix = outputPrefix;}
