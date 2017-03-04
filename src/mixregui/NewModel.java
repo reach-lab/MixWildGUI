@@ -298,7 +298,7 @@ public class NewModel extends javax.swing.JFrame {
            defFile.setDataFilename(file.getAbsolutePath());
            
            defFile.setDataVariableCount(String.valueOf(variableArray.length));
-           System.out.println(defFile.getDataVariableCount());
+           System.out.println("Variable count: " + defFile.getDataVariableCount());
         
             
         } catch (FileNotFoundException ex) {
@@ -315,10 +315,10 @@ public class NewModel extends javax.swing.JFrame {
         
        // set Values in def helper
        defFile.setModelTitle(getTitle());
-       System.out.println(defFile.getModelTitle());
+       System.out.println("Title: " + defFile.getModelTitle());
        
        defFile.setModelSubtitle(getSubTitle());
-       System.out.println(defFile.getModelSubtitle());
+       System.out.println("Subtitle: " + defFile.getModelSubtitle());
         
        mxr = new mixregGUI();
        mxr.isSubmitClicked();
