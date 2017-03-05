@@ -819,6 +819,14 @@ public class mixregGUI extends javax.swing.JFrame {
            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
        }
        
+            try {
+                NewModel.defFile.setAdvancedEffectMeanWS("0");
+                System.out.println("Advanced effects of mean on WS variance: " + NewModel.defFile.getDecompBSCount().toString());
+            } catch (Exception ex) {
+                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+            }
+       
        
        } else if (i > 1){
        
@@ -845,6 +853,14 @@ public class mixregGUI extends javax.swing.JFrame {
            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
        }
+       
+            try {
+                NewModel.defFile.setAdvancedEffectMeanWS("2");
+                System.out.println("Advanced effects of mean on WS variance: " + NewModel.defFile.getDecompBSCount().toString());
+            } catch (Exception ex) {
+                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+            }
        
        }
        
@@ -1388,9 +1404,9 @@ public class mixregGUI extends javax.swing.JFrame {
            constraints.gridy++;
            
            separatorConstraint.gridy = separatorConstraint.gridy + 2;
-           System.out.println("before seperator");
+           //System.out.println("before seperator");
            stageTwoGrid.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
-           System.out.println("after seperator");
+          // System.out.println("after seperator");
            constraints.gridy++;
            
        }
@@ -1658,6 +1674,8 @@ public class mixregGUI extends javax.swing.JFrame {
        }
    }
    }
+   
+  
    
 
    

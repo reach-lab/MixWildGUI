@@ -422,6 +422,8 @@ public class advancedOptions extends javax.swing.JFrame {
         NewModel.defFile.setOutputPrefix("Output_" + getOutPutFileName());
         System.out.println("Output file name: " + NewModel.defFile.getOutputPrefix());
         
+        
+        
         try {
             NewModel.defFile.setAdvancedRidge(String.valueOf(getRidge()));
             System.out.println("Ridge: " + NewModel.defFile.getAdvancedRidge());

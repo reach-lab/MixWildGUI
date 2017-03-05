@@ -825,7 +825,7 @@ public class DefinitionHelper {
     }
 
     // check what is this function needed for?
-    // todo
+    // done
     public void setOutputPrefix(String outputPrefix) {
         if(outputPrefix.length()>72){this.outputPrefix = outputPrefix.substring(0, 200);}
         else{this.outputPrefix = outputPrefix;}
@@ -863,6 +863,7 @@ public class DefinitionHelper {
     }
 
     // read RLE into this one
+    //done
     public void setModelLocRanCount(String modelLocRanCount) throws Exception {
         if(setValidator("number of location random effects", "5", modelLocRanCount, 0, 255, MIX_INTEGER)){
             this.modelLocRanCount = modelLocRanCount;
@@ -874,7 +875,7 @@ public class DefinitionHelper {
     }
 
     // What does this do?
-    //todo 
+    //done
     public void setModelScaleCount(String modelScaleCount) throws Exception {
         if(setValidator("number of scale regressors", "5", modelScaleCount, 0, 255, MIX_INTEGER)){
             this.modelScaleCount = modelScaleCount;
@@ -886,7 +887,7 @@ public class DefinitionHelper {
     }
 
     // what does this do?
-    //todo
+    //done
     public void setModelFixedInt(String modelFixedInt) throws Exception {
         if(setValidator("fixed intercept", "5", modelFixedInt, 0, 1, MIX_INTEGER)){
             this.modelFixedInt = modelFixedInt;
@@ -898,7 +899,7 @@ public class DefinitionHelper {
     }
 
     // what does this do?
-    //todo
+    //done
     public void setModelRandomInt(String modelRandomInt) throws Exception {
         if(setValidator("random intercept", "5", modelRandomInt, 0, 1, MIX_INTEGER)){
             this.modelRandomInt = modelRandomInt;
@@ -910,7 +911,7 @@ public class DefinitionHelper {
     }
 
     // What does this do?
-    //todo
+    //done
     public void setModelScaleInt(String modelScaleInt) throws Exception {
         if(setValidator("scale intercept", "5", modelScaleInt, 0, 1, MIX_INTEGER)){
             this.modelScaleInt = modelScaleInt;
@@ -923,6 +924,7 @@ public class DefinitionHelper {
 
     // What does this do?
     // level 1 mean
+    //done
     public void setDecompMeanCount(String decompMeanCount) throws Exception {
         if(setValidator("number of mean regressors for BS/WS decomposition", "5", decompMeanCount, 0, 255, MIX_INTEGER)){
             this.decompMeanCount = decompMeanCount;
@@ -934,6 +936,7 @@ public class DefinitionHelper {
     }
 
     // level one BS
+    //done
     public void setDecompLocRanCount(String decompLocRanCount) throws Exception {
         if(setValidator("number of location random effects for BS/WS decomposition", "5", decompLocRanCount, 0, 255, MIX_INTEGER)){
             this.decompLocRanCount = decompLocRanCount;
@@ -945,6 +948,7 @@ public class DefinitionHelper {
     }
 
     // level one WS
+    //done
     public void setDecompScaleCount(String decompScaleCount) throws Exception {
         if(setValidator("number of scale regressors for BS/WS decomposition", "5", decompScaleCount, 0, 255, MIX_INTEGER)){
             this.decompScaleCount = decompScaleCount;
@@ -957,6 +961,7 @@ public class DefinitionHelper {
 
     
     // read from advanced options
+    //done
     public void setAdvancedConvergence(String advancedConvergence) throws Exception {
         try { 
             if(Double.parseDouble(advancedConvergence)>=0 && Double.parseDouble(advancedConvergence)<=1){
@@ -974,6 +979,7 @@ public class DefinitionHelper {
     }
 
     // read from advanced options
+    //done
     public void setAdvancedQuadPoints(String advancedQuadPoints) throws Exception {
         if(setValidator("number of quadrature points", "5", advancedQuadPoints, 1, 255, MIX_INTEGER)){
             this.advancedQuadPoints = advancedQuadPoints;
@@ -985,6 +991,7 @@ public class DefinitionHelper {
     }
 
     // read from advanced options
+    //done
     public void setAdvancedAdaptiveQuad(String advancedAdaptiveQuad) throws Exception {
         if(setValidator("adaptive quadrature", "5", advancedAdaptiveQuad, 0, 1, MIX_INTEGER)){
             this.advancedAdaptiveQuad = advancedAdaptiveQuad;
@@ -996,6 +1003,7 @@ public class DefinitionHelper {
     }
 
     // read from advanced options
+    //done
     public void setAdvancedMaxIteration(String advancedMaxIteration) throws Exception {
         if(setValidator("maximum iterations", "5", advancedMaxIteration, 1, Integer.MAX_VALUE, MIX_INTEGER)){
             this.advancedMaxIteration = advancedMaxIteration;
@@ -1007,6 +1015,7 @@ public class DefinitionHelper {
     }
 
     // read from advanced options
+    //done
     public void setAdvancedMissingValue(String advancedMissingValue) throws Exception {
         if(setValidator("missing value", "5", advancedMissingValue, Integer.MIN_VALUE, Integer.MAX_VALUE, MIX_INTEGER)){
             this.advancedMissingValue = advancedMissingValue;
@@ -1018,6 +1027,7 @@ public class DefinitionHelper {
     }
 
     // read from advanced options
+    //done
     public void setAdvancedCenterScale(String advancedCenterScale) throws Exception {
         if(setValidator("scale centering", "5", advancedCenterScale, 0, 1, MIX_INTEGER)){
             this.advancedCenterScale = advancedCenterScale;
@@ -1029,6 +1039,7 @@ public class DefinitionHelper {
     }
 
     // read from advanced options
+    //done
     public void setAdvancedRidge(String advancedRidge) throws Exception {
         try { 
             if(Double.parseDouble(advancedRidge)>=0 && Double.parseDouble(advancedRidge)<=1){
@@ -1046,6 +1057,7 @@ public class DefinitionHelper {
     }
 
     // TOTAL LEVEL TWO REGS
+    //done
     public void setModelBetweenCount(String modelBetweenCount) throws Exception {
         if(setValidator("number of between-subject variance regressors", "5", modelBetweenCount, 0, 255, MIX_INTEGER)){
             this.modelBetweenCount = modelBetweenCount;
@@ -1057,6 +1069,7 @@ public class DefinitionHelper {
     }
 
     // TOTAL LEVEL ONE REGS
+    //done
     public void setModelWithinCount(String modelWithinCount) throws Exception {
         if(setValidator("number of within-subject variance regressors", "5", modelWithinCount, 0, 255, MIX_INTEGER)){
             this.modelWithinCount = modelWithinCount;
@@ -1064,12 +1077,13 @@ public class DefinitionHelper {
     }
 
     // to do
+    //done
     public String getModelBetweenInt() {
         return modelBetweenInt;
     }
 
     
-    // to do
+    // done
     public void setModelBetweenInt(String modelBetweenInt) throws Exception {
         if(setValidator("between-subject variance intercept", "5", modelBetweenInt, 0, 1, MIX_INTEGER)){
             this.modelBetweenInt = modelBetweenInt;
@@ -1081,7 +1095,7 @@ public class DefinitionHelper {
         return modelWithinInt;
     }
 
-    // to do
+    // done
     public void setModelWithinInt(String modelWithinInt) throws Exception {
         if(setValidator("within-subject variance intercept", "5", modelWithinInt, 0, 1, MIX_INTEGER)){
             this.modelWithinInt = modelWithinInt;
@@ -1092,7 +1106,7 @@ public class DefinitionHelper {
         return decompBSCount;
     }
 
-    // tested 
+    // done 
     public void setDecompBSCount(String decompBSCount) throws Exception {
         if(setValidator("number of between-subject variance regressors for BS/WS decomposition", "5", decompBSCount, 0, 255, MIX_INTEGER)){
             this.decompBSCount = decompBSCount;
@@ -1104,6 +1118,7 @@ public class DefinitionHelper {
     }
 
     // tested
+    // done
     public void setDecompWSCount(String decompWSCount) throws Exception {
         if(setValidator("number of within-subject variance regressors for BS/WS decomposition", "5", decompWSCount, 0, 255, MIX_INTEGER)){
             this.decompWSCount = decompWSCount;
@@ -1114,6 +1129,7 @@ public class DefinitionHelper {
         return advancedEffectMeanWS;
     }
 
+    // to do?
     public void setAdvancedEffectMeanWS(String advancedEffectMeanWS) throws Exception {
         if(setValidator("effect of mean on WS variance", "5", decompWSCount, 0, 2, MIX_INTEGER)){
             this.decompWSCount = decompWSCount;
