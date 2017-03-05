@@ -66,306 +66,162 @@ public class advancedOptions extends javax.swing.JFrame {
         ridgeSpinner = new javax.swing.JSpinner();
         jPanel3 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        inputTextField = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        outputTextField = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        defTextField = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Advanced Options ...");
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Mean Submodel:");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 7, -1, -1));
 
         meanSubmodelCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 meanSubmodelCheckBoxActionPerformed(evt);
             }
         });
+        jPanel1.add(meanSubmodelCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 7, -1, -1));
 
         jLabel2.setText("BS Variance:  ");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 36, -1, -1));
 
         BSVarianceCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BSVarianceCheckBoxActionPerformed(evt);
             }
         });
+        jPanel1.add(BSVarianceCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 36, -1, -1));
 
         jLabel3.setText("WS Variance:  ");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 65, -1, -1));
 
         WSVarianceCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 WSVarianceCheckBoxActionPerformed(evt);
             }
         });
+        jPanel1.add(WSVarianceCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 65, -1, -1));
 
         jLabel4.setText("Convergence Criteria:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 94, -1, -1));
 
         jLabel5.setText("Quadriture Points:");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 128, -1, -1));
 
         jLabel6.setText("Adaptive Quadriture:");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 162, -1, -1));
 
         adaptiveQuadritureCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 adaptiveQuadritureCheckBoxActionPerformed(evt);
             }
         });
+        jPanel1.add(adaptiveQuadritureCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 160, -1, -1));
 
         convergenceCriteria.setModel(new javax.swing.SpinnerNumberModel(0.001d, 0.0d, 1.0d, 0.001d));
+        jPanel1.add(convergenceCriteria, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 94, 69, -1));
 
         quadriturePoints.setModel(new javax.swing.SpinnerNumberModel(11, 1, 255, 1));
+        jPanel1.add(quadriturePoints, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 128, 69, -1));
 
         jLabel15.setText("Center All Regressors?");
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 195, -1, -1));
 
         centerRegressorsCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 centerRegressorsCheckBoxActionPerformed(evt);
             }
         });
+        jPanel1.add(centerRegressorsCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 195, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(meanSubmodelCheckBox))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BSVarianceCheckBox))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(WSVarianceCheckBox))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(quadriturePoints, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(adaptiveQuadritureCheckBox, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(convergenceCriteria, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel15)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(centerRegressorsCheckBox)))
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(meanSubmodelCheckBox))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BSVarianceCheckBox)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(WSVarianceCheckBox)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(convergenceCriteria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(8, 8, 8)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(quadriturePoints, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(jLabel6))
-                    .addComponent(adaptiveQuadritureCheckBox))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel15)
-                    .addComponent(centerRegressorsCheckBox))
-                .addContainerGap(21, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 21, 260, -1));
-
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel7.setText("Maximum Iterations:");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 12, -1, -1));
 
         jLabel8.setText("Missing values:");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 47, -1, -1));
 
         missingValuesCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 missingValuesCheckBoxActionPerformed(evt);
             }
         });
+        jPanel2.add(missingValuesCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 47, -1, -1));
 
         jLabel9.setText("Missing Value Code:");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 87, -1, -1));
 
         missingValueCode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 missingValueCodeActionPerformed(evt);
             }
         });
+        jPanel2.add(missingValueCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 82, 96, -1));
 
         jLabel10.setText("Standardized Coefficients:");
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 133, -1, -1));
 
         standardizedCoeff.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 standardizedCoeffActionPerformed(evt);
             }
         });
+        jPanel2.add(standardizedCoeff, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 126, -1, -1));
 
         jLabel11.setText("Ridge:");
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 172, -1, -1));
 
         maximumIterations.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        jPanel2.add(maximumIterations, new org.netbeans.lib.awtextra.AbsoluteConstraints(182, 7, 69, -1));
 
         ridgeSpinner.setModel(new javax.swing.SpinnerNumberModel(0.15d, 0.0d, 1.0d, 0.01d));
+        jPanel2.add(ridgeSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 68, -1));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(missingValuesCheckBox))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel9))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(missingValueCode, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(maximumIterations, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(standardizedCoeff))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
-                        .addComponent(ridgeSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(12, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(maximumIterations, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addComponent(missingValuesCheckBox))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(missingValueCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel10)
-                    .addComponent(standardizedCoeff))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(ridgeSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(294, 21, -1, 240));
-
-        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel12.setText("Input Data File Name:");
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 17, -1, -1));
 
-        jTextField2.setText("Test.dat");
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        inputTextField.setText("Test.dat");
+        inputTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                inputTextFieldActionPerformed(evt);
             }
         });
+        jPanel3.add(inputTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 12, 79, -1));
 
         jLabel13.setText("Output File Name:");
+        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 17, -1, -1));
 
-        jTextField3.setText("Test.out");
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        outputTextField.setText("Test.out");
+        outputTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                outputTextFieldActionPerformed(evt);
             }
         });
+        jPanel3.add(outputTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(407, 12, 79, -1));
 
         jLabel14.setText("Definition File Name:");
+        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 61, -1, -1));
 
-        jTextField4.setText("Test.def");
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        defTextField.setText("Test.def");
+        defTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                defTextFieldActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel14)
-                    .addComponent(jLabel12))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel13)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(55, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(49, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 290, -1, -1));
+        jPanel3.add(defTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 56, 79, -1));
 
         jButton1.setText("Submit");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -373,10 +229,45 @@ public class advancedOptions extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(475, 433, -1, -1));
 
         jButton2.setText("Reset");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(391, 433, -1, -1));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(13, 13, 13)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(380, 380, 380)
+                        .addComponent(jButton2)
+                        .addGap(12, 12, 12)
+                        .addComponent(jButton1)))
+                .addContainerGap(32, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton2)
+                    .addComponent(jButton1))
+                .addContainerGap(47, Short.MAX_VALUE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -417,17 +308,17 @@ public class advancedOptions extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_standardizedCoeffActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void inputTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_inputTextFieldActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void outputTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_outputTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_outputTextFieldActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void defTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_defTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_defTextFieldActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -486,6 +377,51 @@ public class advancedOptions extends javax.swing.JFrame {
            // do nothing and go next
        
        }
+       
+        try {
+            NewModel.defFile.setModelFixedInt(String.valueOf(isMeanSubModelChecked()));
+            System.out.println("Mean SubModel Checked?: " + NewModel.defFile.getModelFixedInt());
+            tryCount = 1;
+        } catch (Exception ex) {
+            catchCount = 1;
+            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        try {
+            NewModel.defFile.setModelRandomInt(String.valueOf(isBSVarianceChecked()));
+            System.out.println("BS SubModel Checked?: " + NewModel.defFile.getModelRandomInt());
+            tryCount = 1;
+        } catch (Exception ex) {
+            catchCount = 1;
+            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        try {
+            NewModel.defFile.setModelScaleInt(String.valueOf(isWSVarianceChecked()));
+            System.out.println("WS SubModel Checked?: " + NewModel.defFile.getModelScaleInt());
+            tryCount = 1;
+        } catch (Exception ex) {
+            catchCount = 1;
+            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        try {
+            NewModel.defFile.setAdvancedAdaptiveQuad(String.valueOf(isAdaptiveQuadritureChecked()));
+            System.out.println("Adaptive Quadriture Checked?: " + NewModel.defFile.getModelScaleInt());
+            tryCount = 1;
+        } catch (Exception ex) {
+            catchCount = 1;
+            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        NewModel.defFile.setOutputPrefix("Output_" + getOutPutFileName());
+        System.out.println("Output file name: " + NewModel.defFile.getOutputPrefix());
+        
+        
         
         try {
             NewModel.defFile.setAdvancedRidge(String.valueOf(getRidge()));
@@ -561,6 +497,8 @@ public class advancedOptions extends javax.swing.JFrame {
     private javax.swing.JCheckBox adaptiveQuadritureCheckBox;
     private javax.swing.JCheckBox centerRegressorsCheckBox;
     private javax.swing.JSpinner convergenceCriteria;
+    private javax.swing.JTextField defTextField;
+    private javax.swing.JTextField inputTextField;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -581,13 +519,11 @@ public class advancedOptions extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JSpinner maximumIterations;
     private javax.swing.JCheckBox meanSubmodelCheckBox;
     private javax.swing.JTextField missingValueCode;
     private javax.swing.JCheckBox missingValuesCheckBox;
+    private javax.swing.JTextField outputTextField;
     private javax.swing.JSpinner quadriturePoints;
     private javax.swing.JSpinner ridgeSpinner;
     private javax.swing.JCheckBox standardizedCoeff;
@@ -595,15 +531,15 @@ public class advancedOptions extends javax.swing.JFrame {
 
 
 //check if mean sub model is checked in advanced options    
-public boolean isMeanSubModelChecked(){
+public int isMeanSubModelChecked(){
 
-    boolean checked = false;
+    int checked = 0;
     
     if (meanSubmodelCheckBox.isSelected() == true){
-        checked = true;
+        checked = 1;
     }
     else {
-        checked = false;
+        checked = 0;
     }
     
     return checked;
@@ -612,30 +548,30 @@ public boolean isMeanSubModelChecked(){
 
 
 // check if BS variance is checked
-public boolean isBSVarianceChecked(){
+public int isBSVarianceChecked(){
 
-    boolean checked = false;
+    int checked = 0;
     
     if (BSVarianceCheckBox.isSelected() == true){
-        checked = true;
+        checked = 1;
     }
     else {
-        checked = false;
+        checked = 0;
     }
     
     return checked;
 }
 
 // check if BS variance is checked
-public boolean isWSVarianceChecked(){
+public int isWSVarianceChecked(){
 
-    boolean checked = false;
+    int checked = 0;
     
     if (WSVarianceCheckBox.isSelected() == true){
-        checked = true;
+        checked = 1;
     }
     else {
-        checked = false;
+        checked = 0;
     }
     
     return checked;
@@ -656,15 +592,15 @@ public Double getQuadriturePoints(){
 
 
 // check if adaptive quadriture is checked
-public boolean isAdaptiveQuadritureChecked(){
-    boolean checked = false;
+public int isAdaptiveQuadritureChecked(){
+    int checked = 0;
     
     if (adaptiveQuadritureCheckBox.isSelected() == true){
-        checked = true;
+        checked = 0;
     }
     else {
     
-        checked = false;
+        checked = 1;
     }
     
     return checked;  
@@ -704,15 +640,15 @@ public String getMissingValueCode(){
 }
 
 //check if standardized coefficients is checked
-public boolean isStandardizedCoefChecked(){
-    boolean checked = false;
+public int isStandardizedCoefChecked(){
+    int checked = 0;
     
     if (standardizedCoeff.isSelected() == true){
-        checked = true;
+        checked = 1;
     }
     else {
     
-        checked = false;
+        checked = 0;
     }
     
     return checked;  
@@ -735,6 +671,15 @@ public int isCenterRegressorChecked(){
     }
     
     return value;
+}
+
+public String getOutPutFileName(){
+    
+    String outPut;
+    
+    outPut = outputTextField.getText().toString();
+
+    return outPut;
 }
 
 
