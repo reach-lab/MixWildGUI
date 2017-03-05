@@ -1130,6 +1130,7 @@ public class DefinitionHelper {
     }
 
     // to do?
+    // tested?
     public void setAdvancedEffectMeanWS(String advancedEffectMeanWS) throws Exception {
         if(setValidator("effect of mean on WS variance", "5", decompWSCount, 0, 2, MIX_INTEGER)){
             this.decompWSCount = decompWSCount;
@@ -1141,6 +1142,7 @@ public class DefinitionHelper {
     }
 
     // set ID and Outcome variable index numbers in the data set
+    // done
     public void setIdOutcome(String[] idOutcome) throws Exception {
         if(setValidator("id location", "6", idOutcome[0], 0, 255, MIX_INTEGER)){
             if(setValidator("outcome location", "6", idOutcome[1], 0, 255, MIX_INTEGER)){
