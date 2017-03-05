@@ -781,11 +781,13 @@ public class DefinitionHelper {
     
     
     //read model title from NewModel.java
+    //done
     public String getModelTitle() {
         return modelTitle;
     }
     
     // read model title in this function
+    //done
     public void setModelTitle(String modelTitle) {
         if(modelTitle.length()>72){this.modelTitle = modelTitle.substring(0, 71);}
         else{this.modelTitle = modelTitle;}
@@ -797,17 +799,20 @@ public class DefinitionHelper {
     }
     
     // read subtitle in this function
+    //done
     public void setModelSubtitle(String modelSubtitle) {
         if(modelSubtitle.length()>72){this.modelSubtitle = modelSubtitle.substring(0, 71);}
         else{this.modelSubtitle = modelSubtitle;}
     }
 
     // print file name path
+    //done
     public String getDataFilename() {
         return dataFilename;
     }
 
     // read fileName
+    //done
     public void setDataFilename(String dataFilename) throws Exception {
         if(dataFilename.endsWith(".dat") || dataFilename.endsWith(".csv")){
            this.dataFilename = dataFilename;
@@ -833,6 +838,7 @@ public class DefinitionHelper {
     }
 
     // read variable array size into this one
+    //done
     public void setDataVariableCount(String dataVariableCount) throws Exception {
         if(setValidator("number of variables", "5", dataVariableCount, 2, 255, MIX_INTEGER)){
             this.dataVariableCount = dataVariableCount;
