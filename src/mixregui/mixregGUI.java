@@ -733,6 +733,16 @@ public class mixregGUI extends javax.swing.JFrame {
 
     private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
         // TODO add your handling code here:
+        
+        IDvariableCombo.setSelectedIndex(0);
+        StageOneVariableCombo.setSelectedIndex(1);
+        StageTwoVariableCombo.setSelectedIndex(2);
+        
+        buttonGroup1.clearSelection();
+        
+        
+        addStageTwoButton.setEnabled(false);
+      
 
     }//GEN-LAST:event_resetButtonActionPerformed
 
@@ -1224,6 +1234,8 @@ public class mixregGUI extends javax.swing.JFrame {
    
    public void updateLevelOneGrid_version2(DefaultListModel<String> defaultListModel){
    
+       //levelOneGrid.setVisible(true);
+       
        JScrollPane scrollpanel = new JScrollPane(levelOneGrid);
        
        int regSize = defaultListModel.getSize();
@@ -1306,6 +1318,8 @@ public class mixregGUI extends javax.swing.JFrame {
    
    public void updateLevelTwoGrid_version2(DefaultListModel<String> defaultListModel){
    
+       //levelTwoGrid.setVisible(true);
+       
        JScrollPane scrollpanel = new JScrollPane(levelTwoGrid);
        
        int regSize = defaultListModel.getSize();
@@ -1372,6 +1386,8 @@ public class mixregGUI extends javax.swing.JFrame {
    
    public void updateStageTwoGrid_version2(DefaultListModel<String> defaultListModel){
    
+       //stageTwoGrid.setVisible(true);
+       
        JScrollPane scrollpanel = new JScrollPane(stageTwoGrid);
        
        int regSize = defaultListModel.getSize();
