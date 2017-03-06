@@ -72,7 +72,7 @@ public class advancedOptions extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         defTextField = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        advancedOptions_resetButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Advanced Options ...");
@@ -230,7 +230,12 @@ public class advancedOptions extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Reset");
+        advancedOptions_resetButton.setText("Reset");
+        advancedOptions_resetButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                advancedOptions_resetButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -248,7 +253,7 @@ public class advancedOptions extends javax.swing.JFrame {
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(380, 380, 380)
-                        .addComponent(jButton2)
+                        .addComponent(advancedOptions_resetButton)
                         .addGap(12, 12, 12)
                         .addComponent(jButton1)))
                 .addContainerGap(32, Short.MAX_VALUE))
@@ -264,7 +269,7 @@ public class advancedOptions extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2)
+                    .addComponent(advancedOptions_resetButton)
                     .addComponent(jButton1))
                 .addContainerGap(47, Short.MAX_VALUE))
         );
@@ -456,6 +461,28 @@ public class advancedOptions extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_centerRegressorsCheckBoxActionPerformed
 
+    private void advancedOptions_resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_advancedOptions_resetButtonActionPerformed
+        // TODO add your handling code here:
+        
+        meanSubmodelCheckBox.setSelected(false);
+        BSVarianceCheckBox.setSelected(false);
+        WSVarianceCheckBox.setSelected(false);
+        
+        convergenceCriteria.setValue(0.001);
+        quadriturePoints.setValue(11);
+        
+        adaptiveQuadritureCheckBox.setSelected(false);
+        centerRegressorsCheckBox.setSelected(false);
+        
+        maximumIterations.setValue(1);
+        missingValuesCheckBox.setSelected(false);
+        standardizedCoeff.setSelected(false);
+        ridgeSpinner.setValue(0.15);
+        
+        
+        
+    }//GEN-LAST:event_advancedOptions_resetButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -495,12 +522,12 @@ public class advancedOptions extends javax.swing.JFrame {
     private javax.swing.JCheckBox BSVarianceCheckBox;
     private javax.swing.JCheckBox WSVarianceCheckBox;
     private javax.swing.JCheckBox adaptiveQuadritureCheckBox;
+    private javax.swing.JButton advancedOptions_resetButton;
     private javax.swing.JCheckBox centerRegressorsCheckBox;
     private javax.swing.JSpinner convergenceCriteria;
     private javax.swing.JTextField defTextField;
     private javax.swing.JTextField inputTextField;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
