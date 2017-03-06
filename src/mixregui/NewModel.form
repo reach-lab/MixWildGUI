@@ -67,9 +67,11 @@
                           <Component id="dichotomousRadio" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
-                          <EmptySpace min="311" pref="311" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="217" max="-2" attributes="0"/>
                           <Component id="newModelCancel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="newModel_resetButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="newModelSubmit" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -124,9 +126,10 @@
                   <Component id="dichotomousRadio" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="36" pref="36" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="newModelCancel" min="-2" max="-2" attributes="0"/>
-                  <Component id="newModelSubmit" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="newModelSubmit" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="newModelCancel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="newModel_resetButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
               <Component id="jSeparator1" min="-2" max="-2" attributes="0"/>
@@ -226,6 +229,14 @@
       </Events>
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator1">
+    </Component>
+    <Component class="javax.swing.JButton" name="newModel_resetButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Reset"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newModel_resetButtonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
