@@ -801,7 +801,42 @@ public class mixregGUI extends javax.swing.JFrame {
            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
        }
        
-            try {
+       
+       
+       if (NoAssociationRadio.isSelected()){
+           
+               try {
+                   NewModel.defFile.setAdvancedEffectMeanWS(String.valueOf(0));
+                   System.out.println("Advanced effects of mean on WS variance (No Association): " + NewModel.defFile.getAdvancedEffectMeanWS());
+               } catch (Exception ex) {
+                   catchCount = 1;
+                   Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+                   JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+               }
+       
+       } else if (LinearAssociationRadio.isSelected()) {
+           try {
+                   NewModel.defFile.setAdvancedEffectMeanWS(String.valueOf(1));
+                   System.out.println("Advanced effects of mean on WS variance (Linear Association): " + NewModel.defFile.getAdvancedEffectMeanWS());
+               } catch (Exception ex) {
+                   catchCount = 1;
+                   Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+                   JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+               }
+       
+       } else if (QuadraticAssociationRadio.isSelected()) {
+           try {
+                   NewModel.defFile.setAdvancedEffectMeanWS(String.valueOf(2));
+                   System.out.println("Advanced effects of mean on WS variance (Quadratic Association): " + NewModel.defFile.getAdvancedEffectMeanWS());
+               } catch (Exception ex) {
+                   catchCount = 1;
+                   Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+                   JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+               }
+       
+       }
+       
+            /*try {
                 tryCount = 1;
                 NewModel.defFile.setAdvancedEffectMeanWS("0");
                 System.out.println("Advanced effects of mean on WS variance: " + NewModel.defFile.getDecompBSCount().toString());
@@ -809,7 +844,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 catchCount = 1;
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
-            }
+            }*/
        
        
        } else if (i > 1){
@@ -844,7 +879,7 @@ public class mixregGUI extends javax.swing.JFrame {
            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
        }
        
-            try {
+           /* try {
                 tryCount = 1;
                 NewModel.defFile.setAdvancedEffectMeanWS("2");
                 System.out.println("Advanced effects of mean on WS variance: " + NewModel.defFile.getDecompBSCount().toString());
@@ -852,7 +887,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 catchCount = 1;
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
-            }
+            } */
        
        }
        

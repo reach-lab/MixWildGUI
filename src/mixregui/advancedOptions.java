@@ -415,7 +415,7 @@ public class advancedOptions extends javax.swing.JFrame {
         
         try {
             NewModel.defFile.setAdvancedAdaptiveQuad(String.valueOf(isAdaptiveQuadritureChecked()));
-            System.out.println("Adaptive Quadriture Checked?: " + NewModel.defFile.getModelScaleInt());
+            System.out.println("Adaptive Quadriture Checked?: " + NewModel.defFile.getAdvancedAdaptiveQuad());
             tryCount = 1;
         } catch (Exception ex) {
             catchCount = 1;
@@ -440,7 +440,7 @@ public class advancedOptions extends javax.swing.JFrame {
         
         try {
             NewModel.defFile.setAdvancedCenterScale(String.valueOf(isCenterRegressorChecked()));
-            System.out.println("Scale Regressor: " + NewModel.defFile.getAdvancedRidge());
+            System.out.println("Scale Regressor: " + NewModel.defFile.getAdvancedCenterScale());
             tryCount = 1;
         } catch (Exception ex) {
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
@@ -478,9 +478,7 @@ public class advancedOptions extends javax.swing.JFrame {
         missingValuesCheckBox.setSelected(false);
         standardizedCoeff.setSelected(false);
         ridgeSpinner.setValue(0.15);
-        
-        
-        
+
     }//GEN-LAST:event_advancedOptions_resetButtonActionPerformed
 
     /**

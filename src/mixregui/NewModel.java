@@ -15,6 +15,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import def_lib.DefinitionHelper;
 import javax.swing.JFrame;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -268,6 +269,9 @@ public class NewModel extends javax.swing.JFrame {
     private void fileBrowseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileBrowseButtonActionPerformed
         //JFileChooser fileChooser = new JFileChooser();
         //fileChooser.showOpenDialog(null);
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Data files","csv");
+        
+        fileChooser.setFileFilter(filter);
         
         fileOpen();
         
