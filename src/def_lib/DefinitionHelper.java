@@ -201,9 +201,17 @@ public class DefinitionHelper {
         }
     }
     
-    private boolean validateFieldLabels(String countVariable, String[] fieldLabelLine){
-        int field = Integer.parseInt(countVariable);
-        int labels = fieldLabelLine.length;
+    private boolean validateFieldLabels(String countVariable, String[] fieldLabelLine) throws Exception {
+        int field = -1;
+        int labels = 0;
+        try {field = Integer.parseInt(countVariable);}
+        catch(Exception ex){
+            throw new Exception("Invalid count variable for one or more options or regressors");
+        }
+        try {labels = fieldLabelLine.length;}
+        catch(Exception ex){
+            throw new Exception("Invalid field or label series for one or more sets of options or regressors");
+        }
         return field==labels;
     }
     
