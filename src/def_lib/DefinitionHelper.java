@@ -206,11 +206,11 @@ public class DefinitionHelper {
         int labels = 0;
         try {field = Integer.parseInt(countVariable);}
         catch(Exception ex){
-            throw new Exception("Invalid count variable for one or more options or regressors");
+            throw new Exception("Unassigned count variable for one or more options or regressors");
         }
         try {labels = fieldLabelLine.length;}
         catch(Exception ex){
-            throw new Exception("Invalid field or label series for one or more sets of options or regressors");
+            throw new Exception("Unassigned field or label series for one or more sets of options or regressors");
         }
         return field==labels;
     }
