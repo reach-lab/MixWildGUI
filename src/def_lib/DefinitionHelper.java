@@ -1109,8 +1109,8 @@ public class DefinitionHelper {
     }
 
     public void setAdvancedEffectMeanWS(String advancedEffectMeanWS) throws Exception {
-        if(setValidator("effect of mean on WS variance", "5", decompWSCount, 0, 2, MIX_INTEGER)){
-            this.decompWSCount = decompWSCount;
+        if(setValidator("effect of mean on WS variance", "5", advancedEffectMeanWS, 0, 2, MIX_INTEGER)){
+            this.advancedEffectMeanWS = advancedEffectMeanWS;
         }
     }
 
