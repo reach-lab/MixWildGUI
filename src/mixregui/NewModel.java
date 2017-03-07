@@ -15,6 +15,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import def_lib.DefinitionHelper;
 import javax.swing.JFrame;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -94,6 +95,7 @@ public class NewModel extends javax.swing.JFrame {
         newModelSubmit = new javax.swing.JButton();
         newModelCancel = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        newModel_resetButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("New Model for Stage 1 Analysis");
@@ -160,6 +162,13 @@ public class NewModel extends javax.swing.JFrame {
             }
         });
 
+        newModel_resetButton.setText("Reset");
+        newModel_resetButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newModel_resetButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -198,9 +207,11 @@ public class NewModel extends javax.swing.JFrame {
                             .addGap(5, 5, 5)
                             .addComponent(dichotomousRadio))
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(311, 311, 311)
+                            .addGap(217, 217, 217)
                             .addComponent(newModelCancel)
-                            .addGap(6, 6, 6)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(newModel_resetButton)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(newModelSubmit))))
                 .addGap(29, 29, 29))
         );
@@ -240,9 +251,10 @@ public class NewModel extends javax.swing.JFrame {
                     .addComponent(continuousRadio)
                     .addComponent(dichotomousRadio))
                 .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(newModelSubmit)
                     .addComponent(newModelCancel)
-                    .addComponent(newModelSubmit))
+                    .addComponent(newModel_resetButton))
                 .addGap(12, 12, 12)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -257,6 +269,9 @@ public class NewModel extends javax.swing.JFrame {
     private void fileBrowseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileBrowseButtonActionPerformed
         //JFileChooser fileChooser = new JFileChooser();
         //fileChooser.showOpenDialog(null);
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Data files","csv");
+        
+        fileChooser.setFileFilter(filter);
         
         fileOpen();
         
@@ -357,6 +372,24 @@ public class NewModel extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_titleFieldActionPerformed
 
+    private void newModel_resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModel_resetButtonActionPerformed
+        // TODO add your handling code here:
+        
+        filePath.setText("");
+        titleField.setText("");
+        titleField.setEnabled(false);
+        subtitleField.setEditable(false);
+        subtitleField.setText("");
+        randomLocationEffects.setValue(1);
+        randomLocationEffects.setEnabled(false);
+        continuousRadio.setEnabled(false);
+        dichotomousRadio.setEnabled(false);
+        randomLocationEffects.setEnabled(false);
+        newModelSubmit.setEnabled(false);
+        
+        
+    }//GEN-LAST:event_newModel_resetButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -422,6 +455,7 @@ public class NewModel extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton newModelCancel;
     private javax.swing.JButton newModelSubmit;
+    private javax.swing.JButton newModel_resetButton;
     private javax.swing.JSpinner randomLocationEffects;
     private javax.swing.JTextField subtitleField;
     private javax.swing.JTextField titleField;
