@@ -11,7 +11,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import javax.swing.JEditorPane;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -193,7 +195,20 @@ public class SuperUserMenu extends javax.swing.JFrame {
         //Select file from the file object
         File file = fileChooser.getSelectedFile();
         List<String> varnames = new ArrayList<String>(Arrays.asList(new String[]{"test","test","test"}));
-        try {defLib.readDefinitionFile(file, varnames);}
+        try {
+            defLib.readDefinitionFile(file, varnames);
+            JFrame myFrame = new JFrame("JEditorPane Test");
+            myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            myFrame.setSize(300,200);
+
+            JEditorPane myPane = new JEditorPane();
+            myPane.setContentType("text/plain");
+            myPane.setText(String.join("\n",defLib.buildStageOneDefinitonList()).replace("[", "").replace("]", ""));
+
+            myFrame.setContentPane(myPane);
+            myFrame.setVisible(true); 
+            //.
+        }
         catch (FileNotFoundException ex){
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
