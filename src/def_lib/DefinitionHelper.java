@@ -187,7 +187,7 @@ public class DefinitionHelper {
             int fileSize = 0;
             while ((defLine = br.readLine()) != null) {
                 if(defLine.length() > 0){fileSize++;}
-                defSummary.add(defLine);
+                defSummary.add(defLine.trim());
             }
                        
             if(stageTwoBinary & fileSize != 31){
