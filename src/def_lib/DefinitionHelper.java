@@ -26,7 +26,6 @@ public class DefinitionHelper {
      */
     private static final boolean MIX_INTEGER = Boolean.TRUE;
     private static final boolean MIX_STRING = Boolean.FALSE;
-
     /**
      * Public Class Specific Keys
      */
@@ -43,7 +42,6 @@ public class DefinitionHelper {
 
     private int randomLocationEffects = 1;
     private boolean stageTwoBinary = Boolean.FALSE;
-
     /**
      * Initial Definition Parameters
      */
@@ -51,7 +49,6 @@ public class DefinitionHelper {
     private String modelSubtitle;
     private String dataFilename;
     private String outputPrefix;
-
     /**
      * Stage 1 Advanced Options
      */
@@ -79,7 +76,6 @@ public class DefinitionHelper {
     private String decompBSCount = "0";
     private String decompWSCount = "0";
     private String advancedEffectMeanWS;
-
     /**
      * Stage 1 Model Specification
      */
@@ -105,7 +101,6 @@ public class DefinitionHelper {
     private String[] labelDecompScaleRegressors;
     private String[] labelDecompBSRegressors;
     private String[] labelDecompWSRegressors;
-
     /**
      * Stage 2 Advanced Options
      */
@@ -114,7 +109,6 @@ public class DefinitionHelper {
     private String stageTwoScaleInteractions = "0";
     private String stageTwoIntOfInteraction = "0";
     private String stageTwoOutcomeCatCount;
-
     /**
      * Stage 2 ModelS Specification
      */
@@ -172,7 +166,6 @@ public class DefinitionHelper {
             }
         }
     }
-
     /**
      *
      * @param defFile the file, as specified by the filepicker method
@@ -196,7 +189,6 @@ public class DefinitionHelper {
                 }
                 defSummary.add(defLine);
             }
-
             if (stageTwoBinary & fileSize != 31) {
                 throw new Exception("Invalid definition file length");  // TODO: Create a new class that extends from Exception for invalid def files
             } else if (!stageTwoBinary & fileSize != 30) {
@@ -206,7 +198,6 @@ public class DefinitionHelper {
             assignDefinitionVariables(defSummary);
         }
     }
-
     private boolean validateFieldLabels(String countVariable, String[] fieldLabelLine) throws Exception {
         int field = -1;
         int labels = 0;
@@ -222,7 +213,6 @@ public class DefinitionHelper {
         }
         return field == labels;
     }
-
     private void exportValidatorStageOne() throws Exception {
         if (!validateFieldLabels(getModelMeanCount(), getFieldModelMeanRegressors())) {
             throw new Exception("Fatal model error: number of MEAN regressors does not equal MEAN fields");
@@ -310,9 +300,7 @@ public class DefinitionHelper {
         if (!validateFieldLabels(getStageTwoIntOfInteraction(), getStageTwoFirstIntFields())) {
             throw new Exception("Fatal stage two field error: number of regressors THREE-WAY INTERACTION regressors to does not equal THREE-WAY INTERACTION fields");
         }
-
     }
-
     /**
      *
      * @return
@@ -324,20 +312,16 @@ public class DefinitionHelper {
         newDefinitionFile.add(getDataFilename());
         newDefinitionFile.add(getOutputPrefix());
         newDefinitionFile.add(getDataFilename());
-
         String[] advancedOptionsOne = advancedVariableBuild(1);
         newDefinitionFile.add(Arrays.toString(advancedOptionsOne).replaceAll(",", " "));
-
         newDefinitionFile.add(Arrays.toString(getIdOutcome()).replaceAll(",", " "));
         newDefinitionFile.add(Arrays.toString(getFieldModelMeanRegressors()).replaceAll(",", " "));
         newDefinitionFile.add(Arrays.toString(getFieldDecompMeanRegressors()).replaceAll(",", " "));
         newDefinitionFile.add(getLabelModelOutcome());
         newDefinitionFile.add(Arrays.toString(getLabelModelMeanRegressors()).replaceAll(",", " "));
         newDefinitionFile.add(Arrays.toString(getLabelDecompMeanRegressors()).replaceAll(",", " "));
-
         String[] advancedOptionsTwo = advancedVariableBuild(2);
         newDefinitionFile.add(Arrays.toString(advancedOptionsTwo).replaceAll(",", " "));
-
         newDefinitionFile.add(getStageTwoOutcomeField());
         switch (sequenceDecision()) {
             case MIXREGLS_MIXREG_KEY:
@@ -421,7 +405,6 @@ public class DefinitionHelper {
         }
 
         exportValidatorStageOne();
-
         return newDefinitionFile;
     }
 
@@ -527,10 +510,8 @@ public class DefinitionHelper {
             default:
             //TODO: Log this error     
         }
-
         exportValidatorStageOne();
     }
-
     /**
      *
      * @param stage: stage 1 or stage 2, internal call only
