@@ -24,7 +24,6 @@ public class DefinitionHelper {
     /**
      * Private Class Keys
      */
-
     private static final boolean MIX_INTEGER = Boolean.TRUE;
     private static final boolean MIX_STRING = Boolean.FALSE;
 
