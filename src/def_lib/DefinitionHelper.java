@@ -308,7 +308,6 @@ public class DefinitionHelper {
         if (!validateFieldLabels(getStageTwoIntOfInteraction(), getStageTwoFirstIntFields())) {
             throw new Exception("Fatal stage two field error: number of regressors THREE-WAY INTERACTION regressors to does not equal THREE-WAY INTERACTION fields");
         }
-
     }
 
     /**
@@ -1549,5 +1548,4 @@ public class DefinitionHelper {
             this.stageTwoFirstIntLabels = stageTwoFirstIntLabels;
         }
     }
-
 }
