@@ -13,17 +13,16 @@ import javax.swing.JFrame;
  * @author adityaponnada
  */
 public class stageTwoRegs extends javax.swing.JFrame {
-    
+
     //setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-    
-   stageOneRegs stageOne;
-   NewModel newModel2;
-   mixregGUI mixregGUIStageTwo;
-    
-   static DefaultListModel<String> stageTwoListModel;
-   static DefaultListModel<String> stageTwoLevelTwo;
-   
-   static boolean isStageTwoSubmitClicked = false;
+    stageOneRegs stageOne;
+    NewModel newModel2;
+    mixregGUI mixregGUIStageTwo;
+
+    static DefaultListModel<String> stageTwoListModel;
+    static DefaultListModel<String> stageTwoLevelTwo;
+
+    static boolean isStageTwoSubmitClicked = false;
 
     /**
      * Creates new form stageTwoRegs
@@ -31,23 +30,22 @@ public class stageTwoRegs extends javax.swing.JFrame {
     public stageTwoRegs() {
         initComponents();
         //create list models
-        
+
         newModel2 = new NewModel();
-        
-        if (!isStageTwoSubmitClicked){
+
+        if (!isStageTwoSubmitClicked) {
             stageTwoListModel = new DefaultListModel<String>();
             stageTwoLevelTwo = new DefaultListModel<String>();
-        
+
         } else {
-        StageTwoAllVariables.setModel(stageTwoListModel);
-        StageTwoLevelTwoVariables.setModel(stageTwoLevelTwo);
-        
+            StageTwoAllVariables.setModel(stageTwoListModel);
+            StageTwoLevelTwoVariables.setModel(stageTwoLevelTwo);
+
         }
-       
-       stageTwoSubmitButton.setEnabled(false);
-       
-      
-       setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        stageTwoSubmitButton.setEnabled(false);
+
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -166,26 +164,24 @@ public class stageTwoRegs extends javax.swing.JFrame {
         //dispose closes the window
         //mixregGUI.
         isStageTwoSubmitClicked = true;
-        
+
         mixregGUIStageTwo = newModel2.getMixReg();
         mixregGUIStageTwo.updateStageTwoGrid_version2(stageTwoLevelTwo);
         this.dispose();
     }//GEN-LAST:event_stageTwoSubmitButtonActionPerformed
 
     private void stageTwoAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoAddButtonActionPerformed
-        
+
         //Add items to the model and then copy it to the UI list
         stageTwoLevelTwo.addElement(StageTwoAllVariables.getSelectedValue());
         StageTwoLevelTwoVariables.setModel(stageTwoLevelTwo);
-        
-        
-        
+
         stageTwoSubmitButton.setEnabled(true);
-        
+
     }//GEN-LAST:event_stageTwoAddButtonActionPerformed
 
     private void stageTwoRemoveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoRemoveButtonActionPerformed
-        
+
         //Remove an item from the model
         stageTwoSubmitButton.setEnabled(true);
         stageTwoLevelTwo.remove(StageTwoLevelTwoVariables.getSelectedIndex());
@@ -243,15 +239,13 @@ public class stageTwoRegs extends javax.swing.JFrame {
     private javax.swing.JButton stageTwoSubmitButton;
     // End of variables declaration//GEN-END:variables
 
+    public void updateStageTwoVariables(DefaultListModel<String> defaultListModel) {
 
-    
-  public void updateStageTwoVariables(DefaultListModel<String> defaultListModel){
-      
-     //updates variables in stage two list (to add regressors)
-    //Add model to stage two variables, to display items    
-    StageTwoAllVariables.setModel(defaultListModel);
-    
-    StageTwoAllVariables.setSelectedIndex(2);
-}
+        //updates variables in stage two list (to add regressors)
+        //Add model to stage two variables, to display items    
+        StageTwoAllVariables.setModel(defaultListModel);
+
+        StageTwoAllVariables.setSelectedIndex(2);
+    }
 
 }

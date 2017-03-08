@@ -1,6 +1,5 @@
 package def_lib;
 
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -11,30 +10,32 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Exposed Classes:
- * readDefinitionFile: takes File as parameter, assigns all variables and then attempts to validate file
- * buildStageOneDefinitionList: returns ArrayList<String> that can be passed to a FileWriter class, validates first
- * @note: Both classes should pass Exceptions to the view and interrupt until user fixes error  
- * ..
+ * Exposed Classes: readDefinitionFile: takes File as parameter, assigns all
+ * variables and then attempts to validate file buildStageOneDefinitionList:
+ * returns ArrayList<String> that can be passed to a FileWriter class, validates
+ * first
+ *
+ * @note: Both classes should pass Exceptions to the view and interrupt until
+ * user fixes error ..
  * @author Eldin Dzubur
  */
 public class DefinitionHelper {
+
     /**
      * Private Class Keys
      */
-    
+
     private static final boolean MIX_INTEGER = Boolean.TRUE;
     private static final boolean MIX_STRING = Boolean.FALSE;
-    
+
     /**
      * Public Class Specific Keys
      */
-    
     public static final int MIXREGLS_MIXREG_KEY = 1;
     public static final int MIXREGLS_MIXOR_KEY = 2;
     public static final int MIXREGMLS_MIXREG_KEY = 3;
     public static final int MIXREGMLS_MIXOR_KEY = 4;
-    
+
     public static final int INIT_PARAMETER_KEY = 1;
     public static final int S1_ADVANCED_KEY = 2;
     public static final int S1_MODEL_KEY = 3;
@@ -43,7 +44,7 @@ public class DefinitionHelper {
 
     private int randomLocationEffects = 1;
     private boolean stageTwoBinary = Boolean.FALSE;
-    
+
     /**
      * Initial Definition Parameters
      */
@@ -51,7 +52,7 @@ public class DefinitionHelper {
     private String modelSubtitle;
     private String dataFilename;
     private String outputPrefix;
-    
+
     /**
      * Stage 1 Advanced Options
      */
@@ -71,13 +72,13 @@ public class DefinitionHelper {
     private String advancedMaxIteration;
     private String advancedMissingValue;
     private String advancedCenterScale;
-    private String advancedRidge;           
+    private String advancedRidge;
     private String modelBetweenCount = "0";
-    private String modelWithinCount = "0";            
+    private String modelWithinCount = "0";
     private String modelBetweenInt = "0";
-    private String modelWithinInt = "0";    
+    private String modelWithinInt = "0";
     private String decompBSCount = "0";
-    private String decompWSCount = "0";          
+    private String decompWSCount = "0";
     private String advancedEffectMeanWS;
 
     /**
@@ -114,7 +115,7 @@ public class DefinitionHelper {
     private String stageTwoScaleInteractions = "0";
     private String stageTwoIntOfInteraction = "0";
     private String stageTwoOutcomeCatCount;
-    
+
     /**
      * Stage 2 ModelS Specification
      */
@@ -129,20 +130,19 @@ public class DefinitionHelper {
     private String[] stageTwoLocRanIntLabels;
     private String[] stageTwoScaleIntLabels;
     private String[] stageTwoFirstIntLabels;
-    
-  
 
     /**
-     * 
+     *
      * @param randomLocationEffects: number of random location effects
-     * @param stageTwoBinary : whether or not the stage two outcome is dichotomous or ordinal
+     * @param stageTwoBinary : whether or not the stage two outcome is
+     * dichotomous or ordinal
      */
     public DefinitionHelper(int randomLocationEffects, boolean stageTwoBinary) {
-       this.randomLocationEffects = randomLocationEffects;
-       this.stageTwoBinary = stageTwoBinary;
-       if(this.randomLocationEffects>1){
-           this.modelLocRanCount = Integer.toString(randomLocationEffects);
-       }
+        this.randomLocationEffects = randomLocationEffects;
+        this.stageTwoBinary = stageTwoBinary;
+        if (this.randomLocationEffects > 1) {
+            this.modelLocRanCount = Integer.toString(randomLocationEffects);
+        }
     }
 
     public int getRandomLocationEffects() {
@@ -153,161 +153,170 @@ public class DefinitionHelper {
         return stageTwoBinary;
     }
 
-    /** 
-     * 
-     * @return sequenceDecision: integer key determining stage 1+stage 2 model UI views
+    /**
+     *
+     * @return sequenceDecision: integer key determining stage 1+stage 2 model
+     * UI views
      */
     public int sequenceDecision() {
-        if(stageTwoBinary){
-            if(randomLocationEffects<2){return MIXREGLS_MIXOR_KEY;}
-            else{return MIXREGLS_MIXREG_KEY;}
-        }
-        else{
-            if(randomLocationEffects<2){return MIXREGMLS_MIXOR_KEY;}
-            else{return MIXREGMLS_MIXREG_KEY;}
+        if (stageTwoBinary) {
+            if (randomLocationEffects < 2) {
+                return MIXREGLS_MIXOR_KEY;
+            } else {
+                return MIXREGLS_MIXREG_KEY;
+            }
+        } else {
+            if (randomLocationEffects < 2) {
+                return MIXREGMLS_MIXOR_KEY;
+            } else {
+                return MIXREGMLS_MIXREG_KEY;
+            }
         }
     }
-    
-    
+
     /**
-     * 
+     *
      * @param defFile the file, as specified by the filepicker method
-     * @param varNames the list of  variable names, derived from data file
+     * @param varNames the list of variable names, derived from data file
      * try/catch these exceptions in order
      * @throws FileNotFoundException
      * @throws IOException
-     * @throws Exception display error message for this exception to user, do not execute program until this is resolved
+     * @throws Exception display error message for this exception to user, do
+     * not execute program until this is resolved
      */
     public void readDefinitionFile(File defFile, List<String> varNames) throws FileNotFoundException, IOException, Exception {
         try (BufferedReader br = new BufferedReader(new FileReader(defFile))) {
             String defLine;
             int row = 0;
             List<String> defSummary = new ArrayList<>();
-            
+
             int fileSize = 0;
             while ((defLine = br.readLine()) != null) {
-                if(defLine.length() > 0){fileSize++;}
+                if (defLine.length() > 0) {
+                    fileSize++;
+                }
                 defSummary.add(defLine);
             }
-                       
-            if(stageTwoBinary & fileSize != 31){
+
+            if (stageTwoBinary & fileSize != 31) {
                 throw new Exception("Invalid definition file length");  // TODO: Create a new class that extends from Exception for invalid def files
+            } else if (!stageTwoBinary & fileSize != 30) {
+                throw new Exception("Invalid definition file length");
             }
-            else if(!stageTwoBinary & fileSize != 30){
-                throw new Exception("Invalid definition file length"); 
-            }         
-            
+
             assignDefinitionVariables(defSummary);
         }
     }
-    
+
     private boolean validateFieldLabels(String countVariable, String[] fieldLabelLine) throws Exception {
         int field = -1;
         int labels = 0;
-        try {field = Integer.parseInt(countVariable);}
-        catch(Exception ex){
+        try {
+            field = Integer.parseInt(countVariable);
+        } catch (Exception ex) {
             throw new Exception("Unassigned count variable for one or more options or regressors");
         }
-        try {labels = fieldLabelLine.length;}
-        catch(Exception ex){
+        try {
+            labels = fieldLabelLine.length;
+        } catch (Exception ex) {
             throw new Exception("Unassigned field or label series for one or more sets of options or regressors");
         }
-        return field==labels;
+        return field == labels;
     }
-    
+
     private void exportValidatorStageOne() throws Exception {
-         if(!validateFieldLabels(getModelMeanCount(),getFieldModelMeanRegressors())){
-             throw new Exception("Fatal model error: number of MEAN regressors does not equal MEAN fields");
-         }
-         if(!validateFieldLabels(getModelMeanCount(),getLabelModelMeanRegressors())){
-             throw new Exception("Fatal model error: number of MEAN regressors does not equal MEAN labels");
-         }
-         if(!validateFieldLabels(getModelBetweenCount(),getFieldModelBSRegressors())){
-             throw new Exception("Fatal model error: number of BS regressors does not equal BS fields");
-         }
-         if(!validateFieldLabels(getModelBetweenCount(),getLabelModelBSRegressors())){
-             throw new Exception("Fatal model error: number of BS regressors does not equal BS labels");
-         }
-         if(!validateFieldLabels(getModelWithinCount(),getFieldModelWSRegressors())){
-             throw new Exception("Fatal model error: number of WS regressors does not equal WS fields");
-         }
-         if(!validateFieldLabels(getModelWithinCount(),getLabelModelWSRegressors())){
-             throw new Exception("Fatal model error: number of WS regressors does not equal WS labels");
-         }
-         if(!validateFieldLabels(getModelLocRanCount(),getFieldModelLocRanRegressors())){
-             throw new Exception("Fatal model error: number of LOCATION RANDOM regressors does not equal LOCATION RANDOM fields");
-         }
-         if(!validateFieldLabels(getModelLocRanCount(),getLabelModelLocRanRegressors())){
-             throw new Exception("Fatal model error: number of LOCATION RANDOM regressors does not equal LOCATION RANDOM labels");
-         }
-         if(!validateFieldLabels(getModelScaleCount(),getFieldModelScaleRegressors())){
-             throw new Exception("Fatal model error: number of SCALE regressors does not equal SCALE fields");
-         }
-         if(!validateFieldLabels(getModelScaleCount(),getLabelModelScaleRegressors())){
-             throw new Exception("Fatal model error: number of SCALE regressors does not equal SCALE labels");
-         }
-         if(!validateFieldLabels(getModelMeanCount(),getFieldModelMeanRegressors())){
-             throw new Exception("Fatal model error: number of MEAN regressors does not equal MEAN fields");
-         }
-         
-         if(!validateFieldLabels(getDecompMeanCount(),getLabelDecompMeanRegressors())){
-             throw new Exception("Fatal variance decomposition error: number of MEAN regressors does not equal MEAN labels");
-         }
-         if(!validateFieldLabels(getDecompBSCount(),getFieldDecompBSRegressors())){
-             throw new Exception("Fatal variance decomposition error: number of BS regressors does not equal BS fields");
-         }
-         if(!validateFieldLabels(getDecompBSCount(),getLabelDecompBSRegressors())){
-             throw new Exception("Fatal variance decomposition error: number of BS regressors does not equal BS labels");
-         }
-         if(!validateFieldLabels(getDecompWSCount(),getFieldDecompWSRegressors())){
-             throw new Exception("Fatal variance decomposition error: number of WS regressors does not equal WS fields");
-         }
-         if(!validateFieldLabels(getDecompWSCount(),getLabelDecompWSRegressors())){
-             throw new Exception("Fatal variance decomposition error: number of WS regressors does not equal WS labels");
-         }
-         if(!validateFieldLabels(getDecompLocRanCount(),getFieldDecompLocRanRegressors())){
-             throw new Exception("Fatal variance decomposition error: number of LOCATION RANDOM regressors does not equal LOCATION RANDOM fields");
-         }
-         if(!validateFieldLabels(getDecompLocRanCount(),getLabelDecompLocRanRegressors())){
-             throw new Exception("Fatal variance decomposition error: number of LOCATION RANDOM regressors does not equal LOCATION RANDOM labels");
-         }
-         if(!validateFieldLabels(getDecompScaleCount(),getFieldDecompScaleRegressors())){
-             throw new Exception("Fatal variance decomposition error: number of SCALE regressors does not equal SCALE fields");
-         }
-         if(!validateFieldLabels(getDecompScaleCount(),getLabelDecompScaleRegressors())){
-             throw new Exception("Fatal variance decomposition error: number of SCALE regressors does not equal SCALE labels");
-         }
-            
-         if(!validateFieldLabels(getStageTwoFixedCount(),getStageTwoFixedLabels())){
-             throw new Exception("Fatal stage two label error: number of FIXED regressors does not equal FIXED labels");
-         }
-         if(!validateFieldLabels(getStageTwoLocRanInteractions(),getStageTwoLocRanIntLabels())){
-             throw new Exception("Fatal stage two label error: number of LOCATION RANDOM INTERACTIONS does not equal LOCATION RANDOM INTERACTIONS labels");
-         }
-         if(!validateFieldLabels(getStageTwoScaleInteractions(),getStageTwoScaleIntLabels())){
-             throw new Exception("Fatal stage two label error: number of SCALE RANDOM INTERACTIONS does not equal SCALE RANDOM INTERACTIONS labels");
-         }
-         if(!validateFieldLabels(getStageTwoIntOfInteraction(),getStageTwoFirstIntLabels())){
-             throw new Exception("Fatal stage two label error: number of regressors THREE-WAY INTERACTION regressors to does not equal THREE-WAY INTERACTION labels");
-         }
-         if(!validateFieldLabels(getStageTwoFixedCount(),getStageTwoFixedFields())){
-             throw new Exception("Fatal stage two field error: number of FIXED regressors does not equal FIXED fields");
-         }
-         if(!validateFieldLabels(getStageTwoLocRanInteractions(),getStageTwoLocRanIntFields())){
-             throw new Exception("Fatal stage two field error: number of LOCATION RANDOM INTERACTIONS does not equal LOCATION RANDOM INTERACTIONS fields");
-         }
-         if(!validateFieldLabels(getStageTwoScaleInteractions(),getStageTwoScaleIntFields())){
-             throw new Exception("Fatal stage two field error: number of SCALE RANDOM INTERACTIONS does not equal SCALE RANDOM INTERACTIONS fields");
-         }
-         if(!validateFieldLabels(getStageTwoIntOfInteraction(),getStageTwoFirstIntFields())){
-             throw new Exception("Fatal stage two field error: number of regressors THREE-WAY INTERACTION regressors to does not equal THREE-WAY INTERACTION fields");
-         }
-         
+        if (!validateFieldLabels(getModelMeanCount(), getFieldModelMeanRegressors())) {
+            throw new Exception("Fatal model error: number of MEAN regressors does not equal MEAN fields");
+        }
+        if (!validateFieldLabels(getModelMeanCount(), getLabelModelMeanRegressors())) {
+            throw new Exception("Fatal model error: number of MEAN regressors does not equal MEAN labels");
+        }
+        if (!validateFieldLabels(getModelBetweenCount(), getFieldModelBSRegressors())) {
+            throw new Exception("Fatal model error: number of BS regressors does not equal BS fields");
+        }
+        if (!validateFieldLabels(getModelBetweenCount(), getLabelModelBSRegressors())) {
+            throw new Exception("Fatal model error: number of BS regressors does not equal BS labels");
+        }
+        if (!validateFieldLabels(getModelWithinCount(), getFieldModelWSRegressors())) {
+            throw new Exception("Fatal model error: number of WS regressors does not equal WS fields");
+        }
+        if (!validateFieldLabels(getModelWithinCount(), getLabelModelWSRegressors())) {
+            throw new Exception("Fatal model error: number of WS regressors does not equal WS labels");
+        }
+        if (!validateFieldLabels(getModelLocRanCount(), getFieldModelLocRanRegressors())) {
+            throw new Exception("Fatal model error: number of LOCATION RANDOM regressors does not equal LOCATION RANDOM fields");
+        }
+        if (!validateFieldLabels(getModelLocRanCount(), getLabelModelLocRanRegressors())) {
+            throw new Exception("Fatal model error: number of LOCATION RANDOM regressors does not equal LOCATION RANDOM labels");
+        }
+        if (!validateFieldLabels(getModelScaleCount(), getFieldModelScaleRegressors())) {
+            throw new Exception("Fatal model error: number of SCALE regressors does not equal SCALE fields");
+        }
+        if (!validateFieldLabels(getModelScaleCount(), getLabelModelScaleRegressors())) {
+            throw new Exception("Fatal model error: number of SCALE regressors does not equal SCALE labels");
+        }
+        if (!validateFieldLabels(getModelMeanCount(), getFieldModelMeanRegressors())) {
+            throw new Exception("Fatal model error: number of MEAN regressors does not equal MEAN fields");
+        }
+
+        if (!validateFieldLabels(getDecompMeanCount(), getLabelDecompMeanRegressors())) {
+            throw new Exception("Fatal variance decomposition error: number of MEAN regressors does not equal MEAN labels");
+        }
+        if (!validateFieldLabels(getDecompBSCount(), getFieldDecompBSRegressors())) {
+            throw new Exception("Fatal variance decomposition error: number of BS regressors does not equal BS fields");
+        }
+        if (!validateFieldLabels(getDecompBSCount(), getLabelDecompBSRegressors())) {
+            throw new Exception("Fatal variance decomposition error: number of BS regressors does not equal BS labels");
+        }
+        if (!validateFieldLabels(getDecompWSCount(), getFieldDecompWSRegressors())) {
+            throw new Exception("Fatal variance decomposition error: number of WS regressors does not equal WS fields");
+        }
+        if (!validateFieldLabels(getDecompWSCount(), getLabelDecompWSRegressors())) {
+            throw new Exception("Fatal variance decomposition error: number of WS regressors does not equal WS labels");
+        }
+        if (!validateFieldLabels(getDecompLocRanCount(), getFieldDecompLocRanRegressors())) {
+            throw new Exception("Fatal variance decomposition error: number of LOCATION RANDOM regressors does not equal LOCATION RANDOM fields");
+        }
+        if (!validateFieldLabels(getDecompLocRanCount(), getLabelDecompLocRanRegressors())) {
+            throw new Exception("Fatal variance decomposition error: number of LOCATION RANDOM regressors does not equal LOCATION RANDOM labels");
+        }
+        if (!validateFieldLabels(getDecompScaleCount(), getFieldDecompScaleRegressors())) {
+            throw new Exception("Fatal variance decomposition error: number of SCALE regressors does not equal SCALE fields");
+        }
+        if (!validateFieldLabels(getDecompScaleCount(), getLabelDecompScaleRegressors())) {
+            throw new Exception("Fatal variance decomposition error: number of SCALE regressors does not equal SCALE labels");
+        }
+
+        if (!validateFieldLabels(getStageTwoFixedCount(), getStageTwoFixedLabels())) {
+            throw new Exception("Fatal stage two label error: number of FIXED regressors does not equal FIXED labels");
+        }
+        if (!validateFieldLabels(getStageTwoLocRanInteractions(), getStageTwoLocRanIntLabels())) {
+            throw new Exception("Fatal stage two label error: number of LOCATION RANDOM INTERACTIONS does not equal LOCATION RANDOM INTERACTIONS labels");
+        }
+        if (!validateFieldLabels(getStageTwoScaleInteractions(), getStageTwoScaleIntLabels())) {
+            throw new Exception("Fatal stage two label error: number of SCALE RANDOM INTERACTIONS does not equal SCALE RANDOM INTERACTIONS labels");
+        }
+        if (!validateFieldLabels(getStageTwoIntOfInteraction(), getStageTwoFirstIntLabels())) {
+            throw new Exception("Fatal stage two label error: number of regressors THREE-WAY INTERACTION regressors to does not equal THREE-WAY INTERACTION labels");
+        }
+        if (!validateFieldLabels(getStageTwoFixedCount(), getStageTwoFixedFields())) {
+            throw new Exception("Fatal stage two field error: number of FIXED regressors does not equal FIXED fields");
+        }
+        if (!validateFieldLabels(getStageTwoLocRanInteractions(), getStageTwoLocRanIntFields())) {
+            throw new Exception("Fatal stage two field error: number of LOCATION RANDOM INTERACTIONS does not equal LOCATION RANDOM INTERACTIONS fields");
+        }
+        if (!validateFieldLabels(getStageTwoScaleInteractions(), getStageTwoScaleIntFields())) {
+            throw new Exception("Fatal stage two field error: number of SCALE RANDOM INTERACTIONS does not equal SCALE RANDOM INTERACTIONS fields");
+        }
+        if (!validateFieldLabels(getStageTwoIntOfInteraction(), getStageTwoFirstIntFields())) {
+            throw new Exception("Fatal stage two field error: number of regressors THREE-WAY INTERACTION regressors to does not equal THREE-WAY INTERACTION fields");
+        }
+
     }
-    
+
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     public List<String> buildStageOneDefinitonList() throws Exception {
         List<String> newDefinitionFile = new ArrayList();
@@ -316,22 +325,22 @@ public class DefinitionHelper {
         newDefinitionFile.add(getDataFilename());
         newDefinitionFile.add(getOutputPrefix());
         newDefinitionFile.add(getDataFilename());
-        
+
         String[] advancedOptionsOne = advancedVariableBuild(1);
         newDefinitionFile.add(Arrays.toString(advancedOptionsOne).replaceAll(",", " "));
-        
+
         newDefinitionFile.add(Arrays.toString(getIdOutcome()).replaceAll(",", " "));
         newDefinitionFile.add(Arrays.toString(getFieldModelMeanRegressors()).replaceAll(",", " "));
         newDefinitionFile.add(Arrays.toString(getFieldDecompMeanRegressors()).replaceAll(",", " "));
         newDefinitionFile.add(getLabelModelOutcome());
         newDefinitionFile.add(Arrays.toString(getLabelModelMeanRegressors()).replaceAll(",", " "));
-        newDefinitionFile.add(Arrays.toString(getLabelDecompMeanRegressors()).replaceAll(",", " ")); 
-        
+        newDefinitionFile.add(Arrays.toString(getLabelDecompMeanRegressors()).replaceAll(",", " "));
+
         String[] advancedOptionsTwo = advancedVariableBuild(2);
         newDefinitionFile.add(Arrays.toString(advancedOptionsTwo).replaceAll(",", " "));
-        
+
         newDefinitionFile.add(getStageTwoOutcomeField());
-        switch(sequenceDecision()){
+        switch (sequenceDecision()) {
             case MIXREGLS_MIXREG_KEY:
                 newDefinitionFile.add(Arrays.toString(getFieldModelBSRegressors()).replaceAll(",", " "));
                 newDefinitionFile.add(Arrays.toString(getFieldModelWSRegressors()).replaceAll(",", " "));
@@ -406,39 +415,40 @@ public class DefinitionHelper {
                 newDefinitionFile.add(Arrays.toString(getStageTwoFixedLabels()).replaceAll(",", " "));
                 newDefinitionFile.add(Arrays.toString(getStageTwoLocRanIntLabels()).replaceAll(",", " "));
                 newDefinitionFile.add(Arrays.toString(getStageTwoScaleIntLabels()).replaceAll(",", " "));
-                newDefinitionFile.add(Arrays.toString(getStageTwoFirstIntLabels()).replaceAll(",", " "));              
+                newDefinitionFile.add(Arrays.toString(getStageTwoFirstIntLabels()).replaceAll(",", " "));
                 break;
             default:
-                //TODO: Log this error     
-        }      
-        
+            //TODO: Log this error     
+        }
+
         exportValidatorStageOne();
-        
+
         return newDefinitionFile;
     }
-    
+
     /**
-     * 
+     *
      * @param readDefinitionFile the definition file as a List<String>
-     * @throws Exception display error message for this exception to user, do not execute program until this is resolved
+     * @throws Exception display error message for this exception to user, do
+     * not execute program until this is resolved
      */
     private void assignDefinitionVariables(List<String> readDefinitionFile) throws Exception {
         setModelTitle(readDefinitionFile.get(0));
         setModelSubtitle(readDefinitionFile.get(1));
         setDataFilename(readDefinitionFile.get(2));
         setOutputPrefix(readDefinitionFile.get(3));
-        
-        advancedVariableAssignment(1,readDefinitionFile.get(4).split(" "));
-        
+
+        advancedVariableAssignment(1, readDefinitionFile.get(4).split(" "));
+
         setIdOutcome(readDefinitionFile.get(5).split(" "));
         setFieldModelMeanRegressors(readDefinitionFile.get(6).split(" "));
         setFieldDecompMeanRegressors(readDefinitionFile.get(9).split(" "));
         setLabelModelOutcome(readDefinitionFile.get(12));
         setLabelModelMeanRegressors(readDefinitionFile.get(13).split(" "));
-        setLabelDecompMeanRegressors(readDefinitionFile.get(16).split(" ")); 
-        advancedVariableAssignment(2,readDefinitionFile.get(19).split(" ")); 
+        setLabelDecompMeanRegressors(readDefinitionFile.get(16).split(" "));
+        advancedVariableAssignment(2, readDefinitionFile.get(19).split(" "));
         setStageTwoOutcomeField(readDefinitionFile.get(20));
-        switch(sequenceDecision()){
+        switch (sequenceDecision()) {
             case MIXREGLS_MIXREG_KEY:
                 setFieldModelBSRegressors(readDefinitionFile.get(7).split(" "));
                 setFieldModelWSRegressors(readDefinitionFile.get(8).split(" "));
@@ -513,30 +523,30 @@ public class DefinitionHelper {
                 setStageTwoFixedLabels(readDefinitionFile.get(27).split(" "));
                 setStageTwoLocRanIntLabels(readDefinitionFile.get(28).split(" "));
                 setStageTwoScaleIntLabels(readDefinitionFile.get(29).split(" "));
-                setStageTwoFirstIntLabels(readDefinitionFile.get(30).split(" "));              
+                setStageTwoFirstIntLabels(readDefinitionFile.get(30).split(" "));
                 break;
             default:
-                //TODO: Log this error     
+            //TODO: Log this error     
         }
-        
+
         exportValidatorStageOne();
     }
-    
+
     /**
-     * 
+     *
      * @param stage: stage 1 or stage 2, internal call only
-     * @return 
+     * @return
      */
     private String[] advancedVariableBuild(int stage) {
         List<String> advancedVars = new ArrayList();
-        if(stage==1){
-            switch(sequenceDecision()){
+        if (stage == 1) {
+            switch (sequenceDecision()) {
                 case MIXREGLS_MIXREG_KEY:
                     advancedVars.add(getDataVariableCount());
                     advancedVars.add(getModelMeanCount());
                     advancedVars.add(getModelBetweenCount());
                     advancedVars.add(getModelWithinCount());
-                    advancedVars.add(getModelFixedInt()); 
+                    advancedVars.add(getModelFixedInt());
                     advancedVars.add(getModelBetweenInt());
                     advancedVars.add(getModelWithinInt());
                     advancedVars.add(getDecompMeanCount());
@@ -556,7 +566,7 @@ public class DefinitionHelper {
                     advancedVars.add(getModelMeanCount());
                     advancedVars.add(getModelBetweenCount());
                     advancedVars.add(getModelWithinCount());
-                    advancedVars.add(getModelFixedInt()); 
+                    advancedVars.add(getModelFixedInt());
                     advancedVars.add(getModelBetweenInt());
                     advancedVars.add(getModelWithinInt());
                     advancedVars.add(getDecompMeanCount());
@@ -576,7 +586,7 @@ public class DefinitionHelper {
                     advancedVars.add(getModelMeanCount());
                     advancedVars.add(getModelLocRanCount());
                     advancedVars.add(getModelScaleCount());
-                    advancedVars.add(getModelFixedInt()); 
+                    advancedVars.add(getModelFixedInt());
                     advancedVars.add(getModelRandomInt());
                     advancedVars.add(getModelScaleInt());
                     advancedVars.add(getDecompMeanCount());
@@ -589,7 +599,7 @@ public class DefinitionHelper {
                     advancedVars.add(getModelMeanCount());
                     advancedVars.add(getModelLocRanCount());
                     advancedVars.add(getModelScaleCount());
-                    advancedVars.add(getModelFixedInt()); 
+                    advancedVars.add(getModelFixedInt());
                     advancedVars.add(getModelRandomInt());
                     advancedVars.add(getModelScaleInt());
                     advancedVars.add(getDecompMeanCount());
@@ -603,13 +613,12 @@ public class DefinitionHelper {
                     advancedVars.add(getAdvancedCenterScale());
                     advancedVars.add(getAdvancedRidge());
                     break;
-            default:
+                default:
                 //TODO: Log this error 
             }
-        }
-        else{
-            switch(sequenceDecision()){
-                case MIXREGLS_MIXREG_KEY: 
+        } else {
+            switch (sequenceDecision()) {
+                case MIXREGLS_MIXREG_KEY:
                     advancedVars.add(getStageTwoFixedCount());
                     advancedVars.add(getStageTwoLocRanInteractions());
                     advancedVars.add(getStageTwoScaleInteractions());
@@ -620,7 +629,7 @@ public class DefinitionHelper {
                     advancedVars.add(getStageTwoLocRanInteractions());
                     advancedVars.add(getStageTwoScaleInteractions());
                     advancedVars.add(getStageTwoIntOfInteraction());
-                    advancedVars.add(getStageTwoOutcomeCatCount());                  
+                    advancedVars.add(getStageTwoOutcomeCatCount());
                     break;
                 case MIXREGMLS_MIXREG_KEY:
                     advancedVars.add(getStageTwoFixedCount());
@@ -633,26 +642,26 @@ public class DefinitionHelper {
                     advancedVars.add(getStageTwoLocRanInteractions());
                     advancedVars.add(getStageTwoScaleInteractions());
                     advancedVars.add(getStageTwoIntOfInteraction());
-                    advancedVars.add(getStageTwoOutcomeCatCount());               
+                    advancedVars.add(getStageTwoOutcomeCatCount());
                     break;
-            default:
+                default:
                 //TODO: Log this error 
             }
         }
         String[] returnVars = new String[advancedVars.size()];
         int iter = 0;
-        for(String iterate: advancedVars){
+        for (String iterate : advancedVars) {
             returnVars[iter] = iterate;
             iter++;
         };
         return returnVars;
     }
-    
+
     private void advancedVariableAssignment(int stage, String[] advancedVars) throws Exception {
-        if(stage==1){
+        if (stage == 1) {
             setDataVariableCount(advancedVars[0]);
             setModelMeanCount(advancedVars[1]);
-            setModelFixedInt(advancedVars[4]); 
+            setModelFixedInt(advancedVars[4]);
             setDecompMeanCount(advancedVars[7]);
             setAdvancedConvergence(advancedVars[10]);
             setAdvancedQuadPoints(advancedVars[11]);
@@ -661,7 +670,7 @@ public class DefinitionHelper {
             setAdvancedMissingValue(advancedVars[14]);
             setAdvancedCenterScale(advancedVars[15]);
 
-            switch(sequenceDecision()){
+            switch (sequenceDecision()) {
                 case MIXREGLS_MIXREG_KEY:
                     setModelBetweenCount(advancedVars[2]);
                     setModelWithinCount(advancedVars[3]);
@@ -700,117 +709,122 @@ public class DefinitionHelper {
                     setDecompScaleCount(advancedVars[9]);
                     setAdvancedRidge(advancedVars[16]);
                     break;
-            default:
+                default:
                 //TODO: Log this error 
             }
-        }
-        else{
+        } else {
             setStageTwoFixedCount(advancedVars[0]);
             setStageTwoLocRanInteractions(advancedVars[1]);
             setStageTwoScaleInteractions(advancedVars[2]);
             setStageTwoIntOfInteraction(advancedVars[3]);
-            
-            switch(sequenceDecision()){
-                case MIXREGLS_MIXREG_KEY:                  
+
+            switch (sequenceDecision()) {
+                case MIXREGLS_MIXREG_KEY:
                     break;
                 case MIXREGLS_MIXOR_KEY:
-                    setStageTwoOutcomeCatCount(advancedVars[4]);                  
+                    setStageTwoOutcomeCatCount(advancedVars[4]);
                     break;
                 case MIXREGMLS_MIXREG_KEY:
                     break;
                 case MIXREGMLS_MIXOR_KEY:
-                    setStageTwoOutcomeCatCount(advancedVars[4]);               
+                    setStageTwoOutcomeCatCount(advancedVars[4]);
                     break;
-            default:
+                default:
                 //TODO: Log this error 
             }
         }
     }
-    
+
     /**
-     * 
+     *
      * @param validationMessage line name to throw in Exception message
      * @param lineMessage line number to throw in Exception message
      * @param validationString String variable that will be tested as Integer
      * @param minValue minimum value expressed as integer
      * @param maxValue maximum value expressed as integer
-     * @param isInteger is validationString an integer (TRUE) or a string (FALSE)
+     * @param isInteger is validationString an integer (TRUE) or a string
+     * (FALSE)
      * @return only returns true, otherwise throws Exception
      * @throws Exception inherited exception
      */
-    private boolean setValidator(String validationMessage, String lineMessage, 
+    private boolean setValidator(String validationMessage, String lineMessage,
             String validationString, int minValue, int maxValue, boolean isInteger) throws Exception {
-        if(isInteger){
-            try { 
-                if(Integer.parseInt(validationString)>= minValue && Integer.parseInt(validationString) <= maxValue){
+        if (isInteger) {
+            try {
+                if (Integer.parseInt(validationString) >= minValue && Integer.parseInt(validationString) <= maxValue) {
                     return Boolean.TRUE;
+                } else {
+                    throw new Exception("Invalid " + validationMessage + " in .dat file specified, line " + lineMessage);
                 }
-                else {throw new Exception("Invalid " + validationMessage + " in .dat file specified, line " + lineMessage);}
-            }
-            catch(NumberFormatException nfe) {
+            } catch (NumberFormatException nfe) {
                 throw new Exception("Invalid character for " + validationMessage + " in .dat file specified, line " + lineMessage);
             }
-        }
-        else {
-            if(validationString.length()>= minValue && validationString.length() <= maxValue){
+        } else {
+            if (validationString.length() >= minValue && validationString.length() <= maxValue) {
                 return Boolean.TRUE;
+            } else {
+                throw new Exception("Invalid string for " + validationMessage + " in .dat file specified, line " + lineMessage);
             }
-            else {throw new Exception("Invalid string for " + validationMessage + " in .dat file specified, line " + lineMessage);}
         }
     }
-    
+
     /**
-     * inherits parameters of setValidator, loops until all true, otherwise throws Exception
+     * inherits parameters of setValidator, loops until all true, otherwise
+     * throws Exception
+     *
      * @param validationMessage
      * @param lineMessage
      * @param validationString String array to test
      * @param minValue
-     * @param maxValue
-     * #param isInteger
+     * @param maxValue #param isInteger
      * @return returns true
      * @throws Exception inherited Exception from setValidator
      */
     private boolean loopSetValidator(String validationMessage, String lineMessage,
             String[] validationString, int minValue, int maxValue, boolean isInteger) throws Exception {
         int loopCounter = 0;
-        for(String testString: validationString){
-            if(!setValidator(validationMessage, lineMessage, testString, minValue, maxValue, isInteger)){
-              return Boolean.FALSE;
-            }
-            else {
+        for (String testString : validationString) {
+            if (!setValidator(validationMessage, lineMessage, testString, minValue, maxValue, isInteger)) {
+                return Boolean.FALSE;
+            } else {
                 loopCounter++;
             }
         }
-        if(validationString.length == loopCounter){return Boolean.TRUE;}
-        else{
+        if (validationString.length == loopCounter) {
+            return Boolean.TRUE;
+        } else {
             throw new Exception("Inconsistent spacing on line " + lineMessage + " for " + validationMessage);
         }
     }
-    
-    
+
     //read model title from NewModel.java
     //done
     public String getModelTitle() {
         return modelTitle;
     }
-    
+
     // read model title in this function
     //done
     public void setModelTitle(String modelTitle) {
-        if(modelTitle.length()>72){this.modelTitle = modelTitle.substring(0, 71);}
-        else{this.modelTitle = modelTitle;}
+        if (modelTitle.length() > 72) {
+            this.modelTitle = modelTitle.substring(0, 71);
+        } else {
+            this.modelTitle = modelTitle;
+        }
     }
-    
-    
+
     public String getModelSubtitle() {
         return modelSubtitle;
     }
-    
+
     // read subtitle in this function
     //done
     public void setModelSubtitle(String modelSubtitle) {
-        if(modelSubtitle.length()>72){this.modelSubtitle = modelSubtitle.substring(0, 71);}
-        else{this.modelSubtitle = modelSubtitle;}
+        if (modelSubtitle.length() > 72) {
+            this.modelSubtitle = modelSubtitle.substring(0, 71);
+        } else {
+            this.modelSubtitle = modelSubtitle;
+        }
     }
 
     // print file name path
@@ -822,10 +836,11 @@ public class DefinitionHelper {
     // read fileName
     //done
     public void setDataFilename(String dataFilename) throws Exception {
-        if(dataFilename.endsWith(".dat") || dataFilename.endsWith(".csv")){
-           this.dataFilename = dataFilename;
+        if (dataFilename.endsWith(".dat") || dataFilename.endsWith(".csv")) {
+            this.dataFilename = dataFilename;
+        } else {
+            throw new Exception("Filename is not a valid .dat or .csv file, line 3");
         }
-        else {throw new Exception("Filename is not a valid .dat or .csv file, line 3");}
     }
 
     public String getOutputPrefix() {
@@ -835,12 +850,14 @@ public class DefinitionHelper {
     // check what is this function needed for?
     // done
     public void setOutputPrefix(String outputPrefix) {
-        if(outputPrefix.length()>72){this.outputPrefix = outputPrefix.substring(0, 200);}
-        else{this.outputPrefix = outputPrefix;}
+        if (outputPrefix.length() > 72) {
+            this.outputPrefix = outputPrefix.substring(0, 200);
+        } else {
+            this.outputPrefix = outputPrefix;
+        }
         this.outputPrefix = outputPrefix;
     }
 
-    
     public String getDataVariableCount() {
         return dataVariableCount;
     }
@@ -848,7 +865,7 @@ public class DefinitionHelper {
     // read variable array size into this one
     //done
     public void setDataVariableCount(String dataVariableCount) throws Exception {
-        if(setValidator("number of variables", "5", dataVariableCount, 2, 255, MIX_INTEGER)){
+        if (setValidator("number of variables", "5", dataVariableCount, 2, 255, MIX_INTEGER)) {
             this.dataVariableCount = dataVariableCount;
         }
     }
@@ -857,11 +874,10 @@ public class DefinitionHelper {
         return modelMeanCount;
     }
 
-    
     // what should this do?
     //todo // mean level 1 and level 2?
     public void setModelMeanCount(String modelMeanCount) throws Exception {
-        if(setValidator("number of mean regressors", "5", modelMeanCount, 1, 255, MIX_INTEGER)){
+        if (setValidator("number of mean regressors", "5", modelMeanCount, 1, 255, MIX_INTEGER)) {
             this.modelMeanCount = modelMeanCount;
         }
     }
@@ -873,11 +889,11 @@ public class DefinitionHelper {
     // read RLE into this one
     //done
     public void setModelLocRanCount(String modelLocRanCount) throws Exception {
-        if(setValidator("number of location random effects", "5", modelLocRanCount, 0, 255, MIX_INTEGER)){
+        if (setValidator("number of location random effects", "5", modelLocRanCount, 0, 255, MIX_INTEGER)) {
             this.modelLocRanCount = modelLocRanCount;
         }
     }
-    
+
     public String getModelScaleCount() {
         return modelScaleCount;
     }
@@ -885,7 +901,7 @@ public class DefinitionHelper {
     // What does this do?
     //done
     public void setModelScaleCount(String modelScaleCount) throws Exception {
-        if(setValidator("number of scale regressors", "5", modelScaleCount, 0, 255, MIX_INTEGER)){
+        if (setValidator("number of scale regressors", "5", modelScaleCount, 0, 255, MIX_INTEGER)) {
             this.modelScaleCount = modelScaleCount;
         }
     }
@@ -897,7 +913,7 @@ public class DefinitionHelper {
     // what does this do?
     //done
     public void setModelFixedInt(String modelFixedInt) throws Exception {
-        if(setValidator("fixed intercept", "5", modelFixedInt, 0, 1, MIX_INTEGER)){
+        if (setValidator("fixed intercept", "5", modelFixedInt, 0, 1, MIX_INTEGER)) {
             this.modelFixedInt = modelFixedInt;
         }
     }
@@ -909,7 +925,7 @@ public class DefinitionHelper {
     // what does this do?
     //done
     public void setModelRandomInt(String modelRandomInt) throws Exception {
-        if(setValidator("random intercept", "5", modelRandomInt, 0, 1, MIX_INTEGER)){
+        if (setValidator("random intercept", "5", modelRandomInt, 0, 1, MIX_INTEGER)) {
             this.modelRandomInt = modelRandomInt;
         }
     }
@@ -921,7 +937,7 @@ public class DefinitionHelper {
     // What does this do?
     //done
     public void setModelScaleInt(String modelScaleInt) throws Exception {
-        if(setValidator("scale intercept", "5", modelScaleInt, 0, 1, MIX_INTEGER)){
+        if (setValidator("scale intercept", "5", modelScaleInt, 0, 1, MIX_INTEGER)) {
             this.modelScaleInt = modelScaleInt;
         }
     }
@@ -934,7 +950,7 @@ public class DefinitionHelper {
     // level 1 mean
     //done
     public void setDecompMeanCount(String decompMeanCount) throws Exception {
-        if(setValidator("number of mean regressors for BS/WS decomposition", "5", decompMeanCount, 0, 255, MIX_INTEGER)){
+        if (setValidator("number of mean regressors for BS/WS decomposition", "5", decompMeanCount, 0, 255, MIX_INTEGER)) {
             this.decompMeanCount = decompMeanCount;
         }
     }
@@ -946,7 +962,7 @@ public class DefinitionHelper {
     // level one BS
     //done
     public void setDecompLocRanCount(String decompLocRanCount) throws Exception {
-        if(setValidator("number of location random effects for BS/WS decomposition", "5", decompLocRanCount, 0, 255, MIX_INTEGER)){
+        if (setValidator("number of location random effects for BS/WS decomposition", "5", decompLocRanCount, 0, 255, MIX_INTEGER)) {
             this.decompLocRanCount = decompLocRanCount;
         }
     }
@@ -958,7 +974,7 @@ public class DefinitionHelper {
     // level one WS
     //done
     public void setDecompScaleCount(String decompScaleCount) throws Exception {
-        if(setValidator("number of scale regressors for BS/WS decomposition", "5", decompScaleCount, 0, 255, MIX_INTEGER)){
+        if (setValidator("number of scale regressors for BS/WS decomposition", "5", decompScaleCount, 0, 255, MIX_INTEGER)) {
             this.decompScaleCount = decompScaleCount;
         }
     }
@@ -967,17 +983,16 @@ public class DefinitionHelper {
         return advancedConvergence;
     }
 
-    
     // read from advanced options
     //done
     public void setAdvancedConvergence(String advancedConvergence) throws Exception {
-        try { 
-            if(Double.parseDouble(advancedConvergence)>=0 && Double.parseDouble(advancedConvergence)<=1){
+        try {
+            if (Double.parseDouble(advancedConvergence) >= 0 && Double.parseDouble(advancedConvergence) <= 1) {
                 this.advancedConvergence = advancedConvergence;
+            } else {
+                throw new Exception("Invalid convergence criteria in .dat file specified, line 5");
             }
-            else {throw new Exception("Invalid convergence criteria in .dat file specified, line 5");}
-        }
-        catch(NumberFormatException nfe) {
+        } catch (NumberFormatException nfe) {
             throw new Exception("Invalid character for convergence criteria in .dat file specified, line 5");
         }
     }
@@ -989,7 +1004,7 @@ public class DefinitionHelper {
     // read from advanced options
     //done
     public void setAdvancedQuadPoints(String advancedQuadPoints) throws Exception {
-        if(setValidator("number of quadrature points", "5", advancedQuadPoints, 1, 255, MIX_INTEGER)){
+        if (setValidator("number of quadrature points", "5", advancedQuadPoints, 1, 255, MIX_INTEGER)) {
             this.advancedQuadPoints = advancedQuadPoints;
         }
     }
@@ -1001,7 +1016,7 @@ public class DefinitionHelper {
     // read from advanced options
     //done
     public void setAdvancedAdaptiveQuad(String advancedAdaptiveQuad) throws Exception {
-        if(setValidator("adaptive quadrature", "5", advancedAdaptiveQuad, 0, 1, MIX_INTEGER)){
+        if (setValidator("adaptive quadrature", "5", advancedAdaptiveQuad, 0, 1, MIX_INTEGER)) {
             this.advancedAdaptiveQuad = advancedAdaptiveQuad;
         }
     }
@@ -1013,7 +1028,7 @@ public class DefinitionHelper {
     // read from advanced options
     //done
     public void setAdvancedMaxIteration(String advancedMaxIteration) throws Exception {
-        if(setValidator("maximum iterations", "5", advancedMaxIteration, 1, Integer.MAX_VALUE, MIX_INTEGER)){
+        if (setValidator("maximum iterations", "5", advancedMaxIteration, 1, Integer.MAX_VALUE, MIX_INTEGER)) {
             this.advancedMaxIteration = advancedMaxIteration;
         }
     }
@@ -1025,7 +1040,7 @@ public class DefinitionHelper {
     // read from advanced options
     //done
     public void setAdvancedMissingValue(String advancedMissingValue) throws Exception {
-        if(setValidator("missing value", "5", advancedMissingValue, Integer.MIN_VALUE, Integer.MAX_VALUE, MIX_INTEGER)){
+        if (setValidator("missing value", "5", advancedMissingValue, Integer.MIN_VALUE, Integer.MAX_VALUE, MIX_INTEGER)) {
             this.advancedMissingValue = advancedMissingValue;
         }
     }
@@ -1037,7 +1052,7 @@ public class DefinitionHelper {
     // read from advanced options
     //done
     public void setAdvancedCenterScale(String advancedCenterScale) throws Exception {
-        if(setValidator("scale centering", "5", advancedCenterScale, 0, 1, MIX_INTEGER)){
+        if (setValidator("scale centering", "5", advancedCenterScale, 0, 1, MIX_INTEGER)) {
             this.advancedCenterScale = advancedCenterScale;
         }
     }
@@ -1049,13 +1064,13 @@ public class DefinitionHelper {
     // read from advanced options
     //done
     public void setAdvancedRidge(String advancedRidge) throws Exception {
-        try { 
-            if(Double.parseDouble(advancedRidge)>=0 && Double.parseDouble(advancedRidge)<=1){
+        try {
+            if (Double.parseDouble(advancedRidge) >= 0 && Double.parseDouble(advancedRidge) <= 1) {
                 this.advancedRidge = advancedRidge;
+            } else {
+                throw new Exception("Invalid initial ridge value in .dat file specified, line 5");
             }
-            else {throw new Exception("Invalid initial ridge value in .dat file specified, line 5");}
-        }
-        catch(NumberFormatException nfe) {
+        } catch (NumberFormatException nfe) {
             throw new Exception("Invalid character for initial ridge value in .dat file specified, line 5");
         }
     }
@@ -1067,7 +1082,7 @@ public class DefinitionHelper {
     // TOTAL LEVEL TWO REGS
     //done
     public void setModelBetweenCount(String modelBetweenCount) throws Exception {
-        if(setValidator("number of between-subject variance regressors", "5", modelBetweenCount, 0, 255, MIX_INTEGER)){
+        if (setValidator("number of between-subject variance regressors", "5", modelBetweenCount, 0, 255, MIX_INTEGER)) {
             this.modelBetweenCount = modelBetweenCount;
         }
     }
@@ -1079,7 +1094,7 @@ public class DefinitionHelper {
     // TOTAL LEVEL ONE REGS
     //done
     public void setModelWithinCount(String modelWithinCount) throws Exception {
-        if(setValidator("number of within-subject variance regressors", "5", modelWithinCount, 0, 255, MIX_INTEGER)){
+        if (setValidator("number of within-subject variance regressors", "5", modelWithinCount, 0, 255, MIX_INTEGER)) {
             this.modelWithinCount = modelWithinCount;
         }
     }
@@ -1090,10 +1105,9 @@ public class DefinitionHelper {
         return modelBetweenInt;
     }
 
-    
     // done
     public void setModelBetweenInt(String modelBetweenInt) throws Exception {
-        if(setValidator("between-subject variance intercept", "5", modelBetweenInt, 0, 1, MIX_INTEGER)){
+        if (setValidator("between-subject variance intercept", "5", modelBetweenInt, 0, 1, MIX_INTEGER)) {
             this.modelBetweenInt = modelBetweenInt;
         }
     }
@@ -1105,7 +1119,7 @@ public class DefinitionHelper {
 
     // done
     public void setModelWithinInt(String modelWithinInt) throws Exception {
-        if(setValidator("within-subject variance intercept", "5", modelWithinInt, 0, 1, MIX_INTEGER)){
+        if (setValidator("within-subject variance intercept", "5", modelWithinInt, 0, 1, MIX_INTEGER)) {
             this.modelWithinInt = modelWithinInt;
         }
     }
@@ -1116,7 +1130,7 @@ public class DefinitionHelper {
 
     // done 
     public void setDecompBSCount(String decompBSCount) throws Exception {
-        if(setValidator("number of between-subject variance regressors for BS/WS decomposition", "5", decompBSCount, 0, 255, MIX_INTEGER)){
+        if (setValidator("number of between-subject variance regressors for BS/WS decomposition", "5", decompBSCount, 0, 255, MIX_INTEGER)) {
             this.decompBSCount = decompBSCount;
         }
     }
@@ -1128,7 +1142,7 @@ public class DefinitionHelper {
     // tested
     // done
     public void setDecompWSCount(String decompWSCount) throws Exception {
-        if(setValidator("number of within-subject variance regressors for BS/WS decomposition", "5", decompWSCount, 0, 255, MIX_INTEGER)){
+        if (setValidator("number of within-subject variance regressors for BS/WS decomposition", "5", decompWSCount, 0, 255, MIX_INTEGER)) {
             this.decompWSCount = decompWSCount;
         }
     }
@@ -1140,7 +1154,7 @@ public class DefinitionHelper {
     // to do?
     // tested?
     public void setAdvancedEffectMeanWS(String advancedEffectMeanWS) throws Exception {
-        if(setValidator("effect of mean on WS variance", "5", advancedEffectMeanWS, 0, 2, MIX_INTEGER)){
+        if (setValidator("effect of mean on WS variance", "5", advancedEffectMeanWS, 0, 2, MIX_INTEGER)) {
             this.advancedEffectMeanWS = advancedEffectMeanWS;
         }
     }
@@ -1152,8 +1166,8 @@ public class DefinitionHelper {
     // set ID and Outcome variable index numbers in the data set
     // done
     public void setIdOutcome(String[] idOutcome) throws Exception {
-        if(setValidator("id location", "6", idOutcome[0], 0, 255, MIX_INTEGER)){
-            if(setValidator("outcome location", "6", idOutcome[1], 0, 255, MIX_INTEGER)){
+        if (setValidator("id location", "6", idOutcome[0], 0, 255, MIX_INTEGER)) {
+            if (setValidator("outcome location", "6", idOutcome[1], 0, 255, MIX_INTEGER)) {
                 this.idOutcome = idOutcome;
             }
         }
@@ -1165,7 +1179,7 @@ public class DefinitionHelper {
 
     // to do
     public void setFieldModelMeanRegressors(String[] fieldModelMeanRegressors) throws Exception {
-        if(loopSetValidator("model mean regressor fields", "7", fieldModelMeanRegressors, 0, 255, MIX_INTEGER)){
+        if (loopSetValidator("model mean regressor fields", "7", fieldModelMeanRegressors, 0, 255, MIX_INTEGER)) {
             this.fieldModelMeanRegressors = fieldModelMeanRegressors;
         }
     }
@@ -1176,7 +1190,7 @@ public class DefinitionHelper {
 
     // to do
     public void setFieldModelBSRegressors(String[] fieldModelBSRegressors) throws Exception {
-        if(loopSetValidator("model BS variance regressor fields", "8", fieldModelBSRegressors, 0, 255, MIX_INTEGER)){
+        if (loopSetValidator("model BS variance regressor fields", "8", fieldModelBSRegressors, 0, 255, MIX_INTEGER)) {
             this.fieldModelBSRegressors = fieldModelBSRegressors;
         }
     }
@@ -1185,10 +1199,9 @@ public class DefinitionHelper {
         return fieldModelWSRegressors;
     }
 
-    
     // to do
     public void setFieldModelWSRegressors(String[] fieldModelWSRegressors) throws Exception {
-        if(loopSetValidator("model WS variance regressor fields", "9", fieldModelWSRegressors, 0, 255, MIX_INTEGER)){
+        if (loopSetValidator("model WS variance regressor fields", "9", fieldModelWSRegressors, 0, 255, MIX_INTEGER)) {
             this.fieldModelWSRegressors = fieldModelWSRegressors;
         }
     }
@@ -1199,7 +1212,7 @@ public class DefinitionHelper {
 
     // to do
     public void setFieldModelLocRanRegressors(String[] fieldModelLocRanRegressors) throws Exception {
-        if(loopSetValidator("model random regressor fields", "8", fieldModelLocRanRegressors, 0, 255, MIX_INTEGER)){
+        if (loopSetValidator("model random regressor fields", "8", fieldModelLocRanRegressors, 0, 255, MIX_INTEGER)) {
             this.fieldModelLocRanRegressors = fieldModelLocRanRegressors;
         }
     }
@@ -1210,7 +1223,7 @@ public class DefinitionHelper {
 
     // to do
     public void setFieldModelScaleRegressors(String[] fieldModelScaleRegressors) throws Exception {
-        if(loopSetValidator("model scale regressor fields", "9", fieldModelScaleRegressors, 0, 255, MIX_INTEGER)){
+        if (loopSetValidator("model scale regressor fields", "9", fieldModelScaleRegressors, 0, 255, MIX_INTEGER)) {
             this.fieldModelScaleRegressors = fieldModelScaleRegressors;
         }
     }
@@ -1221,7 +1234,7 @@ public class DefinitionHelper {
 
     // to do
     public void setFieldDecompMeanRegressors(String[] fieldDecompMeanRegressors) throws Exception {
-        if(loopSetValidator("model mean regressor for BS/WS decomposition fields", "10", fieldDecompMeanRegressors, 0, 255, MIX_INTEGER)){
+        if (loopSetValidator("model mean regressor for BS/WS decomposition fields", "10", fieldDecompMeanRegressors, 0, 255, MIX_INTEGER)) {
             this.fieldDecompMeanRegressors = fieldDecompMeanRegressors;
         }
     }
@@ -1232,7 +1245,7 @@ public class DefinitionHelper {
 
     // to do
     public void setFieldDecompBSRegressors(String[] fieldDecompBSRegressors) throws Exception {
-        if(loopSetValidator("model BS variance regressor for BS/WS decomposition fields", "11", fieldDecompBSRegressors, 0, 255, MIX_INTEGER)){
+        if (loopSetValidator("model BS variance regressor for BS/WS decomposition fields", "11", fieldDecompBSRegressors, 0, 255, MIX_INTEGER)) {
             this.fieldDecompBSRegressors = fieldDecompBSRegressors;
         }
     }
@@ -1243,7 +1256,7 @@ public class DefinitionHelper {
 
     // to do
     public void setFieldDecompWSRegressors(String[] fieldDecompWSRegressors) throws Exception {
-        if(loopSetValidator("model WS variance regressor for BS/WS decomposition fields", "12", fieldDecompWSRegressors, 0, 255, MIX_INTEGER)){
+        if (loopSetValidator("model WS variance regressor for BS/WS decomposition fields", "12", fieldDecompWSRegressors, 0, 255, MIX_INTEGER)) {
             this.fieldDecompWSRegressors = fieldDecompWSRegressors;
         }
     }
@@ -1254,7 +1267,7 @@ public class DefinitionHelper {
 
     // to do
     public void setFieldDecompLocRanRegressors(String[] fieldDecompLocRanRegressors) throws Exception {
-        if(loopSetValidator("model random regressor for BS/WS decomposition fields", "11", fieldDecompLocRanRegressors, 0, 255, MIX_INTEGER)){
+        if (loopSetValidator("model random regressor for BS/WS decomposition fields", "11", fieldDecompLocRanRegressors, 0, 255, MIX_INTEGER)) {
             this.fieldDecompLocRanRegressors = fieldDecompLocRanRegressors;
         }
     }
@@ -1265,7 +1278,7 @@ public class DefinitionHelper {
 
     // to do
     public void setFieldDecompScaleRegressors(String[] fieldDecompScaleRegressors) throws Exception {
-        if(loopSetValidator("model scale regressor for BS/WS decomposition fields", "12", fieldDecompScaleRegressors, 0, 255, MIX_INTEGER)){
+        if (loopSetValidator("model scale regressor for BS/WS decomposition fields", "12", fieldDecompScaleRegressors, 0, 255, MIX_INTEGER)) {
             this.fieldDecompScaleRegressors = fieldDecompScaleRegressors;
         }
     }
@@ -1275,7 +1288,7 @@ public class DefinitionHelper {
     }
 
     public void setLabelModelOutcome(String labelModelOutcome) throws Exception {
-        if(setValidator("model scale regressor for BS/WS decomposition fields", "13", labelModelOutcome, 1, 255, MIX_STRING)){
+        if (setValidator("model scale regressor for BS/WS decomposition fields", "13", labelModelOutcome, 1, 255, MIX_STRING)) {
             this.labelModelOutcome = labelModelOutcome;
         }
     }
@@ -1285,7 +1298,7 @@ public class DefinitionHelper {
     }
 
     public void setLabelModelMeanRegressors(String[] labelModelMeanRegressors) throws Exception {
-        if(loopSetValidator("model mean regressor labels", "14", labelModelMeanRegressors, 1, 255, MIX_STRING)){
+        if (loopSetValidator("model mean regressor labels", "14", labelModelMeanRegressors, 1, 255, MIX_STRING)) {
             this.labelModelMeanRegressors = labelModelMeanRegressors;
         }
     }
@@ -1295,7 +1308,7 @@ public class DefinitionHelper {
     }
 
     public void setLabelModelLocRanRegressors(String[] labelModelLocRanRegressors) throws Exception {
-        if(loopSetValidator("model random regressor labels", "15", labelModelLocRanRegressors, 1, 255, MIX_STRING)){
+        if (loopSetValidator("model random regressor labels", "15", labelModelLocRanRegressors, 1, 255, MIX_STRING)) {
             this.labelModelLocRanRegressors = labelModelLocRanRegressors;
         }
     }
@@ -1305,7 +1318,7 @@ public class DefinitionHelper {
     }
 
     public void setLabelModelScaleRegressors(String[] labelModelScaleRegressors) throws Exception {
-        if(loopSetValidator("model scale regressor labels", "16", labelModelScaleRegressors, 1, 255, MIX_STRING)){
+        if (loopSetValidator("model scale regressor labels", "16", labelModelScaleRegressors, 1, 255, MIX_STRING)) {
             this.labelModelScaleRegressors = labelModelScaleRegressors;
         }
     }
@@ -1315,7 +1328,7 @@ public class DefinitionHelper {
     }
 
     public void setLabelModelBSRegressors(String[] labelModelBSRegressors) throws Exception {
-        if(loopSetValidator("model BS variance regressor labels", "15", labelModelBSRegressors, 1, 255, MIX_STRING)){
+        if (loopSetValidator("model BS variance regressor labels", "15", labelModelBSRegressors, 1, 255, MIX_STRING)) {
             this.labelModelBSRegressors = labelModelBSRegressors;
         }
     }
@@ -1325,7 +1338,7 @@ public class DefinitionHelper {
     }
 
     public void setLabelModelWSRegressors(String[] labelModelWSRegressors) throws Exception {
-        if(loopSetValidator("model WS variance regressor labels", "16", labelModelWSRegressors, 1, 255, MIX_STRING)){
+        if (loopSetValidator("model WS variance regressor labels", "16", labelModelWSRegressors, 1, 255, MIX_STRING)) {
             this.labelModelWSRegressors = labelModelWSRegressors;
         }
     }
@@ -1335,7 +1348,7 @@ public class DefinitionHelper {
     }
 
     public void setLabelDecompMeanRegressors(String[] labelDecompMeanRegressors) throws Exception {
-        if(loopSetValidator("model mean regressor for BS/WS decomposition labels", "17", labelDecompMeanRegressors, 1, 255, MIX_STRING)){
+        if (loopSetValidator("model mean regressor for BS/WS decomposition labels", "17", labelDecompMeanRegressors, 1, 255, MIX_STRING)) {
             this.labelDecompMeanRegressors = labelDecompMeanRegressors;
         }
     }
@@ -1345,7 +1358,7 @@ public class DefinitionHelper {
     }
 
     public void setLabelDecompLocRanRegressors(String[] labelDecompLocRanRegressors) throws Exception {
-        if(loopSetValidator("model random regressor for BS/WS decomposition labels", "18", labelDecompLocRanRegressors, 1, 255, MIX_STRING)){
+        if (loopSetValidator("model random regressor for BS/WS decomposition labels", "18", labelDecompLocRanRegressors, 1, 255, MIX_STRING)) {
             this.labelDecompLocRanRegressors = labelDecompLocRanRegressors;
         }
     }
@@ -1355,7 +1368,7 @@ public class DefinitionHelper {
     }
 
     public void setLabelDecompScaleRegressors(String[] labelDecompScaleRegressors) throws Exception {
-        if(loopSetValidator("model scale regressor for BS/WS decomposition labels", "19", labelDecompScaleRegressors, 1, 255, MIX_STRING)){
+        if (loopSetValidator("model scale regressor for BS/WS decomposition labels", "19", labelDecompScaleRegressors, 1, 255, MIX_STRING)) {
             this.labelDecompScaleRegressors = labelDecompScaleRegressors;
         }
     }
@@ -1365,7 +1378,7 @@ public class DefinitionHelper {
     }
 
     public void setLabelDecompBSRegressors(String[] labelDecompBSRegressors) throws Exception {
-        if(loopSetValidator("model BS variance regressor for BS/WS decomposition labels", "18", labelDecompBSRegressors, 1, 255, MIX_STRING)){
+        if (loopSetValidator("model BS variance regressor for BS/WS decomposition labels", "18", labelDecompBSRegressors, 1, 255, MIX_STRING)) {
             this.labelDecompBSRegressors = labelDecompBSRegressors;
         }
     }
@@ -1375,7 +1388,7 @@ public class DefinitionHelper {
     }
 
     public void setLabelDecompWSRegressors(String[] labelDecompWSRegressors) throws Exception {
-        if(loopSetValidator("model WS variance regressor for BS/WS decomposition labels", "19", labelDecompWSRegressors, 1, 255, MIX_STRING)){
+        if (loopSetValidator("model WS variance regressor for BS/WS decomposition labels", "19", labelDecompWSRegressors, 1, 255, MIX_STRING)) {
             this.labelDecompWSRegressors = labelDecompWSRegressors;
         }
     }
@@ -1385,7 +1398,7 @@ public class DefinitionHelper {
     }
 
     public void setStageTwoFixedCount(String stageTwoFixedCount) throws Exception {
-        if(setValidator("number of fixed regressors in stage 2", "20", stageTwoFixedCount, 0, 255, MIX_INTEGER)){
+        if (setValidator("number of fixed regressors in stage 2", "20", stageTwoFixedCount, 0, 255, MIX_INTEGER)) {
             this.stageTwoFixedCount = stageTwoFixedCount;
         }
     }
@@ -1395,7 +1408,7 @@ public class DefinitionHelper {
     }
 
     public void setStageTwoLocRanInteractions(String stageTwoLocRanInteractions) throws Exception {
-        if(setValidator("number of interactions with location random effects in stage 2", "20", stageTwoLocRanInteractions, 0, 255, MIX_INTEGER)){
+        if (setValidator("number of interactions with location random effects in stage 2", "20", stageTwoLocRanInteractions, 0, 255, MIX_INTEGER)) {
             this.stageTwoLocRanInteractions = stageTwoLocRanInteractions;
         }
     }
@@ -1405,7 +1418,7 @@ public class DefinitionHelper {
     }
 
     public void setStageTwoScaleInteractions(String stageTwoScaleInteractions) throws Exception {
-        if(setValidator("number of interactions with scale random effects in stage 2", "20", stageTwoScaleInteractions, 0, 255, MIX_INTEGER)){
+        if (setValidator("number of interactions with scale random effects in stage 2", "20", stageTwoScaleInteractions, 0, 255, MIX_INTEGER)) {
             this.stageTwoScaleInteractions = stageTwoScaleInteractions;
         }
     }
@@ -1415,7 +1428,7 @@ public class DefinitionHelper {
     }
 
     public void setStageTwoIntOfInteraction(String stageTwoIntOfInteraction) throws Exception {
-        if(setValidator("number of interactions with interaction of location and scale random effects in stage 2", "20", stageTwoIntOfInteraction, -1, 255, MIX_INTEGER)){
+        if (setValidator("number of interactions with interaction of location and scale random effects in stage 2", "20", stageTwoIntOfInteraction, -1, 255, MIX_INTEGER)) {
             this.stageTwoIntOfInteraction = stageTwoIntOfInteraction;
         }
     }
@@ -1425,7 +1438,7 @@ public class DefinitionHelper {
     }
 
     public void setStageTwoOutcomeCatCount(String stageTwoOutcomeCatCount) throws Exception {
-        if(setValidator("number of categories for the outcome in stage 2", "20", stageTwoOutcomeCatCount, 2, 255, MIX_INTEGER)){
+        if (setValidator("number of categories for the outcome in stage 2", "20", stageTwoOutcomeCatCount, 2, 255, MIX_INTEGER)) {
             this.stageTwoOutcomeCatCount = stageTwoOutcomeCatCount;
         }
     }
@@ -1435,7 +1448,7 @@ public class DefinitionHelper {
     }
 
     public void setStageTwoOutcomeField(String stageTwoOutcomeField) throws Exception {
-        if(setValidator("outcome field in stage 2", "21", stageTwoOutcomeField, 0, 255, MIX_INTEGER)){
+        if (setValidator("outcome field in stage 2", "21", stageTwoOutcomeField, 0, 255, MIX_INTEGER)) {
             this.stageTwoOutcomeField = stageTwoOutcomeField;
         }
     }
@@ -1445,7 +1458,7 @@ public class DefinitionHelper {
     }
 
     public void setStageTwoOutcomeCatLabel(String[] stageTwoOutcomeCatLabel) throws Exception {
-        if(loopSetValidator("numeric categories of outcome variable", "21", stageTwoOutcomeCatLabel, 0, 255, MIX_INTEGER)){
+        if (loopSetValidator("numeric categories of outcome variable", "21", stageTwoOutcomeCatLabel, 0, 255, MIX_INTEGER)) {
             this.stageTwoOutcomeCatLabel = stageTwoOutcomeCatLabel;
         }
     }
@@ -1455,7 +1468,7 @@ public class DefinitionHelper {
     }
 
     public void setStageTwoFixedFields(String[] stageTwoFixedFields) throws Exception {
-        if(loopSetValidator("fields of fixed regressors", "22(mixreg)/23((mixor)", stageTwoFixedFields, 1, 255, MIX_INTEGER)){
+        if (loopSetValidator("fields of fixed regressors", "22(mixreg)/23((mixor)", stageTwoFixedFields, 1, 255, MIX_INTEGER)) {
             this.stageTwoFixedFields = stageTwoFixedFields;
         }
     }
@@ -1465,7 +1478,7 @@ public class DefinitionHelper {
     }
 
     public void setStageTwoLocRanIntFields(String[] stageTwoLocRanIntFields) throws Exception {
-        if(loopSetValidator("fields of regressors to interact with location random effects", "23(mixreg)/24((mixor)", stageTwoLocRanIntFields, 1, 255, MIX_INTEGER)){
+        if (loopSetValidator("fields of regressors to interact with location random effects", "23(mixreg)/24((mixor)", stageTwoLocRanIntFields, 1, 255, MIX_INTEGER)) {
             this.stageTwoLocRanIntFields = stageTwoLocRanIntFields;
         }
     }
@@ -1475,7 +1488,7 @@ public class DefinitionHelper {
     }
 
     public void setStageTwoScaleIntFields(String[] stageTwoScaleIntFields) throws Exception {
-        if(loopSetValidator("fields of regressors to interact with scale random effects", "24(mixreg)/25((mixor)", stageTwoScaleIntFields, 1, 255, MIX_INTEGER)){
+        if (loopSetValidator("fields of regressors to interact with scale random effects", "24(mixreg)/25((mixor)", stageTwoScaleIntFields, 1, 255, MIX_INTEGER)) {
             this.stageTwoScaleIntFields = stageTwoScaleIntFields;
         }
     }
@@ -1485,7 +1498,7 @@ public class DefinitionHelper {
     }
 
     public void setStageTwoFirstIntFields(String[] stageTwoFirstIntFields) throws Exception {
-        if(loopSetValidator("fields of regressors to interact with the interaction of the location random effects", "25(mixreg)/26((mixor)", stageTwoFirstIntFields, 1, 255, MIX_INTEGER)){
+        if (loopSetValidator("fields of regressors to interact with the interaction of the location random effects", "25(mixreg)/26((mixor)", stageTwoFirstIntFields, 1, 255, MIX_INTEGER)) {
             this.stageTwoFirstIntFields = stageTwoFirstIntFields;
         }
     }
@@ -1495,7 +1508,7 @@ public class DefinitionHelper {
     }
 
     public void setStageTwoOutcomeLabel(String stageTwoOutcomeLabel) throws Exception {
-        if(setValidator("label of stage two outcome", "26(mixreg)/27((mixor)", stageTwoOutcomeLabel, 1, 255, MIX_STRING)){
+        if (setValidator("label of stage two outcome", "26(mixreg)/27((mixor)", stageTwoOutcomeLabel, 1, 255, MIX_STRING)) {
             this.stageTwoOutcomeLabel = stageTwoOutcomeLabel;
         }
     }
@@ -1505,7 +1518,7 @@ public class DefinitionHelper {
     }
 
     public void setStageTwoFixedLabels(String[] stageTwoFixedLabels) throws Exception {
-        if(loopSetValidator("label of stage two fixed regressors", "27(mixreg)/28((mixor)", stageTwoFixedLabels, 1, 255, MIX_STRING)){
+        if (loopSetValidator("label of stage two fixed regressors", "27(mixreg)/28((mixor)", stageTwoFixedLabels, 1, 255, MIX_STRING)) {
             this.stageTwoFixedLabels = stageTwoFixedLabels;
         }
     }
@@ -1515,7 +1528,7 @@ public class DefinitionHelper {
     }
 
     public void setStageTwoLocRanIntLabels(String[] stageTwoLocRanIntLabels) throws Exception {
-        if(loopSetValidator("labels of stage two regressors to interact with location random effect", "28(mixreg)/29((mixor)", stageTwoLocRanIntLabels, 1, 255, MIX_STRING)){
+        if (loopSetValidator("labels of stage two regressors to interact with location random effect", "28(mixreg)/29((mixor)", stageTwoLocRanIntLabels, 1, 255, MIX_STRING)) {
             this.stageTwoLocRanIntLabels = stageTwoLocRanIntLabels;
         }
     }
@@ -1525,7 +1538,7 @@ public class DefinitionHelper {
     }
 
     public void setStageTwoScaleIntLabels(String[] stageTwoScaleIntLabels) throws Exception {
-        if(loopSetValidator("labels of stage two regressors to interact with scale effect", "29(mixreg)/30((mixor)", stageTwoScaleIntLabels, 1, 255, MIX_STRING)){
+        if (loopSetValidator("labels of stage two regressors to interact with scale effect", "29(mixreg)/30((mixor)", stageTwoScaleIntLabels, 1, 255, MIX_STRING)) {
             this.stageTwoScaleIntLabels = stageTwoScaleIntLabels;
         }
     }
@@ -1535,7 +1548,7 @@ public class DefinitionHelper {
     }
 
     public void setStageTwoFirstIntLabels(String[] stageTwoFirstIntLabels) throws Exception {
-        if(loopSetValidator("labels of stage two regressors to interact with the interaction of the location random effect", "30(mixreg)/31(mixor)", stageTwoFirstIntLabels, 1, 255, MIX_STRING)){
+        if (loopSetValidator("labels of stage two regressors to interact with the interaction of the location random effect", "30(mixreg)/31(mixor)", stageTwoFirstIntLabels, 1, 255, MIX_STRING)) {
             this.stageTwoFirstIntLabels = stageTwoFirstIntLabels;
         }
     }

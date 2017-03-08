@@ -16,56 +16,53 @@ import javax.swing.JList;
  * @author adityaponnada
  */
 public class stageOneRegs extends javax.swing.JFrame {
-    
-   // declare required jFrame
-    
+
+    // declare required jFrame
     NewModel newModel2;
-    
+
     mixregGUI mixregStageOne;
-    
+
     stageTwoRegs stageTwo;
-    
+
     static String[] variableNamesList;
-    
+
     static DefaultListModel<String> varList;
-    
+
     static DefaultListModel<String> levelOneList;
-    
+
     static DefaultListModel<String> levelTwoList;
-    
+
     static boolean isSubmitClicked = false;
-    
+
     /**
      * Creates new form stageOneRegs
      */
     public stageOneRegs() {
-       initComponents();
-       
-       newModel2 = new NewModel();
-       setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-       
-       //get variable names from the data set
-       variableNamesList = newModel2.getVariableNames();
-       
-       if (!isSubmitClicked){
-       varList = new DefaultListModel<String>();
-       levelOneList = new DefaultListModel<String>();
-       levelTwoList = new DefaultListModel<String>();
-       
-       } else{
-           AllVariablesList.removeAll();
-        AllVariablesList.setModel(varList);
-        AllVariablesList.setSelectedIndex(0);
-        StageOneLevelOneList.removeAll();
-        StageOneLevelOneList.setModel(levelOneList);
-        StageOneLevelTwoList.removeAll();
-        StageOneLevelTwoList.setModel(levelTwoList);
-       }
-       
-       
-       stageOneSubmitButton.setEnabled(false);
-        
-     
+        initComponents();
+
+        newModel2 = new NewModel();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        //get variable names from the data set
+        variableNamesList = newModel2.getVariableNames();
+
+        if (!isSubmitClicked) {
+            varList = new DefaultListModel<String>();
+            levelOneList = new DefaultListModel<String>();
+            levelTwoList = new DefaultListModel<String>();
+
+        } else {
+            AllVariablesList.removeAll();
+            AllVariablesList.setModel(varList);
+            AllVariablesList.setSelectedIndex(0);
+            StageOneLevelOneList.removeAll();
+            StageOneLevelOneList.setModel(levelOneList);
+            StageOneLevelTwoList.removeAll();
+            StageOneLevelTwoList.setModel(levelTwoList);
+        }
+
+        stageOneSubmitButton.setEnabled(false);
+
     }
 
     /**
@@ -223,74 +220,72 @@ public class stageOneRegs extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void stageOneSubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneSubmitButtonActionPerformed
-       
+
         stageTwo = new stageTwoRegs();
         isSubmitClicked = true;
-        
-        
+
         //get the instance of the mixReg model declared
         mixregStageOne = newModel2.getMixReg();
-        
+
         //update regressors on stage one regressors window
-       // mixregStageOne.updateRegressors(getSelectedLevelOneVars(), getSelectedLevelTwoVars());
-       //mixregStageOne.updateLevelOneRegGrid(levelOneList);
-       mixregStageOne.updateLevelTwoGrid_version2(levelTwoList);
-       mixregStageOne.updateLevelOneGrid_version2(levelOneList);
-        
+        // mixregStageOne.updateRegressors(getSelectedLevelOneVars(), getSelectedLevelTwoVars());
+        //mixregStageOne.updateLevelOneRegGrid(levelOneList);
+        mixregStageOne.updateLevelTwoGrid_version2(levelTwoList);
+        mixregStageOne.updateLevelOneGrid_version2(levelOneList);
+
         this.dispose();
     }//GEN-LAST:event_stageOneSubmitButtonActionPerformed
 
     private void levelOneAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_levelOneAddButtonActionPerformed
-        
+
         levelOneList.addElement(AllVariablesList.getSelectedValue());
         StageOneLevelOneList.setModel(levelOneList);
         //remove the variable once it is added to levelOne regressors
         varList.remove(AllVariablesList.getSelectedIndex());
-        
+
         stageOneSubmitButton.setEnabled(true);
-       
+
     }//GEN-LAST:event_levelOneAddButtonActionPerformed
 
     private void addLevelTwoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addLevelTwoButtonActionPerformed
-        
+
         stageOneSubmitButton.setEnabled(true);
-        
+
         levelTwoList.addElement(AllVariablesList.getSelectedValue());
         StageOneLevelTwoList.setModel(levelTwoList);
-        
+
         varList.remove(AllVariablesList.getSelectedIndex());
-        
+
     }//GEN-LAST:event_addLevelTwoButtonActionPerformed
 
     private void removeLevelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeLevelButtonActionPerformed
-        
+
         stageOneSubmitButton.setEnabled(true);
-        
+
         varList.addElement(StageOneLevelOneList.getSelectedValue());
-        
+
         AllVariablesList.setModel(varList);
-        
+
         levelOneList.remove(StageOneLevelOneList.getSelectedIndex());
-        
+
     }//GEN-LAST:event_removeLevelButtonActionPerformed
 
     private void removeLevelTwoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeLevelTwoButtonActionPerformed
-        
+
         stageOneSubmitButton.setEnabled(true);
-        
+
         varList.addElement(StageOneLevelTwoList.getSelectedValue());
-        
+
         AllVariablesList.setModel(varList);
-        
+
         levelTwoList.remove(StageOneLevelTwoList.getSelectedIndex());
     }//GEN-LAST:event_removeLevelTwoButtonActionPerformed
 
     private void stageOneResetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneResetButtonActionPerformed
-       
+
         //clear lists on reset
-        
         updateAllVariables();
-        
+
         levelOneList.clear();
         levelTwoList.clear();
     }//GEN-LAST:event_stageOneResetButtonActionPerformed
@@ -349,63 +344,49 @@ public class stageOneRegs extends javax.swing.JFrame {
     private javax.swing.JButton stageOneSubmitButton;
     // End of variables declaration//GEN-END:variables
 
-public void updateAllVariables(){
-    
-    for (int j=0; j<variableNamesList.length; j++){
-        varList.addElement(variableNamesList[j]);
+    public void updateAllVariables() {
+
+        for (int j = 0; j < variableNamesList.length; j++) {
+            varList.addElement(variableNamesList[j]);
+        }
+
+        AllVariablesList.setModel(varList);
+        AllVariablesList.setSelectedIndex(0);
     }
-   
-    AllVariablesList.setModel(varList);
-    AllVariablesList.setSelectedIndex(0);
-}
 
-public DefaultListModel<String> getListModel(){
+    public DefaultListModel<String> getListModel() {
 
-    System.out.println("inside getListModel()");
-    
-    return varList;
-}
+        System.out.println("inside getListModel()");
 
-
-public DefaultComboBoxModel<String> getSelectedLevelOneVars(){
-
-DefaultComboBoxModel<String> levelOneCombo = new DefaultComboBoxModel();
-
-for (int j = 0; j< levelOneList.getSize(); j++){
-    
-    levelOneCombo.addElement(levelOneList.getElementAt(j));
-
-}
-
-return levelOneCombo;
-
-}
-
-public DefaultComboBoxModel<String> getSelectedLevelTwoVars(){
-
-DefaultComboBoxModel<String> levelTwoCombo = new DefaultComboBoxModel();
-    
-    for (int j = 0; j< levelTwoList.getSize(); j++){
-    
-    levelTwoCombo.addElement(levelTwoList.getElementAt(j));
-
-}
-return levelTwoCombo;
-
-}
-
-/*
-public boolean isDisaggVarianceChecked(){
-    
-    boolean checked = false;
-    
-    if (disaggVarianceCheckBox.isSelected() == true){
-        checked = true;
-    
-    } else {
-        checked = false;
-    
+        return varList;
     }
-    return checked;
-}*/
+
+    public DefaultComboBoxModel<String> getSelectedLevelOneVars() {
+
+        DefaultComboBoxModel<String> levelOneCombo = new DefaultComboBoxModel();
+
+        for (int j = 0; j < levelOneList.getSize(); j++) {
+
+            levelOneCombo.addElement(levelOneList.getElementAt(j));
+
+        }
+
+        return levelOneCombo;
+
+    }
+
+    public DefaultComboBoxModel<String> getSelectedLevelTwoVars() {
+
+        DefaultComboBoxModel<String> levelTwoCombo = new DefaultComboBoxModel();
+
+        for (int j = 0; j < levelTwoList.getSize(); j++) {
+
+            levelTwoCombo.addElement(levelTwoList.getElementAt(j));
+
+        }
+        return levelTwoCombo;
+
+    }
+
+    
 }

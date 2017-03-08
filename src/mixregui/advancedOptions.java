@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  * @author adityaponnada
  */
 public class advancedOptions extends javax.swing.JFrame {
-    
+
     DefinitionHelper defFile3;
 
     /**
@@ -24,7 +24,7 @@ public class advancedOptions extends javax.swing.JFrame {
      */
     public advancedOptions() {
         initComponents();
-        
+
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         missingValueCode.setEnabled(false);
     }
@@ -279,6 +279,7 @@ public class advancedOptions extends javax.swing.JFrame {
 
     private void meanSubmodelCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_meanSubmodelCheckBoxActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_meanSubmodelCheckBoxActionPerformed
 
     private void BSVarianceCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSVarianceCheckBoxActionPerformed
@@ -295,14 +296,14 @@ public class advancedOptions extends javax.swing.JFrame {
 
     private void missingValuesCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_missingValuesCheckBoxActionPerformed
         // TODO add your handling code here:
-        
-        if (missingValuesCheckBox.isSelected() == true){
+
+        if (missingValuesCheckBox.isSelected() == true) {
             missingValueCode.setEnabled(true);
             missingValueCode.setText("-9999");
         } else {
             missingValueCode.setEnabled(false);
         }
-        
+
     }//GEN-LAST:event_missingValuesCheckBoxActionPerformed
 
     private void missingValueCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_missingValueCodeActionPerformed
@@ -327,23 +328,22 @@ public class advancedOptions extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-       //defFile3 = NewModel.defFile;
-       int tryCount = 0;
-       int catchCount = 0;
-       
-       //defFile
-        
+        //defFile3 = NewModel.defFile;
+        int tryCount = 0;
+        int catchCount = 0;
+
+        //defFile
         try {
             NewModel.defFile.setAdvancedConvergence(String.valueOf(convergenceCriteria.getValue()));
             System.out.println("Convergence: " + NewModel.defFile.getAdvancedConvergence());
             tryCount = 1;
-            
+
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
             catchCount = 1;
         }
-        
+
         //set quadriture points
         try {
             NewModel.defFile.setAdvancedQuadPoints(String.valueOf(quadriturePoints.getValue()));
@@ -354,7 +354,7 @@ public class advancedOptions extends javax.swing.JFrame {
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
         }
-        
+
         try {
             NewModel.defFile.setAdvancedMaxIteration(String.valueOf(getMaximumIterations()));
             System.out.println("Maximum Iteraions: " + NewModel.defFile.getAdvancedMaxIteration());
@@ -364,25 +364,24 @@ public class advancedOptions extends javax.swing.JFrame {
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
         }
-        
-        
-       if (missingValueCode.isEnabled()){
-       
-           try {
-            NewModel.defFile.setAdvancedMissingValue(getMissingValueCode());
-            System.out.println("Missing Value: " + NewModel.defFile.getAdvancedMissingValue());
-            tryCount = 1;
-        } catch (Exception ex) {
-            catchCount = 1;
-            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+
+        if (missingValueCode.isEnabled()) {
+
+            try {
+                NewModel.defFile.setAdvancedMissingValue(getMissingValueCode());
+                System.out.println("Missing Value: " + NewModel.defFile.getAdvancedMissingValue());
+                tryCount = 1;
+            } catch (Exception ex) {
+                catchCount = 1;
+                Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+        } else {
+            // do nothing and go next
+
         }
-       
-       } else {
-           // do nothing and go next
-       
-       }
-       
+
         try {
             NewModel.defFile.setModelFixedInt(String.valueOf(isMeanSubModelChecked()));
             System.out.println("Mean SubModel Checked?: " + NewModel.defFile.getModelFixedInt());
@@ -392,7 +391,7 @@ public class advancedOptions extends javax.swing.JFrame {
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
         }
-        
+
         try {
             NewModel.defFile.setModelRandomInt(String.valueOf(isBSVarianceChecked()));
             System.out.println("BS SubModel Checked?: " + NewModel.defFile.getModelRandomInt());
@@ -402,7 +401,7 @@ public class advancedOptions extends javax.swing.JFrame {
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
         }
-        
+
         try {
             NewModel.defFile.setModelScaleInt(String.valueOf(isWSVarianceChecked()));
             System.out.println("WS SubModel Checked?: " + NewModel.defFile.getModelScaleInt());
@@ -412,7 +411,7 @@ public class advancedOptions extends javax.swing.JFrame {
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
         }
-        
+
         try {
             NewModel.defFile.setAdvancedAdaptiveQuad(String.valueOf(isAdaptiveQuadritureChecked()));
             System.out.println("Adaptive Quadriture Checked?: " + NewModel.defFile.getAdvancedAdaptiveQuad());
@@ -422,12 +421,10 @@ public class advancedOptions extends javax.swing.JFrame {
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
         }
-        
+
         NewModel.defFile.setOutputPrefix("Output_" + getOutPutFileName());
         System.out.println("Output file name: " + NewModel.defFile.getOutputPrefix());
-        
-        
-        
+
         try {
             NewModel.defFile.setAdvancedRidge(String.valueOf(getRidge()));
             System.out.println("Ridge: " + NewModel.defFile.getAdvancedRidge());
@@ -437,7 +434,7 @@ public class advancedOptions extends javax.swing.JFrame {
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
         }
-        
+
         try {
             NewModel.defFile.setAdvancedCenterScale(String.valueOf(isCenterRegressorChecked()));
             System.out.println("Scale Regressor: " + NewModel.defFile.getAdvancedCenterScale());
@@ -446,15 +443,13 @@ public class advancedOptions extends javax.swing.JFrame {
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
         }
-        
-        
-        if (catchCount == 0){
+
+        if (catchCount == 0) {
             //do nothing
             this.dispose();
         }
-        
-        
-        
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void centerRegressorsCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_centerRegressorsCheckBoxActionPerformed
@@ -463,17 +458,17 @@ public class advancedOptions extends javax.swing.JFrame {
 
     private void advancedOptions_resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_advancedOptions_resetButtonActionPerformed
         // TODO add your handling code here:
-        
+
         meanSubmodelCheckBox.setSelected(false);
         BSVarianceCheckBox.setSelected(false);
         WSVarianceCheckBox.setSelected(false);
-        
+
         convergenceCriteria.setValue(0.001);
         quadriturePoints.setValue(11);
-        
+
         adaptiveQuadritureCheckBox.setSelected(false);
         centerRegressorsCheckBox.setSelected(false);
-        
+
         maximumIterations.setValue(1);
         missingValuesCheckBox.setSelected(false);
         standardizedCoeff.setSelected(false);
@@ -554,158 +549,146 @@ public class advancedOptions extends javax.swing.JFrame {
     private javax.swing.JCheckBox standardizedCoeff;
     // End of variables declaration//GEN-END:variables
 
-
 //check if mean sub model is checked in advanced options    
-public int isMeanSubModelChecked(){
+    public int isMeanSubModelChecked() {
 
-    int checked = 0;
-    
-    if (meanSubmodelCheckBox.isSelected() == true){
-        checked = 1;
+        int checked = 0;
+
+        if (meanSubmodelCheckBox.isSelected() == true) {
+            checked = 1;
+        } else {
+            checked = 0;
+        }
+
+        return checked;
     }
-    else {
-        checked = 0;
-    }
-    
-    return checked;
-}
-
-
 
 // check if BS variance is checked
-public int isBSVarianceChecked(){
+    public int isBSVarianceChecked() {
 
-    int checked = 0;
-    
-    if (BSVarianceCheckBox.isSelected() == true){
-        checked = 1;
+        int checked = 0;
+
+        if (BSVarianceCheckBox.isSelected() == true) {
+            checked = 1;
+        } else {
+            checked = 0;
+        }
+
+        return checked;
     }
-    else {
-        checked = 0;
-    }
-    
-    return checked;
-}
 
 // check if BS variance is checked
-public int isWSVarianceChecked(){
+    public int isWSVarianceChecked() {
 
-    int checked = 0;
-    
-    if (WSVarianceCheckBox.isSelected() == true){
-        checked = 1;
+        int checked = 0;
+
+        if (WSVarianceCheckBox.isSelected() == true) {
+            checked = 1;
+        } else {
+            checked = 0;
+        }
+
+        return checked;
     }
-    else {
-        checked = 0;
-    }
-    
-    return checked;
-}
 
 // get the convergence criteria
-public Double getConvergenceCriteria(){
+    public Double getConvergenceCriteria() {
 
-    return (Double) convergenceCriteria.getValue();
+        return (Double) convergenceCriteria.getValue();
 
-}
+    }
 
 // get Quadriture points
-public Double getQuadriturePoints(){
+    public Double getQuadriturePoints() {
 
-    return (Double) quadriturePoints.getValue();
-}
-
+        return (Double) quadriturePoints.getValue();
+    }
 
 // check if adaptive quadriture is checked
-public int isAdaptiveQuadritureChecked(){
-    int checked = 0;
-    
-    if (adaptiveQuadritureCheckBox.isSelected() == true){
-        checked = 0;
+    public int isAdaptiveQuadritureChecked() {
+        int checked = 0;
+
+        if (adaptiveQuadritureCheckBox.isSelected() == true) {
+            checked = 0;
+        } else {
+
+            checked = 1;
+        }
+
+        return checked;
     }
-    else {
-    
-        checked = 1;
-    }
-    
-    return checked;  
-}
 
 // get the convergence criteria
-public Integer getMaximumIterations(){
+    public Integer getMaximumIterations() {
 
-    return (Integer) maximumIterations.getValue();
+        return (Integer) maximumIterations.getValue();
 
-}
+    }
 
 //check if the data set has missing values
-public boolean isMissingValuesChecked(){
-    boolean checked = false;
-    
-    if (missingValuesCheckBox.isSelected() == true){
-        checked = true;
+    public boolean isMissingValuesChecked() {
+        boolean checked = false;
+
+        if (missingValuesCheckBox.isSelected() == true) {
+            checked = true;
+        } else {
+
+            checked = false;
+        }
+
+        return checked;
     }
-    else {
-    
-        checked = false;
-    }
-    
-    return checked;  
-}
 
 // get missing value code
-public String getMissingValueCode(){
-    String missingValue;
-    
-    //missingValue = (double) missingValueCode.getText().toString();
-    
-    missingValue = missingValueCode.getText().toString();
-    
-    return missingValue;
-}
+    public String getMissingValueCode() {
+        String missingValue;
+
+        //missingValue = (double) missingValueCode.getText().toString();
+        missingValue = missingValueCode.getText().toString();
+
+        return missingValue;
+    }
 
 //check if standardized coefficients is checked
-public int isStandardizedCoefChecked(){
-    int checked = 0;
-    
-    if (standardizedCoeff.isSelected() == true){
-        checked = 1;
+    public int isStandardizedCoefChecked() {
+        int checked = 0;
+
+        if (standardizedCoeff.isSelected() == true) {
+            checked = 1;
+        } else {
+
+            checked = 0;
+        }
+
+        return checked;
     }
-    else {
-    
-        checked = 0;
-    }
-    
-    return checked;  
-}
 
 // get the ridge value
-public Double getRidge(){
+    public Double getRidge() {
 
-    return (Double) ridgeSpinner.getValue();
+        return (Double) ridgeSpinner.getValue();
 
-}
-
-public int isCenterRegressorChecked(){
-    int value = 0;
-    
-    if (centerRegressorsCheckBox.isSelected()){
-        value = 1;
-    } else {
-        value = 0;
     }
-    
-    return value;
-}
 
-public String getOutPutFileName(){
-    
-    String outPut;
-    
-    outPut = outputTextField.getText().toString();
+    public int isCenterRegressorChecked() {
+        int value = 0;
 
-    return outPut;
-}
+        if (centerRegressorsCheckBox.isSelected()) {
+            value = 1;
+        } else {
+            value = 0;
+        }
 
+        return value;
+    }
+
+    public String getOutPutFileName() {
+
+        String outPut;
+
+        outPut = outputTextField.getText().toString();
+
+        return outPut;
+    }
 
 }
