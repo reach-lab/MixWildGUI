@@ -137,7 +137,7 @@ public class DefinitionHelper {
             this.modelLocRanCount = Integer.toString(randomLocationEffects);
         }
     }
-
+//
     public int getRandomLocationEffects() {
         return randomLocationEffects;
     }
