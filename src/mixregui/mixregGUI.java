@@ -19,11 +19,14 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
@@ -35,105 +38,103 @@ import static javax.swing.SwingConstants.CENTER;
 import javax.swing.border.MatteBorder;
 
 /**
- *d
+ * d
+ *
  * @author adityaponnada
  */
 public class mixregGUI extends javax.swing.JFrame {
-    
-   NewModel newModel;
-   advancedOptions advancedOptions_view;
-   stageOneRegs stage_1_regs;
-   stageTwoRegs stage_2_regs;
-    
-   //public boolean submitClicked = true;
-   int i;
-   
-   int levelOneRegSize, levelTwoRegSize, stageTwoRegSize, levelOneDisaggSize;
-   
-   String[] variableNamesCombo;
-    
+
+    NewModel newModel;
+    advancedOptions advancedOptions_view;
+    stageOneRegs stage_1_regs;
+    stageTwoRegs stage_2_regs;
+
+    //public boolean submitClicked = true;
+    int i;
+
+    int levelOneRegSize, levelTwoRegSize, stageTwoRegSize, levelOneDisaggSize;
+
+    String[] variableNamesCombo;
+
     DefaultComboBoxModel<String> IDList;
-    
+
     DefaultComboBoxModel<String> StageOneList;
-    
+
     DefaultComboBoxModel<String> StageTwoList;
-    
+
     DefaultListModel<String> savedVariablesStageOne;
-    
+
     DefaultComboBoxModel<String> regressorsLevelOne;
-    
+
     DefaultComboBoxModel<String> regressorsLevelTwo;
-    
+
     ArrayList<ArrayList<JCheckBox>> levelOneBoxes;
-    
+
     ArrayList<ArrayList<JCheckBox>> levelTwoBoxes;
-    
+
     ArrayList<ArrayList<JCheckBox>> stageTwoBoxes;
-    
+
     ArrayList<ArrayList<JCheckBox>> disaggVarianceBoxes;
-    
+
     ArrayList<String> levelOneSelected;
     ArrayList<String> levelTwoSelected;
     ArrayList<String> stageTwooSelected;
-    
-    
+
+    static ActionListener actionListener;
+
     int stageOneClicked = 0;
 
     /**
      * Creates new form mixregGUI
      */
-    
     public mixregGUI() {
         initComponents();
         newModel = new NewModel();
         variableNamesCombo = newModel.getVariableNames();
-        
+
         IDList = new DefaultComboBoxModel<String>();
         StageOneList = new DefaultComboBoxModel<String>();
         StageTwoList = new DefaultComboBoxModel<String>();
-        
+
         i = newModel.getRLE();
         System.out.println(String.valueOf(i));
-       
-        
-        if (i >1){
-        associationPanel.setVisible(false);
-        NoAssociationRadio.setVisible(false);
-        LinearAssociationRadio.setVisible(false);
-        QuadraticAssociationRadio.setVisible(false);
-        associationLabel.setVisible(false);
-        
-        level1_BSVar.setText("Loc. eff.");
-        level1_WSVar.setText("Scale");
-        level2_BSVar.setText("Loc. eff.");
-        level2_WSVar.setText("Scale");
-        stage2_BSVar.setText("Loc. eff.");
-        stage2_WSVar.setText("Scale");
+
+        if (i > 1) {
+            associationPanel.setVisible(false);
+            NoAssociationRadio.setVisible(false);
+            LinearAssociationRadio.setVisible(false);
+            QuadraticAssociationRadio.setVisible(false);
+            associationLabel.setVisible(false);
+
+            level1_BSVar.setText("Loc. eff.");
+            level1_WSVar.setText("Scale");
+            level2_BSVar.setText("Loc. eff.");
+            level2_WSVar.setText("Scale");
+            stage2_BSVar.setText("Loc. eff.");
+            stage2_WSVar.setText("Scale");
 
         }
-        
+
         //levelOneBorderLayout.add(levelOneGrid);
         jPanel5.setLayout(new BorderLayout());
         jPanel6.setLayout(new BorderLayout());
         jPanel7.setLayout(new BorderLayout());
-        
-        
-      //  System.out.println("Initialized");
-       // enableDisaggVariance();
-      // MyThread mt = new MyThread();
-       //mt.start();
-       
-       if (stageOneClicked == 0){
-       
-       addStageTwoButton.setEnabled(false);
-       
+
+        //enableDisaggVariance();
+        //  System.out.println("Initialized");
+        // enableDisaggVariance();
+        // MyThread mt = new MyThread();
+        //mt.start();
+        if (stageOneClicked == 0) {
+
+            addStageTwoButton.setEnabled(false);
+
         } else {
-       
-           addStageTwoButton.setEnabled(true);
-       }
-        
+
+            addStageTwoButton.setEnabled(true);
+        }
+
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -706,10 +707,9 @@ public class mixregGUI extends javax.swing.JFrame {
 
     private void newModelMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModelMenuActionPerformed
         //new NewModel().setVisible(true);
-        
-       
-       newModel.setVisible(true);
-      // imageView.setVisible(false);
+
+        newModel.setVisible(true);
+        // imageView.setVisible(false);
         //this.setVisible(false);
     }//GEN-LAST:event_newModelMenuActionPerformed
 
@@ -728,7 +728,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private void diagramMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_diagramMenuActionPerformed
         // TODO add your handling code here:
         openWebpage("http://myquitadmin.usc.edu/mixsuite.php");
-        
+
     }//GEN-LAST:event_diagramMenuActionPerformed
 
     private void goBackMxrButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackMxrButtonActionPerformed
@@ -738,309 +738,290 @@ public class mixregGUI extends javax.swing.JFrame {
 
     private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
         // TODO add your handling code here:
-        
+
         IDvariableCombo.setSelectedIndex(0);
         StageOneVariableCombo.setSelectedIndex(1);
         StageTwoVariableCombo.setSelectedIndex(2);
-        
+
         buttonGroup1.clearSelection();
-        
-        
+
         addStageTwoButton.setEnabled(false);
-      
+
 
     }//GEN-LAST:event_resetButtonActionPerformed
 
     private void runStageOneTwoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_runStageOneTwoButtonActionPerformed
-        
+
         int tryCount = 0;
         int catchCount = 0;
-        
+
         //getMeanFieldRegressorLabels_levelOne();
         //getBSFieldRegressorLabels_levelOne();
         //getWSFieldRegressorLabels_levelOne();
-        
         System.out.println("Total selected beta means model in level one: " + String.valueOf(countLevelOneBeta()));
         System.out.println("Total selected alpha means model in level one: " + String.valueOf(countLevelOneAlpha()));
         System.out.println("Total selected tau means model in level one: " + String.valueOf(countLevelOneTau()));
         System.out.println("Total selected disagg. variance in level one: " + String.valueOf(countLevelOneDicompMean()));
-        
+
         System.out.println("Total selected beta means model in level two: " + String.valueOf(countLevelTwoBeta()));
         System.out.println("Total selected alpha means model in level two: " + String.valueOf(countLevelTwoAlpha()));
         System.out.println("Total selected tau means model in level two: " + String.valueOf(countLevelTwoTau()));
-        
+
         System.out.println("Total selected beta means model in stage two: " + String.valueOf(countStageTwoBeta()));
         System.out.println("Total selected alpha means model in stage two: " + String.valueOf(countStageTwoAlpha()));
         System.out.println("Total selected tau means model in stage two: " + String.valueOf(countStageTwoTau()));
-        
-       
+
         String[] idOutcome = {String.valueOf(IDvariableCombo.getSelectedIndex() + 1), String.valueOf(StageOneVariableCombo.getSelectedIndex() + 1)};
 
-       try {
-           tryCount = 1;
-           NewModel.defFile.setIdOutcome(idOutcome);
-           System.out.println("ID and Outcome indices: " + Arrays.toString(NewModel.defFile.getIdOutcome()));
-       } catch (Exception ex) {
-           catchCount = 1;
-           Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-           JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
-       }
-       
-       
-       // i is the number of random location effects selected by the users
-       if (i ==1) {
-       
-           try {
+        try {
             tryCount = 1;
-            NewModel.defFile.setDecompBSCount(String.valueOf(countLevelOneDicompBS()));
-            System.out.println("BS Variance Regressor Count: " + NewModel.defFile.getDecompBSCount().toString());
-       } catch (Exception ex) {
-           catchCount = 1;
-           Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-           JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
-       }
-       
-       try {
-           tryCount = 1;
-           NewModel.defFile.setDecompWSCount(String.valueOf(countLevelOneDicompWS()));
-           System.out.println("WS Variance Regressor Count: " + NewModel.defFile.getDecompBSCount().toString());
-       } catch (Exception ex) {
-           catchCount = 1;
-           Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-           JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
-       }
-       
-       //count field array sizes     
-       
-       
-       
-       
-       if (NoAssociationRadio.isSelected()){
-           
-               try {
-                   NewModel.defFile.setAdvancedEffectMeanWS(String.valueOf(0));
-                   System.out.println("Advanced effects of mean on WS variance (No Association): " + NewModel.defFile.getAdvancedEffectMeanWS());
-               } catch (Exception ex) {
-                   catchCount = 1;
-                   Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                   JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
-               }
-       
-       } else if (LinearAssociationRadio.isSelected()) {
-           try {
-                   NewModel.defFile.setAdvancedEffectMeanWS(String.valueOf(1));
-                   System.out.println("Advanced effects of mean on WS variance (Linear Association): " + NewModel.defFile.getAdvancedEffectMeanWS());
-               } catch (Exception ex) {
-                   catchCount = 1;
-                   Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                   JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
-               }
-       
-       } else if (QuadraticAssociationRadio.isSelected()) {
-           try {
-                   NewModel.defFile.setAdvancedEffectMeanWS(String.valueOf(2));
-                   System.out.println("Advanced effects of mean on WS variance (Quadratic Association): " + NewModel.defFile.getAdvancedEffectMeanWS());
-               } catch (Exception ex) {
-                   catchCount = 1;
-                   Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                   JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
-               }
+            NewModel.defFile.setIdOutcome(idOutcome);
+            System.out.println("ID and Outcome indices: " + Arrays.toString(NewModel.defFile.getIdOutcome()));
+        } catch (Exception ex) {
+            catchCount = 1;
+            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+        }
 
-       }
+        // i is the number of random location effects selected by the users
+        if (i == 1) {
 
-       try {         
-                NewModel.defFile.setFieldModelMeanRegressors(getMeanFieldRegressorLabels_levelOne());
-                System.out.println("#Level One Mean Regressors: " + NewModel.defFile.getFieldModelMeanRegressors());
+            try {
+                tryCount = 1;
+                NewModel.defFile.setDecompBSCount(String.valueOf(countLevelOneDicompBS()));
+                System.out.println("BS Variance Regressor Count: " + NewModel.defFile.getDecompBSCount().toString());
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
             }
-       
+
+            try {
+                tryCount = 1;
+                NewModel.defFile.setDecompWSCount(String.valueOf(countLevelOneDicompWS()));
+                System.out.println("WS Variance Regressor Count: " + NewModel.defFile.getDecompBSCount().toString());
+            } catch (Exception ex) {
+                catchCount = 1;
+                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+            //count field array sizes     
+            if (NoAssociationRadio.isSelected()) {
+
+                try {
+                    NewModel.defFile.setAdvancedEffectMeanWS(String.valueOf(0));
+                    System.out.println("Advanced effects of mean on WS variance (No Association): " + NewModel.defFile.getAdvancedEffectMeanWS());
+                } catch (Exception ex) {
+                    catchCount = 1;
+                    Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+                }
+
+            } else if (LinearAssociationRadio.isSelected()) {
+                try {
+                    NewModel.defFile.setAdvancedEffectMeanWS(String.valueOf(1));
+                    System.out.println("Advanced effects of mean on WS variance (Linear Association): " + NewModel.defFile.getAdvancedEffectMeanWS());
+                } catch (Exception ex) {
+                    catchCount = 1;
+                    Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+                }
+
+            } else if (QuadraticAssociationRadio.isSelected()) {
+                try {
+                    NewModel.defFile.setAdvancedEffectMeanWS(String.valueOf(2));
+                    System.out.println("Advanced effects of mean on WS variance (Quadratic Association): " + NewModel.defFile.getAdvancedEffectMeanWS());
+                } catch (Exception ex) {
+                    catchCount = 1;
+                    Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+                }
+
+            }
+
+            try {
+                NewModel.defFile.setFieldModelMeanRegressors(getMeanFieldRegressorLabels_levelOne());
+                System.out.println("#Level One Mean Regressors: " + NewModel.defFile.getFieldModelMeanRegressors().length);
+            } catch (Exception ex) {
+                catchCount = 1;
+                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+            }
+
             try {
                 NewModel.defFile.setFieldModelBSRegressors(getBSFieldRegressorLabels_levelOne());
-                System.out.println("#Level One BS Regressors: " + NewModel.defFile.getFieldModelBSRegressors());
+                System.out.println("#Level One BS Regressors: " + NewModel.defFile.getFieldModelBSRegressors().length);
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
             }
-            
+
             try {
                 NewModel.defFile.setFieldModelWSRegressors(getWSFieldRegressorLabels_levelOne());
-                System.out.println("#Level One WS Regressors: " + NewModel.defFile.getFieldModelWSRegressors());
+                System.out.println("#Level One WS Regressors: " + NewModel.defFile.getFieldModelWSRegressors().length);
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
             }
-       
-       
-       } else if (i > 1){
-       
-       try {
-           tryCount = 1;
-           NewModel.defFile.setDecompMeanCount(String.valueOf(countLevelOneDicompMean()));
-           System.out.println("Decomp Model Mean Count: " + NewModel.defFile.getDecompMeanCount().toString());
-       } catch (Exception ex) {
-           catchCount = 1;
-           Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-           JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
-       }
-       
-       try {
-           tryCount = 1;
-           NewModel.defFile.setDecompLocRanCount(String.valueOf(countLevelOneDicompBS()));
-           System.out.println("Decomp Model Loc Random Count: " + NewModel.defFile.getDecompMeanCount().toString());
-       } catch (Exception ex) {
-           catchCount = 1;
-           Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-           JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
-       }
-       
-       try {
-           tryCount = 1;
-           NewModel.defFile.setDecompScaleCount(String.valueOf(countLevelOneDicompWS()));
-           System.out.println("Decomp Scale Count: " + NewModel.defFile.getDecompScaleCount().toString());
-       } catch (Exception ex) {
-           catchCount = 1;
-           Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-           JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
-       }
-       // count field labels
-       try {         
+
+        } else if (i > 1) {
+
+            try {
+                tryCount = 1;
+                NewModel.defFile.setDecompMeanCount(String.valueOf(countLevelOneDicompMean()));
+                System.out.println("Decomp Model Mean Count: " + NewModel.defFile.getDecompMeanCount().toString());
+            } catch (Exception ex) {
+                catchCount = 1;
+                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+            try {
+                tryCount = 1;
+                NewModel.defFile.setDecompLocRanCount(String.valueOf(countLevelOneDicompBS()));
+                System.out.println("Decomp Model Loc Random Count: " + NewModel.defFile.getDecompMeanCount().toString());
+            } catch (Exception ex) {
+                catchCount = 1;
+                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+            try {
+                tryCount = 1;
+                NewModel.defFile.setDecompScaleCount(String.valueOf(countLevelOneDicompWS()));
+                System.out.println("Decomp Scale Count: " + NewModel.defFile.getDecompScaleCount().toString());
+            } catch (Exception ex) {
+                catchCount = 1;
+                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+            }
+            // count field labels
+            try {
                 NewModel.defFile.setFieldModelMeanRegressors(getMeanFieldRegressorLabels_levelOne());
-                System.out.println("#Level One Mean Regressors: " + NewModel.defFile.getFieldModelMeanRegressors());
+                System.out.println("#Level One Mean Regressors: " + NewModel.defFile.getFieldModelMeanRegressors().length);
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
             }
-       
+
             try {
                 NewModel.defFile.setFieldModelLocRanRegressors(getBSFieldRegressorLabels_levelOne());
-                System.out.println("#Level One BS Regressors: " + NewModel.defFile.getFieldModelLocRanRegressors());
+                System.out.println("#Level One BS Regressors: " + NewModel.defFile.getFieldModelLocRanRegressors().length);
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
             }
-            
+
             try {
                 NewModel.defFile.setFieldModelScaleRegressors(getWSFieldRegressorLabels_levelOne());
-                System.out.println("#Level One WS Regressors: " + NewModel.defFile.getFieldModelScaleRegressors());
+                System.out.println("#Level One WS Regressors: " + NewModel.defFile.getFieldModelScaleRegressors().length);
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
             }
-      
-       }
-       
-       try {
-           tryCount = 1;
-           int MeanCount = countLevelOneBeta() + countLevelTwoBeta();
-           
-           NewModel.defFile.setModelMeanCount(String.valueOf(MeanCount));
-           System.out.println("Model Mean Count: " + NewModel.defFile.getModelMeanCount().toString());
-       } catch (Exception ex) {
-           catchCount = 1;
-           Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-           JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
-       }
-       
-       
-       try {
-           int LocRanCount = countLevelOneAlpha() + countLevelTwoAlpha();
-           NewModel.defFile.setModelLocRanCount(String.valueOf(LocRanCount));
-           System.out.println("Model Loc Ran Count: " + NewModel.defFile.getModelLocRanCount().toString());
-           tryCount = 1;
-       } catch (Exception ex) {
-           catchCount = 1;
-           Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-           JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
-       }
-       
-       
-       try {
-           tryCount = 1;
-           int ScaleCount = countLevelOneTau() + countLevelTwoTau();
-           NewModel.defFile.setModelScaleCount(String.valueOf(ScaleCount));
-           System.out.println("Model Scale Count: " + NewModel.defFile.getModelLocRanCount().toString());
-       } catch (Exception ex) {
-           catchCount = 1;
-           Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-           JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
-       }
-       
-       
-       try {
-           tryCount = 1;
-           NewModel.defFile.setModelBetweenCount(String.valueOf(levelTwoRegSize));
-           System.out.println("Model Between Count: " + NewModel.defFile.getModelBetweenCount().toString());
-       } catch (Exception ex) {
-           catchCount = 1;
-           Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-           JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
-       }
-       
-       try {
-           tryCount = 1;
-           NewModel.defFile.setModelWithinCount(String.valueOf(levelOneRegSize));
-           System.out.println("Model Within Count: " + NewModel.defFile.getModelBetweenCount().toString());
-       } catch (Exception ex) {
-           catchCount = 1;
-           Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-           JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
-       }
-       
-       
-       
-       
-       
-       if (catchCount == 0){   
-           int defTry = 0;
-           int defCatch = 0;
+
+        }
+
+        try {
+            tryCount = 1;
+            int MeanCount = countLevelOneBeta() + countLevelTwoBeta();
+
+            NewModel.defFile.setModelMeanCount(String.valueOf(MeanCount));
+            System.out.println("Model Mean Count: " + NewModel.defFile.getModelMeanCount().toString());
+        } catch (Exception ex) {
+            catchCount = 1;
+            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+        try {
+            int LocRanCount = countLevelOneAlpha() + countLevelTwoAlpha();
+            NewModel.defFile.setModelLocRanCount(String.valueOf(LocRanCount));
+            System.out.println("Model Loc Ran Count: " + NewModel.defFile.getModelLocRanCount().toString());
+            tryCount = 1;
+        } catch (Exception ex) {
+            catchCount = 1;
+            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+        try {
+            tryCount = 1;
+            int ScaleCount = countLevelOneTau() + countLevelTwoTau();
+            NewModel.defFile.setModelScaleCount(String.valueOf(ScaleCount));
+            System.out.println("Model Scale Count: " + NewModel.defFile.getModelLocRanCount().toString());
+        } catch (Exception ex) {
+            catchCount = 1;
+            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+        try {
+            tryCount = 1;
+            NewModel.defFile.setModelBetweenCount(String.valueOf(levelTwoRegSize));
+            System.out.println("Model Between Count: " + NewModel.defFile.getModelBetweenCount().toString());
+        } catch (Exception ex) {
+            catchCount = 1;
+            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+        try {
+            tryCount = 1;
+            NewModel.defFile.setModelWithinCount(String.valueOf(levelOneRegSize));
+            System.out.println("Model Within Count: " + NewModel.defFile.getModelBetweenCount().toString());
+        } catch (Exception ex) {
+            catchCount = 1;
+            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+        if (catchCount == 0) {
+            int defTry = 0;
+            int defCatch = 0;
             try {
                 List<String> defFileOutput;
-                
-               defFileOutput =  NewModel.defFile.buildStageOneDefinitonList();
-               
-               for (int k = 0; k<defFileOutput.size(); k++){
-                   System.out.println(defFileOutput.get(k));
-               }
-               
-               
+
+                defFileOutput = NewModel.defFile.buildStageOneDefinitonList();
+
+                for (int k = 0; k < defFileOutput.size(); k++) {
+                    System.out.println(defFileOutput.get(k));
+                }
+
             } catch (Exception ex) {
                 defCatch = 1;
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
             }
-            
-            if (defCatch == 0){
-                 stageOneTabs.setSelectedIndex(3);
+
+            if (defCatch == 0) {
+                stageOneTabs.setSelectedIndex(3);
             }
-           
-        
-       } else {
-       
-           // do nothing
-       }
-      
-        
+
+        } else {
+
+            // do nothing
+        }
+
 
     }//GEN-LAST:event_runStageOneTwoButtonActionPerformed
 
     private void advancedOptionsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_advancedOptionsButtonActionPerformed
         // TODO add your handling code here:
         advancedOptions_view = new advancedOptions();
-        
+
         advancedOptions_view.setVisible(true);
     }//GEN-LAST:event_advancedOptionsButtonActionPerformed
 
     private void addStageTwoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStageTwoButtonActionPerformed
         stage_2_regs = new stageTwoRegs();
-        
+
         stage_2_regs.setVisible(true);
         stage_2_regs.updateStageTwoVariables(getSavedVariables());
     }//GEN-LAST:event_addStageTwoButtonActionPerformed
@@ -1055,8 +1036,8 @@ public class mixregGUI extends javax.swing.JFrame {
 
     private void IDvariableComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDvariableComboActionPerformed
         // TODO add your handling code here:
-        
-        
+
+
     }//GEN-LAST:event_IDvariableComboActionPerformed
 
     private void NoAssociationRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoAssociationRadioActionPerformed
@@ -1076,7 +1057,7 @@ public class mixregGUI extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Metal".equals(info.getName())) {
@@ -1099,11 +1080,24 @@ public class mixregGUI extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new mixregGUI().setVisible(true);
-                
-               
+
             }
         });
-      
+
+        /*actionListener = new ActionListener() {
+            public void actionPerformed(ActionEvent actionEvent) {
+                AbstractButton abstractButton = (AbstractButton) actionEvent.getSource();
+                boolean selected = abstractButton.getModel().isSelected();
+                System.out.println("Is it selected? " + selected);
+                
+                if (selected){
+                    
+                    //
+                    
+                }
+                
+            }
+        };*/
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1183,688 +1177,733 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JPanel stageTwoGrid;
     // End of variables declaration//GEN-END:variables
 
-    
-    
-    public void isSubmitClicked(){
-   
-            parentPanel.removeAll();
-            parentPanel.add(stageOneTabs);
-            parentPanel.repaint();
-            parentPanel.revalidate();
-}
-    
-   public void updateComboBoxes(){
-    
-    
-    for (int j=0; j<variableNamesCombo.length; j++){
-        IDList.addElement(variableNamesCombo[j]);
-        StageOneList.addElement(variableNamesCombo[j]);
-        StageTwoList.addElement(variableNamesCombo[j]);
+    public void isSubmitClicked() {
+
+        parentPanel.removeAll();
+        parentPanel.add(stageOneTabs);
+        parentPanel.repaint();
+        parentPanel.revalidate();
     }
-    
-    
-    IDvariableCombo.setModel(IDList);
-    IDvariableCombo.setSelectedIndex(0);
-    
-    StageOneVariableCombo.setModel(StageOneList);
-    StageOneVariableCombo.setSelectedIndex(1);
-    
-    StageTwoVariableCombo.setModel(StageTwoList);
-    StageTwoVariableCombo.setSelectedIndex(2);
-}
-   
-   public static void openWebpage(String urlString) {
-    try {
-        Desktop.getDesktop().browse(new URL(urlString).toURI());
-    } catch (Exception e) {
-        e.printStackTrace();
+
+    public void updateComboBoxes() {
+
+        for (int j = 0; j < variableNamesCombo.length; j++) {
+            IDList.addElement(variableNamesCombo[j]);
+            StageOneList.addElement(variableNamesCombo[j]);
+            StageTwoList.addElement(variableNamesCombo[j]);
+        }
+
+        IDvariableCombo.setModel(IDList);
+        IDvariableCombo.setSelectedIndex(0);
+
+        StageOneVariableCombo.setModel(StageOneList);
+        StageOneVariableCombo.setSelectedIndex(1);
+
+        StageTwoVariableCombo.setModel(StageTwoList);
+        StageTwoVariableCombo.setSelectedIndex(2);
     }
-}
-   
-   public DefaultListModel<String> getSavedVariables(){
-   
-       savedVariablesStageOne = stage_1_regs.getListModel();
-       
-   return savedVariablesStageOne;
-   
-   }
-   
-   public void updateRegressors(DefaultComboBoxModel<String> levelOne, DefaultComboBoxModel<String> levelTwo){
-   // delete this function
-   
-   }
-   
-   
-   //get ID variable selected by the user
-   public String getIDVariable(){
-       String ID;
-       
-       ID = IDvariableCombo.getItemAt(IDvariableCombo.getSelectedIndex());
-       
-       return ID;
-   
-   }
-   
-   //get Stage One DV variable selected by the user
-   public String getStageOneDV(){
-       String StageOneDV;
-       
-       StageOneDV = StageOneVariableCombo.getItemAt(StageOneVariableCombo.getSelectedIndex());
-       
-       return StageOneDV;
-   
-   }
-   
+
+    public static void openWebpage(String urlString) {
+        try {
+            Desktop.getDesktop().browse(new URL(urlString).toURI());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public DefaultListModel<String> getSavedVariables() {
+
+        savedVariablesStageOne = stage_1_regs.getListModel();
+
+        return savedVariablesStageOne;
+
+    }
+
+    public void updateRegressors(DefaultComboBoxModel<String> levelOne, DefaultComboBoxModel<String> levelTwo) {
+        // delete this function
+
+    }
+
+    //get ID variable selected by the user
+    public String getIDVariable() {
+        String ID;
+
+        ID = IDvariableCombo.getItemAt(IDvariableCombo.getSelectedIndex());
+
+        return ID;
+
+    }
+
+    //get Stage One DV variable selected by the user
+    public String getStageOneDV() {
+        String StageOneDV;
+
+        StageOneDV = StageOneVariableCombo.getItemAt(StageOneVariableCombo.getSelectedIndex());
+
+        return StageOneDV;
+
+    }
+
     //get Stage Two variable selected by the user
-   public String getStageTwoDV(){
-       String StageTwoDV;
-       
-       StageTwoDV = StageTwoVariableCombo.getItemAt(StageTwoVariableCombo.getSelectedIndex());
-       
-       return StageTwoDV;
-   
-   }
-   
-    
-   public int getAssociationType(){
-       
-       int radioID = 0;
-       
-       if (NoAssociationRadio.isSelected() == true){
-           radioID = 1;
-       } else if (LinearAssociationRadio.isSelected() == true){
-           radioID = 2;
-       } else if (QuadraticAssociationRadio.isSelected() == true){
-           radioID = 3;
-       }
-     
-       return radioID;
-   }
-   
-   
-   public void updateLevelOneRegGrid(DefaultListModel<String> defaultListModel){
-   
-       int regSize = defaultListModel.getSize();
-       levelOneRegSize = regSize;
-      // System.out.println(String.valueOf(regSize) + " is the regSize");
-       
-       levelOneBoxes = new ArrayList<ArrayList<JCheckBox>>();
-       
-       levelOneGrid.removeAll();
-       
-       levelOneGrid.setLayout(new GridLayout(regSize, 4));
-       
-       
-       levelOneGrid.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-       
-       for (int j=0; j<regSize; j++){
-           levelOneGrid.add(new JLabel(defaultListModel.getElementAt(j)));
-           //System.out.print(j);
-           
-          levelOneBoxes.add(j, new ArrayList<JCheckBox>());
-           
-           for(int k=0; k<4;k++){
-                
-                   levelOneBoxes.get(j).add(k, new JCheckBox());
-                   levelOneGrid.add(levelOneBoxes.get(j).get(k));
-                   //levelOneGrid.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-                   //levelOneGrid.setBorder(new MatteBorder(2,2,2,2, Color.BLACK));
-      
-                }
-       }
+    public String getStageTwoDV() {
+        String StageTwoDV;
 
-   }
-   
-   public void updateLevelOneGrid_version2(DefaultListModel<String> defaultListModel){
-   
-       //levelOneGrid.setVisible(true);
-       
-       levelOneSelected = new ArrayList<String>();
-       
-       JScrollPane scrollpanel = new JScrollPane(levelOneGrid);
-       
-       int regSize = defaultListModel.getSize();
-       levelOneRegSize = regSize;
-       levelOneDisaggSize = regSize;
-       
-       levelOneGrid.removeAll();
-       
-       levelOneGrid.setLayout(new GridBagLayout());
-       GridBagConstraints constraints = new GridBagConstraints();
-       
-       constraints.gridx = 0;
-       constraints.gridy = 0;
-       //constraints.weightx = 1.0;
-       constraints.anchor = GridBagConstraints.NORTH;
-       //constraints.gridwidth = 4;
-       
-            GridBagConstraints separatorConstraint = new GridBagConstraints();
-            separatorConstraint.weightx = 1.0;
-            separatorConstraint.fill = GridBagConstraints.HORIZONTAL;
-            separatorConstraint.gridwidth = GridBagConstraints.REMAINDER;
-            separatorConstraint.gridx=0;
-       
-       
-       
-       constraints.insets = new Insets(3,0,5,25);
-       separatorConstraint.insets = new Insets(0,0,0,0);
-       //constraints.fill = GridBagConstraints.HORIZONTAL;
-       constraints.weightx = 1;
-       
-       levelOneBoxes = new ArrayList<ArrayList<JCheckBox>>();
-       disaggVarianceBoxes = new ArrayList<ArrayList<JCheckBox>>();
-       
-       for (int j=0;j<regSize;j++){
-           constraints.gridx = 0;
-           constraints.anchor = GridBagConstraints.LINE_END;
-           levelOneSelected.add(defaultListModel.getElementAt(j));
-           //levelOneGrid.add(new JLabel(defaultListModel.getElementAt(j)), constraints);
-           levelOneGrid.add(new JLabel(levelOneSelected.get(j)), constraints);
-           
+        StageTwoDV = StageTwoVariableCombo.getItemAt(StageTwoVariableCombo.getSelectedIndex());
+
+        return StageTwoDV;
+
+    }
+
+    public int getAssociationType() {
+
+        int radioID = 0;
+
+        if (NoAssociationRadio.isSelected() == true) {
+            radioID = 1;
+        } else if (LinearAssociationRadio.isSelected() == true) {
+            radioID = 2;
+        } else if (QuadraticAssociationRadio.isSelected() == true) {
+            radioID = 3;
+        }
+
+        return radioID;
+    }
+
+    public void updateLevelOneRegGrid(DefaultListModel<String> defaultListModel) {
+
+        int regSize = defaultListModel.getSize();
+        levelOneRegSize = regSize;
+        // System.out.println(String.valueOf(regSize) + " is the regSize");
+
+        //levelOneBoxes = new ArrayList<ArrayList<JCheckBox>>();
+        levelOneGrid.removeAll();
+
+        levelOneGrid.setLayout(new GridLayout(regSize, 4));
+
+        levelOneGrid.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+
+        for (int j = 0; j < regSize; j++) {
+            levelOneGrid.add(new JLabel(defaultListModel.getElementAt(j)));
+            //System.out.print(j);
+
             levelOneBoxes.add(j, new ArrayList<JCheckBox>());
-                          
-           
-           for (int k=0; k<3;k++){
-               
-               constraints.gridx++;
-               constraints.anchor = GridBagConstraints.CENTER;
-               levelOneBoxes.get(j).add(k, new JCheckBox());
-               levelOneGrid.add(levelOneBoxes.get(j).get(k), constraints);
-           }
-           
-           constraints.gridy++;
-           constraints.gridx = 0;
-           constraints.anchor = GridBagConstraints.LINE_END;
-           
-           levelOneGrid.add(new JLabel("Disaggregate?"), constraints);
-           disaggVarianceBoxes.add(j, new ArrayList<JCheckBox>());
-           
-           for(int k=0;k<3;k++){
-               constraints.gridx++;
-               constraints.anchor = GridBagConstraints.CENTER;
-               
-               disaggVarianceBoxes.get(j).add(k, new JCheckBox());
-               levelOneGrid.add(disaggVarianceBoxes.get(j).get(k), constraints);
 
-           }
-           
-           constraints.gridy++;
-           //constraints.gridx = 0;
-           separatorConstraint.gridy = separatorConstraint.gridy + 3;
-           //System.out.println("before seperator");
-           levelOneGrid.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
-           //System.out.println("after seperator");
-           constraints.gridy++;
-           
-       }
-       
-       jPanel5.add(scrollpanel);
-   
-   }
-   
-   
-   public void updateLevelTwoGrid_version2(DefaultListModel<String> defaultListModel){
-   
-       //levelTwoGrid.setVisible(true);
-       
-       
-       JScrollPane scrollpanel = new JScrollPane(levelTwoGrid);
-       
-       int regSize = defaultListModel.getSize();
-       levelTwoRegSize = regSize;
-       
-       levelTwoGrid.removeAll();
-       
-       levelTwoGrid.setLayout(new GridBagLayout());
-       GridBagConstraints constraints = new GridBagConstraints();
-       
-       constraints.gridx = 0;
-       constraints.gridy = 0;
-       constraints.weightx = 1.0;
-      // constraints.weighty = 1.0;
-       constraints.anchor = GridBagConstraints.NORTH;
-       //constraints.gridwidth = 4;
-       
-            GridBagConstraints separatorConstraint = new GridBagConstraints();
-            separatorConstraint.weightx = 1.0;
-            separatorConstraint.fill = GridBagConstraints.HORIZONTAL;
-            separatorConstraint.gridwidth = GridBagConstraints.REMAINDER;
-            separatorConstraint.gridx=0;
-       
-       
-       
-       constraints.insets = new Insets(3,0,5,25);
-       separatorConstraint.insets = new Insets(0,0,0,0);
-       //constraints.fill = GridBagConstraints.HORIZONTAL;
-       constraints.weightx = 1;
-       
-       levelTwoBoxes = new ArrayList<ArrayList<JCheckBox>>();
-       //disaggVarianceBoxes = new ArrayList<ArrayList<JCheckBox>>();
-       
-       for (int j=0;j<regSize;j++){
-           constraints.gridx = 0;
-           constraints.anchor = GridBagConstraints.LINE_END;
-           levelTwoGrid.add(new JLabel(defaultListModel.getElementAt(j)), constraints);
-           
+            for (int k = 0; k < 4; k++) {
+
+                levelOneBoxes.get(j).add(k, new JCheckBox());
+                levelOneGrid.add(levelOneBoxes.get(j).get(k));
+                //levelOneGrid.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+                //levelOneGrid.setBorder(new MatteBorder(2,2,2,2, Color.BLACK));
+
+            }
+        }
+
+    }
+
+    public void updateLevelOneGrid_version2(DefaultListModel<String> defaultListModel) {
+
+        levelOneSelected = new ArrayList<String>();
+
+        JScrollPane scrollpanel = new JScrollPane(levelOneGrid);
+
+        int regSize = defaultListModel.getSize();
+        levelOneRegSize = regSize;
+        levelOneDisaggSize = regSize;
+
+        levelOneGrid.removeAll();
+
+        levelOneGrid.setLayout(new GridBagLayout());
+        GridBagConstraints constraints = new GridBagConstraints();
+
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        //constraints.weightx = 1.0;
+        constraints.anchor = GridBagConstraints.NORTH;
+        //constraints.gridwidth = 4;
+
+        GridBagConstraints separatorConstraint = new GridBagConstraints();
+        separatorConstraint.weightx = 1.0;
+        separatorConstraint.fill = GridBagConstraints.HORIZONTAL;
+        separatorConstraint.gridwidth = GridBagConstraints.REMAINDER;
+        separatorConstraint.gridx = 0;
+
+        constraints.insets = new Insets(3, 0, 5, 25);
+        separatorConstraint.insets = new Insets(0, 0, 0, 0);
+        //constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.weightx = 1;
+
+        levelOneBoxes = new ArrayList<ArrayList<JCheckBox>>();
+        disaggVarianceBoxes = new ArrayList<ArrayList<JCheckBox>>();
+
+        /*actionListener = new ActionListener() {
+            public void actionPerformed(ActionEvent actionEvent) {
+                AbstractButton abstractButton = (AbstractButton) actionEvent.getSource();
+                boolean selected = abstractButton.getModel().isSelected();
+                System.out.println("Is it selected? " + selected);
+                
+                if (selected){
+                    
+                }
+                
+            }
+        };*/
+        for (int j = 0; j < regSize; j++) {
+            constraints.gridx = 0;
+            constraints.anchor = GridBagConstraints.LINE_END;
+            levelOneSelected.add(defaultListModel.getElementAt(j));
+            levelOneGrid.add(new JLabel(levelOneSelected.get(j)), constraints);
+
+            levelOneBoxes.add(j, new ArrayList<JCheckBox>());
+
+            for (int k = 0; k < 3; k++) {
+                int row = j;
+                int column = k;
+
+                constraints.gridx++;
+                constraints.anchor = GridBagConstraints.CENTER;
+                levelOneBoxes.get(j).add(k, new JCheckBox());
+                levelOneGrid.add(levelOneBoxes.get(j).get(k), constraints);
+                levelOneBoxes.get(j).get(k).addActionListener(actionListener);
+                levelOneBoxes.get(j).get(k).addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                        AbstractButton abstractButton = (AbstractButton) e.getSource();
+                        boolean selected = abstractButton.getModel().isSelected();
+                        if (selected) {
+                            System.out.println("Checkbox selected");
+                            disaggVarianceBoxes.get(row).get(column).setEnabled(true);
+                            System.out.println(disaggVarianceBoxes.size());
+                        } else {
+                            disaggVarianceBoxes.get(row).get(column).setEnabled(false);
+                        }
+
+                    }
+                });
+
+            }
+
+            constraints.gridy++;
+            constraints.gridx = 0;
+            constraints.anchor = GridBagConstraints.LINE_END;
+
+            levelOneGrid.add(new JLabel("Disaggregate?"), constraints);
+            disaggVarianceBoxes.add(j, new ArrayList<JCheckBox>());
+
+            for (int k = 0; k < 3; k++) {
+                constraints.gridx++;
+                constraints.anchor = GridBagConstraints.CENTER;
+
+                disaggVarianceBoxes.get(j).add(k, new JCheckBox());
+                levelOneGrid.add(disaggVarianceBoxes.get(j).get(k), constraints);
+                disaggVarianceBoxes.get(j).get(k).setEnabled(false);
+
+            }
+
+            constraints.gridy++;
+            //constraints.gridx = 0;
+            separatorConstraint.gridy = separatorConstraint.gridy + 3;
+            //System.out.println("before seperator");
+            levelOneGrid.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
+            //System.out.println("after seperator");
+            constraints.gridy++;
+
+        }
+
+        jPanel5.add(scrollpanel);
+
+    }
+
+    public void updateLevelTwoGrid_version2(DefaultListModel<String> defaultListModel) {
+
+        //levelTwoGrid.setVisible(true);
+        JScrollPane scrollpanel = new JScrollPane(levelTwoGrid);
+
+        int regSize = defaultListModel.getSize();
+        levelTwoRegSize = regSize;
+
+        levelTwoGrid.removeAll();
+
+        levelTwoGrid.setLayout(new GridBagLayout());
+        GridBagConstraints constraints = new GridBagConstraints();
+
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        constraints.weightx = 1.0;
+        // constraints.weighty = 1.0;
+        constraints.anchor = GridBagConstraints.NORTH;
+        //constraints.gridwidth = 4;
+
+        GridBagConstraints separatorConstraint = new GridBagConstraints();
+        separatorConstraint.weightx = 1.0;
+        separatorConstraint.fill = GridBagConstraints.HORIZONTAL;
+        separatorConstraint.gridwidth = GridBagConstraints.REMAINDER;
+        separatorConstraint.gridx = 0;
+
+        constraints.insets = new Insets(3, 0, 5, 25);
+        separatorConstraint.insets = new Insets(0, 0, 0, 0);
+        //constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.weightx = 1;
+
+        levelTwoBoxes = new ArrayList<ArrayList<JCheckBox>>();
+        //disaggVarianceBoxes = new ArrayList<ArrayList<JCheckBox>>();
+
+        for (int j = 0; j < regSize; j++) {
+            constraints.gridx = 0;
+            constraints.anchor = GridBagConstraints.LINE_END;
+            levelTwoGrid.add(new JLabel(defaultListModel.getElementAt(j)), constraints);
+
             levelTwoBoxes.add(j, new ArrayList<JCheckBox>());
-                          
-           
-           for (int k=0; k<3;k++){
-               
-               constraints.gridx++;
-               constraints.anchor = GridBagConstraints.CENTER;
-               levelTwoBoxes.get(j).add(k, new JCheckBox());
-               levelTwoGrid.add(levelTwoBoxes.get(j).get(k), constraints);
-           }
-           
-           constraints.gridy++;
-           
-           separatorConstraint.gridy = separatorConstraint.gridy + 2;
-          // System.out.println("before seperator");
-           levelTwoGrid.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
-          // System.out.println("after seperator");
-           constraints.gridy++;
-           
-       }
-       
-       jPanel6.add(scrollpanel);
-   
-   }
-   
-   
-   public void updateStageTwoGrid_version2(DefaultListModel<String> defaultListModel){
-   
-       //stageTwoGrid.setVisible(true);
-       
-       JScrollPane scrollpanel = new JScrollPane(stageTwoGrid);
-       
-       int regSize = defaultListModel.getSize();
-       stageTwoRegSize = regSize;
-       
-       stageTwoGrid.removeAll();
-       
-       stageTwoGrid.setLayout(new GridBagLayout());
-       GridBagConstraints constraints = new GridBagConstraints();
-       
-       constraints.gridx = 0;
-       constraints.gridy = 0;
-       constraints.weightx = 1.0;
-      // constraints.weighty = 1.0;
-       constraints.anchor = GridBagConstraints.NORTH;
-       //constraints.gridwidth = 4;
-       
-            GridBagConstraints separatorConstraint = new GridBagConstraints();
-            separatorConstraint.weightx = 1.0;
-            separatorConstraint.fill = GridBagConstraints.HORIZONTAL;
-            separatorConstraint.gridwidth = GridBagConstraints.REMAINDER;
-            separatorConstraint.gridx=0;
-       
-       
-       
-       constraints.insets = new Insets(3,0,5,25);
-       separatorConstraint.insets = new Insets(0,0,0,0);
-       //constraints.fill = GridBagConstraints.HORIZONTAL;
-       constraints.weightx = 1;
-       
-       stageTwoBoxes = new ArrayList<ArrayList<JCheckBox>>();
-       //disaggVarianceBoxes = new ArrayList<ArrayList<JCheckBox>>();
-       
-       for (int j=0;j<regSize;j++){
-           constraints.gridx = 0;
-           constraints.anchor = GridBagConstraints.LINE_END;
-           stageTwoGrid.add(new JLabel(defaultListModel.getElementAt(j)), constraints);
-           
+
+            for (int k = 0; k < 3; k++) {
+
+                constraints.gridx++;
+                constraints.anchor = GridBagConstraints.CENTER;
+                levelTwoBoxes.get(j).add(k, new JCheckBox());
+                levelTwoGrid.add(levelTwoBoxes.get(j).get(k), constraints);
+            }
+
+            constraints.gridy++;
+
+            separatorConstraint.gridy = separatorConstraint.gridy + 2;
+            // System.out.println("before seperator");
+            levelTwoGrid.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
+            // System.out.println("after seperator");
+            constraints.gridy++;
+
+        }
+
+        jPanel6.add(scrollpanel);
+
+    }
+
+    public void updateStageTwoGrid_version2(DefaultListModel<String> defaultListModel) {
+
+        //stageTwoGrid.setVisible(true);
+        JScrollPane scrollpanel = new JScrollPane(stageTwoGrid);
+
+        int regSize = defaultListModel.getSize();
+        stageTwoRegSize = regSize;
+
+        stageTwoGrid.removeAll();
+
+        stageTwoGrid.setLayout(new GridBagLayout());
+        GridBagConstraints constraints = new GridBagConstraints();
+
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        constraints.weightx = 1.0;
+        // constraints.weighty = 1.0;
+        constraints.anchor = GridBagConstraints.NORTH;
+        //constraints.gridwidth = 4;
+
+        GridBagConstraints separatorConstraint = new GridBagConstraints();
+        separatorConstraint.weightx = 1.0;
+        separatorConstraint.fill = GridBagConstraints.HORIZONTAL;
+        separatorConstraint.gridwidth = GridBagConstraints.REMAINDER;
+        separatorConstraint.gridx = 0;
+
+        constraints.insets = new Insets(3, 0, 5, 25);
+        separatorConstraint.insets = new Insets(0, 0, 0, 0);
+        //constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.weightx = 1;
+
+        stageTwoBoxes = new ArrayList<ArrayList<JCheckBox>>();
+        //disaggVarianceBoxes = new ArrayList<ArrayList<JCheckBox>>();
+
+        for (int j = 0; j < regSize; j++) {
+            constraints.gridx = 0;
+            constraints.anchor = GridBagConstraints.LINE_END;
+            stageTwoGrid.add(new JLabel(defaultListModel.getElementAt(j)), constraints);
+
             stageTwoBoxes.add(j, new ArrayList<JCheckBox>());
-                          
-           
-           for (int k=0; k<3;k++){
-               
-               constraints.gridx++;
-               constraints.anchor = GridBagConstraints.CENTER;
-               stageTwoBoxes.get(j).add(k, new JCheckBox());
-               stageTwoGrid.add(stageTwoBoxes.get(j).get(k), constraints);
-           }
-           
-           constraints.gridy++;
-           
-           separatorConstraint.gridy = separatorConstraint.gridy + 2;
-           //System.out.println("before seperator");
-           stageTwoGrid.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
-          // System.out.println("after seperator");
-           constraints.gridy++;
-           
-       }
-       
-       jPanel7.add(scrollpanel);
-   
-   }
-   
-   public void updateLevelTwoRegGrid(DefaultListModel<String> defaultListModel){
-   
-       int regSize = defaultListModel.getSize();
-       
-       levelTwoBoxes = new ArrayList<ArrayList<JCheckBox>>();
-       
-       levelTwoRegSize = regSize;
-       
-       levelTwoGrid.removeAll();
-       
-       levelTwoGrid.setLayout(new GridLayout(regSize, 4, -1, -1));
-       
-       levelTwoGrid.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-       
-       for (int j=0; j<regSize; j++){
-           levelTwoGrid.add(new JLabel(defaultListModel.getElementAt(j)));
-           levelTwoBoxes.add(j, new ArrayList<JCheckBox>());
-           
-           for(int k=0; k<3;k++){
-                
-                   levelTwoBoxes.get(j).add(k, new JCheckBox());
-                   levelTwoGrid.add(levelTwoBoxes.get(j).get(k));
-      
+
+            for (int k = 0; k < 3; k++) {
+
+                constraints.gridx++;
+                constraints.anchor = GridBagConstraints.CENTER;
+                stageTwoBoxes.get(j).add(k, new JCheckBox());
+                stageTwoGrid.add(stageTwoBoxes.get(j).get(k), constraints);
+            }
+
+            constraints.gridy++;
+
+            separatorConstraint.gridy = separatorConstraint.gridy + 2;
+            //System.out.println("before seperator");
+            stageTwoGrid.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
+            // System.out.println("after seperator");
+            constraints.gridy++;
+
+        }
+
+        jPanel7.add(scrollpanel);
+
+    }
+
+    public void updateLevelTwoRegGrid(DefaultListModel<String> defaultListModel) {
+
+        int regSize = defaultListModel.getSize();
+
+        levelTwoBoxes = new ArrayList<ArrayList<JCheckBox>>();
+
+        levelTwoRegSize = regSize;
+
+        levelTwoGrid.removeAll();
+
+        levelTwoGrid.setLayout(new GridLayout(regSize, 4, -1, -1));
+
+        levelTwoGrid.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+
+        for (int j = 0; j < regSize; j++) {
+            levelTwoGrid.add(new JLabel(defaultListModel.getElementAt(j)));
+            levelTwoBoxes.add(j, new ArrayList<JCheckBox>());
+
+            for (int k = 0; k < 3; k++) {
+
+                levelTwoBoxes.get(j).add(k, new JCheckBox());
+                levelTwoGrid.add(levelTwoBoxes.get(j).get(k));
+
+            }
+
+        }
+
+    }
+
+    public void updateStageTwoGrid(DefaultListModel<String> defaultListModel) {
+
+        int regSize = defaultListModel.getSize();
+        stageTwoBoxes = new ArrayList<ArrayList<JCheckBox>>();
+        stageTwoRegSize = regSize;
+
+        stageTwoGrid.removeAll();
+        stageTwoGrid.setLayout(new GridLayout(regSize, 4, -1, -1));
+
+        stageTwoGrid.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+
+        for (int j = 0; j < regSize; j++) {
+            stageTwoGrid.add(new JLabel(defaultListModel.getElementAt(j)));
+            stageTwoBoxes.add(j, new ArrayList<JCheckBox>());
+
+            for (int k = 0; k < 3; k++) {
+
+                stageTwoBoxes.get(j).add(k, new JCheckBox());
+                stageTwoGrid.add(stageTwoBoxes.get(j).get(k));
+
+            }
+
+        }
+
+    }
+
+    public int countLevelOneBeta() {
+
+        int levelOneBeta = 0;
+
+        for (int p = 0; p < levelOneRegSize; p++) {
+
+            if (levelOneBoxes.get(p).get(0).isSelected()) {
+
+                levelOneBeta = levelOneBeta + 1;
+            }
+        }
+
+        return levelOneBeta;
+
+    }
+
+    public int countLevelOneDicompMean() {
+        int levelOneDisagg = 0;
+
+        for (int p = 0; p < levelOneRegSize; p++) {
+
+            if (disaggVarianceBoxes.get(p).get(0).isSelected()) {
+                levelOneDisagg = levelOneDisagg + 1;
+            }
+
+        }
+
+        return levelOneDisagg;
+    }
+
+    public int countLevelOneDicompBS() {
+        int levelOneDisagg = 0;
+
+        for (int p = 0; p < levelOneRegSize; p++) {
+
+            if (disaggVarianceBoxes.get(p).get(1).isSelected()) {
+                levelOneDisagg = levelOneDisagg + 1;
+            }
+
+        }
+
+        return levelOneDisagg;
+    }
+
+    public int countLevelOneDicompWS() {
+        int levelOneDisagg = 0;
+
+        for (int p = 0; p < levelOneRegSize; p++) {
+
+            if (disaggVarianceBoxes.get(p).get(2).isSelected()) {
+                levelOneDisagg = levelOneDisagg + 1;
+            }
+
+        }
+
+        return levelOneDisagg;
+    }
+
+    public int countLevelTwoBeta() {
+
+        int levelTwoBeta = 0;
+
+        for (int p = 0; p < levelTwoRegSize; p++) {
+
+            if (levelTwoBoxes.get(p).get(0).isSelected()) {
+
+                levelTwoBeta = levelTwoBeta + 1;
+            }
+        }
+
+        return levelTwoBeta;
+
+    }
+
+    public int countStageTwoBeta() {
+
+        int stageTwoBeta = 0;
+
+        for (int p = 0; p < stageTwoRegSize; p++) {
+
+            if (stageTwoBoxes.get(p).get(0).isSelected()) {
+
+                stageTwoBeta = stageTwoBeta + 1;
+            }
+        }
+
+        return stageTwoBeta;
+
+    }
+
+    public int countLevelOneAlpha() {
+
+        int levelOneAlpha = 0;
+
+        for (int p = 0; p < levelOneRegSize; p++) {
+
+            if (levelOneBoxes.get(p).get(1).isSelected()) {
+
+                levelOneAlpha = levelOneAlpha + 1;
+            }
+        }
+
+        return levelOneAlpha;
+
+    }
+
+    public int countLevelTwoAlpha() {
+
+        int levelTwoAlpha = 0;
+
+        for (int p = 0; p < levelTwoRegSize; p++) {
+
+            if (levelTwoBoxes.get(p).get(1).isSelected()) {
+
+                levelTwoAlpha = levelTwoAlpha + 1;
+            }
+        }
+
+        return levelTwoAlpha;
+
+    }
+
+    public int countStageTwoAlpha() {
+
+        int stageTwoAlpha = 0;
+
+        for (int p = 0; p < stageTwoRegSize; p++) {
+
+            if (stageTwoBoxes.get(p).get(1).isSelected()) {
+
+                stageTwoAlpha = stageTwoAlpha + 1;
+            }
+        }
+
+        return stageTwoAlpha;
+
+    }
+
+    public int countLevelOneTau() {
+
+        int levelOneTau = 0;
+
+        for (int p = 0; p < levelOneRegSize; p++) {
+
+            if (levelOneBoxes.get(p).get(2).isSelected()) {
+
+                levelOneTau = levelOneTau + 1;
+            }
+        }
+
+        return levelOneTau;
+
+    }
+
+    public int countLevelTwoTau() {
+
+        int levelTwoTau = 0;
+
+        for (int p = 0; p < levelTwoRegSize; p++) {
+
+            if (levelTwoBoxes.get(p).get(2).isSelected()) {
+
+                levelTwoTau = levelTwoTau + 1;
+            }
+        }
+
+        return levelTwoTau;
+
+    }
+
+    public int countStageTwoTau() {
+
+        int stageTwoTau = 0;
+
+        for (int p = 0; p < stageTwoRegSize; p++) {
+
+            if (stageTwoBoxes.get(p).get(2).isSelected()) {
+
+                stageTwoTau = stageTwoTau + 1;
+            }
+        }
+
+        return stageTwoTau;
+
+    }
+
+    /*meanSubmodelCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                meanSubmodelCheckBoxActionPerformed(evt);
+            }
+        });*/
+    public void enableDisaggVariance() {
+
+        for (int p = 0; p < levelOneRegSize; p++) {
+
+            for (int k = 0; k < 3; k++) {
+
+                if (levelOneBoxes.get(p).get(k).isSelected()) {
+                    disaggVarianceBoxes.get(p).get(k).setEnabled(true);
+                } else {
+                    disaggVarianceBoxes.get(p).get(k).setEnabled(false);
                 }
-       
-       }
+            }
+        }
+    }
 
-   }
-   
-   public void updateStageTwoGrid(DefaultListModel<String> defaultListModel){
-   
-       int regSize = defaultListModel.getSize();
-       stageTwoBoxes = new ArrayList<ArrayList<JCheckBox>>();
-       stageTwoRegSize = regSize;
-       
-       stageTwoGrid.removeAll();
-       stageTwoGrid.setLayout(new GridLayout(regSize, 4, -1, -1));
-       
-       stageTwoGrid.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-       
-       for (int j=0; j<regSize; j++){
-           stageTwoGrid.add(new JLabel(defaultListModel.getElementAt(j)));
-           stageTwoBoxes.add(j, new ArrayList<JCheckBox>());
-           
-           for(int k=0; k<3;k++){
+    public String[] getMeanFieldRegressorLabels_levelOne() {
+
+        String fieldLabel;
+
+        String[] regressorLabels = new String[levelOneRegSize];
+        int index = 0;
+        
+        ArrayList<String> position = new ArrayList<>();
+
+        for (int p = 0; p < levelOneRegSize; p++) {
+
+            if (levelOneBoxes.get(p).get(0).isSelected()) {
+                regressorLabels[index] = levelOneSelected.get(p);
+                fieldLabel = levelOneSelected.get(p);
+                System.out.println("Regressor Fields (Mean): " + regressorLabels[index]);
+                index++;
                 
-                   stageTwoBoxes.get(j).add(k, new JCheckBox());
-                   stageTwoGrid.add(stageTwoBoxes.get(j).get(k));
-      
+                int posIndex = 0;
+
+                for (int q = 0; q < variableNamesCombo.length; q++) {
+
+                    if (variableNamesCombo[q].equals(fieldLabel)) {
+                        //position[index] = String.valueOf(q + 1);
+                        position.add(String.valueOf(q+1));
+                        System.out.println("Position of the regressor: " + position.get(posIndex));
+                        posIndex++;
+
+                    }
+
                 }
+            }
 
-       }
+        }
 
-   }
-   
-   public int countLevelOneBeta(){
-       
-       int levelOneBeta = 0;
-       
-       for (int p = 0; p<levelOneRegSize; p++){
-           
-           if (levelOneBoxes.get(p).get(0).isSelected()){
-           
-               levelOneBeta = levelOneBeta+1;
-           }
-       }
-   
-   return levelOneBeta;
-   
-   }
-   
-   public int countLevelOneDicompMean(){
-       int levelOneDisagg = 0;
-       
-       for (int p=0; p<levelOneRegSize; p++){
-           
-               if (disaggVarianceBoxes.get(p).get(0).isSelected()){
-               levelOneDisagg = levelOneDisagg + 1;
-           }
-      
-       }
-   
-       return levelOneDisagg;
-   }
-   
-   public int countLevelOneDicompBS(){
-       int levelOneDisagg = 0;
-       
-       for (int p=0; p<levelOneRegSize; p++){
-           
-               if (disaggVarianceBoxes.get(p).get(1).isSelected()){
-               levelOneDisagg = levelOneDisagg + 1;
-           }
-      
-       }
-   
-       return levelOneDisagg;
-   }
-   
-   public int countLevelOneDicompWS(){
-       int levelOneDisagg = 0;
-       
-       for (int p=0; p<levelOneRegSize; p++){
-           
-               if (disaggVarianceBoxes.get(p).get(2).isSelected()){
-               levelOneDisagg = levelOneDisagg + 1;
-           }
-      
-       }
-   
-       return levelOneDisagg;
-   }
-   
-   
-   public int countLevelTwoBeta(){
-       
-       int levelTwoBeta = 0;
-       
-       for (int p = 0; p<levelTwoRegSize; p++){
-           
-           if (levelTwoBoxes.get(p).get(0).isSelected()){
-           
-               levelTwoBeta = levelTwoBeta+1;
-           }
-       }
-   
-   return levelTwoBeta;
-   
-   }
-   
-   public int countStageTwoBeta(){
-       
-       int stageTwoBeta = 0;
-       
-       for (int p = 0; p<stageTwoRegSize; p++){
-           
-           if (stageTwoBoxes.get(p).get(0).isSelected()){
-           
-               stageTwoBeta = stageTwoBeta+1;
-           }
-       }
-   
-   return stageTwoBeta;
-   
-   }
-   
-   public int countLevelOneAlpha(){
-       
-       int levelOneAlpha = 0;
-       
-       for (int p = 0; p<levelOneRegSize; p++){
-           
-           if (levelOneBoxes.get(p).get(1).isSelected()){
-           
-               levelOneAlpha = levelOneAlpha+1;
-           }
-       }
-   
-   return levelOneAlpha;
-   
-   }
-   
-   
-   public int countLevelTwoAlpha(){
-       
-       int levelTwoAlpha = 0;
-       
-       for (int p = 0; p<levelTwoRegSize; p++){
-           
-           if (levelTwoBoxes.get(p).get(1).isSelected()){
-           
-               levelTwoAlpha = levelTwoAlpha+1;
-           }
-       }
-   
-   return levelTwoAlpha;
-   
-   }
-   
-   public int countStageTwoAlpha(){
-       
-       int stageTwoAlpha = 0;
-       
-       for (int p = 0; p<stageTwoRegSize; p++){
-           
-           if (stageTwoBoxes.get(p).get(1).isSelected()){
-           
-               stageTwoAlpha = stageTwoAlpha+1;
-           }
-       }
-   
-   return stageTwoAlpha;
-   
-   }
-   
-   
-   public int countLevelOneTau(){
-       
-       int levelOneTau = 0;
-       
-       for (int p = 0; p<levelOneRegSize; p++){
-           
-           if (levelOneBoxes.get(p).get(2).isSelected()){
-           
-               levelOneTau = levelOneTau+1;
-           }
-       }
-   
-   return levelOneTau;
-   
-   }
-   
-   public int countLevelTwoTau(){
-       
-       int levelTwoTau = 0;
-       
-       for (int p = 0; p<levelTwoRegSize; p++){
-           
-           if (levelTwoBoxes.get(p).get(2).isSelected()){
-           
-               levelTwoTau = levelTwoTau+1;
-           }
-       }
-   
-   return levelTwoTau;
-   
-   }
-   
-   
-   public int countStageTwoTau(){
-       
-       int stageTwoTau = 0;
-       
-       for (int p = 0; p<stageTwoRegSize; p++){
-           
-           if (stageTwoBoxes.get(p).get(2).isSelected()){
-           
-               stageTwoTau = stageTwoTau+1;
-           }
-       }
-   
-   return stageTwoTau;
-   
-   }
+        return position.toArray(new String[position.size()]);
+    }
 
-   public void enableDisaggVariance(){
-   
-   for (int p=0; p<levelOneRegSize;p++){
-       
-       for(int k=0; k<3;k++){
-   
-       if (levelOneBoxes.get(p).get(k).isSelected()){
-           disaggVarianceBoxes.get(p).get(k).setEnabled(true);
-       } else {
-           disaggVarianceBoxes.get(p).get(k).setEnabled(false);
-       }
-       }
-   }
-   }
-   
-   public String[] getMeanFieldRegressorLabels_levelOne(){
-   
-       String[] regressorLabels = new String[levelOneRegSize];
-       int index = 0;
-       
-       for (int p=0; p<levelOneRegSize;p++){
-       
-       
-       if (levelOneBoxes.get(p).get(0).isSelected()){
-           regressorLabels[index] = levelOneSelected.get(p);
-           System.out.println("Regressor Fields (Mean): " + regressorLabels[index]);
-           index++;
-       } 
-       
-       }
-       
-      return regressorLabels;
-   }
-   
-   public String[] getBSFieldRegressorLabels_levelOne(){
-   
-       String[] regressorLabels = new String[levelOneRegSize];
-       int index = 0;
-       
-       for (int p=0; p<levelOneRegSize;p++){
-       
-       
-       if (levelOneBoxes.get(p).get(1).isSelected()){
-           regressorLabels[index] = levelOneSelected.get(p);
-           System.out.println("Regressor Fields (BS): " + regressorLabels[index]);
-           index++;
-       } 
-       
-       }
-       
-      return regressorLabels;
-   }
-   
-   public String[] getWSFieldRegressorLabels_levelOne(){
-   
-       String[] regressorLabels = new String[levelOneRegSize];
-       int index = 0;
-       
-       for (int p=0; p<levelOneRegSize;p++){
-       
-       
-       if (levelOneBoxes.get(p).get(2).isSelected()){
-           regressorLabels[index] = levelOneSelected.get(p);
-           System.out.println("Regressor Fields (WS): " + regressorLabels[index]);
-           index++;
-       } 
-       
-       }
-       
-      return regressorLabels;
-   }
+    public String[] getBSFieldRegressorLabels_levelOne() {
+
+        String fieldLabel;
+
+        String[] regressorLabels = new String[levelOneRegSize];
+        int index = 0;
+        ArrayList<String> position = new ArrayList<>();
+
+        for (int p = 0; p < levelOneRegSize; p++) {
+
+            if (levelOneBoxes.get(p).get(1).isSelected()) {
+                regressorLabels[index] = levelOneSelected.get(p);
+                fieldLabel = levelOneSelected.get(p);
+                System.out.println("Regressor Fields (BS): " + regressorLabels[index]);
+                index++;
+                int posIndex = 0;
+
+                for (int q = 0; q < variableNamesCombo.length; q++) {
+
+                    if (variableNamesCombo[q].equals(fieldLabel)) {
+                        position.add(String.valueOf(q+1));
+                        System.out.println("Position of the regressor: " + position.get(posIndex));
+                        posIndex++;
+
+                    }
+                }
+            }
+        }
+
+        return position.toArray(new String[position.size()]);
+    }
+
+    public String[] getWSFieldRegressorLabels_levelOne() {
+
+        String[] regressorLabels = new String[levelOneRegSize];
+        String fieldLabel;
+
+        int index = 0;
+        ArrayList<String> position = new ArrayList<>();
+
+        for (int p = 0; p < levelOneRegSize; p++) {
+
+            if (levelOneBoxes.get(p).get(2).isSelected()) {
+                regressorLabels[index] = levelOneSelected.get(p);
+                fieldLabel = levelOneSelected.get(p);
+                System.out.println("Regressor Fields (WS): " + regressorLabels[index]);
+                index++;
+                int posIndex = 0;
+
+                for (int q = 0; q < variableNamesCombo.length; q++) {
+
+                    if (variableNamesCombo[q].equals(fieldLabel)) {
+                        position.add(String.valueOf(q+1));
+                        System.out.println("Position of the regressor: " + position.get(posIndex));
+                        posIndex++;
+
+                    }
+                }
+            }
+
+        }
+
+        return position.toArray(new String[position.size()]);
+    }
 
     private String[] getFieldModelWSRegressors() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-   
-   
-   }
-   
-  
-   
 
-   
-
+}
