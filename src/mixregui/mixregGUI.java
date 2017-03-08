@@ -842,7 +842,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
             try {
                 NewModel.defFile.setFieldModelMeanRegressors(getMeanFieldRegressorLabels_levelOne());
-                System.out.println("#Level One Mean Regressors: " + NewModel.defFile.getFieldModelMeanRegressors());
+                System.out.println("#Level One Mean Regressors: " + NewModel.defFile.getFieldModelMeanRegressors().length);
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -851,7 +851,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
             try {
                 NewModel.defFile.setFieldModelBSRegressors(getBSFieldRegressorLabels_levelOne());
-                System.out.println("#Level One BS Regressors: " + NewModel.defFile.getFieldModelBSRegressors());
+                System.out.println("#Level One BS Regressors: " + NewModel.defFile.getFieldModelBSRegressors().length);
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -860,7 +860,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
             try {
                 NewModel.defFile.setFieldModelWSRegressors(getWSFieldRegressorLabels_levelOne());
-                System.out.println("#Level One WS Regressors: " + NewModel.defFile.getFieldModelWSRegressors());
+                System.out.println("#Level One WS Regressors: " + NewModel.defFile.getFieldModelWSRegressors().length);
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -901,7 +901,7 @@ public class mixregGUI extends javax.swing.JFrame {
             // count field labels
             try {
                 NewModel.defFile.setFieldModelMeanRegressors(getMeanFieldRegressorLabels_levelOne());
-                System.out.println("#Level One Mean Regressors: " + NewModel.defFile.getFieldModelMeanRegressors());
+                System.out.println("#Level One Mean Regressors: " + NewModel.defFile.getFieldModelMeanRegressors().length);
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -910,7 +910,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
             try {
                 NewModel.defFile.setFieldModelLocRanRegressors(getBSFieldRegressorLabels_levelOne());
-                System.out.println("#Level One BS Regressors: " + NewModel.defFile.getFieldModelLocRanRegressors());
+                System.out.println("#Level One BS Regressors: " + NewModel.defFile.getFieldModelLocRanRegressors().length);
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -919,7 +919,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
             try {
                 NewModel.defFile.setFieldModelScaleRegressors(getWSFieldRegressorLabels_levelOne());
-                System.out.println("#Level One WS Regressors: " + NewModel.defFile.getFieldModelScaleRegressors());
+                System.out.println("#Level One WS Regressors: " + NewModel.defFile.getFieldModelScaleRegressors().length);
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -1806,7 +1806,8 @@ public class mixregGUI extends javax.swing.JFrame {
 
         String[] regressorLabels = new String[levelOneRegSize];
         int index = 0;
-        String[] position = new String[variableNamesCombo.length];
+        
+        ArrayList<String> position = new ArrayList<>();
 
         for (int p = 0; p < levelOneRegSize; p++) {
 
@@ -1815,12 +1816,16 @@ public class mixregGUI extends javax.swing.JFrame {
                 fieldLabel = levelOneSelected.get(p);
                 System.out.println("Regressor Fields (Mean): " + regressorLabels[index]);
                 index++;
+                
+                int posIndex = 0;
 
                 for (int q = 0; q < variableNamesCombo.length; q++) {
 
                     if (variableNamesCombo[q].equals(fieldLabel)) {
-                        position[index] = String.valueOf(q + 1);
-                        System.out.println("Position of the regressor: " + position[index]);
+                        //position[index] = String.valueOf(q + 1);
+                        position.add(String.valueOf(q+1));
+                        System.out.println("Position of the regressor: " + position.get(posIndex));
+                        posIndex++;
 
                     }
 
@@ -1829,7 +1834,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
         }
 
-        return position;
+        return position.toArray(new String[position.size()]);
     }
 
     public String[] getBSFieldRegressorLabels_levelOne() {
@@ -1838,7 +1843,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
         String[] regressorLabels = new String[levelOneRegSize];
         int index = 0;
-        String[] position = new String[variableNamesCombo.length];
+        ArrayList<String> position = new ArrayList<>();
 
         for (int p = 0; p < levelOneRegSize; p++) {
 
@@ -1847,19 +1852,21 @@ public class mixregGUI extends javax.swing.JFrame {
                 fieldLabel = levelOneSelected.get(p);
                 System.out.println("Regressor Fields (BS): " + regressorLabels[index]);
                 index++;
+                int posIndex = 0;
 
                 for (int q = 0; q < variableNamesCombo.length; q++) {
 
                     if (variableNamesCombo[q].equals(fieldLabel)) {
-                        position[index] = String.valueOf(q + 1);
-                        System.out.println("Position of the regressor: " + position[index]);
+                        position.add(String.valueOf(q+1));
+                        System.out.println("Position of the regressor: " + position.get(posIndex));
+                        posIndex++;
 
                     }
                 }
             }
         }
 
-        return position;
+        return position.toArray(new String[position.size()]);
     }
 
     public String[] getWSFieldRegressorLabels_levelOne() {
@@ -1868,7 +1875,7 @@ public class mixregGUI extends javax.swing.JFrame {
         String fieldLabel;
 
         int index = 0;
-        String[] position = new String[variableNamesCombo.length];
+        ArrayList<String> position = new ArrayList<>();
 
         for (int p = 0; p < levelOneRegSize; p++) {
 
@@ -1877,12 +1884,14 @@ public class mixregGUI extends javax.swing.JFrame {
                 fieldLabel = levelOneSelected.get(p);
                 System.out.println("Regressor Fields (WS): " + regressorLabels[index]);
                 index++;
+                int posIndex = 0;
 
                 for (int q = 0; q < variableNamesCombo.length; q++) {
 
                     if (variableNamesCombo[q].equals(fieldLabel)) {
-                        position[index] = String.valueOf(q + 1);
-                        System.out.println("Position of the regressor: " + position[index]);
+                        position.add(String.valueOf(q+1));
+                        System.out.println("Position of the regressor: " + position.get(posIndex));
+                        posIndex++;
 
                     }
                 }
@@ -1890,7 +1899,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
         }
 
-        return position;
+        return position.toArray(new String[position.size()]);
     }
 
     private String[] getFieldModelWSRegressors() {
