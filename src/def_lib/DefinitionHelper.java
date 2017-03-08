@@ -121,6 +121,8 @@ public class DefinitionHelper {
     private String[] stageTwoLocRanIntLabels;
     private String[] stageTwoScaleIntLabels;
     private String[] stageTwoFirstIntLabels;
+    
+    
 
     /**
      *
