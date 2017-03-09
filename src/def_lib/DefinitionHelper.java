@@ -179,14 +179,17 @@ public class DefinitionHelper {
             List<String> defSummary = new ArrayList<>();
 
             int fileSize = 0;
-            while ((defLine = br.readLine()) != null) {
-                if(defLine.length() > 0){fileSize++;}
+            while ((defLine = br.readLine()) != null ) {
+                //if(defLine.length() > 0){
+                System.out.println(defLine);
+                    fileSize++;
+                //}
                 defSummary.add(defLine.trim());
             }
             if (stageTwoBinary & fileSize != 31) {
-                throw new Exception("Invalid definition file length");  // TODO: Create a new class that extends from Exception for invalid def files
+                throw new Exception("Invalid definition file length, likely you forgot line spacing");  // TODO: Create a new class that extends from Exception for invalid def files
             } else if (!stageTwoBinary & fileSize != 30) {
-                throw new Exception("Invalid definition file length");
+                throw new Exception("Invalid definition file length, likely you forgot line spacing");
             }
 
             assignDefinitionVariables(defSummary);
@@ -312,28 +315,30 @@ public class DefinitionHelper {
         newDefinitionFile.add(getModelSubtitle());
         newDefinitionFile.add(getDataFilename());
         newDefinitionFile.add(getOutputPrefix());
-        newDefinitionFile.add(getDataFilename());
         String[] advancedOptionsOne = advancedVariableBuild(1);
         newDefinitionFile.add(Arrays.toString(advancedOptionsOne).replaceAll(",", " "));
         newDefinitionFile.add(Arrays.toString(getIdOutcome()).replaceAll(",", " "));
         newDefinitionFile.add(Arrays.toString(getFieldModelMeanRegressors()).replaceAll(",", " "));
-        newDefinitionFile.add(Arrays.toString(getFieldDecompMeanRegressors()).replaceAll(",", " "));
-        newDefinitionFile.add(getLabelModelOutcome());
-        newDefinitionFile.add(Arrays.toString(getLabelModelMeanRegressors()).replaceAll(",", " "));
-        newDefinitionFile.add(Arrays.toString(getLabelDecompMeanRegressors()).replaceAll(",", " "));
         String[] advancedOptionsTwo = advancedVariableBuild(2);
-        newDefinitionFile.add(Arrays.toString(advancedOptionsTwo).replaceAll(",", " "));
-        newDefinitionFile.add(getStageTwoOutcomeField());
+
+
         switch (sequenceDecision()) {
             case MIXREGLS_MIXREG_KEY:
                 newDefinitionFile.add(Arrays.toString(getFieldModelBSRegressors()).replaceAll(",", " "));
                 newDefinitionFile.add(Arrays.toString(getFieldModelWSRegressors()).replaceAll(",", " "));
+                 newDefinitionFile.add(Arrays.toString(getFieldDecompMeanRegressors()).replaceAll(",", " "));
                 newDefinitionFile.add(Arrays.toString(getFieldDecompBSRegressors()).replaceAll(",", " "));
                 newDefinitionFile.add(Arrays.toString(getFieldDecompWSRegressors()).replaceAll(",", " "));
+                newDefinitionFile.add(getLabelModelOutcome());
+                  newDefinitionFile.add(Arrays.toString(getLabelModelMeanRegressors()).replaceAll(",", " "));
                 newDefinitionFile.add(Arrays.toString(getLabelModelBSRegressors()).replaceAll(",", " "));
                 newDefinitionFile.add(Arrays.toString(getLabelModelWSRegressors()).replaceAll(",", " "));
+                 newDefinitionFile.add(Arrays.toString(getLabelDecompMeanRegressors()).replaceAll(",", " "));
                 newDefinitionFile.add(Arrays.toString(getLabelDecompBSRegressors()).replaceAll(",", " "));
                 newDefinitionFile.add(Arrays.toString(getLabelDecompWSRegressors()).replaceAll(",", " "));
+                
+                newDefinitionFile.add(Arrays.toString(advancedOptionsTwo).replaceAll(",", " ")); 
+                newDefinitionFile.add(getStageTwoOutcomeField());
                 newDefinitionFile.add(Arrays.toString(getStageTwoFixedFields()).replaceAll(",", " "));
                 newDefinitionFile.add(Arrays.toString(getStageTwoLocRanIntFields()).replaceAll(",", " "));
                 newDefinitionFile.add(Arrays.toString(getStageTwoScaleIntFields()).replaceAll(",", " "));
@@ -347,12 +352,19 @@ public class DefinitionHelper {
             case MIXREGLS_MIXOR_KEY:
                 newDefinitionFile.add(Arrays.toString(getFieldModelBSRegressors()).replaceAll(",", " "));
                 newDefinitionFile.add(Arrays.toString(getFieldModelWSRegressors()).replaceAll(",", " "));
+                 newDefinitionFile.add(Arrays.toString(getFieldDecompMeanRegressors()).replaceAll(",", " "));
                 newDefinitionFile.add(Arrays.toString(getFieldDecompBSRegressors()).replaceAll(",", " "));
                 newDefinitionFile.add(Arrays.toString(getFieldDecompWSRegressors()).replaceAll(",", " "));
+                newDefinitionFile.add(getLabelModelOutcome());
+                 newDefinitionFile.add(Arrays.toString(getLabelModelMeanRegressors()).replaceAll(",", " "));
                 newDefinitionFile.add(Arrays.toString(getLabelModelBSRegressors()).replaceAll(",", " "));
                 newDefinitionFile.add(Arrays.toString(getLabelModelWSRegressors()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getLabelDecompMeanRegressors()).replaceAll(",", " "));
                 newDefinitionFile.add(Arrays.toString(getLabelDecompBSRegressors()).replaceAll(",", " "));
                 newDefinitionFile.add(Arrays.toString(getLabelDecompWSRegressors()).replaceAll(",", " "));
+                
+                newDefinitionFile.add(Arrays.toString(advancedOptionsTwo).replaceAll(",", " ")); 
+                newDefinitionFile.add(getStageTwoOutcomeField());
                 newDefinitionFile.add(Arrays.toString(getStageTwoFixedFields()).replaceAll(",", " "));
                 newDefinitionFile.add(Arrays.toString(getStageTwoLocRanIntFields()).replaceAll(",", " "));
                 newDefinitionFile.add(Arrays.toString(getStageTwoScaleIntFields()).replaceAll(",", " "));
@@ -366,12 +378,19 @@ public class DefinitionHelper {
             case MIXREGMLS_MIXREG_KEY:
                 newDefinitionFile.add(Arrays.toString(getFieldModelLocRanRegressors()).replaceAll(",", " "));
                 newDefinitionFile.add(Arrays.toString(getFieldModelScaleRegressors()).replaceAll(",", " "));
+                 newDefinitionFile.add(Arrays.toString(getFieldDecompMeanRegressors()).replaceAll(",", " "));
                 newDefinitionFile.add(Arrays.toString(getFieldDecompLocRanRegressors()).replaceAll(",", " "));
                 newDefinitionFile.add(Arrays.toString(getFieldDecompScaleRegressors()).replaceAll(",", " "));
+                 newDefinitionFile.add(getLabelModelOutcome());
+                  newDefinitionFile.add(Arrays.toString(getLabelModelMeanRegressors()).replaceAll(",", " "));
                 newDefinitionFile.add(Arrays.toString(getLabelModelLocRanRegressors()).replaceAll(",", " "));
                 newDefinitionFile.add(Arrays.toString(getLabelModelScaleRegressors()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getLabelDecompMeanRegressors()).replaceAll(",", " "));
                 newDefinitionFile.add(Arrays.toString(getLabelDecompLocRanRegressors()).replaceAll(",", " "));
                 newDefinitionFile.add(Arrays.toString(getLabelDecompScaleRegressors()).replaceAll(",", " "));
+                
+                newDefinitionFile.add(Arrays.toString(advancedOptionsTwo).replaceAll(",", " ")); 
+                newDefinitionFile.add(getStageTwoOutcomeField());
                 newDefinitionFile.add(Arrays.toString(getStageTwoFixedFields()).replaceAll(",", " "));
                 newDefinitionFile.add(Arrays.toString(getStageTwoLocRanIntFields()).replaceAll(",", " "));
                 newDefinitionFile.add(Arrays.toString(getStageTwoScaleIntFields()).replaceAll(",", " "));
@@ -385,12 +404,19 @@ public class DefinitionHelper {
             case MIXREGMLS_MIXOR_KEY:
                 newDefinitionFile.add(Arrays.toString(getFieldModelLocRanRegressors()).replaceAll(",", " "));
                 newDefinitionFile.add(Arrays.toString(getFieldModelScaleRegressors()).replaceAll(",", " "));
+                 newDefinitionFile.add(Arrays.toString(getFieldDecompMeanRegressors()).replaceAll(",", " "));
                 newDefinitionFile.add(Arrays.toString(getFieldDecompLocRanRegressors()).replaceAll(",", " "));
                 newDefinitionFile.add(Arrays.toString(getFieldDecompScaleRegressors()).replaceAll(",", " "));
+                newDefinitionFile.add(getLabelModelOutcome());
+                 newDefinitionFile.add(Arrays.toString(getLabelModelMeanRegressors()).replaceAll(",", " "));
                 newDefinitionFile.add(Arrays.toString(getLabelModelLocRanRegressors()).replaceAll(",", " "));
                 newDefinitionFile.add(Arrays.toString(getLabelModelScaleRegressors()).replaceAll(",", " "));
+                newDefinitionFile.add(Arrays.toString(getLabelDecompMeanRegressors()).replaceAll(",", " "));
                 newDefinitionFile.add(Arrays.toString(getLabelDecompLocRanRegressors()).replaceAll(",", " "));
                 newDefinitionFile.add(Arrays.toString(getLabelDecompScaleRegressors()).replaceAll(",", " "));
+                
+                newDefinitionFile.add(Arrays.toString(advancedOptionsTwo).replaceAll(",", " ")); 
+                newDefinitionFile.add(getStageTwoOutcomeField());
                 newDefinitionFile.add(Arrays.toString(getStageTwoFixedFields()).replaceAll(",", " "));
                 newDefinitionFile.add(Arrays.toString(getStageTwoLocRanIntFields()).replaceAll(",", " "));
                 newDefinitionFile.add(Arrays.toString(getStageTwoScaleIntFields()).replaceAll(",", " "));
@@ -574,6 +600,13 @@ public class DefinitionHelper {
                     advancedVars.add(getDecompMeanCount());
                     advancedVars.add(getDecompLocRanCount());
                     advancedVars.add(getDecompScaleCount());
+                    advancedVars.add(getAdvancedConvergence());
+                    advancedVars.add(getAdvancedQuadPoints());
+                    advancedVars.add(getAdvancedAdaptiveQuad());
+                    advancedVars.add(getAdvancedMaxIteration());
+                    advancedVars.add(getAdvancedMissingValue());
+                    advancedVars.add(getAdvancedCenterScale());
+                    advancedVars.add(getAdvancedEffectMeanWS());
                     advancedVars.add(getAdvancedRidge());
                     break;
                 case MIXREGMLS_MIXOR_KEY:
@@ -593,6 +626,7 @@ public class DefinitionHelper {
                     advancedVars.add(getAdvancedMaxIteration());
                     advancedVars.add(getAdvancedMissingValue());
                     advancedVars.add(getAdvancedCenterScale());
+                    advancedVars.add(getAdvancedEffectMeanWS());
                     advancedVars.add(getAdvancedRidge());
                     break;
                 default:
@@ -680,7 +714,8 @@ public class DefinitionHelper {
                     setModelScaleInt(advancedVars[6]);
                     setDecompLocRanCount(advancedVars[8]);
                     setDecompScaleCount(advancedVars[9]);
-                    setAdvancedRidge(advancedVars[16]);
+                    setAdvancedEffectMeanWS(advancedVars[16]);
+                    setAdvancedRidge(advancedVars[17]);
                     break;
                 case MIXREGMLS_MIXOR_KEY:
                     setModelLocRanCount(advancedVars[2]);
@@ -689,7 +724,8 @@ public class DefinitionHelper {
                     setModelScaleInt(advancedVars[6]);
                     setDecompLocRanCount(advancedVars[8]);
                     setDecompScaleCount(advancedVars[9]);
-                    setAdvancedRidge(advancedVars[16]);
+                    setAdvancedEffectMeanWS(advancedVars[16]);
+                    setAdvancedRidge(advancedVars[17]);
                     break;
                 default:
                 //TODO: Log this error 
@@ -1158,8 +1194,15 @@ public class DefinitionHelper {
     // to do?
     // tested?
     public void setAdvancedEffectMeanWS(String advancedEffectMeanWS) throws Exception {
-        if (setValidator("effect of mean on WS variance", "5", advancedEffectMeanWS, 0, 2, MIX_INTEGER)) {
-            this.advancedEffectMeanWS = advancedEffectMeanWS;
+        if(randomLocationEffects>1){
+            if (setValidator("association of random location & scale", "5", advancedEffectMeanWS, 0, 1, MIX_INTEGER)) {
+                this.advancedEffectMeanWS = advancedEffectMeanWS;
+            }
+        }
+        else {
+            if (setValidator("effect of mean on WS variance", "5", advancedEffectMeanWS, 0, 2, MIX_INTEGER)) {
+                this.advancedEffectMeanWS = advancedEffectMeanWS;
+            }
         }
     }
 
@@ -1186,7 +1229,10 @@ public class DefinitionHelper {
 
     // to do
     public void setFieldModelMeanRegressors(String[] fieldModelMeanRegressors) throws Exception {
-        if (loopSetValidator("model mean regressor fields", "7", fieldModelMeanRegressors, 0, 255, MIX_INTEGER)) {
+        if (getModelMeanCount().matches("0")){
+            this.fieldModelMeanRegressors = new String[0];
+        }
+        else if (loopSetValidator("model mean regressor fields", "7", fieldModelMeanRegressors, 0, 255, MIX_INTEGER)) {
             this.fieldModelMeanRegressors = fieldModelMeanRegressors;
         }
     }
@@ -1197,7 +1243,10 @@ public class DefinitionHelper {
 
     // to do
     public void setFieldModelBSRegressors(String[] fieldModelBSRegressors) throws Exception {
-        if (loopSetValidator("model BS variance regressor fields", "8", fieldModelBSRegressors, 0, 255, MIX_INTEGER)) {
+        if (getModelBetweenCount().matches("0")){
+            this.fieldModelBSRegressors = new String[0];
+        }
+        else if(loopSetValidator("model BS variance regressor fields", "8", fieldModelBSRegressors, 0, 255, MIX_INTEGER)) {
             this.fieldModelBSRegressors = fieldModelBSRegressors;
         }
     }
@@ -1208,7 +1257,10 @@ public class DefinitionHelper {
 
     // to do
     public void setFieldModelWSRegressors(String[] fieldModelWSRegressors) throws Exception {
-        if (loopSetValidator("model WS variance regressor fields", "9", fieldModelWSRegressors, 0, 255, MIX_INTEGER)) {
+        if (getModelWithinCount().matches("0")){
+            this.fieldModelWSRegressors = new String[0];
+        }
+        else if(loopSetValidator("model WS variance regressor fields", "9", fieldModelWSRegressors, 0, 255, MIX_INTEGER)) {
             this.fieldModelWSRegressors = fieldModelWSRegressors;
         }
     }
@@ -1219,7 +1271,10 @@ public class DefinitionHelper {
 
     // to do
     public void setFieldModelLocRanRegressors(String[] fieldModelLocRanRegressors) throws Exception {
-        if (loopSetValidator("model random regressor fields", "8", fieldModelLocRanRegressors, 0, 255, MIX_INTEGER)) {
+        if (getModelLocRanCount().matches("0")){
+            this.fieldModelLocRanRegressors = new String[0];
+        }
+        else if(loopSetValidator("model random regressor fields", "8", fieldModelLocRanRegressors, 0, 255, MIX_INTEGER)) {
             this.fieldModelLocRanRegressors = fieldModelLocRanRegressors;
         }
     }
@@ -1230,7 +1285,10 @@ public class DefinitionHelper {
 
     // to do
     public void setFieldModelScaleRegressors(String[] fieldModelScaleRegressors) throws Exception {
-        if (loopSetValidator("model scale regressor fields", "9", fieldModelScaleRegressors, 0, 255, MIX_INTEGER)) {
+        if (getModelScaleCount().matches("0")){
+            this.fieldModelScaleRegressors = new String[0];
+        }
+        else if (loopSetValidator("model scale regressor fields", "9", fieldModelScaleRegressors, 0, 255, MIX_INTEGER)) {
             this.fieldModelScaleRegressors = fieldModelScaleRegressors;
         }
     }
@@ -1241,7 +1299,10 @@ public class DefinitionHelper {
 
     // to do
     public void setFieldDecompMeanRegressors(String[] fieldDecompMeanRegressors) throws Exception {
-        if (loopSetValidator("model mean regressor for BS/WS decomposition fields", "10", fieldDecompMeanRegressors, 0, 255, MIX_INTEGER)) {
+        if (getDecompMeanCount().matches("0")){
+            this.fieldDecompMeanRegressors = new String[0];
+        }
+        else if (loopSetValidator("model mean regressor for BS/WS decomposition fields", "10", fieldDecompMeanRegressors, 0, 255, MIX_INTEGER)) {
             this.fieldDecompMeanRegressors = fieldDecompMeanRegressors;
         }
     }
@@ -1252,7 +1313,10 @@ public class DefinitionHelper {
 
     // to do
     public void setFieldDecompBSRegressors(String[] fieldDecompBSRegressors) throws Exception {
-        if (loopSetValidator("model BS variance regressor for BS/WS decomposition fields", "11", fieldDecompBSRegressors, 0, 255, MIX_INTEGER)) {
+        if (getDecompBSCount().matches("0")){
+            this.fieldDecompBSRegressors = new String[0];
+        }
+        else if (loopSetValidator("model BS variance regressor for BS/WS decomposition fields", "11", fieldDecompBSRegressors, 0, 255, MIX_INTEGER)) {
             this.fieldDecompBSRegressors = fieldDecompBSRegressors;
         }
     }
@@ -1263,7 +1327,10 @@ public class DefinitionHelper {
 
     // to do
     public void setFieldDecompWSRegressors(String[] fieldDecompWSRegressors) throws Exception {
-        if (loopSetValidator("model WS variance regressor for BS/WS decomposition fields", "12", fieldDecompWSRegressors, 0, 255, MIX_INTEGER)) {
+        if (getDecompWSCount().matches("0")){
+            this.fieldDecompWSRegressors = new String[0];
+        }
+        else if (loopSetValidator("model WS variance regressor for BS/WS decomposition fields", "12", fieldDecompWSRegressors, 0, 255, MIX_INTEGER)) {
             this.fieldDecompWSRegressors = fieldDecompWSRegressors;
         }
     }
@@ -1274,7 +1341,10 @@ public class DefinitionHelper {
 
     // to do
     public void setFieldDecompLocRanRegressors(String[] fieldDecompLocRanRegressors) throws Exception {
-        if (loopSetValidator("model random regressor for BS/WS decomposition fields", "11", fieldDecompLocRanRegressors, 0, 255, MIX_INTEGER)) {
+        if (getDecompLocRanCount().matches("0")){
+            this.fieldDecompLocRanRegressors = new String[0];
+        }
+        else if (loopSetValidator("model random regressor for BS/WS decomposition fields", "11", fieldDecompLocRanRegressors, 0, 255, MIX_INTEGER)) {
             this.fieldDecompLocRanRegressors = fieldDecompLocRanRegressors;
         }
     }
@@ -1285,7 +1355,10 @@ public class DefinitionHelper {
 
     // to do
     public void setFieldDecompScaleRegressors(String[] fieldDecompScaleRegressors) throws Exception {
-        if (loopSetValidator("model scale regressor for BS/WS decomposition fields", "12", fieldDecompScaleRegressors, 0, 255, MIX_INTEGER)) {
+        if (getDecompScaleCount().matches("0")){
+            this.fieldDecompScaleRegressors = new String[0];
+        }
+        else if (loopSetValidator("model scale regressor for BS/WS decomposition fields", "12", fieldDecompScaleRegressors, 0, 255, MIX_INTEGER)) {
             this.fieldDecompScaleRegressors = fieldDecompScaleRegressors;
         }
     }
@@ -1305,7 +1378,10 @@ public class DefinitionHelper {
     }
 
     public void setLabelModelMeanRegressors(String[] labelModelMeanRegressors) throws Exception {
-        if (loopSetValidator("model mean regressor labels", "14", labelModelMeanRegressors, 1, 255, MIX_STRING)) {
+        if (getModelMeanCount().matches("0")){
+            this.labelModelMeanRegressors = new String[0];
+        }
+        else if (loopSetValidator("model mean regressor labels", "14", labelModelMeanRegressors, 1, 255, MIX_STRING)) {
             this.labelModelMeanRegressors = labelModelMeanRegressors;
         }
     }
@@ -1315,7 +1391,10 @@ public class DefinitionHelper {
     }
 
     public void setLabelModelLocRanRegressors(String[] labelModelLocRanRegressors) throws Exception {
-        if (loopSetValidator("model random regressor labels", "15", labelModelLocRanRegressors, 1, 255, MIX_STRING)) {
+        if (getModelLocRanCount().matches("0")){
+            this.labelModelLocRanRegressors = new String[0];
+        }
+        else if (loopSetValidator("model random regressor labels", "15", labelModelLocRanRegressors, 1, 255, MIX_STRING)) {
             this.labelModelLocRanRegressors = labelModelLocRanRegressors;
         }
     }
@@ -1325,7 +1404,10 @@ public class DefinitionHelper {
     }
 
     public void setLabelModelScaleRegressors(String[] labelModelScaleRegressors) throws Exception {
-        if (loopSetValidator("model scale regressor labels", "16", labelModelScaleRegressors, 1, 255, MIX_STRING)) {
+        if (getModelScaleCount().matches("0")){
+            this.labelModelScaleRegressors = new String[0];
+        }
+        else if (loopSetValidator("model scale regressor labels", "16", labelModelScaleRegressors, 1, 255, MIX_STRING)) {
             this.labelModelScaleRegressors = labelModelScaleRegressors;
         }
     }
@@ -1335,7 +1417,10 @@ public class DefinitionHelper {
     }
 
     public void setLabelModelBSRegressors(String[] labelModelBSRegressors) throws Exception {
-        if (loopSetValidator("model BS variance regressor labels", "15", labelModelBSRegressors, 1, 255, MIX_STRING)) {
+        if (getModelBetweenCount().matches("0")){
+            this.labelModelBSRegressors = new String[0];
+        }
+        else if (loopSetValidator("model BS variance regressor labels", "15", labelModelBSRegressors, 1, 255, MIX_STRING)) {
             this.labelModelBSRegressors = labelModelBSRegressors;
         }
     }
@@ -1345,7 +1430,10 @@ public class DefinitionHelper {
     }
 
     public void setLabelModelWSRegressors(String[] labelModelWSRegressors) throws Exception {
-        if (loopSetValidator("model WS variance regressor labels", "16", labelModelWSRegressors, 1, 255, MIX_STRING)) {
+        if (getModelWithinCount().matches("0")){
+            this.labelModelWSRegressors = new String[0];
+        }
+        else if (loopSetValidator("model WS variance regressor labels", "16", labelModelWSRegressors, 1, 255, MIX_STRING)) {
             this.labelModelWSRegressors = labelModelWSRegressors;
         }
     }
@@ -1355,7 +1443,10 @@ public class DefinitionHelper {
     }
 
     public void setLabelDecompMeanRegressors(String[] labelDecompMeanRegressors) throws Exception {
-        if (loopSetValidator("model mean regressor for BS/WS decomposition labels", "17", labelDecompMeanRegressors, 1, 255, MIX_STRING)) {
+        if (getDecompMeanCount().matches("0")){
+            this.labelDecompMeanRegressors = new String[0];
+        }
+        else if (loopSetValidator("model mean regressor for BS/WS decomposition labels", "17", labelDecompMeanRegressors, 1, 255, MIX_STRING)) {
             this.labelDecompMeanRegressors = labelDecompMeanRegressors;
         }
     }
@@ -1365,7 +1456,10 @@ public class DefinitionHelper {
     }
 
     public void setLabelDecompLocRanRegressors(String[] labelDecompLocRanRegressors) throws Exception {
-        if (loopSetValidator("model random regressor for BS/WS decomposition labels", "18", labelDecompLocRanRegressors, 1, 255, MIX_STRING)) {
+        if (getDecompLocRanCount().matches("0")){
+            this.labelDecompLocRanRegressors = new String[0];
+        }
+        else if (loopSetValidator("model random regressor for BS/WS decomposition labels", "18", labelDecompLocRanRegressors, 1, 255, MIX_STRING)) {
             this.labelDecompLocRanRegressors = labelDecompLocRanRegressors;
         }
     }
@@ -1375,7 +1469,10 @@ public class DefinitionHelper {
     }
 
     public void setLabelDecompScaleRegressors(String[] labelDecompScaleRegressors) throws Exception {
-        if (loopSetValidator("model scale regressor for BS/WS decomposition labels", "19", labelDecompScaleRegressors, 1, 255, MIX_STRING)) {
+        if (getDecompScaleCount().matches("0")){
+            this.labelDecompScaleRegressors = new String[0];
+        }
+        else if (loopSetValidator("model scale regressor for BS/WS decomposition labels", "19", labelDecompScaleRegressors, 1, 255, MIX_STRING)) {
             this.labelDecompScaleRegressors = labelDecompScaleRegressors;
         }
     }
@@ -1385,7 +1482,10 @@ public class DefinitionHelper {
     }
 
     public void setLabelDecompBSRegressors(String[] labelDecompBSRegressors) throws Exception {
-        if (loopSetValidator("model BS variance regressor for BS/WS decomposition labels", "18", labelDecompBSRegressors, 1, 255, MIX_STRING)) {
+        if (getDecompBSCount().matches("0")){
+            this.labelDecompBSRegressors = new String[0];
+        } 
+        else if (loopSetValidator("model BS variance regressor for BS/WS decomposition labels", "18", labelDecompBSRegressors, 1, 255, MIX_STRING)) {
             this.labelDecompBSRegressors = labelDecompBSRegressors;
         }
     }
@@ -1395,7 +1495,10 @@ public class DefinitionHelper {
     }
 
     public void setLabelDecompWSRegressors(String[] labelDecompWSRegressors) throws Exception {
-        if (loopSetValidator("model WS variance regressor for BS/WS decomposition labels", "19", labelDecompWSRegressors, 1, 255, MIX_STRING)) {
+        if (getDecompWSCount().matches("0")){
+            this.labelDecompWSRegressors = new String[0];
+        } 
+        else if (loopSetValidator("model WS variance regressor for BS/WS decomposition labels", "19", labelDecompWSRegressors, 1, 255, MIX_STRING)) {
             this.labelDecompWSRegressors = labelDecompWSRegressors;
         }
     }
@@ -1475,7 +1578,10 @@ public class DefinitionHelper {
     }
 
     public void setStageTwoFixedFields(String[] stageTwoFixedFields) throws Exception {
-        if (loopSetValidator("fields of fixed regressors", "22(mixreg)/23((mixor)", stageTwoFixedFields, 1, 255, MIX_INTEGER)) {
+        if (getStageTwoFixedCount().matches("0")){
+            this.stageTwoFixedFields = new String[0];
+        } 
+        else if (loopSetValidator("fields of fixed regressors", "22(mixreg)/23((mixor)", stageTwoFixedFields, 1, 255, MIX_INTEGER)) {
             this.stageTwoFixedFields = stageTwoFixedFields;
         }
     }
@@ -1485,7 +1591,10 @@ public class DefinitionHelper {
     }
 
     public void setStageTwoLocRanIntFields(String[] stageTwoLocRanIntFields) throws Exception {
-        if (loopSetValidator("fields of regressors to interact with location random effects", "23(mixreg)/24((mixor)", stageTwoLocRanIntFields, 1, 255, MIX_INTEGER)) {
+        if (getStageTwoLocRanInteractions().matches("0")){
+            this.stageTwoLocRanIntFields = new String[0];
+        } 
+        else if (loopSetValidator("fields of regressors to interact with location random effects", "23(mixreg)/24((mixor)", stageTwoLocRanIntFields, 1, 255, MIX_INTEGER)) {
             this.stageTwoLocRanIntFields = stageTwoLocRanIntFields;
         }
     }
@@ -1495,7 +1604,10 @@ public class DefinitionHelper {
     }
 
     public void setStageTwoScaleIntFields(String[] stageTwoScaleIntFields) throws Exception {
-        if (loopSetValidator("fields of regressors to interact with scale random effects", "24(mixreg)/25((mixor)", stageTwoScaleIntFields, 1, 255, MIX_INTEGER)) {
+        if (getStageTwoScaleInteractions().matches("0")){
+            this.stageTwoScaleIntFields = new String[0];
+        } 
+        else if (loopSetValidator("fields of regressors to interact with scale random effects", "24(mixreg)/25((mixor)", stageTwoScaleIntFields, 1, 255, MIX_INTEGER)) {
             this.stageTwoScaleIntFields = stageTwoScaleIntFields;
         }
     }
@@ -1505,7 +1617,10 @@ public class DefinitionHelper {
     }
 
     public void setStageTwoFirstIntFields(String[] stageTwoFirstIntFields) throws Exception {
-        if (loopSetValidator("fields of regressors to interact with the interaction of the location random effects", "25(mixreg)/26((mixor)", stageTwoFirstIntFields, 1, 255, MIX_INTEGER)) {
+        if (getStageTwoIntOfInteraction().matches("0")){
+            this.stageTwoFirstIntFields = new String[0];
+        } 
+        else if  (loopSetValidator("fields of regressors to interact with the interaction of the location random effects", "25(mixreg)/26((mixor)", stageTwoFirstIntFields, 1, 255, MIX_INTEGER)) {
             this.stageTwoFirstIntFields = stageTwoFirstIntFields;
         }
     }
@@ -1525,7 +1640,10 @@ public class DefinitionHelper {
     }
 
     public void setStageTwoFixedLabels(String[] stageTwoFixedLabels) throws Exception {
-        if (loopSetValidator("label of stage two fixed regressors", "27(mixreg)/28((mixor)", stageTwoFixedLabels, 1, 255, MIX_STRING)) {
+        if (getStageTwoFixedCount().matches("0")){
+            this.stageTwoFixedLabels = new String[0];
+        } 
+        else if (loopSetValidator("label of stage two fixed regressors", "27(mixreg)/28((mixor)", stageTwoFixedLabels, 1, 255, MIX_STRING)) {
             this.stageTwoFixedLabels = stageTwoFixedLabels;
         }
     }
@@ -1535,7 +1653,10 @@ public class DefinitionHelper {
     }
 
     public void setStageTwoLocRanIntLabels(String[] stageTwoLocRanIntLabels) throws Exception {
-        if (loopSetValidator("labels of stage two regressors to interact with location random effect", "28(mixreg)/29((mixor)", stageTwoLocRanIntLabels, 1, 255, MIX_STRING)) {
+        if (getStageTwoLocRanInteractions().matches("0")){
+            this.stageTwoLocRanIntLabels = new String[0];
+        } 
+        else if (loopSetValidator("labels of stage two regressors to interact with location random effect", "28(mixreg)/29((mixor)", stageTwoLocRanIntLabels, 1, 255, MIX_STRING)) {
             this.stageTwoLocRanIntLabels = stageTwoLocRanIntLabels;
         }
     }
@@ -1545,7 +1666,10 @@ public class DefinitionHelper {
     }
 
     public void setStageTwoScaleIntLabels(String[] stageTwoScaleIntLabels) throws Exception {
-        if (loopSetValidator("labels of stage two regressors to interact with scale effect", "29(mixreg)/30((mixor)", stageTwoScaleIntLabels, 1, 255, MIX_STRING)) {
+        if (getStageTwoScaleInteractions().matches("0")){
+            this.stageTwoScaleIntLabels = new String[0];
+        } 
+        else if  (loopSetValidator("labels of stage two regressors to interact with scale effect", "29(mixreg)/30((mixor)", stageTwoScaleIntLabels, 1, 255, MIX_STRING)) {
             this.stageTwoScaleIntLabels = stageTwoScaleIntLabels;
         }
     }
@@ -1555,7 +1679,10 @@ public class DefinitionHelper {
     }
 
     public void setStageTwoFirstIntLabels(String[] stageTwoFirstIntLabels) throws Exception {
-        if (loopSetValidator("labels of stage two regressors to interact with the interaction of the location random effect", "30(mixreg)/31(mixor)", stageTwoFirstIntLabels, 1, 255, MIX_STRING)) {
+        if (getStageTwoIntOfInteraction().matches("0")){
+            this.stageTwoFirstIntLabels = new String[0];
+        } 
+        else if (loopSetValidator("labels of stage two regressors to interact with the interaction of the location random effect", "30(mixreg)/31(mixor)", stageTwoFirstIntLabels, 1, 255, MIX_STRING)) {
             this.stageTwoFirstIntLabels = stageTwoFirstIntLabels;
         }
     }
