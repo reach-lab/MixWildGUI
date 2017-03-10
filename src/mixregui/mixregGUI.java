@@ -853,6 +853,29 @@ public class mixregGUI extends javax.swing.JFrame {
             }
 
         } else if (i > 1) {
+            
+            
+            if (NoAssociationRadio.isSelected()) {
+
+                try {
+                    NewModel.defFile.setAdvancedEffectMeanWS(String.valueOf(0));
+                    System.out.println("Association of random location & scale?: " + NewModel.defFile.getAdvancedEffectMeanWS());
+                } catch (Exception ex) {
+                    catchCount = 1;
+                    Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+                }
+
+            } else if (LinearAssociationRadio.isSelected()) {
+                try {
+                    NewModel.defFile.setAdvancedEffectMeanWS(String.valueOf(1));
+                    System.out.println("Association of random location & scale?: " + NewModel.defFile.getAdvancedEffectMeanWS());
+                } catch (Exception ex) {
+                    catchCount = 1;
+                    Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
 
             try {
                 tryCount = 1;
