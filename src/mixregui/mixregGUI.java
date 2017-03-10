@@ -48,6 +48,7 @@ public class mixregGUI extends javax.swing.JFrame {
     advancedOptions advancedOptions_view;
     stageOneRegs stage_1_regs;
     stageTwoRegs stage_2_regs;
+    def_lib.SuperUserMenu superUserMenuLaunch;
 
     //public boolean submitClicked = true;
     int i;
@@ -1056,6 +1057,9 @@ public class mixregGUI extends javax.swing.JFrame {
 
     private void superUserMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_superUserMenuActionPerformed
         // TODO add your handling code here:
+        superUserMenuLaunch = new def_lib.SuperUserMenu();
+
+        superUserMenuLaunch.setVisible(true);
     }//GEN-LAST:event_superUserMenuActionPerformed
 
     /**
