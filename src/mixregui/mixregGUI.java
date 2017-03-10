@@ -212,6 +212,7 @@ public class mixregGUI extends javax.swing.JFrame {
         newModelMenu = new javax.swing.JMenuItem();
         modifyStageOneMenu = new javax.swing.JMenuItem();
         modifyStageTwoMenu = new javax.swing.JMenuItem();
+        superUserMenu = new javax.swing.JMenuItem();
         exitMenu = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         diagramMenu = new javax.swing.JMenuItem();
@@ -536,7 +537,7 @@ public class mixregGUI extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(181, 181, 181)
                         .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(1116, Short.MAX_VALUE))
+                .addContainerGap(276, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -665,6 +666,14 @@ public class mixregGUI extends javax.swing.JFrame {
         modifyStageTwoMenu.setText("Modify Stage 2 Only");
         fileMenu.add(modifyStageTwoMenu);
 
+        superUserMenu.setText("Super User Mode");
+        superUserMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                superUserMenuActionPerformed(evt);
+            }
+        });
+        fileMenu.add(superUserMenu);
+
         exitMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_MASK));
         exitMenu.setText("Exit");
         exitMenu.addActionListener(new java.awt.event.ActionListener() {
@@ -755,9 +764,6 @@ public class mixregGUI extends javax.swing.JFrame {
         int tryCount = 0;
         int catchCount = 0;
 
-        //getMeanFieldRegressorLabels_levelOne();
-        //getBSFieldRegressorLabels_levelOne();
-        //getWSFieldRegressorLabels_levelOne();
         System.out.println("Total selected beta means model in level one: " + String.valueOf(countLevelOneBeta()));
         System.out.println("Total selected alpha means model in level one: " + String.valueOf(countLevelOneAlpha()));
         System.out.println("Total selected tau means model in level one: " + String.valueOf(countLevelOneTau()));
@@ -1048,6 +1054,10 @@ public class mixregGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_StageOneVariableComboActionPerformed
 
+    private void superUserMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_superUserMenuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_superUserMenuActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1175,6 +1185,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JLabel stage2_WSVar;
     private javax.swing.JTabbedPane stageOneTabs;
     private javax.swing.JPanel stageTwoGrid;
+    private javax.swing.JMenuItem superUserMenu;
     // End of variables declaration//GEN-END:variables
 
     public void isSubmitClicked() {
@@ -1780,11 +1791,6 @@ public class mixregGUI extends javax.swing.JFrame {
 
     }
 
-    /*meanSubmodelCheckBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                meanSubmodelCheckBoxActionPerformed(evt);
-            }
-        });*/
     public void enableDisaggVariance() {
 
         for (int p = 0; p < levelOneRegSize; p++) {
@@ -1806,7 +1812,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
         String[] regressorLabels = new String[levelOneRegSize];
         int index = 0;
-        
+
         ArrayList<String> position = new ArrayList<>();
 
         for (int p = 0; p < levelOneRegSize; p++) {
@@ -1816,14 +1822,14 @@ public class mixregGUI extends javax.swing.JFrame {
                 fieldLabel = levelOneSelected.get(p);
                 System.out.println("Regressor Fields (Mean): " + regressorLabels[index]);
                 index++;
-                
+
                 int posIndex = 0;
 
                 for (int q = 0; q < variableNamesCombo.length; q++) {
 
                     if (variableNamesCombo[q].equals(fieldLabel)) {
                         //position[index] = String.valueOf(q + 1);
-                        position.add(String.valueOf(q+1));
+                        position.add(String.valueOf(q + 1));
                         System.out.println("Position of the regressor: " + position.get(posIndex));
                         posIndex++;
 
@@ -1857,7 +1863,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 for (int q = 0; q < variableNamesCombo.length; q++) {
 
                     if (variableNamesCombo[q].equals(fieldLabel)) {
-                        position.add(String.valueOf(q+1));
+                        position.add(String.valueOf(q + 1));
                         System.out.println("Position of the regressor: " + position.get(posIndex));
                         posIndex++;
 
@@ -1889,7 +1895,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 for (int q = 0; q < variableNamesCombo.length; q++) {
 
                     if (variableNamesCombo[q].equals(fieldLabel)) {
-                        position.add(String.valueOf(q+1));
+                        position.add(String.valueOf(q + 1));
                         System.out.println("Position of the regressor: " + position.get(posIndex));
                         posIndex++;
 
