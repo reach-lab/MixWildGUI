@@ -60,6 +60,8 @@ public class NewModel extends javax.swing.JFrame {
        dichotomousRadio.setEnabled(false);
        randomLocationEffects.setEnabled(false);
        newModelSubmit.setEnabled(false);
+       newModelMissingValueCode.setEnabled(false);
+       newModelMissingValues.setEnabled(false);
        
        dataFileLabel.setToolTipText("Insert a data file in .csv format");
        fileBrowseButton.setToolTipText("Insert a data file in .csv format");
@@ -95,8 +97,11 @@ public class NewModel extends javax.swing.JFrame {
         dichotomousRadio = new javax.swing.JRadioButton();
         newModelSubmit = new javax.swing.JButton();
         newModelCancel = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
         newModel_resetButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        newModelMissingValues = new javax.swing.JCheckBox();
+        jLabel6 = new javax.swing.JLabel();
+        newModelMissingValueCode = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("New Model for Stage 1 Analysis");
@@ -170,51 +175,77 @@ public class NewModel extends javax.swing.JFrame {
             }
         });
 
+        newModelMissingValues.setText("Data contains missing values?");
+        newModelMissingValues.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newModelMissingValuesActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("Missing value code:");
+
+        newModelMissingValueCode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newModelMissingValueCodeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(31, 31, 31)
-                            .addComponent(dataFileLabel)
-                            .addGap(6, 6, 6)
-                            .addComponent(filePath, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(12, 12, 12)
-                            .addComponent(fileBrowseButton))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(31, 31, 31)
-                            .addComponent(jLabel2)
-                            .addGap(37, 37, 37)
-                            .addComponent(titleField, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(31, 31, 31)
-                            .addComponent(jLabel3)
-                            .addGap(17, 17, 17)
-                            .addComponent(subtitleField, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(31, 31, 31)
-                            .addComponent(jLabel4)
-                            .addGap(9, 9, 9)
-                            .addComponent(randomLocationEffects, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(31, 31, 31)
-                            .addComponent(jLabel5)
-                            .addGap(14, 14, 14)
-                            .addComponent(continuousRadio)
-                            .addGap(5, 5, 5)
-                            .addComponent(dichotomousRadio))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(217, 217, 217)
-                            .addComponent(newModelCancel)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(newModel_resetButton)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(newModelSubmit))))
-                .addGap(29, 29, 29))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(dataFileLabel)
+                        .addGap(6, 6, 6)
+                        .addComponent(filePath, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(fileBrowseButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel2)
+                        .addGap(37, 37, 37)
+                        .addComponent(titleField, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel3)
+                        .addGap(17, 17, 17)
+                        .addComponent(subtitleField, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel4)
+                        .addGap(9, 9, 9)
+                        .addComponent(randomLocationEffects, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(217, 217, 217)
+                        .addComponent(newModelCancel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(newModel_resetButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(newModelSubmit))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(14, 14, 14)
+                                .addComponent(continuousRadio)
+                                .addGap(5, 5, 5)
+                                .addComponent(dichotomousRadio))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(newModelMissingValues)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel1))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(21, 21, 21)
+                                        .addComponent(jLabel6)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(newModelMissingValueCode, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -251,13 +282,19 @@ public class NewModel extends javax.swing.JFrame {
                         .addComponent(jLabel5))
                     .addComponent(continuousRadio)
                     .addComponent(dichotomousRadio))
-                .addGap(36, 36, 36)
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(newModelMissingValues)
+                        .addComponent(jLabel6)
+                        .addComponent(newModelMissingValueCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(newModelSubmit)
                     .addComponent(newModelCancel)
                     .addComponent(newModel_resetButton))
-                .addGap(12, 12, 12)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35))
         );
 
         pack();
@@ -292,6 +329,7 @@ public class NewModel extends javax.swing.JFrame {
         dichotomousRadio.setEnabled(true);
         randomLocationEffects.setEnabled(true);
         newModelSubmit.setEnabled(true);
+        newModelMissingValues.setEnabled(true);
         
     }//GEN-LAST:event_fileBrowseButtonActionPerformed
 
@@ -338,6 +376,23 @@ public class NewModel extends javax.swing.JFrame {
         }   catch (Exception ex) {
                 Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
             }
+        
+         if (newModelMissingValueCode.isEnabled()) {
+
+            try {
+                defFile.setAdvancedMissingValue(newModelMissingValueCode.getText().toString());
+                System.out.println("Missing Value: " + defFile.getAdvancedMissingValue());
+//                tryCount = 1;
+            } catch (Exception ex) {
+                //catchCount = 1;
+                Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+        } else {
+            // do nothing and go next
+
+        }
         
        
         // Read random location effects from new Model
@@ -390,6 +445,22 @@ public class NewModel extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_newModel_resetButtonActionPerformed
+
+    private void newModelMissingValuesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModelMissingValuesActionPerformed
+        // TODO add your handling code here:
+        
+        if (newModelMissingValues.isSelected() == true) {
+            newModelMissingValueCode.setEnabled(true);
+            newModelMissingValueCode.setText("-9999");
+        } else {
+            newModelMissingValueCode.setEnabled(false);
+        }
+        
+    }//GEN-LAST:event_newModelMissingValuesActionPerformed
+
+    private void newModelMissingValueCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModelMissingValueCodeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_newModelMissingValueCodeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -449,12 +520,15 @@ public class NewModel extends javax.swing.JFrame {
     private javax.swing.JRadioButton dichotomousRadio;
     private javax.swing.JButton fileBrowseButton;
     private javax.swing.JTextField filePath;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JButton newModelCancel;
+    private javax.swing.JTextField newModelMissingValueCode;
+    private javax.swing.JCheckBox newModelMissingValues;
     private javax.swing.JButton newModelSubmit;
     private javax.swing.JButton newModel_resetButton;
     private javax.swing.JSpinner randomLocationEffects;
