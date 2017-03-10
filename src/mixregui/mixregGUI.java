@@ -101,11 +101,14 @@ public class mixregGUI extends javax.swing.JFrame {
         System.out.println(String.valueOf(i));
 
         if (i > 1) {
-            associationPanel.setVisible(false);
-            NoAssociationRadio.setVisible(false);
-            LinearAssociationRadio.setVisible(false);
+            //associationPanel.setVisible(false);
+            //NoAssociationRadio.setVisible(false);
+            NoAssociationRadio.setText("Yes");
+            //LinearAssociationRadio.setVisible(false);
+            LinearAssociationRadio.setText("No");
             QuadraticAssociationRadio.setVisible(false);
-            associationLabel.setVisible(false);
+            //associationLabel.setVisible(false);
+            associationLabel.setText("Association of random location & scale?");
 
             level1_BSVar.setText("Loc. eff.");
             level1_WSVar.setText("Scale");
@@ -329,8 +332,10 @@ public class mixregGUI extends javax.swing.JFrame {
         jPanel1.add(goBackMxrButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 520, 147, -1));
 
         associationPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        associationPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         associationLabel.setText("<html>Specify the relationship between the <br>random location and within subject variance tested below <br>(i.e. relation between variance and slope) </html>");
+        associationPanel.add(associationLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 8, 259, 91));
 
         buttonGroup1.add(NoAssociationRadio);
         NoAssociationRadio.setText("No Association");
@@ -339,42 +344,15 @@ public class mixregGUI extends javax.swing.JFrame {
                 NoAssociationRadioActionPerformed(evt);
             }
         });
+        associationPanel.add(NoAssociationRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 105, -1, -1));
 
         buttonGroup1.add(LinearAssociationRadio);
         LinearAssociationRadio.setText("Linear Association");
+        associationPanel.add(LinearAssociationRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 134, -1, -1));
 
         buttonGroup1.add(QuadraticAssociationRadio);
         QuadraticAssociationRadio.setText("Quadratic Association");
-
-        javax.swing.GroupLayout associationPanelLayout = new javax.swing.GroupLayout(associationPanel);
-        associationPanel.setLayout(associationPanelLayout);
-        associationPanelLayout.setHorizontalGroup(
-            associationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(associationPanelLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(associationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(associationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(associationPanelLayout.createSequentialGroup()
-                        .addGroup(associationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(QuadraticAssociationRadio)
-                            .addComponent(LinearAssociationRadio)
-                            .addComponent(NoAssociationRadio))
-                        .addGap(0, 88, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        associationPanelLayout.setVerticalGroup(
-            associationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(associationPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(associationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(NoAssociationRadio)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(LinearAssociationRadio)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(QuadraticAssociationRadio)
-                .addContainerGap(12, Short.MAX_VALUE))
-        );
+        associationPanel.add(QuadraticAssociationRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 163, -1, -1));
 
         jPanel1.add(associationPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, 200));
 
