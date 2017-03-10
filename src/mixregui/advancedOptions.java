@@ -26,7 +26,7 @@ public class advancedOptions extends javax.swing.JFrame {
         initComponents();
 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        missingValueCode.setEnabled(false);
+       // missingValueCode.setEnabled(false);
     }
 
     /**
@@ -51,19 +51,15 @@ public class advancedOptions extends javax.swing.JFrame {
         adaptiveQuadritureCheckBox = new javax.swing.JCheckBox();
         convergenceCriteria = new javax.swing.JSpinner();
         quadriturePoints = new javax.swing.JSpinner();
-        jLabel15 = new javax.swing.JLabel();
-        centerRegressorsCheckBox = new javax.swing.JCheckBox();
         jPanel2 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        missingValuesCheckBox = new javax.swing.JCheckBox();
-        jLabel9 = new javax.swing.JLabel();
-        missingValueCode = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         standardizedCoeff = new javax.swing.JCheckBox();
         jLabel11 = new javax.swing.JLabel();
         maximumIterations = new javax.swing.JSpinner();
         ridgeSpinner = new javax.swing.JSpinner();
+        jLabel15 = new javax.swing.JLabel();
+        centerRegressorsCheckBox = new javax.swing.JCheckBox();
         jPanel3 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         inputTextField = new javax.swing.JTextField();
@@ -132,60 +128,40 @@ public class advancedOptions extends javax.swing.JFrame {
         quadriturePoints.setModel(new javax.swing.SpinnerNumberModel(11, 1, 255, 1));
         jPanel1.add(quadriturePoints, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 128, 69, -1));
 
-        jLabel15.setText("Center All Regressors?");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 195, -1, -1));
-
-        centerRegressorsCheckBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                centerRegressorsCheckBoxActionPerformed(evt);
-            }
-        });
-        jPanel1.add(centerRegressorsCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 195, -1, -1));
-
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel7.setText("Maximum Iterations:");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 12, -1, -1));
 
-        jLabel8.setText("Missing values:");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 47, -1, -1));
-
-        missingValuesCheckBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                missingValuesCheckBoxActionPerformed(evt);
-            }
-        });
-        jPanel2.add(missingValuesCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 47, -1, -1));
-
-        jLabel9.setText("Missing Value Code:");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 87, -1, -1));
-
-        missingValueCode.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                missingValueCodeActionPerformed(evt);
-            }
-        });
-        jPanel2.add(missingValueCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 82, 96, -1));
-
         jLabel10.setText("Standardized Coefficients:");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 133, -1, -1));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
 
         standardizedCoeff.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 standardizedCoeffActionPerformed(evt);
             }
         });
-        jPanel2.add(standardizedCoeff, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 126, -1, -1));
+        jPanel2.add(standardizedCoeff, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, -1, -1));
 
         jLabel11.setText("Ridge:");
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 172, -1, -1));
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
 
         maximumIterations.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
         jPanel2.add(maximumIterations, new org.netbeans.lib.awtextra.AbsoluteConstraints(182, 7, 69, -1));
 
         ridgeSpinner.setModel(new javax.swing.SpinnerNumberModel(0.15d, 0.0d, 1.0d, 0.01d));
-        jPanel2.add(ridgeSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 68, -1));
+        jPanel2.add(ridgeSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 68, -1));
+
+        jLabel15.setText("Center All Regressors?");
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
+
+        centerRegressorsCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                centerRegressorsCheckBoxActionPerformed(evt);
+            }
+        });
+        jPanel2.add(centerRegressorsCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, -1, -1));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -242,36 +218,33 @@ public class advancedOptions extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(13, 13, 13)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(380, 380, 380)
                         .addComponent(advancedOptions_resetButton)
                         .addGap(12, 12, 12)
-                        .addComponent(jButton1)))
-                .addContainerGap(32, Short.MAX_VALUE))
+                        .addComponent(jButton1))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(13, 13, 13)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(advancedOptions_resetButton)
                     .addComponent(jButton1))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
@@ -293,22 +266,6 @@ public class advancedOptions extends javax.swing.JFrame {
     private void adaptiveQuadritureCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adaptiveQuadritureCheckBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_adaptiveQuadritureCheckBoxActionPerformed
-
-    private void missingValuesCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_missingValuesCheckBoxActionPerformed
-        // TODO add your handling code here:
-
-        if (missingValuesCheckBox.isSelected() == true) {
-            missingValueCode.setEnabled(true);
-            missingValueCode.setText("-9999");
-        } else {
-            missingValueCode.setEnabled(false);
-        }
-
-    }//GEN-LAST:event_missingValuesCheckBoxActionPerformed
-
-    private void missingValueCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_missingValueCodeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_missingValueCodeActionPerformed
 
     private void standardizedCoeffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_standardizedCoeffActionPerformed
         // TODO add your handling code here:
@@ -365,7 +322,7 @@ public class advancedOptions extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
         }
 
-        if (missingValueCode.isEnabled()) {
+        /*if (missingValueCode.isEnabled()) {
 
             try {
                 NewModel.defFile.setAdvancedMissingValue(getMissingValueCode());
@@ -380,7 +337,7 @@ public class advancedOptions extends javax.swing.JFrame {
         } else {
             // do nothing and go next
 
-        }
+        }*/
 
         try {
             NewModel.defFile.setModelFixedInt(String.valueOf(isMeanSubModelChecked()));
@@ -470,7 +427,7 @@ public class advancedOptions extends javax.swing.JFrame {
         centerRegressorsCheckBox.setSelected(false);
 
         maximumIterations.setValue(1);
-        missingValuesCheckBox.setSelected(false);
+       // missingValuesCheckBox.setSelected(false);
         standardizedCoeff.setSelected(false);
         ridgeSpinner.setValue(0.15);
 
@@ -534,15 +491,11 @@ public class advancedOptions extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSpinner maximumIterations;
     private javax.swing.JCheckBox meanSubmodelCheckBox;
-    private javax.swing.JTextField missingValueCode;
-    private javax.swing.JCheckBox missingValuesCheckBox;
     private javax.swing.JTextField outputTextField;
     private javax.swing.JSpinner quadriturePoints;
     private javax.swing.JSpinner ridgeSpinner;
@@ -626,10 +579,10 @@ public class advancedOptions extends javax.swing.JFrame {
     }
 
 //check if the data set has missing values
-    public boolean isMissingValuesChecked() {
+    /*public boolean isMissingValuesChecked() {
         boolean checked = false;
 
-        if (missingValuesCheckBox.isSelected() == true) {
+       if (missingValuesCheckBox.isSelected() == true) {
             checked = true;
         } else {
 
@@ -637,17 +590,18 @@ public class advancedOptions extends javax.swing.JFrame {
         }
 
         return checked;
-    }
+    }*/
+    
 
 // get missing value code
-    public String getMissingValueCode() {
+   /* public String getMissingValueCode() {
         String missingValue;
 
         //missingValue = (double) missingValueCode.getText().toString();
         missingValue = missingValueCode.getText().toString();
 
         return missingValue;
-    }
+    }*/
 
 //check if standardized coefficients is checked
     public int isStandardizedCoefChecked() {
