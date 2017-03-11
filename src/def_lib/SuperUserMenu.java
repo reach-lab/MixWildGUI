@@ -11,10 +11,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -34,6 +36,8 @@ public class SuperUserMenu extends javax.swing.JFrame {
 
     DefinitionHelper defLib;
     JFileChooser fileChooser = new JFileChooser();
+    int selectedModel;
+    String defFilePath;
     
     /**
      * Creates new form SuperUserMenu
@@ -61,7 +65,7 @@ public class SuperUserMenu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Test def_lib");
+        jButton1.setText("Run");
         jButton1.setEnabled(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,7 +102,8 @@ public class SuperUserMenu extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setText("Open Def");
+        jButton6.setText("Open Definition File");
+        jButton6.setToolTipText("");
         jButton6.setEnabled(false);
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -160,14 +165,16 @@ public class SuperUserMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String fieldArray[] = new String[]{ "1", "2", "3"};
-        try {
-            defLib.setModelMeanCount("3");
-            defLib.setFieldModelMeanRegressors(fieldArray);
-            JOptionPane.showMessageDialog(null, Arrays.toString(defLib.getFieldModelMeanRegressors()));
+       // String absoluteDefFilePath = "C:/Users/Eldin/Desktop/";
+        String absoluteJavaPath = System.getProperty( "user.dir" );
+        String defFileName = executableModel(selectedModel);
+        try {          
             try 
             { 
-                Process p=Runtime.getRuntime().exec("cmd /c dir && cd .. && dir"); 
+                copyExecutable(defFilePath, selectedModel);
+                Process p=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && dir && "
+                        + defFileName);
+                
                 p.waitFor(); 
                 BufferedReader reader=new BufferedReader(new InputStreamReader(p.getInputStream())); 
                 String line=reader.readLine(); 
@@ -176,17 +183,44 @@ public class SuperUserMenu extends javax.swing.JFrame {
                 System.out.println(line); 
                 line=reader.readLine(); 
                 } 
-
              } 
-            catch(IOException e1) {} 
-            catch(InterruptedException e2) {} 
+            catch(FileNotFoundException fnfe1){
+             System.out.println("File not found Exception"); 
+            }
+            catch(IOException e1) {
+              System.out.println("IO Exception"); 
+            } 
+            
+            try 
+            { 
+                Process p=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && del /f " + defFileName);
+                p.waitFor(); 
+                BufferedReader reader=new BufferedReader(new InputStreamReader(p.getInputStream())); 
+                String line=reader.readLine(); 
+                while(line!=null) 
+                { 
+                System.out.println(line); 
+                line=reader.readLine(); 
+                } 
+             } 
+            catch(FileNotFoundException fnfe1){
+             System.out.println("File not found Exception 2"); 
+            }
+            catch(IOException e1) {
+              System.out.println("IO Exception 2 "); 
+            }
+            
+            JOptionPane.showMessageDialog(null, defFilePath);
+            
         }
         catch (Exception ex){
+            ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Failed");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        int selectedModel = DefinitionHelper.MIXREGLS_MIXREG_KEY;
         defLib = new DefinitionHelper(1,false);
         jButton1.setEnabled(true);
         jButton2.setEnabled(false);
@@ -197,7 +231,8 @@ public class SuperUserMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        defLib = new DefinitionHelper(1,true);
+        int selectedModel = DefinitionHelper.MIXREGMLS_MIXOR_KEY;
+        defLib = new DefinitionHelper(3,true);
         jButton1.setEnabled(true);
         jButton2.setEnabled(false);
         jButton3.setEnabled(false);
@@ -208,7 +243,8 @@ public class SuperUserMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        defLib = new DefinitionHelper(3,true);
+        int selectedModel = DefinitionHelper.MIXREGLS_MIXOR_KEY;
+        defLib = new DefinitionHelper(1,true);
         jButton1.setEnabled(true);
         jButton2.setEnabled(false);
         jButton3.setEnabled(false);
@@ -219,6 +255,7 @@ public class SuperUserMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        int selectedModel = DefinitionHelper.MIXREGMLS_MIXREG_KEY;
         defLib = new DefinitionHelper(3,false);
         jButton1.setEnabled(true);
         jButton2.setEnabled(false);
@@ -333,12 +370,63 @@ public class SuperUserMenu extends javax.swing.JFrame {
         int returnVal = fileChooser.showOpenDialog(this);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             File file = fileChooser.getSelectedFile();
-            // What to do with the file, e.g. display it in a TextArea
-            //textarea.read( new FileReader( file.getAbsolutePath() ), null );
-
+            String filePath = file.getAbsolutePath();
+            defFilePath = filePath.substring(0,filePath.lastIndexOf(File.separator)) + "/";
             System.out.println(file.getAbsolutePath());
         } else {
             System.out.println("File access cancelled by user.");
         }
+    }
+    
+    private String executableModel(int modelSelection){
+        switch(modelSelection){
+            case DefinitionHelper.MIXREGLS_MIXREG_KEY:
+                return "mixregls_mixreg.exe";
+            case DefinitionHelper.MIXREGLS_MIXOR_KEY:
+                return "mixregls_mixor.exe";
+            case DefinitionHelper.MIXREGMLS_MIXREG_KEY:
+                return "mixregmls_mixreg.exe";
+            case DefinitionHelper.MIXREGMLS_MIXOR_KEY:
+                return "mixregmls_mixor.exe";
+           
+            default:
+                return "mixregls_mixreg.exe";
+        }
+    }
+    
+    private void copyExecutable(String absoluteDirectoryPath, int modelSelection) throws FileNotFoundException, IOException{
+        String modelPath;
+        String executableName = executableModel(modelSelection);
+        switch(modelSelection){
+            case DefinitionHelper.MIXREGLS_MIXREG_KEY:
+                modelPath = "resources/Windows/mixregls_mixreg.exe";
+                break;
+            case DefinitionHelper.MIXREGLS_MIXOR_KEY:
+                modelPath = "resources/Windows/mixregls_mixor.exe";
+                break;
+            case DefinitionHelper.MIXREGMLS_MIXREG_KEY:
+                modelPath = "resources/Windows/mixregmls_mixreg.exe";
+                break;
+            case DefinitionHelper.MIXREGMLS_MIXOR_KEY:
+                modelPath = "resources/Windows/mixregmls_mixor.exe";
+                break;
+            default:
+                modelPath = "resources/Windows/mixregls_mixreg.exe";
+                break;
+        }
+        InputStream stream = getClass().getClassLoader().getResourceAsStream(modelPath);
+        
+        
+        OutputStream outputStream = 
+                new FileOutputStream(new File(absoluteDirectoryPath + executableName));
+
+        int read;
+        byte[] bytes = new byte[4096];
+
+        while ((read = stream.read(bytes)) > 0) {
+            outputStream.write(bytes, 0, read);
+        }
+        stream.close();
+        outputStream.close();
     }
 }
