@@ -22,6 +22,7 @@ import java.util.Arrays;
 import java.util.List;
 import javax.swing.JEditorPane;
 import javax.swing.JFileChooser;
+import javax.swing.JInternalFrame;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -35,6 +36,7 @@ import static mixregui.NewModel.defFile;
  */
 public class SuperUserMenu extends javax.swing.JFrame {
 
+    
     DefinitionHelper defLib;
     JFileChooser fileChooser = new JFileChooser();
     int selectedModel;
@@ -45,6 +47,7 @@ public class SuperUserMenu extends javax.swing.JFrame {
      */
     public SuperUserMenu() {
         initComponents();
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -291,7 +294,7 @@ public class SuperUserMenu extends javax.swing.JFrame {
         try {
             defLib.readDefinitionFile(file, varnames);
             JFrame myFrame = new JFrame("JEditorPane Test");
-            myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            myFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             myFrame.setSize(300,200);
 
             JEditorPane myPane = new JEditorPane();
@@ -336,7 +339,7 @@ public class SuperUserMenu extends javax.swing.JFrame {
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         try{
         JFrame myFrame = new JFrame("JEditorPane Test");
-            myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            myFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             myFrame.setSize(300,200);
 
             JEditorPane myPane = new JEditorPane();
