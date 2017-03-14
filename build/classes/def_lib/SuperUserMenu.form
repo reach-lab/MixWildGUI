@@ -78,7 +78,7 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Test def_lib"/>
+        <Property name="text" type="java.lang.String" value="Run"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
@@ -120,7 +120,8 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton6">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Open Def"/>
+        <Property name="text" type="java.lang.String" value="Open Definition File"/>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
