@@ -15,6 +15,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.ComponentOrientation;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -96,6 +97,7 @@ public class mixregGUI extends javax.swing.JFrame {
         IDList = new DefaultComboBoxModel<String>();
         StageOneList = new DefaultComboBoxModel<String>();
         StageTwoList = new DefaultComboBoxModel<String>();
+        
 
         i = newModel.getRLE();
         System.out.println(String.valueOf(i));
@@ -246,8 +248,8 @@ public class mixregGUI extends javax.swing.JFrame {
         imageView.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel16.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/mixreg.png"))); // NOI18N
-        imageView.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 70, 840, 450));
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/mixRegv2.png"))); // NOI18N
+        imageView.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, 570, 400));
 
         parentPanel.add(imageView, "card3");
 
@@ -1075,7 +1077,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Metal".equals(info.getName())) {
+                if ("Oyaha".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }

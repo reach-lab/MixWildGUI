@@ -60,8 +60,10 @@ public class NewModel extends javax.swing.JFrame {
        dichotomousRadio.setEnabled(false);
        randomLocationEffects.setEnabled(false);
        newModelSubmit.setEnabled(false);
+       newModelMissingValueCode.setText("-9999");
        newModelMissingValueCode.setEnabled(false);
        newModelMissingValues.setEnabled(false);
+       newModelMissingValues.setSelected(true);
        
        dataFileLabel.setToolTipText("Insert a data file in .csv format");
        fileBrowseButton.setToolTipText("Insert a data file in .csv format");
