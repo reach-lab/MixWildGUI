@@ -26,6 +26,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.text.Document;
+import static mixregui.NewModel.defFile;
 
 /**
  *
@@ -62,6 +63,7 @@ public class SuperUserMenu extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -102,7 +104,7 @@ public class SuperUserMenu extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setText("Open Definition File");
+        jButton6.setText("Load Definition File");
         jButton6.setToolTipText("");
         jButton6.setEnabled(false);
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -115,6 +117,13 @@ public class SuperUserMenu extends javax.swing.JFrame {
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
+            }
+        });
+
+        jButton8.setText("View Definition File");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
             }
         });
 
@@ -135,6 +144,8 @@ public class SuperUserMenu extends javax.swing.JFrame {
                             .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButton6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -157,7 +168,8 @@ public class SuperUserMenu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton6))
+                    .addComponent(jButton6)
+                    .addComponent(jButton8))
                 .addContainerGap())
         );
 
@@ -321,6 +333,36 @@ public class SuperUserMenu extends javax.swing.JFrame {
         jButton6.setEnabled(false);
     }//GEN-LAST:event_jButton7ActionPerformed
 
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        try{
+        JFrame myFrame = new JFrame("JEditorPane Test");
+            myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            myFrame.setSize(300,200);
+
+            JEditorPane myPane = new JEditorPane();
+            myPane.setContentType("text/plain");
+            try{
+            myPane.setText(String.join("\n",defFile.debugStageOneDefinitonList()).replace("[", "").replace("]", ""));
+            }
+            catch(Exception e){
+            myPane.setText(String.join("\n",defLib.debugStageOneDefinitonList()).replace("[", "").replace("]", ""));
+            }
+            myFrame.setContentPane(myPane);
+            myFrame.setVisible(true); 
+            Document defDoc = myPane.getDocument();
+            int length = defDoc.getLength();
+            File newDefFile = new File("tester");
+            OutputStream os = new BufferedOutputStream(
+              new FileOutputStream(newDefFile + ".def"));
+            Writer w = new OutputStreamWriter(os);
+            myPane.write(w);
+            w.close();
+        }
+        catch(Exception exception){
+            
+        }
+    }//GEN-LAST:event_jButton8ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -364,6 +406,7 @@ public class SuperUserMenu extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     // End of variables declaration//GEN-END:variables
 
     private void fileOpen() {
