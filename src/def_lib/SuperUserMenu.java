@@ -342,10 +342,10 @@ public class SuperUserMenu extends javax.swing.JFrame {
             JEditorPane myPane = new JEditorPane();
             myPane.setContentType("text/plain");
             try{
-            myPane.setText(String.join("\n",defFile.debugStageOneDefinitonList()).replace("[", "").replace("]", ""));
+            myPane.setText(String.join("\n",defLib.debugStageOneDefinitonList()).replace("[", "").replace("]", ""));
             }
             catch(Exception e){
-            myPane.setText(String.join("\n",defLib.debugStageOneDefinitonList()).replace("[", "").replace("]", ""));
+            myPane.setText(String.join("\n",defFile.debugStageOneDefinitonList()).replace("[", "").replace("]", ""));
             }
             myFrame.setContentPane(myPane);
             myFrame.setVisible(true); 
