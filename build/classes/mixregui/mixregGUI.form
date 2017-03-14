@@ -168,12 +168,12 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/resources/mixreg.png"/>
+                  <Image iconType="3" name="/resources/mixRegv2.png"/>
                 </Property>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="106" y="70" width="840" height="450"/>
+                  <AbsoluteConstraints x="390" y="160" width="570" height="400"/>
                 </Constraint>
               </Constraints>
             </Component>
