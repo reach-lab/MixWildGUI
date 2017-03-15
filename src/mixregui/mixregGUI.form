@@ -168,7 +168,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/resources/mixRegv2.png"/>
+                  <Image iconType="3" name="/resources/mixReg_v3.png"/>
                 </Property>
               </Properties>
               <Constraints>
