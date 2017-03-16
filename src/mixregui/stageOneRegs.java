@@ -44,7 +44,9 @@ public class stageOneRegs extends javax.swing.JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         //get variable names from the data set
-        variableNamesList = newModel2.getVariableNames();
+        //variableNamesList = newModel2.getVariableNames();
+        variableNamesList = NewModel.getVariableNames();
+        
 
         if (!isSubmitClicked) {
             varList = new DefaultListModel<String>();
