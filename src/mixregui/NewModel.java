@@ -370,7 +370,7 @@ public class NewModel extends javax.swing.JFrame {
            defFile.setDataFilename(file.getAbsolutePath());
            
            defFile.setDataVariableCount(String.valueOf(variableArray.length));
-           System.out.println("Variable count: " + defFile.getDataVariableCount());
+           System.out.println("From defHelper | Variable count: " + defFile.getDataVariableCount());
         
             
         } catch (FileNotFoundException ex) {
@@ -383,7 +383,7 @@ public class NewModel extends javax.swing.JFrame {
 
             try {
                 defFile.setAdvancedMissingValue(newModelMissingValueCode.getText().toString());
-                System.out.println("Missing Value: " + defFile.getAdvancedMissingValue());
+                System.out.println("From defHelper | Missing Value: " + defFile.getAdvancedMissingValue());
 //                tryCount = 1;
             } catch (Exception ex) {
                 //catchCount = 1;
@@ -404,10 +404,10 @@ public class NewModel extends javax.swing.JFrame {
         
        // set Values in def helper
        defFile.setModelTitle(getTitle());
-       System.out.println("Title: " + defFile.getModelTitle());
+       System.out.println("From defHelper | Title: " + defFile.getModelTitle());
        
        defFile.setModelSubtitle(getSubTitle());
-       System.out.println("Subtitle: " + defFile.getModelSubtitle());
+       System.out.println("From defHelper | Subtitle: " + defFile.getModelSubtitle());
         
        mxr = new mixregGUI();
        mxr.isSubmitClicked();
@@ -547,7 +547,7 @@ public int getRLE(){
 
 
 //get the variable names from the data file
-public String[] getVariableNames(){
+public static String[] getVariableNames(){
 
 return variableArray;
 }
