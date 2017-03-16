@@ -51,7 +51,7 @@ public class mixregGUI extends javax.swing.JFrame {
     stageTwoRegs stage_2_regs;
     def_lib.SuperUserMenu superUserMenuLaunch;
 
-    //public boolean submitClicked = true;
+    // i represents number of random location effects selected in new model
     int i;
 
     int levelOneRegSize, levelTwoRegSize, stageTwoRegSize, levelOneDisaggSize;
@@ -97,21 +97,20 @@ public class mixregGUI extends javax.swing.JFrame {
         IDList = new DefaultComboBoxModel<String>();
         StageOneList = new DefaultComboBoxModel<String>();
         StageTwoList = new DefaultComboBoxModel<String>();
-        
 
         i = newModel.getRLE();
         System.out.println(String.valueOf(i));
 
         if (i > 1) {
-            //associationPanel.setVisible(false);
-            //NoAssociationRadio.setVisible(false);
+
             NoAssociationRadio.setText("Yes");
-            //LinearAssociationRadio.setVisible(false);
+
             LinearAssociationRadio.setText("No");
             QuadraticAssociationRadio.setVisible(false);
-            //associationLabel.setVisible(false);
+
             associationLabel.setText("Association of random location & scale?");
 
+            // if random location effects are more than one, change the table column names
             level1_BSVar.setText("Loc. eff.");
             level1_WSVar.setText("Scale");
             level2_BSVar.setText("Loc. eff.");
@@ -121,16 +120,11 @@ public class mixregGUI extends javax.swing.JFrame {
 
         }
 
-        //levelOneBorderLayout.add(levelOneGrid);
         jPanel5.setLayout(new BorderLayout());
         jPanel6.setLayout(new BorderLayout());
         jPanel7.setLayout(new BorderLayout());
 
-        //enableDisaggVariance();
-        //  System.out.println("Initialized");
-        // enableDisaggVariance();
-        // MyThread mt = new MyThread();
-        //mt.start();
+        //to enable stage two regressor buttos. avoids accidental clicks
         if (stageOneClicked == 0) {
 
             addStageTwoButton.setEnabled(false);
@@ -696,11 +690,10 @@ public class mixregGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void newModelMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModelMenuActionPerformed
-        //new NewModel().setVisible(true);
 
+        // opens new model window
         newModel.setVisible(true);
-        // imageView.setVisible(false);
-        //this.setVisible(false);
+
     }//GEN-LAST:event_newModelMenuActionPerformed
 
     private void exitMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuActionPerformed
@@ -716,13 +709,13 @@ public class mixregGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void diagramMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_diagramMenuActionPerformed
-        // TODO add your handling code here:
+        //opens webpage with the url
         openWebpage("http://myquitadmin.usc.edu/mixsuite.php");
 
     }//GEN-LAST:event_diagramMenuActionPerformed
 
     private void goBackMxrButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackMxrButtonActionPerformed
-        // TODO add your handling code here:
+
         newModel.setVisible(true);
     }//GEN-LAST:event_goBackMxrButtonActionPerformed
 
@@ -742,22 +735,29 @@ public class mixregGUI extends javax.swing.JFrame {
 
     private void runStageOneTwoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_runStageOneTwoButtonActionPerformed
 
+        // tryCount counts the number of successful definitionhelper function calls
+        //catchCount counts number of exceptions in reading values to derHelper. 
+        //Prevents UI from moving forward in case of an exception
         int tryCount = 0;
         int catchCount = 0;
 
-        System.out.println("Total selected beta means model in level one: " + String.valueOf(countLevelOneBeta()));
-        System.out.println("Total selected alpha means model in level one: " + String.valueOf(countLevelOneAlpha()));
-        System.out.println("Total selected tau means model in level one: " + String.valueOf(countLevelOneTau()));
+        // *********************************************************************
+        // Test printing statements counting mean regressors
+        System.out.println("Total selected mean regressors in level one: " + String.valueOf(countLevelOneBeta()));
+        System.out.println("Total selected BS Variances in level one: " + String.valueOf(countLevelOneAlpha()));
+        System.out.println("Total selected WS Variances in level one: " + String.valueOf(countLevelOneTau()));
         System.out.println("Total selected disagg. variance in level one: " + String.valueOf(countLevelOneDicompMean()));
 
-        System.out.println("Total selected beta means model in level two: " + String.valueOf(countLevelTwoBeta()));
-        System.out.println("Total selected alpha means model in level two: " + String.valueOf(countLevelTwoAlpha()));
-        System.out.println("Total selected tau means model in level two: " + String.valueOf(countLevelTwoTau()));
+        System.out.println("Total selected mean regressors in level two: " + String.valueOf(countLevelTwoBeta()));
+        System.out.println("Total selected BS variances in level two: " + String.valueOf(countLevelTwoAlpha()));
+        System.out.println("Total selected WS variances in level two: " + String.valueOf(countLevelTwoTau()));
 
-        System.out.println("Total selected beta means model in stage two: " + String.valueOf(countStageTwoBeta()));
-        System.out.println("Total selected alpha means model in stage two: " + String.valueOf(countStageTwoAlpha()));
-        System.out.println("Total selected tau means model in stage two: " + String.valueOf(countStageTwoTau()));
+        System.out.println("Total selected mean regressors in stage two: " + String.valueOf(countStageTwoBeta()));
+        System.out.println("Total selected BS Variances in stage two: " + String.valueOf(countStageTwoAlpha()));
+        System.out.println("Total selected WS Variances in stage two: " + String.valueOf(countStageTwoTau()));
 
+        //**********************************************************************
+        // Reads selected ID variable and outcome variable from the first two comboboxes
         String[] idOutcome = {String.valueOf(IDvariableCombo.getSelectedIndex() + 1), String.valueOf(StageOneVariableCombo.getSelectedIndex() + 1)};
 
         try {
@@ -770,9 +770,22 @@ public class mixregGUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
         }
 
+        // *********************************************************************
         // i is the number of random location effects selected by the users
         if (i == 1) {
 
+            //Number of disaggregate means
+            try {
+                tryCount = 1;
+                NewModel.defFile.setDecompMeanCount(String.valueOf(countLevelOneDicompMean()));
+                System.out.println("Decomp Model Mean Count: " + NewModel.defFile.getDecompMeanCount().toString());
+            } catch (Exception ex) {
+                catchCount = 1;
+                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+            //Number of disaggregate BS Variance
             try {
                 tryCount = 1;
                 NewModel.defFile.setDecompBSCount(String.valueOf(countLevelOneDicompBS()));
@@ -783,6 +796,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
             }
 
+            //Number of disaggregate WS Variance
             try {
                 tryCount = 1;
                 NewModel.defFile.setDecompWSCount(String.valueOf(countLevelOneDicompWS()));
@@ -793,6 +807,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
             }
 
+            // ---- Check if the association radio buttons have been selected (Advanced effect of mean) ----
             //count field array sizes     
             if (NoAssociationRadio.isSelected()) {
 
@@ -825,8 +840,10 @@ public class mixregGUI extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
                 }
 
-            }
+            } // field array counting ends
+            // -----------------------------------------------------------------
 
+            // Reads the variable names of variables that have been selected as mean regressors
             try {
                 NewModel.defFile.setFieldModelMeanRegressors(getMeanFieldRegressorLabels_levelOne());
                 System.out.println("#Level One Mean Regressors: " + NewModel.defFile.getFieldModelMeanRegressors().length);
@@ -836,6 +853,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
             }
 
+            // Reads the variable names of variables that have been selected as BS Variances
             try {
                 NewModel.defFile.setFieldModelBSRegressors(getBSFieldRegressorLabels_levelOne());
                 System.out.println("#Level One BS Regressors: " + NewModel.defFile.getFieldModelBSRegressors().length);
@@ -845,6 +863,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
             }
 
+            // Reads the variable names of variables that have been selected as WS Variances
             try {
                 NewModel.defFile.setFieldModelWSRegressors(getWSFieldRegressorLabels_levelOne());
                 System.out.println("#Level One WS Regressors: " + NewModel.defFile.getFieldModelWSRegressors().length);
@@ -854,9 +873,32 @@ public class mixregGUI extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
             }
 
+            try {
+                tryCount = 1;
+                // total regressors selected for level two
+                NewModel.defFile.setModelBetweenCount(String.valueOf(levelTwoRegSize));
+                System.out.println("Model Between Count: " + NewModel.defFile.getModelBetweenCount().toString());
+            } catch (Exception ex) {
+                catchCount = 1;
+                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+            try {
+                tryCount = 1;
+                // total regressors selected for level one
+                NewModel.defFile.setModelWithinCount(String.valueOf(levelOneRegSize));
+                System.out.println("Model Within Count: " + NewModel.defFile.getModelBetweenCount().toString());
+            } catch (Exception ex) {
+                catchCount = 1;
+                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+            //******************************************************************
         } else if (i > 1) {
-            
-            
+
+            //Check if the effect of mean on WS variances options have been selected
             if (NoAssociationRadio.isSelected()) {
 
                 try {
@@ -881,6 +923,8 @@ public class mixregGUI extends javax.swing.JFrame {
 
             try {
                 tryCount = 1;
+
+                //Disagg means count 
                 NewModel.defFile.setDecompMeanCount(String.valueOf(countLevelOneDicompMean()));
                 System.out.println("Decomp Model Mean Count: " + NewModel.defFile.getDecompMeanCount().toString());
             } catch (Exception ex) {
@@ -891,6 +935,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
             try {
                 tryCount = 1;
+                //Disagg Random Location count 
                 NewModel.defFile.setDecompLocRanCount(String.valueOf(countLevelOneDicompBS()));
                 System.out.println("Decomp Model Loc Random Count: " + NewModel.defFile.getDecompMeanCount().toString());
             } catch (Exception ex) {
@@ -901,6 +946,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
             try {
                 tryCount = 1;
+                //Disagg scale count 
                 NewModel.defFile.setDecompScaleCount(String.valueOf(countLevelOneDicompWS()));
                 System.out.println("Decomp Scale Count: " + NewModel.defFile.getDecompScaleCount().toString());
             } catch (Exception ex) {
@@ -910,6 +956,7 @@ public class mixregGUI extends javax.swing.JFrame {
             }
             // count field labels
             try {
+                // get variable names from selected mean regressors
                 NewModel.defFile.setFieldModelMeanRegressors(getMeanFieldRegressorLabels_levelOne());
                 System.out.println("#Level One Mean Regressors: " + NewModel.defFile.getFieldModelMeanRegressors().length);
             } catch (Exception ex) {
@@ -919,6 +966,7 @@ public class mixregGUI extends javax.swing.JFrame {
             }
 
             try {
+                // get variable names from selected random location regressors
                 NewModel.defFile.setFieldModelLocRanRegressors(getBSFieldRegressorLabels_levelOne());
                 System.out.println("#Level One BS Regressors: " + NewModel.defFile.getFieldModelLocRanRegressors().length);
             } catch (Exception ex) {
@@ -928,6 +976,7 @@ public class mixregGUI extends javax.swing.JFrame {
             }
 
             try {
+                // get variable names from selected scale regressors
                 NewModel.defFile.setFieldModelScaleRegressors(getWSFieldRegressorLabels_levelOne());
                 System.out.println("#Level One WS Regressors: " + NewModel.defFile.getFieldModelScaleRegressors().length);
             } catch (Exception ex) {
@@ -942,6 +991,7 @@ public class mixregGUI extends javax.swing.JFrame {
             tryCount = 1;
             int MeanCount = countLevelOneBeta() + countLevelTwoBeta();
 
+            // count total mean regressors in level one and level two
             NewModel.defFile.setModelMeanCount(String.valueOf(MeanCount));
             System.out.println("Model Mean Count: " + NewModel.defFile.getModelMeanCount().toString());
         } catch (Exception ex) {
@@ -952,6 +1002,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
         try {
             int LocRanCount = countLevelOneAlpha() + countLevelTwoAlpha();
+            // count total random location regressors in level one and level two
             NewModel.defFile.setModelLocRanCount(String.valueOf(LocRanCount));
             System.out.println("Model Loc Ran Count: " + NewModel.defFile.getModelLocRanCount().toString());
             tryCount = 1;
@@ -964,6 +1015,7 @@ public class mixregGUI extends javax.swing.JFrame {
         try {
             tryCount = 1;
             int ScaleCount = countLevelOneTau() + countLevelTwoTau();
+            // count total scale regressors in level one and level two
             NewModel.defFile.setModelScaleCount(String.valueOf(ScaleCount));
             System.out.println("Model Scale Count: " + NewModel.defFile.getModelLocRanCount().toString());
         } catch (Exception ex) {
@@ -974,6 +1026,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
         try {
             tryCount = 1;
+            // total regressors selected for level two
             NewModel.defFile.setModelBetweenCount(String.valueOf(levelTwoRegSize));
             System.out.println("Model Between Count: " + NewModel.defFile.getModelBetweenCount().toString());
         } catch (Exception ex) {
@@ -984,6 +1037,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
         try {
             tryCount = 1;
+            // total regressors selected for level one
             NewModel.defFile.setModelWithinCount(String.valueOf(levelOneRegSize));
             System.out.println("Model Within Count: " + NewModel.defFile.getModelBetweenCount().toString());
         } catch (Exception ex) {
