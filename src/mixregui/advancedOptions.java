@@ -292,7 +292,7 @@ public class advancedOptions extends javax.swing.JFrame {
         //defFile
         try {
             NewModel.defFile.setAdvancedConvergence(String.valueOf(convergenceCriteria.getValue()));
-            System.out.println("Convergence: " + NewModel.defFile.getAdvancedConvergence());
+            System.out.println("From defHelper | Convergence: " + NewModel.defFile.getAdvancedConvergence());
             tryCount = 1;
 
         } catch (Exception ex) {
@@ -304,7 +304,7 @@ public class advancedOptions extends javax.swing.JFrame {
         //set quadriture points
         try {
             NewModel.defFile.setAdvancedQuadPoints(String.valueOf(quadriturePoints.getValue()));
-            System.out.println("Quadriture Points: " + NewModel.defFile.getAdvancedQuadPoints());
+            System.out.println("From defHelper | Quadriture Points: " + NewModel.defFile.getAdvancedQuadPoints());
             tryCount = 1;
         } catch (Exception ex) {
             catchCount = 1;
@@ -314,7 +314,7 @@ public class advancedOptions extends javax.swing.JFrame {
 
         try {
             NewModel.defFile.setAdvancedMaxIteration(String.valueOf(getMaximumIterations()));
-            System.out.println("Maximum Iteraions: " + NewModel.defFile.getAdvancedMaxIteration());
+            System.out.println("From defHelper | Maximum Iteraions: " + NewModel.defFile.getAdvancedMaxIteration());
             tryCount = 1;
         } catch (Exception ex) {
             catchCount = 1;
@@ -322,26 +322,11 @@ public class advancedOptions extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
         }
 
-        /*if (missingValueCode.isEnabled()) {
-
-            try {
-                NewModel.defFile.setAdvancedMissingValue(getMissingValueCode());
-                System.out.println("Missing Value: " + NewModel.defFile.getAdvancedMissingValue());
-                tryCount = 1;
-            } catch (Exception ex) {
-                catchCount = 1;
-                Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
-            }
-
-        } else {
-            // do nothing and go next
-
-        }*/
+       
 
         try {
             NewModel.defFile.setModelFixedInt(String.valueOf(isMeanSubModelChecked()));
-            System.out.println("Mean SubModel Checked?: " + NewModel.defFile.getModelFixedInt());
+            System.out.println("From defHelper | Mean SubModel Checked?: " + NewModel.defFile.getModelFixedInt());
             tryCount = 1;
         } catch (Exception ex) {
             catchCount = 1;
@@ -351,7 +336,7 @@ public class advancedOptions extends javax.swing.JFrame {
 
         try {
             NewModel.defFile.setModelRandomInt(String.valueOf(isBSVarianceChecked()));
-            System.out.println("BS SubModel Checked?: " + NewModel.defFile.getModelRandomInt());
+            System.out.println("From defHelper | BS SubModel Checked?: " + NewModel.defFile.getModelRandomInt());
             tryCount = 1;
         } catch (Exception ex) {
             catchCount = 1;
@@ -361,7 +346,7 @@ public class advancedOptions extends javax.swing.JFrame {
 
         try {
             NewModel.defFile.setModelScaleInt(String.valueOf(isWSVarianceChecked()));
-            System.out.println("WS SubModel Checked?: " + NewModel.defFile.getModelScaleInt());
+            System.out.println("From defHelper | WS SubModel Checked?: " + NewModel.defFile.getModelScaleInt());
             tryCount = 1;
         } catch (Exception ex) {
             catchCount = 1;
@@ -371,7 +356,7 @@ public class advancedOptions extends javax.swing.JFrame {
 
         try {
             NewModel.defFile.setAdvancedAdaptiveQuad(String.valueOf(isAdaptiveQuadritureChecked()));
-            System.out.println("Adaptive Quadriture Checked?: " + NewModel.defFile.getAdvancedAdaptiveQuad());
+            System.out.println("From defHelper | Adaptive Quadriture Checked?: " + NewModel.defFile.getAdvancedAdaptiveQuad());
             tryCount = 1;
         } catch (Exception ex) {
             catchCount = 1;
@@ -380,11 +365,11 @@ public class advancedOptions extends javax.swing.JFrame {
         }
 
         NewModel.defFile.setOutputPrefix("Output_" + getOutPutFileName());
-        System.out.println("Output file name: " + NewModel.defFile.getOutputPrefix());
+        System.out.println("From defHelper | Output file name: " + NewModel.defFile.getOutputPrefix());
 
         try {
             NewModel.defFile.setAdvancedRidge(String.valueOf(getRidge()));
-            System.out.println("Ridge: " + NewModel.defFile.getAdvancedRidge());
+            System.out.println("From defHelper | Ridge: " + NewModel.defFile.getAdvancedRidge());
             tryCount = 1;
         } catch (Exception ex) {
             catchCount = 1;
@@ -394,7 +379,7 @@ public class advancedOptions extends javax.swing.JFrame {
 
         try {
             NewModel.defFile.setAdvancedCenterScale(String.valueOf(isCenterRegressorChecked()));
-            System.out.println("Scale Regressor: " + NewModel.defFile.getAdvancedCenterScale());
+            System.out.println("From defHelper | Scale Regressor: " + NewModel.defFile.getAdvancedCenterScale());
             tryCount = 1;
         } catch (Exception ex) {
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
@@ -578,30 +563,7 @@ public class advancedOptions extends javax.swing.JFrame {
 
     }
 
-//check if the data set has missing values
-    /*public boolean isMissingValuesChecked() {
-        boolean checked = false;
 
-       if (missingValuesCheckBox.isSelected() == true) {
-            checked = true;
-        } else {
-
-            checked = false;
-        }
-
-        return checked;
-    }*/
-    
-
-// get missing value code
-   /* public String getMissingValueCode() {
-        String missingValue;
-
-        //missingValue = (double) missingValueCode.getText().toString();
-        missingValue = missingValueCode.getText().toString();
-
-        return missingValue;
-    }*/
 
 //check if standardized coefficients is checked
     public int isStandardizedCoefChecked() {
