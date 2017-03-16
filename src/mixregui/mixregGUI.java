@@ -1764,8 +1764,22 @@ public class mixregGUI extends javax.swing.JFrame {
 
         }
         System.out.println("Position Aray Size here: " + String.valueOf(position.size()));
+        
+        String[] positionArray = new String[position.size()];
+        
+        for (int pos = 0; pos < positionArray.length; pos++){
+            positionArray[pos] = position.get(pos);
+            System.out.println("positionArrayElements: " + positionArray[pos]);
+        
+        }
+        
+        System.out.println("Converted array size | position: " + String.valueOf(positionArray.length));
+        System.out.println("Converted array elements | positions: " + Arrays.toString(positionArray));
 
-        return position.toArray(new String[position.size()]);
+        
+        return positionArray;
+
+        //return position.toArray(new String[position.size()]);
     }
 
     public String[] getBSFieldRegressorLabels_levelOne() {
@@ -1799,8 +1813,21 @@ public class mixregGUI extends javax.swing.JFrame {
             }
         }
         System.out.println("Position Aray Size here: " + String.valueOf(position.size()));
+        
+        String[] positionArray = new String[position.size()];
+        
+        for (int pos = 0; pos < positionArray.length; pos++){
+            positionArray[pos] = position.get(pos);
+            System.out.println("positionArrayElements: " + positionArray[pos]);
+        
+        }
+        
+        System.out.println("Converted array size | position: " + String.valueOf(positionArray.length));
+        System.out.println("Converted array elements | positions: " + Arrays.toString(positionArray));
 
-        return position.toArray(new String[position.size()]);
+        
+        return positionArray;
+        //return position.toArray(new String[position.size()]);
     }
 
     public String[] getWSFieldRegressorLabels_levelOne() {
@@ -1836,8 +1863,22 @@ public class mixregGUI extends javax.swing.JFrame {
         }
         
         System.out.println("Position Aray Size here: " + String.valueOf(position.size()));
+        
+        String[] positionArray = new String[position.size()];
+        
+        for (int pos = 0; pos < positionArray.length; pos++){
+            positionArray[pos] = position.get(pos);
+            System.out.println("positionArrayElements: " + positionArray[pos]);
+        
+        }
+        
+        System.out.println("Converted array size | position: " + String.valueOf(positionArray.length));
+        System.out.println("Converted array elements | positions: " + Arrays.toString(positionArray));
 
-        return position.toArray(new String[position.size()]);
+        
+        return positionArray;
+
+        //return position.toArray(new String[position.size()]);
     }
 
     private String[] getFieldModelWSRegressors() {
