@@ -789,7 +789,7 @@ public class mixregGUI extends javax.swing.JFrame {
             try {
                 tryCount = 1;
                 NewModel.defFile.setDecompBSCount(String.valueOf(countLevelOneDicompBS()));
-                System.out.println("BS Variance Regressor Count: " + NewModel.defFile.getDecompBSCount().toString());
+                System.out.println("BS Variance Disagg. Regressor Count: " + NewModel.defFile.getDecompBSCount().toString());
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -800,7 +800,7 @@ public class mixregGUI extends javax.swing.JFrame {
             try {
                 tryCount = 1;
                 NewModel.defFile.setDecompWSCount(String.valueOf(countLevelOneDicompWS()));
-                System.out.println("WS Variance Regressor Count: " + NewModel.defFile.getDecompBSCount().toString());
+                System.out.println("WS Variance Disagg Regressor Count: " + NewModel.defFile.getDecompBSCount().toString());
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -847,6 +847,7 @@ public class mixregGUI extends javax.swing.JFrame {
             try {
                 NewModel.defFile.setFieldModelMeanRegressors(getMeanFieldRegressorLabels_levelOne());
                 System.out.println("#Level One Mean Regressors: " + NewModel.defFile.getFieldModelMeanRegressors().length);
+                System.out.println("Level One Mean Regressors Selected: " + Arrays.toString(NewModel.defFile.getFieldModelMeanRegressors()));
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -1054,14 +1055,13 @@ public class mixregGUI extends javax.swing.JFrame {
 
                 defFileOutput = NewModel.defFile.buildStageOneDefinitonList();
 
-                for (int k = 0; k < defFileOutput.size(); k++) {
-                    System.out.println(defFileOutput.get(k));
-                }
+                System.out.println("Stage 1 def file created successfully!");
 
             } catch (Exception ex) {
                 defCatch = 1;
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+                System.out.println("Stage 1 def file failed!");
             }
 
             if (defCatch == 0) {
@@ -1155,20 +1155,6 @@ public class mixregGUI extends javax.swing.JFrame {
             }
         });
 
-        /*actionListener = new ActionListener() {
-            public void actionPerformed(ActionEvent actionEvent) {
-                AbstractButton abstractButton = (AbstractButton) actionEvent.getSource();
-                boolean selected = abstractButton.getModel().isSelected();
-                System.out.println("Is it selected? " + selected);
-                
-                if (selected){
-                    
-                    //
-                    
-                }
-                
-            }
-        };*/
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1291,10 +1277,6 @@ public class mixregGUI extends javax.swing.JFrame {
 
     }
 
-    public void updateRegressors(DefaultComboBoxModel<String> levelOne, DefaultComboBoxModel<String> levelTwo) {
-        // delete this function
-
-    }
 
     //get ID variable selected by the user
     public String getIDVariable() {
@@ -1326,52 +1308,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
     }
 
-    public int getAssociationType() {
-
-        int radioID = 0;
-
-        if (NoAssociationRadio.isSelected() == true) {
-            radioID = 1;
-        } else if (LinearAssociationRadio.isSelected() == true) {
-            radioID = 2;
-        } else if (QuadraticAssociationRadio.isSelected() == true) {
-            radioID = 3;
-        }
-
-        return radioID;
-    }
-
-    public void updateLevelOneRegGrid(DefaultListModel<String> defaultListModel) {
-
-        int regSize = defaultListModel.getSize();
-        levelOneRegSize = regSize;
-        // System.out.println(String.valueOf(regSize) + " is the regSize");
-
-        //levelOneBoxes = new ArrayList<ArrayList<JCheckBox>>();
-        levelOneGrid.removeAll();
-
-        levelOneGrid.setLayout(new GridLayout(regSize, 4));
-
-        levelOneGrid.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-
-        for (int j = 0; j < regSize; j++) {
-            levelOneGrid.add(new JLabel(defaultListModel.getElementAt(j)));
-            //System.out.print(j);
-
-            levelOneBoxes.add(j, new ArrayList<JCheckBox>());
-
-            for (int k = 0; k < 4; k++) {
-
-                levelOneBoxes.get(j).add(k, new JCheckBox());
-                levelOneGrid.add(levelOneBoxes.get(j).get(k));
-                //levelOneGrid.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-                //levelOneGrid.setBorder(new MatteBorder(2,2,2,2, Color.BLACK));
-
-            }
-        }
-
-    }
-
+    
     public void updateLevelOneGrid_version2(DefaultListModel<String> defaultListModel) {
 
         levelOneSelected = new ArrayList<String>();
@@ -1407,18 +1344,7 @@ public class mixregGUI extends javax.swing.JFrame {
         levelOneBoxes = new ArrayList<ArrayList<JCheckBox>>();
         disaggVarianceBoxes = new ArrayList<ArrayList<JCheckBox>>();
 
-        /*actionListener = new ActionListener() {
-            public void actionPerformed(ActionEvent actionEvent) {
-                AbstractButton abstractButton = (AbstractButton) actionEvent.getSource();
-                boolean selected = abstractButton.getModel().isSelected();
-                System.out.println("Is it selected? " + selected);
-                
-                if (selected){
-                    
-                }
-                
-            }
-        };*/
+        
         for (int j = 0; j < regSize; j++) {
             constraints.gridx = 0;
             constraints.anchor = GridBagConstraints.LINE_END;
@@ -1611,60 +1537,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
     }
 
-    public void updateLevelTwoRegGrid(DefaultListModel<String> defaultListModel) {
-
-        int regSize = defaultListModel.getSize();
-
-        levelTwoBoxes = new ArrayList<ArrayList<JCheckBox>>();
-
-        levelTwoRegSize = regSize;
-
-        levelTwoGrid.removeAll();
-
-        levelTwoGrid.setLayout(new GridLayout(regSize, 4, -1, -1));
-
-        levelTwoGrid.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-
-        for (int j = 0; j < regSize; j++) {
-            levelTwoGrid.add(new JLabel(defaultListModel.getElementAt(j)));
-            levelTwoBoxes.add(j, new ArrayList<JCheckBox>());
-
-            for (int k = 0; k < 3; k++) {
-
-                levelTwoBoxes.get(j).add(k, new JCheckBox());
-                levelTwoGrid.add(levelTwoBoxes.get(j).get(k));
-
-            }
-
-        }
-
-    }
-
-    public void updateStageTwoGrid(DefaultListModel<String> defaultListModel) {
-
-        int regSize = defaultListModel.getSize();
-        stageTwoBoxes = new ArrayList<ArrayList<JCheckBox>>();
-        stageTwoRegSize = regSize;
-
-        stageTwoGrid.removeAll();
-        stageTwoGrid.setLayout(new GridLayout(regSize, 4, -1, -1));
-
-        stageTwoGrid.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-
-        for (int j = 0; j < regSize; j++) {
-            stageTwoGrid.add(new JLabel(defaultListModel.getElementAt(j)));
-            stageTwoBoxes.add(j, new ArrayList<JCheckBox>());
-
-            for (int k = 0; k < 3; k++) {
-
-                stageTwoBoxes.get(j).add(k, new JCheckBox());
-                stageTwoGrid.add(stageTwoBoxes.get(j).get(k));
-
-            }
-
-        }
-
-    }
+    
 
     public int countLevelOneBeta() {
 
@@ -1852,20 +1725,6 @@ public class mixregGUI extends javax.swing.JFrame {
 
     }
 
-    public void enableDisaggVariance() {
-
-        for (int p = 0; p < levelOneRegSize; p++) {
-
-            for (int k = 0; k < 3; k++) {
-
-                if (levelOneBoxes.get(p).get(k).isSelected()) {
-                    disaggVarianceBoxes.get(p).get(k).setEnabled(true);
-                } else {
-                    disaggVarianceBoxes.get(p).get(k).setEnabled(false);
-                }
-            }
-        }
-    }
 
     public String[] getMeanFieldRegressorLabels_levelOne() {
 
@@ -1881,7 +1740,7 @@ public class mixregGUI extends javax.swing.JFrame {
             if (levelOneBoxes.get(p).get(0).isSelected()) {
                 regressorLabels[index] = levelOneSelected.get(p);
                 fieldLabel = levelOneSelected.get(p);
-                System.out.println("Regressor Fields (Mean): " + regressorLabels[index]);
+                System.out.println("From inside mixRegGUI | Regressor Fields (Mean): " + regressorLabels[index]);
                 index++;
 
                 int posIndex = 0;
@@ -1890,8 +1749,10 @@ public class mixregGUI extends javax.swing.JFrame {
 
                     if (variableNamesCombo[q].equals(fieldLabel)) {
                         //position[index] = String.valueOf(q + 1);
-                        position.add(String.valueOf(q + 1));
-                        System.out.println("Position of the regressor: " + position.get(posIndex));
+                        position.add(posIndex, String.valueOf(q + 1));
+                        System.out.println("Regressor position test: " + String.valueOf(q+1));
+                        System.out.println("From inside mixRegGUI | Position of this regressor: " + position.get(posIndex));
+                        System.out.println("Position array: " + position);
                         posIndex++;
 
                     }
@@ -1900,6 +1761,7 @@ public class mixregGUI extends javax.swing.JFrame {
             }
 
         }
+        System.out.println("Position Aray Size here: " + String.valueOf(position.size()));
 
         return position.toArray(new String[position.size()]);
     }
@@ -1917,21 +1779,24 @@ public class mixregGUI extends javax.swing.JFrame {
             if (levelOneBoxes.get(p).get(1).isSelected()) {
                 regressorLabels[index] = levelOneSelected.get(p);
                 fieldLabel = levelOneSelected.get(p);
-                System.out.println("Regressor Fields (BS): " + regressorLabels[index]);
+                System.out.println("From inside mixRegGUI | Regressor Fields (BS): " + regressorLabels[index]);
                 index++;
                 int posIndex = 0;
 
                 for (int q = 0; q < variableNamesCombo.length; q++) {
 
                     if (variableNamesCombo[q].equals(fieldLabel)) {
-                        position.add(String.valueOf(q + 1));
-                        System.out.println("Position of the regressor: " + position.get(posIndex));
+                        position.add(posIndex, String.valueOf(q + 1));
+                        System.out.println("Regressor position test: " + String.valueOf(q+1));
+                        System.out.println("From inside mixRegGUI | Position of this regressor: " + position.get(posIndex));
+                        System.out.println("Position array: " + position);
                         posIndex++;
 
                     }
                 }
             }
         }
+        System.out.println("Position Aray Size here: " + String.valueOf(position.size()));
 
         return position.toArray(new String[position.size()]);
     }
@@ -1949,15 +1814,17 @@ public class mixregGUI extends javax.swing.JFrame {
             if (levelOneBoxes.get(p).get(2).isSelected()) {
                 regressorLabels[index] = levelOneSelected.get(p);
                 fieldLabel = levelOneSelected.get(p);
-                System.out.println("Regressor Fields (WS): " + regressorLabels[index]);
+                System.out.println("From inside mixRegGUI | Regressor Fields (WS): " + regressorLabels[index]);
                 index++;
                 int posIndex = 0;
 
                 for (int q = 0; q < variableNamesCombo.length; q++) {
 
                     if (variableNamesCombo[q].equals(fieldLabel)) {
-                        position.add(String.valueOf(q + 1));
-                        System.out.println("Position of the regressor: " + position.get(posIndex));
+                        position.add(posIndex, String.valueOf(q + 1));
+                        System.out.println("Regressor position test: " + String.valueOf(q+1));
+                        System.out.println("From inside mixRegGUI | Position of this regressor: " + position.get(posIndex));
+                        System.out.println("Position array: " + position);
                         posIndex++;
 
                     }
@@ -1965,6 +1832,8 @@ public class mixregGUI extends javax.swing.JFrame {
             }
 
         }
+        
+        System.out.println("Position Aray Size here: " + String.valueOf(position.size()));
 
         return position.toArray(new String[position.size()]);
     }
