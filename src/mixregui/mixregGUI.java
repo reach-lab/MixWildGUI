@@ -206,6 +206,8 @@ public class mixregGUI extends javax.swing.JFrame {
         levelTwoGrid = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
@@ -397,7 +399,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
         stageTwoGrid.setLayout(new java.awt.GridLayout(1, 0));
         jPanel1.add(stageTwoGrid, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 130, 270, 360));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 570, 1190, 20));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 560, 1190, 20));
 
         level1_BSVar.setText("BS-Var.");
         jPanel1.add(level1_BSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, -1, -1));
@@ -478,6 +480,10 @@ public class mixregGUI extends javax.swing.JFrame {
         );
 
         jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 310, 480));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 530, -1, -1));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/mixLogo.png"))); // NOI18N
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 520, -1, 30));
 
         stageOneTabs.addTab("Configuration", jPanel1);
 
@@ -1206,6 +1212,8 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem6;
