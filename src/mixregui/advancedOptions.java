@@ -8,6 +8,7 @@ package mixregui;
 import def_lib.DefinitionHelper;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -18,6 +19,9 @@ import javax.swing.JOptionPane;
 public class advancedOptions extends javax.swing.JFrame {
 
     DefinitionHelper defFile3;
+    final ImageIcon icon;
+    
+    
 
     /**
      * Creates new form advancedOptions
@@ -26,6 +30,7 @@ public class advancedOptions extends javax.swing.JFrame {
         initComponents();
 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        icon = new ImageIcon(getClass().getResource("/resources/mixLogo.png"));
        // missingValueCode.setEnabled(false);
     }
 
@@ -296,7 +301,7 @@ public class advancedOptions extends javax.swing.JFrame {
             tryCount = 1;
 
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
             catchCount = 1;
         }
@@ -309,7 +314,7 @@ public class advancedOptions extends javax.swing.JFrame {
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
 
         try {
@@ -319,7 +324,7 @@ public class advancedOptions extends javax.swing.JFrame {
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
 
        
@@ -331,7 +336,7 @@ public class advancedOptions extends javax.swing.JFrame {
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
 
         try {
@@ -341,7 +346,7 @@ public class advancedOptions extends javax.swing.JFrame {
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
 
         try {
@@ -351,7 +356,7 @@ public class advancedOptions extends javax.swing.JFrame {
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
 
         try {
@@ -361,7 +366,7 @@ public class advancedOptions extends javax.swing.JFrame {
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
 
         NewModel.defFile.setOutputPrefix("Output_" + getOutPutFileName());
@@ -374,7 +379,7 @@ public class advancedOptions extends javax.swing.JFrame {
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
 
         try {
@@ -383,7 +388,7 @@ public class advancedOptions extends javax.swing.JFrame {
             tryCount = 1;
         } catch (Exception ex) {
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
 
         if (catchCount == 0) {
