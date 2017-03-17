@@ -19,7 +19,9 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.Insets;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -29,6 +31,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -81,6 +85,8 @@ public class mixregGUI extends javax.swing.JFrame {
     ArrayList<String> levelOneSelected;
     ArrayList<String> levelTwoSelected;
     ArrayList<String> stageTwooSelected;
+    
+    final ImageIcon icon;
 
     static ActionListener actionListener;
 
@@ -100,6 +106,13 @@ public class mixregGUI extends javax.swing.JFrame {
 
         i = newModel.getRLE();
         System.out.println(String.valueOf(i));
+        
+        //Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/resources/mixLogo.png"));
+        //setIconImage(image);
+        
+        icon = new ImageIcon(getClass().getResource("/resources/mixLogo.png"));
+        
+        
 
         if (i > 1) {
 
@@ -193,6 +206,8 @@ public class mixregGUI extends javax.swing.JFrame {
         levelTwoGrid = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
@@ -384,7 +399,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
         stageTwoGrid.setLayout(new java.awt.GridLayout(1, 0));
         jPanel1.add(stageTwoGrid, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 130, 270, 360));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 570, 1190, 20));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 560, 1190, 20));
 
         level1_BSVar.setText("BS-Var.");
         jPanel1.add(level1_BSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, -1, -1));
@@ -465,6 +480,10 @@ public class mixregGUI extends javax.swing.JFrame {
         );
 
         jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 310, 480));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 530, -1, -1));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/mixLogo.png"))); // NOI18N
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 520, -1, 30));
 
         stageOneTabs.addTab("Configuration", jPanel1);
 
@@ -767,7 +786,7 @@ public class mixregGUI extends javax.swing.JFrame {
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
 
         // *********************************************************************
@@ -782,7 +801,7 @@ public class mixregGUI extends javax.swing.JFrame {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
             //Number of disaggregate BS Variance
@@ -793,7 +812,7 @@ public class mixregGUI extends javax.swing.JFrame {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
             //Number of disaggregate WS Variance
@@ -804,7 +823,7 @@ public class mixregGUI extends javax.swing.JFrame {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
             // ---- Check if the association radio buttons have been selected (Advanced effect of mean) ----
@@ -817,7 +836,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 } catch (Exception ex) {
                     catchCount = 1;
                     Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
 
             } else if (LinearAssociationRadio.isSelected()) {
@@ -827,7 +846,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 } catch (Exception ex) {
                     catchCount = 1;
                     Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
 
             } else if (QuadraticAssociationRadio.isSelected()) {
@@ -837,7 +856,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 } catch (Exception ex) {
                     catchCount = 1;
                     Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
 
             } // field array counting ends
@@ -851,7 +870,7 @@ public class mixregGUI extends javax.swing.JFrame {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
             // Reads the variable names of variables that have been selected as BS Variances
@@ -862,7 +881,7 @@ public class mixregGUI extends javax.swing.JFrame {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
             // Reads the variable names of variables that have been selected as WS Variances
@@ -873,7 +892,7 @@ public class mixregGUI extends javax.swing.JFrame {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
             try {
@@ -884,7 +903,7 @@ public class mixregGUI extends javax.swing.JFrame {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
             try {
@@ -895,7 +914,7 @@ public class mixregGUI extends javax.swing.JFrame {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
             //******************************************************************
@@ -910,7 +929,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 } catch (Exception ex) {
                     catchCount = 1;
                     Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
 
             } else if (LinearAssociationRadio.isSelected()) {
@@ -920,7 +939,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 } catch (Exception ex) {
                     catchCount = 1;
                     Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
             }
 
@@ -933,7 +952,7 @@ public class mixregGUI extends javax.swing.JFrame {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
             try {
@@ -944,7 +963,7 @@ public class mixregGUI extends javax.swing.JFrame {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
             try {
@@ -955,7 +974,7 @@ public class mixregGUI extends javax.swing.JFrame {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
             // count field labels
             try {
@@ -965,7 +984,7 @@ public class mixregGUI extends javax.swing.JFrame {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
             try {
@@ -975,7 +994,7 @@ public class mixregGUI extends javax.swing.JFrame {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
             try {
@@ -985,7 +1004,7 @@ public class mixregGUI extends javax.swing.JFrame {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
         }
@@ -1000,7 +1019,7 @@ public class mixregGUI extends javax.swing.JFrame {
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
 
         try {
@@ -1012,7 +1031,7 @@ public class mixregGUI extends javax.swing.JFrame {
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
 
         try {
@@ -1024,7 +1043,7 @@ public class mixregGUI extends javax.swing.JFrame {
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
 
         try {
@@ -1035,7 +1054,7 @@ public class mixregGUI extends javax.swing.JFrame {
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
 
         try {
@@ -1046,7 +1065,7 @@ public class mixregGUI extends javax.swing.JFrame {
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
 
         if (catchCount == 0) {
@@ -1062,7 +1081,7 @@ public class mixregGUI extends javax.swing.JFrame {
             } catch (Exception ex) {
                 defCatch = 1;
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 System.out.println("From defHelper | Stage 1 def file failed!");
             }
 
@@ -1193,6 +1212,8 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem6;
@@ -1279,7 +1300,6 @@ public class mixregGUI extends javax.swing.JFrame {
 
     }
 
-
     //get ID variable selected by the user
     public String getIDVariable() {
         String ID;
@@ -1310,7 +1330,6 @@ public class mixregGUI extends javax.swing.JFrame {
 
     }
 
-    
     public void updateLevelOneGrid_version2(DefaultListModel<String> defaultListModel) {
 
         levelOneSelected = new ArrayList<String>();
@@ -1346,7 +1365,6 @@ public class mixregGUI extends javax.swing.JFrame {
         levelOneBoxes = new ArrayList<ArrayList<JCheckBox>>();
         disaggVarianceBoxes = new ArrayList<ArrayList<JCheckBox>>();
 
-        
         for (int j = 0; j < regSize; j++) {
             constraints.gridx = 0;
             constraints.anchor = GridBagConstraints.LINE_END;
@@ -1539,8 +1557,6 @@ public class mixregGUI extends javax.swing.JFrame {
 
     }
 
-    
-
     public int countLevelOneBeta() {
 
         int levelOneBeta = 0;
@@ -1727,7 +1743,6 @@ public class mixregGUI extends javax.swing.JFrame {
 
     }
 
-
     public String[] getMeanFieldRegressorLabels_levelOne() {
 
         String fieldLabel;
@@ -1752,7 +1767,7 @@ public class mixregGUI extends javax.swing.JFrame {
                     if (variableNamesCombo[q].equals(fieldLabel)) {
                         //position[index] = String.valueOf(q + 1);
                         position.add(posIndex, String.valueOf(q + 1));
-                        System.out.println("Regressor position test: " + String.valueOf(q+1));
+                        System.out.println("Regressor position test: " + String.valueOf(q + 1));
                         System.out.println("From inside mixRegGUI | Position of this regressor: " + position.get(posIndex));
                         System.out.println("Position array: " + position);
                         posIndex++;
@@ -1764,19 +1779,18 @@ public class mixregGUI extends javax.swing.JFrame {
 
         }
         System.out.println("Position Aray Size here: " + String.valueOf(position.size()));
-        
+
         String[] positionArray = new String[position.size()];
-        
-        for (int pos = 0; pos < positionArray.length; pos++){
+
+        for (int pos = 0; pos < positionArray.length; pos++) {
             positionArray[pos] = position.get(pos);
             System.out.println("positionArrayElements: " + positionArray[pos]);
-        
+
         }
-        
+
         System.out.println("Converted array size | position: " + String.valueOf(positionArray.length));
         System.out.println("Converted array elements | positions: " + Arrays.toString(positionArray));
 
-        
         return positionArray;
 
         //return position.toArray(new String[position.size()]);
@@ -1803,7 +1817,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
                     if (variableNamesCombo[q].equals(fieldLabel)) {
                         position.add(posIndex, String.valueOf(q + 1));
-                        System.out.println("Regressor position test: " + String.valueOf(q+1));
+                        System.out.println("Regressor position test: " + String.valueOf(q + 1));
                         System.out.println("From inside mixRegGUI | Position of this regressor: " + position.get(posIndex));
                         System.out.println("Position array: " + position);
                         posIndex++;
@@ -1813,19 +1827,18 @@ public class mixregGUI extends javax.swing.JFrame {
             }
         }
         System.out.println("Position Aray Size here: " + String.valueOf(position.size()));
-        
+
         String[] positionArray = new String[position.size()];
-        
-        for (int pos = 0; pos < positionArray.length; pos++){
+
+        for (int pos = 0; pos < positionArray.length; pos++) {
             positionArray[pos] = position.get(pos);
             System.out.println("positionArrayElements: " + positionArray[pos]);
-        
+
         }
-        
+
         System.out.println("Converted array size | position: " + String.valueOf(positionArray.length));
         System.out.println("Converted array elements | positions: " + Arrays.toString(positionArray));
 
-        
         return positionArray;
         //return position.toArray(new String[position.size()]);
     }
@@ -1851,7 +1864,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
                     if (variableNamesCombo[q].equals(fieldLabel)) {
                         position.add(posIndex, String.valueOf(q + 1));
-                        System.out.println("Regressor position test: " + String.valueOf(q+1));
+                        System.out.println("Regressor position test: " + String.valueOf(q + 1));
                         System.out.println("From inside mixRegGUI | Position of this regressor: " + position.get(posIndex));
                         System.out.println("Position array: " + position);
                         posIndex++;
@@ -1861,28 +1874,24 @@ public class mixregGUI extends javax.swing.JFrame {
             }
 
         }
-        
+
         System.out.println("Position Aray Size here: " + String.valueOf(position.size()));
-        
+
         String[] positionArray = new String[position.size()];
-        
-        for (int pos = 0; pos < positionArray.length; pos++){
+
+        for (int pos = 0; pos < positionArray.length; pos++) {
             positionArray[pos] = position.get(pos);
             System.out.println("positionArrayElements: " + positionArray[pos]);
-        
+
         }
-        
+
         System.out.println("Converted array size | position: " + String.valueOf(positionArray.length));
         System.out.println("Converted array elements | positions: " + Arrays.toString(positionArray));
 
-        
         return positionArray;
 
         //return position.toArray(new String[position.size()]);
     }
 
-    private String[] getFieldModelWSRegressors() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+   
 }
