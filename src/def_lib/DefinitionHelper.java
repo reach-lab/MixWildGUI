@@ -1096,9 +1096,7 @@ public class DefinitionHelper {
         return decompMeanCount;
     }
 
-    // What does this do?
-    // level 1 mean
-    //done
+    //level one plus level two disagg variances
     public void setDecompMeanCount(String decompMeanCount) throws Exception {
         if (setValidator("number of mean regressors for BS/WS decomposition", "5", decompMeanCount, 0, 255, MIX_INTEGER)) {
             this.decompMeanCount = decompMeanCount;
@@ -1220,7 +1218,6 @@ public class DefinitionHelper {
         return advancedCenterScale;
     }
 
-    // read from advanced options
     //done
     public void setAdvancedCenterScale(String advancedCenterScale) throws Exception {
         if (setValidator("scale centering", "5", advancedCenterScale, 0, 1, MIX_INTEGER)) {
@@ -1428,7 +1425,7 @@ public class DefinitionHelper {
         return fieldDecompMeanRegressors;
     }
 
-    // to do
+    // done
     public void setFieldDecompMeanRegressors(String[] fieldDecompMeanRegressors) throws Exception {
         if (getDecompMeanCount().matches("0")){
             this.fieldDecompMeanRegressors = new String[0];
