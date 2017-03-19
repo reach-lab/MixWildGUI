@@ -1355,7 +1355,7 @@ public class DefinitionHelper {
         return fieldModelMeanRegressors;
     }
 
-    // to do
+    //fix
     public void setFieldModelMeanRegressors(String[] fieldModelMeanRegressors) throws Exception {
         if (getModelMeanCount().matches("0")){
             this.fieldModelMeanRegressors = new String[0];
@@ -1369,7 +1369,7 @@ public class DefinitionHelper {
         return fieldModelBSRegressors;
     }
 
-    // to do
+    // fix
     public void setFieldModelBSRegressors(String[] fieldModelBSRegressors) throws Exception {
         if (getModelBetweenCount().matches("0")){
             this.fieldModelBSRegressors = new String[0];
@@ -1383,7 +1383,7 @@ public class DefinitionHelper {
         return fieldModelWSRegressors;
     }
 
-    // to do
+    // fix
     public void setFieldModelWSRegressors(String[] fieldModelWSRegressors) throws Exception {
         if (getModelWithinCount().matches("0")){
             this.fieldModelWSRegressors = new String[0];
@@ -1397,7 +1397,7 @@ public class DefinitionHelper {
         return fieldModelLocRanRegressors;
     }
 
-    // to do
+    // fix
     public void setFieldModelLocRanRegressors(String[] fieldModelLocRanRegressors) throws Exception {
         if (getModelLocRanCount().matches("0")){
             this.fieldModelLocRanRegressors = new String[0];
@@ -1411,7 +1411,7 @@ public class DefinitionHelper {
         return fieldModelScaleRegressors;
     }
 
-    // to do
+    // fix
     public void setFieldModelScaleRegressors(String[] fieldModelScaleRegressors) throws Exception {
         if (getModelScaleCount().matches("0")){
             this.fieldModelScaleRegressors = new String[0];
