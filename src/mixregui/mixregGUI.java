@@ -1817,7 +1817,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
         for (int p = 0; p < levelOneRegSize; p++) {
 
-            if (levelOneBoxes.get(p).get(0).isSelected()) {
+            if (levelOneBoxes.get(p).get(0).isSelected() && !disaggVarianceBoxes.get(p).get(0).isSelected()) {
                 regressorLabels[index] = levelOneSelected.get(p);
                 fieldLabel = levelOneSelected.get(p);
                 System.out.println("From inside mixRegGUI | Level One Regressor Fields (Mean): " + regressorLabels[index]);
@@ -2006,7 +2006,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
         for (int p = 0; p < levelOneRegSize; p++) {
 
-            if (levelOneBoxes.get(p).get(1).isSelected()) {
+            if (levelOneBoxes.get(p).get(1).isSelected() && !disaggVarianceBoxes.get(p).get(1).isSelected()) {
                 regressorLabels[index] = levelOneSelected.get(p);
                 fieldLabel = levelOneSelected.get(p);
                 System.out.println("From inside mixRegGUI | Level One Regressor Fields (BS + Disagg.): " + regressorLabels[index]);
@@ -2184,7 +2184,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
         for (int p = 0; p < levelOneRegSize; p++) {
 
-            if (levelOneBoxes.get(p).get(2).isSelected()) {
+            if (levelOneBoxes.get(p).get(2).isSelected() && !disaggVarianceBoxes.get(p).get(2).isSelected()) {
                 regressorLabels[index] = levelOneSelected.get(p);
                 fieldLabel = levelOneSelected.get(p);
                 System.out.println("From inside mixRegGUI | Level one Regressor Fields (WS): " + regressorLabels[index]);
