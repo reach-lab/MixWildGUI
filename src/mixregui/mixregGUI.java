@@ -937,8 +937,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
             try {
             tryCount = 1;
-            int MeanCount = countLevelOneBeta() + countLevelTwoBeta();
-
+            int MeanCount = countLevelOneBeta() + countLevelTwoBeta() - countLevelOneDicompMean();
             // count total mean regressors in level one and level two
             NewModel.defFile.setModelMeanCount(String.valueOf(MeanCount));
             System.out.println("From defHelper | Stage 1 Model Mean Count: " + NewModel.defFile.getModelMeanCount().toString());
@@ -950,7 +949,7 @@ public class mixregGUI extends javax.swing.JFrame {
             
             try {
                 tryCount = 1;
-                int betweenCount = countLevelOneAlpha() + countLevelTwoAlpha();
+                int betweenCount = countLevelOneAlpha() + countLevelTwoAlpha() - countLevelOneDicompBS();
                 NewModel.defFile.setModelBetweenCount(String.valueOf(betweenCount));
                 System.out.println("From defHelper | Model Between Count: " + NewModel.defFile.getModelBetweenCount().toString());
             } catch (Exception ex) {
@@ -961,7 +960,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
             try {
                 tryCount = 1;
-                int withinCount = countLevelOneTau() + countLevelTwoTau();
+                int withinCount = countLevelOneTau() + countLevelTwoTau() - countLevelOneDicompWS();
                 NewModel.defFile.setModelWithinCount(String.valueOf(withinCount));
                 System.out.println("From defHelper | Model Within Count: " + NewModel.defFile.getModelBetweenCount().toString());
             } catch (Exception ex) {
@@ -1090,7 +1089,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
         try {
             tryCount = 1;
-            int MeanCount = countLevelOneBeta() + countLevelTwoBeta();
+            int MeanCount = countLevelOneBeta() + countLevelTwoBeta() - countLevelOneDicompMean();
 
             // count total mean regressors in level one and level two
             NewModel.defFile.setModelMeanCount(String.valueOf(MeanCount));
@@ -1102,7 +1101,7 @@ public class mixregGUI extends javax.swing.JFrame {
         }
 
         try {
-            int LocRanCount = countLevelOneAlpha() + countLevelTwoAlpha();
+            int LocRanCount = countLevelOneAlpha() + countLevelTwoAlpha() - countLevelOneDicompBS();
             // count total random location regressors in level one and level two
             NewModel.defFile.setModelLocRanCount(String.valueOf(LocRanCount));
             System.out.println("From defHelper | Stage 1 Model Loc Ran Count: " + NewModel.defFile.getModelLocRanCount().toString());
@@ -1115,7 +1114,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
         try {
             tryCount = 1;
-            int ScaleCount = countLevelOneTau() + countLevelTwoTau();
+            int ScaleCount = countLevelOneTau() + countLevelTwoTau() - countLevelOneDicompWS();
             // count total scale regressors in level one and level two
             NewModel.defFile.setModelScaleCount(String.valueOf(ScaleCount));
             System.out.println("From defHelper | Stage 1 Model Scale Count: " + NewModel.defFile.getModelLocRanCount().toString());
