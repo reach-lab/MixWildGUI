@@ -1453,7 +1453,7 @@ public class DefinitionHelper {
         return fieldDecompWSRegressors;
     }
 
-    // to do
+    // done
     public void setFieldDecompWSRegressors(String[] fieldDecompWSRegressors) throws Exception {
         if (getDecompWSCount().matches("0")){
             this.fieldDecompWSRegressors = new String[0];
@@ -1467,7 +1467,7 @@ public class DefinitionHelper {
         return fieldDecompLocRanRegressors;
     }
 
-    // to do
+    // done
     public void setFieldDecompLocRanRegressors(String[] fieldDecompLocRanRegressors) throws Exception {
         if (getDecompLocRanCount().matches("0")){
             this.fieldDecompLocRanRegressors = new String[0];
@@ -1476,12 +1476,12 @@ public class DefinitionHelper {
             this.fieldDecompLocRanRegressors = fieldDecompLocRanRegressors;
         }
     }
-//asdf
+    //done
     public String[] getFieldDecompScaleRegressors() {
         return fieldDecompScaleRegressors;
     }
 
-    // to do
+    // done
     public void setFieldDecompScaleRegressors(String[] fieldDecompScaleRegressors) throws Exception {
         if (getDecompScaleCount().matches("0")){
             this.fieldDecompScaleRegressors = new String[0];

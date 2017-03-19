@@ -878,9 +878,9 @@ public class mixregGUI extends javax.swing.JFrame {
 
             // Reads the variable names of variables that have been selected as mean regressors
             try {
-                NewModel.defFile.setFieldModelMeanRegressors(getMeanFieldRegressorLabels_levelOne());
-                System.out.println("From defHelper | #Level One Mean Regressors: " + NewModel.defFile.getFieldModelMeanRegressors().length);
-                System.out.println("From defHelper | Level One Mean Regressors Selected: " + Arrays.toString(NewModel.defFile.getFieldModelMeanRegressors()));
+                NewModel.defFile.setFieldModelMeanRegressors(fieldModelMeanArray());
+                System.out.println("From defHelper | #Stage One Mean Regressors: " + NewModel.defFile.getFieldModelMeanRegressors().length);
+                System.out.println("From defHelper | Stage One Mean Regressors Selected: " + Arrays.toString(NewModel.defFile.getFieldModelMeanRegressors()));
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -926,7 +926,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
-            
+
             try {
                 NewModel.defFile.setFieldDecompWSRegressors(getWSDecompFieldRegressorLabels_levelOne());
                 System.out.println("From defHelper | #Level One WS + Disagg. Regressors: " + NewModel.defFile.getFieldDecompWSRegressors().length);
@@ -1019,8 +1019,8 @@ public class mixregGUI extends javax.swing.JFrame {
             // count field labels
             try {
                 // get variable names from selected mean regressors
-                NewModel.defFile.setFieldModelMeanRegressors(getMeanFieldRegressorLabels_levelOne());
-                System.out.println("From defHelper | #Level One Mean Regressors: " + NewModel.defFile.getFieldModelMeanRegressors().length);
+                NewModel.defFile.setFieldModelMeanRegressors(fieldModelMeanArray());
+                System.out.println("From defHelper | #Stage One Mean Regressors: " + NewModel.defFile.getFieldModelMeanRegressors().length);
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -1064,7 +1064,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
-            
+
             try {
                 NewModel.defFile.setFieldDecompScaleRegressors(getWSDecompFieldRegressorLabels_levelOne());
                 System.out.println("From defHelper | #Level One WS(Scale) + Disagg. Regressors: " + NewModel.defFile.getFieldDecompScaleRegressors().length);
@@ -1504,6 +1504,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
         //levelTwoGrid.setVisible(true);
         JScrollPane scrollpanel = new JScrollPane(levelTwoGrid);
+        levelTwoSelected = new ArrayList<String>();
 
         int regSize = defaultListModel.getSize();
         levelTwoRegSize = regSize;
@@ -1537,7 +1538,9 @@ public class mixregGUI extends javax.swing.JFrame {
         for (int j = 0; j < regSize; j++) {
             constraints.gridx = 0;
             constraints.anchor = GridBagConstraints.LINE_END;
-            levelTwoGrid.add(new JLabel(defaultListModel.getElementAt(j)), constraints);
+            levelTwoSelected.add(defaultListModel.getElementAt(j));
+            levelTwoGrid.add(new JLabel(levelTwoSelected.get(j)), constraints);
+            //levelTwoGrid.add(new JLabel(defaultListModel.getElementAt(j)), constraints);
 
             levelTwoBoxes.add(j, new ArrayList<JCheckBox>());
 
@@ -1864,6 +1867,81 @@ public class mixregGUI extends javax.swing.JFrame {
 
         //return position.toArray(new String[position.size()]);
     }
+    
+    
+    
+    public String[] getMeanFieldRegressorLabels_levelTwo() {
+
+        String fieldLabel;
+
+        String[] regressorLabels = new String[levelTwoRegSize];
+        int index = 0;
+
+        ArrayList<String> position = new ArrayList<>();
+
+        for (int p = 0; p < levelTwoRegSize; p++) {
+
+            if (levelTwoBoxes.get(p).get(0).isSelected()) {
+                regressorLabels[index] = levelTwoSelected.get(p);
+                fieldLabel = levelTwoSelected.get(p);
+                System.out.println("From inside mixRegGUI | Regressor Fields (Mean) level2: " + regressorLabels[index]);
+                index++;
+
+                int posIndex = 0;
+
+                for (int q = 0; q < variableNamesCombo.length; q++) {
+
+                    if (variableNamesCombo[q].equals(fieldLabel)) {
+                        //position[index] = String.valueOf(q + 1);
+                        position.add(posIndex, String.valueOf(q + 1));
+                        System.out.println("Regressor position test: " + String.valueOf(q + 1));
+                        System.out.println("From inside mixRegGUI | Position of this regressor in level2: " + position.get(posIndex));
+                        System.out.println("Position array: " + position);
+                        posIndex++;
+
+                    }
+
+                }
+            }
+
+        }
+        System.out.println("Position Aray Size here: " + String.valueOf(position.size()));
+
+        String[] positionArray = new String[position.size()];
+
+        for (int pos = 0; pos < positionArray.length; pos++) {
+            positionArray[pos] = position.get(pos);
+            System.out.println("positionArrayElements: " + positionArray[pos]);
+
+        }
+
+        System.out.println("Converted array size | position: " + String.valueOf(positionArray.length));
+        System.out.println("Converted array elements | positions: " + Arrays.toString(positionArray));
+
+        return positionArray;
+    }
+    
+    public String[] fieldModelMeanArray(){
+    
+        int arraySize = getMeanFieldRegressorLabels_levelOne().length + getMeanFieldRegressorLabels_levelTwo().length;
+        String[] meanModel = new String[arraySize];
+        
+        for (int pos = 0; pos < arraySize; pos++){
+        if (pos >=0 && pos < getMeanFieldRegressorLabels_levelOne().length){
+            meanModel[pos] = getMeanFieldRegressorLabels_levelOne()[pos];
+            
+        } else if (pos >= getMeanFieldRegressorLabels_levelOne().length && pos < arraySize){
+        
+            meanModel[pos] = getMeanFieldRegressorLabels_levelTwo()[pos - getMeanFieldRegressorLabels_levelOne().length];
+        }
+        
+        }
+        
+        System.out.println("Inside mixRegGUI | meanModel Stage 1: " + Arrays.toString(meanModel));
+        System.out.println("Inside mixRegGui | meanModel Stage 1 Size: " + meanModel.length);
+    
+        return meanModel;
+    }
 
     public String[] getMeanDecompFieldRegressorLabels_levelOne() {
 
@@ -1964,6 +2042,9 @@ public class mixregGUI extends javax.swing.JFrame {
         return positionArray;
         //return position.toArray(new String[position.size()]);
     }
+    
+    
+    
 
     public String[] getBSDecompFieldRegressorLabels_levelOne() {
 
@@ -2061,8 +2142,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
         //return position.toArray(new String[position.size()]);
     }
-    
-    
+
     public String[] getWSDecompFieldRegressorLabels_levelOne() {
 
         String[] regressorLabels = new String[levelOneRegSize];
