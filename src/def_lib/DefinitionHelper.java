@@ -1439,7 +1439,7 @@ public class DefinitionHelper {
         return fieldDecompBSRegressors;
     }
 
-    // to do
+    // done
     public void setFieldDecompBSRegressors(String[] fieldDecompBSRegressors) throws Exception {
         if (getDecompBSCount().matches("0")){
             this.fieldDecompBSRegressors = new String[0];
