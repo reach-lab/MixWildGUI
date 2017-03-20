@@ -1645,6 +1645,7 @@ public class DefinitionHelper {
         return stageTwoFixedCount;
     }
 
+    // done
     public void setStageTwoFixedCount(String stageTwoFixedCount) throws Exception {
         if (setValidator("number of fixed regressors in stage 2", "20", stageTwoFixedCount, 0, 255, MIX_INTEGER)) {
             this.stageTwoFixedCount = stageTwoFixedCount;
@@ -1655,6 +1656,7 @@ public class DefinitionHelper {
         return stageTwoLocRanInteractions;
     }
 
+    // done
     public void setStageTwoLocRanInteractions(String stageTwoLocRanInteractions) throws Exception {
         if (setValidator("number of interactions with location random effects in stage 2", "20", stageTwoLocRanInteractions, 0, 255, MIX_INTEGER)) {
             this.stageTwoLocRanInteractions = stageTwoLocRanInteractions;
@@ -1695,6 +1697,7 @@ public class DefinitionHelper {
         return stageTwoOutcomeField;
     }
 
+    // done
     public void setStageTwoOutcomeField(String stageTwoOutcomeField) throws Exception {
         if (setValidator("outcome field in stage 2", "21", stageTwoOutcomeField, 0, 255, MIX_INTEGER)) {
             this.stageTwoOutcomeField = stageTwoOutcomeField;
@@ -1767,6 +1770,7 @@ public class DefinitionHelper {
         return stageTwoOutcomeLabel;
     }
 
+    // done
     public void setStageTwoOutcomeLabel(String stageTwoOutcomeLabel) throws Exception {
         if (setValidator("label of stage two outcome", "26(mixreg)/27((mixor)", stageTwoOutcomeLabel, 1, 255, MIX_STRING)) {
             this.stageTwoOutcomeLabel = stageTwoOutcomeLabel;
