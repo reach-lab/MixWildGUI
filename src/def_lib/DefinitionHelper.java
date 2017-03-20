@@ -1667,6 +1667,7 @@ public class DefinitionHelper {
         return stageTwoScaleInteractions;
     }
 
+    // done
     public void setStageTwoScaleInteractions(String stageTwoScaleInteractions) throws Exception {
         if (setValidator("number of interactions with scale random effects in stage 2", "20", stageTwoScaleInteractions, 0, 255, MIX_INTEGER)) {
             this.stageTwoScaleInteractions = stageTwoScaleInteractions;
@@ -1677,6 +1678,7 @@ public class DefinitionHelper {
         return stageTwoIntOfInteraction;
     }
 
+    // to do
     public void setStageTwoIntOfInteraction(String stageTwoIntOfInteraction) throws Exception {
         if (setValidator("number of interactions with interaction of location and scale random effects in stage 2", "20", stageTwoIntOfInteraction, -1, 255, MIX_INTEGER)) {
             this.stageTwoIntOfInteraction = stageTwoIntOfInteraction;
@@ -1687,6 +1689,7 @@ public class DefinitionHelper {
         return stageTwoOutcomeCatCount;
     }
 
+    // todo
     public void setStageTwoOutcomeCatCount(String stageTwoOutcomeCatCount) throws Exception {
         if (setValidator("number of categories for the outcome in stage 2", "20", stageTwoOutcomeCatCount, 2, 255, MIX_INTEGER)) {
             this.stageTwoOutcomeCatCount = stageTwoOutcomeCatCount;
@@ -1708,6 +1711,7 @@ public class DefinitionHelper {
         return stageTwoOutcomeCatLabel;
     }
 
+    //todo
     public void setStageTwoOutcomeCatLabel(String[] stageTwoOutcomeCatLabel) throws Exception {
         if (loopSetValidator("numeric categories of outcome variable", "21", stageTwoOutcomeCatLabel, 0, 255, MIX_INTEGER)) {
             this.stageTwoOutcomeCatLabel = stageTwoOutcomeCatLabel;
@@ -1718,6 +1722,8 @@ public class DefinitionHelper {
         return stageTwoFixedFields;
     }
 
+    
+    //todo
     public void setStageTwoFixedFields(String[] stageTwoFixedFields) throws Exception {
         if (getStageTwoFixedCount().matches("0")){
             this.stageTwoFixedFields = new String[0];
