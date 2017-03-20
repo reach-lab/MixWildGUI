@@ -1494,17 +1494,18 @@ public class DefinitionHelper {
     public String getLabelModelOutcome() {
         return labelModelOutcome;
     }
-
+    //to do
     public void setLabelModelOutcome(String labelModelOutcome) throws Exception {
         if (setValidator("model scale regressor for BS/WS decomposition fields", "13", labelModelOutcome, 1, 255, MIX_STRING)) {
             this.labelModelOutcome = labelModelOutcome;
         }
     }
 
+    // done
     public String[] getLabelModelMeanRegressors() {
         return labelModelMeanRegressors;
     }
-
+    // done
     public void setLabelModelMeanRegressors(String[] labelModelMeanRegressors) throws Exception {
         if (getModelMeanCount().matches("0")){
             this.labelModelMeanRegressors = new String[0];
@@ -1518,6 +1519,7 @@ public class DefinitionHelper {
         return labelModelLocRanRegressors;
     }
 
+    // done
     public void setLabelModelLocRanRegressors(String[] labelModelLocRanRegressors) throws Exception {
         if (getModelLocRanCount().matches("0")){
             this.labelModelLocRanRegressors = new String[0];
@@ -1531,6 +1533,7 @@ public class DefinitionHelper {
         return labelModelScaleRegressors;
     }
 
+    // done
     public void setLabelModelScaleRegressors(String[] labelModelScaleRegressors) throws Exception {
         if (getModelScaleCount().matches("0")){
             this.labelModelScaleRegressors = new String[0];
@@ -1544,6 +1547,7 @@ public class DefinitionHelper {
         return labelModelBSRegressors;
     }
 
+    // done
     public void setLabelModelBSRegressors(String[] labelModelBSRegressors) throws Exception {
         if (getModelBetweenCount().matches("0")){
             this.labelModelBSRegressors = new String[0];
@@ -1557,6 +1561,7 @@ public class DefinitionHelper {
         return labelModelWSRegressors;
     }
 
+    // done
     public void setLabelModelWSRegressors(String[] labelModelWSRegressors) throws Exception {
         if (getModelWithinCount().matches("0")){
             this.labelModelWSRegressors = new String[0];
@@ -1570,6 +1575,7 @@ public class DefinitionHelper {
         return labelDecompMeanRegressors;
     }
 
+    // done
     public void setLabelDecompMeanRegressors(String[] labelDecompMeanRegressors) throws Exception {
         if (getDecompMeanCount().matches("0")){
             this.labelDecompMeanRegressors = new String[0];
@@ -1583,6 +1589,7 @@ public class DefinitionHelper {
         return labelDecompLocRanRegressors;
     }
 
+    // done
     public void setLabelDecompLocRanRegressors(String[] labelDecompLocRanRegressors) throws Exception {
         if (getDecompLocRanCount().matches("0")){
             this.labelDecompLocRanRegressors = new String[0];
@@ -1596,6 +1603,7 @@ public class DefinitionHelper {
         return labelDecompScaleRegressors;
     }
 
+    // done
     public void setLabelDecompScaleRegressors(String[] labelDecompScaleRegressors) throws Exception {
         if (getDecompScaleCount().matches("0")){
             this.labelDecompScaleRegressors = new String[0];
@@ -1609,6 +1617,7 @@ public class DefinitionHelper {
         return labelDecompBSRegressors;
     }
 
+    // done
     public void setLabelDecompBSRegressors(String[] labelDecompBSRegressors) throws Exception {
         if (getDecompBSCount().matches("0")){
             this.labelDecompBSRegressors = new String[0];
@@ -1622,6 +1631,7 @@ public class DefinitionHelper {
         return labelDecompWSRegressors;
     }
 
+    // done
     public void setLabelDecompWSRegressors(String[] labelDecompWSRegressors) throws Exception {
         if (getDecompWSCount().matches("0")){
             this.labelDecompWSRegressors = new String[0];
