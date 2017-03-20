@@ -1,20 +1,20 @@
 title
 subtitle
 /Users/adityaponnada/Downloads/sampleNOVEL.csv
-null
-156  1  1  1  null  0  0  1  0  0  null  null  null  null  -9999  null  1  null
+Output_Test.out
+156  1  0  0  0  0  0  2  0  0  0.001  11  0  1  -9999  1  1  0.15
 1  2
-4
-
 
 null
 null
+7  6
 null
 null
+WAVE
+
 null
 null
-null
-null
+DAY_COUNT  FULLTIME
 null
 null
 0  0  0  0  null
