@@ -806,12 +806,32 @@ public class mixregGUI extends javax.swing.JFrame {
         try {
             tryCount = 1;
             NewModel.defFile.setLabelModelOutcome(getOutcomeLabel());
-            System.out.println("From defHelper | Outcome variable LABEL: " + NewModel.defFile.getLabelModelOutcome());
+            System.out.println("From defHelper | Outcome variable Stage One LABEL: " + NewModel.defFile.getLabelModelOutcome());
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
+        
+        try {
+            NewModel.defFile.setStageTwoOutcomeField(getStageTwoOutcomePosition());
+            System.out.println("From defHelper | Outcome variable Position STAGE TWO: " + NewModel.defFile.getStageTwoOutcomeField());
+        } catch (Exception ex) {
+            catchCount = 1;
+            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+        }
+        
+        try {
+            NewModel.defFile.setStageTwoOutcomeLabel(getStageTwoOutcomeLabel());
+            System.out.println("From defHelper | Outcome variable label STAGE TWO: " + NewModel.defFile.getStageTwoOutcomeLabel());
+        } catch (Exception ex) {
+            catchCount = 1;
+            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+        }
+        
+        
 
         // *********************************************************************
         // i is the number of random location effects selected by the users
@@ -1809,6 +1829,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
     }
 
+    //setStageTwoFixedCount()
     public int countStageTwoBeta() {
 
         int stageTwoBeta = 0;
@@ -1857,6 +1878,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
     }
 
+    //setStageTwoLocRanInteractions
     public int countStageTwoAlpha() {
 
         int stageTwoAlpha = 0;
@@ -1905,6 +1927,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
     }
 
+    //setStageTwoScaleInteractions
     public int countStageTwoTau() {
 
         int stageTwoTau = 0;
@@ -2809,6 +2832,33 @@ public class mixregGUI extends javax.swing.JFrame {
         
         outcome = StageOneVariableCombo.getSelectedItem().toString();
         System.out.println("From inside MixRegGUI | Outcome variable Label: " + outcome);
+        
+        return outcome;
+    
+    }
+    
+    public String getStageTwoOutcomePosition(){
+        String position;
+        int pos;
+        
+        String outcome = StageTwoVariableCombo.getSelectedItem().toString();
+        pos = StageTwoVariableCombo.getSelectedIndex();
+        
+        position = String.valueOf(pos + 1);
+        
+        return position;
+    
+    
+    }
+    
+    public String getStageTwoOutcomeLabel(){
+        String position;
+        int pos;
+        
+        String outcome = StageTwoVariableCombo.getSelectedItem().toString();
+        pos = StageTwoVariableCombo.getSelectedIndex();
+        
+        position = String.valueOf(pos + 1);
         
         return outcome;
     

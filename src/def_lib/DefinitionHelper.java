@@ -1494,7 +1494,7 @@ public class DefinitionHelper {
     public String getLabelModelOutcome() {
         return labelModelOutcome;
     }
-    //to do
+    //done
     public void setLabelModelOutcome(String labelModelOutcome) throws Exception {
         if (setValidator("model scale regressor for BS/WS decomposition fields", "13", labelModelOutcome, 1, 255, MIX_STRING)) {
             this.labelModelOutcome = labelModelOutcome;
@@ -1640,7 +1640,7 @@ public class DefinitionHelper {
             this.labelDecompWSRegressors = labelDecompWSRegressors;
         }
     }
-
+    
     public String getStageTwoFixedCount() {
         return stageTwoFixedCount;
     }
