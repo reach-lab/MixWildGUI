@@ -1096,9 +1096,7 @@ public class DefinitionHelper {
         return decompMeanCount;
     }
 
-    // What does this do?
-    // level 1 mean
-    //done
+    //level one plus level two disagg variances
     public void setDecompMeanCount(String decompMeanCount) throws Exception {
         if (setValidator("number of mean regressors for BS/WS decomposition", "5", decompMeanCount, 0, 255, MIX_INTEGER)) {
             this.decompMeanCount = decompMeanCount;
@@ -1220,7 +1218,6 @@ public class DefinitionHelper {
         return advancedCenterScale;
     }
 
-    // read from advanced options
     //done
     public void setAdvancedCenterScale(String advancedCenterScale) throws Exception {
         if (setValidator("scale centering", "5", advancedCenterScale, 0, 1, MIX_INTEGER)) {
@@ -1358,7 +1355,7 @@ public class DefinitionHelper {
         return fieldModelMeanRegressors;
     }
 
-    // to do
+    //fix
     public void setFieldModelMeanRegressors(String[] fieldModelMeanRegressors) throws Exception {
         if (getModelMeanCount().matches("0")){
             this.fieldModelMeanRegressors = new String[0];
@@ -1372,7 +1369,7 @@ public class DefinitionHelper {
         return fieldModelBSRegressors;
     }
 
-    // to do
+    // fix
     public void setFieldModelBSRegressors(String[] fieldModelBSRegressors) throws Exception {
         if (getModelBetweenCount().matches("0")){
             this.fieldModelBSRegressors = new String[0];
@@ -1386,7 +1383,7 @@ public class DefinitionHelper {
         return fieldModelWSRegressors;
     }
 
-    // to do
+    // fix
     public void setFieldModelWSRegressors(String[] fieldModelWSRegressors) throws Exception {
         if (getModelWithinCount().matches("0")){
             this.fieldModelWSRegressors = new String[0];
@@ -1400,7 +1397,7 @@ public class DefinitionHelper {
         return fieldModelLocRanRegressors;
     }
 
-    // to do
+    // fix
     public void setFieldModelLocRanRegressors(String[] fieldModelLocRanRegressors) throws Exception {
         if (getModelLocRanCount().matches("0")){
             this.fieldModelLocRanRegressors = new String[0];
@@ -1414,7 +1411,7 @@ public class DefinitionHelper {
         return fieldModelScaleRegressors;
     }
 
-    // to do
+    // fix
     public void setFieldModelScaleRegressors(String[] fieldModelScaleRegressors) throws Exception {
         if (getModelScaleCount().matches("0")){
             this.fieldModelScaleRegressors = new String[0];
@@ -1428,7 +1425,7 @@ public class DefinitionHelper {
         return fieldDecompMeanRegressors;
     }
 
-    // to do
+    // done
     public void setFieldDecompMeanRegressors(String[] fieldDecompMeanRegressors) throws Exception {
         if (getDecompMeanCount().matches("0")){
             this.fieldDecompMeanRegressors = new String[0];
@@ -1442,7 +1439,7 @@ public class DefinitionHelper {
         return fieldDecompBSRegressors;
     }
 
-    // to do
+    // done
     public void setFieldDecompBSRegressors(String[] fieldDecompBSRegressors) throws Exception {
         if (getDecompBSCount().matches("0")){
             this.fieldDecompBSRegressors = new String[0];
@@ -1456,7 +1453,7 @@ public class DefinitionHelper {
         return fieldDecompWSRegressors;
     }
 
-    // to do
+    // done
     public void setFieldDecompWSRegressors(String[] fieldDecompWSRegressors) throws Exception {
         if (getDecompWSCount().matches("0")){
             this.fieldDecompWSRegressors = new String[0];
@@ -1470,7 +1467,7 @@ public class DefinitionHelper {
         return fieldDecompLocRanRegressors;
     }
 
-    // to do
+    // done
     public void setFieldDecompLocRanRegressors(String[] fieldDecompLocRanRegressors) throws Exception {
         if (getDecompLocRanCount().matches("0")){
             this.fieldDecompLocRanRegressors = new String[0];
@@ -1479,12 +1476,12 @@ public class DefinitionHelper {
             this.fieldDecompLocRanRegressors = fieldDecompLocRanRegressors;
         }
     }
-//asdf
+    //done
     public String[] getFieldDecompScaleRegressors() {
         return fieldDecompScaleRegressors;
     }
 
-    // to do
+    // done
     public void setFieldDecompScaleRegressors(String[] fieldDecompScaleRegressors) throws Exception {
         if (getDecompScaleCount().matches("0")){
             this.fieldDecompScaleRegressors = new String[0];
@@ -1497,17 +1494,18 @@ public class DefinitionHelper {
     public String getLabelModelOutcome() {
         return labelModelOutcome;
     }
-
+    //to do
     public void setLabelModelOutcome(String labelModelOutcome) throws Exception {
         if (setValidator("model scale regressor for BS/WS decomposition fields", "13", labelModelOutcome, 1, 255, MIX_STRING)) {
             this.labelModelOutcome = labelModelOutcome;
         }
     }
 
+    // done
     public String[] getLabelModelMeanRegressors() {
         return labelModelMeanRegressors;
     }
-
+    // done
     public void setLabelModelMeanRegressors(String[] labelModelMeanRegressors) throws Exception {
         if (getModelMeanCount().matches("0")){
             this.labelModelMeanRegressors = new String[0];
@@ -1521,6 +1519,7 @@ public class DefinitionHelper {
         return labelModelLocRanRegressors;
     }
 
+    // done
     public void setLabelModelLocRanRegressors(String[] labelModelLocRanRegressors) throws Exception {
         if (getModelLocRanCount().matches("0")){
             this.labelModelLocRanRegressors = new String[0];
@@ -1534,6 +1533,7 @@ public class DefinitionHelper {
         return labelModelScaleRegressors;
     }
 
+    // done
     public void setLabelModelScaleRegressors(String[] labelModelScaleRegressors) throws Exception {
         if (getModelScaleCount().matches("0")){
             this.labelModelScaleRegressors = new String[0];
@@ -1547,6 +1547,7 @@ public class DefinitionHelper {
         return labelModelBSRegressors;
     }
 
+    // done
     public void setLabelModelBSRegressors(String[] labelModelBSRegressors) throws Exception {
         if (getModelBetweenCount().matches("0")){
             this.labelModelBSRegressors = new String[0];
@@ -1560,6 +1561,7 @@ public class DefinitionHelper {
         return labelModelWSRegressors;
     }
 
+    // done
     public void setLabelModelWSRegressors(String[] labelModelWSRegressors) throws Exception {
         if (getModelWithinCount().matches("0")){
             this.labelModelWSRegressors = new String[0];
@@ -1573,6 +1575,7 @@ public class DefinitionHelper {
         return labelDecompMeanRegressors;
     }
 
+    // done
     public void setLabelDecompMeanRegressors(String[] labelDecompMeanRegressors) throws Exception {
         if (getDecompMeanCount().matches("0")){
             this.labelDecompMeanRegressors = new String[0];
@@ -1586,6 +1589,7 @@ public class DefinitionHelper {
         return labelDecompLocRanRegressors;
     }
 
+    // done
     public void setLabelDecompLocRanRegressors(String[] labelDecompLocRanRegressors) throws Exception {
         if (getDecompLocRanCount().matches("0")){
             this.labelDecompLocRanRegressors = new String[0];
@@ -1599,6 +1603,7 @@ public class DefinitionHelper {
         return labelDecompScaleRegressors;
     }
 
+    // done
     public void setLabelDecompScaleRegressors(String[] labelDecompScaleRegressors) throws Exception {
         if (getDecompScaleCount().matches("0")){
             this.labelDecompScaleRegressors = new String[0];
@@ -1612,6 +1617,7 @@ public class DefinitionHelper {
         return labelDecompBSRegressors;
     }
 
+    // done
     public void setLabelDecompBSRegressors(String[] labelDecompBSRegressors) throws Exception {
         if (getDecompBSCount().matches("0")){
             this.labelDecompBSRegressors = new String[0];
@@ -1625,6 +1631,7 @@ public class DefinitionHelper {
         return labelDecompWSRegressors;
     }
 
+    // done
     public void setLabelDecompWSRegressors(String[] labelDecompWSRegressors) throws Exception {
         if (getDecompWSCount().matches("0")){
             this.labelDecompWSRegressors = new String[0];
