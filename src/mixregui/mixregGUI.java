@@ -1296,6 +1296,15 @@ public class mixregGUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
         
+        try {
+            NewModel.defFile.setStageTwoLocRanIntFields(getRanLocFieldRegressors_StageTwo());
+            System.out.println("From defHelper | STAGE TWO  LOC RAN REGRESSOR Positions: " + Arrays.toString(NewModel.defFile.getStageTwoLocRanIntFields()));
+        } catch (Exception ex) {
+            catchCount = 1;
+            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+        }
+        
             
 
         if (catchCount == 0) {
@@ -2922,6 +2931,61 @@ public class mixregGUI extends javax.swing.JFrame {
                 regressorLabels[index] = stageTwoSelected.get(p);
                 fieldLabel = stageTwoSelected.get(p);
                 System.out.println("From inside mixRegGUI | Stage two Regressor Fields (Fixed): " + regressorLabels[index]);
+                index++;
+
+                int posIndex = 0;
+
+                for (int q = 0; q < variableNamesCombo.length; q++) {
+
+                    if (variableNamesCombo[q].equals(fieldLabel)) {
+                        //position[index] = String.valueOf(q + 1);
+                        position.add(posIndex, String.valueOf(q + 1));
+                        System.out.println("Regressor position test: " + String.valueOf(q + 1));
+                        System.out.println("From inside mixRegGUI | Position of this regressor: " + position.get(posIndex));
+                        System.out.println("Position array: " + position);
+                        posIndex++;
+
+                    }
+
+                }
+            }
+
+        }
+        System.out.println("Position Aray Size here: " + String.valueOf(position.size()));
+
+        String[] positionArray = new String[position.size()];
+
+        for (int pos = 0; pos < positionArray.length; pos++) {
+            positionArray[pos] = position.get(pos);
+            System.out.println("positionArrayElements: " + positionArray[pos]);
+
+        }
+
+        System.out.println("Converted array size | position: " + String.valueOf(positionArray.length));
+        System.out.println("Converted array elements | positions: " + Arrays.toString(positionArray));
+        System.out.println("*********************************");
+
+        return positionArray;
+
+    }
+    
+    
+    public String[] getRanLocFieldRegressors_StageTwo() {
+        System.out.println("*********************************");
+
+        String fieldLabel;
+
+        String[] regressorLabels = new String[stageTwoRegSize];
+        int index = 0;
+
+        ArrayList<String> position = new ArrayList<>();
+
+        for (int p = 0; p < stageTwoRegSize; p++) {
+
+            if (stageTwoBoxes.get(p).get(1).isSelected()) {
+                regressorLabels[index] = stageTwoSelected.get(p);
+                fieldLabel = stageTwoSelected.get(p);
+                System.out.println("From inside mixRegGUI | Stage two Regressor Fields (LocRan): " + regressorLabels[index]);
                 index++;
 
                 int posIndex = 0;

@@ -1723,7 +1723,7 @@ public class DefinitionHelper {
     }
 
     
-    //todo
+    //done
     public void setStageTwoFixedFields(String[] stageTwoFixedFields) throws Exception {
         if (getStageTwoFixedCount().matches("0")){
             this.stageTwoFixedFields = new String[0];
