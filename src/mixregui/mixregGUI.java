@@ -3362,7 +3362,6 @@ public class mixregGUI extends javax.swing.JFrame {
                 fieldLabel = stageTwoSelected.get(p);
                 System.out.println("STAGE-TWO/MIXREGGUI/Regressor-Fields-(INTERACTIONS)= " + regressorLabels.get(index));
                 index++;
-
             }
         }
 
