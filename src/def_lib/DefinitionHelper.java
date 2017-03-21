@@ -1096,9 +1096,7 @@ public class DefinitionHelper {
         return decompMeanCount;
     }
 
-    // What does this do?
-    // level 1 mean
-    //done
+    //level one plus level two disagg variances
     public void setDecompMeanCount(String decompMeanCount) throws Exception {
         if (setValidator("number of mean regressors for BS/WS decomposition", "5", decompMeanCount, 0, 255, MIX_INTEGER)) {
             this.decompMeanCount = decompMeanCount;
@@ -1220,7 +1218,6 @@ public class DefinitionHelper {
         return advancedCenterScale;
     }
 
-    // read from advanced options
     //done
     public void setAdvancedCenterScale(String advancedCenterScale) throws Exception {
         if (setValidator("scale centering", "5", advancedCenterScale, 0, 1, MIX_INTEGER)) {
@@ -1358,7 +1355,7 @@ public class DefinitionHelper {
         return fieldModelMeanRegressors;
     }
 
-    // to do
+    //fix
     public void setFieldModelMeanRegressors(String[] fieldModelMeanRegressors) throws Exception {
         if (getModelMeanCount().matches("0")){
             this.fieldModelMeanRegressors = new String[0];
@@ -1372,7 +1369,7 @@ public class DefinitionHelper {
         return fieldModelBSRegressors;
     }
 
-    // to do
+    // fix
     public void setFieldModelBSRegressors(String[] fieldModelBSRegressors) throws Exception {
         if (getModelBetweenCount().matches("0")){
             this.fieldModelBSRegressors = new String[0];
@@ -1386,7 +1383,7 @@ public class DefinitionHelper {
         return fieldModelWSRegressors;
     }
 
-    // to do
+    // fix
     public void setFieldModelWSRegressors(String[] fieldModelWSRegressors) throws Exception {
         if (getModelWithinCount().matches("0")){
             this.fieldModelWSRegressors = new String[0];
@@ -1400,7 +1397,7 @@ public class DefinitionHelper {
         return fieldModelLocRanRegressors;
     }
 
-    // to do
+    // fix
     public void setFieldModelLocRanRegressors(String[] fieldModelLocRanRegressors) throws Exception {
         if (getModelLocRanCount().matches("0")){
             this.fieldModelLocRanRegressors = new String[0];
@@ -1414,7 +1411,7 @@ public class DefinitionHelper {
         return fieldModelScaleRegressors;
     }
 
-    // to do
+    // fix
     public void setFieldModelScaleRegressors(String[] fieldModelScaleRegressors) throws Exception {
         if (getModelScaleCount().matches("0")){
             this.fieldModelScaleRegressors = new String[0];
@@ -1428,7 +1425,7 @@ public class DefinitionHelper {
         return fieldDecompMeanRegressors;
     }
 
-    // to do
+    // done
     public void setFieldDecompMeanRegressors(String[] fieldDecompMeanRegressors) throws Exception {
         if (getDecompMeanCount().matches("0")){
             this.fieldDecompMeanRegressors = new String[0];
@@ -1442,7 +1439,7 @@ public class DefinitionHelper {
         return fieldDecompBSRegressors;
     }
 
-    // to do
+    // done
     public void setFieldDecompBSRegressors(String[] fieldDecompBSRegressors) throws Exception {
         if (getDecompBSCount().matches("0")){
             this.fieldDecompBSRegressors = new String[0];
@@ -1456,7 +1453,7 @@ public class DefinitionHelper {
         return fieldDecompWSRegressors;
     }
 
-    // to do
+    // done
     public void setFieldDecompWSRegressors(String[] fieldDecompWSRegressors) throws Exception {
         if (getDecompWSCount().matches("0")){
             this.fieldDecompWSRegressors = new String[0];
@@ -1470,7 +1467,7 @@ public class DefinitionHelper {
         return fieldDecompLocRanRegressors;
     }
 
-    // to do
+    // done
     public void setFieldDecompLocRanRegressors(String[] fieldDecompLocRanRegressors) throws Exception {
         if (getDecompLocRanCount().matches("0")){
             this.fieldDecompLocRanRegressors = new String[0];
@@ -1479,12 +1476,12 @@ public class DefinitionHelper {
             this.fieldDecompLocRanRegressors = fieldDecompLocRanRegressors;
         }
     }
-//asdf
+    //done
     public String[] getFieldDecompScaleRegressors() {
         return fieldDecompScaleRegressors;
     }
 
-    // to do
+    // done
     public void setFieldDecompScaleRegressors(String[] fieldDecompScaleRegressors) throws Exception {
         if (getDecompScaleCount().matches("0")){
             this.fieldDecompScaleRegressors = new String[0];
@@ -1497,17 +1494,18 @@ public class DefinitionHelper {
     public String getLabelModelOutcome() {
         return labelModelOutcome;
     }
-
+    //done
     public void setLabelModelOutcome(String labelModelOutcome) throws Exception {
         if (setValidator("model scale regressor for BS/WS decomposition fields", "13", labelModelOutcome, 1, 255, MIX_STRING)) {
             this.labelModelOutcome = labelModelOutcome;
         }
     }
 
+    // done
     public String[] getLabelModelMeanRegressors() {
         return labelModelMeanRegressors;
     }
-
+    // done
     public void setLabelModelMeanRegressors(String[] labelModelMeanRegressors) throws Exception {
         if (getModelMeanCount().matches("0")){
             this.labelModelMeanRegressors = new String[0];
@@ -1521,6 +1519,7 @@ public class DefinitionHelper {
         return labelModelLocRanRegressors;
     }
 
+    // done
     public void setLabelModelLocRanRegressors(String[] labelModelLocRanRegressors) throws Exception {
         if (getModelLocRanCount().matches("0")){
             this.labelModelLocRanRegressors = new String[0];
@@ -1534,6 +1533,7 @@ public class DefinitionHelper {
         return labelModelScaleRegressors;
     }
 
+    // done
     public void setLabelModelScaleRegressors(String[] labelModelScaleRegressors) throws Exception {
         if (getModelScaleCount().matches("0")){
             this.labelModelScaleRegressors = new String[0];
@@ -1547,6 +1547,7 @@ public class DefinitionHelper {
         return labelModelBSRegressors;
     }
 
+    // done
     public void setLabelModelBSRegressors(String[] labelModelBSRegressors) throws Exception {
         if (getModelBetweenCount().matches("0")){
             this.labelModelBSRegressors = new String[0];
@@ -1560,6 +1561,7 @@ public class DefinitionHelper {
         return labelModelWSRegressors;
     }
 
+    // done
     public void setLabelModelWSRegressors(String[] labelModelWSRegressors) throws Exception {
         if (getModelWithinCount().matches("0")){
             this.labelModelWSRegressors = new String[0];
@@ -1573,6 +1575,7 @@ public class DefinitionHelper {
         return labelDecompMeanRegressors;
     }
 
+    // done
     public void setLabelDecompMeanRegressors(String[] labelDecompMeanRegressors) throws Exception {
         if (getDecompMeanCount().matches("0")){
             this.labelDecompMeanRegressors = new String[0];
@@ -1586,6 +1589,7 @@ public class DefinitionHelper {
         return labelDecompLocRanRegressors;
     }
 
+    // done
     public void setLabelDecompLocRanRegressors(String[] labelDecompLocRanRegressors) throws Exception {
         if (getDecompLocRanCount().matches("0")){
             this.labelDecompLocRanRegressors = new String[0];
@@ -1599,6 +1603,7 @@ public class DefinitionHelper {
         return labelDecompScaleRegressors;
     }
 
+    // done
     public void setLabelDecompScaleRegressors(String[] labelDecompScaleRegressors) throws Exception {
         if (getDecompScaleCount().matches("0")){
             this.labelDecompScaleRegressors = new String[0];
@@ -1612,6 +1617,7 @@ public class DefinitionHelper {
         return labelDecompBSRegressors;
     }
 
+    // done
     public void setLabelDecompBSRegressors(String[] labelDecompBSRegressors) throws Exception {
         if (getDecompBSCount().matches("0")){
             this.labelDecompBSRegressors = new String[0];
@@ -1625,6 +1631,7 @@ public class DefinitionHelper {
         return labelDecompWSRegressors;
     }
 
+    // done
     public void setLabelDecompWSRegressors(String[] labelDecompWSRegressors) throws Exception {
         if (getDecompWSCount().matches("0")){
             this.labelDecompWSRegressors = new String[0];
@@ -1633,11 +1640,12 @@ public class DefinitionHelper {
             this.labelDecompWSRegressors = labelDecompWSRegressors;
         }
     }
-
+    
     public String getStageTwoFixedCount() {
         return stageTwoFixedCount;
     }
 
+    // done
     public void setStageTwoFixedCount(String stageTwoFixedCount) throws Exception {
         if (setValidator("number of fixed regressors in stage 2", "20", stageTwoFixedCount, 0, 255, MIX_INTEGER)) {
             this.stageTwoFixedCount = stageTwoFixedCount;
@@ -1648,6 +1656,7 @@ public class DefinitionHelper {
         return stageTwoLocRanInteractions;
     }
 
+    // done
     public void setStageTwoLocRanInteractions(String stageTwoLocRanInteractions) throws Exception {
         if (setValidator("number of interactions with location random effects in stage 2", "20", stageTwoLocRanInteractions, 0, 255, MIX_INTEGER)) {
             this.stageTwoLocRanInteractions = stageTwoLocRanInteractions;
@@ -1658,6 +1667,7 @@ public class DefinitionHelper {
         return stageTwoScaleInteractions;
     }
 
+    // done
     public void setStageTwoScaleInteractions(String stageTwoScaleInteractions) throws Exception {
         if (setValidator("number of interactions with scale random effects in stage 2", "20", stageTwoScaleInteractions, 0, 255, MIX_INTEGER)) {
             this.stageTwoScaleInteractions = stageTwoScaleInteractions;
@@ -1668,6 +1678,7 @@ public class DefinitionHelper {
         return stageTwoIntOfInteraction;
     }
 
+    // to do
     public void setStageTwoIntOfInteraction(String stageTwoIntOfInteraction) throws Exception {
         if (setValidator("number of interactions with interaction of location and scale random effects in stage 2", "20", stageTwoIntOfInteraction, -1, 255, MIX_INTEGER)) {
             this.stageTwoIntOfInteraction = stageTwoIntOfInteraction;
@@ -1678,6 +1689,7 @@ public class DefinitionHelper {
         return stageTwoOutcomeCatCount;
     }
 
+    // todo
     public void setStageTwoOutcomeCatCount(String stageTwoOutcomeCatCount) throws Exception {
         if (setValidator("number of categories for the outcome in stage 2", "20", stageTwoOutcomeCatCount, 2, 255, MIX_INTEGER)) {
             this.stageTwoOutcomeCatCount = stageTwoOutcomeCatCount;
@@ -1688,6 +1700,7 @@ public class DefinitionHelper {
         return stageTwoOutcomeField;
     }
 
+    // done
     public void setStageTwoOutcomeField(String stageTwoOutcomeField) throws Exception {
         if (setValidator("outcome field in stage 2", "21", stageTwoOutcomeField, 0, 255, MIX_INTEGER)) {
             this.stageTwoOutcomeField = stageTwoOutcomeField;
@@ -1698,6 +1711,7 @@ public class DefinitionHelper {
         return stageTwoOutcomeCatLabel;
     }
 
+    //todo
     public void setStageTwoOutcomeCatLabel(String[] stageTwoOutcomeCatLabel) throws Exception {
         if (loopSetValidator("numeric categories of outcome variable", "21", stageTwoOutcomeCatLabel, 0, 255, MIX_INTEGER)) {
             this.stageTwoOutcomeCatLabel = stageTwoOutcomeCatLabel;
@@ -1708,6 +1722,8 @@ public class DefinitionHelper {
         return stageTwoFixedFields;
     }
 
+    
+    //done
     public void setStageTwoFixedFields(String[] stageTwoFixedFields) throws Exception {
         if (getStageTwoFixedCount().matches("0")){
             this.stageTwoFixedFields = new String[0];
@@ -1721,6 +1737,7 @@ public class DefinitionHelper {
         return stageTwoLocRanIntFields;
     }
 
+    // done
     public void setStageTwoLocRanIntFields(String[] stageTwoLocRanIntFields) throws Exception {
         if (getStageTwoLocRanInteractions().matches("0")){
             this.stageTwoLocRanIntFields = new String[0];
@@ -1734,6 +1751,7 @@ public class DefinitionHelper {
         return stageTwoScaleIntFields;
     }
 
+    // done
     public void setStageTwoScaleIntFields(String[] stageTwoScaleIntFields) throws Exception {
         if (getStageTwoScaleInteractions().matches("0")){
             this.stageTwoScaleIntFields = new String[0];
@@ -1760,6 +1778,7 @@ public class DefinitionHelper {
         return stageTwoOutcomeLabel;
     }
 
+    // done
     public void setStageTwoOutcomeLabel(String stageTwoOutcomeLabel) throws Exception {
         if (setValidator("label of stage two outcome", "26(mixreg)/27((mixor)", stageTwoOutcomeLabel, 1, 255, MIX_STRING)) {
             this.stageTwoOutcomeLabel = stageTwoOutcomeLabel;
@@ -1770,6 +1789,7 @@ public class DefinitionHelper {
         return stageTwoFixedLabels;
     }
 
+    // done
     public void setStageTwoFixedLabels(String[] stageTwoFixedLabels) throws Exception {
         if (getStageTwoFixedCount().matches("0")){
             this.stageTwoFixedLabels = new String[0];
@@ -1783,6 +1803,7 @@ public class DefinitionHelper {
         return stageTwoLocRanIntLabels;
     }
 
+    // done
     public void setStageTwoLocRanIntLabels(String[] stageTwoLocRanIntLabels) throws Exception {
         if (getStageTwoLocRanInteractions().matches("0")){
             this.stageTwoLocRanIntLabels = new String[0];
@@ -1796,6 +1817,7 @@ public class DefinitionHelper {
         return stageTwoScaleIntLabels;
     }
 
+    // done
     public void setStageTwoScaleIntLabels(String[] stageTwoScaleIntLabels) throws Exception {
         if (getStageTwoScaleInteractions().matches("0")){
             this.stageTwoScaleIntLabels = new String[0];
