@@ -1314,6 +1314,33 @@ public class mixregGUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
         
+        try {
+            NewModel.defFile.setStageTwoFixedLabels(getModelFixedLabelsStageTwo());
+            System.out.println("From defHelper | STAGE TWO  MEAN REGRESSORS: " + Arrays.toString(NewModel.defFile.getStageTwoFixedLabels()));
+        } catch (Exception ex) {
+            catchCount = 1;
+            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+        }
+        
+        try {
+            NewModel.defFile.setStageTwoLocRanIntLabels(getModelLocRanLabelsStageTwo());
+            System.out.println("From defHelper | STAGE TWO  LOC RAN REGRESSORS: " + Arrays.toString(NewModel.defFile.getStageTwoLocRanIntLabels()));
+        } catch (Exception ex) {
+            catchCount = 1;
+            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+        }
+        
+        try {
+            NewModel.defFile.setStageTwoScaleIntLabels(getModelScaleLabelsStageTwo());
+            System.out.println("From defHelper | STAGE TWO  SCALE REGRESSORS: " + Arrays.toString(NewModel.defFile.getStageTwoScaleIntLabels()));
+        } catch (Exception ex) {
+            catchCount = 1;
+            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+        }
+        
             
 
         if (catchCount == 0) {
@@ -3087,5 +3114,102 @@ public class mixregGUI extends javax.swing.JFrame {
         return positionArray;
 
     }
+    
+    public String[] getModelFixedLabelsStageTwo() {
+        System.out.println("*********************************");
+
+        String fieldLabel;
+
+        ArrayList<String> regressorLabels = new ArrayList<String>();
+        int index = 0;
+
+        for (int p = 0; p < levelTwoRegSize; p++) {
+
+            if (stageTwoBoxes.get(p).get(0).isSelected()) {
+                regressorLabels.add(stageTwoSelected.get(p));
+                fieldLabel = stageTwoSelected.get(p);
+                System.out.println("From inside mixRegGUI | STAGE TWO Regressor Fields (FIXED): " + regressorLabels.get(index));
+                index++;
+
+            }
+        }
+
+        String[] regLabels = new String[regressorLabels.size()];
+
+        for (int pos = 0; pos < regLabels.length; pos++) {
+            regLabels[pos] = regressorLabels.get(pos);
+            System.out.println("Reg_LABEL: " + regLabels[pos]);
+
+        }
+
+        System.out.println("From inside mixRegGUI | STAGE TWO MEAN REGRESSORS: " + Arrays.toString(regLabels));
+        System.out.println("*********************************");
+        return regLabels;
+    }
+    
+    public String[] getModelLocRanLabelsStageTwo() {
+        System.out.println("*********************************");
+
+        String fieldLabel;
+
+        ArrayList<String> regressorLabels = new ArrayList<String>();
+        int index = 0;
+
+        for (int p = 0; p < levelTwoRegSize; p++) {
+
+            if (stageTwoBoxes.get(p).get(1).isSelected()) {
+                regressorLabels.add(stageTwoSelected.get(p));
+                fieldLabel = stageTwoSelected.get(p);
+                System.out.println("From inside mixRegGUI | STAGE TWO Regressor Fields (LOC RAN): " + regressorLabels.get(index));
+                index++;
+
+            }
+        }
+
+        String[] regLabels = new String[regressorLabels.size()];
+
+        for (int pos = 0; pos < regLabels.length; pos++) {
+            regLabels[pos] = regressorLabels.get(pos);
+            System.out.println("Reg_LABEL: " + regLabels[pos]);
+
+        }
+
+        System.out.println("From inside mixRegGUI | STAGE TWO LOC RAN REGRESSORS: " + Arrays.toString(regLabels));
+        System.out.println("*********************************");
+        return regLabels;
+    }
+    
+    public String[] getModelScaleLabelsStageTwo() {
+        System.out.println("*********************************");
+
+        String fieldLabel;
+
+        ArrayList<String> regressorLabels = new ArrayList<String>();
+        int index = 0;
+
+        for (int p = 0; p < levelTwoRegSize; p++) {
+
+            if (stageTwoBoxes.get(p).get(2).isSelected()) {
+                regressorLabels.add(stageTwoSelected.get(p));
+                fieldLabel = stageTwoSelected.get(p);
+                System.out.println("From inside mixRegGUI | STAGE TWO Regressor Fields (SCALE): " + regressorLabels.get(index));
+                index++;
+
+            }
+        }
+
+        String[] regLabels = new String[regressorLabels.size()];
+
+        for (int pos = 0; pos < regLabels.length; pos++) {
+            regLabels[pos] = regressorLabels.get(pos);
+            System.out.println("Reg_LABEL: " + regLabels[pos]);
+
+        }
+
+        System.out.println("From inside mixRegGUI | STAGE TWO SCALE REGRESSORS: " + Arrays.toString(regLabels));
+        System.out.println("*********************************");
+        return regLabels;
+    }
+    
 
 }

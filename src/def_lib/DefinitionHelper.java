@@ -1737,6 +1737,7 @@ public class DefinitionHelper {
         return stageTwoLocRanIntFields;
     }
 
+    // done
     public void setStageTwoLocRanIntFields(String[] stageTwoLocRanIntFields) throws Exception {
         if (getStageTwoLocRanInteractions().matches("0")){
             this.stageTwoLocRanIntFields = new String[0];
@@ -1750,6 +1751,7 @@ public class DefinitionHelper {
         return stageTwoScaleIntFields;
     }
 
+    // done
     public void setStageTwoScaleIntFields(String[] stageTwoScaleIntFields) throws Exception {
         if (getStageTwoScaleInteractions().matches("0")){
             this.stageTwoScaleIntFields = new String[0];
