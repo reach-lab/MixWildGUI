@@ -1363,6 +1363,15 @@ public class mixregGUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
         
+        try {
+            NewModel.defFile.setStageTwoFirstIntLabels(getModelInteractionLabelsStageTwo());
+            System.out.println("From defHelper | STAGE TWO  INTERACTIONS REGRESSORS: " + Arrays.toString(NewModel.defFile.getStageTwoFirstIntLabels()));
+        } catch (Exception ex) {
+            catchCount = 1;
+            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+        }
+        
             
 
         if (catchCount == 0) {
@@ -3303,6 +3312,39 @@ public class mixregGUI extends javax.swing.JFrame {
 
         return positionArray;
 
+    }
+    
+    
+    public String[] getModelInteractionLabelsStageTwo() {
+        System.out.println("*********************************");
+
+        String fieldLabel;
+
+        ArrayList<String> regressorLabels = new ArrayList<String>();
+        int index = 0;
+
+        for (int p = 0; p < levelTwoRegSize; p++) {
+
+            if (stageTwoBoxes.get(p).get(3).isSelected()) {
+                regressorLabels.add(stageTwoSelected.get(p));
+                fieldLabel = stageTwoSelected.get(p);
+                System.out.println("From inside mixRegGUI | STAGE TWO Regressor Fields (INTERACTIONS): " + regressorLabels.get(index));
+                index++;
+
+            }
+        }
+
+        String[] regLabels = new String[regressorLabels.size()];
+
+        for (int pos = 0; pos < regLabels.length; pos++) {
+            regLabels[pos] = regressorLabels.get(pos);
+            System.out.println("Reg_LABEL: " + regLabels[pos]);
+
+        }
+
+        System.out.println("From inside mixRegGUI | STAGE TWO INTERACTIONS REGRESSORS: " + Arrays.toString(regLabels));
+        System.out.println("*********************************");
+        return regLabels;
     }
     
 
