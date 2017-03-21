@@ -1789,6 +1789,7 @@ public class DefinitionHelper {
         return stageTwoFixedLabels;
     }
 
+    // done
     public void setStageTwoFixedLabels(String[] stageTwoFixedLabels) throws Exception {
         if (getStageTwoFixedCount().matches("0")){
             this.stageTwoFixedLabels = new String[0];
@@ -1802,6 +1803,7 @@ public class DefinitionHelper {
         return stageTwoLocRanIntLabels;
     }
 
+    // done
     public void setStageTwoLocRanIntLabels(String[] stageTwoLocRanIntLabels) throws Exception {
         if (getStageTwoLocRanInteractions().matches("0")){
             this.stageTwoLocRanIntLabels = new String[0];
@@ -1815,6 +1817,7 @@ public class DefinitionHelper {
         return stageTwoScaleIntLabels;
     }
 
+    // done
     public void setStageTwoScaleIntLabels(String[] stageTwoScaleIntLabels) throws Exception {
         if (getStageTwoScaleInteractions().matches("0")){
             this.stageTwoScaleIntLabels = new String[0];
