@@ -1328,6 +1328,15 @@ public class mixregGUI extends javax.swing.JFrame {
         }
         
         try {
+            NewModel.defFile.setStageTwoFirstIntFields(getInteractionFieldRegressors_StageTwo());
+            System.out.println("From defHelper | STAGE TWO  INTERACTIONS REGRESSOR Positions: " + Arrays.toString(NewModel.defFile.getStageTwoFirstIntFields()));
+        } catch (Exception ex) {
+            catchCount = 1;
+            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+        }
+        
+        try {
             NewModel.defFile.setStageTwoFixedLabels(getModelFixedLabelsStageTwo());
             System.out.println("From defHelper | STAGE TWO  MEAN REGRESSORS: " + Arrays.toString(NewModel.defFile.getStageTwoFixedLabels()));
         } catch (Exception ex) {
@@ -1348,6 +1357,15 @@ public class mixregGUI extends javax.swing.JFrame {
         try {
             NewModel.defFile.setStageTwoScaleIntLabels(getModelScaleLabelsStageTwo());
             System.out.println("From defHelper | STAGE TWO  SCALE REGRESSORS: " + Arrays.toString(NewModel.defFile.getStageTwoScaleIntLabels()));
+        } catch (Exception ex) {
+            catchCount = 1;
+            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+        }
+        
+        try {
+            NewModel.defFile.setStageTwoFirstIntLabels(getModelInteractionLabelsStageTwo());
+            System.out.println("From defHelper | STAGE TWO  INTERACTIONS REGRESSORS: " + Arrays.toString(NewModel.defFile.getStageTwoFirstIntLabels()));
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -2062,6 +2080,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
     public String[] getMeanFieldRegressorLabels_levelOne() {
         System.out.println("*********************************");
+        System.out.println("Mean-positions From level 1 (positions)");
 
         String fieldLabel;
 
@@ -2116,6 +2135,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
     public String[] getMeanFieldRegressorLabels_levelTwo() {
         System.out.println("*********************************");
+        System.out.println("Mean-positions From level 2 (positions)");
 
         String fieldLabel;
 
@@ -2169,6 +2189,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
     public String[] fieldModelMeanArray() {
         System.out.println("*********************************");
+        System.out.println("Mean-positions From lstage 1 (positions)");
 
         int arraySize = getMeanFieldRegressorLabels_levelOne().length + getMeanFieldRegressorLabels_levelTwo().length;
         String[] meanModel = new String[arraySize];
@@ -2194,6 +2215,7 @@ public class mixregGUI extends javax.swing.JFrame {
     public String[] getMeanDecompFieldRegressorLabels_levelOne() {
 
         System.out.println("*********************************");
+        System.out.println("Mean+Disagg.-positions From level 1 (positions)");
 
         String fieldLabel;
 
@@ -2248,6 +2270,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
     public String[] getBSFieldRegressorLabels_levelOne() {
         System.out.println("*********************************");
+        System.out.println("BS-positions From level 1 (positions)");
 
         String fieldLabel;
 
@@ -2298,6 +2321,7 @@ public class mixregGUI extends javax.swing.JFrame {
     public String[] getBSFieldRegressorLabels_levelTwo() {
 
         System.out.println("*********************************");
+        System.out.println("BS-positions From level 2 (positions)");
 
         String fieldLabel;
 
@@ -2348,6 +2372,7 @@ public class mixregGUI extends javax.swing.JFrame {
     public String[] fieldModelBSArray() {
 
         System.out.println("*********************************");
+        System.out.println("BS-positions From stage 1 (positions)");
 
         int arraySize = getBSFieldRegressorLabels_levelOne().length + getBSFieldRegressorLabels_levelTwo().length;
         String[] meanModel = new String[arraySize];
@@ -2373,6 +2398,7 @@ public class mixregGUI extends javax.swing.JFrame {
     public String[] getBSDecompFieldRegressorLabels_levelOne() {
 
         System.out.println("*********************************");
+        System.out.println("BS+Disagg-positions From level 1 (positions)");
 
         String fieldLabel;
 
@@ -2422,6 +2448,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
     public String[] getWSFieldRegressorLabels_levelOne() {
         System.out.println("*********************************");
+        System.out.println("WS-positions From level 1 (positions)");
 
         String[] regressorLabels = new String[levelOneRegSize];
         String fieldLabel;
@@ -2473,6 +2500,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
     public String[] getWSFieldRegressorLabels_levelTwo() {
         System.out.println("*********************************");
+        System.out.println("WS-positions From level 2 (positions)");
 
         String[] regressorLabels = new String[levelTwoRegSize];
         String fieldLabel;
@@ -2524,6 +2552,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
     public String[] fieldModelWSArray() {
         System.out.println("*********************************");
+        System.out.println("WS-positions From stage 1 (positions)");
 
         int arraySize = getWSFieldRegressorLabels_levelOne().length + getWSFieldRegressorLabels_levelTwo().length;
         String[] meanModel = new String[arraySize];
@@ -2549,6 +2578,7 @@ public class mixregGUI extends javax.swing.JFrame {
     public String[] getWSDecompFieldRegressorLabels_levelOne() {
 
         System.out.println("*********************************");
+        System.out.println("WS+Disagg-positions From level 1 (positions)");
         String[] regressorLabels = new String[levelOneRegSize];
         String fieldLabel;
 
@@ -2599,6 +2629,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
     public String[] getModelMeanLabelsLevelOne() {
         System.out.println("*********************************");
+        System.out.println("Means-Labels From level 1 (Labels)");
 
         String fieldLabel;
 
@@ -2632,6 +2663,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
     public String[] getModelMeanLabelsLevelTwo() {
         System.out.println("*********************************");
+        System.out.println("Means-Labels From level 2 (Labels)");
 
         String fieldLabel;
 
@@ -2664,6 +2696,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
     public String[] ModelMeansLabelsArray() {
         System.out.println("*********************************");
+        System.out.println("Means-Labels From stage 1 (Labels)");
 
         int arraySize = getModelMeanLabelsLevelOne().length + getModelMeanLabelsLevelTwo().length;
         String[] meanModel = new String[arraySize];
@@ -2687,6 +2720,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
     public String[] getModelBSLabelsLevelOne() {
         System.out.println("*********************************");
+        System.out.println("BS-Labels From level 1 (Labels)");
 
         String fieldLabel;
 
@@ -2719,6 +2753,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
     public String[] getModelBSLabelsLevelTwo() {
         System.out.println("*********************************");
+        System.out.println("BS-Labels From level 2 (Labels)");
 
         ArrayList<String> regressorLabels = new ArrayList<String>();
         int index = 0;
@@ -2749,6 +2784,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
     public String[] ModelBSLabelsArray() {
         System.out.println("*********************************");
+        System.out.println("BS-Labels From stage 1 (Labels)");
 
         int arraySize = getModelBSLabelsLevelOne().length + getModelBSLabelsLevelTwo().length;
         String[] meanModel = new String[arraySize];
@@ -2772,6 +2808,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
     public String[] getModelWSLabelsLevelOne() {
         System.out.println("*********************************");
+        System.out.println("WS-Labels From Level one (Labels)");
 
         ArrayList<String> regressorLabels = new ArrayList<String>();
         int index = 0;
@@ -2801,6 +2838,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
     public String[] getModelWSLabelsLevelTwo() {
         System.out.println("*********************************");
+        System.out.println("WS-Labels From Level two (Labels)");
 
         ArrayList<String> regressorLabels = new ArrayList<String>();
         int index = 0;
@@ -2832,6 +2870,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
     public String[] ModelWSLabelsArray() {
         System.out.println("*********************************");
+        System.out.println("WS Labels From stage one (Labels)");
 
         int arraySize = getModelWSLabelsLevelOne().length + getModelWSLabelsLevelTwo().length;
         String[] meanModel = new String[arraySize];
@@ -2855,6 +2894,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
     public String[] getDecompMeanLabelsLevelOne() {
         System.out.println("*********************************");
+        System.out.println("Mean+Disagg. Labels From Level one (Labels)");
 
         ArrayList<String> regressorLabels = new ArrayList<String>();
 
@@ -2885,6 +2925,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
     public String[] getDecompBSLabelsLevelOne() {
         System.out.println("*********************************");
+        System.out.println("BS+Disagg. Labels From Level one (Labels)");
 
         ArrayList<String> regressorLabels = new ArrayList<String>();
 
@@ -2915,6 +2956,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
     public String[] getDecompWSLabelsLevelOne() {
         System.out.println("*********************************");
+        System.out.println("WS + Disagg. Labels From level One (Labels)");
 
         ArrayList<String> regressorLabels = new ArrayList<String>();
 
@@ -2925,7 +2967,7 @@ public class mixregGUI extends javax.swing.JFrame {
             if (levelOneBoxes.get(p).get(2).isSelected() && disaggVarianceBoxes.get(p).get(2).isSelected()) {
 
                 regressorLabels.add(levelOneSelected.get(p));
-                System.out.println("From inside mixRegGUI | LEVEL ONE Regressor Fields (Mean + Disagg.): " + regressorLabels.get(index));
+                System.out.println("Stage-Two/mixRegGUI/Regressor-Fields-(Mean + Disagg.): " + regressorLabels.get(index));
                 index++;
             }
         }
@@ -2938,7 +2980,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
         }
 
-        System.out.println("From inside mixRegGUI | LEVEL ONE WS + DISAGG REGRESSORS: " + Arrays.toString(regLabels));
+        System.out.println("LEVEL-ONE/MIXREGGUI/WS + DISAGG-REGRESSORS= " + Arrays.toString(regLabels));
         System.out.println("*********************************");
         return regLabels;
     }
@@ -2947,7 +2989,7 @@ public class mixregGUI extends javax.swing.JFrame {
         String outcome;
         
         outcome = StageOneVariableCombo.getSelectedItem().toString();
-        System.out.println("From inside MixRegGUI | Outcome variable Label: " + outcome);
+        System.out.println("Stage-Two/MixRegGUI/Outcome-variable-Label: " + outcome);
         
         return outcome;
     
@@ -2983,6 +3025,7 @@ public class mixregGUI extends javax.swing.JFrame {
     
     public String[] getFixedFieldRegressors_StageTwo() {
         System.out.println("*********************************");
+        System.out.println("Fixed From Stage Two (positions)");
 
         String fieldLabel;
 
@@ -2996,7 +3039,7 @@ public class mixregGUI extends javax.swing.JFrame {
             if (stageTwoBoxes.get(p).get(0).isSelected()) {
                 regressorLabels[index] = stageTwoSelected.get(p);
                 fieldLabel = stageTwoSelected.get(p);
-                System.out.println("From inside mixRegGUI | Stage two Regressor Fields (Fixed): " + regressorLabels[index]);
+                System.out.println("Stage-Two/mixRegGUI/Regressor-Fields-(Fixed): " + regressorLabels[index]);
                 index++;
 
                 int posIndex = 0;
@@ -3038,6 +3081,7 @@ public class mixregGUI extends javax.swing.JFrame {
     
     public String[] getRanLocFieldRegressors_StageTwo() {
         System.out.println("*********************************");
+        System.out.println("Loc Ran  From Stage Two (position)");
 
         String fieldLabel;
 
@@ -3051,7 +3095,7 @@ public class mixregGUI extends javax.swing.JFrame {
             if (stageTwoBoxes.get(p).get(1).isSelected()) {
                 regressorLabels[index] = stageTwoSelected.get(p);
                 fieldLabel = stageTwoSelected.get(p);
-                System.out.println("From inside mixRegGUI | Stage two Regressor Fields (LocRan): " + regressorLabels[index]);
+                System.out.println("Stage-Two/mixRegGUI/Regressor-Fields-(LocRan): " + regressorLabels[index]);
                 index++;
 
                 int posIndex = 0;
@@ -3093,6 +3137,7 @@ public class mixregGUI extends javax.swing.JFrame {
     
     public String[] getScaleFieldRegressors_StageTwo() {
         System.out.println("*********************************");
+        System.out.println("Scale From Stage Two (Positions)");
 
         String fieldLabel;
 
@@ -3106,7 +3151,7 @@ public class mixregGUI extends javax.swing.JFrame {
             if (stageTwoBoxes.get(p).get(2).isSelected()) {
                 regressorLabels[index] = stageTwoSelected.get(p);
                 fieldLabel = stageTwoSelected.get(p);
-                System.out.println("From inside mixRegGUI | Stage two Regressor Fields (Scale): " + regressorLabels[index]);
+                System.out.println("Stage-Two/mixRegGUI/Regressor Fields (Scale): " + regressorLabels[index]);
                 index++;
 
                 int posIndex = 0;
@@ -3117,7 +3162,7 @@ public class mixregGUI extends javax.swing.JFrame {
                         //position[index] = String.valueOf(q + 1);
                         position.add(posIndex, String.valueOf(q + 1));
                         System.out.println("Regressor position test: " + String.valueOf(q + 1));
-                        System.out.println("From inside mixRegGUI | Position of this regressor: " + position.get(posIndex));
+                        System.out.println("Stage-two/mixRegGUI/Position of this regressor: " + position.get(posIndex));
                         System.out.println("Position array: " + position);
                         posIndex++;
 
@@ -3147,6 +3192,7 @@ public class mixregGUI extends javax.swing.JFrame {
     
     public String[] getModelFixedLabelsStageTwo() {
         System.out.println("*********************************");
+        System.out.println("Fixed Labels From Stage Two (labels)");
 
         String fieldLabel;
 
@@ -3158,7 +3204,7 @@ public class mixregGUI extends javax.swing.JFrame {
             if (stageTwoBoxes.get(p).get(0).isSelected()) {
                 regressorLabels.add(stageTwoSelected.get(p));
                 fieldLabel = stageTwoSelected.get(p);
-                System.out.println("From inside mixRegGUI | STAGE TWO Regressor Fields (FIXED): " + regressorLabels.get(index));
+                System.out.println("Stage-Two/mixRegGUI/Regressor-Fields-(FIXED): " + regressorLabels.get(index));
                 index++;
 
             }
@@ -3172,13 +3218,14 @@ public class mixregGUI extends javax.swing.JFrame {
 
         }
 
-        System.out.println("From inside mixRegGUI | STAGE TWO MEAN REGRESSORS: " + Arrays.toString(regLabels));
+        System.out.println("STAGE-TWO/MIXREGGUI/MEAN-REGRESSORS= " + Arrays.toString(regLabels));
         System.out.println("*********************************");
         return regLabels;
     }
     
     public String[] getModelLocRanLabelsStageTwo() {
         System.out.println("*********************************");
+        System.out.println("Loc Ran Labels From Stage Two (Labels)");
 
         String fieldLabel;
 
@@ -3190,7 +3237,7 @@ public class mixregGUI extends javax.swing.JFrame {
             if (stageTwoBoxes.get(p).get(1).isSelected()) {
                 regressorLabels.add(stageTwoSelected.get(p));
                 fieldLabel = stageTwoSelected.get(p);
-                System.out.println("From inside mixRegGUI | STAGE TWO Regressor Fields (LOC RAN): " + regressorLabels.get(index));
+                System.out.println("STAGE-TWO/MIXREGGUI/Regressor-Fields-(LOC RAN): " + regressorLabels.get(index));
                 index++;
 
             }
@@ -3204,13 +3251,14 @@ public class mixregGUI extends javax.swing.JFrame {
 
         }
 
-        System.out.println("From inside mixRegGUI | STAGE TWO LOC RAN REGRESSORS: " + Arrays.toString(regLabels));
+        System.out.println("STAGE-TWO/MXREGGUI/LOC-RAN-REGRESSORS= " + Arrays.toString(regLabels));
         System.out.println("*********************************");
         return regLabels;
     }
     
     public String[] getModelScaleLabelsStageTwo() {
         System.out.println("*********************************");
+        System.out.println("Scale Labels From Stage Two (Labels)");
 
         String fieldLabel;
 
@@ -3222,7 +3270,7 @@ public class mixregGUI extends javax.swing.JFrame {
             if (stageTwoBoxes.get(p).get(2).isSelected()) {
                 regressorLabels.add(stageTwoSelected.get(p));
                 fieldLabel = stageTwoSelected.get(p);
-                System.out.println("From inside mixRegGUI | STAGE TWO Regressor Fields (SCALE): " + regressorLabels.get(index));
+                System.out.println("Stage-Two/mixRegGUI/Regressor-Fields-(SCALE): " + regressorLabels.get(index));
                 index++;
 
             }
@@ -3236,7 +3284,97 @@ public class mixregGUI extends javax.swing.JFrame {
 
         }
 
-        System.out.println("From inside mixRegGUI | STAGE TWO SCALE REGRESSORS: " + Arrays.toString(regLabels));
+        System.out.println("STAGE-TWO/MIXREGGUI/SCALE-REGRESSORS= " + Arrays.toString(regLabels));
+        System.out.println("*********************************");
+        return regLabels;
+    }
+    
+    
+    public String[] getInteractionFieldRegressors_StageTwo() {
+        System.out.println("*********************************");
+        System.out.println("Interactions From Stage Two (Positions)");
+
+        String fieldLabel;
+
+        String[] regressorLabels = new String[stageTwoRegSize];
+        int index = 0;
+
+        ArrayList<String> position = new ArrayList<>();
+
+        for (int p = 0; p < stageTwoRegSize; p++) {
+
+            if (stageTwoBoxes.get(p).get(3).isSelected()) {
+                regressorLabels[index] = stageTwoSelected.get(p);
+                fieldLabel = stageTwoSelected.get(p);
+                System.out.println("Stage-two/mixRegGUI/Regressor-Fields-(INTERACTION): " + regressorLabels[index]);
+                index++;
+
+                int posIndex = 0;
+
+                for (int q = 0; q < variableNamesCombo.length; q++) {
+
+                    if (variableNamesCombo[q].equals(fieldLabel)) {
+                        //position[index] = String.valueOf(q + 1);
+                        position.add(posIndex, String.valueOf(q + 1));
+                        System.out.println("Stage-Two/Regressor-position-test: " + String.valueOf(q + 1));
+                        System.out.println("Stage-Two/mixRegGUI | Position of this regressor: " + position.get(posIndex));
+                        System.out.println("Stage-Two/Position array: " + position);
+                        posIndex++;
+
+                    }
+
+                }
+            }
+
+        }
+        System.out.println("Stage-Two/Position Aray Size here: " + String.valueOf(position.size()));
+
+        String[] positionArray = new String[position.size()];
+
+        for (int pos = 0; pos < positionArray.length; pos++) {
+            positionArray[pos] = position.get(pos);
+            System.out.println("Stage-Two/positionArrayElements: " + positionArray[pos]);
+
+        }
+
+        System.out.println("Stage-Two/Converted array size | position: " + String.valueOf(positionArray.length));
+        System.out.println("Stage-Two/Converted array elements | positions: " + Arrays.toString(positionArray));
+        System.out.println("*********************************");
+
+        return positionArray;
+
+    }
+    
+    
+    public String[] getModelInteractionLabelsStageTwo() {
+        System.out.println("*********************************");
+        System.out.println("Interaction Labels From Stage Two (Labels)");
+
+        String fieldLabel;
+
+        ArrayList<String> regressorLabels = new ArrayList<String>();
+        int index = 0;
+
+        for (int p = 0; p < levelTwoRegSize; p++) {
+
+            if (stageTwoBoxes.get(p).get(3).isSelected()) {
+                regressorLabels.add(stageTwoSelected.get(p));
+                fieldLabel = stageTwoSelected.get(p);
+                System.out.println("STAGE-TWO/MIXREGGUI/Regressor-Fields-(INTERACTIONS)= " + regressorLabels.get(index));
+                index++;
+
+            }
+        }
+
+        String[] regLabels = new String[regressorLabels.size()];
+
+        for (int pos = 0; pos < regLabels.length; pos++) {
+            regLabels[pos] = regressorLabels.get(pos);
+            System.out.println("Reg_LABEL: " + regLabels[pos]);
+
+        }
+
+        System.out.println("STAGE-TWO/MIXREGGUI/INTERACTIONS-REGRESSORS= " + Arrays.toString(regLabels));
         System.out.println("*********************************");
         return regLabels;
     }
