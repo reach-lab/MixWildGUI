@@ -1494,7 +1494,7 @@ public class DefinitionHelper {
     public String getLabelModelOutcome() {
         return labelModelOutcome;
     }
-    //to do
+    //done
     public void setLabelModelOutcome(String labelModelOutcome) throws Exception {
         if (setValidator("model scale regressor for BS/WS decomposition fields", "13", labelModelOutcome, 1, 255, MIX_STRING)) {
             this.labelModelOutcome = labelModelOutcome;
@@ -1640,11 +1640,12 @@ public class DefinitionHelper {
             this.labelDecompWSRegressors = labelDecompWSRegressors;
         }
     }
-
+    
     public String getStageTwoFixedCount() {
         return stageTwoFixedCount;
     }
 
+    // done
     public void setStageTwoFixedCount(String stageTwoFixedCount) throws Exception {
         if (setValidator("number of fixed regressors in stage 2", "20", stageTwoFixedCount, 0, 255, MIX_INTEGER)) {
             this.stageTwoFixedCount = stageTwoFixedCount;
@@ -1655,6 +1656,7 @@ public class DefinitionHelper {
         return stageTwoLocRanInteractions;
     }
 
+    // done
     public void setStageTwoLocRanInteractions(String stageTwoLocRanInteractions) throws Exception {
         if (setValidator("number of interactions with location random effects in stage 2", "20", stageTwoLocRanInteractions, 0, 255, MIX_INTEGER)) {
             this.stageTwoLocRanInteractions = stageTwoLocRanInteractions;
@@ -1665,6 +1667,7 @@ public class DefinitionHelper {
         return stageTwoScaleInteractions;
     }
 
+    // done
     public void setStageTwoScaleInteractions(String stageTwoScaleInteractions) throws Exception {
         if (setValidator("number of interactions with scale random effects in stage 2", "20", stageTwoScaleInteractions, 0, 255, MIX_INTEGER)) {
             this.stageTwoScaleInteractions = stageTwoScaleInteractions;
@@ -1675,6 +1678,7 @@ public class DefinitionHelper {
         return stageTwoIntOfInteraction;
     }
 
+    // to do
     public void setStageTwoIntOfInteraction(String stageTwoIntOfInteraction) throws Exception {
         if (setValidator("number of interactions with interaction of location and scale random effects in stage 2", "20", stageTwoIntOfInteraction, -1, 255, MIX_INTEGER)) {
             this.stageTwoIntOfInteraction = stageTwoIntOfInteraction;
@@ -1685,6 +1689,7 @@ public class DefinitionHelper {
         return stageTwoOutcomeCatCount;
     }
 
+    // todo
     public void setStageTwoOutcomeCatCount(String stageTwoOutcomeCatCount) throws Exception {
         if (setValidator("number of categories for the outcome in stage 2", "20", stageTwoOutcomeCatCount, 2, 255, MIX_INTEGER)) {
             this.stageTwoOutcomeCatCount = stageTwoOutcomeCatCount;
@@ -1695,6 +1700,7 @@ public class DefinitionHelper {
         return stageTwoOutcomeField;
     }
 
+    // done
     public void setStageTwoOutcomeField(String stageTwoOutcomeField) throws Exception {
         if (setValidator("outcome field in stage 2", "21", stageTwoOutcomeField, 0, 255, MIX_INTEGER)) {
             this.stageTwoOutcomeField = stageTwoOutcomeField;
@@ -1705,6 +1711,7 @@ public class DefinitionHelper {
         return stageTwoOutcomeCatLabel;
     }
 
+    //todo
     public void setStageTwoOutcomeCatLabel(String[] stageTwoOutcomeCatLabel) throws Exception {
         if (loopSetValidator("numeric categories of outcome variable", "21", stageTwoOutcomeCatLabel, 0, 255, MIX_INTEGER)) {
             this.stageTwoOutcomeCatLabel = stageTwoOutcomeCatLabel;
@@ -1715,6 +1722,8 @@ public class DefinitionHelper {
         return stageTwoFixedFields;
     }
 
+    
+    //done
     public void setStageTwoFixedFields(String[] stageTwoFixedFields) throws Exception {
         if (getStageTwoFixedCount().matches("0")){
             this.stageTwoFixedFields = new String[0];
@@ -1728,6 +1737,7 @@ public class DefinitionHelper {
         return stageTwoLocRanIntFields;
     }
 
+    // done
     public void setStageTwoLocRanIntFields(String[] stageTwoLocRanIntFields) throws Exception {
         if (getStageTwoLocRanInteractions().matches("0")){
             this.stageTwoLocRanIntFields = new String[0];
@@ -1741,6 +1751,7 @@ public class DefinitionHelper {
         return stageTwoScaleIntFields;
     }
 
+    // done
     public void setStageTwoScaleIntFields(String[] stageTwoScaleIntFields) throws Exception {
         if (getStageTwoScaleInteractions().matches("0")){
             this.stageTwoScaleIntFields = new String[0];
@@ -1767,6 +1778,7 @@ public class DefinitionHelper {
         return stageTwoOutcomeLabel;
     }
 
+    // done
     public void setStageTwoOutcomeLabel(String stageTwoOutcomeLabel) throws Exception {
         if (setValidator("label of stage two outcome", "26(mixreg)/27((mixor)", stageTwoOutcomeLabel, 1, 255, MIX_STRING)) {
             this.stageTwoOutcomeLabel = stageTwoOutcomeLabel;
@@ -1777,6 +1789,7 @@ public class DefinitionHelper {
         return stageTwoFixedLabels;
     }
 
+    // done
     public void setStageTwoFixedLabels(String[] stageTwoFixedLabels) throws Exception {
         if (getStageTwoFixedCount().matches("0")){
             this.stageTwoFixedLabels = new String[0];
@@ -1790,6 +1803,7 @@ public class DefinitionHelper {
         return stageTwoLocRanIntLabels;
     }
 
+    // done
     public void setStageTwoLocRanIntLabels(String[] stageTwoLocRanIntLabels) throws Exception {
         if (getStageTwoLocRanInteractions().matches("0")){
             this.stageTwoLocRanIntLabels = new String[0];
@@ -1803,6 +1817,7 @@ public class DefinitionHelper {
         return stageTwoScaleIntLabels;
     }
 
+    // done
     public void setStageTwoScaleIntLabels(String[] stageTwoScaleIntLabels) throws Exception {
         if (getStageTwoScaleInteractions().matches("0")){
             this.stageTwoScaleIntLabels = new String[0];
