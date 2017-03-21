@@ -1292,6 +1292,15 @@ public class mixregGUI extends javax.swing.JFrame {
         }
         
         try {
+            NewModel.defFile.setStageTwoIntOfInteraction(String.valueOf(countStageTwoInteractions()));
+            System.out.println("From defHelper | STAGE TWO INTERACTIONS COUNT: " + NewModel.defFile.getStageTwoIntOfInteraction().toString());
+        } catch (Exception ex) {
+            catchCount = 1;
+            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+        }
+        
+        try {
             NewModel.defFile.setStageTwoFixedFields(getFixedFieldRegressors_StageTwo());
             System.out.println("From defHelper | STAGE TWO  FIXED REGRESSOR Positions: " + Arrays.toString(NewModel.defFile.getStageTwoFixedFields()));
         } catch (Exception ex) {
@@ -2032,6 +2041,22 @@ public class mixregGUI extends javax.swing.JFrame {
         }
 
         return stageTwoTau;
+
+    }
+    
+    public int countStageTwoInteractions() {
+
+        int stageTwoInter = 0;
+
+        for (int p = 0; p < stageTwoRegSize; p++) {
+
+            if (stageTwoBoxes.get(p).get(3).isSelected()) {
+
+                stageTwoInter = stageTwoInter + 1;
+            }
+        }
+
+        return stageTwoInter;
 
     }
 
