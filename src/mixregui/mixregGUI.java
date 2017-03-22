@@ -211,11 +211,17 @@ public class mixregGUI extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
         jSeparator6 = new javax.swing.JSeparator();
         addStageTwoTabTwo = new javax.swing.JButton();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
         stageTwoPanel = new javax.swing.JPanel();
         stageTwoRegsGrid = new javax.swing.JPanel();
+        runTabTwoStageOneTwo = new javax.swing.JButton();
+        suppressIntCheckBox = new javax.swing.JCheckBox();
         jPanel3 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
@@ -503,17 +509,29 @@ public class mixregGUI extends javax.swing.JFrame {
 
         jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel14.setText("Fixed Regressor");
+        jPanel12.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, -1, -1));
+
         jLabel12.setText("Stage 2 Regressors in the Model");
         jPanel12.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(521, 46, -1, -1));
+
+        jLabel15.setText("Interaction (Loc. Random)");
+        jPanel12.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 160, -1, -1));
         jPanel12.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(288, 80, 680, 10));
 
-        addStageTwoTabTwo.setText("Add Stage 2 Regressors");
+        addStageTwoTabTwo.setText("Modify Stage 2 Regressors");
         addStageTwoTabTwo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addStageTwoTabTwoActionPerformed(evt);
             }
         });
-        jPanel12.add(addStageTwoTabTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 590, -1, -1));
+        jPanel12.add(addStageTwoTabTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 560, 190, 40));
+
+        jLabel17.setText("Interaction (Scale)");
+        jPanel12.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 160, -1, -1));
+
+        jLabel18.setText("Interaction (Scale, Loc. Random)");
+        jPanel12.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 160, -1, -1));
 
         stageTwoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Stage-2"));
 
@@ -523,18 +541,27 @@ public class mixregGUI extends javax.swing.JFrame {
         stageTwoPanel.setLayout(stageTwoPanelLayout);
         stageTwoPanelLayout.setHorizontalGroup(
             stageTwoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(stageTwoPanelLayout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(stageTwoRegsGrid, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(stageTwoRegsGrid, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
         );
         stageTwoPanelLayout.setVerticalGroup(
             stageTwoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(stageTwoRegsGrid, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(stageTwoRegsGrid, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
         );
 
         stageTwoRegsGrid.getAccessibleContext().setAccessibleParent(jPanel12);
 
-        jPanel12.add(stageTwoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 560, 380));
+        jPanel12.add(stageTwoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 720, 380));
+
+        runTabTwoStageOneTwo.setText("Run Stage 1 and 2");
+        jPanel12.add(runTabTwoStageOneTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 560, 160, 40));
+
+        suppressIntCheckBox.setText("Suppress All Interactions");
+        suppressIntCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                suppressIntCheckBoxActionPerformed(evt);
+            }
+        });
+        jPanel12.add(suppressIntCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 570, -1, -1));
 
         stageOneTabs.addTab("Stage 2 Configuration", jPanel12);
 
@@ -1504,6 +1531,10 @@ public class mixregGUI extends javax.swing.JFrame {
         stage_2_regs.updateStageTwoVariables(getSavedVariables());
     }//GEN-LAST:event_addStageTwoTabTwoActionPerformed
 
+    private void suppressIntCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suppressIntCheckBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_suppressIntCheckBoxActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1573,7 +1604,11 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
@@ -1621,6 +1656,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JPanel parentPanel;
     private javax.swing.JButton resetButton;
     private javax.swing.JButton runStageOneTwoButton;
+    private javax.swing.JButton runTabTwoStageOneTwo;
     private javax.swing.JLabel stage2_BSVar;
     private javax.swing.JLabel stage2_MeanReg;
     private javax.swing.JLabel stage2_WSVar;
@@ -1630,6 +1666,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JPanel stageTwoPanel_2;
     private javax.swing.JPanel stageTwoRegsGrid;
     private javax.swing.JMenuItem superUserMenu;
+    private javax.swing.JCheckBox suppressIntCheckBox;
     // End of variables declaration//GEN-END:variables
 
     public void isSubmitClicked() {
@@ -1939,10 +1976,6 @@ public class mixregGUI extends javax.swing.JFrame {
     
     public void updateStageTwoGrid_tab2(DefaultListModel<String> defaultListModel) {
 
-        //stageTwoRegsGrid.setVisible(true);
-        
-        //stageOneTabs.setSelectedIndex(1);
-        System.out.println("UpdatingStageTwoTabs");
         
         JScrollPane scrollpanel = new JScrollPane(stageTwoRegsGrid);
         stageTwoSelected_tab2 = new ArrayList<String>();
@@ -1981,7 +2014,7 @@ public class mixregGUI extends javax.swing.JFrame {
             constraints.anchor = GridBagConstraints.LINE_END;
             stageTwoSelected_tab2.add(defaultListModel.getElementAt(j));
             stageTwoRegsGrid.add(new JLabel(stageTwoSelected_tab2.get(j)), constraints);
-            System.out.println("labels added");
+            
             //stageTwoGrid.add(new JLabel(defaultListModel.getElementAt(j)), constraints);
 
             stageTwoGridBoxes.add(j, new ArrayList<JCheckBox>());
@@ -1991,30 +2024,24 @@ public class mixregGUI extends javax.swing.JFrame {
                 constraints.gridx++;
                 constraints.anchor = GridBagConstraints.CENTER;
                 stageTwoGridBoxes.get(j).add(k, new JCheckBox());
-                System.out.println("checks added");
+                
                 stageTwoRegsGrid.add(stageTwoGridBoxes.get(j).get(k), constraints);
             }
 
             constraints.gridy++;
 
             separatorConstraint.gridy = separatorConstraint.gridy + 2;
-            System.out.println("before seperator");
+            
             stageTwoRegsGrid.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
             //System.out.println("after seperator");
             constraints.gridy++;
 
         }
-        System.out.println("before scrolpanel added");
+        
         stageTwoPanel.add(scrollpanel);
-        System.out.println("after scrolpanel added");
 
     }
     
-    
-    
-    
-    
-
     public int countLevelOneBeta() {
 
         int levelOneBeta = 0;
