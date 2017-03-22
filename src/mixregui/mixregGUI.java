@@ -141,11 +141,11 @@ public class mixregGUI extends javax.swing.JFrame {
         //to enable stage two regressor buttos. avoids accidental clicks
         if (stageOneClicked == 0) {
 
-            addStageTwoButton.setEnabled(false);
+            addStageTwoTabTwo.setEnabled(false);
 
         } else {
 
-            addStageTwoButton.setEnabled(true);
+            addStageTwoTabTwo.setEnabled(true);
         }
 
     }
@@ -167,15 +167,6 @@ public class mixregGUI extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         stageOneTabs = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        IDvariableCombo = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
-        StageOneVariableCombo = new javax.swing.JComboBox<>();
-        jLabel3 = new javax.swing.JLabel();
-        StageTwoVariableCombo = new javax.swing.JComboBox<>();
-        addStageOneButton = new javax.swing.JButton();
-        addStageTwoButton = new javax.swing.JButton();
-        advancedOptionsButton = new javax.swing.JButton();
         runStageOneTwoButton = new javax.swing.JButton();
         resetButton = new javax.swing.JButton();
         goBackMxrButton = new javax.swing.JButton();
@@ -208,6 +199,15 @@ public class mixregGUI extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         stageTwoPanel_2 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
+        StageOneVariableCombo = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        IDvariableCombo = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jSeparator9 = new javax.swing.JSeparator();
+        jSeparator10 = new javax.swing.JSeparator();
+        addStageOneButton = new javax.swing.JButton();
+        advancedOptionsButton = new javax.swing.JButton();
+        jSeparator11 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
@@ -288,58 +288,6 @@ public class mixregGUI extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("ID Variable:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 32, -1, -1));
-
-        IDvariableCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        IDvariableCombo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                IDvariableComboActionPerformed(evt);
-            }
-        });
-        jPanel1.add(IDvariableCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 203, -1));
-
-        jLabel2.setText("Stage 1 DV:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 71, -1, -1));
-
-        StageOneVariableCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        StageOneVariableCombo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                StageOneVariableComboActionPerformed(evt);
-            }
-        });
-        jPanel1.add(StageOneVariableCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 203, -1));
-
-        jLabel3.setText("Stage 2 DV:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 116, -1, -1));
-
-        StageTwoVariableCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(StageTwoVariableCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 203, -1));
-
-        addStageOneButton.setText("Add Stage 1 Regressors ...");
-        addStageOneButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addStageOneButtonActionPerformed(evt);
-            }
-        });
-        jPanel1.add(addStageOneButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 225, 35));
-
-        addStageTwoButton.setText("Add Stage 2 Regressors ...");
-        addStageTwoButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addStageTwoButtonActionPerformed(evt);
-            }
-        });
-        jPanel1.add(addStageTwoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 225, 35));
-
-        advancedOptionsButton.setText("Advanced Options ...");
-        advancedOptionsButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                advancedOptionsButtonActionPerformed(evt);
-            }
-        });
-        jPanel1.add(advancedOptionsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 225, 37));
-
         runStageOneTwoButton.setText("Run Stage 1 + 2");
         runStageOneTwoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -368,7 +316,7 @@ public class mixregGUI extends javax.swing.JFrame {
         associationPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         associationLabel.setText("<html>Specify the relationship between the <br>random location and within subject variance tested below <br>(i.e. relation between variance and slope) </html>");
-        associationPanel.add(associationLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 250, 91));
+        associationPanel.add(associationLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 270, 70));
 
         buttonGroup1.add(NoAssociationRadio);
         NoAssociationRadio.setText("No Association");
@@ -377,17 +325,17 @@ public class mixregGUI extends javax.swing.JFrame {
                 NoAssociationRadioActionPerformed(evt);
             }
         });
-        associationPanel.add(NoAssociationRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 105, -1, -1));
+        associationPanel.add(NoAssociationRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
 
         buttonGroup1.add(LinearAssociationRadio);
         LinearAssociationRadio.setText("Linear Association");
-        associationPanel.add(LinearAssociationRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 134, -1, -1));
+        associationPanel.add(LinearAssociationRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
 
         buttonGroup1.add(QuadraticAssociationRadio);
         QuadraticAssociationRadio.setText("Quadratic Association");
-        associationPanel.add(QuadraticAssociationRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 163, -1, -1));
+        associationPanel.add(QuadraticAssociationRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
 
-        jPanel1.add(associationPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, 200));
+        jPanel1.add(associationPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 290, 220));
 
         jLabel4.setText("Between and within subject variance models");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 10, -1, -1));
@@ -492,17 +440,48 @@ public class mixregGUI extends javax.swing.JFrame {
         jPanel1.add(stageTwoPanel_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 110, 290, 390));
 
         jPanel8.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 306, Short.MAX_VALUE)
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 476, Short.MAX_VALUE)
-        );
+        StageOneVariableCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        StageOneVariableCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StageOneVariableComboActionPerformed(evt);
+            }
+        });
+        jPanel8.add(StageOneVariableCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 230, -1));
+
+        jLabel2.setText("Stage 1 Outcome:");
+        jPanel8.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, -1, -1));
+
+        IDvariableCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        IDvariableCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IDvariableComboActionPerformed(evt);
+            }
+        });
+        jPanel8.add(IDvariableCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 230, -1));
+
+        jLabel1.setText("ID Variable:");
+        jPanel8.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
+        jPanel8.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 230, -1));
+        jPanel8.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 230, -1));
+
+        addStageOneButton.setText("Add Stage 1 Regressors ...");
+        addStageOneButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addStageOneButtonActionPerformed(evt);
+            }
+        });
+        jPanel8.add(addStageOneButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 225, 35));
+
+        advancedOptionsButton.setText("Advanced Options ...");
+        advancedOptionsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                advancedOptionsButtonActionPerformed(evt);
+            }
+        });
+        jPanel8.add(advancedOptionsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 225, 37));
+        jPanel8.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 230, -1));
 
         jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 310, 480));
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 530, -1, -1));
@@ -515,14 +494,14 @@ public class mixregGUI extends javax.swing.JFrame {
         jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel14.setText("Fixed Regressor");
-        jPanel12.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, -1, -1));
+        jPanel12.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, -1, -1));
 
         jLabel12.setText("Stage 2 Regressors in the Model");
-        jPanel12.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(521, 46, -1, -1));
+        jPanel12.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, -1, -1));
 
         jLabel15.setText("Interaction (Loc. Random)");
-        jPanel12.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 160, -1, -1));
-        jPanel12.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(288, 80, 680, 10));
+        jPanel12.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, -1, -1));
+        jPanel12.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, 820, 10));
 
         addStageTwoTabTwo.setText("Modify Stage 2 Regressors");
         addStageTwoTabTwo.addActionListener(new java.awt.event.ActionListener() {
@@ -530,13 +509,13 @@ public class mixregGUI extends javax.swing.JFrame {
                 addStageTwoTabTwoActionPerformed(evt);
             }
         });
-        jPanel12.add(addStageTwoTabTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 190, 40));
+        jPanel12.add(addStageTwoTabTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 190, 40));
 
         jLabel17.setText("Interaction (Scale)");
-        jPanel12.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 160, -1, -1));
+        jPanel12.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 60, -1, -1));
 
         jLabel18.setText("Interaction (Scale, Loc. Random)");
-        jPanel12.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 160, -1, -1));
+        jPanel12.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 60, -1, -1));
 
         stageTwoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Stage-2"));
 
@@ -555,10 +534,10 @@ public class mixregGUI extends javax.swing.JFrame {
 
         stageTwoRegsGrid.getAccessibleContext().setAccessibleParent(jPanel12);
 
-        jPanel12.add(stageTwoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 720, 380));
+        jPanel12.add(stageTwoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, 720, 380));
 
         runTabTwoStageOneTwo.setText("Run Stage 1 and 2");
-        jPanel12.add(runTabTwoStageOneTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 560, 160, 40));
+        jPanel12.add(runTabTwoStageOneTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 470, 160, 40));
 
         suppressIntCheckBox.setText("Suppress All Interactions");
         suppressIntCheckBox.addActionListener(new java.awt.event.ActionListener() {
@@ -566,18 +545,18 @@ public class mixregGUI extends javax.swing.JFrame {
                 suppressIntCheckBoxActionPerformed(evt);
             }
         });
-        jPanel12.add(suppressIntCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, -1, -1));
+        jPanel12.add(suppressIntCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, -1, -1));
 
         stageTwoOutcome.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel12.add(stageTwoOutcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 190, 30));
+        jPanel12.add(stageTwoOutcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 190, 30));
 
         jLabel22.setText("Stage 2 Outcome:");
-        jPanel12.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, -1, -1));
-        jPanel12.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 190, -1));
-        jPanel12.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 190, -1));
+        jPanel12.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, -1, -1));
+        jPanel12.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 190, -1));
+        jPanel12.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, 190, -1));
 
         jButton1.setText("Reset");
-        jPanel12.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 560, 140, 40));
+        jPanel12.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 470, 140, 40));
 
         stageOneTabs.addTab("Stage 2 Configuration", jPanel12);
 
@@ -851,11 +830,11 @@ public class mixregGUI extends javax.swing.JFrame {
 
         IDvariableCombo.setSelectedIndex(0);
         StageOneVariableCombo.setSelectedIndex(1);
-        StageTwoVariableCombo.setSelectedIndex(2);
+        stageTwoOutcome.setSelectedIndex(2);
 
         buttonGroup1.clearSelection();
 
-        addStageTwoButton.setEnabled(false);
+        addStageTwoTabTwo.setEnabled(false);
 
 
     }//GEN-LAST:event_resetButtonActionPerformed
@@ -1500,17 +1479,9 @@ public class mixregGUI extends javax.swing.JFrame {
         advancedOptions_view.setVisible(true);
     }//GEN-LAST:event_advancedOptionsButtonActionPerformed
 
-    private void addStageTwoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStageTwoButtonActionPerformed
-        stage_2_regs = new stageTwoRegs();
-        stageOneTabs.setSelectedIndex(1);
-
-        stage_2_regs.setVisible(true);
-        stage_2_regs.updateStageTwoVariables(getSavedVariables());
-    }//GEN-LAST:event_addStageTwoButtonActionPerformed
-
     private void addStageOneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStageOneButtonActionPerformed
         stageOneClicked = 1;
-        addStageTwoButton.setEnabled(true);
+        addStageTwoTabTwo.setEnabled(true);
         stage_1_regs = new stageOneRegs();
         stage_1_regs.setVisible(true);
         stage_1_regs.updateAllVariables();
@@ -1595,9 +1566,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JRadioButton NoAssociationRadio;
     private javax.swing.JRadioButton QuadraticAssociationRadio;
     private javax.swing.JComboBox<String> StageOneVariableCombo;
-    private javax.swing.JComboBox<String> StageTwoVariableCombo;
     private javax.swing.JButton addStageOneButton;
-    private javax.swing.JButton addStageTwoButton;
     private javax.swing.JButton addStageTwoTabTwo;
     private javax.swing.JButton advancedOptionsButton;
     private javax.swing.JLabel associationLabel;
@@ -1631,7 +1600,6 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1653,6 +1621,8 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator10;
+    private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
@@ -1660,6 +1630,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
+    private javax.swing.JSeparator jSeparator9;
     private javax.swing.JLabel level1_BSVar;
     private javax.swing.JLabel level1_MeanReg;
     private javax.swing.JLabel level1_WSVar;
@@ -1712,8 +1683,6 @@ public class mixregGUI extends javax.swing.JFrame {
         StageOneVariableCombo.setModel(StageOneList);
         StageOneVariableCombo.setSelectedIndex(1);
 
-        StageTwoVariableCombo.setModel(StageTwoList);
-        StageTwoVariableCombo.setSelectedIndex(2);
         
         stageTwoOutcome.setModel(StageTwoList);
         stageTwoOutcome.setSelectedIndex(2);
@@ -1761,7 +1730,7 @@ public class mixregGUI extends javax.swing.JFrame {
     public String getStageTwoDV() {
         String StageTwoDV;
 
-        StageTwoDV = StageTwoVariableCombo.getItemAt(StageTwoVariableCombo.getSelectedIndex());
+        StageTwoDV = stageTwoOutcome.getItemAt(stageTwoOutcome.getSelectedIndex());
 
         return StageTwoDV;
 
@@ -3194,8 +3163,8 @@ public class mixregGUI extends javax.swing.JFrame {
         String position;
         int pos;
         
-        String outcome = StageTwoVariableCombo.getSelectedItem().toString();
-        pos = StageTwoVariableCombo.getSelectedIndex();
+        String outcome = stageTwoOutcome.getSelectedItem().toString();
+        pos = stageTwoOutcome.getSelectedIndex();
         
         position = String.valueOf(pos + 1);
         
@@ -3208,8 +3177,8 @@ public class mixregGUI extends javax.swing.JFrame {
         String position;
         int pos;
         
-        String outcome = StageTwoVariableCombo.getSelectedItem().toString();
-        pos = StageTwoVariableCombo.getSelectedIndex();
+        String outcome = stageTwoOutcome.getSelectedItem().toString();
+        pos = stageTwoOutcome.getSelectedIndex();
         
         position = String.valueOf(pos + 1);
         
