@@ -173,7 +173,13 @@ public class stageTwoRegs extends javax.swing.JFrame {
         isStageTwoSubmitClicked = true;
 
         mixregGUIStageTwo = newModel2.getMixReg();
-        mixregGUIStageTwo.updateStageTwoGrid_version2(stageTwoLevelTwo);
+      // mixregGUIStageTwo.updateStageTwoGrid_version2(stageTwoLevelTwo);
+        
+        //mixregGUIStageTwo.setSele
+        
+        mixregGUIStageTwo.updateStageTwoGrid_tab2(stageTwoLevelTwo);
+        
+                
         this.dispose();
     }//GEN-LAST:event_stageTwoSubmitButtonActionPerformed
 

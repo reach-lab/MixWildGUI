@@ -79,12 +79,17 @@ public class mixregGUI extends javax.swing.JFrame {
     ArrayList<ArrayList<JCheckBox>> levelTwoBoxes;
 
     ArrayList<ArrayList<JCheckBox>> stageTwoBoxes;
+    
+    ArrayList<ArrayList<JCheckBox>> stageTwoGridBoxes;
 
     ArrayList<ArrayList<JCheckBox>> disaggVarianceBoxes;
+    
+    boolean suppressed = false;
 
     ArrayList<String> levelOneSelected;
     ArrayList<String> levelTwoSelected;
     ArrayList<String> stageTwoSelected;
+    ArrayList<String> stageTwoSelected_tab2;
 
     final ImageIcon icon;
 
@@ -125,23 +130,23 @@ public class mixregGUI extends javax.swing.JFrame {
             level1_WSVar.setText("Scale");
             level2_BSVar.setText("Loc. eff.");
             level2_WSVar.setText("Scale");
-            stage2_BSVar.setText("Loc. eff.");
-            stage2_WSVar.setText("Scale");
+            
 
         }
 
-        jPanel5.setLayout(new BorderLayout());
-        jPanel6.setLayout(new BorderLayout());
-        jPanel7.setLayout(new BorderLayout());
+        levelOnePanel.setLayout(new BorderLayout());
+        levelTwoPanel.setLayout(new BorderLayout());
+        
+        stageTwoPanel.setLayout(new BorderLayout());
 
         //to enable stage two regressor buttos. avoids accidental clicks
         if (stageOneClicked == 0) {
 
-            addStageTwoButton.setEnabled(false);
+            addStageTwoTabTwo.setEnabled(false);
 
         } else {
 
-            addStageTwoButton.setEnabled(true);
+            addStageTwoTabTwo.setEnabled(true);
         }
 
     }
@@ -163,49 +168,59 @@ public class mixregGUI extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         stageOneTabs = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        IDvariableCombo = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
-        StageOneVariableCombo = new javax.swing.JComboBox<>();
-        jLabel3 = new javax.swing.JLabel();
-        StageTwoVariableCombo = new javax.swing.JComboBox<>();
-        addStageOneButton = new javax.swing.JButton();
-        addStageTwoButton = new javax.swing.JButton();
-        advancedOptionsButton = new javax.swing.JButton();
-        runStageOneTwoButton = new javax.swing.JButton();
         resetButton = new javax.swing.JButton();
         goBackMxrButton = new javax.swing.JButton();
-        associationPanel = new javax.swing.JPanel();
-        associationLabel = new javax.swing.JLabel();
-        NoAssociationRadio = new javax.swing.JRadioButton();
-        LinearAssociationRadio = new javax.swing.JRadioButton();
-        QuadraticAssociationRadio = new javax.swing.JRadioButton();
         jLabel4 = new javax.swing.JLabel();
         level1_MeanReg = new javax.swing.JLabel();
         level1_WSVar = new javax.swing.JLabel();
         level2_MeanReg = new javax.swing.JLabel();
         level2_BSVar = new javax.swing.JLabel();
         level2_WSVar = new javax.swing.JLabel();
-        stage2_MeanReg = new javax.swing.JLabel();
-        stage2_BSVar = new javax.swing.JLabel();
-        stage2_WSVar = new javax.swing.JLabel();
-        stageTwoGrid = new javax.swing.JPanel();
         jSeparator2 = new javax.swing.JSeparator();
         level1_BSVar = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
+        levelOnePanel = new javax.swing.JPanel();
         levelOneGrid = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
-        jSeparator3 = new javax.swing.JSeparator();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
-        jPanel6 = new javax.swing.JPanel();
+        levelTwoPanel = new javax.swing.JPanel();
         levelTwoGrid = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
+        StageOneVariableCombo = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        IDvariableCombo = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jSeparator9 = new javax.swing.JSeparator();
+        jSeparator10 = new javax.swing.JSeparator();
+        addStageOneButton = new javax.swing.JButton();
+        advancedOptionsButton = new javax.swing.JButton();
+        jSeparator11 = new javax.swing.JSeparator();
+        associationPanel = new javax.swing.JPanel();
+        associationLabel = new javax.swing.JLabel();
+        NoAssociationRadio = new javax.swing.JRadioButton();
+        LinearAssociationRadio = new javax.swing.JRadioButton();
+        QuadraticAssociationRadio = new javax.swing.JRadioButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        startStageTwo = new javax.swing.JButton();
+        jPanel12 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jSeparator6 = new javax.swing.JSeparator();
+        addStageTwoTabTwo = new javax.swing.JButton();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        stageTwoPanel = new javax.swing.JPanel();
+        stageTwoRegsGrid = new javax.swing.JPanel();
+        runTabTwoStageOneTwo = new javax.swing.JButton();
+        suppressIntCheckBox = new javax.swing.JCheckBox();
+        stageTwoOutcome = new javax.swing.JComboBox<>();
+        jLabel22 = new javax.swing.JLabel();
+        jSeparator7 = new javax.swing.JSeparator();
+        jSeparator8 = new javax.swing.JSeparator();
+        jButton1 = new javax.swing.JButton();
+        jSeparator12 = new javax.swing.JSeparator();
+        jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
@@ -267,73 +282,13 @@ public class mixregGUI extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("ID Variable:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 32, -1, -1));
-
-        IDvariableCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        IDvariableCombo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                IDvariableComboActionPerformed(evt);
-            }
-        });
-        jPanel1.add(IDvariableCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 203, -1));
-
-        jLabel2.setText("Stage 1 DV:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 71, -1, -1));
-
-        StageOneVariableCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        StageOneVariableCombo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                StageOneVariableComboActionPerformed(evt);
-            }
-        });
-        jPanel1.add(StageOneVariableCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 203, -1));
-
-        jLabel3.setText("Stage 2 DV:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 116, -1, -1));
-
-        StageTwoVariableCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(StageTwoVariableCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 203, -1));
-
-        addStageOneButton.setText("Add Stage 1 Regressors ...");
-        addStageOneButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addStageOneButtonActionPerformed(evt);
-            }
-        });
-        jPanel1.add(addStageOneButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 225, 35));
-
-        addStageTwoButton.setText("Add Stage 2 Regressors ...");
-        addStageTwoButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addStageTwoButtonActionPerformed(evt);
-            }
-        });
-        jPanel1.add(addStageTwoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 225, 35));
-
-        advancedOptionsButton.setText("Advanced Options ...");
-        advancedOptionsButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                advancedOptionsButtonActionPerformed(evt);
-            }
-        });
-        jPanel1.add(advancedOptionsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 225, 37));
-
-        runStageOneTwoButton.setText("Run Stage 1 + 2");
-        runStageOneTwoButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                runStageOneTwoButtonActionPerformed(evt);
-            }
-        });
-        jPanel1.add(runStageOneTwoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 520, -1, -1));
-
         resetButton.setText("Reset");
         resetButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 resetButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 520, 135, -1));
+        jPanel1.add(resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 510, 135, 40));
 
         goBackMxrButton.setText("Go Back");
         goBackMxrButton.addActionListener(new java.awt.event.ActionListener() {
@@ -341,13 +296,118 @@ public class mixregGUI extends javax.swing.JFrame {
                 goBackMxrButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(goBackMxrButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 520, 147, -1));
+        jPanel1.add(goBackMxrButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 510, 147, 40));
 
-        associationPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLabel4.setText("Between and within subject variance models for Stage 1");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 10, -1, -1));
+
+        level1_MeanReg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        level1_MeanReg.setText("Mean");
+        level1_MeanReg.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(level1_MeanReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 60, -1, -1));
+        level1_MeanReg.getAccessibleContext().setAccessibleName("");
+
+        level1_WSVar.setText("WS-Variance");
+        jPanel1.add(level1_WSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 60, -1, -1));
+
+        level2_MeanReg.setText("Mean");
+        jPanel1.add(level2_MeanReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 60, -1, -1));
+
+        level2_BSVar.setText("BS-Variance");
+        jPanel1.add(level2_BSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 60, -1, -1));
+
+        level2_WSVar.setText("WS-Variance");
+        jPanel1.add(level2_WSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 60, -1, -1));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 560, 1190, 20));
+
+        level1_BSVar.setText("BS-Variance");
+        jPanel1.add(level1_BSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 60, -1, -1));
+
+        levelOnePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Level-1 (WS)"));
+
+        levelOneGrid.setLayout(new java.awt.BorderLayout());
+
+        javax.swing.GroupLayout levelOnePanelLayout = new javax.swing.GroupLayout(levelOnePanel);
+        levelOnePanel.setLayout(levelOnePanelLayout);
+        levelOnePanelLayout.setHorizontalGroup(
+            levelOnePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(levelOneGrid, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
+        );
+        levelOnePanelLayout.setVerticalGroup(
+            levelOnePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(levelOneGrid, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
+        );
+
+        levelOneGrid.getAccessibleContext().setAccessibleName("Level-1");
+
+        jPanel1.add(levelOnePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 70, 440, 430));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 30, 540, -1));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 50, -1, 140));
+
+        levelTwoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Level-2 (BS)"));
+
+        levelTwoGrid.setLayout(new java.awt.BorderLayout());
+
+        javax.swing.GroupLayout levelTwoPanelLayout = new javax.swing.GroupLayout(levelTwoPanel);
+        levelTwoPanel.setLayout(levelTwoPanelLayout);
+        levelTwoPanelLayout.setHorizontalGroup(
+            levelTwoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(levelTwoGrid, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)
+        );
+        levelTwoPanelLayout.setVerticalGroup(
+            levelTwoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(levelTwoGrid, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(levelTwoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 70, 420, 430));
+
+        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        StageOneVariableCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        StageOneVariableCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StageOneVariableComboActionPerformed(evt);
+            }
+        });
+        jPanel8.add(StageOneVariableCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 230, -1));
+
+        jLabel2.setText("Stage 1 Outcome:");
+        jPanel8.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
+
+        IDvariableCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        IDvariableCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IDvariableComboActionPerformed(evt);
+            }
+        });
+        jPanel8.add(IDvariableCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 230, -1));
+
+        jLabel1.setText("ID Variable:");
+        jPanel8.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, -1, -1));
+        jPanel8.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 270, -1));
+        jPanel8.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 270, -1));
+
+        addStageOneButton.setText("Add Stage 1 Regressors ...");
+        addStageOneButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addStageOneButtonActionPerformed(evt);
+            }
+        });
+        jPanel8.add(addStageOneButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 225, 35));
+
+        advancedOptionsButton.setText("Advanced Options ...");
+        advancedOptionsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                advancedOptionsButtonActionPerformed(evt);
+            }
+        });
+        jPanel8.add(advancedOptionsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 225, 37));
+        jPanel8.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 280, -1));
+
         associationPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        associationLabel.setText("<html>Specify the relationship between the <br>random location and within subject variance tested below <br>(i.e. relation between variance and slope) </html>");
-        associationPanel.add(associationLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 250, 91));
+        associationLabel.setText("<html>Specify the relationship between the <br>random location and within subject variance.<br>(i.e. relation between variance and slope) </html>");
+        associationPanel.add(associationLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 290, 70));
 
         buttonGroup1.add(NoAssociationRadio);
         NoAssociationRadio.setText("No Association");
@@ -356,140 +416,116 @@ public class mixregGUI extends javax.swing.JFrame {
                 NoAssociationRadioActionPerformed(evt);
             }
         });
-        associationPanel.add(NoAssociationRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 105, -1, -1));
+        associationPanel.add(NoAssociationRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
         buttonGroup1.add(LinearAssociationRadio);
         LinearAssociationRadio.setText("Linear Association");
-        associationPanel.add(LinearAssociationRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 134, -1, -1));
+        LinearAssociationRadio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LinearAssociationRadioActionPerformed(evt);
+            }
+        });
+        associationPanel.add(LinearAssociationRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
 
         buttonGroup1.add(QuadraticAssociationRadio);
         QuadraticAssociationRadio.setText("Quadratic Association");
-        associationPanel.add(QuadraticAssociationRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 163, -1, -1));
+        associationPanel.add(QuadraticAssociationRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
 
-        jPanel1.add(associationPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, 200));
-
-        jLabel4.setText("Between and within subject variance models");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 10, -1, -1));
-
-        level1_MeanReg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        level1_MeanReg.setText("Mean");
-        level1_MeanReg.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel1.add(level1_MeanReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 100, -1, -1));
-        level1_MeanReg.getAccessibleContext().setAccessibleName("");
-
-        level1_WSVar.setText("WS-Var.");
-        jPanel1.add(level1_WSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 100, -1, -1));
-
-        level2_MeanReg.setText("Mean");
-        jPanel1.add(level2_MeanReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 100, -1, -1));
-
-        level2_BSVar.setText("BS-Var.");
-        jPanel1.add(level2_BSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 100, -1, -1));
-
-        level2_WSVar.setText("WS-Var.");
-        jPanel1.add(level2_WSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 100, -1, -1));
-
-        stage2_MeanReg.setText("Mean");
-        jPanel1.add(stage2_MeanReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 100, -1, -1));
-
-        stage2_BSVar.setText("BS-Var.");
-        jPanel1.add(stage2_BSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 100, -1, -1));
-
-        stage2_WSVar.setText("WS-Var.");
-        jPanel1.add(stage2_WSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 100, -1, -1));
-
-        stageTwoGrid.setLayout(new java.awt.GridLayout(1, 0));
-        jPanel1.add(stageTwoGrid, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 130, 270, 360));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 560, 1190, 20));
-
-        level1_BSVar.setText("BS-Var.");
-        jPanel1.add(level1_BSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, -1, -1));
-
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Level-1 (WS)"));
-
-        levelOneGrid.setLayout(new java.awt.BorderLayout());
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(levelOneGrid, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(levelOneGrid, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
-        );
-
-        levelOneGrid.getAccessibleContext().setAccessibleName("Level-1");
-
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, 290, 390));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 70, 540, -1));
-        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 70, 350, -1));
-
-        jLabel7.setText("Stage-1 Regressors");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 50, -1, -1));
-
-        jLabel13.setText("Stage-2 Regressors");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 50, -1, -1));
-        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 50, -1, 140));
-
-        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Level-2 (BS)"));
-
-        levelTwoGrid.setLayout(new java.awt.BorderLayout());
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addComponent(levelTwoGrid, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 4, Short.MAX_VALUE))
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(levelTwoGrid, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 110, 300, 390));
-
-        jLabel11.setText("Int.");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 100, -1, -1));
-
-        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Stage-2"));
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 366, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 110, 290, 390));
-
-        jPanel8.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 306, Short.MAX_VALUE)
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 476, Short.MAX_VALUE)
-        );
+        jPanel8.add(associationPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 290, 180));
 
         jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 310, 480));
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 530, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/mixLogo.png"))); // NOI18N
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 520, -1, 30));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 510, -1, 30));
 
-        stageOneTabs.addTab("Configuration", jPanel1);
+        startStageTwo.setText("Start Stage 2");
+        startStageTwo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                startStageTwoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(startStageTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1063, 510, 140, 40));
+
+        stageOneTabs.addTab("Stage 1 Configuration", jPanel1);
+
+        jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel14.setText("Fixed Regressor");
+        jPanel12.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, -1, -1));
+
+        jLabel12.setText("Between and within subject variance models for Stage 2");
+        jPanel12.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, -1, -1));
+
+        jLabel15.setText("Interaction (Loc. Random)");
+        jPanel12.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, -1, -1));
+        jPanel12.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, 820, 10));
+
+        addStageTwoTabTwo.setText("Modify Stage 2 Regressors");
+        addStageTwoTabTwo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addStageTwoTabTwoActionPerformed(evt);
+            }
+        });
+        jPanel12.add(addStageTwoTabTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 190, 40));
+
+        jLabel17.setText("Interaction (Scale)");
+        jPanel12.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 60, -1, -1));
+
+        jLabel18.setText("Interaction (Scale, Loc. Random)");
+        jPanel12.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 60, -1, -1));
+
+        stageTwoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Stage-2"));
+
+        stageTwoRegsGrid.setLayout(new java.awt.BorderLayout());
+
+        javax.swing.GroupLayout stageTwoPanelLayout = new javax.swing.GroupLayout(stageTwoPanel);
+        stageTwoPanel.setLayout(stageTwoPanelLayout);
+        stageTwoPanelLayout.setHorizontalGroup(
+            stageTwoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(stageTwoRegsGrid, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
+        );
+        stageTwoPanelLayout.setVerticalGroup(
+            stageTwoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(stageTwoRegsGrid, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
+        );
+
+        stageTwoRegsGrid.getAccessibleContext().setAccessibleParent(jPanel12);
+
+        jPanel12.add(stageTwoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, 720, 380));
+
+        runTabTwoStageOneTwo.setText("Run Stage 1 and 2");
+        runTabTwoStageOneTwo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                runTabTwoStageOneTwoActionPerformed(evt);
+            }
+        });
+        jPanel12.add(runTabTwoStageOneTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 470, 160, 40));
+
+        suppressIntCheckBox.setText("Suppress All Interactions");
+        suppressIntCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                suppressIntCheckBoxActionPerformed(evt);
+            }
+        });
+        jPanel12.add(suppressIntCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, -1, -1));
+
+        stageTwoOutcome.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel12.add(stageTwoOutcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 190, 30));
+
+        jLabel22.setText("Stage 2 Outcome:");
+        jPanel12.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, -1, -1));
+        jPanel12.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 190, -1));
+        jPanel12.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, 190, -1));
+
+        jButton1.setText("Reset");
+        jPanel12.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 470, 140, 40));
+        jPanel12.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 520, 740, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/mixLogo.png"))); // NOI18N
+        jPanel12.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 470, -1, 30));
+
+        stageOneTabs.addTab("Stage 2 Configuration", jPanel12);
 
         jPanel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -546,17 +582,19 @@ public class mixregGUI extends javax.swing.JFrame {
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton8)
-                            .addComponent(jButton9)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(553, Short.MAX_VALUE))
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(345, Short.MAX_VALUE))
         );
 
         stageOneTabs.addTab("Stage 1 Results", jPanel3);
+
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -569,7 +607,7 @@ public class mixregGUI extends javax.swing.JFrame {
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addGap(399, 399, 399)
                 .addComponent(jLabel21)
-                .addContainerGap(470, Short.MAX_VALUE))
+                .addContainerGap(394, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -579,47 +617,19 @@ public class mixregGUI extends javax.swing.JFrame {
                 .addContainerGap(208, Short.MAX_VALUE))
         );
 
+        jPanel4.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 24, 940, -1));
+
         jButton10.setText("Save Output As ...");
+        jPanel4.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 390, 227, 39));
 
         jButton11.setText("Save Stage 2 Def File As ...");
+        jPanel4.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 390, 232, 39));
 
         jButton12.setText("Save Stage 1 and 2 Def File As ...");
+        jPanel4.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 390, -1, 39));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/mixLogo.png"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(192, 192, 192)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton12)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(65, 65, 65))))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton10)
-                    .addComponent(jButton11)
-                    .addComponent(jButton12)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(558, Short.MAX_VALUE))
-        );
+        jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 390, -1, 39));
 
         stageOneTabs.addTab("Stage 2 Results", jPanel4);
 
@@ -761,17 +771,64 @@ public class mixregGUI extends javax.swing.JFrame {
 
         IDvariableCombo.setSelectedIndex(0);
         StageOneVariableCombo.setSelectedIndex(1);
-        StageTwoVariableCombo.setSelectedIndex(2);
+        stageTwoOutcome.setSelectedIndex(2);
 
         buttonGroup1.clearSelection();
 
-        addStageTwoButton.setEnabled(false);
+        addStageTwoTabTwo.setEnabled(false);
 
 
     }//GEN-LAST:event_resetButtonActionPerformed
+ 
+    private void NoAssociationRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoAssociationRadioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NoAssociationRadioActionPerformed
 
-    private void runStageOneTwoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_runStageOneTwoButtonActionPerformed
+    private void superUserMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_superUserMenuActionPerformed
+        // TODO add your handling code here:
+        superUserMenuLaunch = new def_lib.SuperUserMenu();
 
+        superUserMenuLaunch.setVisible(true);
+    }//GEN-LAST:event_superUserMenuActionPerformed
+
+    private void addStageTwoTabTwoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStageTwoTabTwoActionPerformed
+        // TODO add your handling code here:
+        
+        stage_2_regs = new stageTwoRegs();
+        //stageOneTabs.setSelectedIndex(1);
+
+        stage_2_regs.setVisible(true);
+        stage_2_regs.updateStageTwoVariables(getSavedVariables());
+    }//GEN-LAST:event_addStageTwoTabTwoActionPerformed
+
+    private void suppressIntCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suppressIntCheckBoxActionPerformed
+        // TODO add your handling code here:
+        
+        
+        
+        if (suppressed == false){
+            
+            for (int p = 0; p < stageTwoRegSize; p++) {
+
+            stageTwoGridBoxes.get(p).get(3).setSelected(false);
+            stageTwoGridBoxes.get(p).get(3).setEnabled(false);
+            }
+        
+        } else {
+                for (int p = 0; p < stageTwoRegSize; p++) {
+
+            stageTwoGridBoxes.get(p).get(3).setSelected(false);
+            stageTwoGridBoxes.get(p).get(3).setEnabled(true);
+                
+                }
+ 
+        }
+        
+        suppressed = true;
+    }//GEN-LAST:event_suppressIntCheckBoxActionPerformed
+
+    private void runTabTwoStageOneTwoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_runTabTwoStageOneTwoActionPerformed
+        // TODO add your handling code here:
         // tryCount counts the number of successful definitionhelper function calls
         //catchCount counts number of exceptions in reading values to derHelper. 
         //Prevents UI from moving forward in case of an exception
@@ -1399,9 +1456,13 @@ public class mixregGUI extends javax.swing.JFrame {
 
             // do nothing
         }
+        
+    }//GEN-LAST:event_runTabTwoStageOneTwoActionPerformed
 
-
-    }//GEN-LAST:event_runStageOneTwoButtonActionPerformed
+    private void startStageTwoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startStageTwoActionPerformed
+        // TODO add your handling code here:
+        stageOneTabs.setSelectedIndex(1);
+    }//GEN-LAST:event_startStageTwoActionPerformed
 
     private void advancedOptionsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_advancedOptionsButtonActionPerformed
         // TODO add your handling code here:
@@ -1410,16 +1471,9 @@ public class mixregGUI extends javax.swing.JFrame {
         advancedOptions_view.setVisible(true);
     }//GEN-LAST:event_advancedOptionsButtonActionPerformed
 
-    private void addStageTwoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStageTwoButtonActionPerformed
-        stage_2_regs = new stageTwoRegs();
-
-        stage_2_regs.setVisible(true);
-        stage_2_regs.updateStageTwoVariables(getSavedVariables());
-    }//GEN-LAST:event_addStageTwoButtonActionPerformed
-
     private void addStageOneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStageOneButtonActionPerformed
         stageOneClicked = 1;
-        addStageTwoButton.setEnabled(true);
+        addStageTwoTabTwo.setEnabled(true);
         stage_1_regs = new stageOneRegs();
         stage_1_regs.setVisible(true);
         stage_1_regs.updateAllVariables();
@@ -1428,23 +1482,15 @@ public class mixregGUI extends javax.swing.JFrame {
     private void IDvariableComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDvariableComboActionPerformed
         // TODO add your handling code here:
 
-
     }//GEN-LAST:event_IDvariableComboActionPerformed
-
-    private void NoAssociationRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoAssociationRadioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NoAssociationRadioActionPerformed
 
     private void StageOneVariableComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StageOneVariableComboActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_StageOneVariableComboActionPerformed
 
-    private void superUserMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_superUserMenuActionPerformed
+    private void LinearAssociationRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LinearAssociationRadioActionPerformed
         // TODO add your handling code here:
-        superUserMenuLaunch = new def_lib.SuperUserMenu();
-
-        superUserMenuLaunch.setVisible(true);
-    }//GEN-LAST:event_superUserMenuActionPerformed
+    }//GEN-LAST:event_LinearAssociationRadioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1490,9 +1536,8 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JRadioButton NoAssociationRadio;
     private javax.swing.JRadioButton QuadraticAssociationRadio;
     private javax.swing.JComboBox<String> StageOneVariableCombo;
-    private javax.swing.JComboBox<String> StageTwoVariableCombo;
     private javax.swing.JButton addStageOneButton;
-    private javax.swing.JButton addStageTwoButton;
+    private javax.swing.JButton addStageTwoTabTwo;
     private javax.swing.JButton advancedOptionsButton;
     private javax.swing.JLabel associationLabel;
     private javax.swing.JPanel associationPanel;
@@ -1503,6 +1548,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JButton goBackMxrButton;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JPanel imageView;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
@@ -1511,18 +1557,21 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuBar jMenuBar1;
@@ -1533,19 +1582,23 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator10;
+    private javax.swing.JSeparator jSeparator11;
+    private javax.swing.JSeparator jSeparator12;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
+    private javax.swing.JSeparator jSeparator9;
     private javax.swing.JLabel level1_BSVar;
     private javax.swing.JLabel level1_MeanReg;
     private javax.swing.JLabel level1_WSVar;
@@ -1553,19 +1606,22 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JLabel level2_MeanReg;
     private javax.swing.JLabel level2_WSVar;
     private javax.swing.JPanel levelOneGrid;
+    private javax.swing.JPanel levelOnePanel;
     private javax.swing.JPanel levelTwoGrid;
+    private javax.swing.JPanel levelTwoPanel;
     private javax.swing.JMenuItem modifyStageOneMenu;
     private javax.swing.JMenuItem modifyStageTwoMenu;
     private javax.swing.JMenuItem newModelMenu;
     private javax.swing.JPanel parentPanel;
     private javax.swing.JButton resetButton;
-    private javax.swing.JButton runStageOneTwoButton;
-    private javax.swing.JLabel stage2_BSVar;
-    private javax.swing.JLabel stage2_MeanReg;
-    private javax.swing.JLabel stage2_WSVar;
+    private javax.swing.JButton runTabTwoStageOneTwo;
     private javax.swing.JTabbedPane stageOneTabs;
-    private javax.swing.JPanel stageTwoGrid;
+    private javax.swing.JComboBox<String> stageTwoOutcome;
+    private javax.swing.JPanel stageTwoPanel;
+    private javax.swing.JPanel stageTwoRegsGrid;
+    private javax.swing.JButton startStageTwo;
     private javax.swing.JMenuItem superUserMenu;
+    private javax.swing.JCheckBox suppressIntCheckBox;
     // End of variables declaration//GEN-END:variables
 
     public void isSubmitClicked() {
@@ -1590,8 +1646,11 @@ public class mixregGUI extends javax.swing.JFrame {
         StageOneVariableCombo.setModel(StageOneList);
         StageOneVariableCombo.setSelectedIndex(1);
 
-        StageTwoVariableCombo.setModel(StageTwoList);
-        StageTwoVariableCombo.setSelectedIndex(2);
+        
+        stageTwoOutcome.setModel(StageTwoList);
+        stageTwoOutcome.setSelectedIndex(2);
+        
+        
     }
 
     public static void openWebpage(String urlString) {
@@ -1634,7 +1693,7 @@ public class mixregGUI extends javax.swing.JFrame {
     public String getStageTwoDV() {
         String StageTwoDV;
 
-        StageTwoDV = StageTwoVariableCombo.getItemAt(StageTwoVariableCombo.getSelectedIndex());
+        StageTwoDV = stageTwoOutcome.getItemAt(stageTwoOutcome.getSelectedIndex());
 
         return StageTwoDV;
 
@@ -1737,7 +1796,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
         }
 
-        jPanel5.add(scrollpanel);
+        levelOnePanel.add(scrollpanel);
 
     }
 
@@ -1803,10 +1862,11 @@ public class mixregGUI extends javax.swing.JFrame {
 
         }
 
-        jPanel6.add(scrollpanel);
+        levelTwoPanel.add(scrollpanel);
 
     }
 
+    /*
     public void updateStageTwoGrid_version2(DefaultListModel<String> defaultListModel) {
 
         //stageTwoGrid.setVisible(true);
@@ -1869,10 +1929,78 @@ public class mixregGUI extends javax.swing.JFrame {
 
         }
 
-        jPanel7.add(scrollpanel);
+        stageTwoPanel_2.add(scrollpanel);
+
+    }*/
+    
+    public void updateStageTwoGrid_tab2(DefaultListModel<String> defaultListModel) {
+
+        
+        JScrollPane scrollpanel = new JScrollPane(stageTwoRegsGrid);
+        stageTwoSelected_tab2 = new ArrayList<String>();
+
+        int regSize = defaultListModel.getSize();
+        stageTwoRegSize = regSize;
+
+        stageTwoRegsGrid.removeAll();
+
+        stageTwoRegsGrid.setLayout(new GridBagLayout());
+        GridBagConstraints constraints = new GridBagConstraints();
+
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        constraints.weightx = 1.0;
+        // constraints.weighty = 1.0;
+        constraints.anchor = GridBagConstraints.NORTH;
+        //constraints.gridwidth = 4;
+
+        GridBagConstraints separatorConstraint = new GridBagConstraints();
+        separatorConstraint.weightx = 1.0;
+        separatorConstraint.fill = GridBagConstraints.HORIZONTAL;
+        separatorConstraint.gridwidth = GridBagConstraints.REMAINDER;
+        separatorConstraint.gridx = 0;
+
+        constraints.insets = new Insets(3, 0, 5, 25);
+        separatorConstraint.insets = new Insets(0, 0, 0, 0);
+        //constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.weightx = 1;
+
+        stageTwoGridBoxes = new ArrayList<ArrayList<JCheckBox>>();
+        //disaggVarianceBoxes = new ArrayList<ArrayList<JCheckBox>>();
+
+        for (int j = 0; j < regSize; j++) {
+            constraints.gridx = 0;
+            constraints.anchor = GridBagConstraints.LINE_END;
+            stageTwoSelected_tab2.add(defaultListModel.getElementAt(j));
+            stageTwoRegsGrid.add(new JLabel(stageTwoSelected_tab2.get(j)), constraints);
+            
+            //stageTwoGrid.add(new JLabel(defaultListModel.getElementAt(j)), constraints);
+
+            stageTwoGridBoxes.add(j, new ArrayList<JCheckBox>());
+
+            for (int k = 0; k < 4; k++) {
+
+                constraints.gridx++;
+                constraints.anchor = GridBagConstraints.CENTER;
+                stageTwoGridBoxes.get(j).add(k, new JCheckBox());
+                
+                stageTwoRegsGrid.add(stageTwoGridBoxes.get(j).get(k), constraints);
+            }
+
+            constraints.gridy++;
+
+            separatorConstraint.gridy = separatorConstraint.gridy + 2;
+            
+            stageTwoRegsGrid.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
+            //System.out.println("after seperator");
+            constraints.gridy++;
+
+        }
+        
+        stageTwoPanel.add(scrollpanel);
 
     }
-
+    
     public int countLevelOneBeta() {
 
         int levelOneBeta = 0;
@@ -1954,7 +2082,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
         for (int p = 0; p < stageTwoRegSize; p++) {
 
-            if (stageTwoBoxes.get(p).get(0).isSelected()) {
+            if (stageTwoGridBoxes.get(p).get(0).isSelected()) {
 
                 stageTwoBeta = stageTwoBeta + 1;
             }
@@ -2003,7 +2131,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
         for (int p = 0; p < stageTwoRegSize; p++) {
 
-            if (stageTwoBoxes.get(p).get(1).isSelected()) {
+            if (stageTwoGridBoxes.get(p).get(1).isSelected()) {
 
                 stageTwoAlpha = stageTwoAlpha + 1;
             }
@@ -2052,7 +2180,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
         for (int p = 0; p < stageTwoRegSize; p++) {
 
-            if (stageTwoBoxes.get(p).get(2).isSelected()) {
+            if (stageTwoGridBoxes.get(p).get(2).isSelected()) {
 
                 stageTwoTau = stageTwoTau + 1;
             }
@@ -2068,7 +2196,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
         for (int p = 0; p < stageTwoRegSize; p++) {
 
-            if (stageTwoBoxes.get(p).get(3).isSelected()) {
+            if (stageTwoGridBoxes.get(p).get(3).isSelected()) {
 
                 stageTwoInter = stageTwoInter + 1;
             }
@@ -2999,8 +3127,8 @@ public class mixregGUI extends javax.swing.JFrame {
         String position;
         int pos;
         
-        String outcome = StageTwoVariableCombo.getSelectedItem().toString();
-        pos = StageTwoVariableCombo.getSelectedIndex();
+        String outcome = stageTwoOutcome.getSelectedItem().toString();
+        pos = stageTwoOutcome.getSelectedIndex();
         
         position = String.valueOf(pos + 1);
         
@@ -3013,8 +3141,8 @@ public class mixregGUI extends javax.swing.JFrame {
         String position;
         int pos;
         
-        String outcome = StageTwoVariableCombo.getSelectedItem().toString();
-        pos = StageTwoVariableCombo.getSelectedIndex();
+        String outcome = stageTwoOutcome.getSelectedItem().toString();
+        pos = stageTwoOutcome.getSelectedIndex();
         
         position = String.valueOf(pos + 1);
         
@@ -3036,9 +3164,9 @@ public class mixregGUI extends javax.swing.JFrame {
 
         for (int p = 0; p < stageTwoRegSize; p++) {
 
-            if (stageTwoBoxes.get(p).get(0).isSelected()) {
-                regressorLabels[index] = stageTwoSelected.get(p);
-                fieldLabel = stageTwoSelected.get(p);
+            if (stageTwoGridBoxes.get(p).get(0).isSelected()) {
+                regressorLabels[index] = stageTwoSelected_tab2.get(p);
+                fieldLabel = stageTwoSelected_tab2.get(p);
                 System.out.println("Stage-Two/mixRegGUI/Regressor-Fields-(Fixed): " + regressorLabels[index]);
                 index++;
 
@@ -3092,9 +3220,9 @@ public class mixregGUI extends javax.swing.JFrame {
 
         for (int p = 0; p < stageTwoRegSize; p++) {
 
-            if (stageTwoBoxes.get(p).get(1).isSelected()) {
-                regressorLabels[index] = stageTwoSelected.get(p);
-                fieldLabel = stageTwoSelected.get(p);
+            if (stageTwoGridBoxes.get(p).get(1).isSelected()) {
+                regressorLabels[index] = stageTwoSelected_tab2.get(p);
+                fieldLabel = stageTwoSelected_tab2.get(p);
                 System.out.println("Stage-Two/mixRegGUI/Regressor-Fields-(LocRan): " + regressorLabels[index]);
                 index++;
 
@@ -3148,9 +3276,9 @@ public class mixregGUI extends javax.swing.JFrame {
 
         for (int p = 0; p < stageTwoRegSize; p++) {
 
-            if (stageTwoBoxes.get(p).get(2).isSelected()) {
-                regressorLabels[index] = stageTwoSelected.get(p);
-                fieldLabel = stageTwoSelected.get(p);
+            if (stageTwoGridBoxes.get(p).get(2).isSelected()) {
+                regressorLabels[index] = stageTwoSelected_tab2.get(p);
+                fieldLabel = stageTwoSelected_tab2.get(p);
                 System.out.println("Stage-Two/mixRegGUI/Regressor Fields (Scale): " + regressorLabels[index]);
                 index++;
 
@@ -3201,9 +3329,9 @@ public class mixregGUI extends javax.swing.JFrame {
 
         for (int p = 0; p < levelTwoRegSize; p++) {
 
-            if (stageTwoBoxes.get(p).get(0).isSelected()) {
-                regressorLabels.add(stageTwoSelected.get(p));
-                fieldLabel = stageTwoSelected.get(p);
+            if (stageTwoGridBoxes.get(p).get(0).isSelected()) {
+                regressorLabels.add(stageTwoSelected_tab2.get(p));
+                fieldLabel = stageTwoSelected_tab2.get(p);
                 System.out.println("Stage-Two/mixRegGUI/Regressor-Fields-(FIXED): " + regressorLabels.get(index));
                 index++;
 
@@ -3234,9 +3362,9 @@ public class mixregGUI extends javax.swing.JFrame {
 
         for (int p = 0; p < levelTwoRegSize; p++) {
 
-            if (stageTwoBoxes.get(p).get(1).isSelected()) {
-                regressorLabels.add(stageTwoSelected.get(p));
-                fieldLabel = stageTwoSelected.get(p);
+            if (stageTwoGridBoxes.get(p).get(1).isSelected()) {
+                regressorLabels.add(stageTwoSelected_tab2.get(p));
+                fieldLabel = stageTwoSelected_tab2.get(p);
                 System.out.println("STAGE-TWO/MIXREGGUI/Regressor-Fields-(LOC RAN): " + regressorLabels.get(index));
                 index++;
 
@@ -3267,9 +3395,9 @@ public class mixregGUI extends javax.swing.JFrame {
 
         for (int p = 0; p < levelTwoRegSize; p++) {
 
-            if (stageTwoBoxes.get(p).get(2).isSelected()) {
-                regressorLabels.add(stageTwoSelected.get(p));
-                fieldLabel = stageTwoSelected.get(p);
+            if (stageTwoGridBoxes.get(p).get(2).isSelected()) {
+                regressorLabels.add(stageTwoSelected_tab2.get(p));
+                fieldLabel = stageTwoSelected_tab2.get(p);
                 System.out.println("Stage-Two/mixRegGUI/Regressor-Fields-(SCALE): " + regressorLabels.get(index));
                 index++;
 
@@ -3303,9 +3431,9 @@ public class mixregGUI extends javax.swing.JFrame {
 
         for (int p = 0; p < stageTwoRegSize; p++) {
 
-            if (stageTwoBoxes.get(p).get(3).isSelected()) {
-                regressorLabels[index] = stageTwoSelected.get(p);
-                fieldLabel = stageTwoSelected.get(p);
+            if (stageTwoGridBoxes.get(p).get(3).isSelected()) {
+                regressorLabels[index] = stageTwoSelected_tab2.get(p);
+                fieldLabel = stageTwoSelected_tab2.get(p);
                 System.out.println("Stage-two/mixRegGUI/Regressor-Fields-(INTERACTION): " + regressorLabels[index]);
                 index++;
 
@@ -3357,9 +3485,9 @@ public class mixregGUI extends javax.swing.JFrame {
 
         for (int p = 0; p < levelTwoRegSize; p++) {
 
-            if (stageTwoBoxes.get(p).get(3).isSelected()) {
-                regressorLabels.add(stageTwoSelected.get(p));
-                fieldLabel = stageTwoSelected.get(p);
+            if (stageTwoGridBoxes.get(p).get(3).isSelected()) {
+                regressorLabels.add(stageTwoSelected_tab2.get(p));
+                fieldLabel = stageTwoSelected_tab2.get(p);
                 System.out.println("STAGE-TWO/MIXREGGUI/Regressor-Fields-(INTERACTIONS)= " + regressorLabels.get(index));
                 index++;
             }
