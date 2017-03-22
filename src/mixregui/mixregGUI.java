@@ -83,6 +83,8 @@ public class mixregGUI extends javax.swing.JFrame {
     ArrayList<ArrayList<JCheckBox>> stageTwoGridBoxes;
 
     ArrayList<ArrayList<JCheckBox>> disaggVarianceBoxes;
+    
+    boolean suppressed = false;
 
     ArrayList<String> levelOneSelected;
     ArrayList<String> levelTwoSelected;
@@ -823,6 +825,28 @@ public class mixregGUI extends javax.swing.JFrame {
 
     private void suppressIntCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suppressIntCheckBoxActionPerformed
         // TODO add your handling code here:
+        
+        
+        
+        if (suppressed == false){
+            
+            for (int p = 0; p < stageTwoRegSize; p++) {
+
+            stageTwoGridBoxes.get(p).get(3).setSelected(false);
+            stageTwoGridBoxes.get(p).get(3).setEnabled(false);
+            }
+        
+        } else {
+                for (int p = 0; p < stageTwoRegSize; p++) {
+
+            stageTwoGridBoxes.get(p).get(3).setSelected(false);
+            stageTwoGridBoxes.get(p).get(3).setEnabled(true);
+                
+                }
+ 
+        }
+        
+        suppressed = true;
     }//GEN-LAST:event_suppressIntCheckBoxActionPerformed
 
     private void runTabTwoStageOneTwoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_runTabTwoStageOneTwoActionPerformed
