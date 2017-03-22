@@ -222,6 +222,11 @@ public class mixregGUI extends javax.swing.JFrame {
         stageTwoRegsGrid = new javax.swing.JPanel();
         runTabTwoStageOneTwo = new javax.swing.JButton();
         suppressIntCheckBox = new javax.swing.JCheckBox();
+        stageTwoOutcome = new javax.swing.JComboBox<>();
+        jLabel22 = new javax.swing.JLabel();
+        jSeparator7 = new javax.swing.JSeparator();
+        jSeparator8 = new javax.swing.JSeparator();
+        jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
@@ -525,7 +530,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 addStageTwoTabTwoActionPerformed(evt);
             }
         });
-        jPanel12.add(addStageTwoTabTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 560, 190, 40));
+        jPanel12.add(addStageTwoTabTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 190, 40));
 
         jLabel17.setText("Interaction (Scale)");
         jPanel12.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 160, -1, -1));
@@ -561,7 +566,18 @@ public class mixregGUI extends javax.swing.JFrame {
                 suppressIntCheckBoxActionPerformed(evt);
             }
         });
-        jPanel12.add(suppressIntCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 570, -1, -1));
+        jPanel12.add(suppressIntCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, -1, -1));
+
+        stageTwoOutcome.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel12.add(stageTwoOutcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 190, 30));
+
+        jLabel22.setText("Stage 2 Outcome:");
+        jPanel12.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, -1, -1));
+        jPanel12.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 190, -1));
+        jPanel12.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 190, -1));
+
+        jButton1.setText("Reset");
+        jPanel12.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 560, 140, 40));
 
         stageOneTabs.addTab("Stage 2 Configuration", jPanel12);
 
@@ -1593,6 +1609,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JButton goBackMxrButton;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JPanel imageView;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
@@ -1613,6 +1630,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1640,6 +1658,8 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
     private javax.swing.JLabel level1_BSVar;
     private javax.swing.JLabel level1_MeanReg;
     private javax.swing.JLabel level1_WSVar;
@@ -1662,6 +1682,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JLabel stage2_WSVar;
     private javax.swing.JTabbedPane stageOneTabs;
     private javax.swing.JPanel stageTwoGrid;
+    private javax.swing.JComboBox<String> stageTwoOutcome;
     private javax.swing.JPanel stageTwoPanel;
     private javax.swing.JPanel stageTwoPanel_2;
     private javax.swing.JPanel stageTwoRegsGrid;
@@ -1693,6 +1714,11 @@ public class mixregGUI extends javax.swing.JFrame {
 
         StageTwoVariableCombo.setModel(StageTwoList);
         StageTwoVariableCombo.setSelectedIndex(2);
+        
+        stageTwoOutcome.setModel(StageTwoList);
+        stageTwoOutcome.setSelectedIndex(2);
+        
+        
     }
 
     public static void openWebpage(String urlString) {
