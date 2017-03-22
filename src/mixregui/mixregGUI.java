@@ -167,7 +167,6 @@ public class mixregGUI extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         stageOneTabs = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        runStageOneTwoButton = new javax.swing.JButton();
         resetButton = new javax.swing.JButton();
         goBackMxrButton = new javax.swing.JButton();
         associationPanel = new javax.swing.JPanel();
@@ -227,6 +226,7 @@ public class mixregGUI extends javax.swing.JFrame {
         jSeparator7 = new javax.swing.JSeparator();
         jSeparator8 = new javax.swing.JSeparator();
         jButton1 = new javax.swing.JButton();
+        jSeparator12 = new javax.swing.JSeparator();
         jPanel3 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
@@ -288,21 +288,13 @@ public class mixregGUI extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        runStageOneTwoButton.setText("Run Stage 1 + 2");
-        runStageOneTwoButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                runStageOneTwoButtonActionPerformed(evt);
-            }
-        });
-        jPanel1.add(runStageOneTwoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 520, -1, -1));
-
         resetButton.setText("Reset");
         resetButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 resetButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 520, 135, -1));
+        jPanel1.add(resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 510, 135, 40));
 
         goBackMxrButton.setText("Go Back");
         goBackMxrButton.addActionListener(new java.awt.event.ActionListener() {
@@ -310,7 +302,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 goBackMxrButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(goBackMxrButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 520, 147, -1));
+        jPanel1.add(goBackMxrButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 510, 147, 40));
 
         associationPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         associationPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -537,6 +529,11 @@ public class mixregGUI extends javax.swing.JFrame {
         jPanel12.add(stageTwoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, 720, 380));
 
         runTabTwoStageOneTwo.setText("Run Stage 1 and 2");
+        runTabTwoStageOneTwo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                runTabTwoStageOneTwoActionPerformed(evt);
+            }
+        });
         jPanel12.add(runTabTwoStageOneTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 470, 160, 40));
 
         suppressIntCheckBox.setText("Suppress All Interactions");
@@ -557,6 +554,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
         jButton1.setText("Reset");
         jPanel12.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 470, 140, 40));
+        jPanel12.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 540, 740, -1));
 
         stageOneTabs.addTab("Stage 2 Configuration", jPanel12);
 
@@ -838,9 +836,59 @@ public class mixregGUI extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_resetButtonActionPerformed
+ 
+    private void advancedOptionsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_advancedOptionsButtonActionPerformed
+        // TODO add your handling code here:
+        advancedOptions_view = new advancedOptions();
 
-    private void runStageOneTwoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_runStageOneTwoButtonActionPerformed
+        advancedOptions_view.setVisible(true);
+    }//GEN-LAST:event_advancedOptionsButtonActionPerformed
 
+    private void addStageOneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStageOneButtonActionPerformed
+        stageOneClicked = 1;
+        addStageTwoTabTwo.setEnabled(true);
+        stage_1_regs = new stageOneRegs();
+        stage_1_regs.setVisible(true);
+        stage_1_regs.updateAllVariables();
+    }//GEN-LAST:event_addStageOneButtonActionPerformed
+
+    private void IDvariableComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDvariableComboActionPerformed
+        // TODO add your handling code here:
+
+
+    }//GEN-LAST:event_IDvariableComboActionPerformed
+
+    private void NoAssociationRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoAssociationRadioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NoAssociationRadioActionPerformed
+
+    private void StageOneVariableComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StageOneVariableComboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_StageOneVariableComboActionPerformed
+
+    private void superUserMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_superUserMenuActionPerformed
+        // TODO add your handling code here:
+        superUserMenuLaunch = new def_lib.SuperUserMenu();
+
+        superUserMenuLaunch.setVisible(true);
+    }//GEN-LAST:event_superUserMenuActionPerformed
+
+    private void addStageTwoTabTwoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStageTwoTabTwoActionPerformed
+        // TODO add your handling code here:
+        
+        stage_2_regs = new stageTwoRegs();
+        //stageOneTabs.setSelectedIndex(1);
+
+        stage_2_regs.setVisible(true);
+        stage_2_regs.updateStageTwoVariables(getSavedVariables());
+    }//GEN-LAST:event_addStageTwoTabTwoActionPerformed
+
+    private void suppressIntCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suppressIntCheckBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_suppressIntCheckBoxActionPerformed
+
+    private void runTabTwoStageOneTwoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_runTabTwoStageOneTwoActionPerformed
+        // TODO add your handling code here:
         // tryCount counts the number of successful definitionhelper function calls
         //catchCount counts number of exceptions in reading values to derHelper. 
         //Prevents UI from moving forward in case of an exception
@@ -1468,59 +1516,8 @@ public class mixregGUI extends javax.swing.JFrame {
 
             // do nothing
         }
-
-
-    }//GEN-LAST:event_runStageOneTwoButtonActionPerformed
-
-    private void advancedOptionsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_advancedOptionsButtonActionPerformed
-        // TODO add your handling code here:
-        advancedOptions_view = new advancedOptions();
-
-        advancedOptions_view.setVisible(true);
-    }//GEN-LAST:event_advancedOptionsButtonActionPerformed
-
-    private void addStageOneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStageOneButtonActionPerformed
-        stageOneClicked = 1;
-        addStageTwoTabTwo.setEnabled(true);
-        stage_1_regs = new stageOneRegs();
-        stage_1_regs.setVisible(true);
-        stage_1_regs.updateAllVariables();
-    }//GEN-LAST:event_addStageOneButtonActionPerformed
-
-    private void IDvariableComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDvariableComboActionPerformed
-        // TODO add your handling code here:
-
-
-    }//GEN-LAST:event_IDvariableComboActionPerformed
-
-    private void NoAssociationRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoAssociationRadioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NoAssociationRadioActionPerformed
-
-    private void StageOneVariableComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StageOneVariableComboActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_StageOneVariableComboActionPerformed
-
-    private void superUserMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_superUserMenuActionPerformed
-        // TODO add your handling code here:
-        superUserMenuLaunch = new def_lib.SuperUserMenu();
-
-        superUserMenuLaunch.setVisible(true);
-    }//GEN-LAST:event_superUserMenuActionPerformed
-
-    private void addStageTwoTabTwoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStageTwoTabTwoActionPerformed
-        // TODO add your handling code here:
         
-        stage_2_regs = new stageTwoRegs();
-        //stageOneTabs.setSelectedIndex(1);
-
-        stage_2_regs.setVisible(true);
-        stage_2_regs.updateStageTwoVariables(getSavedVariables());
-    }//GEN-LAST:event_addStageTwoTabTwoActionPerformed
-
-    private void suppressIntCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suppressIntCheckBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_suppressIntCheckBoxActionPerformed
+    }//GEN-LAST:event_runTabTwoStageOneTwoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1623,6 +1620,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
+    private javax.swing.JSeparator jSeparator12;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
@@ -1646,7 +1644,6 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem newModelMenu;
     private javax.swing.JPanel parentPanel;
     private javax.swing.JButton resetButton;
-    private javax.swing.JButton runStageOneTwoButton;
     private javax.swing.JButton runTabTwoStageOneTwo;
     private javax.swing.JLabel stage2_BSVar;
     private javax.swing.JLabel stage2_MeanReg;
