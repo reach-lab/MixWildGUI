@@ -170,11 +170,6 @@ public class mixregGUI extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         resetButton = new javax.swing.JButton();
         goBackMxrButton = new javax.swing.JButton();
-        associationPanel = new javax.swing.JPanel();
-        associationLabel = new javax.swing.JLabel();
-        NoAssociationRadio = new javax.swing.JRadioButton();
-        LinearAssociationRadio = new javax.swing.JRadioButton();
-        QuadraticAssociationRadio = new javax.swing.JRadioButton();
         jLabel4 = new javax.swing.JLabel();
         level1_MeanReg = new javax.swing.JLabel();
         level1_WSVar = new javax.swing.JLabel();
@@ -199,6 +194,11 @@ public class mixregGUI extends javax.swing.JFrame {
         addStageOneButton = new javax.swing.JButton();
         advancedOptionsButton = new javax.swing.JButton();
         jSeparator11 = new javax.swing.JSeparator();
+        associationPanel = new javax.swing.JPanel();
+        associationLabel = new javax.swing.JLabel();
+        NoAssociationRadio = new javax.swing.JRadioButton();
+        LinearAssociationRadio = new javax.swing.JRadioButton();
+        QuadraticAssociationRadio = new javax.swing.JRadioButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         startStageTwo = new javax.swing.JButton();
@@ -298,31 +298,6 @@ public class mixregGUI extends javax.swing.JFrame {
         });
         jPanel1.add(goBackMxrButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 510, 147, 40));
 
-        associationPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        associationPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        associationLabel.setText("<html>Specify the relationship between the <br>random location and within subject variance tested below <br>(i.e. relation between variance and slope) </html>");
-        associationPanel.add(associationLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 270, 70));
-
-        buttonGroup1.add(NoAssociationRadio);
-        NoAssociationRadio.setText("No Association");
-        NoAssociationRadio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NoAssociationRadioActionPerformed(evt);
-            }
-        });
-        associationPanel.add(NoAssociationRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
-
-        buttonGroup1.add(LinearAssociationRadio);
-        LinearAssociationRadio.setText("Linear Association");
-        associationPanel.add(LinearAssociationRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
-
-        buttonGroup1.add(QuadraticAssociationRadio);
-        QuadraticAssociationRadio.setText("Quadratic Association");
-        associationPanel.add(QuadraticAssociationRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
-
-        jPanel1.add(associationPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 290, 220));
-
         jLabel4.setText("Between and within subject variance models for Stage 1");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 10, -1, -1));
 
@@ -386,7 +361,6 @@ public class mixregGUI extends javax.swing.JFrame {
 
         jPanel1.add(levelTwoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 70, 420, 430));
 
-        jPanel8.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         StageOneVariableCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -395,10 +369,10 @@ public class mixregGUI extends javax.swing.JFrame {
                 StageOneVariableComboActionPerformed(evt);
             }
         });
-        jPanel8.add(StageOneVariableCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 230, -1));
+        jPanel8.add(StageOneVariableCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 230, -1));
 
         jLabel2.setText("Stage 1 Outcome:");
-        jPanel8.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, -1, -1));
+        jPanel8.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
 
         IDvariableCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         IDvariableCombo.addActionListener(new java.awt.event.ActionListener() {
@@ -406,12 +380,12 @@ public class mixregGUI extends javax.swing.JFrame {
                 IDvariableComboActionPerformed(evt);
             }
         });
-        jPanel8.add(IDvariableCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 230, -1));
+        jPanel8.add(IDvariableCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 230, -1));
 
         jLabel1.setText("ID Variable:");
-        jPanel8.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
-        jPanel8.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 230, -1));
-        jPanel8.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 230, -1));
+        jPanel8.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, -1, -1));
+        jPanel8.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 270, -1));
+        jPanel8.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 270, -1));
 
         addStageOneButton.setText("Add Stage 1 Regressors ...");
         addStageOneButton.addActionListener(new java.awt.event.ActionListener() {
@@ -419,7 +393,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 addStageOneButtonActionPerformed(evt);
             }
         });
-        jPanel8.add(addStageOneButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 225, 35));
+        jPanel8.add(addStageOneButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 225, 35));
 
         advancedOptionsButton.setText("Advanced Options ...");
         advancedOptionsButton.addActionListener(new java.awt.event.ActionListener() {
@@ -427,8 +401,37 @@ public class mixregGUI extends javax.swing.JFrame {
                 advancedOptionsButtonActionPerformed(evt);
             }
         });
-        jPanel8.add(advancedOptionsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 225, 37));
-        jPanel8.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 230, -1));
+        jPanel8.add(advancedOptionsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 225, 37));
+        jPanel8.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 280, -1));
+
+        associationPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        associationLabel.setText("<html>Specify the relationship between the <br>random location and within subject variance.<br>(i.e. relation between variance and slope) </html>");
+        associationPanel.add(associationLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 290, 70));
+
+        buttonGroup1.add(NoAssociationRadio);
+        NoAssociationRadio.setText("No Association");
+        NoAssociationRadio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NoAssociationRadioActionPerformed(evt);
+            }
+        });
+        associationPanel.add(NoAssociationRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
+
+        buttonGroup1.add(LinearAssociationRadio);
+        LinearAssociationRadio.setText("Linear Association");
+        LinearAssociationRadio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LinearAssociationRadioActionPerformed(evt);
+            }
+        });
+        associationPanel.add(LinearAssociationRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
+
+        buttonGroup1.add(QuadraticAssociationRadio);
+        QuadraticAssociationRadio.setText("Quadratic Association");
+        associationPanel.add(QuadraticAssociationRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
+
+        jPanel8.add(associationPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 290, 180));
 
         jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 310, 480));
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 530, -1, -1));
@@ -586,7 +589,7 @@ public class mixregGUI extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(553, Short.MAX_VALUE))
+                .addContainerGap(345, Short.MAX_VALUE))
         );
 
         stageOneTabs.addTab("Stage 1 Results", jPanel3);
@@ -604,7 +607,7 @@ public class mixregGUI extends javax.swing.JFrame {
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addGap(399, 399, 399)
                 .addComponent(jLabel21)
-                .addContainerGap(470, Short.MAX_VALUE))
+                .addContainerGap(394, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -614,16 +617,16 @@ public class mixregGUI extends javax.swing.JFrame {
                 .addContainerGap(208, Short.MAX_VALUE))
         );
 
-        jPanel4.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 24, -1, -1));
+        jPanel4.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 24, 940, -1));
 
         jButton10.setText("Save Output As ...");
-        jPanel4.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(982, 385, 227, 39));
+        jPanel4.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 390, 227, 39));
 
         jButton11.setText("Save Stage 2 Def File As ...");
-        jPanel4.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(732, 385, 232, 39));
+        jPanel4.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 390, 232, 39));
 
         jButton12.setText("Save Stage 1 and 2 Def File As ...");
-        jPanel4.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(471, 385, -1, 39));
+        jPanel4.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 390, -1, 39));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/mixLogo.png"))); // NOI18N
         jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 390, -1, 39));
@@ -777,34 +780,9 @@ public class mixregGUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_resetButtonActionPerformed
  
-    private void advancedOptionsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_advancedOptionsButtonActionPerformed
-        // TODO add your handling code here:
-        advancedOptions_view = new advancedOptions();
-
-        advancedOptions_view.setVisible(true);
-    }//GEN-LAST:event_advancedOptionsButtonActionPerformed
-
-    private void addStageOneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStageOneButtonActionPerformed
-        stageOneClicked = 1;
-        addStageTwoTabTwo.setEnabled(true);
-        stage_1_regs = new stageOneRegs();
-        stage_1_regs.setVisible(true);
-        stage_1_regs.updateAllVariables();
-    }//GEN-LAST:event_addStageOneButtonActionPerformed
-
-    private void IDvariableComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDvariableComboActionPerformed
-        // TODO add your handling code here:
-
-
-    }//GEN-LAST:event_IDvariableComboActionPerformed
-
     private void NoAssociationRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoAssociationRadioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_NoAssociationRadioActionPerformed
-
-    private void StageOneVariableComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StageOneVariableComboActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_StageOneVariableComboActionPerformed
 
     private void superUserMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_superUserMenuActionPerformed
         // TODO add your handling code here:
@@ -1485,6 +1463,34 @@ public class mixregGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         stageOneTabs.setSelectedIndex(1);
     }//GEN-LAST:event_startStageTwoActionPerformed
+
+    private void advancedOptionsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_advancedOptionsButtonActionPerformed
+        // TODO add your handling code here:
+        advancedOptions_view = new advancedOptions();
+
+        advancedOptions_view.setVisible(true);
+    }//GEN-LAST:event_advancedOptionsButtonActionPerformed
+
+    private void addStageOneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStageOneButtonActionPerformed
+        stageOneClicked = 1;
+        addStageTwoTabTwo.setEnabled(true);
+        stage_1_regs = new stageOneRegs();
+        stage_1_regs.setVisible(true);
+        stage_1_regs.updateAllVariables();
+    }//GEN-LAST:event_addStageOneButtonActionPerformed
+
+    private void IDvariableComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDvariableComboActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_IDvariableComboActionPerformed
+
+    private void StageOneVariableComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StageOneVariableComboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_StageOneVariableComboActionPerformed
+
+    private void LinearAssociationRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LinearAssociationRadioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LinearAssociationRadioActionPerformed
 
     /**
      * @param args the command line arguments
