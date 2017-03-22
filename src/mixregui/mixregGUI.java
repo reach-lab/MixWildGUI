@@ -227,6 +227,7 @@ public class mixregGUI extends javax.swing.JFrame {
         jSeparator8 = new javax.swing.JSeparator();
         jButton1 = new javax.swing.JButton();
         jSeparator12 = new javax.swing.JSeparator();
+        jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
@@ -554,7 +555,10 @@ public class mixregGUI extends javax.swing.JFrame {
 
         jButton1.setText("Reset");
         jPanel12.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 470, 140, 40));
-        jPanel12.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 540, 740, -1));
+        jPanel12.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 520, 740, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/mixLogo.png"))); // NOI18N
+        jPanel12.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 470, -1, 30));
 
         stageOneTabs.addTab("Stage 2 Configuration", jPanel12);
 
@@ -1597,6 +1601,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
