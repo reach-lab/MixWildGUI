@@ -2118,7 +2118,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
         for (int p = 0; p < stageTwoRegSize; p++) {
 
-            if (stageTwoBoxes.get(p).get(0).isSelected()) {
+            if (stageTwoGridBoxes.get(p).get(0).isSelected()) {
 
                 stageTwoBeta = stageTwoBeta + 1;
             }
@@ -2167,7 +2167,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
         for (int p = 0; p < stageTwoRegSize; p++) {
 
-            if (stageTwoBoxes.get(p).get(1).isSelected()) {
+            if (stageTwoGridBoxes.get(p).get(1).isSelected()) {
 
                 stageTwoAlpha = stageTwoAlpha + 1;
             }
@@ -2216,7 +2216,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
         for (int p = 0; p < stageTwoRegSize; p++) {
 
-            if (stageTwoBoxes.get(p).get(2).isSelected()) {
+            if (stageTwoGridBoxes.get(p).get(2).isSelected()) {
 
                 stageTwoTau = stageTwoTau + 1;
             }
@@ -2232,7 +2232,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
         for (int p = 0; p < stageTwoRegSize; p++) {
 
-            if (stageTwoBoxes.get(p).get(3).isSelected()) {
+            if (stageTwoGridBoxes.get(p).get(3).isSelected()) {
 
                 stageTwoInter = stageTwoInter + 1;
             }
@@ -3200,9 +3200,9 @@ public class mixregGUI extends javax.swing.JFrame {
 
         for (int p = 0; p < stageTwoRegSize; p++) {
 
-            if (stageTwoBoxes.get(p).get(0).isSelected()) {
-                regressorLabels[index] = stageTwoSelected.get(p);
-                fieldLabel = stageTwoSelected.get(p);
+            if (stageTwoGridBoxes.get(p).get(0).isSelected()) {
+                regressorLabels[index] = stageTwoSelected_tab2.get(p);
+                fieldLabel = stageTwoSelected_tab2.get(p);
                 System.out.println("Stage-Two/mixRegGUI/Regressor-Fields-(Fixed): " + regressorLabels[index]);
                 index++;
 
@@ -3256,9 +3256,9 @@ public class mixregGUI extends javax.swing.JFrame {
 
         for (int p = 0; p < stageTwoRegSize; p++) {
 
-            if (stageTwoBoxes.get(p).get(1).isSelected()) {
-                regressorLabels[index] = stageTwoSelected.get(p);
-                fieldLabel = stageTwoSelected.get(p);
+            if (stageTwoGridBoxes.get(p).get(1).isSelected()) {
+                regressorLabels[index] = stageTwoSelected_tab2.get(p);
+                fieldLabel = stageTwoSelected_tab2.get(p);
                 System.out.println("Stage-Two/mixRegGUI/Regressor-Fields-(LocRan): " + regressorLabels[index]);
                 index++;
 
@@ -3312,9 +3312,9 @@ public class mixregGUI extends javax.swing.JFrame {
 
         for (int p = 0; p < stageTwoRegSize; p++) {
 
-            if (stageTwoBoxes.get(p).get(2).isSelected()) {
-                regressorLabels[index] = stageTwoSelected.get(p);
-                fieldLabel = stageTwoSelected.get(p);
+            if (stageTwoGridBoxes.get(p).get(2).isSelected()) {
+                regressorLabels[index] = stageTwoSelected_tab2.get(p);
+                fieldLabel = stageTwoSelected_tab2.get(p);
                 System.out.println("Stage-Two/mixRegGUI/Regressor Fields (Scale): " + regressorLabels[index]);
                 index++;
 
@@ -3365,9 +3365,9 @@ public class mixregGUI extends javax.swing.JFrame {
 
         for (int p = 0; p < levelTwoRegSize; p++) {
 
-            if (stageTwoBoxes.get(p).get(0).isSelected()) {
-                regressorLabels.add(stageTwoSelected.get(p));
-                fieldLabel = stageTwoSelected.get(p);
+            if (stageTwoGridBoxes.get(p).get(0).isSelected()) {
+                regressorLabels.add(stageTwoSelected_tab2.get(p));
+                fieldLabel = stageTwoSelected_tab2.get(p);
                 System.out.println("Stage-Two/mixRegGUI/Regressor-Fields-(FIXED): " + regressorLabels.get(index));
                 index++;
 
@@ -3398,9 +3398,9 @@ public class mixregGUI extends javax.swing.JFrame {
 
         for (int p = 0; p < levelTwoRegSize; p++) {
 
-            if (stageTwoBoxes.get(p).get(1).isSelected()) {
-                regressorLabels.add(stageTwoSelected.get(p));
-                fieldLabel = stageTwoSelected.get(p);
+            if (stageTwoGridBoxes.get(p).get(1).isSelected()) {
+                regressorLabels.add(stageTwoSelected_tab2.get(p));
+                fieldLabel = stageTwoSelected_tab2.get(p);
                 System.out.println("STAGE-TWO/MIXREGGUI/Regressor-Fields-(LOC RAN): " + regressorLabels.get(index));
                 index++;
 
@@ -3431,9 +3431,9 @@ public class mixregGUI extends javax.swing.JFrame {
 
         for (int p = 0; p < levelTwoRegSize; p++) {
 
-            if (stageTwoBoxes.get(p).get(2).isSelected()) {
-                regressorLabels.add(stageTwoSelected.get(p));
-                fieldLabel = stageTwoSelected.get(p);
+            if (stageTwoGridBoxes.get(p).get(2).isSelected()) {
+                regressorLabels.add(stageTwoSelected_tab2.get(p));
+                fieldLabel = stageTwoSelected_tab2.get(p);
                 System.out.println("Stage-Two/mixRegGUI/Regressor-Fields-(SCALE): " + regressorLabels.get(index));
                 index++;
 
@@ -3467,9 +3467,9 @@ public class mixregGUI extends javax.swing.JFrame {
 
         for (int p = 0; p < stageTwoRegSize; p++) {
 
-            if (stageTwoBoxes.get(p).get(3).isSelected()) {
-                regressorLabels[index] = stageTwoSelected.get(p);
-                fieldLabel = stageTwoSelected.get(p);
+            if (stageTwoGridBoxes.get(p).get(3).isSelected()) {
+                regressorLabels[index] = stageTwoSelected_tab2.get(p);
+                fieldLabel = stageTwoSelected_tab2.get(p);
                 System.out.println("Stage-two/mixRegGUI/Regressor-Fields-(INTERACTION): " + regressorLabels[index]);
                 index++;
 
@@ -3521,9 +3521,9 @@ public class mixregGUI extends javax.swing.JFrame {
 
         for (int p = 0; p < levelTwoRegSize; p++) {
 
-            if (stageTwoBoxes.get(p).get(3).isSelected()) {
-                regressorLabels.add(stageTwoSelected.get(p));
-                fieldLabel = stageTwoSelected.get(p);
+            if (stageTwoGridBoxes.get(p).get(3).isSelected()) {
+                regressorLabels.add(stageTwoSelected_tab2.get(p));
+                fieldLabel = stageTwoSelected_tab2.get(p);
                 System.out.println("STAGE-TWO/MIXREGGUI/Regressor-Fields-(INTERACTIONS)= " + regressorLabels.get(index));
                 index++;
             }
