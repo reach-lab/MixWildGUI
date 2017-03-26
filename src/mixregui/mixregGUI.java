@@ -1797,6 +1797,7 @@ public class mixregGUI extends javax.swing.JFrame {
         }
 
         levelOnePanel.add(scrollpanel);
+        revalidate();
 
     }
 
@@ -1863,75 +1864,11 @@ public class mixregGUI extends javax.swing.JFrame {
         }
 
         levelTwoPanel.add(scrollpanel);
+        revalidate();
 
     }
 
-    /*
-    public void updateStageTwoGrid_version2(DefaultListModel<String> defaultListModel) {
-
-        //stageTwoGrid.setVisible(true);
-        JScrollPane scrollpanel = new JScrollPane(stageTwoGrid);
-        stageTwoSelected = new ArrayList<String>();
-
-        int regSize = defaultListModel.getSize();
-        stageTwoRegSize = regSize;
-
-        stageTwoGrid.removeAll();
-
-        stageTwoGrid.setLayout(new GridBagLayout());
-        GridBagConstraints constraints = new GridBagConstraints();
-
-        constraints.gridx = 0;
-        constraints.gridy = 0;
-        constraints.weightx = 1.0;
-        // constraints.weighty = 1.0;
-        constraints.anchor = GridBagConstraints.NORTH;
-        //constraints.gridwidth = 4;
-
-        GridBagConstraints separatorConstraint = new GridBagConstraints();
-        separatorConstraint.weightx = 1.0;
-        separatorConstraint.fill = GridBagConstraints.HORIZONTAL;
-        separatorConstraint.gridwidth = GridBagConstraints.REMAINDER;
-        separatorConstraint.gridx = 0;
-
-        constraints.insets = new Insets(3, 0, 5, 25);
-        separatorConstraint.insets = new Insets(0, 0, 0, 0);
-        //constraints.fill = GridBagConstraints.HORIZONTAL;
-        constraints.weightx = 1;
-
-        stageTwoBoxes = new ArrayList<ArrayList<JCheckBox>>();
-        //disaggVarianceBoxes = new ArrayList<ArrayList<JCheckBox>>();
-
-        for (int j = 0; j < regSize; j++) {
-            constraints.gridx = 0;
-            constraints.anchor = GridBagConstraints.LINE_END;
-            stageTwoSelected.add(defaultListModel.getElementAt(j));
-            stageTwoGrid.add(new JLabel(stageTwoSelected.get(j)), constraints);
-            //stageTwoGrid.add(new JLabel(defaultListModel.getElementAt(j)), constraints);
-
-            stageTwoBoxes.add(j, new ArrayList<JCheckBox>());
-
-            for (int k = 0; k < 4; k++) {
-
-                constraints.gridx++;
-                constraints.anchor = GridBagConstraints.CENTER;
-                stageTwoBoxes.get(j).add(k, new JCheckBox());
-                stageTwoGrid.add(stageTwoBoxes.get(j).get(k), constraints);
-            }
-
-            constraints.gridy++;
-
-            separatorConstraint.gridy = separatorConstraint.gridy + 2;
-            //System.out.println("before seperator");
-            stageTwoGrid.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
-            // System.out.println("after seperator");
-            constraints.gridy++;
-
-        }
-
-        stageTwoPanel_2.add(scrollpanel);
-
-    }*/
+    
     
     public void updateStageTwoGrid_tab2(DefaultListModel<String> defaultListModel) {
 
@@ -1998,6 +1935,7 @@ public class mixregGUI extends javax.swing.JFrame {
         }
         
         stageTwoPanel.add(scrollpanel);
+        revalidate();
 
     }
     
