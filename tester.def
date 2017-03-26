@@ -1,30 +1,30 @@
-title
-subtitle
+tt
+aa
 /Users/adityaponnada/Downloads/sampleNOVEL.csv
-null
-156  1  4  3  null  0  0  1  0  0  null  null  null  null  -9999  null  0  null
+Output_Test.out
+156  1  2  2  0  0  0  1  0  0  0.001  11  1  1  null  0  0  0.15
 1  2
-
-
-
-4
+15
+9  18
+9  15
+9
 
 
 WAVE
-
-
-
-NOVEL_ID
-
-
-1  1  1  1  null
-3
-9
-7
-10
-7
-DATA
+REPROMPTS
+DAY  DEMO_MARITAL_STATUS
+DAY  DAY
 DAY
-FULLTIME
 
-FULLTIME
+
+2  1  1  0  null
+3
+7  12
+7
+12
+
+DATA
+null
+null
+null
+null
