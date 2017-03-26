@@ -6,7 +6,9 @@
 package mixregui;
 
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,6 +25,8 @@ public class stageTwoRegs extends javax.swing.JFrame {
     static DefaultListModel<String> stageTwoLevelTwo;
 
     static boolean isStageTwoSubmitClicked = false;
+    
+    final ImageIcon icon;
 
     /**
      * Creates new form stageTwoRegs
@@ -32,6 +36,7 @@ public class stageTwoRegs extends javax.swing.JFrame {
         //create list models
 
         newModel2 = new NewModel();
+        icon = new ImageIcon(getClass().getResource("/resources/mixLogo.png"));
 
         if (!isStageTwoSubmitClicked) {
             stageTwoListModel = new DefaultListModel<String>();
@@ -186,18 +191,32 @@ public class stageTwoRegs extends javax.swing.JFrame {
     private void stageTwoAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoAddButtonActionPerformed
 
         //Add items to the model and then copy it to the UI list
+        if(!StageTwoAllVariables.isSelectionEmpty()){
+        
         stageTwoLevelTwo.addElement(StageTwoAllVariables.getSelectedValue());
         StageTwoLevelTwoVariables.setModel(stageTwoLevelTwo);
 
         stageTwoSubmitButton.setEnabled(true);
+        
+        } else {
+        JOptionPane.showMessageDialog(null, "Please select a variable for stage two.", "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+        }
+        
 
     }//GEN-LAST:event_stageTwoAddButtonActionPerformed
 
     private void stageTwoRemoveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoRemoveButtonActionPerformed
 
         //Remove an item from the model
-        stageTwoSubmitButton.setEnabled(true);
+        if (!StageTwoLevelTwoVariables.isSelectionEmpty()){
+            stageTwoSubmitButton.setEnabled(true);
         stageTwoLevelTwo.remove(StageTwoLevelTwoVariables.getSelectedIndex());
+        
+        } else {
+        JOptionPane.showMessageDialog(null, "Please select a variable from stage two.", "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+        
+        }
+        
     }//GEN-LAST:event_stageTwoRemoveButtonActionPerformed
 
     private void stageTwoResetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoResetButtonActionPerformed

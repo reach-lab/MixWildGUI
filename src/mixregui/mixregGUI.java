@@ -79,11 +79,11 @@ public class mixregGUI extends javax.swing.JFrame {
     ArrayList<ArrayList<JCheckBox>> levelTwoBoxes;
 
     ArrayList<ArrayList<JCheckBox>> stageTwoBoxes;
-    
+
     ArrayList<ArrayList<JCheckBox>> stageTwoGridBoxes;
 
     ArrayList<ArrayList<JCheckBox>> disaggVarianceBoxes;
-    
+
     boolean suppressed = false;
 
     ArrayList<String> levelOneSelected;
@@ -130,13 +130,12 @@ public class mixregGUI extends javax.swing.JFrame {
             level1_WSVar.setText("Scale");
             level2_BSVar.setText("Loc. eff.");
             level2_WSVar.setText("Scale");
-            
 
         }
 
         levelOnePanel.setLayout(new BorderLayout());
         levelTwoPanel.setLayout(new BorderLayout());
-        
+
         stageTwoPanel.setLayout(new BorderLayout());
 
         //to enable stage two regressor buttos. avoids accidental clicks
@@ -779,7 +778,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_resetButtonActionPerformed
- 
+
     private void NoAssociationRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoAssociationRadioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_NoAssociationRadioActionPerformed
@@ -793,7 +792,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
     private void addStageTwoTabTwoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStageTwoTabTwoActionPerformed
         // TODO add your handling code here:
-        
+
         stage_2_regs = new stageTwoRegs();
         //stageOneTabs.setSelectedIndex(1);
 
@@ -803,27 +802,25 @@ public class mixregGUI extends javax.swing.JFrame {
 
     private void suppressIntCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suppressIntCheckBoxActionPerformed
         // TODO add your handling code here:
-        
-        
-        
-        if (suppressed == false){
-            
+
+        if (suppressed == false) {
+
             for (int p = 0; p < stageTwoRegSize; p++) {
 
-            stageTwoGridBoxes.get(p).get(3).setSelected(false);
-            stageTwoGridBoxes.get(p).get(3).setEnabled(false);
+                stageTwoGridBoxes.get(p).get(3).setSelected(false);
+                stageTwoGridBoxes.get(p).get(3).setEnabled(false);
             }
-        
-        } else {
-                for (int p = 0; p < stageTwoRegSize; p++) {
 
-            stageTwoGridBoxes.get(p).get(3).setSelected(false);
-            stageTwoGridBoxes.get(p).get(3).setEnabled(true);
-                
-                }
- 
+        } else {
+            for (int p = 0; p < stageTwoRegSize; p++) {
+
+                stageTwoGridBoxes.get(p).get(3).setSelected(false);
+                stageTwoGridBoxes.get(p).get(3).setEnabled(true);
+
+            }
+
         }
-        
+
         suppressed = true;
     }//GEN-LAST:event_suppressIntCheckBoxActionPerformed
 
@@ -863,7 +860,7 @@ public class mixregGUI extends javax.swing.JFrame {
             Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
-        
+
         try {
             tryCount = 1;
             NewModel.defFile.setLabelModelOutcome(getOutcomeLabel());
@@ -873,7 +870,7 @@ public class mixregGUI extends javax.swing.JFrame {
             Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
-        
+
         try {
             NewModel.defFile.setStageTwoOutcomeField(getStageTwoOutcomePosition());
             System.out.println("From defHelper | Outcome variable Position STAGE TWO: " + NewModel.defFile.getStageTwoOutcomeField());
@@ -882,7 +879,7 @@ public class mixregGUI extends javax.swing.JFrame {
             Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
-        
+
         try {
             NewModel.defFile.setStageTwoOutcomeLabel(getStageTwoOutcomeLabel());
             System.out.println("From defHelper | Outcome variable label STAGE TWO: " + NewModel.defFile.getStageTwoOutcomeLabel());
@@ -891,8 +888,6 @@ public class mixregGUI extends javax.swing.JFrame {
             Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
-        
-        
 
         // *********************************************************************
         // i is the number of random location effects selected by the users
@@ -1320,7 +1315,7 @@ public class mixregGUI extends javax.swing.JFrame {
             }
 
         }
-        
+
         try {
             NewModel.defFile.setStageTwoFixedCount(String.valueOf(countStageTwoBeta()));
             System.out.println("From defHelper | STAGE TWO FIXED COUNT: " + NewModel.defFile.getStageTwoFixedCount().toString());
@@ -1329,7 +1324,7 @@ public class mixregGUI extends javax.swing.JFrame {
             Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
-        
+
         try {
             NewModel.defFile.setStageTwoLocRanInteractions(String.valueOf(countStageTwoAlpha()));
             System.out.println("From defHelper | STAGE TWO LOC. RANDOM COUNT: " + NewModel.defFile.getStageTwoLocRanInteractions().toString());
@@ -1338,7 +1333,7 @@ public class mixregGUI extends javax.swing.JFrame {
             Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
-        
+
         try {
             NewModel.defFile.setStageTwoScaleInteractions(String.valueOf(countStageTwoTau()));
             System.out.println("From defHelper | STAGE TWO SCALE COUNT: " + NewModel.defFile.getStageTwoScaleInteractions().toString());
@@ -1347,16 +1342,7 @@ public class mixregGUI extends javax.swing.JFrame {
             Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
-        
-        try {
-            NewModel.defFile.setStageTwoIntOfInteraction(String.valueOf(countStageTwoInteractions()));
-            System.out.println("From defHelper | STAGE TWO INTERACTIONS COUNT: " + NewModel.defFile.getStageTwoIntOfInteraction().toString());
-        } catch (Exception ex) {
-            catchCount = 1;
-            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-        }
-        
+
         try {
             NewModel.defFile.setStageTwoFixedFields(getFixedFieldRegressors_StageTwo());
             System.out.println("From defHelper | STAGE TWO  FIXED REGRESSOR Positions: " + Arrays.toString(NewModel.defFile.getStageTwoFixedFields()));
@@ -1365,7 +1351,7 @@ public class mixregGUI extends javax.swing.JFrame {
             Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
-        
+
         try {
             NewModel.defFile.setStageTwoLocRanIntFields(getRanLocFieldRegressors_StageTwo());
             System.out.println("From defHelper | STAGE TWO  LOC RAN REGRESSOR Positions: " + Arrays.toString(NewModel.defFile.getStageTwoLocRanIntFields()));
@@ -1374,7 +1360,7 @@ public class mixregGUI extends javax.swing.JFrame {
             Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
-        
+
         try {
             NewModel.defFile.setStageTwoScaleIntFields(getScaleFieldRegressors_StageTwo());
             System.out.println("From defHelper | STAGE TWO  SCALE REGRESSOR Positions: " + Arrays.toString(NewModel.defFile.getStageTwoScaleIntFields()));
@@ -1383,16 +1369,37 @@ public class mixregGUI extends javax.swing.JFrame {
             Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
-        
-        try {
-            NewModel.defFile.setStageTwoFirstIntFields(getInteractionFieldRegressors_StageTwo());
-            System.out.println("From defHelper | STAGE TWO  INTERACTIONS REGRESSOR Positions: " + Arrays.toString(NewModel.defFile.getStageTwoFirstIntFields()));
-        } catch (Exception ex) {
-            catchCount = 1;
-            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+
+        if (suppressed == true) {
+            try {
+                NewModel.defFile.setStageTwoFirstIntFields(getInteractionFieldRegressors_StageTwo());
+                System.out.println("From defHelper | STAGE TWO  INTERACTIONS REGRESSOR Positions: " + Arrays.toString(NewModel.defFile.getStageTwoFirstIntFields()));
+            } catch (Exception ex) {
+                catchCount = 1;
+                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+            }
+
+            try {
+                NewModel.defFile.setStageTwoFirstIntLabels(getModelInteractionLabelsStageTwo());
+                System.out.println("From defHelper | STAGE TWO  INTERACTIONS REGRESSORS: " + Arrays.toString(NewModel.defFile.getStageTwoFirstIntLabels()));
+            } catch (Exception ex) {
+                catchCount = 1;
+                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+            }
+
+            try {
+                NewModel.defFile.setStageTwoIntOfInteraction(String.valueOf(countStageTwoInteractions()));
+                System.out.println("From defHelper | STAGE TWO INTERACTIONS COUNT: " + NewModel.defFile.getStageTwoIntOfInteraction().toString());
+            } catch (Exception ex) {
+                catchCount = 1;
+                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+            }
+
         }
-        
+
         try {
             NewModel.defFile.setStageTwoFixedLabels(getModelFixedLabelsStageTwo());
             System.out.println("From defHelper | STAGE TWO  MEAN REGRESSORS: " + Arrays.toString(NewModel.defFile.getStageTwoFixedLabels()));
@@ -1401,7 +1408,7 @@ public class mixregGUI extends javax.swing.JFrame {
             Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
-        
+
         try {
             NewModel.defFile.setStageTwoLocRanIntLabels(getModelLocRanLabelsStageTwo());
             System.out.println("From defHelper | STAGE TWO  LOC RAN REGRESSORS: " + Arrays.toString(NewModel.defFile.getStageTwoLocRanIntLabels()));
@@ -1410,7 +1417,7 @@ public class mixregGUI extends javax.swing.JFrame {
             Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
-        
+
         try {
             NewModel.defFile.setStageTwoScaleIntLabels(getModelScaleLabelsStageTwo());
             System.out.println("From defHelper | STAGE TWO  SCALE REGRESSORS: " + Arrays.toString(NewModel.defFile.getStageTwoScaleIntLabels()));
@@ -1419,17 +1426,6 @@ public class mixregGUI extends javax.swing.JFrame {
             Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
-        
-        try {
-            NewModel.defFile.setStageTwoFirstIntLabels(getModelInteractionLabelsStageTwo());
-            System.out.println("From defHelper | STAGE TWO  INTERACTIONS REGRESSORS: " + Arrays.toString(NewModel.defFile.getStageTwoFirstIntLabels()));
-        } catch (Exception ex) {
-            catchCount = 1;
-            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-        }
-        
-            
 
         if (catchCount == 0) {
             int defTry = 0;
@@ -1456,7 +1452,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
             // do nothing
         }
-        
+
     }//GEN-LAST:event_runTabTwoStageOneTwoActionPerformed
 
     private void startStageTwoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startStageTwoActionPerformed
@@ -1646,11 +1642,9 @@ public class mixregGUI extends javax.swing.JFrame {
         StageOneVariableCombo.setModel(StageOneList);
         StageOneVariableCombo.setSelectedIndex(1);
 
-        
         stageTwoOutcome.setModel(StageTwoList);
         stageTwoOutcome.setSelectedIndex(2);
-        
-        
+
     }
 
     public static void openWebpage(String urlString) {
@@ -1868,11 +1862,8 @@ public class mixregGUI extends javax.swing.JFrame {
 
     }
 
-    
-    
     public void updateStageTwoGrid_tab2(DefaultListModel<String> defaultListModel) {
 
-        
         JScrollPane scrollpanel = new JScrollPane(stageTwoRegsGrid);
         stageTwoSelected_tab2 = new ArrayList<String>();
 
@@ -1910,9 +1901,8 @@ public class mixregGUI extends javax.swing.JFrame {
             constraints.anchor = GridBagConstraints.LINE_END;
             stageTwoSelected_tab2.add(defaultListModel.getElementAt(j));
             stageTwoRegsGrid.add(new JLabel(stageTwoSelected_tab2.get(j)), constraints);
-            
-            //stageTwoGrid.add(new JLabel(defaultListModel.getElementAt(j)), constraints);
 
+            //stageTwoGrid.add(new JLabel(defaultListModel.getElementAt(j)), constraints);
             stageTwoGridBoxes.add(j, new ArrayList<JCheckBox>());
 
             for (int k = 0; k < 4; k++) {
@@ -1920,25 +1910,25 @@ public class mixregGUI extends javax.swing.JFrame {
                 constraints.gridx++;
                 constraints.anchor = GridBagConstraints.CENTER;
                 stageTwoGridBoxes.get(j).add(k, new JCheckBox());
-                
+
                 stageTwoRegsGrid.add(stageTwoGridBoxes.get(j).get(k), constraints);
             }
 
             constraints.gridy++;
 
             separatorConstraint.gridy = separatorConstraint.gridy + 2;
-            
+
             stageTwoRegsGrid.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
             //System.out.println("after seperator");
             constraints.gridy++;
 
         }
-        
+
         stageTwoPanel.add(scrollpanel);
         revalidate();
 
     }
-    
+
     public int countLevelOneBeta() {
 
         int levelOneBeta = 0;
@@ -2127,7 +2117,7 @@ public class mixregGUI extends javax.swing.JFrame {
         return stageTwoTau;
 
     }
-    
+
     public int countStageTwoInteractions() {
 
         int stageTwoInter = 0;
@@ -3050,45 +3040,43 @@ public class mixregGUI extends javax.swing.JFrame {
         System.out.println("*********************************");
         return regLabels;
     }
-    
-    public String getOutcomeLabel(){
+
+    public String getOutcomeLabel() {
         String outcome;
-        
+
         outcome = StageOneVariableCombo.getSelectedItem().toString();
         System.out.println("Stage-Two/MixRegGUI/Outcome-variable-Label: " + outcome);
-        
+
         return outcome;
-    
+
     }
-    
-    public String getStageTwoOutcomePosition(){
+
+    public String getStageTwoOutcomePosition() {
         String position;
         int pos;
-        
+
         String outcome = stageTwoOutcome.getSelectedItem().toString();
         pos = stageTwoOutcome.getSelectedIndex();
-        
+
         position = String.valueOf(pos + 1);
-        
+
         return position;
-    
-    
+
     }
-    
-    public String getStageTwoOutcomeLabel(){
+
+    public String getStageTwoOutcomeLabel() {
         String position;
         int pos;
-        
+
         String outcome = stageTwoOutcome.getSelectedItem().toString();
         pos = stageTwoOutcome.getSelectedIndex();
-        
+
         position = String.valueOf(pos + 1);
-        
+
         return outcome;
-    
+
     }
-    
-    
+
     public String[] getFixedFieldRegressors_StageTwo() {
         System.out.println("*********************************");
         System.out.println("Fixed From Stage Two (positions)");
@@ -3143,8 +3131,7 @@ public class mixregGUI extends javax.swing.JFrame {
         return positionArray;
 
     }
-    
-    
+
     public String[] getRanLocFieldRegressors_StageTwo() {
         System.out.println("*********************************");
         System.out.println("Loc Ran  From Stage Two (position)");
@@ -3199,8 +3186,7 @@ public class mixregGUI extends javax.swing.JFrame {
         return positionArray;
 
     }
-    
-    
+
     public String[] getScaleFieldRegressors_StageTwo() {
         System.out.println("*********************************");
         System.out.println("Scale From Stage Two (Positions)");
@@ -3255,7 +3241,7 @@ public class mixregGUI extends javax.swing.JFrame {
         return positionArray;
 
     }
-    
+
     public String[] getModelFixedLabelsStageTwo() {
         System.out.println("*********************************");
         System.out.println("Fixed Labels From Stage Two (labels)");
@@ -3288,7 +3274,7 @@ public class mixregGUI extends javax.swing.JFrame {
         System.out.println("*********************************");
         return regLabels;
     }
-    
+
     public String[] getModelLocRanLabelsStageTwo() {
         System.out.println("*********************************");
         System.out.println("Loc Ran Labels From Stage Two (Labels)");
@@ -3321,7 +3307,7 @@ public class mixregGUI extends javax.swing.JFrame {
         System.out.println("*********************************");
         return regLabels;
     }
-    
+
     public String[] getModelScaleLabelsStageTwo() {
         System.out.println("*********************************");
         System.out.println("Scale Labels From Stage Two (Labels)");
@@ -3354,8 +3340,7 @@ public class mixregGUI extends javax.swing.JFrame {
         System.out.println("*********************************");
         return regLabels;
     }
-    
-    
+
     public String[] getInteractionFieldRegressors_StageTwo() {
         System.out.println("*********************************");
         System.out.println("Interactions From Stage Two (Positions)");
@@ -3410,8 +3395,7 @@ public class mixregGUI extends javax.swing.JFrame {
         return positionArray;
 
     }
-    
-    
+
     public String[] getModelInteractionLabelsStageTwo() {
         System.out.println("*********************************");
         System.out.println("Interaction Labels From Stage Two (Labels)");
@@ -3443,6 +3427,5 @@ public class mixregGUI extends javax.swing.JFrame {
         System.out.println("*********************************");
         return regLabels;
     }
-    
 
 }

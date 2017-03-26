@@ -8,8 +8,10 @@ package mixregui;
 import java.awt.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -33,6 +35,10 @@ public class stageOneRegs extends javax.swing.JFrame {
     static DefaultListModel<String> levelTwoList;
 
     static boolean isSubmitClicked = false;
+    
+    final ImageIcon icon;
+    
+    
 
     /**
      * Creates new form stageOneRegs
@@ -46,6 +52,8 @@ public class stageOneRegs extends javax.swing.JFrame {
         //get variable names from the data set
         //variableNamesList = newModel2.getVariableNames();
         variableNamesList = NewModel.getVariableNames();
+        
+        icon = new ImageIcon(getClass().getResource("/resources/mixLogo.png"));
         
 
         if (!isSubmitClicked) {
@@ -247,40 +255,63 @@ public class stageOneRegs extends javax.swing.JFrame {
 
     private void levelOneAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_levelOneAddButtonActionPerformed
 
+        if (!AllVariablesList.isSelectionEmpty()){
         levelOneList.addElement(AllVariablesList.getSelectedValue());
         StageOneLevelOneList.setModel(levelOneList);
         //remove the variable once it is added to levelOne regressors
         varList.remove(AllVariablesList.getSelectedIndex());
 
         stageOneSubmitButton.setEnabled(true);
+        } else {
+            
+            JOptionPane.showMessageDialog(null, "Please select a variable for level one.", "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+        
+        }
+        
 
     }//GEN-LAST:event_levelOneAddButtonActionPerformed
 
     private void addLevelTwoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addLevelTwoButtonActionPerformed
 
+        if (!AllVariablesList.isSelectionEmpty()){
         stageOneSubmitButton.setEnabled(true);
 
         levelTwoList.addElement(AllVariablesList.getSelectedValue());
         StageOneLevelTwoList.setModel(levelTwoList);
 
         varList.remove(AllVariablesList.getSelectedIndex());
+        } else {
+        JOptionPane.showMessageDialog(null, "Please select a variable for level two.", "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+        }
+        
 
     }//GEN-LAST:event_addLevelTwoButtonActionPerformed
 
     private void removeLevelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeLevelButtonActionPerformed
 
-        stageOneSubmitButton.setEnabled(true);
+        
+        if (!StageOneLevelOneList.isSelectionEmpty()){
+            
+            stageOneSubmitButton.setEnabled(true);
 
         varList.addElement(StageOneLevelOneList.getSelectedValue());
 
         AllVariablesList.setModel(varList);
 
         levelOneList.remove(StageOneLevelOneList.getSelectedIndex());
+        
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a variable from level one.", "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+        
+        }
+        
 
     }//GEN-LAST:event_removeLevelButtonActionPerformed
 
     private void removeLevelTwoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeLevelTwoButtonActionPerformed
 
+        
+        if (!StageOneLevelTwoList.isSelectionEmpty()){
         stageOneSubmitButton.setEnabled(true);
 
         varList.addElement(StageOneLevelTwoList.getSelectedValue());
@@ -288,6 +319,11 @@ public class stageOneRegs extends javax.swing.JFrame {
         AllVariablesList.setModel(varList);
 
         levelTwoList.remove(StageOneLevelTwoList.getSelectedIndex());
+        } else {
+        
+        JOptionPane.showMessageDialog(null, "Please select a variable from level two.", "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+        }
+        
     }//GEN-LAST:event_removeLevelTwoButtonActionPerformed
 
     private void stageOneResetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneResetButtonActionPerformed
