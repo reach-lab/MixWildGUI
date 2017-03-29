@@ -108,6 +108,7 @@ public class mixregGUI extends javax.swing.JFrame {
         IDList = new DefaultComboBoxModel<String>();
         StageOneList = new DefaultComboBoxModel<String>();
         StageTwoList = new DefaultComboBoxModel<String>();
+        NoAssociationRadio.setSelected(true);
 
         i = newModel.getRLE();
         System.out.println(String.valueOf(i));
