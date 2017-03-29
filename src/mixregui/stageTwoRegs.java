@@ -73,6 +73,7 @@ public class stageTwoRegs extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         StageTwoLevelTwoVariables = new javax.swing.JList<>();
         jLabel3 = new javax.swing.JLabel();
+        stageTwoCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Add Stage 2 regressors");
@@ -115,6 +116,13 @@ public class stageTwoRegs extends javax.swing.JFrame {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/mixLogo.png"))); // NOI18N
 
+        stageTwoCancel.setText("Cancel");
+        stageTwoCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stageTwoCancelActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -131,7 +139,9 @@ public class stageTwoRegs extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
-                                .addGap(224, 224, 224)
+                                .addGap(121, 121, 121)
+                                .addComponent(stageTwoCancel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(stageTwoResetButton, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(4, 4, 4)
                                 .addComponent(stageTwoSubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -143,7 +153,7 @@ public class stageTwoRegs extends javax.swing.JFrame {
                                     .addComponent(stageTwoRemoveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(35, 35, 35)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,7 +173,9 @@ public class stageTwoRegs extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(stageTwoResetButton)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(stageTwoResetButton)
+                        .addComponent(stageTwoCancel))
                     .addComponent(stageTwoSubmitButton)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(8, Short.MAX_VALUE))
@@ -223,6 +235,11 @@ public class stageTwoRegs extends javax.swing.JFrame {
         stageTwoLevelTwo.clear();
     }//GEN-LAST:event_stageTwoResetButtonActionPerformed
 
+    private void stageTwoCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoCancelActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_stageTwoCancelActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -267,6 +284,7 @@ public class stageTwoRegs extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton stageTwoAddButton;
+    private javax.swing.JButton stageTwoCancel;
     private javax.swing.JButton stageTwoRemoveButton;
     private javax.swing.JButton stageTwoResetButton;
     private javax.swing.JButton stageTwoSubmitButton;

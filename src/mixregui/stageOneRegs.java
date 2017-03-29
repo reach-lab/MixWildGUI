@@ -101,6 +101,7 @@ public class stageOneRegs extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         StageOneLevelTwoList = new javax.swing.JList<>();
         jLabel4 = new javax.swing.JLabel();
+        stageOneCancel = new javax.swing.JButton();
 
         label1.setText("label1");
 
@@ -163,6 +164,13 @@ public class stageOneRegs extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/mixLogo.png"))); // NOI18N
 
+        stageOneCancel.setText("Cancel");
+        stageOneCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stageOneCancelActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -179,7 +187,9 @@ public class stageOneRegs extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4)
-                                .addGap(371, 371, 371)
+                                .addGap(262, 262, 262)
+                                .addComponent(stageOneCancel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(stageOneResetButton, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(12, 12, 12)
                                 .addComponent(stageOneSubmitButton))
@@ -198,7 +208,7 @@ public class stageOneRegs extends javax.swing.JFrame {
                                         .addGap(133, 133, 133)
                                         .addComponent(jLabel3))
                                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -227,7 +237,9 @@ public class stageOneRegs extends javax.swing.JFrame {
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(stageOneResetButton)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(stageOneResetButton)
+                        .addComponent(stageOneCancel))
                     .addComponent(stageOneSubmitButton)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(14, Short.MAX_VALUE))
@@ -335,6 +347,11 @@ public class stageOneRegs extends javax.swing.JFrame {
         levelTwoList.clear();
     }//GEN-LAST:event_stageOneResetButtonActionPerformed
 
+    private void stageOneCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneCancelActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_stageOneCancelActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -386,6 +403,7 @@ public class stageOneRegs extends javax.swing.JFrame {
     private javax.swing.JButton levelOneAddButton;
     private javax.swing.JButton removeLevelButton;
     private javax.swing.JButton removeLevelTwoButton;
+    private javax.swing.JButton stageOneCancel;
     private javax.swing.JButton stageOneResetButton;
     private javax.swing.JButton stageOneSubmitButton;
     // End of variables declaration//GEN-END:variables
