@@ -338,6 +338,7 @@ public class NewModel extends javax.swing.JFrame {
         randomLocationEffects.setEnabled(true);
         newModelSubmit.setEnabled(true);
         newModelMissingValues.setEnabled(true);
+        newModelMissingValueCode.setEnabled(true);
         
     }//GEN-LAST:event_fileBrowseButtonActionPerformed
 
