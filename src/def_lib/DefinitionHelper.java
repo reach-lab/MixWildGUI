@@ -1027,7 +1027,7 @@ public class DefinitionHelper {
     // what should this do?
     //todo // mean level 1 and level 2?
     public void setModelMeanCount(String modelMeanCount) throws Exception {
-        if (setValidator("number of mean regressors", "5", modelMeanCount, 1, 255, MIX_INTEGER)) {
+        if (setValidator("number of mean regressors", "5", modelMeanCount, 0, 255, MIX_INTEGER)) {
             this.modelMeanCount = modelMeanCount;
         }
     }
