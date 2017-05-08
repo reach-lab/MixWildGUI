@@ -472,8 +472,8 @@ public class mixregGUI extends javax.swing.JFrame {
         jLabel17.setText("Interaction (Scale)");
         jPanel12.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 60, -1, -1));
 
-        jLabel18.setText("Interaction (Scale, Loc. Random)");
-        jPanel12.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 60, -1, -1));
+        jLabel18.setText("Relationship between Loc. and Scale.?");
+        jPanel12.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 60, 250, -1));
 
         stageTwoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Stage-2"));
 

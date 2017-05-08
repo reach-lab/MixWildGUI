@@ -702,11 +702,11 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel18">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Interaction (Scale, Loc. Random)"/>
+                    <Property name="text" type="java.lang.String" value="Relationship between Loc. and Scale.?"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="850" y="60" width="-1" height="-1"/>
+                      <AbsoluteConstraints x="850" y="60" width="250" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
