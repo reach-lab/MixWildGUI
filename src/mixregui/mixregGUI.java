@@ -395,7 +395,7 @@ public class mixregGUI extends javax.swing.JFrame {
         });
         jPanel8.add(addStageOneButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 225, 35));
 
-        advancedOptionsButton.setText("Advanced Options ...");
+        advancedOptionsButton.setText("Options ...");
         advancedOptionsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 advancedOptionsButtonActionPerformed(evt);
