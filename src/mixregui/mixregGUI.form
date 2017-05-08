@@ -232,11 +232,11 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel4">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Between and within subject variance models for Stage 1"/>
+                    <Property name="text" type="java.lang.String" value="Stage 1 Regressors"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="620" y="10" width="-1" height="-1"/>
+                      <AbsoluteConstraints x="710" y="10" width="-1" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -652,11 +652,11 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel12">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Between and within subject variance models for Stage 2"/>
+                    <Property name="text" type="java.lang.String" value="Stage 2 Regressors"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="530" y="10" width="-1" height="-1"/>
+                      <AbsoluteConstraints x="640" y="20" width="-1" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>

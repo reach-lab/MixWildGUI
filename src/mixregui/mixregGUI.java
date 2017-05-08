@@ -298,8 +298,8 @@ public class mixregGUI extends javax.swing.JFrame {
         });
         jPanel1.add(goBackMxrButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 510, 147, 40));
 
-        jLabel4.setText("Between and within subject variance models for Stage 1");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 10, -1, -1));
+        jLabel4.setText("Stage 1 Regressors");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 10, -1, -1));
 
         level1_MeanReg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         level1_MeanReg.setText("Mean");
@@ -454,8 +454,8 @@ public class mixregGUI extends javax.swing.JFrame {
         jLabel14.setText("Fixed Regressor");
         jPanel12.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, -1, -1));
 
-        jLabel12.setText("Between and within subject variance models for Stage 2");
-        jPanel12.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, -1, -1));
+        jLabel12.setText("Stage 2 Regressors");
+        jPanel12.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 20, -1, -1));
 
         jLabel15.setText("Interaction (Loc. Random)");
         jPanel12.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, -1, -1));
