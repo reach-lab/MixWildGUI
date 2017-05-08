@@ -439,7 +439,7 @@ public class mixregGUI extends javax.swing.JFrame {
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/mixLogo.png"))); // NOI18N
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 510, -1, 30));
 
-        startStageTwo.setText("Start Stage 2");
+        startStageTwo.setText("Modify Stage 2");
         startStageTwo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 startStageTwoActionPerformed(evt);
