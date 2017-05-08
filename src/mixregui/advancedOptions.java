@@ -38,7 +38,7 @@ public class advancedOptions extends javax.swing.JFrame {
         quadriturePoints.setToolTipText("Tool tip here");
         adaptiveQuadritureCheckBox.setToolTipText("Tool tip here");
         maximumIterations.setToolTipText("Tool tip here");
-        standardizedCoeff.setToolTipText("Tool tip here");
+        //standardizedCoeff.setToolTipText("Tool tip here");
         ridgeSpinner.setToolTipText("Tool tip here");
         centerRegressorsCheckBox.setToolTipText("Tool tip here");
         
@@ -69,8 +69,6 @@ public class advancedOptions extends javax.swing.JFrame {
         quadriturePoints = new javax.swing.JSpinner();
         jPanel2 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        standardizedCoeff = new javax.swing.JCheckBox();
         jLabel11 = new javax.swing.JLabel();
         maximumIterations = new javax.swing.JSpinner();
         ridgeSpinner = new javax.swing.JSpinner();
@@ -145,34 +143,24 @@ public class advancedOptions extends javax.swing.JFrame {
         jLabel7.setText("Maximum Iterations:");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 12, -1, -1));
 
-        jLabel10.setText("Standardized Coefficients:");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
-
-        standardizedCoeff.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                standardizedCoeffActionPerformed(evt);
-            }
-        });
-        jPanel2.add(standardizedCoeff, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, -1, -1));
-
         jLabel11.setText("Ridge:");
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
 
         maximumIterations.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
         jPanel2.add(maximumIterations, new org.netbeans.lib.awtextra.AbsoluteConstraints(182, 7, 69, -1));
 
         ridgeSpinner.setModel(new javax.swing.SpinnerNumberModel(0.15d, 0.0d, 1.0d, 0.01d));
-        jPanel2.add(ridgeSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 68, -1));
+        jPanel2.add(ridgeSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, 68, -1));
 
-        jLabel15.setText("Center All Regressors?");
-        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
+        jLabel15.setText("Standardize All Regressors?");
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
 
         centerRegressorsCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 centerRegressorsCheckBoxActionPerformed(evt);
             }
         });
-        jPanel2.add(centerRegressorsCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, -1, -1));
+        jPanel2.add(centerRegressorsCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, -1, -1));
 
         jButton1.setText("Submit");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -259,10 +247,6 @@ public class advancedOptions extends javax.swing.JFrame {
     private void adaptiveQuadritureCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adaptiveQuadritureCheckBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_adaptiveQuadritureCheckBoxActionPerformed
-
-    private void standardizedCoeffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_standardizedCoeffActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_standardizedCoeffActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -394,7 +378,7 @@ public class advancedOptions extends javax.swing.JFrame {
 
         maximumIterations.setValue(1);
        // missingValuesCheckBox.setSelected(false);
-        standardizedCoeff.setSelected(false);
+        //standardizedCoeff.setSelected(false);
         ridgeSpinner.setValue(0.15);
 
     }//GEN-LAST:event_advancedOptions_resetButtonActionPerformed
@@ -449,7 +433,6 @@ public class advancedOptions extends javax.swing.JFrame {
     private javax.swing.JSpinner convergenceCriteria;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
@@ -465,7 +448,6 @@ public class advancedOptions extends javax.swing.JFrame {
     private javax.swing.JCheckBox meanSubmodelCheckBox;
     private javax.swing.JSpinner quadriturePoints;
     private javax.swing.JSpinner ridgeSpinner;
-    private javax.swing.JCheckBox standardizedCoeff;
     // End of variables declaration//GEN-END:variables
 
 //check if mean sub model is checked in advanced options    
@@ -547,7 +529,7 @@ public class advancedOptions extends javax.swing.JFrame {
 
 
 //check if standardized coefficients is checked
-    public int isStandardizedCoefChecked() {
+   /* public int isStandardizedCoefChecked() {
         int checked = 0;
 
         if (standardizedCoeff.isSelected() == true) {
@@ -558,7 +540,7 @@ public class advancedOptions extends javax.swing.JFrame {
         }
 
         return checked;
-    }
+    }*/
 
 // get the ridge value
     public Double getRidge() {
