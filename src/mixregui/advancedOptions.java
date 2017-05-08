@@ -31,6 +31,17 @@ public class advancedOptions extends javax.swing.JFrame {
 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         icon = new ImageIcon(getClass().getResource("/resources/mixLogo.png"));
+        meanSubmodelCheckBox.setToolTipText("Check mean submodel");
+        BSVarianceCheckBox.setToolTipText("Check mean submodel");
+        WSVarianceCheckBox.setToolTipText("Tool tip here");
+        convergenceCriteria.setToolTipText("Tool tip here");
+        quadriturePoints.setToolTipText("Tool tip here");
+        adaptiveQuadritureCheckBox.setToolTipText("Tool tip here");
+        maximumIterations.setToolTipText("Tool tip here");
+        standardizedCoeff.setToolTipText("Tool tip here");
+        ridgeSpinner.setToolTipText("Tool tip here");
+        centerRegressorsCheckBox.setToolTipText("Tool tip here");
+        
        // missingValueCode.setEnabled(false);
     }
 
