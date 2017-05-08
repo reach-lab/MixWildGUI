@@ -15,6 +15,8 @@ import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import def_lib.DefinitionHelper;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -338,6 +340,7 @@ public class NewModel extends javax.swing.JFrame {
         randomLocationEffects.setEnabled(true);
         newModelSubmit.setEnabled(true);
         newModelMissingValues.setEnabled(true);
+        newModelMissingValueCode.setEnabled(true);
         
     }//GEN-LAST:event_fileBrowseButtonActionPerformed
 

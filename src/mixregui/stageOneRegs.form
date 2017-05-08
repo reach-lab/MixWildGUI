@@ -44,7 +44,9 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="371" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="262" max="-2" attributes="0"/>
+                              <Component id="stageOneCancel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="stageOneResetButton" min="-2" pref="89" max="-2" attributes="0"/>
                               <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
                               <Component id="stageOneSubmitButton" min="-2" max="-2" attributes="0"/>
@@ -71,7 +73,7 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="43" max="32767" attributes="0"/>
+              <EmptySpace pref="54" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -106,7 +108,10 @@
               </Group>
               <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="stageOneResetButton" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="stageOneResetButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="stageOneCancel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <Component id="stageOneSubmitButton" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel4" min="-2" pref="34" max="-2" attributes="0"/>
               </Group>
@@ -237,6 +242,14 @@
           <Image iconType="3" name="/resources/mixLogo.png"/>
         </Property>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="stageOneCancel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cancel"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stageOneCancelActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

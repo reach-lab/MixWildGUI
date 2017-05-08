@@ -75,6 +75,7 @@ public class advancedOptions extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         advancedOptions_resetButton = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
+        advancedOptionsCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Advanced Options ...");
@@ -221,6 +222,13 @@ public class advancedOptions extends javax.swing.JFrame {
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/mixLogo.png"))); // NOI18N
 
+        advancedOptionsCancel.setText("Cancel");
+        advancedOptionsCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                advancedOptionsCancelActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -236,6 +244,8 @@ public class advancedOptions extends javax.swing.JFrame {
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel8)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(advancedOptionsCancel)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(advancedOptions_resetButton)
                             .addGap(12, 12, 12)
                             .addComponent(jButton1))
@@ -255,7 +265,9 @@ public class advancedOptions extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(advancedOptions_resetButton)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(advancedOptions_resetButton)
+                                .addComponent(advancedOptionsCancel))
                             .addComponent(jButton1))
                         .addContainerGap(26, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -435,6 +447,11 @@ public class advancedOptions extends javax.swing.JFrame {
 
     }//GEN-LAST:event_advancedOptions_resetButtonActionPerformed
 
+    private void advancedOptionsCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_advancedOptionsCancelActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_advancedOptionsCancelActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -474,6 +491,7 @@ public class advancedOptions extends javax.swing.JFrame {
     private javax.swing.JCheckBox BSVarianceCheckBox;
     private javax.swing.JCheckBox WSVarianceCheckBox;
     private javax.swing.JCheckBox adaptiveQuadritureCheckBox;
+    private javax.swing.JButton advancedOptionsCancel;
     private javax.swing.JButton advancedOptions_resetButton;
     private javax.swing.JCheckBox centerRegressorsCheckBox;
     private javax.swing.JSpinner convergenceCriteria;
