@@ -714,7 +714,7 @@ public class mixregGUI extends javax.swing.JFrame {
         });
         helpMenu.add(diagramMenu);
 
-        jMenuItem6.setText("Guide");
+        jMenuItem6.setText("Template");
         helpMenu.add(jMenuItem6);
 
         jMenuItem7.setText("Citations");
