@@ -128,12 +128,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Level-I (Time Variant)"/>
+        <Property name="text" type="java.lang.String" value="Level-I (Time Varying)"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Level-II (Time Invariant)"/>
+        <Property name="text" type="java.lang.String" value="Level-II (Time Unvarying)"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="stageOneSubmitButton">
