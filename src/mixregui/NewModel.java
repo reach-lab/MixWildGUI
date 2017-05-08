@@ -6,6 +6,7 @@
  */
 package mixregui;
 
+import com.sun.glass.events.KeyEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -193,6 +194,11 @@ public class NewModel extends javax.swing.JFrame {
         newModelMissingValueCode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newModelMissingValueCodeActionPerformed(evt);
+            }
+        });
+        newModelMissingValueCode.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                newModelMissingValueCodeKeyTyped(evt);
             }
         });
 
@@ -503,6 +509,16 @@ public class NewModel extends javax.swing.JFrame {
     private void noneRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noneRadioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_noneRadioActionPerformed
+
+    private void newModelMissingValueCodeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_newModelMissingValueCodeKeyTyped
+        // TODO add your handling code here:
+        
+        char vchar = evt.getKeyChar();
+        if (!((Character.isDigit(vchar)) || (vchar == KeyEvent.VK_BACKSPACE) || (vchar == KeyEvent.VK_DELETE) || (vchar == KeyEvent.VK_MINUS))){
+            evt.consume();
+        }
+        
+    }//GEN-LAST:event_newModelMissingValueCodeKeyTyped
 
     /**
      * @param args the command line arguments
