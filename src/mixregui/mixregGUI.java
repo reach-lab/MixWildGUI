@@ -451,7 +451,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
         jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel14.setText("Fixed Regressor");
+        jLabel14.setText("Main Effects");
         jPanel12.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, -1, -1));
 
         jLabel12.setText("Stage 2 Regressors");
