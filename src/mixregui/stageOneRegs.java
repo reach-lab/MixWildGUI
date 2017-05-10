@@ -110,9 +110,9 @@ public class stageOneRegs extends javax.swing.JFrame {
 
         jLabel1.setText("Variables");
 
-        jLabel2.setText("Level-I (Time Variant)");
+        jLabel2.setText("Level-I (Time Varying)");
 
-        jLabel3.setText("Level-II (Time Invariant)");
+        jLabel3.setText("Level-II (Time Unvarying)");
 
         stageOneSubmitButton.setText("Submit");
         stageOneSubmitButton.addActionListener(new java.awt.event.ActionListener() {
