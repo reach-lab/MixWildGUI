@@ -34,6 +34,7 @@ public class NewModel extends javax.swing.JFrame {
     File file;
     static String[] variableArray;
     static int RLE;
+    static boolean NoneVar;
     static mixregGUI mxr;
     InstructionsGUI instructions;
     
@@ -42,9 +43,6 @@ public class NewModel extends javax.swing.JFrame {
      */
     public static DefinitionHelper defFile;
      
-    
-    
-
     /**
      * Creates new form NewModel
      */
@@ -77,6 +75,7 @@ public class NewModel extends javax.swing.JFrame {
        titleField.setToolTipText("Insert title for the model");
        subtitleField.setToolTipText("Insert subtitle for the model");
        randomLocationEffects.setToolTipText("Select the number of random location effects. Minimum value is 1");
+       
       
     }
 
@@ -329,10 +328,11 @@ public class NewModel extends javax.swing.JFrame {
                                 .addComponent(dichotomousRadio)
                                 .addComponent(noneRadio)))
                         .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(newModelMissingValueCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel6)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel8)
+                                .addComponent(jLabel6))))
                     .addComponent(newModelMissingValues))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -398,7 +398,7 @@ public class NewModel extends javax.swing.JFrame {
 
     private void newModelSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModelSubmitActionPerformed
         
-        defFile = new DefinitionHelper(RLE, isOutcomeContinous());
+        defFile = new DefinitionHelper(RLE, !isOutcomeContinous());
         
         if (filePath.getText().toString().equals("")){
         
@@ -452,8 +452,12 @@ public class NewModel extends javax.swing.JFrame {
        
         // Read random location effects from new Model
         RLE = (Integer) randomLocationEffects.getValue();
+        NoneVar = isOutcomeNone();
+       
+        System.out.println("NoneVar: " + String.valueOf(NoneVar));
         
         System.out.println(String.valueOf(isOutcomeContinous()));
+        System.out.println("IsOutcomeNone: " + String.valueOf(isOutcomeNone()));
         
        // set Values in def helper
        defFile.setModelTitle(getTitle());
@@ -671,6 +675,26 @@ public boolean isOutcomeContinous(){
     }
 
     return selection;
+}
+
+public boolean isOutcomeNone(){
+    System.out.println("In isOutcomeNone NewModel");
+
+    boolean selection = false;
+    
+    if (noneRadio.isSelected() == true){
+        selection = true;
+        System.out.println("In isOutcomeNone true");
+    } else if (noneRadio.isSelected() == false){
+    
+        selection = false;
+    }
+    return selection;
+}
+
+public boolean getNoneVar(){
+return NoneVar;
+
 }
 
 

@@ -86,6 +86,7 @@ public class mixregGUI extends javax.swing.JFrame {
     ArrayList<ArrayList<JCheckBox>> disaggVarianceBoxes;
 
     boolean suppressed = false;
+    boolean outcomeNone = false;
 
     ArrayList<String> levelOneSelected;
     ArrayList<String> levelTwoSelected;
@@ -106,6 +107,7 @@ public class mixregGUI extends javax.swing.JFrame {
         newModel = new NewModel();
         //instructions = new InstructionsGUI();
         variableNamesCombo = newModel.getVariableNames();
+        outcomeNone = newModel.getNoneVar();
 
         IDList = new DefaultComboBoxModel<String>();
         StageOneList = new DefaultComboBoxModel<String>();
@@ -140,6 +142,16 @@ public class mixregGUI extends javax.swing.JFrame {
         levelTwoPanel.setLayout(new BorderLayout());
 
         stageTwoPanel.setLayout(new BorderLayout());
+        
+        System.out.println("Right before");
+        if (outcomeNone == true){
+            System.out.println("In isOutcomeNone MixReg");
+            startStageTwo.setText("Run Stage 1");
+            System.out.println(startStageTwo.getText());
+            //stageOneTabs.set
+            stageOneTabs.setEnabledAt(1, false);
+        }
+        System.out.println("Right after");
 
         //to enable stage two regressor buttos. avoids accidental clicks
         if (stageOneClicked == 0) {
