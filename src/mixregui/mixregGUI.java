@@ -50,6 +50,7 @@ import javax.swing.border.MatteBorder;
 public class mixregGUI extends javax.swing.JFrame {
 
     NewModel newModel;
+    //InstructionsGUI instructions;
     advancedOptions advancedOptions_view;
     stageOneRegs stage_1_regs;
     stageTwoRegs stage_2_regs;
@@ -103,6 +104,7 @@ public class mixregGUI extends javax.swing.JFrame {
     public mixregGUI() {
         initComponents();
         newModel = new NewModel();
+        //instructions = new InstructionsGUI();
         variableNamesCombo = newModel.getVariableNames();
 
         IDList = new DefaultComboBoxModel<String>();
@@ -737,6 +739,8 @@ public class mixregGUI extends javax.swing.JFrame {
 
         // opens new model window
         newModel.setVisible(true);
+       // instructions.setVisible(true);
+        
 
     }//GEN-LAST:event_newModelMenuActionPerformed
 
