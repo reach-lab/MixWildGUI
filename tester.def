@@ -1,29 +1,29 @@
 title
-subtitle
+output
 /Users/adityaponnada/Downloads/sampleNovel_dataSet.csv
 null
-156  2  1  1  null  0  0  1  1  1  null  null  null  null  -9999  null  0  null
-1  2
+156  2  1  2  1  0  0  0  1  0  0.001  11  1  1  -9999  1  0  0.15
+1  126
 
 
 
-2
-4
-7
-WAVE
+
+5
+
+SED_15_BEFORE
 
 
 
-WAVE
-NOVEL_ID
-FULLTIME
-0  0  0  0
-null
-null
-null
-null
-null
-null
+
+ID_COUNT
+
+1  1  1  0
+3
+9
+14
+9
+
+DATA
 null
 null
 null
