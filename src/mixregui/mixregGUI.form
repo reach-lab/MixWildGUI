@@ -257,11 +257,11 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="level1_WSVar">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Scale"/>
+                    <Property name="text" type="java.lang.String" value="Random Scale"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="680" y="60" width="-1" height="-1"/>
+                      <AbsoluteConstraints x="670" y="60" width="-1" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -287,11 +287,11 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="level2_WSVar">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Scale"/>
+                    <Property name="text" type="java.lang.String" value="Random Scale"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="1120" y="60" width="-1" height="-1"/>
+                      <AbsoluteConstraints x="1100" y="60" width="-1" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -304,7 +304,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="level1_BSVar">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Random Location"/>
+                    <Property name="text" type="java.lang.String" value="Random Intercept"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -642,7 +642,7 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="jLabel14">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Main Effects"/>
+                    <Property name="text" type="java.lang.String" value="Random Intercept"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -662,11 +662,11 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel15">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Interaction (Loc. Random)"/>
+                    <Property name="text" type="java.lang.String" value="Random Slope"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="540" y="60" width="-1" height="-1"/>
+                      <AbsoluteConstraints x="570" y="60" width="-1" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -692,21 +692,21 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel17">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Interaction (Scale)"/>
+                    <Property name="text" type="java.lang.String" value="WS Variance Component"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="720" y="60" width="-1" height="-1"/>
+                      <AbsoluteConstraints x="690" y="60" width="-1" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel18">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Relationship between Loc. and Scale.?"/>
+                    <Property name="text" type="java.lang.String" value="BS Variance Component"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="850" y="60" width="250" height="-1"/>
+                      <AbsoluteConstraints x="870" y="60" width="160" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>

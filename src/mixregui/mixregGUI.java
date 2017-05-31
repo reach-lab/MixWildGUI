@@ -321,8 +321,8 @@ public class mixregGUI extends javax.swing.JFrame {
         jPanel1.add(level1_MeanReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 60, -1, -1));
         level1_MeanReg.getAccessibleContext().setAccessibleName("");
 
-        level1_WSVar.setText("Scale");
-        jPanel1.add(level1_WSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 60, -1, -1));
+        level1_WSVar.setText("Random Scale");
+        jPanel1.add(level1_WSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 60, -1, -1));
 
         level2_MeanReg.setText("Mean");
         jPanel1.add(level2_MeanReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 60, -1, -1));
@@ -330,11 +330,11 @@ public class mixregGUI extends javax.swing.JFrame {
         level2_BSVar.setText("Random Location");
         jPanel1.add(level2_BSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 60, -1, -1));
 
-        level2_WSVar.setText("Scale");
-        jPanel1.add(level2_WSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 60, -1, -1));
+        level2_WSVar.setText("Random Scale");
+        jPanel1.add(level2_WSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 60, -1, -1));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 560, 1190, 20));
 
-        level1_BSVar.setText("Random Location");
+        level1_BSVar.setText("Random Intercept");
         jPanel1.add(level1_BSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, -1, -1));
 
         levelOnePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Level-1"));
@@ -465,14 +465,14 @@ public class mixregGUI extends javax.swing.JFrame {
 
         jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel14.setText("Main Effects");
+        jLabel14.setText("Random Intercept");
         jPanel12.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, -1, -1));
 
         jLabel12.setText("Stage 2 Regressors");
         jPanel12.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 20, -1, -1));
 
-        jLabel15.setText("Interaction (Loc. Random)");
-        jPanel12.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, -1, -1));
+        jLabel15.setText("Random Slope");
+        jPanel12.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 60, -1, -1));
         jPanel12.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, 820, 10));
 
         addStageTwoTabTwo.setText("Modify Stage 2 Regressors");
@@ -483,11 +483,11 @@ public class mixregGUI extends javax.swing.JFrame {
         });
         jPanel12.add(addStageTwoTabTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 190, 40));
 
-        jLabel17.setText("Interaction (Scale)");
-        jPanel12.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 60, -1, -1));
+        jLabel17.setText("WS Variance Component");
+        jPanel12.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 60, -1, -1));
 
-        jLabel18.setText("Relationship between Loc. and Scale.?");
-        jPanel12.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 60, 250, -1));
+        jLabel18.setText("BS Variance Component");
+        jPanel12.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 60, 160, -1));
 
         stageTwoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Stage-2"));
 

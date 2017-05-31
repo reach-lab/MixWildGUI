@@ -34,6 +34,7 @@ public class InstructionsGUI extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         proceedButton = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,6 +51,8 @@ public class InstructionsGUI extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setText("- Please ensure that the data is sorted by IDs");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -61,7 +64,8 @@ public class InstructionsGUI extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel3)
                         .addComponent(jLabel2)
-                        .addComponent(jLabel1)))
+                        .addComponent(jLabel1)
+                        .addComponent(jLabel4)))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -73,7 +77,9 @@ public class InstructionsGUI extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
-                .addGap(59, 59, 59)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel4)
+                .addGap(25, 25, 25)
                 .addComponent(proceedButton)
                 .addContainerGap(40, Short.MAX_VALUE))
         );
@@ -128,6 +134,7 @@ public class InstructionsGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JButton proceedButton;
     // End of variables declaration//GEN-END:variables
 }
