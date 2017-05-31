@@ -88,7 +88,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem6">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Guide"/>
+                <Property name="text" type="java.lang.String" value="Template"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem7">
@@ -232,11 +232,11 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel4">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Between and within subject variance models for Stage 1"/>
+                    <Property name="text" type="java.lang.String" value="Stage 1 Regressors"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="620" y="10" width="-1" height="-1"/>
+                      <AbsoluteConstraints x="710" y="10" width="-1" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -251,17 +251,17 @@
                   </AccessibilityProperties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="480" y="60" width="-1" height="-1"/>
+                      <AbsoluteConstraints x="470" y="60" width="-1" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
                 <Component class="javax.swing.JLabel" name="level1_WSVar">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="WS-Variance"/>
+                    <Property name="text" type="java.lang.String" value="Scale"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="670" y="60" width="-1" height="-1"/>
+                      <AbsoluteConstraints x="680" y="60" width="-1" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -271,27 +271,27 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="920" y="60" width="-1" height="-1"/>
+                      <AbsoluteConstraints x="910" y="60" width="-1" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
                 <Component class="javax.swing.JLabel" name="level2_BSVar">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="BS-Variance"/>
+                    <Property name="text" type="java.lang.String" value="Random Location"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="990" y="60" width="-1" height="-1"/>
+                      <AbsoluteConstraints x="980" y="60" width="-1" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
                 <Component class="javax.swing.JLabel" name="level2_WSVar">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="WS-Variance"/>
+                    <Property name="text" type="java.lang.String" value="Scale"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="1110" y="60" width="-1" height="-1"/>
+                      <AbsoluteConstraints x="1120" y="60" width="-1" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -304,11 +304,11 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="level1_BSVar">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="BS-Variance"/>
+                    <Property name="text" type="java.lang.String" value="Random Location"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="560" y="60" width="-1" height="-1"/>
+                      <AbsoluteConstraints x="540" y="60" width="-1" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -316,7 +316,7 @@
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="Level-1 (WS)">
+                        <TitledBorder title="Level-1">
                           <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
                             <EtchetBorder/>
                           </Border>
@@ -370,7 +370,7 @@
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="Level-2 (BS)"/>
+                        <TitledBorder title="Level-2"/>
                       </Border>
                     </Property>
                   </Properties>
@@ -505,7 +505,7 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="advancedOptionsButton">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Advanced Options ..."/>
+                        <Property name="text" type="java.lang.String" value="Options ..."/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="advancedOptionsButtonActionPerformed"/>
@@ -614,7 +614,7 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="startStageTwo">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Start Stage 2"/>
+                    <Property name="text" type="java.lang.String" value="Modify Stage 2"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="startStageTwoActionPerformed"/>
@@ -642,7 +642,7 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="jLabel14">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Fixed Regressor"/>
+                    <Property name="text" type="java.lang.String" value="Main Effects"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -652,11 +652,11 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel12">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Between and within subject variance models for Stage 2"/>
+                    <Property name="text" type="java.lang.String" value="Stage 2 Regressors"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="530" y="10" width="-1" height="-1"/>
+                      <AbsoluteConstraints x="640" y="20" width="-1" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -702,11 +702,11 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel18">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Interaction (Scale, Loc. Random)"/>
+                    <Property name="text" type="java.lang.String" value="Relationship between Loc. and Scale.?"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="850" y="60" width="-1" height="-1"/>
+                      <AbsoluteConstraints x="850" y="60" width="250" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -877,7 +877,7 @@
                               </Group>
                               <Component id="jPanel10" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="273" max="32767" attributes="0"/>
+                          <EmptySpace pref="223" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>

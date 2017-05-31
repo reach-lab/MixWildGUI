@@ -1,29 +1,29 @@
-tt
-aa
-/Users/adityaponnada/Downloads/sampleNOVEL.csv
-Output_Test.out
-156  1  2  2  0  0  0  1  0  0  0.001  11  1  1  null  0  0  0.15
+title
+subtitle
+/Users/adityaponnada/Downloads/sampleNovel_dataSet.csv
+null
+156  2  1  1  null  0  0  1  1  1  null  null  null  null  -9999  null  0  null
 1  2
-15
-9  18
-9  15
-9
+
+
+
+2
+4
+7
+WAVE
+
 
 
 WAVE
-REPROMPTS
-DAY  DEMO_MARITAL_STATUS
-DAY  DAY
-DAY
-
-
-2  1  1  0  null
-3
-7  12
-7
-12
-
-DATA
+NOVEL_ID
+FULLTIME
+0  0  0  0
+null
+null
+null
+null
+null
+null
 null
 null
 null

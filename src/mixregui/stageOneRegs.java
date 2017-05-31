@@ -8,8 +8,10 @@ package mixregui;
 import java.awt.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -33,6 +35,10 @@ public class stageOneRegs extends javax.swing.JFrame {
     static DefaultListModel<String> levelTwoList;
 
     static boolean isSubmitClicked = false;
+    
+    final ImageIcon icon;
+    
+    
 
     /**
      * Creates new form stageOneRegs
@@ -46,6 +52,8 @@ public class stageOneRegs extends javax.swing.JFrame {
         //get variable names from the data set
         //variableNamesList = newModel2.getVariableNames();
         variableNamesList = NewModel.getVariableNames();
+        
+        icon = new ImageIcon(getClass().getResource("/resources/mixLogo.png"));
         
 
         if (!isSubmitClicked) {
@@ -93,6 +101,7 @@ public class stageOneRegs extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         StageOneLevelTwoList = new javax.swing.JList<>();
         jLabel4 = new javax.swing.JLabel();
+        stageOneCancel = new javax.swing.JButton();
 
         label1.setText("label1");
 
@@ -101,9 +110,9 @@ public class stageOneRegs extends javax.swing.JFrame {
 
         jLabel1.setText("Variables");
 
-        jLabel2.setText("Level-I (Time Variant)");
+        jLabel2.setText("Level-I (Time Varying)");
 
-        jLabel3.setText("Level-II (Time Invariant)");
+        jLabel3.setText("Level-II (Time Unvarying)");
 
         stageOneSubmitButton.setText("Submit");
         stageOneSubmitButton.addActionListener(new java.awt.event.ActionListener() {
@@ -155,6 +164,13 @@ public class stageOneRegs extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/mixLogo.png"))); // NOI18N
 
+        stageOneCancel.setText("Cancel");
+        stageOneCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stageOneCancelActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -171,7 +187,9 @@ public class stageOneRegs extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4)
-                                .addGap(371, 371, 371)
+                                .addGap(262, 262, 262)
+                                .addComponent(stageOneCancel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(stageOneResetButton, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(12, 12, 12)
                                 .addComponent(stageOneSubmitButton))
@@ -190,7 +208,7 @@ public class stageOneRegs extends javax.swing.JFrame {
                                         .addGap(133, 133, 133)
                                         .addComponent(jLabel3))
                                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -219,7 +237,9 @@ public class stageOneRegs extends javax.swing.JFrame {
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(stageOneResetButton)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(stageOneResetButton)
+                        .addComponent(stageOneCancel))
                     .addComponent(stageOneSubmitButton)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(14, Short.MAX_VALUE))
@@ -247,40 +267,63 @@ public class stageOneRegs extends javax.swing.JFrame {
 
     private void levelOneAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_levelOneAddButtonActionPerformed
 
+        if (!AllVariablesList.isSelectionEmpty()){
         levelOneList.addElement(AllVariablesList.getSelectedValue());
         StageOneLevelOneList.setModel(levelOneList);
         //remove the variable once it is added to levelOne regressors
         varList.remove(AllVariablesList.getSelectedIndex());
 
         stageOneSubmitButton.setEnabled(true);
+        } else {
+            
+            JOptionPane.showMessageDialog(null, "Please select a variable for level one.", "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+        
+        }
+        
 
     }//GEN-LAST:event_levelOneAddButtonActionPerformed
 
     private void addLevelTwoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addLevelTwoButtonActionPerformed
 
+        if (!AllVariablesList.isSelectionEmpty()){
         stageOneSubmitButton.setEnabled(true);
 
         levelTwoList.addElement(AllVariablesList.getSelectedValue());
         StageOneLevelTwoList.setModel(levelTwoList);
 
         varList.remove(AllVariablesList.getSelectedIndex());
+        } else {
+        JOptionPane.showMessageDialog(null, "Please select a variable for level two.", "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+        }
+        
 
     }//GEN-LAST:event_addLevelTwoButtonActionPerformed
 
     private void removeLevelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeLevelButtonActionPerformed
 
-        stageOneSubmitButton.setEnabled(true);
+        
+        if (!StageOneLevelOneList.isSelectionEmpty()){
+            
+            stageOneSubmitButton.setEnabled(true);
 
         varList.addElement(StageOneLevelOneList.getSelectedValue());
 
         AllVariablesList.setModel(varList);
 
         levelOneList.remove(StageOneLevelOneList.getSelectedIndex());
+        
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a variable from level one.", "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+        
+        }
+        
 
     }//GEN-LAST:event_removeLevelButtonActionPerformed
 
     private void removeLevelTwoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeLevelTwoButtonActionPerformed
 
+        
+        if (!StageOneLevelTwoList.isSelectionEmpty()){
         stageOneSubmitButton.setEnabled(true);
 
         varList.addElement(StageOneLevelTwoList.getSelectedValue());
@@ -288,6 +331,11 @@ public class stageOneRegs extends javax.swing.JFrame {
         AllVariablesList.setModel(varList);
 
         levelTwoList.remove(StageOneLevelTwoList.getSelectedIndex());
+        } else {
+        
+        JOptionPane.showMessageDialog(null, "Please select a variable from level two.", "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+        }
+        
     }//GEN-LAST:event_removeLevelTwoButtonActionPerformed
 
     private void stageOneResetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneResetButtonActionPerformed
@@ -298,6 +346,11 @@ public class stageOneRegs extends javax.swing.JFrame {
         levelOneList.clear();
         levelTwoList.clear();
     }//GEN-LAST:event_stageOneResetButtonActionPerformed
+
+    private void stageOneCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneCancelActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_stageOneCancelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -350,6 +403,7 @@ public class stageOneRegs extends javax.swing.JFrame {
     private javax.swing.JButton levelOneAddButton;
     private javax.swing.JButton removeLevelButton;
     private javax.swing.JButton removeLevelTwoButton;
+    private javax.swing.JButton stageOneCancel;
     private javax.swing.JButton stageOneResetButton;
     private javax.swing.JButton stageOneSubmitButton;
     // End of variables declaration//GEN-END:variables
