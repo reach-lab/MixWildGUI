@@ -257,11 +257,11 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="level1_WSVar">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Scale"/>
+                    <Property name="text" type="java.lang.String" value="Random Scale"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="680" y="60" width="-1" height="-1"/>
+                      <AbsoluteConstraints x="670" y="60" width="-1" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -287,11 +287,11 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="level2_WSVar">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Scale"/>
+                    <Property name="text" type="java.lang.String" value="Random Scale"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="1120" y="60" width="-1" height="-1"/>
+                      <AbsoluteConstraints x="1100" y="60" width="-1" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -304,7 +304,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="level1_BSVar">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Random Location"/>
+                    <Property name="text" type="java.lang.String" value="Random Intercept"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
