@@ -55,7 +55,7 @@ public class NewModel extends javax.swing.JFrame {
        instructions = new InstructionsGUI();
       // defFile = new def_lib.DefinitionHelper();
       
-      
+      //subtitle ---> ouput prefix + date and time
        
        titleField.setEnabled(false);
        subtitleField.setEnabled(false);

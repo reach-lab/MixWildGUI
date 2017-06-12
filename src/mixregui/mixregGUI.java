@@ -84,6 +84,9 @@ public class mixregGUI extends javax.swing.JFrame {
     ArrayList<ArrayList<JCheckBox>> stageTwoGridBoxes;
 
     ArrayList<ArrayList<JCheckBox>> disaggVarianceBoxes;
+    
+    boolean scaleChecked = false;
+    boolean randomChecked = false;
 
     boolean suppressed = false;
     boolean outcomeNone = false;
@@ -235,6 +238,7 @@ public class mixregGUI extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jSeparator12 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 2), new java.awt.Dimension(0, 2), new java.awt.Dimension(32767, 2));
         jPanel3 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
@@ -465,17 +469,17 @@ public class mixregGUI extends javax.swing.JFrame {
 
         jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel14.setText("Random Intercept");
-        jPanel12.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, -1, -1));
+        jLabel14.setText(" Main Effects      |");
+        jPanel12.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 60, -1, -1));
 
-        jLabel12.setText("Stage 2 Regressors");
-        jPanel12.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 20, -1, -1));
+        jLabel12.setText("Stage 2 Interactions");
+        jPanel12.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 20, -1, -1));
 
-        jLabel15.setText("Random Slope");
-        jPanel12.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 60, -1, -1));
-        jPanel12.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, 820, 10));
+        jLabel15.setText("Scale");
+        jPanel12.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 60, -1, -1));
+        jPanel12.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 40, 360, 10));
 
-        addStageTwoTabTwo.setText("Modify Stage 2 Regressors");
+        addStageTwoTabTwo.setText("Modify Regressors");
         addStageTwoTabTwo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addStageTwoTabTwoActionPerformed(evt);
@@ -483,13 +487,13 @@ public class mixregGUI extends javax.swing.JFrame {
         });
         jPanel12.add(addStageTwoTabTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 190, 40));
 
-        jLabel17.setText("WS Variance Component");
-        jPanel12.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 60, -1, -1));
+        jLabel17.setText("Random");
+        jPanel12.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 60, -1, -1));
 
-        jLabel18.setText("BS Variance Component");
-        jPanel12.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 60, 160, -1));
+        jLabel18.setText("Scale X Random     |");
+        jPanel12.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 60, 130, -1));
 
-        stageTwoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Stage-2"));
+        stageTwoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Stage-2 Regressors"));
 
         stageTwoRegsGrid.setLayout(new java.awt.BorderLayout());
 
@@ -538,6 +542,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/mixLogo.png"))); // NOI18N
         jPanel12.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 470, -1, 30));
+        jPanel12.add(filler1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 570, -1, 80));
 
         stageOneTabs.addTab("Stage 2 Configuration", jPanel12);
 
@@ -2055,6 +2060,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem diagramMenu;
     private javax.swing.JMenuItem exitMenu;
     private javax.swing.JMenu fileMenu;
+    private javax.swing.Box.Filler filler1;
     private javax.swing.JButton goBackMxrButton;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JPanel imageView;
@@ -2393,7 +2399,7 @@ public class mixregGUI extends javax.swing.JFrame {
         constraints.gridy = 0;
         constraints.weightx = 1.0;
         // constraints.weighty = 1.0;
-        constraints.anchor = GridBagConstraints.NORTH;
+        constraints.anchor = GridBagConstraints.NORTHEAST;
         //constraints.gridwidth = 4;
 
         GridBagConstraints separatorConstraint = new GridBagConstraints();
@@ -2404,15 +2410,15 @@ public class mixregGUI extends javax.swing.JFrame {
 
         constraints.insets = new Insets(3, 0, 5, 25);
         separatorConstraint.insets = new Insets(0, 0, 0, 0);
-        //constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.weightx = 1;
 
         stageTwoGridBoxes = new ArrayList<ArrayList<JCheckBox>>();
         //disaggVarianceBoxes = new ArrayList<ArrayList<JCheckBox>>();
 
         for (int j = 0; j < regSize; j++) {
-            constraints.gridx = 0;
-            constraints.anchor = GridBagConstraints.LINE_END;
+            int row = j;
+            constraints.gridx = 1;
+            constraints.anchor = GridBagConstraints.FIRST_LINE_START;
             stageTwoSelected_tab2.add(defaultListModel.getElementAt(j));
             stageTwoRegsGrid.add(new JLabel(stageTwoSelected_tab2.get(j)), constraints);
 
@@ -2420,12 +2426,21 @@ public class mixregGUI extends javax.swing.JFrame {
             stageTwoGridBoxes.add(j, new ArrayList<JCheckBox>());
 
             for (int k = 0; k < 4; k++) {
-
+                
+                
+                if (k == 1){
+                
+                constraints.gridx = constraints.gridx + 5;
+                    
+                } else {
                 constraints.gridx++;
+                }
+
+                
                 constraints.anchor = GridBagConstraints.CENTER;
                 stageTwoGridBoxes.get(j).add(k, new JCheckBox());
 
-                stageTwoRegsGrid.add(stageTwoGridBoxes.get(j).get(k), constraints);
+                stageTwoRegsGrid.add(stageTwoGridBoxes.get(j).get(k), constraints);  
             }
 
             constraints.gridy++;
@@ -2435,12 +2450,109 @@ public class mixregGUI extends javax.swing.JFrame {
             stageTwoRegsGrid.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
             //System.out.println("after seperator");
             constraints.gridy++;
+            
+            stageTwoGridBoxes.get(row).get(1).setEnabled(false);
+            stageTwoGridBoxes.get(row).get(2).setEnabled(false);
+            stageTwoGridBoxes.get(row).get(3).setEnabled(false);
+            
+            
+            stageTwoGridBoxes.get(j).get(0).addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                        AbstractButton abstractButton = (AbstractButton) e.getSource();
+                        boolean selected = abstractButton.getModel().isSelected();
+                        if (selected) {
+                            System.out.println("Checkbox selected");
+                            //disaggVarianceBoxes.get(row).get(column).setEnabled(true);
+                            stageTwoGridBoxes.get(row).get(1).setEnabled(true);
+                            stageTwoGridBoxes.get(row).get(2).setEnabled(true);
+                            System.out.println(disaggVarianceBoxes.size());
+                        } else {
+                            //disaggVarianceBoxes.get(row).get(column).setEnabled(false);
+                            stageTwoGridBoxes.get(row).get(1).setEnabled(false);
+                            stageTwoGridBoxes.get(row).get(2).setEnabled(false);
+                        }
+
+                    }
+                });
+                
+                stageTwoGridBoxes.get(j).get(1).addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                        AbstractButton abstractButton = (AbstractButton) e.getSource();
+                        boolean selected = abstractButton.getModel().isSelected();
+                        if (selected){
+                            scaleChecked = true;
+                            
+                            if (randomChecked == true){
+                            stageTwoGridBoxes.get(row).get(3).setEnabled(true);
+                            }
+                            
+                            
+                        } else {
+                            scaleChecked = false;
+                            stageTwoGridBoxes.get(row).get(3).setEnabled(false);
+                        }
+                        
+                       /* if (selected) {
+                            System.out.println("Checkbox selected");
+                            //disaggVarianceBoxes.get(row).get(column).setEnabled(true);
+                            stageTwoGridBoxes.get(row).get(1).setEnabled(true);
+                            stageTwoGridBoxes.get(row).get(2).setEnabled(true);
+                            System.out.println(disaggVarianceBoxes.size());
+                        } else {
+                            //disaggVarianceBoxes.get(row).get(column).setEnabled(false);
+                            stageTwoGridBoxes.get(row).get(1).setEnabled(false);
+                            stageTwoGridBoxes.get(row).get(2).setEnabled(false);
+                        }*/
+
+                    }
+                });
+                
+                stageTwoGridBoxes.get(j).get(2).addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                        AbstractButton abstractButton = (AbstractButton) e.getSource();
+                        boolean selected = abstractButton.getModel().isSelected();
+                        
+                        if (selected){
+                            randomChecked = true;
+                            
+                            if (scaleChecked == true){
+                            stageTwoGridBoxes.get(row).get(3).setEnabled(true);
+                            }
+                            
+                        } else {
+                            randomChecked = false;
+                            stageTwoGridBoxes.get(row).get(3).setEnabled(false);
+                        
+                        }
+                        
+                       /* if (selected) {
+                            System.out.println("Checkbox selected");
+                            //disaggVarianceBoxes.get(row).get(column).setEnabled(true);
+                            stageTwoGridBoxes.get(row).get(1).setEnabled(true);
+                            stageTwoGridBoxes.get(row).get(2).setEnabled(true);
+                            System.out.println(disaggVarianceBoxes.size());
+                        } else {
+                            //disaggVarianceBoxes.get(row).get(column).setEnabled(false);
+                            stageTwoGridBoxes.get(row).get(1).setEnabled(false);
+                            stageTwoGridBoxes.get(row).get(2).setEnabled(false);
+                        }*/
+
+                    }
+                });
 
         }
 
         stageTwoPanel.add(scrollpanel);
         revalidate();
 
+    }
+    
+    public void updateStageTwoGrid_tab2v2(DefaultListModel<String> defaultListModel) {
+    
+    //todo: create two grid layouts here or try with a sep
     }
 
     public int countLevelOneBeta() {
