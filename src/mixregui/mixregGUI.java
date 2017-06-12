@@ -235,6 +235,7 @@ public class mixregGUI extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jSeparator12 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 2), new java.awt.Dimension(0, 2), new java.awt.Dimension(32767, 2));
         jPanel3 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
@@ -465,7 +466,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
         jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel14.setText("Main Effect");
+        jLabel14.setText(" Main Effects      |");
         jPanel12.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 60, -1, -1));
 
         jLabel12.setText("Stage 2 Interactions");
@@ -486,8 +487,8 @@ public class mixregGUI extends javax.swing.JFrame {
         jLabel17.setText("Random");
         jPanel12.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 60, -1, -1));
 
-        jLabel18.setText("Scale X Random");
-        jPanel12.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 60, 100, -1));
+        jLabel18.setText("Scale X Random     |");
+        jPanel12.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 60, 130, -1));
 
         stageTwoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Stage-2 Regressors"));
 
@@ -538,6 +539,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/mixLogo.png"))); // NOI18N
         jPanel12.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 470, -1, 30));
+        jPanel12.add(filler1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 570, -1, 80));
 
         stageOneTabs.addTab("Stage 2 Configuration", jPanel12);
 
@@ -2055,6 +2057,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem diagramMenu;
     private javax.swing.JMenuItem exitMenu;
     private javax.swing.JMenu fileMenu;
+    private javax.swing.Box.Filler filler1;
     private javax.swing.JButton goBackMxrButton;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JPanel imageView;
