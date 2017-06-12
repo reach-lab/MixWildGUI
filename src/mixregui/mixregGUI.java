@@ -465,17 +465,17 @@ public class mixregGUI extends javax.swing.JFrame {
 
         jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel14.setText("Random Intercept");
-        jPanel12.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, -1, -1));
+        jLabel14.setText("Main Effect");
+        jPanel12.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 60, -1, -1));
 
-        jLabel12.setText("Stage 2 Regressors");
-        jPanel12.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 20, -1, -1));
+        jLabel12.setText("Stage 2 Interactions");
+        jPanel12.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 20, -1, -1));
 
-        jLabel15.setText("Random Slope");
-        jPanel12.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 60, -1, -1));
-        jPanel12.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, 820, 10));
+        jLabel15.setText("Scale");
+        jPanel12.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 60, -1, -1));
+        jPanel12.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 40, 360, 10));
 
-        addStageTwoTabTwo.setText("Modify Stage 2 Regressors");
+        addStageTwoTabTwo.setText("Modify Regressors");
         addStageTwoTabTwo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addStageTwoTabTwoActionPerformed(evt);
@@ -483,13 +483,13 @@ public class mixregGUI extends javax.swing.JFrame {
         });
         jPanel12.add(addStageTwoTabTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 190, 40));
 
-        jLabel17.setText("WS Variance Component");
-        jPanel12.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 60, -1, -1));
+        jLabel17.setText("Random");
+        jPanel12.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 60, -1, -1));
 
-        jLabel18.setText("BS Variance Component");
-        jPanel12.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 60, 160, -1));
+        jLabel18.setText("Scale X Random");
+        jPanel12.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 60, 100, -1));
 
-        stageTwoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Stage-2"));
+        stageTwoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Stage-2 Regressors"));
 
         stageTwoRegsGrid.setLayout(new java.awt.BorderLayout());
 
@@ -2393,7 +2393,7 @@ public class mixregGUI extends javax.swing.JFrame {
         constraints.gridy = 0;
         constraints.weightx = 1.0;
         // constraints.weighty = 1.0;
-        constraints.anchor = GridBagConstraints.NORTH;
+        constraints.anchor = GridBagConstraints.NORTHEAST;
         //constraints.gridwidth = 4;
 
         GridBagConstraints separatorConstraint = new GridBagConstraints();
@@ -2404,15 +2404,14 @@ public class mixregGUI extends javax.swing.JFrame {
 
         constraints.insets = new Insets(3, 0, 5, 25);
         separatorConstraint.insets = new Insets(0, 0, 0, 0);
-        //constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.weightx = 1;
 
         stageTwoGridBoxes = new ArrayList<ArrayList<JCheckBox>>();
         //disaggVarianceBoxes = new ArrayList<ArrayList<JCheckBox>>();
 
         for (int j = 0; j < regSize; j++) {
-            constraints.gridx = 0;
-            constraints.anchor = GridBagConstraints.LINE_END;
+            constraints.gridx = 1;
+            constraints.anchor = GridBagConstraints.FIRST_LINE_START;
             stageTwoSelected_tab2.add(defaultListModel.getElementAt(j));
             stageTwoRegsGrid.add(new JLabel(stageTwoSelected_tab2.get(j)), constraints);
 
@@ -2420,8 +2419,16 @@ public class mixregGUI extends javax.swing.JFrame {
             stageTwoGridBoxes.add(j, new ArrayList<JCheckBox>());
 
             for (int k = 0; k < 4; k++) {
-
+                
+                if (k == 1){
+                
+                constraints.gridx = constraints.gridx + 5;
+                    
+                } else {
                 constraints.gridx++;
+                }
+
+                
                 constraints.anchor = GridBagConstraints.CENTER;
                 stageTwoGridBoxes.get(j).add(k, new JCheckBox());
 
@@ -2441,6 +2448,11 @@ public class mixregGUI extends javax.swing.JFrame {
         stageTwoPanel.add(scrollpanel);
         revalidate();
 
+    }
+    
+    public void updateStageTwoGrid_tab2v2(DefaultListModel<String> defaultListModel) {
+    
+    //todo: create two grid layouts here or try with a sep
     }
 
     public int countLevelOneBeta() {
