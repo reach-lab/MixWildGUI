@@ -2273,9 +2273,11 @@ public class mixregGUI extends javax.swing.JFrame {
                         if (selected) {
                             System.out.println("Checkbox selected");
                             disaggVarianceBoxes.get(row).get(column).setEnabled(true);
+                            disaggVarianceBoxes.get(row).get(column).setSelected(false);
                             System.out.println(disaggVarianceBoxes.size());
                         } else {
                             disaggVarianceBoxes.get(row).get(column).setEnabled(false);
+                            disaggVarianceBoxes.get(row).get(column).setSelected(false);
                         }
 
                     }
