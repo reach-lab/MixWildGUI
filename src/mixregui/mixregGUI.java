@@ -2273,9 +2273,11 @@ public class mixregGUI extends javax.swing.JFrame {
                         if (selected) {
                             System.out.println("Checkbox selected");
                             disaggVarianceBoxes.get(row).get(column).setEnabled(true);
+                            disaggVarianceBoxes.get(row).get(column).setSelected(false);
                             System.out.println(disaggVarianceBoxes.size());
                         } else {
                             disaggVarianceBoxes.get(row).get(column).setEnabled(false);
+                            disaggVarianceBoxes.get(row).get(column).setSelected(false);
                         }
 
                     }
@@ -2465,12 +2467,16 @@ public class mixregGUI extends javax.swing.JFrame {
                             System.out.println("Checkbox selected");
                             //disaggVarianceBoxes.get(row).get(column).setEnabled(true);
                             stageTwoGridBoxes.get(row).get(1).setEnabled(true);
+                            stageTwoGridBoxes.get(row).get(1).setSelected(false);
                             stageTwoGridBoxes.get(row).get(2).setEnabled(true);
+                            stageTwoGridBoxes.get(row).get(2).setSelected(false);
                             System.out.println(disaggVarianceBoxes.size());
                         } else {
                             //disaggVarianceBoxes.get(row).get(column).setEnabled(false);
                             stageTwoGridBoxes.get(row).get(1).setEnabled(false);
+                            stageTwoGridBoxes.get(row).get(1).setSelected(false);
                             stageTwoGridBoxes.get(row).get(2).setEnabled(false);
+                            stageTwoGridBoxes.get(row).get(2).setSelected(false);
                         }
 
                     }
@@ -2486,12 +2492,14 @@ public class mixregGUI extends javax.swing.JFrame {
                             
                             if (randomChecked == true){
                             stageTwoGridBoxes.get(row).get(3).setEnabled(true);
+                            stageTwoGridBoxes.get(row).get(3).setSelected(false);
                             }
                             
                             
                         } else {
                             scaleChecked = false;
                             stageTwoGridBoxes.get(row).get(3).setEnabled(false);
+                            stageTwoGridBoxes.get(row).get(3).setSelected(false);
                         }
                         
                        /* if (selected) {
@@ -2520,11 +2528,13 @@ public class mixregGUI extends javax.swing.JFrame {
                             
                             if (scaleChecked == true){
                             stageTwoGridBoxes.get(row).get(3).setEnabled(true);
+                            stageTwoGridBoxes.get(row).get(3).setSelected(false);
                             }
                             
                         } else {
                             randomChecked = false;
                             stageTwoGridBoxes.get(row).get(3).setEnabled(false);
+                            stageTwoGridBoxes.get(row).get(3).setSelected(false);
                         
                         }
                         
