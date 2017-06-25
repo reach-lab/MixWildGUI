@@ -244,7 +244,8 @@ public class mixregGUI extends javax.swing.JFrame {
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 2), new java.awt.Dimension(0, 2), new java.awt.Dimension(32767, 2));
         jPanel3 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
-        jLabel20 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        stageOneOutput = new javax.swing.JTextArea();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
@@ -552,23 +553,25 @@ public class mixregGUI extends javax.swing.JFrame {
 
         jPanel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel20.setText("Stage 1 Results Here ...");
+        stageOneOutput.setColumns(20);
+        stageOneOutput.setRows(5);
+        jScrollPane2.setViewportView(stageOneOutput);
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGap(299, 299, 299)
-                .addComponent(jLabel20)
-                .addContainerGap(377, Short.MAX_VALUE))
+                .addGap(54, 54, 54)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 697, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(70, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGap(134, 134, 134)
-                .addComponent(jLabel20)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addGap(25, 25, 25)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         jButton8.setText("Save Output As ...");
@@ -1486,6 +1489,12 @@ public class mixregGUI extends javax.swing.JFrame {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        try {
+            produceStageOneOutput();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }//GEN-LAST:event_runTabTwoStageOneTwoActionPerformed
 
@@ -1984,6 +1993,12 @@ public class mixregGUI extends javax.swing.JFrame {
         }
         // ******
         
+        try {
+            produceStageOneOutput();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         } else if (outcomeNone == false){
         
             stageOneTabs.setSelectedIndex(1);
@@ -2093,7 +2108,6 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -2116,6 +2130,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
@@ -2143,6 +2158,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JPanel parentPanel;
     private javax.swing.JButton resetButton;
     private javax.swing.JButton runTabTwoStageOneTwo;
+    private javax.swing.JTextArea stageOneOutput;
     private javax.swing.JTabbedPane stageOneTabs;
     private javax.swing.JComboBox<String> stageTwoOutcome;
     private javax.swing.JTextArea stageTwoOutput;
@@ -4088,11 +4104,20 @@ public class mixregGUI extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-        
-    
-    
     }
+    
+    public void produceStageOneOutput() throws FileNotFoundException{
+    
+        //FileReader reader = new FileReader("/Users/adityaponnada/NetBeansProjects/mixregMLS/src/resources/mixREGLS51.OUT");
+        
+        FileReader reader = new FileReader("/Users/adityaponnada/NetBeansProjects/mixregMLS/src/resources/mixREGLS51.OUT");
+        
+        try {
+            stageOneOutput.read(reader, "stageOneOutput");
+        } catch (IOException ex) {
+            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
 
 }
