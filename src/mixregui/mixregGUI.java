@@ -24,8 +24,11 @@ import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,6 +40,7 @@ import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
@@ -44,6 +48,8 @@ import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import static javax.swing.SwingConstants.CENTER;
 import javax.swing.border.MatteBorder;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  * d
@@ -253,7 +259,7 @@ public class mixregGUI extends javax.swing.JFrame {
         jPanel11 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         stageTwoOutput = new javax.swing.JTextArea();
-        jButton10 = new javax.swing.JButton();
+        saveStage2OutButton = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
@@ -644,8 +650,13 @@ public class mixregGUI extends javax.swing.JFrame {
 
         jPanel4.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 24, 940, -1));
 
-        jButton10.setText("Save Output As ...");
-        jPanel4.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 390, 227, 39));
+        saveStage2OutButton.setText("Save Output As ...");
+        saveStage2OutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveStage2OutButtonActionPerformed(evt);
+            }
+        });
+        jPanel4.add(saveStage2OutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 390, 227, 39));
 
         jButton11.setText("Save Stage 2 Def File As ...");
         jPanel4.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 390, 232, 39));
@@ -2034,6 +2045,16 @@ public class mixregGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_LinearAssociationRadioActionPerformed
 
+    private void saveStage2OutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveStage2OutButtonActionPerformed
+        try {
+            // TODO add your handling code here:
+
+            saveStageTwoOutput();
+        } catch (IOException ex) {
+            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_saveStage2OutButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2092,7 +2113,6 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JMenu helpMenu;
     private javax.swing.JPanel imageView;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton8;
@@ -2158,6 +2178,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JPanel parentPanel;
     private javax.swing.JButton resetButton;
     private javax.swing.JButton runTabTwoStageOneTwo;
+    private javax.swing.JButton saveStage2OutButton;
     private javax.swing.JTextArea stageOneOutput;
     private javax.swing.JTabbedPane stageOneTabs;
     private javax.swing.JComboBox<String> stageTwoOutcome;
@@ -4116,6 +4137,34 @@ public class mixregGUI extends javax.swing.JFrame {
             stageOneOutput.read(reader, "stageOneOutput");
         } catch (IOException ex) {
             Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
+    public void saveStageTwoOutput() throws IOException{
+        
+        FileFilter filter = new FileNameExtensionFilter("TEXT FILE","txt");
+    
+      JFileChooser saver = new JFileChooser("./");
+        saver.setFileFilter(filter);
+        int returnVal = saver.showSaveDialog(this);
+        File file = saver.getSelectedFile();
+        BufferedWriter writer = null;
+        if (returnVal == JFileChooser.APPROVE_OPTION)
+        {
+            try
+            {
+            writer = new BufferedWriter( new FileWriter( file.getName()+".txt"));
+            writer.write( stageTwoOutput.getText());
+            writer.close( );
+            JOptionPane.showMessageDialog(this, "The Message was Saved Successfully!",
+                        "Success!", JOptionPane.INFORMATION_MESSAGE);
+            }
+            catch (IOException e)
+            {
+            JOptionPane.showMessageDialog(this, "The Text could not be Saved!",
+                        "Error!", JOptionPane.INFORMATION_MESSAGE);
+            }
         }
     }
     
