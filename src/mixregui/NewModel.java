@@ -443,6 +443,9 @@ public class NewModel extends javax.swing.JFrame {
                 Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
             }
+            
+            NewModel.defFile.setOutputPrefix("Output_" + getOutPutFileName());
+            System.out.println("From defHelper | Output file name: " + NewModel.defFile.getOutputPrefix());
 
         } else {
             // do nothing and go next
@@ -702,5 +705,16 @@ public DefinitionHelper getDefFile(){
 
 return defFile;
 }
+
+public String getOutPutFileName() {
+
+      String outPut;
+
+        outPut = subtitleField.getText().toString();
+
+        return outPut;
+      
+      //return "";
+    }
 
 }
