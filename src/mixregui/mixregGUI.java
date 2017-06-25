@@ -581,6 +581,11 @@ public class mixregGUI extends javax.swing.JFrame {
         );
 
         jButton8.setText("Save Output As ...");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         jButton9.setText("Save Stage 1+2 Def File As ...");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
@@ -2054,6 +2059,11 @@ public class mixregGUI extends javax.swing.JFrame {
             Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_saveStage2OutButtonActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+        saveStageOneOutput();
+    }//GEN-LAST:event_jButton8ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -4143,7 +4153,7 @@ public class mixregGUI extends javax.swing.JFrame {
     
     public void saveStageTwoOutput() throws IOException{
         
-        FileFilter filter = new FileNameExtensionFilter("TEXT FILE","txt");
+      FileFilter filter = new FileNameExtensionFilter("TEXT FILE","txt");
     
       JFileChooser saver = new JFileChooser("./");
         saver.setFileFilter(filter);
@@ -4156,6 +4166,32 @@ public class mixregGUI extends javax.swing.JFrame {
             {
             writer = new BufferedWriter( new FileWriter( file.getName()+".txt"));
             writer.write( stageTwoOutput.getText());
+            writer.close( );
+            JOptionPane.showMessageDialog(this, "The Message was Saved Successfully!",
+                        "Success!", JOptionPane.INFORMATION_MESSAGE);
+            }
+            catch (IOException e)
+            {
+            JOptionPane.showMessageDialog(this, "The Text could not be Saved!",
+                        "Error!", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+    }
+    
+    public void saveStageOneOutput(){
+        FileFilter filter = new FileNameExtensionFilter("TEXT FILE","txt");
+    
+      JFileChooser saver = new JFileChooser("./");
+        saver.setFileFilter(filter);
+        int returnVal = saver.showSaveDialog(this);
+        File file = saver.getSelectedFile();
+        BufferedWriter writer = null;
+        if (returnVal == JFileChooser.APPROVE_OPTION)
+        {
+            try
+            {
+            writer = new BufferedWriter( new FileWriter( file.getName()+".txt"));
+            writer.write( stageOneOutput.getText());
             writer.close( );
             JOptionPane.showMessageDialog(this, "The Message was Saved Successfully!",
                         "Success!", JOptionPane.INFORMATION_MESSAGE);
