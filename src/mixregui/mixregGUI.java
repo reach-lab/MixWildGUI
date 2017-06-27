@@ -24,12 +24,17 @@ import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -110,6 +115,10 @@ public class mixregGUI extends javax.swing.JFrame {
     static ActionListener actionListener;
 
     int stageOneClicked = 0;
+    
+    JFileChooser fileChooser = new JFileChooser();
+    int selectedModel;
+    String defFilePath;
 
     /**
      * Creates new form mixregGUI
@@ -4203,6 +4212,127 @@ public class mixregGUI extends javax.swing.JFrame {
             }
         }
     }
+    
+    public void runMixedModels(){
+    
+        String absoluteJavaPath = System.getProperty( "user.dir" );
+        String defFileName = executableModel(selectedModel);
+        try {          
+            try 
+            { 
+                copyExecutable(defFilePath, selectedModel); //get the def file path after it is saved
+                Process p=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && dir && "
+                        + defFileName); // does it save it in the same directory
+                
+                p.waitFor(); 
+                BufferedReader reader=new BufferedReader(new InputStreamReader(p.getInputStream())); 
+                String line=reader.readLine(); 
+                while(line!=null) 
+                { 
+                System.out.println(line); 
+                line=reader.readLine(); 
+                } 
+             } 
+            catch(FileNotFoundException fnfe1){
+             System.out.println("File not found Exception"); 
+            }
+            catch(IOException e1) {
+              System.out.println("IO Exception"); 
+            } 
+            
+            try 
+            { 
+                Process p=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && del /f " + defFileName);
+                p.waitFor(); 
+                BufferedReader reader=new BufferedReader(new InputStreamReader(p.getInputStream())); 
+                String line=reader.readLine(); 
+                while(line!=null) 
+                { 
+                System.out.println(line); 
+                line=reader.readLine(); 
+                } 
+             } 
+            catch(FileNotFoundException fnfe1){
+             System.out.println("File not found Exception 2"); 
+            }
+            catch(IOException e1) {
+              System.out.println("IO Exception 2 "); 
+            }
+            
+            JOptionPane.showMessageDialog(null, defFilePath);
+            
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Failed");
+        }
+ 
+    }
+    
+    
+    private String executableModel(int modelSelection){
+        switch(modelSelection){
+            case DefinitionHelper.MIXREGLS_MIXREG_KEY:
+                return "mixregls_mixreg.exe";
+            case DefinitionHelper.MIXREGLS_MIXOR_KEY:
+                return "mixregls_mixor.exe";
+            case DefinitionHelper.MIXREGMLS_MIXREG_KEY:
+                return "mixregmls_mixreg.exe";
+            case DefinitionHelper.MIXREGMLS_MIXOR_KEY:
+                return "mixregmls_mixor.exe";
+           
+            default:
+                return "mixregls_mixreg.exe";
+        }
+    }
+    
+    
+    private void copyExecutable(String absoluteDirectoryPath, int modelSelection) throws FileNotFoundException, IOException{
+        String modelPath;
+        String executableName = executableModel(modelSelection);
+        switch(modelSelection){
+            case DefinitionHelper.MIXREGLS_MIXREG_KEY:
+                modelPath = "resources/Windows/mixregls_mixreg.exe";
+                break;
+            case DefinitionHelper.MIXREGLS_MIXOR_KEY:
+                modelPath = "resources/Windows/mixregls_mixor.exe";
+                break;
+            case DefinitionHelper.MIXREGMLS_MIXREG_KEY:
+                modelPath = "resources/Windows/mixregmls_mixreg.exe";
+                break;
+            case DefinitionHelper.MIXREGMLS_MIXOR_KEY:
+                modelPath = "resources/Windows/mixregmls_mixor.exe";
+                break;
+            default:
+                modelPath = "resources/Windows/mixregls_mixreg.exe";
+                break;
+        }
+        InputStream stream = getClass().getClassLoader().getResourceAsStream(modelPath);
+        
+        
+        OutputStream outputStream = 
+                new FileOutputStream(new File(absoluteDirectoryPath + executableName));
+
+        int read;
+        byte[] bytes = new byte[4096];
+
+        while ((read = stream.read(bytes)) > 0) {
+            outputStream.write(bytes, 0, read);
+        }
+        stream.close();
+        outputStream.close();
+    }
+    
+    
+    public void loadDefFile(){
+    
+    
+    
+    
+    
+    }
+    
+    
     
 
 }

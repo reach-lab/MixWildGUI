@@ -440,7 +440,7 @@ public class DefinitionHelper {
      *
      * @return
      */
-    public List<String> buildStageOneDefinitonList() throws Exception {
+    public List<String> buildStageOneDefinitonList() throws Exception { //does this create the def file
         List<String> newDefinitionFile = new ArrayList();
         newDefinitionFile.add(getModelTitle());
         newDefinitionFile.add(getModelSubtitle());
