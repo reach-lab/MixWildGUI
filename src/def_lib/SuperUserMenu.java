@@ -207,7 +207,7 @@ public class SuperUserMenu extends javax.swing.JFrame {
             { 
                 copyExecutable(defFilePath, selectedModel);
                 Process p=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && dir && "
-                        + defFileName);
+                        + defFileName); // does it save it in the same directory
                 
                 p.waitFor(); 
                 BufferedReader reader=new BufferedReader(new InputStreamReader(p.getInputStream())); 
