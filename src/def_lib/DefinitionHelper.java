@@ -1,13 +1,24 @@
 package def_lib;
 
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JEditorPane;
+import javax.swing.JFrame;
+import javax.swing.text.Document;
+import static mixregui.NewModel.defFile;
 
 /***
  * Exposed Methods:
@@ -1839,4 +1850,40 @@ public class DefinitionHelper {
             this.stageTwoFirstIntLabels = stageTwoFirstIntLabels;
         }
     }
+    
+    
+    public void writeDefFileToFolder(){
+        
+        try{
+        JFrame myFrame = new JFrame("Definition file preview");
+            myFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            myFrame.setSize(300,200);
+
+            JEditorPane myPane = new JEditorPane();
+            myPane.setContentType("text/plain");
+            try{
+            myPane.setText(String.join("\n",debugStageOneDefinitonList()).replace("[", "").replace("]", ""));
+            }
+            catch(Exception e){
+            myPane.setText(String.join("\n",debugStageOneDefinitonList()).replace("[", "").replace("]", ""));
+            }
+            myFrame.setContentPane(myPane);
+            myFrame.setVisible(true); 
+            Document defDoc = myPane.getDocument();
+            int length = defDoc.getLength();
+            File newDefFile = new File("defFile");
+            OutputStream os = new BufferedOutputStream(
+              new FileOutputStream(newDefFile + ".def"));
+            Writer w = new OutputStreamWriter(os);
+            myPane.write(w);
+            w.close();
+        }
+        catch(Exception exception){
+            exception.printStackTrace();
+        }
+    
+    
+    }
+    
+    
 }

@@ -1526,7 +1526,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private void startStageTwoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startStageTwoActionPerformed
         // TODO add your handling code here:
         
-        if (outcomeNone == true){
+        if (outcomeNone == false){
         
             int tryCount = 0;
             int catchCount = 0;
@@ -1996,6 +1996,8 @@ public class mixregGUI extends javax.swing.JFrame {
             int defCatch = 0;
             try {
                 List<String> defFileOutput;
+                
+                NewModel.defFile.writeDefFileToFolder();
 
                 defFileOutput = NewModel.defFile.buildStageOneDefinitonList();
 
@@ -2024,7 +2026,7 @@ public class mixregGUI extends javax.swing.JFrame {
             Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        } else if (outcomeNone == false){
+        } else if (outcomeNone == true){
         
             stageOneTabs.setSelectedIndex(1);
         
