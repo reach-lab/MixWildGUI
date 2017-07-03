@@ -15,6 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
 import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.text.Document;
@@ -1855,7 +1856,7 @@ public class DefinitionHelper {
     public void writeDefFileToFolder(){
         
         try{
-        JFrame myFrame = new JFrame("Definition file preview");
+        JFrame myFrame = new JFrame("JEditorPane Test");
             myFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             myFrame.setSize(300,200);
 
@@ -1871,7 +1872,7 @@ public class DefinitionHelper {
             myFrame.setVisible(true); 
             Document defDoc = myPane.getDocument();
             int length = defDoc.getLength();
-            File newDefFile = new File("defFile");
+            File newDefFile = new File("tester");
             OutputStream os = new BufferedOutputStream(
               new FileOutputStream(newDefFile + ".def"));
             Writer w = new OutputStreamWriter(os);
