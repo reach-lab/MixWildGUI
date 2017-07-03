@@ -1489,8 +1489,8 @@ public class mixregGUI extends javax.swing.JFrame {
             try {
                 List<String> defFileOutput;
 
+                NewModel.defFile.writeDefFileToFolder();
                 defFileOutput = NewModel.defFile.buildStageOneDefinitonList();
-
                 System.out.println("From defHelper | Stage 1 def file created successfully!");
 
             } catch (Exception ex) {
@@ -1750,7 +1750,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 tryCount = 1;
                 int withinCount = countLevelOneTau() + countLevelTwoTau() - countLevelOneDicompWS();
                 NewModel.defFile.setModelWithinCount(String.valueOf(withinCount));
-                System.out.println("From defHelper | Model Within Count: " + NewModel.defFile.getModelBetweenCount().toString());
+                System.out.println("From defHelper | Model Within Count: " + NewModel.defFile.getModelBetweenCount());
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -1996,6 +1996,8 @@ public class mixregGUI extends javax.swing.JFrame {
             int defCatch = 0;
             try {
                 List<String> defFileOutput;
+                
+                NewModel.defFile.writeDefFileToFolder();
 
                 defFileOutput = NewModel.defFile.buildStageOneDefinitonList();
 
@@ -2314,8 +2316,8 @@ public class mixregGUI extends javax.swing.JFrame {
         //constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.weightx = 1;
 
-        levelOneBoxes = new ArrayList<ArrayList<JCheckBox>>();
-        disaggVarianceBoxes = new ArrayList<ArrayList<JCheckBox>>();
+        levelOneBoxes = new ArrayList<>();
+        disaggVarianceBoxes = new ArrayList<>();
 
         for (int j = 0; j < regSize; j++) {
             constraints.gridx = 0;
@@ -4326,9 +4328,38 @@ public class mixregGUI extends javax.swing.JFrame {
     }
     
     
-    public void loadDefFile(){
+    public void runMixRegLS_mixor(){
+        
+        // if then select def file type
+        
+        int selectedModel = DefinitionHelper.MIXREGLS_MIXREG_KEY;
+        /*defLib = new DefinitionHelper(1,false);
+        runButton.setEnabled(true);
+        MixRegLS_Mixreg.setEnabled(false);
+        MixregLS_Mixor.setEnabled(false);
+        MixRegMLS_Mixreg.setEnabled(false);
+        MixRegMLS_Mixor.setEnabled(false);
+        LoadButton.setEnabled(true);*/
+        
+        
     
     
+    
+    }
+    
+    public void runMixRegLS_mixreg(){
+    
+    
+    
+    }
+    
+    public void runMixRegMLS_mixor(){
+    
+    
+    
+    }
+    
+    public void runMixRegMLS_mixreg(){
     
     
     

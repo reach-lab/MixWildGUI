@@ -1,13 +1,36 @@
 package def_lib;
 
+import java.awt.ComponentOrientation;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JButton;
+import javax.swing.JEditorPane;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.text.Document;
+import static mixregui.NewModel.defFile;
 
 /***
  * Exposed Methods:
@@ -40,6 +63,9 @@ public class DefinitionHelper {
 
     private int randomLocationEffects = 1;
     private boolean stageTwoBinary = Boolean.FALSE;
+    
+    JFrame myFrame;
+    JEditorPane myPane;
     /**
      * Initial Definition Parameters
      */
@@ -1839,4 +1865,109 @@ public class DefinitionHelper {
             this.stageTwoFirstIntLabels = stageTwoFirstIntLabels;
         }
     }
+    
+    
+    public void writeDefFileToFolder(){
+        
+        try{
+            myFrame = new JFrame("Definition File Preview");
+        
+            GridLayout defFileGrid = new GridLayout(0,2);
+            
+            FlowLayout defFileFlow = new FlowLayout();
+        
+            myFrame.setLayout(defFileFlow);
+            defFileFlow.setAlignment(FlowLayout.TRAILING);
+            myFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            myFrame.setSize(550,550);
+            
+           
+            myPane = new JEditorPane();
+            myPane.setSize(500, 500);
+            myPane.setContentType("text/plain");
+            try{
+            myPane.setText(String.join("\n",debugStageOneDefinitonList()).replace("[", "").replace("]", ""));
+            }
+            catch(Exception e){
+            myPane.setText(String.join("\n",debugStageOneDefinitonList()).replace("[", "").replace("]", ""));
+            }
+            //myFrame.setContentPane(myPane);
+            
+            JButton proceedButton = new JButton("Proceed");
+            JButton saveDefFile = new JButton("Save Def File");
+            
+            myFrame.add(myPane);
+            myFrame.add(proceedButton);
+            myFrame.add(saveDefFile);
+            myFrame.setComponentOrientation(ComponentOrientation.UNKNOWN);
+            
+            proceedButton.addActionListener(new ActionListener() {
+                
+                public void actionPerformed(ActionEvent e){
+                        myFrame.dispose();
+                }
+            
+            });
+            
+            
+            saveDefFile.addActionListener(new ActionListener() {
+                
+                public void actionPerformed(ActionEvent e){
+                    try {
+                        //save def file
+                        // nnn
+                        saveDefFileLocally();
+                    } catch (IOException ex) {
+                        Logger.getLogger(DefinitionHelper.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            
+            });
+            //validate();
+            //myFrame.add(new JButton("Proceed"));
+            myFrame.setVisible(true); 
+            Document defDoc = myPane.getDocument();
+            int length = defDoc.getLength();
+            File newDefFile = new File("tester");
+            OutputStream os = new BufferedOutputStream(
+              new FileOutputStream(newDefFile + ".def"));
+            Writer w = new OutputStreamWriter(os);
+            myPane.write(w);
+            w.close();
+        }
+        catch(Exception exception){
+            exception.printStackTrace();
+        }
+    
+    
+    }
+    
+    public void saveDefFileLocally() throws IOException{
+        
+      FileFilter filter = new FileNameExtensionFilter("TEXT FILE","txt");
+    
+      JFileChooser saver = new JFileChooser("./");
+        saver.setFileFilter(filter);
+        int returnVal = saver.showSaveDialog(myFrame);
+        File file = saver.getSelectedFile();
+        BufferedWriter writer = null;
+        if (returnVal == JFileChooser.APPROVE_OPTION)
+        {
+            try
+            {
+            writer = new BufferedWriter( new FileWriter( file.getName()+".txt"));
+            writer.write( myPane.getText());
+            writer.close( );
+            JOptionPane.showMessageDialog(myFrame, "The Message was Saved Successfully!",
+                        "Success!", JOptionPane.INFORMATION_MESSAGE);
+            }
+            catch (IOException e)
+            {
+            JOptionPane.showMessageDialog(myFrame, "The Text could not be Saved!",
+                        "Error!", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+    }
+    
+    
 }
