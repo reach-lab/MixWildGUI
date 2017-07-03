@@ -1,5 +1,10 @@
 package def_lib;
 
+import java.awt.ComponentOrientation;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.File;
@@ -1856,11 +1861,20 @@ public class DefinitionHelper {
     public void writeDefFileToFolder(){
         
         try{
-        JFrame myFrame = new JFrame("JEditorPane Test");
+        JFrame myFrame = new JFrame("Definition File Preview");
+        
+            GridLayout defFileGrid = new GridLayout(0,2);
+            
+            FlowLayout defFileFlow = new FlowLayout();
+        
+            myFrame.setLayout(defFileFlow);
+            defFileFlow.setAlignment(FlowLayout.TRAILING);
             myFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            myFrame.setSize(300,200);
-
+            myFrame.setSize(500,500);
+            
+           
             JEditorPane myPane = new JEditorPane();
+            myPane.setSize(500, 500);
             myPane.setContentType("text/plain");
             try{
             myPane.setText(String.join("\n",debugStageOneDefinitonList()).replace("[", "").replace("]", ""));
@@ -1868,7 +1882,28 @@ public class DefinitionHelper {
             catch(Exception e){
             myPane.setText(String.join("\n",debugStageOneDefinitonList()).replace("[", "").replace("]", ""));
             }
-            myFrame.setContentPane(myPane);
+            //myFrame.setContentPane(myPane);
+            
+            JButton proceedButton = new JButton("Proceed");
+            JButton saveDefFile = new JButton("Save Def File");
+            
+            myFrame.add(myPane);
+            myFrame.add(proceedButton);
+            myFrame.add(saveDefFile);
+            myFrame.setComponentOrientation(ComponentOrientation.UNKNOWN);
+            
+            proceedButton.addActionListener(new ActionListener() {
+                
+                public void actionPerformed(ActionEvent e){
+                        myFrame.dispose();
+                }
+            
+            });
+            
+            
+            
+            //validate();
+            //myFrame.add(new JButton("Proceed"));
             myFrame.setVisible(true); 
             Document defDoc = myPane.getDocument();
             int length = defDoc.getLength();
