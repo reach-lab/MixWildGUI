@@ -1870,7 +1870,7 @@ public class DefinitionHelper {
             myFrame.setLayout(defFileFlow);
             defFileFlow.setAlignment(FlowLayout.TRAILING);
             myFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            myFrame.setSize(500,500);
+            myFrame.setSize(550,550);
             
            
             JEditorPane myPane = new JEditorPane();
