@@ -14,6 +14,8 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
@@ -66,6 +68,9 @@ public class DefinitionHelper {
     
     JFrame myFrame;
     JEditorPane myPane;
+    
+    int selectedModel;
+    String defFilePath;
     /**
      * Initial Definition Parameters
      */
@@ -1891,7 +1896,6 @@ public class DefinitionHelper {
             catch(Exception e){
             myPane.setText(String.join("\n",debugStageOneDefinitonList()).replace("[", "").replace("]", ""));
             }
-            //myFrame.setContentPane(myPane);
             
             JButton proceedButton = new JButton("Proceed");
             JButton saveDefFile = new JButton("Save Def File");
@@ -1904,18 +1908,23 @@ public class DefinitionHelper {
             proceedButton.addActionListener(new ActionListener() {
                 
                 public void actionPerformed(ActionEvent e){
-                        myFrame.dispose();
+                    
+                        
+                    runModels();
+
+                    //select the program here
+                    // then read the output
+                    
+                    
+                    myFrame.dispose();
                 }
             
             });
-            
-            
+
             saveDefFile.addActionListener(new ActionListener() {
                 
                 public void actionPerformed(ActionEvent e){
                     try {
-                        //save def file
-                        // nnn
                         saveDefFileLocally();
                     } catch (IOException ex) {
                         Logger.getLogger(DefinitionHelper.class.getName()).log(Level.SEVERE, null, ex);
@@ -1923,8 +1932,7 @@ public class DefinitionHelper {
                 }
             
             });
-            //validate();
-            //myFrame.add(new JButton("Proceed"));
+            
             myFrame.setVisible(true); 
             Document defDoc = myPane.getDocument();
             int length = defDoc.getLength();
@@ -1969,5 +1977,135 @@ public class DefinitionHelper {
         }
     }
     
+    public void runModels(){
+    
+    String absoluteJavaPath = System.getProperty( "user.dir" );
+        String defFileName = executableModel(selectedModel);
+        try {          
+            try 
+            { 
+                copyExecutable(defFilePath, selectedModel);
+                Process p=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && dir && "
+                        + defFileName); // does it save it in the same directory
+                
+                p.waitFor(); 
+                BufferedReader reader=new BufferedReader(new InputStreamReader(p.getInputStream())); 
+                String line=reader.readLine(); 
+                while(line!=null) 
+                { 
+                System.out.println(line); 
+                line=reader.readLine(); 
+                } 
+             } 
+            catch(FileNotFoundException fnfe1){
+             System.out.println("File not found Exception"); 
+            }
+            catch(IOException e1) {
+              System.out.println("IO Exception"); 
+            } 
+            
+            try 
+            { 
+                Process p=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && del /f " + defFileName);
+                p.waitFor(); 
+                BufferedReader reader=new BufferedReader(new InputStreamReader(p.getInputStream())); 
+                String line=reader.readLine(); 
+                while(line!=null) 
+                { 
+                System.out.println(line); 
+                line=reader.readLine(); 
+                } 
+             } 
+            catch(FileNotFoundException fnfe1){
+             System.out.println("File not found Exception 2"); 
+            }
+            catch(IOException e1) {
+              System.out.println("IO Exception 2 "); 
+            }
+            
+            JOptionPane.showMessageDialog(null, defFilePath);
+            
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Failed");
+        }
+    
+    
+    }
+    
+    private String executableModel(int modelSelection){
+        switch(modelSelection){
+            case DefinitionHelper.MIXREGLS_MIXREG_KEY:
+                return "mixregls_mixreg.exe";
+            case DefinitionHelper.MIXREGLS_MIXOR_KEY:
+                return "mixregls_mixor.exe";
+            case DefinitionHelper.MIXREGMLS_MIXREG_KEY:
+                return "mixregmls_mixreg.exe";
+            case DefinitionHelper.MIXREGMLS_MIXOR_KEY:
+                return "mixregmls_mixor.exe";
+           
+            default:
+                return "mixregls_mixreg.exe";
+        }
+    }
+    
+    private void copyExecutable(String absoluteDirectoryPath, int modelSelection) throws FileNotFoundException, IOException{
+        String modelPath;
+        String executableName = executableModel(modelSelection);
+        switch(modelSelection){
+            case DefinitionHelper.MIXREGLS_MIXREG_KEY:
+                modelPath = "resources/Windows/mixregls_mixreg.exe";
+                break;
+            case DefinitionHelper.MIXREGLS_MIXOR_KEY:
+                modelPath = "resources/Windows/mixregls_mixor.exe";
+                break;
+            case DefinitionHelper.MIXREGMLS_MIXREG_KEY:
+                modelPath = "resources/Windows/mixregmls_mixreg.exe";
+                break;
+            case DefinitionHelper.MIXREGMLS_MIXOR_KEY:
+                modelPath = "resources/Windows/mixregmls_mixor.exe";
+                break;
+            default:
+                modelPath = "resources/Windows/mixregls_mixreg.exe";
+                break;
+        }
+        InputStream stream = getClass().getClassLoader().getResourceAsStream(modelPath);
+        
+        
+        OutputStream outputStream = 
+                new FileOutputStream(new File(absoluteDirectoryPath + executableName));
+
+        int read;
+        byte[] bytes = new byte[4096];
+
+        while ((read = stream.read(bytes)) > 0) {
+            outputStream.write(bytes, 0, read);
+        }
+        stream.close();
+        outputStream.close();
+    }
+    
+    public void modelSelector(int randomLocEffects, boolean outcomeContinious){
+        if(randomLocEffects == 1 && outcomeContinious == true){
+            
+            selectedModel = DefinitionHelper.MIXREGLS_MIXREG_KEY;
+        
+        } else if (randomLocEffects == 1 && outcomeContinious == false) {
+            
+            selectedModel = DefinitionHelper.MIXREGLS_MIXOR_KEY;
+        
+        } else if (randomLocEffects > 1 && outcomeContinious == true){
+            
+            selectedModel = DefinitionHelper.MIXREGMLS_MIXREG_KEY;
+        
+        } else if (randomLocEffects > 1 && outcomeContinious == false){
+            
+            selectedModel = DefinitionHelper.MIXREGMLS_MIXOR_KEY;
+        }
+        
+        //return selectedModel;
+      
+    }
     
 }
