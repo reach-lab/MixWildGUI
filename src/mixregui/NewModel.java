@@ -400,6 +400,8 @@ public class NewModel extends javax.swing.JFrame {
         
         defFile = new DefinitionHelper(RLE, !isOutcomeContinous());
         
+        defFile.modelSelector(RLE, isOutcomeContinous());
+        
         if (filePath.getText().toString().equals("")){
         
         JOptionPane.showMessageDialog(null, "Please upload a datafile to start your analysis", "Caution!", JOptionPane.INFORMATION_MESSAGE);
