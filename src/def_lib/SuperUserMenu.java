@@ -57,76 +57,76 @@ public class SuperUserMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        runButton = new javax.swing.JButton();
+        MixRegLS_Mixreg = new javax.swing.JButton();
+        MixregLS_Mixor = new javax.swing.JButton();
+        MixRegMLS_Mixreg = new javax.swing.JButton();
+        MixRegMLS_Mixor = new javax.swing.JButton();
+        LoadButton = new javax.swing.JButton();
+        ResetButton = new javax.swing.JButton();
+        viewDefButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Run");
-        jButton1.setEnabled(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        runButton.setText("Run");
+        runButton.setEnabled(false);
+        runButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                runButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setText("MixRegLS Mixreg");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        MixRegLS_Mixreg.setText("MixRegLS Mixreg");
+        MixRegLS_Mixreg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                MixRegLS_MixregActionPerformed(evt);
             }
         });
 
-        jButton3.setText("MixregLS Mixor");
-        jButton3.setToolTipText("");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        MixregLS_Mixor.setText("MixregLS Mixor");
+        MixregLS_Mixor.setToolTipText("");
+        MixregLS_Mixor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                MixregLS_MixorActionPerformed(evt);
             }
         });
 
-        jButton4.setText("MixRegMLS Mixreg");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        MixRegMLS_Mixreg.setText("MixRegMLS Mixreg");
+        MixRegMLS_Mixreg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                MixRegMLS_MixregActionPerformed(evt);
             }
         });
 
-        jButton5.setText("MixRegMLS Mixor");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        MixRegMLS_Mixor.setText("MixRegMLS Mixor");
+        MixRegMLS_Mixor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                MixRegMLS_MixorActionPerformed(evt);
             }
         });
 
-        jButton6.setText("Load Definition File");
-        jButton6.setToolTipText("");
-        jButton6.setEnabled(false);
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        LoadButton.setText("Load Definition File");
+        LoadButton.setToolTipText("");
+        LoadButton.setEnabled(false);
+        LoadButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                LoadButtonActionPerformed(evt);
             }
         });
 
-        jButton7.setText("Reset");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        ResetButton.setText("Reset");
+        ResetButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                ResetButtonActionPerformed(evt);
             }
         });
 
-        jButton8.setText("View Definition File");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        viewDefButton.setText("View Definition File");
+        viewDefButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                viewDefButtonActionPerformed(evt);
             }
         });
 
@@ -145,20 +145,20 @@ public class SuperUserMenu extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
-                                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jButton6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton8)
+                                    .addComponent(MixregLS_Mixor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(MixRegLS_Mixreg, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                    .addComponent(MixRegMLS_Mixreg, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
+                                    .addComponent(MixRegMLS_Mixor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(LoadButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(viewDefButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(runButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(ResetButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -179,26 +179,26 @@ public class SuperUserMenu extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(MixRegLS_Mixreg, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(MixRegMLS_Mixor, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(MixregLS_Mixor, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(MixRegMLS_Mixreg, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
-                .addComponent(jButton7)
+                .addComponent(ResetButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton6)
-                    .addComponent(jButton8))
+                    .addComponent(runButton)
+                    .addComponent(LoadButton)
+                    .addComponent(viewDefButton))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void runButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_runButtonActionPerformed
        // String absoluteDefFilePath = "C:/Users/Eldin/Desktop/";
         String absoluteJavaPath = System.getProperty( "user.dir" );
         String defFileName = executableModel(selectedModel);
@@ -207,7 +207,7 @@ public class SuperUserMenu extends javax.swing.JFrame {
             { 
                 copyExecutable(defFilePath, selectedModel);
                 Process p=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && dir && "
-                        + defFileName);
+                        + defFileName); // does it save it in the same directory
                 
                 p.waitFor(); 
                 BufferedReader reader=new BufferedReader(new InputStreamReader(p.getInputStream())); 
@@ -251,56 +251,56 @@ public class SuperUserMenu extends javax.swing.JFrame {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Failed");
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_runButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void MixRegLS_MixregActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MixRegLS_MixregActionPerformed
         int selectedModel = DefinitionHelper.MIXREGLS_MIXREG_KEY;
         defLib = new DefinitionHelper(1,false);
-        jButton1.setEnabled(true);
-        jButton2.setEnabled(false);
-        jButton3.setEnabled(false);
-        jButton4.setEnabled(false);
-        jButton5.setEnabled(false);
-        jButton6.setEnabled(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+        runButton.setEnabled(true);
+        MixRegLS_Mixreg.setEnabled(false);
+        MixregLS_Mixor.setEnabled(false);
+        MixRegMLS_Mixreg.setEnabled(false);
+        MixRegMLS_Mixor.setEnabled(false);
+        LoadButton.setEnabled(true);
+    }//GEN-LAST:event_MixRegLS_MixregActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void MixRegMLS_MixorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MixRegMLS_MixorActionPerformed
         int selectedModel = DefinitionHelper.MIXREGMLS_MIXOR_KEY;
         defLib = new DefinitionHelper(3,true);
-        jButton1.setEnabled(true);
-        jButton2.setEnabled(false);
-        jButton3.setEnabled(false);
-        jButton4.setEnabled(false);
-        jButton5.setEnabled(false);
-        jButton6.setEnabled(true);
+        runButton.setEnabled(true);
+        MixRegLS_Mixreg.setEnabled(false);
+        MixregLS_Mixor.setEnabled(false);
+        MixRegMLS_Mixreg.setEnabled(false);
+        MixRegMLS_Mixor.setEnabled(false);
+        LoadButton.setEnabled(true);
         
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_MixRegMLS_MixorActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void MixregLS_MixorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MixregLS_MixorActionPerformed
         int selectedModel = DefinitionHelper.MIXREGLS_MIXOR_KEY;
         defLib = new DefinitionHelper(1,true);
-        jButton1.setEnabled(true);
-        jButton2.setEnabled(false);
-        jButton3.setEnabled(false);
-        jButton4.setEnabled(false);
-        jButton5.setEnabled(false);
-        jButton6.setEnabled(true);
+        runButton.setEnabled(true);
+        MixRegLS_Mixreg.setEnabled(false);
+        MixregLS_Mixor.setEnabled(false);
+        MixRegMLS_Mixreg.setEnabled(false);
+        MixRegMLS_Mixor.setEnabled(false);
+        LoadButton.setEnabled(true);
  
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_MixregLS_MixorActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void MixRegMLS_MixregActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MixRegMLS_MixregActionPerformed
         int selectedModel = DefinitionHelper.MIXREGMLS_MIXREG_KEY;
         defLib = new DefinitionHelper(3,false);
-        jButton1.setEnabled(true);
-        jButton2.setEnabled(false);
-        jButton3.setEnabled(false);
-        jButton4.setEnabled(false);
-        jButton5.setEnabled(false);
-        jButton6.setEnabled(true);
+        runButton.setEnabled(true);
+        MixRegLS_Mixreg.setEnabled(false);
+        MixregLS_Mixor.setEnabled(false);
+        MixRegMLS_Mixreg.setEnabled(false);
+        MixRegMLS_Mixor.setEnabled(false);
+        LoadButton.setEnabled(true);
 
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_MixRegMLS_MixregActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void LoadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoadButtonActionPerformed
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Data files","def");
         
         fileChooser.setFileFilter(filter);
@@ -343,19 +343,19 @@ public class SuperUserMenu extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_LoadButtonActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void ResetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResetButtonActionPerformed
         defLib = null;
-        jButton1.setEnabled(false);
-        jButton2.setEnabled(true);
-        jButton3.setEnabled(true);
-        jButton4.setEnabled(true);
-        jButton5.setEnabled(true);
-        jButton6.setEnabled(false);
-    }//GEN-LAST:event_jButton7ActionPerformed
+        runButton.setEnabled(false);
+        MixRegLS_Mixreg.setEnabled(true);
+        MixregLS_Mixor.setEnabled(true);
+        MixRegMLS_Mixreg.setEnabled(true);
+        MixRegMLS_Mixor.setEnabled(true);
+        LoadButton.setEnabled(false);
+    }//GEN-LAST:event_ResetButtonActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void viewDefButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDefButtonActionPerformed
         try{
         JFrame myFrame = new JFrame("JEditorPane Test");
             myFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -383,7 +383,7 @@ public class SuperUserMenu extends javax.swing.JFrame {
         catch(Exception exception){
             exception.printStackTrace();
         }
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_viewDefButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -421,16 +421,16 @@ public class SuperUserMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
+    private javax.swing.JButton LoadButton;
+    private javax.swing.JButton MixRegLS_Mixreg;
+    private javax.swing.JButton MixRegMLS_Mixor;
+    private javax.swing.JButton MixRegMLS_Mixreg;
+    private javax.swing.JButton MixregLS_Mixor;
+    private javax.swing.JButton ResetButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton runButton;
+    private javax.swing.JButton viewDefButton;
     // End of variables declaration//GEN-END:variables
 
     private void fileOpen() {

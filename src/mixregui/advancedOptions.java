@@ -12,6 +12,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+// Group the first three advanced options
+// rename based on stage 1 column names (keep RLE in mind)
+
 /**
  *
  * @author adityaponnada
@@ -41,6 +44,11 @@ public class advancedOptions extends javax.swing.JFrame {
         //standardizedCoeff.setToolTipText("Tool tip here");
         ridgeSpinner.setToolTipText("Tool tip here");
         centerRegressorsCheckBox.setToolTipText("Tool tip here");
+        
+        meanSubmodelCheckBox.setSelected(true);
+        BSVarianceCheckBox.setSelected(true);
+        WSVarianceCheckBox.setSelected(true);
+        adaptiveQuadritureCheckBox.setSelected(true);
         
        // missingValueCode.setEnabled(false);
     }
