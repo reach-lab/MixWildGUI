@@ -109,12 +109,12 @@ public class DefinitionHelper {
      * Stage 1 Model Specification
      */
     private String[] idOutcome;
-    private String[] fieldModelMeanRegressors;
-    private String[] fieldModelBSRegressors;
-    private String[] fieldModelWSRegressors;
+    private String[] fieldModelMeanRegressors; // stage 1 under mean - disagg. 
+    private String[] fieldModelBSRegressors; // random intercept
+    private String[] fieldModelWSRegressors; // random scale
     private String[] fieldModelLocRanRegressors;
     private String[] fieldModelScaleRegressors;
-    private String[] fieldDecompMeanRegressors;
+    private String[] fieldDecompMeanRegressors; 
     private String[] fieldDecompBSRegressors;
     private String[] fieldDecompWSRegressors;
     private String[] fieldDecompLocRanRegressors;
@@ -143,10 +143,10 @@ public class DefinitionHelper {
      */
     private String stageTwoOutcomeField;
     private String[] stageTwoOutcomeCatLabel;
-    private String[] stageTwoFixedFields;
-    private String[] stageTwoLocRanIntFields;
-    private String[] stageTwoScaleIntFields;
-    private String[] stageTwoFirstIntFields;
+    private String[] stageTwoFixedFields; // main effect
+    private String[] stageTwoLocRanIntFields; //random
+    private String[] stageTwoScaleIntFields; //scale
+    private String[] stageTwoFirstIntFields; //scale * random
     private String stageTwoOutcomeLabel;
     private String[] stageTwoFixedLabels;
     private String[] stageTwoLocRanIntLabels;

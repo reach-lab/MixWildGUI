@@ -1,30 +1,30 @@
-title
-subtitle
+rrr
+sss
 /Users/adityaponnada/Downloads/sampleNovel_dataSet.csv
-Output_subtitle
-156  2  1  2  1  0  0  0  1  0  0.001  11  0  1  -9999  0  0  0.15
+Output_sss
+156  1  2  2  1  0  0  1  0  0  0.001  11  0  1  -9999  0  0  0.15
 1  2
 
 
 
+7
 
-9
 
 WAVE
 
 
 
+FULLTIME
 
-DAY
 
 1  1  1  0
 3
-8
-8
-8
+4
+4
+4
 null
 DATA
-DATE
-DATE
-DATE
+NOVEL_ID
+NOVEL_ID
+NOVEL_ID
 null
