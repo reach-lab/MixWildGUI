@@ -2383,6 +2383,11 @@ public class mixregGUI extends javax.swing.JFrame {
 
         }
 
+        
+        levelOnePanel.removeAll();
+        levelOnePanel.revalidate();
+        levelOnePanel.repaint();
+        
         levelOnePanel.add(scrollpanel);
         revalidate();
 
@@ -2450,6 +2455,10 @@ public class mixregGUI extends javax.swing.JFrame {
 
         }
 
+        levelTwoPanel.removeAll();
+        levelTwoPanel.revalidate();
+        levelTwoPanel.repaint();
+        
         levelTwoPanel.add(scrollpanel);
         revalidate();
 
@@ -2628,6 +2637,10 @@ public class mixregGUI extends javax.swing.JFrame {
 
         }
 
+        stageTwoPanel.removeAll();
+        stageTwoPanel.revalidate();
+        stageTwoPanel.repaint();
+        
         stageTwoPanel.add(scrollpanel);
         revalidate();
 
