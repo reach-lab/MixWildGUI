@@ -398,9 +398,14 @@ public class NewModel extends javax.swing.JFrame {
 
     private void newModelSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModelSubmitActionPerformed
         
+        RLE = (Integer) randomLocationEffects.getValue();
+        
         defFile = new DefinitionHelper(RLE, !isOutcomeContinous());
+        System.out.println("RLE: " + String.valueOf(RLE));
         
         defFile.modelSelector(RLE, isOutcomeContinous());
+        
+        System.out.println("MODEL SELECTOR: " + String.valueOf(defFile.getSelectedModel()));
         
         if (filePath.getText().toString().equals("")){
         
@@ -456,7 +461,7 @@ public class NewModel extends javax.swing.JFrame {
         
        
         // Read random location effects from new Model
-        RLE = (Integer) randomLocationEffects.getValue();
+        //RLE = (Integer) randomLocationEffects.getValue();
         NoneVar = isOutcomeNone();
        
         System.out.println("NoneVar: " + String.valueOf(NoneVar));

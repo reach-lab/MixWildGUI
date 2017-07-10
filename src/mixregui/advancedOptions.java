@@ -46,9 +46,12 @@ public class advancedOptions extends javax.swing.JFrame {
         centerRegressorsCheckBox.setToolTipText("Tool tip here");
         
         meanSubmodelCheckBox.setSelected(true);
+        
         BSVarianceCheckBox.setSelected(true);
         WSVarianceCheckBox.setSelected(true);
         adaptiveQuadritureCheckBox.setSelected(true);
+        
+        
         
        // missingValueCode.setEnabled(false);
     }

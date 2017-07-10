@@ -1936,7 +1936,23 @@ public class DefinitionHelper {
             myFrame.setVisible(true); 
             Document defDoc = myPane.getDocument();
             int length = defDoc.getLength();
-            File newDefFile = new File("tester");
+            
+            File newDefFile = new File("MIXREGLS_MIXREG_KEY");
+            
+            if (selectedModel == DefinitionHelper.MIXREGLS_MIXREG_KEY){
+                newDefFile = new File("MIXREGLS_MIXREG");
+            } else if (selectedModel == DefinitionHelper.MIXREGLS_MIXOR_KEY){
+            
+                newDefFile = new File("MIXREGLS_MIXOR");
+            } else if (selectedModel == DefinitionHelper.MIXREGMLS_MIXREG_KEY){
+                
+                newDefFile = new File("MIXREGMLS_MIXREG");
+            } else if (selectedModel == DefinitionHelper.MIXREGMLS_MIXOR_KEY) {
+            
+                newDefFile = new File("MIXREGMLS_MIXOR");
+            }
+            
+           // File newDefFile = new File("tester");
             OutputStream os = new BufferedOutputStream(
               new FileOutputStream(newDefFile + ".def"));
             Writer w = new OutputStreamWriter(os);
@@ -2087,25 +2103,42 @@ public class DefinitionHelper {
     }
     
     public void modelSelector(int randomLocEffects, boolean outcomeContinious){
+        
+        System.out.println("inside MODEL SELECTOR");
+        
         if(randomLocEffects == 1 && outcomeContinious == true){
             
-            selectedModel = DefinitionHelper.MIXREGLS_MIXREG_KEY;
+            selectedModel = MIXREGLS_MIXREG_KEY;
+            
+            System.out.println("MODEL SELECTED: " + "DEFFILE" + String.valueOf(selectedModel));
         
         } else if (randomLocEffects == 1 && outcomeContinious == false) {
             
-            selectedModel = DefinitionHelper.MIXREGLS_MIXOR_KEY;
+            selectedModel = MIXREGLS_MIXOR_KEY;
+            
+            System.out.println("MODEL SELECTED: " + "DEFFILE" + String.valueOf(selectedModel));
         
         } else if (randomLocEffects > 1 && outcomeContinious == true){
             
-            selectedModel = DefinitionHelper.MIXREGMLS_MIXREG_KEY;
+            selectedModel = MIXREGMLS_MIXREG_KEY;
+            
+            System.out.println("MODEL SELECTED: " + "DEFFILE" + String.valueOf(selectedModel));
         
         } else if (randomLocEffects > 1 && outcomeContinious == false){
             
-            selectedModel = DefinitionHelper.MIXREGMLS_MIXOR_KEY;
+            selectedModel = MIXREGMLS_MIXOR_KEY;
+            
+            System.out.println("MODEL SELECTED: " + "DEFFILE" + String.valueOf(selectedModel));
         }
         
         //return selectedModel;
       
+    }
+    
+    public int getSelectedModel(){
+    
+    return selectedModel;
+    
     }
     
 }
