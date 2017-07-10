@@ -1957,6 +1957,8 @@ public class DefinitionHelper {
               new FileOutputStream(newDefFile + ".def"));
             Writer w = new OutputStreamWriter(os);
             myPane.write(w);
+            defFilePath = newDefFile.getAbsolutePath();
+            System.out.println("PATH-NAME: " + defFilePath);
             w.close();
         }
         catch(Exception exception){
@@ -1997,6 +1999,7 @@ public class DefinitionHelper {
     
     String absoluteJavaPath = System.getProperty( "user.dir" );
         String defFileName = executableModel(selectedModel);
+        
         try {          
             try 
             { 
@@ -2041,13 +2044,14 @@ public class DefinitionHelper {
             
             JOptionPane.showMessageDialog(null, defFilePath);
             
+            
         }
         catch (Exception ex){
             ex.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Failed");
+            //JOptionPane.showMessageDialog(null, ex.getMessage() + "Failed");
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
         }
-    
-    
+
     }
     
     private String executableModel(int modelSelection){
