@@ -1958,6 +1958,7 @@ public class DefinitionHelper {
             Writer w = new OutputStreamWriter(os);
             myPane.write(w);
             defFilePath = newDefFile.getAbsolutePath();
+            System.out.println("PATH-NAME: " + defFilePath);
             w.close();
         }
         catch(Exception exception){
