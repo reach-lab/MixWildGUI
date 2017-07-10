@@ -2,29 +2,29 @@ title
 subtitle
 /Users/adityaponnada/Downloads/sampleNovel_dataSet.csv
 Output_subtitle
-156  2  1  2  null  null  null  0  1  0  null  null  null  null  -9999  null  0  null
+156  1  1  2  1  1  1  1  1  0  0.001  11  0  1  -9999  0  0  0.15
 1  2
 
 15
 
-
+6
 
 
 WAVE
 
 REPROMPTS
 
-
+DAY_COUNT
 DAY_COUNT
 
 1  1  1  0  null
 3
-8
-8
-8
+4
+4
+4
 null
 DATA
-DATE
-DATE
-DATE
+NOVEL_ID
+NOVEL_ID
+NOVEL_ID
 null
