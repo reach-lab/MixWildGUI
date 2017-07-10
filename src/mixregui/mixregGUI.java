@@ -1725,9 +1725,10 @@ public class mixregGUI extends javax.swing.JFrame {
 
             try {
                 tryCount = 1;
-                int MeanCount = countLevelOneBeta() + countLevelTwoBeta() - countLevelOneDicompMean();
+                int MeanCount = countLevelOneBeta() + countLevelTwoBeta() - countLevelOneDicompMean(); //check this ======================
                 // count total mean regressors in level one and level two
                 NewModel.defFile.setModelMeanCount(String.valueOf(MeanCount));
+                System.out.println("From mixRegGUI | Stage 1 Model Mean Count: " + String.valueOf(MeanCount));
                 System.out.println("From defHelper | Stage 1 Model Mean Count: " + NewModel.defFile.getModelMeanCount().toString());
             } catch (Exception ex) {
                 catchCount = 1;
@@ -1875,7 +1876,7 @@ public class mixregGUI extends javax.swing.JFrame {
             try {
                 // get variable names from selected mean regressors
                 NewModel.defFile.setFieldModelMeanRegressors(fieldModelMeanArray());
-                System.out.println("From defHelper | #Stage One Mean Regressors: " + NewModel.defFile.getFieldModelMeanRegressors().length);
+                System.out.println("From defHelper | #Stage One Mean Regressors: " + NewModel.defFile.getFieldModelMeanRegressors().length); //check this ===============
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
