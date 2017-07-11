@@ -4,18 +4,18 @@ subtitle
 Output_subtitle
 156  2  1  2  1  0  0  0  1  0  0.001  11  0  1  -9999  0  0  0.15
 1  2
-6  17
-17
-6  17
+7  14
+14
+7  14
 
-6
+7
 
 WAVE
-DAY_COUNT  DEMO_SEX
-DEMO_SEX
-DAY_COUNT  DAY_COUNT
+FULLTIME  PROMPT
+PROMPT
+FULLTIME  FULLTIME
 
-DAY_COUNT
+FULLTIME
 
 1  1  1  1  null
 3
