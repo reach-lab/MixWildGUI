@@ -1383,20 +1383,28 @@ public class DefinitionHelper {
     }
 
     public String[] getFieldModelMeanRegressors() {
+        System.out.println("DEF HELPER MEAN FIELDS (GET): " + Arrays.toString(fieldModelMeanRegressors));
         return fieldModelMeanRegressors;
     }
 
     //fix
     public void setFieldModelMeanRegressors(String[] fieldModelMeanRegressors) throws Exception {
-        if (getModelMeanCount().matches("0")){
+        
+        System.out.println("DEF HELPER MEAN FIELDS:  " + Arrays.toString(fieldModelMeanRegressors));
+        System.out.println("The valueeee"+ getModelMeanCount().toString());
+        if (getModelMeanCount().equals("0")){
+            
             this.fieldModelMeanRegressors = new String[0];
+            System.out.println("DEF HELPER MEAN FIELDS (IF):  " + Arrays.toString(this.fieldModelMeanRegressors));
         }
         else if (loopSetValidator("model mean regressor fields", "7", fieldModelMeanRegressors, 0, 255, MIX_INTEGER)) {
             this.fieldModelMeanRegressors = fieldModelMeanRegressors;
+            System.out.println("DEF HELPER MEAN FIELDS (ELSE): " + Arrays.toString(this.fieldModelMeanRegressors));
         }
     }
 
     public String[] getFieldModelBSRegressors() {
+        
         return fieldModelBSRegressors;
     }
 
@@ -1538,7 +1546,9 @@ public class DefinitionHelper {
     }
     // done
     public void setLabelModelMeanRegressors(String[] labelModelMeanRegressors) throws Exception {
+        System.out.println("The Valueeeee again: " + getModelMeanCount());
         if (getModelMeanCount().matches("0")){
+            
             this.labelModelMeanRegressors = new String[0];
         }
         else if (loopSetValidator("model mean regressor labels", "14", labelModelMeanRegressors, 1, 255, MIX_STRING)) {
