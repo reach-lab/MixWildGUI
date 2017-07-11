@@ -1399,7 +1399,7 @@ public class mixregGUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
         
-        if (suppressed == true) {
+        if (suppressed == false) {
             
             try {
                 NewModel.defFile.setStageTwoIntOfInteraction(String.valueOf(countStageTwoInteractions()));
@@ -1439,20 +1439,8 @@ public class mixregGUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
 
-//        if (suppressed == true) {
-//            
-//            try {
-//                NewModel.defFile.setStageTwoIntOfInteraction(String.valueOf(countStageTwoInteractions()));
-//                System.out.println("From defHelper | STAGE TWO INTERACTIONS COUNT: " + NewModel.defFile.getStageTwoIntOfInteraction().toString());
-//            } catch (Exception ex) {
-//                catchCount = 1;
-//                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-//                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-//            }
-//            
-//        }
         
-        if (suppressed == true) {
+        if (suppressed == false) {
             
             try {
                 NewModel.defFile.setStageTwoFirstIntFields(getInteractionFieldRegressors_StageTwo());
