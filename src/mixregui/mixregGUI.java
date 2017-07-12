@@ -1956,7 +1956,8 @@ public class mixregGUI extends javax.swing.JFrame {
             }
 
             try {
-                NewModel.defFile.setFieldDecompLocRanRegressors(getBSFieldRegressorLabels_levelOne());
+                NewModel.defFile.setFieldDecompLocRanRegressors(getBSDecompFieldRegressorLabels_levelOne());
+                //NewModel.defFile.setFieldDecompLocRanRegressors(fieldModelBSArray());
                 System.out.println("From defHelper | #Stage One BS(RanLoc) + Disagg. Regressors: " + NewModel.defFile.getFieldDecompLocRanRegressors().length);
             } catch (Exception ex) {
                 catchCount = 1;
