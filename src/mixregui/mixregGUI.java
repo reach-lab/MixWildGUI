@@ -1956,7 +1956,8 @@ public class mixregGUI extends javax.swing.JFrame {
             }
 
             try {
-                NewModel.defFile.setFieldDecompLocRanRegressors(getBSFieldRegressorLabels_levelOne());
+                NewModel.defFile.setFieldDecompLocRanRegressors(getBSDecompFieldRegressorLabels_levelOne());
+                //NewModel.defFile.setFieldDecompLocRanRegressors(fieldModelBSArray());
                 System.out.println("From defHelper | #Stage One BS(RanLoc) + Disagg. Regressors: " + NewModel.defFile.getFieldDecompLocRanRegressors().length);
             } catch (Exception ex) {
                 catchCount = 1;
@@ -4187,7 +4188,7 @@ public class mixregGUI extends javax.swing.JFrame {
         ArrayList<String> regressorLabels = new ArrayList<String>();
         int index = 0;
 
-        for (int p = 0; p < levelTwoRegSize; p++) {
+        for (int p = 0; p < stageTwoRegSize; p++) {
 
             if (stageTwoGridBoxes.get(p).get(0).isSelected()) {
                 regressorLabels.add(stageTwoSelected_tab2.get(p));
@@ -4220,7 +4221,7 @@ public class mixregGUI extends javax.swing.JFrame {
         ArrayList<String> regressorLabels = new ArrayList<String>();
         int index = 0;
 
-        for (int p = 0; p < levelTwoRegSize; p++) {
+        for (int p = 0; p < stageTwoRegSize; p++) {
 
             if (stageTwoGridBoxes.get(p).get(1).isSelected()) {
                 regressorLabels.add(stageTwoSelected_tab2.get(p));
@@ -4253,7 +4254,7 @@ public class mixregGUI extends javax.swing.JFrame {
         ArrayList<String> regressorLabels = new ArrayList<String>();
         int index = 0;
 
-        for (int p = 0; p < levelTwoRegSize; p++) {
+        for (int p = 0; p < stageTwoRegSize; p++) {
 
             if (stageTwoGridBoxes.get(p).get(2).isSelected()) {
                 regressorLabels.add(stageTwoSelected_tab2.get(p));
@@ -4341,7 +4342,7 @@ public class mixregGUI extends javax.swing.JFrame {
         ArrayList<String> regressorLabels = new ArrayList<String>();
         int index = 0;
 
-        for (int p = 0; p < levelTwoRegSize; p++) {
+        for (int p = 0; p < stageTwoRegSize; p++) {
 
             if (stageTwoGridBoxes.get(p).get(3).isSelected()) {
                 regressorLabels.add(stageTwoSelected_tab2.get(p));
