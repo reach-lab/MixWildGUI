@@ -157,7 +157,7 @@ public class advancedOptions extends javax.swing.JFrame {
         jLabel11.setText("Ridge:");
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
 
-        maximumIterations.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        maximumIterations.setModel(new javax.swing.SpinnerNumberModel(100, 1, null, 1));
         jPanel2.add(maximumIterations, new org.netbeans.lib.awtextra.AbsoluteConstraints(182, 7, 69, -1));
 
         ridgeSpinner.setModel(new javax.swing.SpinnerNumberModel(0.15d, 0.0d, 1.0d, 0.01d));
