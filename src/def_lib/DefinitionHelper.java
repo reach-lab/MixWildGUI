@@ -1901,7 +1901,7 @@ public class DefinitionHelper {
             myPane = new JEditorPane();
             myPane.setSize(500, 500);
             myPane.setContentType("text/plain");
-            myPane.setFont(new Font("Monospaced", 0, 14));
+            myPane.setFont(new Font("Monospaced", 0, 12));
             try{
             myPane.setText(String.join("\n",debugStageOneDefinitonList()).replace("[", "").replace("]", ""));
             }

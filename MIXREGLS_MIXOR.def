@@ -1,30 +1,30 @@
-asasa
-asdsd
+fghfh
+asasddf
 /Users/adityaponnada/Downloads/sampleNovel_dataSet.csv
-Output_asdsd
-156  3  1  2  1  0  0  0  1  0  0.001  11  0  100  -9999  0  0  0.15
+Output_asasddf
+156  3  2  2  1  0  0  0  2  1  0.001  11  0  100  -9999  0  0  0.15
 1  2
-14  7  15
-21
-14  15
+8  7  11
+16  11
+7  11
 
-7
-
+8  7
+8
 WAVE
-FULLTIME  PROMPT  REPROMPTS
-DEMO_GRADE
-PROMPT  FULLTIME
+FULLTIME  DATE  WEEKEND
+WEEKEND  COMPLY
+FULLTIME  FULLTIME
 
-FULLTIME
-
+FULLTIME  DATE
+DATE
 2  2  2  1  null
 3
-16  8
-16  8
-16  8
-8
+13  5
+13  5
+13  5
+13
 DATA
-DATE  COMPLY
-DATE  COMPLY
-DATE  COMPLY
-DATE
+ID_COUNT  TYPE
+ID_COUNT  TYPE
+ID_COUNT  TYPE
+TYPE
