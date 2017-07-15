@@ -569,6 +569,7 @@ public class mixregGUI extends javax.swing.JFrame {
         jPanel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         stageOneOutput.setColumns(20);
+        stageOneOutput.setFont(new java.awt.Font("Monospaced", 0, 13)); // NOI18N
         stageOneOutput.setRows(5);
         jScrollPane2.setViewportView(stageOneOutput);
 
@@ -642,6 +643,7 @@ public class mixregGUI extends javax.swing.JFrame {
         jPanel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         stageTwoOutput.setColumns(20);
+        stageTwoOutput.setFont(new java.awt.Font("Monospaced", 0, 13)); // NOI18N
         stageTwoOutput.setRows(5);
         jScrollPane1.setViewportView(stageTwoOutput);
 
