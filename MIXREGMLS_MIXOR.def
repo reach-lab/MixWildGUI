@@ -1,30 +1,30 @@
-title
-subtitle
+fff
+fvf
 /Users/adityaponnada/Downloads/sampleNovel_dataSet.csv
-Output_subtitle
-156  2  1  2  1  1  1  0  1  0  0.001  11  0  1  -9999  0  0  0.15
+Output_fvf
+156  2  2  2  1  1  1  0  1  1  0.001  11  0  100  -9999  0  0  0.15
 1  2
+7  10
+11  18
+7  10
 
-14
-
-
-
-
+7
+11
 WAVE
+FULLTIME  DOW
+WEEKEND  DEMO_MARITAL_STATUS
+FULLTIME  FULLTIME
 
-PROMPT
-
-
-DATE
-
-1  1  1  0  null
+FULLTIME
+WEEKEND
+2  2  1  1  null
 3
+8  5
+8  5
 5
 5
-5
-null
 DATA
+ID_COUNT  DATE
+ID_COUNT  DATE
 ID_COUNT
 ID_COUNT
-ID_COUNT
-null

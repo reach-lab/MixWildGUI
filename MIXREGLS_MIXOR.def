@@ -1,30 +1,29 @@
-title
-subtitn
+t
+ddd
 /Users/adityaponnada/Downloads/sampleNovel_dataSet.csv
-Output_subtitn
-156  3  2  2  1  0  0  0  2  1  0.001  11  0  100  -9999  0  0  0.15
+Output_ddd
+156  2  2  2  1  0  0  1  1  0  0.001  11  0  100  -9999  0  0  0.15
 1  2
-7  9  12
-18  16
-9  12
-
-10  9
-7
-WAVE
-DAY  FULLTIME  TOD
-COMPLY  DEMO_MARITAL_STATUS
-DAY  DAY
-
-DAY  DOW
-FULLTIME
-2  2  1  1  null
+5  9
+3  9
+3  20
 3
-5  11
-5  11
 5
-5
+
+WAVE
+ID_COUNT  DAY
+DATA  DAY
+DATA  ID_COUNT
 DATA
-WEEKEND  ID_COUNT
-WEEKEND  ID_COUNT
 ID_COUNT
-ID_COUNT
+
+2  2  1  0  null
+3
+14  10
+14  10
+10
+
+DATA
+DOW  PROMPT
+DOW  PROMPT
+DOW

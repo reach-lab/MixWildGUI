@@ -311,8 +311,8 @@ public class mixregGUI extends javax.swing.JFrame {
         imageView.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel16.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/mixReg_v3.png"))); // NOI18N
-        imageView.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, 570, 400));
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/mixWild.png"))); // NOI18N
+        imageView.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, 680, 400));
 
         parentPanel.add(imageView, "card3");
 
@@ -569,6 +569,7 @@ public class mixregGUI extends javax.swing.JFrame {
         jPanel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         stageOneOutput.setColumns(20);
+        stageOneOutput.setFont(new java.awt.Font("Monospaced", 0, 13)); // NOI18N
         stageOneOutput.setRows(5);
         jScrollPane2.setViewportView(stageOneOutput);
 
@@ -642,6 +643,7 @@ public class mixregGUI extends javax.swing.JFrame {
         jPanel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         stageTwoOutput.setColumns(20);
+        stageTwoOutput.setFont(new java.awt.Font("Monospaced", 0, 13)); // NOI18N
         stageTwoOutput.setRows(5);
         jScrollPane1.setViewportView(stageTwoOutput);
 
