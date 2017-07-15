@@ -1,29 +1,30 @@
-t
-ddd
+fghfh
+asasddf
 /Users/adityaponnada/Downloads/sampleNovel_dataSet.csv
-Output_ddd
-156  2  2  2  1  0  0  1  1  0  0.001  11  0  100  -9999  0  0  0.15
+Output_asasddf
+156  3  2  2  1  0  0  0  2  1  0.001  11  0  100  -9999  0  0  0.15
 1  2
-5  9
-3  9
-3  20
-3
-5
+8  7  11
+16  11
+7  11
 
+8  7
+8
 WAVE
-ID_COUNT  DAY
-DATA  DAY
-DATA  ID_COUNT
-DATA
-ID_COUNT
+FULLTIME  DATE  WEEKEND
+WEEKEND  COMPLY
+FULLTIME  FULLTIME
 
-2  2  1  0  null
+FULLTIME  DATE
+DATE
+2  2  2  1  null
 3
-14  10
-14  10
-10
-
+13  5
+13  5
+13  5
+13
 DATA
-DOW  PROMPT
-DOW  PROMPT
-DOW
+ID_COUNT  TYPE
+ID_COUNT  TYPE
+ID_COUNT  TYPE
+TYPE

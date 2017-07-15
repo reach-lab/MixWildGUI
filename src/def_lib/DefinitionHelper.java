@@ -2,6 +2,7 @@ package def_lib;
 
 import java.awt.ComponentOrientation;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -1900,6 +1901,7 @@ public class DefinitionHelper {
             myPane = new JEditorPane();
             myPane.setSize(500, 500);
             myPane.setContentType("text/plain");
+            myPane.setFont(new Font("Monospaced", 0, 12));
             try{
             myPane.setText(String.join("\n",debugStageOneDefinitonList()).replace("[", "").replace("]", ""));
             }
