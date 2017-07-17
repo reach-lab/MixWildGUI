@@ -37,6 +37,7 @@ public class NewModel extends javax.swing.JFrame {
     static boolean NoneVar;
     static mixregGUI mxr;
     InstructionsGUI instructions;
+    static boolean isRandomScale = false;
     
     /**
      *
@@ -113,6 +114,8 @@ public class NewModel extends javax.swing.JFrame {
         noneRadio = new javax.swing.JRadioButton();
         jButton1 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        randomScaleCheckBox = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("New Model for Stage 1 Analysis");
@@ -226,6 +229,14 @@ public class NewModel extends javax.swing.JFrame {
 
         jLabel9.setText("Please go through the following");
 
+        jLabel10.setText("Random Scale?");
+
+        randomScaleCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                randomScaleCheckBoxActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -269,14 +280,6 @@ public class NewModel extends javax.swing.JFrame {
                             .addComponent(jLabel7))
                         .addGap(18, 18, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(titleField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
-                                    .addComponent(filePath, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(subtitleField, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(fileBrowseButton))
-                            .addComponent(randomLocationEffects, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(newModelSubmit)
                                 .addGroup(layout.createSequentialGroup()
@@ -289,8 +292,21 @@ public class NewModel extends javax.swing.JFrame {
                                             .addComponent(newModelMissingValues))
                                         .addGroup(layout.createSequentialGroup()
                                             .addGap(162, 162, 162)
-                                            .addComponent(jLabel1))))))
-                        .addContainerGap(42, Short.MAX_VALUE))))
+                                            .addComponent(jLabel1)))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(randomLocationEffects, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel10))
+                                    .addComponent(titleField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
+                                    .addComponent(filePath, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(subtitleField, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(fileBrowseButton)
+                                    .addComponent(randomScaleCheckBox))))
+                        .addContainerGap(40, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -315,38 +331,42 @@ public class NewModel extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(randomLocationEffects, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(randomLocationEffects, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10)
+                    .addComponent(randomScaleCheckBox))
                 .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(jLabel5))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(continuousRadio)
-                                .addComponent(dichotomousRadio)
-                                .addComponent(noneRadio)))
-                        .addGap(12, 12, 12)
+                        .addGap(2, 2, 2)
+                        .addComponent(jLabel5))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(continuousRadio)
+                        .addComponent(dichotomousRadio)
+                        .addComponent(noneRadio)))
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(newModelMissingValueCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel8)
-                                .addComponent(jLabel6))))
-                    .addComponent(newModelMissingValues))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel6)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(newModelSubmit)
+                                    .addComponent(newModelCancel)
+                                    .addComponent(newModel_resetButton)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(17, 17, 17))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(newModelSubmit)
-                            .addComponent(newModelCancel)
-                            .addComponent(newModel_resetButton)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(17, 17, 17))
+                        .addComponent(newModelMissingValues)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
@@ -475,6 +495,15 @@ public class NewModel extends javax.swing.JFrame {
        
        defFile.setModelSubtitle(getSubTitle());
        System.out.println("From defHelper | Subtitle: " + defFile.getModelSubtitle());
+       
+       if (randomScaleCheckBox.isSelected()){
+           
+            isRandomScale = true;
+        
+        } else {
+            isRandomScale = false;
+       
+       }
         
        mxr = new mixregGUI();
        mxr.isSubmitClicked();
@@ -550,6 +579,10 @@ public class NewModel extends javax.swing.JFrame {
         instructions.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void randomScaleCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_randomScaleCheckBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_randomScaleCheckBoxActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -610,6 +643,7 @@ public class NewModel extends javax.swing.JFrame {
     private javax.swing.JTextField filePath;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -625,6 +659,7 @@ public class NewModel extends javax.swing.JFrame {
     private javax.swing.JButton newModel_resetButton;
     private javax.swing.JRadioButton noneRadio;
     private javax.swing.JSpinner randomLocationEffects;
+    private javax.swing.JCheckBox randomScaleCheckBox;
     private javax.swing.JTextField subtitleField;
     private javax.swing.JTextField titleField;
     // End of variables declaration//GEN-END:variables
