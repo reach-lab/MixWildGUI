@@ -68,6 +68,8 @@ public class NewModel extends javax.swing.JFrame {
        newModelMissingValueCode.setEnabled(false);
        newModelMissingValues.setEnabled(false);
        newModelMissingValues.setSelected(true);
+       noneRadio.setEnabled(false);
+       randomScaleCheckBox.setEnabled(false);
        
        dataFileLabel.setToolTipText("Insert a data file in .csv format");
        fileBrowseButton.setToolTipText("Insert a data file in .csv format");
@@ -306,7 +308,7 @@ public class NewModel extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(fileBrowseButton)
                                     .addComponent(randomScaleCheckBox))))
-                        .addContainerGap(40, Short.MAX_VALUE))))
+                        .addContainerGap(42, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -403,6 +405,8 @@ public class NewModel extends javax.swing.JFrame {
         newModelSubmit.setEnabled(true);
         newModelMissingValues.setEnabled(true);
         newModelMissingValueCode.setEnabled(true);
+        noneRadio.setEnabled(true);
+        randomScaleCheckBox.setEnabled(true);
         
         newModelMissingValueCode.selectAll();
         
