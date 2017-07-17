@@ -2666,6 +2666,12 @@ public class mixregGUI extends javax.swing.JFrame {
                 levelTwoBoxes.get(j).add(k, new JCheckBox());
                 levelTwoGrid.add(levelTwoBoxes.get(j).get(k), constraints);
             }
+            
+            if (NewModel.isRandomScale){
+                
+                    levelTwoBoxes.get(j).get(1).setEnabled(false);
+                
+                }
 
             constraints.gridy++;
 
@@ -3076,6 +3082,13 @@ public class mixregGUI extends javax.swing.JFrame {
 
         return stageTwoInter;
 
+    }
+    
+    public void disableLevelTwoRandomLocation(){
+    
+    
+    
+    
     }
 
     public String[] getMeanFieldRegressorLabels_levelOne() {
