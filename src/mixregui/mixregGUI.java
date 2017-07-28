@@ -2753,9 +2753,12 @@ public class mixregGUI extends javax.swing.JFrame {
             
             if (NewModel.isRandomScale){
                 
-                    levelTwoBoxes.get(j).get(1).setEnabled(false);
+                    levelTwoBoxes.get(j).get(2).setEnabled(true);
                 
-                }
+                } else {
+            
+                    levelTwoBoxes.get(j).get(2).setEnabled(false);
+            }
 
             constraints.gridy++;
 
