@@ -529,6 +529,10 @@ public class NewModel extends javax.swing.JFrame {
             isRandomScale = false;
        
        }
+       
+     
+       
+       
         
        mxr = new mixregGUI();
        mxr.isSubmitClicked();
