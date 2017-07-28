@@ -184,7 +184,7 @@ public class advancedOptions extends javax.swing.JFrame {
         jLabel9.setText("Resample?");
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
 
-        resampleSpinner.setModel(new javax.swing.SpinnerNumberModel(100, 1, 1000, 1));
+        resampleSpinner.setModel(new javax.swing.SpinnerNumberModel(100, 1, 10000, 1));
         jPanel2.add(resampleSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 60, -1));
 
         jButton1.setText("Submit");
