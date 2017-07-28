@@ -1,30 +1,29 @@
-tititi
-jggjgjjg
+tititle
+sfndkj
 /Users/adityaponnada/Downloads/sampleNovel_dataSet.csv
-Output_jggjgjjg
-156  2  1  2  1  0  0  0  1  0  0.001  11  1  100  -9999  null  0  0.15
+Output_sfndkj
+156  2  1  2  1  0  0  0  1  0  0.001  11  0  100  -9999  0  0  0.15
 1  2
-4  7
-7
-4  7
+5  16
+16
+5  16
 
-4
+5
 
 WAVE
-NOVEL_ID  FULLTIME
-FULLTIME
-NOVEL_ID  NOVEL_ID
+ID_COUNT  COMPLY
+COMPLY
+ID_COUNT  ID_COUNT
 
-NOVEL_ID
+ID_COUNT
 
-2  1  2  1  null
+1  1  1  0  null
 3
-14  9
-9
-14  9
-9
+10
+10
+10
+
 DATA
-DAY  PROMPT
-DAY
-DAY  PROMPT
-DAY
+DOW
+DOW
+DOW

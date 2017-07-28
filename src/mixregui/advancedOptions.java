@@ -85,7 +85,7 @@ public class advancedOptions extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         centerRegressorsCheckBox = new javax.swing.JCheckBox();
         jLabel9 = new javax.swing.JLabel();
-        resampleCheckBox = new javax.swing.JCheckBox();
+        resampleSpinner = new javax.swing.JSpinner();
         jButton1 = new javax.swing.JButton();
         advancedOptions_resetButton = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
@@ -177,12 +177,8 @@ public class advancedOptions extends javax.swing.JFrame {
         jLabel9.setText("Resample?");
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
 
-        resampleCheckBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resampleCheckBoxActionPerformed(evt);
-            }
-        });
-        jPanel2.add(resampleCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, -1, -1));
+        resampleSpinner.setModel(new javax.swing.SpinnerNumberModel(100, 1, 1000, 1));
+        jPanel2.add(resampleSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 60, -1));
 
         jButton1.setText("Submit");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -410,10 +406,6 @@ public class advancedOptions extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_advancedOptionsCancelActionPerformed
 
-    private void resampleCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resampleCheckBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_resampleCheckBoxActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -474,7 +466,7 @@ public class advancedOptions extends javax.swing.JFrame {
     private javax.swing.JSpinner maximumIterations;
     private javax.swing.JCheckBox meanSubmodelCheckBox;
     private javax.swing.JSpinner quadriturePoints;
-    private javax.swing.JCheckBox resampleCheckBox;
+    private javax.swing.JSpinner resampleSpinner;
     private javax.swing.JSpinner ridgeSpinner;
     // End of variables declaration//GEN-END:variables
 
@@ -600,17 +592,17 @@ public class advancedOptions extends javax.swing.JFrame {
       return "";
     }
     
-    public int isResamplingChecked() {
-
-        int checked = 0;
-
-        if (resampleCheckBox.isSelected() == true) {
-            checked = 1;
-        } else {
-            checked = 0;
-        }
-
-        return checked;
-    }
+//    public int isResamplingChecked() {
+//
+//        int checked = 0;
+//
+//        if (resampleCheckBox.isSelected() == true) {
+//            checked = 1;
+//        } else {
+//            checked = 0;
+//        }
+//
+//        return checked;
+//    }
 
 }
