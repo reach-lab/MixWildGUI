@@ -1,30 +1,30 @@
-mixmodels
-output
+tititi
+jggjgjjg
 /Users/adityaponnada/Downloads/sampleNovel_dataSet.csv
-Output_output
-156  3  1  2  1  0  0  0  2  1  0.001  11  0  100  -9999  0  1  0.15
+Output_jggjgjjg
+156  2  1  2  1  0  0  0  1  0  0.001  11  1  100  -9999  null  0  0.15
 1  2
-12  8  9
-16
-8  9
+4  7
+7
+4  7
 
-12  8
-12
+4
+
 WAVE
-DATE  TOD  DAY
-COMPLY
-DATE  DATE
+NOVEL_ID  FULLTIME
+FULLTIME
+NOVEL_ID  NOVEL_ID
 
-DATE  TOD
-TOD
-2  2  1  1  null
+NOVEL_ID
+
+2  1  2  1  null
 3
-10  4
-10  4
-10
-10
+14  9
+9
+14  9
+9
 DATA
-NOVEL_ID  DOW
-NOVEL_ID  DOW
-DOW
-DOW
+DAY  PROMPT
+DAY
+DAY  PROMPT
+DAY
