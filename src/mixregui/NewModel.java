@@ -18,6 +18,7 @@ import javax.swing.JOptionPane;
 import def_lib.DefinitionHelper;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -39,6 +40,8 @@ public class NewModel extends javax.swing.JFrame {
     InstructionsGUI instructions;
     static boolean isRandomScale = false;
     
+    final ImageIcon icon;
+    
     /**
      *
      */
@@ -54,6 +57,7 @@ public class NewModel extends javax.swing.JFrame {
         
        fileChooser = new JFileChooser();
        instructions = new InstructionsGUI();
+       icon = new ImageIcon(getClass().getResource("/resources/mixLogo.png"));
       // defFile = new def_lib.DefinitionHelper();
       
       //subtitle ---> ouput prefix + date and time
@@ -423,6 +427,7 @@ public class NewModel extends javax.swing.JFrame {
         newModelMissingValueCode.setEnabled(true);
         noneRadio.setEnabled(true);
         randomScaleCheckBox.setEnabled(true);
+        randomScaleCheckBox.setSelected(true);
         
         newModelMissingValueCode.selectAll();
         
@@ -530,6 +535,88 @@ public class NewModel extends javax.swing.JFrame {
        mxr.setVisible(true);
        //Update ID, stage one and stage two variable comboboxes
        mxr.updateComboBoxes();
+       
+       //set advanced options defaults
+        try {
+            NewModel.defFile.setModelFixedInt(String.valueOf(1));
+            System.out.println("From defHelper | Mean SubModel Checked?: " + NewModel.defFile.getModelFixedInt());
+            //tryCount = 1;
+        } catch (Exception ex) {
+            //catchCount = 1;
+            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+        }
+        
+        try {
+            NewModel.defFile.setModelRandomInt(String.valueOf(1));
+            System.out.println("From defHelper | BS SubModel Checked?: " + NewModel.defFile.getModelRandomInt());
+            
+        } catch (Exception ex) {
+            
+            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+        }
+        
+        try {
+            NewModel.defFile.setModelScaleInt(String.valueOf(1));
+            System.out.println("From defHelper | WS SubModel Checked?: " + NewModel.defFile.getModelScaleInt());
+            //tryCount = 1;
+        } catch (Exception ex) {
+            //catchCount = 1;
+            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+        }
+        
+        try {
+            NewModel.defFile.setAdvancedAdaptiveQuad(String.valueOf(1));
+            System.out.println("From defHelper | Adaptive Quadriture Checked?: " + NewModel.defFile.getAdvancedAdaptiveQuad());
+            //tryCount = 1;
+        } catch (Exception ex) {
+            //catchCount = 1;
+            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+        }
+        
+        try {
+            NewModel.defFile.setAdvancedConvergence(String.valueOf(0.001));
+            System.out.println("From defHelper | Convergence: " + NewModel.defFile.getAdvancedConvergence());
+            //tryCount = 1;
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+            //catchCount = 1;
+        }
+        
+        try {
+            NewModel.defFile.setAdvancedQuadPoints(String.valueOf(11));
+            System.out.println("From defHelper | Quadriture Points: " + NewModel.defFile.getAdvancedQuadPoints());
+            //tryCount = 1;
+        } catch (Exception ex) {
+            //catchCount = 1;
+            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+        }
+        
+        try {
+            NewModel.defFile.setAdvancedMaxIteration(String.valueOf(100));
+            System.out.println("From defHelper | Maximum Iteraions: " + NewModel.defFile.getAdvancedMaxIteration());
+            //tryCount = 1;
+        } catch (Exception ex) {
+            //catchCount = 1;
+            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+        }
+        
+        try {
+            NewModel.defFile.setAdvancedRidge(String.valueOf(0.15));
+            System.out.println("From defHelper | Ridge: " + NewModel.defFile.getAdvancedRidge());
+            //tryCount = 1;
+        } catch (Exception ex) {
+            //catchCount = 1;
+            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+        }
       
        
         this.dispose();

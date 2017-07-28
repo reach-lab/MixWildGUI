@@ -1,30 +1,29 @@
-title
-subtitn
+jbjhb
+kjbkjb
 /Users/adityaponnada/Downloads/sampleNovel_dataSet.csv
-Output_subtitn
-156  2  1  3  1  0  0  2  2  1  0.001  11  0  100  -9999  0  0  0.15
+Output_kjbkjb
+156  2  1  2  1  0  0  0  1  0  0.001  11  1  100  -9999  null  0  0.15
 1  2
-5  16
-18
-7  5  16
-12  7
-12  5
+8  12
 12
+8  12
+
+8
+
 WAVE
-ID_COUNT  COMPLY
-DEMO_MARITAL_STATUS
-ID_COUNT  FULLTIME  ID_COUNT
-FULLTIME  TOD
-ID_COUNT  TOD
+DATE  TOD
 TOD
-2  2  2  1
+DATE  DATE
+
+DATE
+
+1  1  1  0
 3
-17  9
-17  9
-17  9
-9
+14
+14
+14
+
 DATA
-DAY  DEMO_SEX
-DAY  DEMO_SEX
-DAY  DEMO_SEX
-DAY
+PROMPT
+PROMPT
+PROMPT
