@@ -427,6 +427,7 @@ public class NewModel extends javax.swing.JFrame {
         newModelMissingValueCode.setEnabled(true);
         noneRadio.setEnabled(true);
         randomScaleCheckBox.setEnabled(true);
+        randomScaleCheckBox.setSelected(true);
         
         newModelMissingValueCode.selectAll();
         
