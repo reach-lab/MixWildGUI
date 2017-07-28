@@ -604,5 +604,11 @@ public class advancedOptions extends javax.swing.JFrame {
 //
 //        return checked;
 //    }
+    
+    public Integer getResamplingRate() {
+
+        return (Integer) resampleSpinner.getValue();
+
+    }
 
 }
