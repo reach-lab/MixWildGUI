@@ -2,6 +2,7 @@ package def_lib;
 
 import java.awt.ComponentOrientation;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -109,12 +110,12 @@ public class DefinitionHelper {
      * Stage 1 Model Specification
      */
     private String[] idOutcome;
-    private String[] fieldModelMeanRegressors;
-    private String[] fieldModelBSRegressors;
-    private String[] fieldModelWSRegressors;
+    private String[] fieldModelMeanRegressors; // stage 1 under mean - disagg. 
+    private String[] fieldModelBSRegressors; // random intercept
+    private String[] fieldModelWSRegressors; // random scale
     private String[] fieldModelLocRanRegressors;
     private String[] fieldModelScaleRegressors;
-    private String[] fieldDecompMeanRegressors;
+    private String[] fieldDecompMeanRegressors; 
     private String[] fieldDecompBSRegressors;
     private String[] fieldDecompWSRegressors;
     private String[] fieldDecompLocRanRegressors;
@@ -143,10 +144,10 @@ public class DefinitionHelper {
      */
     private String stageTwoOutcomeField;
     private String[] stageTwoOutcomeCatLabel;
-    private String[] stageTwoFixedFields;
-    private String[] stageTwoLocRanIntFields;
-    private String[] stageTwoScaleIntFields;
-    private String[] stageTwoFirstIntFields;
+    private String[] stageTwoFixedFields; // main effect
+    private String[] stageTwoLocRanIntFields; //random
+    private String[] stageTwoScaleIntFields; //scale
+    private String[] stageTwoFirstIntFields; //scale * random
     private String stageTwoOutcomeLabel;
     private String[] stageTwoFixedLabels;
     private String[] stageTwoLocRanIntLabels;
@@ -1383,20 +1384,28 @@ public class DefinitionHelper {
     }
 
     public String[] getFieldModelMeanRegressors() {
+        System.out.println("DEF HELPER MEAN FIELDS (GET): " + Arrays.toString(fieldModelMeanRegressors));
         return fieldModelMeanRegressors;
     }
 
     //fix
     public void setFieldModelMeanRegressors(String[] fieldModelMeanRegressors) throws Exception {
-        if (getModelMeanCount().matches("0")){
+        
+        System.out.println("DEF HELPER MEAN FIELDS:  " + Arrays.toString(fieldModelMeanRegressors));
+        System.out.println("The valueeee"+ getModelMeanCount().toString());
+        if (getModelMeanCount().equals("0")){
+            
             this.fieldModelMeanRegressors = new String[0];
+            System.out.println("DEF HELPER MEAN FIELDS (IF):  " + Arrays.toString(this.fieldModelMeanRegressors));
         }
         else if (loopSetValidator("model mean regressor fields", "7", fieldModelMeanRegressors, 0, 255, MIX_INTEGER)) {
             this.fieldModelMeanRegressors = fieldModelMeanRegressors;
+            System.out.println("DEF HELPER MEAN FIELDS (ELSE): " + Arrays.toString(this.fieldModelMeanRegressors));
         }
     }
 
     public String[] getFieldModelBSRegressors() {
+        
         return fieldModelBSRegressors;
     }
 
@@ -1538,7 +1547,9 @@ public class DefinitionHelper {
     }
     // done
     public void setLabelModelMeanRegressors(String[] labelModelMeanRegressors) throws Exception {
+        System.out.println("The Valueeeee again: " + getModelMeanCount());
         if (getModelMeanCount().matches("0")){
+            
             this.labelModelMeanRegressors = new String[0];
         }
         else if (loopSetValidator("model mean regressor labels", "14", labelModelMeanRegressors, 1, 255, MIX_STRING)) {
@@ -1890,6 +1901,7 @@ public class DefinitionHelper {
             myPane = new JEditorPane();
             myPane.setSize(500, 500);
             myPane.setContentType("text/plain");
+            myPane.setFont(new Font("Monospaced", 0, 12));
             try{
             myPane.setText(String.join("\n",debugStageOneDefinitonList()).replace("[", "").replace("]", ""));
             }
@@ -1936,11 +1948,29 @@ public class DefinitionHelper {
             myFrame.setVisible(true); 
             Document defDoc = myPane.getDocument();
             int length = defDoc.getLength();
-            File newDefFile = new File("tester");
+            
+            File newDefFile = new File("MIXREGLS_MIXREG_KEY");
+            
+            if (selectedModel == DefinitionHelper.MIXREGLS_MIXREG_KEY){
+                newDefFile = new File("MIXREGLS_MIXREG");
+            } else if (selectedModel == DefinitionHelper.MIXREGLS_MIXOR_KEY){
+            
+                newDefFile = new File("MIXREGLS_MIXOR");
+            } else if (selectedModel == DefinitionHelper.MIXREGMLS_MIXREG_KEY){
+                
+                newDefFile = new File("MIXREGMLS_MIXREG");
+            } else if (selectedModel == DefinitionHelper.MIXREGMLS_MIXOR_KEY) {
+            
+                newDefFile = new File("MIXREGMLS_MIXOR");
+            }
+            
+           // File newDefFile = new File("tester");
             OutputStream os = new BufferedOutputStream(
               new FileOutputStream(newDefFile + ".def"));
             Writer w = new OutputStreamWriter(os);
             myPane.write(w);
+            defFilePath = newDefFile.getAbsolutePath();
+            System.out.println("PATH-NAME: " + defFilePath);
             w.close();
         }
         catch(Exception exception){
@@ -1981,6 +2011,7 @@ public class DefinitionHelper {
     
     String absoluteJavaPath = System.getProperty( "user.dir" );
         String defFileName = executableModel(selectedModel);
+        
         try {          
             try 
             { 
@@ -2025,13 +2056,14 @@ public class DefinitionHelper {
             
             JOptionPane.showMessageDialog(null, defFilePath);
             
+            
         }
         catch (Exception ex){
             ex.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Failed");
+            //JOptionPane.showMessageDialog(null, ex.getMessage() + "Failed");
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
         }
-    
-    
+
     }
     
     private String executableModel(int modelSelection){
@@ -2087,25 +2119,42 @@ public class DefinitionHelper {
     }
     
     public void modelSelector(int randomLocEffects, boolean outcomeContinious){
+        
+        System.out.println("inside MODEL SELECTOR");
+        
         if(randomLocEffects == 1 && outcomeContinious == true){
             
-            selectedModel = DefinitionHelper.MIXREGLS_MIXREG_KEY;
+            selectedModel = MIXREGLS_MIXREG_KEY;
+            
+            System.out.println("MODEL SELECTED: " + "DEFFILE" + String.valueOf(selectedModel));
         
         } else if (randomLocEffects == 1 && outcomeContinious == false) {
             
-            selectedModel = DefinitionHelper.MIXREGLS_MIXOR_KEY;
+            selectedModel = MIXREGLS_MIXOR_KEY;
+            
+            System.out.println("MODEL SELECTED: " + "DEFFILE" + String.valueOf(selectedModel));
         
         } else if (randomLocEffects > 1 && outcomeContinious == true){
             
-            selectedModel = DefinitionHelper.MIXREGMLS_MIXREG_KEY;
+            selectedModel = MIXREGMLS_MIXREG_KEY;
+            
+            System.out.println("MODEL SELECTED: " + "DEFFILE" + String.valueOf(selectedModel));
         
         } else if (randomLocEffects > 1 && outcomeContinious == false){
             
-            selectedModel = DefinitionHelper.MIXREGMLS_MIXOR_KEY;
+            selectedModel = MIXREGMLS_MIXOR_KEY;
+            
+            System.out.println("MODEL SELECTED: " + "DEFFILE" + String.valueOf(selectedModel));
         }
         
         //return selectedModel;
       
+    }
+    
+    public int getSelectedModel(){
+    
+    return selectedModel;
+    
     }
     
 }

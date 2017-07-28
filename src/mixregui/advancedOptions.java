@@ -46,9 +46,12 @@ public class advancedOptions extends javax.swing.JFrame {
         centerRegressorsCheckBox.setToolTipText("Tool tip here");
         
         meanSubmodelCheckBox.setSelected(true);
+        
         BSVarianceCheckBox.setSelected(true);
         WSVarianceCheckBox.setSelected(true);
         adaptiveQuadritureCheckBox.setSelected(true);
+        
+        
         
        // missingValueCode.setEnabled(false);
     }
@@ -82,6 +85,8 @@ public class advancedOptions extends javax.swing.JFrame {
         ridgeSpinner = new javax.swing.JSpinner();
         jLabel15 = new javax.swing.JLabel();
         centerRegressorsCheckBox = new javax.swing.JCheckBox();
+        jLabel9 = new javax.swing.JLabel();
+        resampleCheckBox = new javax.swing.JCheckBox();
         jButton1 = new javax.swing.JButton();
         advancedOptions_resetButton = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
@@ -154,7 +159,7 @@ public class advancedOptions extends javax.swing.JFrame {
         jLabel11.setText("Ridge:");
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
 
-        maximumIterations.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        maximumIterations.setModel(new javax.swing.SpinnerNumberModel(100, 1, null, 1));
         jPanel2.add(maximumIterations, new org.netbeans.lib.awtextra.AbsoluteConstraints(182, 7, 69, -1));
 
         ridgeSpinner.setModel(new javax.swing.SpinnerNumberModel(0.15d, 0.0d, 1.0d, 0.01d));
@@ -169,6 +174,16 @@ public class advancedOptions extends javax.swing.JFrame {
             }
         });
         jPanel2.add(centerRegressorsCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, -1, -1));
+
+        jLabel9.setText("Resample?");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
+
+        resampleCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resampleCheckBoxActionPerformed(evt);
+            }
+        });
+        jPanel2.add(resampleCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, -1, -1));
 
         jButton1.setText("Submit");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -396,6 +411,10 @@ public class advancedOptions extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_advancedOptionsCancelActionPerformed
 
+    private void resampleCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resampleCheckBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_resampleCheckBoxActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -450,11 +469,13 @@ public class advancedOptions extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSpinner maximumIterations;
     private javax.swing.JCheckBox meanSubmodelCheckBox;
     private javax.swing.JSpinner quadriturePoints;
+    private javax.swing.JCheckBox resampleCheckBox;
     private javax.swing.JSpinner ridgeSpinner;
     // End of variables declaration//GEN-END:variables
 
@@ -578,6 +599,19 @@ public class advancedOptions extends javax.swing.JFrame {
         return outPut;*/
       
       return "";
+    }
+    
+    public int isResamplingChecked() {
+
+        int checked = 0;
+
+        if (resampleCheckBox.isSelected() == true) {
+            checked = 1;
+        } else {
+            checked = 0;
+        }
+
+        return checked;
     }
 
 }
