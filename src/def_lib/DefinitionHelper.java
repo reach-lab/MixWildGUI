@@ -156,7 +156,7 @@ public class DefinitionHelper {
     
     
 
-    /**
+    /***
      *
      * @param randomLocationEffects: number of random location effects
      * @param stageTwoBinary : whether or not the stage two outcome is
