@@ -104,7 +104,7 @@ public class advancedOptions extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("Mean Submodel:");
+        jLabel1.setText("Mean Intercept:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 7, -1, -1));
 
         meanSubmodelCheckBox.addActionListener(new java.awt.event.ActionListener() {
@@ -114,7 +114,7 @@ public class advancedOptions extends javax.swing.JFrame {
         });
         jPanel1.add(meanSubmodelCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 7, -1, -1));
 
-        jLabel2.setText("BS Variance:  ");
+        jLabel2.setText("BS Variance Intercept:  ");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 36, -1, -1));
 
         BSVarianceCheckBox.addActionListener(new java.awt.event.ActionListener() {
@@ -124,7 +124,7 @@ public class advancedOptions extends javax.swing.JFrame {
         });
         jPanel1.add(BSVarianceCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 36, -1, -1));
 
-        jLabel3.setText("WS Variance:  ");
+        jLabel3.setText("WS Variance Intercept:  ");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 65, -1, -1));
 
         WSVarianceCheckBox.addActionListener(new java.awt.event.ActionListener() {
