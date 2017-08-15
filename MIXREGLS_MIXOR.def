@@ -1,30 +1,29 @@
-mixmodels
-output
+tititle
+sfndkj
 /Users/adityaponnada/Downloads/sampleNovel_dataSet.csv
-Output_output
-156  3  1  2  1  0  0  0  2  1  0.001  11  0  100  -9999  0  1  0.15
+Output_sfndkj
+156  2  1  2  1  0  0  0  1  0  0.001  11  0  100  -9999  0  0  0.15
 1  2
-12  8  9
+5  16
 16
-8  9
+5  16
 
-12  8
-12
+5
+
 WAVE
-DATE  TOD  DAY
+ID_COUNT  COMPLY
 COMPLY
-DATE  DATE
+ID_COUNT  ID_COUNT
 
-DATE  TOD
-TOD
-2  2  1  1  null
+ID_COUNT
+
+1  1  1  0  null
 3
-10  4
-10  4
 10
 10
+10
+
 DATA
-NOVEL_ID  DOW
-NOVEL_ID  DOW
+DOW
 DOW
 DOW

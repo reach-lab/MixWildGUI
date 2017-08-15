@@ -183,6 +183,90 @@ public class mixregGUI extends javax.swing.JFrame {
 
             addStageTwoTabTwo.setEnabled(true);
         }
+        
+//        //set advanced options defaults
+//        try {
+//            NewModel.defFile.setModelFixedInt(String.valueOf(1));
+//            System.out.println("From defHelper | Mean SubModel Checked?: " + NewModel.defFile.getModelFixedInt());
+//            //tryCount = 1;
+//        } catch (Exception ex) {
+//            //catchCount = 1;
+//            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+//            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+//        }
+//        
+//        try {
+//            NewModel.defFile.setModelRandomInt(String.valueOf(1));
+//            System.out.println("From defHelper | BS SubModel Checked?: " + NewModel.defFile.getModelRandomInt());
+//            
+//        } catch (Exception ex) {
+//            
+//            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+//            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+//        }
+//        
+//        try {
+//            NewModel.defFile.setModelScaleInt(String.valueOf(1));
+//            System.out.println("From defHelper | WS SubModel Checked?: " + NewModel.defFile.getModelScaleInt());
+//            //tryCount = 1;
+//        } catch (Exception ex) {
+//            //catchCount = 1;
+//            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+//            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+//        }
+//        
+//        try {
+//            NewModel.defFile.setAdvancedAdaptiveQuad(String.valueOf(1));
+//            System.out.println("From defHelper | Adaptive Quadriture Checked?: " + NewModel.defFile.getAdvancedAdaptiveQuad());
+//            //tryCount = 1;
+//        } catch (Exception ex) {
+//            //catchCount = 1;
+//            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+//            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+//        }
+//        
+//        try {
+//            NewModel.defFile.setAdvancedConvergence(String.valueOf(0.001));
+//            System.out.println("From defHelper | Convergence: " + NewModel.defFile.getAdvancedConvergence());
+//            //tryCount = 1;
+//
+//        } catch (Exception ex) {
+//            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+//            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+//            //catchCount = 1;
+//        }
+//        
+//        try {
+//            NewModel.defFile.setAdvancedQuadPoints(String.valueOf(11));
+//            System.out.println("From defHelper | Quadriture Points: " + NewModel.defFile.getAdvancedQuadPoints());
+//            //tryCount = 1;
+//        } catch (Exception ex) {
+//            //catchCount = 1;
+//            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+//            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+//        }
+//        
+//        try {
+//            NewModel.defFile.setAdvancedMaxIteration(String.valueOf(100));
+//            System.out.println("From defHelper | Maximum Iteraions: " + NewModel.defFile.getAdvancedMaxIteration());
+//            //tryCount = 1;
+//        } catch (Exception ex) {
+//            //catchCount = 1;
+//            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+//            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+//        }
+//        
+//        try {
+//            NewModel.defFile.setAdvancedRidge(String.valueOf(0.15));
+//            System.out.println("From defHelper | Ridge: " + NewModel.defFile.getAdvancedRidge());
+//            //tryCount = 1;
+//        } catch (Exception ex) {
+//            //catchCount = 1;
+//            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+//            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+//        }
+        
+       
 
     }
 
@@ -346,7 +430,7 @@ public class mixregGUI extends javax.swing.JFrame {
         jPanel1.add(level1_MeanReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 60, -1, -1));
         level1_MeanReg.getAccessibleContext().setAccessibleName("");
 
-        level1_WSVar.setText("Random Scale");
+        level1_WSVar.setText("WS Variance");
         jPanel1.add(level1_WSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 60, -1, -1));
 
         level2_MeanReg.setText("Mean");
@@ -359,8 +443,8 @@ public class mixregGUI extends javax.swing.JFrame {
         jPanel1.add(level2_WSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 60, -1, -1));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 560, 1190, 20));
 
-        level1_BSVar.setText("Random Intercept");
-        jPanel1.add(level1_BSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, -1, -1));
+        level1_BSVar.setText("BS Variance");
+        jPanel1.add(level1_BSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 60, -1, -1));
 
         levelOnePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Level-1"));
 
@@ -496,8 +580,8 @@ public class mixregGUI extends javax.swing.JFrame {
         jLabel12.setText("Stage 2 Interactions");
         jPanel12.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 20, -1, 20));
 
-        jLabel15.setText("Scale");
-        jPanel12.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 60, -1, -1));
+        jLabel15.setText("Random Scale");
+        jPanel12.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 60, -1, -1));
 
         addStageTwoTabTwo.setText("Modify Regressors");
         addStageTwoTabTwo.addActionListener(new java.awt.event.ActionListener() {
@@ -507,11 +591,11 @@ public class mixregGUI extends javax.swing.JFrame {
         });
         jPanel12.add(addStageTwoTabTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 190, 40));
 
-        jLabel17.setText("Random");
-        jPanel12.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 60, -1, -1));
+        jLabel17.setText("Random Intercept");
+        jPanel12.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 60, -1, -1));
 
         jLabel18.setText("Scale X Random");
-        jPanel12.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 60, 110, -1));
+        jPanel12.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 60, 110, -1));
 
         jSeparator6.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jPanel12.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 80, 20, 370));
@@ -543,13 +627,13 @@ public class mixregGUI extends javax.swing.JFrame {
         });
         jPanel12.add(runTabTwoStageOneTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 470, 160, 40));
 
-        suppressIntCheckBox.setText("Suppress All Interactions");
+        suppressIntCheckBox.setText("Suppress Scale X Random");
         suppressIntCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 suppressIntCheckBoxActionPerformed(evt);
             }
         });
-        jPanel12.add(suppressIntCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, -1, -1));
+        jPanel12.add(suppressIntCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 210, -1));
 
         stageTwoOutcome.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel12.add(stageTwoOutcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 190, 30));
@@ -2669,9 +2753,12 @@ public class mixregGUI extends javax.swing.JFrame {
             
             if (NewModel.isRandomScale){
                 
-                    levelTwoBoxes.get(j).get(1).setEnabled(false);
+                    levelTwoBoxes.get(j).get(2).setEnabled(true);
                 
-                }
+                } else {
+            
+                    levelTwoBoxes.get(j).get(2).setEnabled(false);
+            }
 
             constraints.gridy++;
 

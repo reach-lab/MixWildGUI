@@ -1,0 +1,29 @@
+hh
+hhk
+/Users/adityaponnada/Downloads/sampleNovel_dataSet.csv
+Output_hhk
+156  2  2  2  1  0  0  0  1  0  0.001  11  0  100  -9999  0  0  0.15
+1  2
+8  14
+13  14
+13  14
+
+8
+
+WAVE
+DATE  PROMPT
+TYPE  PROMPT
+TYPE  DATE
+
+DATE
+
+2  2  1  0  null
+3
+17  5
+17  5
+5
+
+DATA
+ID_COUNT  DEMO_SEX
+ID_COUNT  DEMO_SEX
+ID_COUNT
