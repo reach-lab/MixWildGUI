@@ -35,6 +35,7 @@ public class InstructionsGUI extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         proceedButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,6 +54,8 @@ public class InstructionsGUI extends javax.swing.JFrame {
 
         jLabel4.setText("- Please ensure that the data is sorted by IDs");
 
+        jLabel5.setText("- Missing value codes should be numeric only");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -65,7 +68,8 @@ public class InstructionsGUI extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addComponent(jLabel2)
                         .addComponent(jLabel1)
-                        .addComponent(jLabel4)))
+                        .addComponent(jLabel4)
+                        .addComponent(jLabel5)))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -77,11 +81,13 @@ public class InstructionsGUI extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addComponent(jLabel5)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
-                .addGap(25, 25, 25)
+                .addGap(18, 18, 18)
                 .addComponent(proceedButton)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addGap(15, 15, 15))
         );
 
         pack();
@@ -135,6 +141,7 @@ public class InstructionsGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JButton proceedButton;
     // End of variables declaration//GEN-END:variables
 }

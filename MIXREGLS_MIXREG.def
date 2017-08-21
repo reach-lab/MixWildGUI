@@ -1,30 +1,30 @@
-title
-subtitl
+sample
+sample
 /Users/adityaponnada/Downloads/sampleNovel_dataSet.csv
-Output_subtitl
-156  2  2  1  1  0  0  0  1  1  0.001  11  0  100  -9999  0  0  0.15
-1  2
-7  17
-14  19
-17
+Output_sample
+156  2  0  0  1  0  0  1  1  0  0.001  11  0  100  -9999  0  0  0.15
+1  52
+51  33
 
-7
-14
-WAVE
-FULLTIME  DEMO_SEX
-PROMPT  DEMO_EDUCATION
-FULLTIME
 
-FULLTIME
-PROMPT
-2  2  2  1
+48
+51
+
+AFFECT_SAD
+AFFECT_ANXIOUS  DEMO_KIDS
+
+
+AFFECT_JOYFUL
+AFFECT_ANXIOUS
+
+2  2  2  2
 3
-16  9
-16  9
-16  9
-16
+11  6
+11  6
+11  6
+11  6
 DATA
-DAY  COMPLY
-DAY  COMPLY
-DAY  COMPLY
-COMPLY
+DAY_COUNT  WEEKEND
+DAY_COUNT  WEEKEND
+DAY_COUNT  WEEKEND
+DAY_COUNT  WEEKEND
