@@ -580,8 +580,8 @@ public class mixregGUI extends javax.swing.JFrame {
         jLabel12.setText("Stage 2 Interactions");
         jPanel12.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 20, -1, 20));
 
-        jLabel15.setText("Random Scale");
-        jPanel12.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 60, -1, -1));
+        jLabel15.setText("Randome Location");
+        jPanel12.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 60, -1, -1));
 
         addStageTwoTabTwo.setText("Modify Regressors");
         addStageTwoTabTwo.addActionListener(new java.awt.event.ActionListener() {
@@ -591,10 +591,10 @@ public class mixregGUI extends javax.swing.JFrame {
         });
         jPanel12.add(addStageTwoTabTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 190, 40));
 
-        jLabel17.setText("Random Intercept");
-        jPanel12.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 60, -1, -1));
+        jLabel17.setText("Random Scale");
+        jPanel12.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 60, -1, -1));
 
-        jLabel18.setText("Scale X Random");
+        jLabel18.setText("Location X Scale");
         jPanel12.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 60, 110, -1));
 
         jSeparator6.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -608,11 +608,17 @@ public class mixregGUI extends javax.swing.JFrame {
         stageTwoPanel.setLayout(stageTwoPanelLayout);
         stageTwoPanelLayout.setHorizontalGroup(
             stageTwoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(stageTwoRegsGrid, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
+            .addGroup(stageTwoPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(stageTwoRegsGrid, javax.swing.GroupLayout.DEFAULT_SIZE, 654, Short.MAX_VALUE)
+                .addGap(48, 48, 48))
         );
         stageTwoPanelLayout.setVerticalGroup(
             stageTwoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(stageTwoRegsGrid, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
+            .addGroup(stageTwoPanelLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(stageTwoRegsGrid, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         stageTwoRegsGrid.getAccessibleContext().setAccessibleParent(jPanel12);
@@ -627,7 +633,7 @@ public class mixregGUI extends javax.swing.JFrame {
         });
         jPanel12.add(runTabTwoStageOneTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 470, 160, 40));
 
-        suppressIntCheckBox.setText("Suppress Scale X Random");
+        suppressIntCheckBox.setText("<html>Suppress Scale X Random<br> Interaction </br></html>");
         suppressIntCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 suppressIntCheckBoxActionPerformed(evt);
