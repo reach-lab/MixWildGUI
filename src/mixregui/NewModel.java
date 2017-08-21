@@ -223,7 +223,7 @@ public class NewModel extends javax.swing.JFrame {
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/mixLogo.png"))); // NOI18N
 
-        jLabel8.setText("Add missing value code?");
+        jLabel8.setText("Are there any missing values?");
 
         buttonGroup1.add(noneRadio);
         noneRadio.setText("None");
@@ -297,32 +297,33 @@ public class NewModel extends javax.swing.JFrame {
                         .addGap(10, 10, 10)
                         .addComponent(noneRadio))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(jLabel6)
-                        .addGap(16, 16, 16)
-                        .addComponent(newModelMissingValueCode, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(43, 43, 43)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(139, 139, 139)
-                                .addComponent(jLabel1)))
-                        .addGap(15, 15, 15)
-                        .addComponent(newModelMissingValues))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jLabel7)
-                        .addGap(82, 82, 82)
-                        .addComponent(newModelCancel)
-                        .addGap(28, 28, 28)
-                        .addComponent(newModel_resetButton)
-                        .addGap(36, 36, 36)
-                        .addComponent(newModelSubmit))
-                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(newModelMissingValues)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel6)
+                                .addGap(16, 16, 16)
+                                .addComponent(newModelMissingValueCode, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel7)
+                                    .addGap(82, 82, 82)
+                                    .addComponent(newModelCancel)
+                                    .addGap(28, 28, 28)
+                                    .addComponent(newModel_resetButton)
+                                    .addGap(36, 36, 36)
+                                    .addComponent(newModelSubmit))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel1)
+                                    .addGap(59, 59, 59))))))
                 .addGap(35, 35, 35))
         );
         layout.setVerticalGroup(
@@ -371,24 +372,26 @@ public class NewModel extends javax.swing.JFrame {
                     .addComponent(continuousRadio)
                     .addComponent(dichotomousRadio)
                     .addComponent(noneRadio))
-                .addGap(17, 17, 17)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(newModelMissingValueCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(jLabel1))
-                    .addComponent(newModelMissingValues))
                 .addGap(19, 19, 19)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(newModelCancel)
-                            .addComponent(newModel_resetButton)
-                            .addComponent(newModelSubmit)))))
+                            .addComponent(jLabel6)
+                            .addComponent(newModelMissingValueCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(newModelCancel)
+                                    .addComponent(newModel_resetButton)
+                                    .addComponent(newModelSubmit)))))
+                    .addComponent(newModelMissingValues))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
@@ -651,6 +654,14 @@ public class NewModel extends javax.swing.JFrame {
         dichotomousRadio.setEnabled(false);
         randomLocationEffects.setEnabled(false);
         newModelSubmit.setEnabled(false);
+        newModelMissingValues.setEnabled(false);
+        newModelMissingValueCode.setEnabled(false);
+        noneRadio.setSelected(false);
+        noneRadio.setEnabled(false);
+        randomScaleCheckBox.setSelected(false);
+        randomScaleCheckBox.setEnabled(false);
+        
+        
         
         
     }//GEN-LAST:event_newModel_resetButtonActionPerformed
