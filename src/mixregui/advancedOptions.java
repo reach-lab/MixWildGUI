@@ -400,11 +400,13 @@ public class advancedOptions extends javax.swing.JFrame {
 
         adaptiveQuadritureCheckBox.setSelected(false);
         centerRegressorsCheckBox.setSelected(false);
+        
 
-        maximumIterations.setValue(1);
+        maximumIterations.setValue(100);
        // missingValuesCheckBox.setSelected(false);
         //standardizedCoeff.setSelected(false);
         ridgeSpinner.setValue(0.15);
+        resampleSpinner.setValue(100);
 
     }//GEN-LAST:event_advancedOptions_resetButtonActionPerformed
 
