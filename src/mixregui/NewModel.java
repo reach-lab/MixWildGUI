@@ -654,6 +654,14 @@ public class NewModel extends javax.swing.JFrame {
         dichotomousRadio.setEnabled(false);
         randomLocationEffects.setEnabled(false);
         newModelSubmit.setEnabled(false);
+        newModelMissingValues.setEnabled(false);
+        newModelMissingValueCode.setEnabled(false);
+        noneRadio.setSelected(false);
+        noneRadio.setEnabled(false);
+        randomScaleCheckBox.setSelected(false);
+        randomScaleCheckBox.setEnabled(false);
+        
+        
         
         
     }//GEN-LAST:event_newModel_resetButtonActionPerformed
