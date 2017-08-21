@@ -53,14 +53,23 @@
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="jScrollPane1" min="-2" pref="198" max="-2" attributes="0"/>
-                              <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="levelOneAddButton" min="-2" pref="93" max="-2" attributes="0"/>
-                                  <Component id="removeLevelButton" min="-2" max="-2" attributes="0"/>
-                                  <Component id="addLevelTwoButton" min="-2" pref="93" max="-2" attributes="0"/>
-                                  <Component id="removeLevelTwoButton" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="levelOneAddButton" min="-2" pref="93" max="-2" attributes="0"/>
+                                          <Component id="removeLevelButton" min="-2" max="-2" attributes="0"/>
+                                          <Component id="addLevelTwoButton" min="-2" pref="93" max="-2" attributes="0"/>
+                                          <Component id="removeLevelTwoButton" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jButton1" alignment="1" min="-2" pref="40" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jButton2" min="-2" pref="40" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jScrollPane2" min="-2" pref="287" max="-2" attributes="0"/>
                                   <Group type="102" attributes="0">
@@ -93,10 +102,14 @@
                       <Component id="levelOneAddButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                       <Component id="removeLevelButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="156" pref="156" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
                       <Component id="addLevelTwoButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                       <Component id="removeLevelTwoButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jButton2" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Component id="jScrollPane2" min="-2" pref="164" max="-2" attributes="0"/>
@@ -128,12 +141,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Level-I (Time Varying)"/>
+        <Property name="text" type="java.lang.String" value="Level-1 (Time Varying)"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Level-II (Time Invariant)"/>
+        <Property name="text" type="java.lang.String" value="Level-2 (Time Invariant)"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="stageOneSubmitButton">
@@ -250,6 +263,19 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stageOneCancelActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="?"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="?"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
