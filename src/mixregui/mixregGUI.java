@@ -926,6 +926,18 @@ public class mixregGUI extends javax.swing.JFrame {
         buttonGroup1.clearSelection();
 
         addStageTwoTabTwo.setEnabled(false);
+        //levelOneGrid.removeAll();
+        //levelTwoGrid.removeAll();
+        
+        levelTwoPanel.removeAll();
+        levelTwoPanel.revalidate();
+        levelTwoPanel.repaint();
+        
+        levelOnePanel.removeAll();
+        levelOnePanel.revalidate();
+        levelOnePanel.repaint();
+        
+        
 
 
     }//GEN-LAST:event_resetButtonActionPerformed
