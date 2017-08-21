@@ -492,7 +492,7 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="addStageOneButton">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Add Stage 1 Regressors ..."/>
+                        <Property name="text" type="java.lang.String" value="Modify Stage 1 Regressors ..."/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addStageOneButtonActionPerformed"/>
@@ -672,7 +672,7 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="addStageTwoTabTwo">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Modify Regressors"/>
+                    <Property name="text" type="java.lang.String" value="Modify Stage 2 Regressors ..."/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addStageTwoTabTwoActionPerformed"/>

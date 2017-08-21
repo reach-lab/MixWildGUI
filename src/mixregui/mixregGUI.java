@@ -510,7 +510,7 @@ public class mixregGUI extends javax.swing.JFrame {
         jPanel8.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 270, -1));
         jPanel8.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 270, -1));
 
-        addStageOneButton.setText("Add Stage 1 Regressors ...");
+        addStageOneButton.setText("Modify Stage 1 Regressors ...");
         addStageOneButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addStageOneButtonActionPerformed(evt);
@@ -583,7 +583,7 @@ public class mixregGUI extends javax.swing.JFrame {
         jLabel15.setText("Randome Location");
         jPanel12.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 60, -1, -1));
 
-        addStageTwoTabTwo.setText("Modify Regressors");
+        addStageTwoTabTwo.setText("Modify Stage 2 Regressors ...");
         addStageTwoTabTwo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addStageTwoTabTwoActionPerformed(evt);
