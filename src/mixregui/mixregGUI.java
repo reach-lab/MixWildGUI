@@ -137,6 +137,8 @@ public class mixregGUI extends javax.swing.JFrame {
 
         i = newModel.getRLE();
         System.out.println(String.valueOf(i));
+        
+        stageOneTabs.setEnabledAt(1, false);
 
         //Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/resources/mixLogo.png"));
         //setIconImage(image);
@@ -1627,7 +1629,11 @@ public class mixregGUI extends javax.swing.JFrame {
     private void startStageTwoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startStageTwoActionPerformed
         // TODO add your handling code here:
         
-        
+            
+        if (outcomeNone == false){
+            stageOneTabs.setEnabledAt(1, true);
+        }
+            
         
             int tryCount = 0;
             int catchCount = 0;
