@@ -1,30 +1,29 @@
-itle
-subtitle
+jjg
+gfdgf
 /Users/adityaponnada/Downloads/sampleNovel_dataSet.csv
-Output_subtitle
-156  1  2  2  1  0  0  1  0  0  0.001  11  0  100  -9999  0  0  0.15
+Output_gfdgf
+156  1  1  2  1  0  0  1  2  0  0.001  11  1  100  -9999  null  0  0.15
 1  2
-11
-5  11
-5  11
-5
-
+7
+12
+11  7
+9
+11  9
 
 WAVE
-WEEKEND
-ID_COUNT  WEEKEND
-ID_COUNT  ID_COUNT
-ID_COUNT
+FULLTIME
+TOD
+WEEKEND  DAY
+DAY
+DAY  WEEKEND
 
-
-3  2  3  2
+2  2  2  0
 3
-15  13  8
 15  8
-15  13  8
 15  8
+15  8
+
 DATA
-DATE  TYPE  REPROMPTS
 DATE  REPROMPTS
-DATE  TYPE  REPROMPTS
+DATE  REPROMPTS
 DATE  REPROMPTS
