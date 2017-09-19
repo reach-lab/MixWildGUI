@@ -17,8 +17,9 @@ Please go to downloads and click on the file ... (Pending)
 
 ### Running a .jar file ###
 
-1. Please go to downloads and click on the file ... (Pending)
+1. Please go to downloads and click on the file "MixWild_v1.jar". Link: https://bitbucket.org/adityaponnada/mixreg/downloads/
 2. Once downloaded, run the .jar file
+3. NOTE: It is important to keep the JAVA on your PC updated to run a .Jar file
 
 ### Running a .exe file ###
 1. Please go to downloads and click on the file ...
