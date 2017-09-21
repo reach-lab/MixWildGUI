@@ -66,7 +66,7 @@ public class NewModel extends javax.swing.JFrame {
        subtitleField.setEnabled(false);
        continuousRadio.setEnabled(false);
        dichotomousRadio.setEnabled(false);
-       randomLocationEffects.setEnabled(false);
+       //randomLocationEffects.setEnabled(false);
        newModelSubmit.setEnabled(false);
        newModelMissingValueCode.setText("-9999");
        newModelMissingValueCode.setEnabled(false);
@@ -81,7 +81,7 @@ public class NewModel extends javax.swing.JFrame {
        filePath.setToolTipText("Insert a data file in .csv format");
        titleField.setToolTipText("Insert title for the model");
        subtitleField.setToolTipText("Insert subtitle for the model");
-       randomLocationEffects.setToolTipText("Select the number of random location effects. Minimum value is 1");
+       //randomLocationEffects.setToolTipText("Select the number of random location effects. Minimum value is 1");
        
       
     }
@@ -96,6 +96,7 @@ public class NewModel extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         dataFileLabel = new javax.swing.JLabel();
         filePath = new javax.swing.JTextField();
         fileBrowseButton = new javax.swing.JButton();
@@ -104,7 +105,6 @@ public class NewModel extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         subtitleField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        randomLocationEffects = new javax.swing.JSpinner();
         jLabel5 = new javax.swing.JLabel();
         continuousRadio = new javax.swing.JRadioButton();
         dichotomousRadio = new javax.swing.JRadioButton();
@@ -124,6 +124,8 @@ public class NewModel extends javax.swing.JFrame {
         randomScaleCheckBox = new javax.swing.JCheckBox();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
+        oneRLERadio = new javax.swing.JRadioButton();
+        moreThanOneRLERadio = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("New Model for Stage 1 Analysis");
@@ -160,8 +162,6 @@ public class NewModel extends javax.swing.JFrame {
         });
 
         jLabel4.setText("Random Location Effects:");
-
-        randomLocationEffects.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
 
         jLabel5.setText("Stage 2 Outcome Type:");
 
@@ -250,10 +250,28 @@ public class NewModel extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup2.add(oneRLERadio);
+        oneRLERadio.setText("One");
+
+        buttonGroup2.add(moreThanOneRLERadio);
+        moreThanOneRLERadio.setText("More than one");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(oneRLERadio)
+                .addGap(18, 18, 18)
+                .addComponent(moreThanOneRLERadio)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(randomScaleCheckBox)
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -278,15 +296,6 @@ public class NewModel extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addGap(16, 16, 16)
                         .addComponent(subtitleField, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jLabel4)
-                        .addGap(20, 20, 20)
-                        .addComponent(randomLocationEffects, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(jLabel10)
-                        .addGap(18, 18, 18)
-                        .addComponent(randomScaleCheckBox))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(jLabel5)
@@ -324,7 +333,7 @@ public class NewModel extends javax.swing.JFrame {
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel1)
                                     .addGap(59, 59, 59))))))
-                .addGap(35, 35, 35))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -361,11 +370,13 @@ public class NewModel extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel4))
-                    .addComponent(randomLocationEffects, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(oneRLERadio)
+                            .addComponent(moreThanOneRLERadio)))
                     .addComponent(jLabel10)
-                    .addComponent(randomScaleCheckBox))
+                    .addComponent(randomScaleCheckBox, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
@@ -391,7 +402,7 @@ public class NewModel extends javax.swing.JFrame {
                                     .addComponent(newModel_resetButton)
                                     .addComponent(newModelSubmit)))))
                     .addComponent(newModelMissingValues))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
@@ -421,10 +432,10 @@ public class NewModel extends javax.swing.JFrame {
         //enable other buttons here:
         titleField.setEnabled(true);
         subtitleField.setEnabled(true);
-        randomLocationEffects.setEnabled(true);
+        //randomLocationEffects.setEnabled(true);
         continuousRadio.setEnabled(true);
         dichotomousRadio.setEnabled(true);
-        randomLocationEffects.setEnabled(true);
+       // randomLocationEffects.setEnabled(true);
         newModelSubmit.setEnabled(true);
         newModelMissingValues.setEnabled(true);
         newModelMissingValueCode.setEnabled(true);
@@ -446,7 +457,17 @@ public class NewModel extends javax.swing.JFrame {
 
     private void newModelSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModelSubmitActionPerformed
         
-        RLE = (Integer) randomLocationEffects.getValue();
+        //RLE = (Integer) randomLocationEffects.getValue(); //todo: Change stuff here assign the option button code
+        
+        if (oneRLERadio.isSelected() == true){
+            
+            RLE = 1;
+    
+    } else if (moreThanOneRLERadio.isSelected() == true) {
+            
+            RLE = 2;
+    
+    }
         
         defFile = new DefinitionHelper(RLE, !isOutcomeContinous());
         System.out.println("RLE: " + String.valueOf(RLE));
@@ -648,11 +669,11 @@ public class NewModel extends javax.swing.JFrame {
         titleField.setEnabled(false);
         subtitleField.setEditable(false);
         subtitleField.setText("");
-        randomLocationEffects.setValue(1);
-        randomLocationEffects.setEnabled(false);
+        //randomLocationEffects.setValue(1);
+        //randomLocationEffects.setEnabled(false);
         continuousRadio.setEnabled(false);
         dichotomousRadio.setEnabled(false);
-        randomLocationEffects.setEnabled(false);
+        //randomLocationEffects.setEnabled(false);
         newModelSubmit.setEnabled(false);
         newModelMissingValues.setEnabled(false);
         newModelMissingValueCode.setEnabled(false);
@@ -762,6 +783,7 @@ public class NewModel extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JRadioButton continuousRadio;
     private javax.swing.JLabel dataFileLabel;
     private javax.swing.JRadioButton dichotomousRadio;
@@ -780,13 +802,14 @@ public class NewModel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JRadioButton moreThanOneRLERadio;
     private javax.swing.JButton newModelCancel;
     private javax.swing.JTextField newModelMissingValueCode;
     private javax.swing.JCheckBox newModelMissingValues;
     private javax.swing.JButton newModelSubmit;
     private javax.swing.JButton newModel_resetButton;
     private javax.swing.JRadioButton noneRadio;
-    private javax.swing.JSpinner randomLocationEffects;
+    private javax.swing.JRadioButton oneRLERadio;
     private javax.swing.JCheckBox randomScaleCheckBox;
     private javax.swing.JTextField subtitleField;
     private javax.swing.JTextField titleField;
