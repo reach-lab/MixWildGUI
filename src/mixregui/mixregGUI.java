@@ -356,7 +356,8 @@ public class mixregGUI extends javax.swing.JFrame {
         outcomeCatButton = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
         jPanel5 = new javax.swing.JPanel();
-        outcomeCatText = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        numberOfCategories = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -689,20 +690,30 @@ public class mixregGUI extends javax.swing.JFrame {
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Outcome categories"));
 
+        jLabel7.setText("Number of categories:");
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addGap(0, 6, Short.MAX_VALUE)
-                .addComponent(outcomeCatText, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(numberOfCategories)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(outcomeCatText, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel7)
+                .addGap(18, 18, 18)
+                .addComponent(numberOfCategories)
+                .addContainerGap(102, Short.MAX_VALUE))
         );
 
-        jPanel12.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, -1, 190));
+        jPanel12.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 210, 190));
 
         stageOneTabs.addTab("Stage 2 Configuration", jPanel12);
 
@@ -2478,39 +2489,7 @@ public class mixregGUI extends javax.swing.JFrame {
         //get the categories of the stage two outcome variable
         String dataFileName = NewModel.getDataFileName();
         File file = new File(dataFileName);
-//        try {
-//            Scanner inputStream = new Scanner(file);
-//            inputStream.next(); //ignore the first line of column names
-//            while (inputStream.hasNext()){
-//                String dataColumn = inputStream.next();
-//                System.out.println("first part of"+dataColumn);
-//                dataValues = dataColumn.split(",");
-//                System.out.println("second part of"+dataColumn);
-////                System.out.println("FILE NAME IS: " + dataFileName);
-////                System.out.println("SELECTED INDEX STAGE TWO IS: " + stageTwoOutcome.getSelectedIndex());
-////                System.out.println("DATA VALUES SIZE IS: " + String.valueOf(dataValues.length));
-//                //System.out.println(dataValues[2]); //print everything in that column //TYPE example
-//                System.out.println("The stage two outcome is "+stageTwoOutcome.getSelectedItem().toString());
-//                System.out.println(dataValues[stageTwoOutcome.getSelectedIndex()]);
-//                System.out.println(String.valueOf(stageTwoOutcome.getSelectedIndex()));
-//            }
-
-            
-            
-//            for (int index = 0; index < dataValues.length; index++){
-//                System.out.println(dataValues[stageTwoOutcome.getSelectedIndex()]);
-//            }
-//            
-//            
-//            
-//            
-//            } catch (FileNotFoundException ex) {
-//            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-//            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-//        }
-
-
-        //String csvFile = "/Users/chaitanyakaul/Desktop/myCSV.csv";
+//        //first get the column
         BufferedReader br = null;
         String line = "";
         String commaSplitter = ",";
@@ -2522,7 +2501,8 @@ public class mixregGUI extends javax.swing.JFrame {
             {
                 Columns = line.split(commaSplitter);
                 int index = stageTwoOutcome.getSelectedIndex();
-                System.out.println(Columns[index]);
+                //print the column
+                //System.out.println(Columns[index]);
             }
 
         }
@@ -2545,6 +2525,80 @@ public class mixregGUI extends javax.swing.JFrame {
                 }
             }
         }
+        
+        
+        // sort the array first
+        
+        
+        for (int k = 0; k<Columns.length; k++){
+        
+            System.out.println(Columns[k]);
+        }
+        
+        Arrays.sort(Columns);
+        
+        
+
+//String s1[]={"hello","hi","j2ee","j2ee","sql","jdbc","hello","jdbc","hybernet","j2ee","hello","hello","hybernet"};
+
+int uniquesFound = 0;
+
+// Assume that array is sorted, so duplicates would be next to another.
+// If we find duplicates, such as 12223, we will only count its last instance (i.e. the last '2')
+for (int x = 0; x < Columns.length; x++) {
+
+    // If we are at the last element, we know we can count it
+    if (x != Columns.length - 1) {
+        if (!Columns[x].equals(Columns[x+1])) {
+            uniquesFound++;
+        }
+        else {
+            // Nothing! If they are the same, move to the next step element
+        }
+    } else {
+        uniquesFound++;
+        
+    }
+}
+
+
+        
+
+System.out.println("Number of uniques found: " + String.valueOf(uniquesFound));
+numberOfCategories.setText(String.valueOf(uniquesFound));
+
+
+        
+        //convert it to an ArrayList
+//        ArrayList<String> ColumnArray = new ArrayList<>();
+//        
+//        for (int y=0; y<Columns.length; y++){
+//        ColumnArray.add(Columns[y]);
+//        
+//        }
+        
+        //now sort the column
+       // Arrays.sort(Columns);
+//       int numOfDifferentVals = 0;
+//       ArrayList<String> diffValues = new ArrayList<>();
+//       
+//       for(int x=0; x<ColumnArray.size(); x++){
+//        if(!diffValues.contains(ColumnArray.get(x))){
+//            diffValues.add(ColumnArray.get(x));
+//           
+//        }
+//        }
+//       
+//       if(diffValues.size()==1){
+//            numOfDifferentVals = 0;
+//        }
+//        else{
+//          numOfDifferentVals = diffValues.size();
+//        }
+//       
+//       System.out.println("The number of different elements: " + String.valueOf(numOfDifferentVals));
+       
+       
         
     }//GEN-LAST:event_outcomeCatButtonActionPerformed
 
@@ -2626,6 +2680,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuBar jMenuBar1;
@@ -2671,8 +2726,8 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem modifyStageOneMenu;
     private javax.swing.JMenuItem modifyStageTwoMenu;
     private javax.swing.JMenuItem newModelMenu;
+    private javax.swing.JLabel numberOfCategories;
     private javax.swing.JButton outcomeCatButton;
-    private javax.swing.JTextField outcomeCatText;
     private javax.swing.JPanel parentPanel;
     private javax.swing.JButton resetButton;
     private javax.swing.JButton runTabTwoStageOneTwo;
