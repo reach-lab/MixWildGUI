@@ -1,29 +1,29 @@
-gg
-gg
+kjhjh
+kjhkhj
 /Users/adityaponnada/Downloads/sampleNovel_dataSet.csv
-Output_gg
-156  1  2  1  1  0  0  1  1  0  0.001  11  0  100  -9999  0  0  0.15
+Output_kjhkhj
+156  2  2  2  1  0  0  1  1  0  0.001  11  0  100  -9999  0  0  0.15
 1  2
-11
-6  11
-11
-10
-10
+5  12
+9  15
+5  12
+9
+5
 
 WAVE
-WEEKEND
-DAY_COUNT  WEEKEND
-DOW
-DOW
-DOW
+ID_COUNT  TOD
+DAY  REPROMPTS
+ID_COUNT  ID_COUNT
+DAY
+ID_COUNT
 
-2  1  2  0
+1  1  1  0
 3
-13  8
 8
-13  8
+8
+8
 
 DATA
-DATE  TYPE
 DATE
-DATE  TYPE
+DATE
+DATE

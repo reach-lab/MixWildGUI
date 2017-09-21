@@ -38,6 +38,7 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.AbstractButton;
@@ -119,6 +120,10 @@ public class mixregGUI extends javax.swing.JFrame {
     JFileChooser fileChooser = new JFileChooser();
     int selectedModel;
     String defFilePath;
+    
+    String[] dataValues;
+   // String[] Columns;
+    
 
     /**
      * Creates new form mixregGUI
@@ -134,6 +139,7 @@ public class mixregGUI extends javax.swing.JFrame {
         StageOneList = new DefaultComboBoxModel<String>();
         StageTwoList = new DefaultComboBoxModel<String>();
         NoAssociationRadio.setSelected(true);
+        stage_1_regs = new stageOneRegs();
 
         i = newModel.getRLE();
         System.out.println(String.valueOf(i));
@@ -186,6 +192,8 @@ public class mixregGUI extends javax.swing.JFrame {
             addStageTwoTabTwo.setEnabled(true);
         }
         
+        
+            
 //        //set advanced options defaults
 //        try {
 //            NewModel.defFile.setModelFixedInt(String.valueOf(1));
@@ -268,6 +276,7 @@ public class mixregGUI extends javax.swing.JFrame {
 //            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
 //        }
         
+        
        
 
     }
@@ -344,6 +353,11 @@ public class mixregGUI extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 2), new java.awt.Dimension(0, 2), new java.awt.Dimension(32767, 2));
         jSeparator14 = new javax.swing.JSeparator();
+        outcomeCatButton = new javax.swing.JButton();
+        jSeparator3 = new javax.swing.JSeparator();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        numberOfCategories = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -591,7 +605,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 addStageTwoTabTwoActionPerformed(evt);
             }
         });
-        jPanel12.add(addStageTwoTabTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 190, 40));
+        jPanel12.add(addStageTwoTabTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 210, 40));
 
         jLabel17.setText("Random Scale");
         jPanel12.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 60, -1, -1));
@@ -641,15 +655,15 @@ public class mixregGUI extends javax.swing.JFrame {
                 suppressIntCheckBoxActionPerformed(evt);
             }
         });
-        jPanel12.add(suppressIntCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 210, -1));
+        jPanel12.add(suppressIntCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 200, -1));
 
         stageTwoOutcome.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel12.add(stageTwoOutcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 190, 30));
+        jPanel12.add(stageTwoOutcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 210, 30));
 
         jLabel22.setText("Stage 2 Outcome:");
-        jPanel12.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, -1, -1));
-        jPanel12.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 190, -1));
-        jPanel12.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, 190, -1));
+        jPanel12.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, -1, -1));
+        jPanel12.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 210, -1));
+        jPanel12.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 210, -1));
 
         jButton1.setText("Reset");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -664,6 +678,42 @@ public class mixregGUI extends javax.swing.JFrame {
         jPanel12.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 470, -1, 30));
         jPanel12.add(filler1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 570, -1, 80));
         jPanel12.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 40, 320, 10));
+
+        outcomeCatButton.setText("Get outcome categories");
+        outcomeCatButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                outcomeCatButtonActionPerformed(evt);
+            }
+        });
+        jPanel12.add(outcomeCatButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 210, 40));
+        jPanel12.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 210, -1));
+
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Outcome categories"));
+
+        jLabel7.setText("Number of categories:");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(numberOfCategories)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel7)
+                .addGap(18, 18, 18)
+                .addComponent(numberOfCategories)
+                .addContainerGap(102, Short.MAX_VALUE))
+        );
+
+        jPanel12.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 210, 190));
 
         stageOneTabs.addTab("Stage 2 Configuration", jPanel12);
 
@@ -2375,11 +2425,25 @@ public class mixregGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_advancedOptionsButtonActionPerformed
 
     private void addStageOneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStageOneButtonActionPerformed
+        
+        if (stage_1_regs.isVisible()){ //if it is already open and visible in the background
+            
+           // stage_1_regs.set
+           stage_1_regs.setFocusable(true);
+           stageOneClicked = 1;
+           addStageTwoTabTwo.setEnabled(true);
+        
+        } else {
+        
         stageOneClicked = 1;
         addStageTwoTabTwo.setEnabled(true);
-        stage_1_regs = new stageOneRegs();
+        
         stage_1_regs.setVisible(true);
         stage_1_regs.updateAllVariables();
+            
+        }
+        
+        
     }//GEN-LAST:event_addStageOneButtonActionPerformed
 
     private void IDvariableComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDvariableComboActionPerformed
@@ -2419,6 +2483,80 @@ public class mixregGUI extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void outcomeCatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_outcomeCatButtonActionPerformed
+        // TODO add your handling code here:
+        //get the categories of the stage two outcome variable
+        ArrayList<String> ColumnsCustom = new ArrayList<>();
+        ArrayList<String> UniqueList = new ArrayList<>();
+        
+        String dataFileName = NewModel.getDataFileName();
+        File file = new File(dataFileName);
+//        //first get the column
+        BufferedReader br = null;
+        String line = "";
+        String commaSplitter = ",";
+        //
+
+        try{
+            br = new BufferedReader(new FileReader(dataFileName));
+            line = br.readLine(); //consumes the first row
+            while ((line = br.readLine())!=null)
+            {
+                String[] Columns = line.split(commaSplitter);
+                 
+                int index = stageTwoOutcome.getSelectedIndex();
+                ColumnsCustom.add(Columns[index]);
+                //print the column
+                //System.out.println(Columns[index]);
+                
+            }
+            
+            
+            System.out.println("COLUMN:");
+            for (int k = 0; k< ColumnsCustom.size(); k++){
+        
+            System.out.println(ColumnsCustom.get(k));
+        }
+            
+            //count the unique ones
+            for (int x = 0; x<ColumnsCustom.size(); x++){
+                if (UniqueList.contains(ColumnsCustom.get(x))){
+                
+                    //do nothing
+                } else {
+                
+                    UniqueList.add(ColumnsCustom.get(x));
+                }
+            
+            }
+            
+            System.out.println("Number of unique categories: " + String.valueOf(UniqueList.size()));
+            numberOfCategories.setText(String.valueOf(UniqueList.size()));
+            
+
+        }
+        catch (FileNotFoundException e){
+            e.printStackTrace();
+            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, e);
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+        finally {
+            if(br!=null)
+            {
+                try{
+                    br.close();
+                } catch (IOException e)
+                {
+                    e.printStackTrace();
+                }
+            }
+        }  
+        
+    }//GEN-LAST:event_outcomeCatButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2498,6 +2636,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuBar jMenuBar1;
@@ -2512,6 +2651,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
@@ -2522,6 +2662,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator12;
     private javax.swing.JSeparator jSeparator14;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
@@ -2541,6 +2682,8 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem modifyStageOneMenu;
     private javax.swing.JMenuItem modifyStageTwoMenu;
     private javax.swing.JMenuItem newModelMenu;
+    private javax.swing.JLabel numberOfCategories;
+    private javax.swing.JButton outcomeCatButton;
     private javax.swing.JPanel parentPanel;
     private javax.swing.JButton resetButton;
     private javax.swing.JButton runTabTwoStageOneTwo;
@@ -2798,6 +2941,7 @@ public class mixregGUI extends javax.swing.JFrame {
             
                     levelTwoBoxes.get(j).get(2).setEnabled(false);
             }
+            
 
             constraints.gridy++;
 
