@@ -122,7 +122,7 @@ public class mixregGUI extends javax.swing.JFrame {
     String defFilePath;
     
     String[] dataValues;
-    String[] Columns;
+   // String[] Columns;
     
 
     /**
@@ -2487,23 +2487,53 @@ public class mixregGUI extends javax.swing.JFrame {
     private void outcomeCatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_outcomeCatButtonActionPerformed
         // TODO add your handling code here:
         //get the categories of the stage two outcome variable
+        ArrayList<String> ColumnsCustom = new ArrayList<>();
+        ArrayList<String> UniqueList = new ArrayList<>();
+        
         String dataFileName = NewModel.getDataFileName();
         File file = new File(dataFileName);
 //        //first get the column
         BufferedReader br = null;
         String line = "";
         String commaSplitter = ",";
+        //
 
         try{
             br = new BufferedReader(new FileReader(dataFileName));
             line = br.readLine(); //consumes the first row
             while ((line = br.readLine())!=null)
             {
-                Columns = line.split(commaSplitter);
+                String[] Columns = line.split(commaSplitter);
+                 
                 int index = stageTwoOutcome.getSelectedIndex();
+                ColumnsCustom.add(Columns[index]);
                 //print the column
                 //System.out.println(Columns[index]);
+                
             }
+            
+            
+            System.out.println("COLUMN:");
+            for (int k = 0; k< ColumnsCustom.size(); k++){
+        
+            System.out.println(ColumnsCustom.get(k));
+        }
+            
+            //count the unique ones
+            for (int x = 0; x<ColumnsCustom.size(); x++){
+                if (UniqueList.contains(ColumnsCustom.get(x))){
+                
+                    //do nothing
+                } else {
+                
+                    UniqueList.add(ColumnsCustom.get(x));
+                }
+            
+            }
+            
+            System.out.println("Number of unique categories: " + String.valueOf(UniqueList.size()));
+            numberOfCategories.setText(String.valueOf(UniqueList.size()));
+            
 
         }
         catch (FileNotFoundException e){
@@ -2524,81 +2554,7 @@ public class mixregGUI extends javax.swing.JFrame {
                     e.printStackTrace();
                 }
             }
-        }
-        
-        
-        // sort the array first
-        
-        
-        for (int k = 0; k<Columns.length; k++){
-        
-            System.out.println(Columns[k]);
-        }
-        
-        Arrays.sort(Columns);
-        
-        
-
-//String s1[]={"hello","hi","j2ee","j2ee","sql","jdbc","hello","jdbc","hybernet","j2ee","hello","hello","hybernet"};
-
-int uniquesFound = 0;
-
-// Assume that array is sorted, so duplicates would be next to another.
-// If we find duplicates, such as 12223, we will only count its last instance (i.e. the last '2')
-for (int x = 0; x < Columns.length; x++) {
-
-    // If we are at the last element, we know we can count it
-    if (x != Columns.length - 1) {
-        if (!Columns[x].equals(Columns[x+1])) {
-            uniquesFound++;
-        }
-        else {
-            // Nothing! If they are the same, move to the next step element
-        }
-    } else {
-        uniquesFound++;
-        
-    }
-}
-
-
-        
-
-System.out.println("Number of uniques found: " + String.valueOf(uniquesFound));
-numberOfCategories.setText(String.valueOf(uniquesFound));
-
-
-        
-        //convert it to an ArrayList
-//        ArrayList<String> ColumnArray = new ArrayList<>();
-//        
-//        for (int y=0; y<Columns.length; y++){
-//        ColumnArray.add(Columns[y]);
-//        
-//        }
-        
-        //now sort the column
-       // Arrays.sort(Columns);
-//       int numOfDifferentVals = 0;
-//       ArrayList<String> diffValues = new ArrayList<>();
-//       
-//       for(int x=0; x<ColumnArray.size(); x++){
-//        if(!diffValues.contains(ColumnArray.get(x))){
-//            diffValues.add(ColumnArray.get(x));
-//           
-//        }
-//        }
-//       
-//       if(diffValues.size()==1){
-//            numOfDifferentVals = 0;
-//        }
-//        else{
-//          numOfDifferentVals = diffValues.size();
-//        }
-//       
-//       System.out.println("The number of different elements: " + String.valueOf(numOfDifferentVals));
-       
-       
+        }  
         
     }//GEN-LAST:event_outcomeCatButtonActionPerformed
 
