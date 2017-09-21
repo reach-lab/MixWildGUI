@@ -2942,6 +2942,14 @@ public class mixregGUI extends javax.swing.JFrame {
                     levelTwoBoxes.get(j).get(2).setEnabled(false);
             }
             
+            if (i>1){
+                    levelTwoBoxes.get(j).get(2).setEnabled(false);
+            
+            } else {
+            
+                    levelTwoBoxes.get(j).get(2).setEnabled(true);
+            }
+            
 
             constraints.gridy++;
 
