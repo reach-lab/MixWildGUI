@@ -42,6 +42,8 @@ public class NewModel extends javax.swing.JFrame {
     
     final ImageIcon icon;
     
+    
+    
     /**
      *
      */
@@ -236,14 +238,14 @@ public class NewModel extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Instructions!");
+        jButton1.setText("Instructions");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jLabel9.setText("Please go through the following");
+        jLabel9.setText("Before importing a data file, please go through these:");
 
         jLabel10.setText("Random Scale?");
 
@@ -273,7 +275,7 @@ public class NewModel extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(moreThanOneRLERadio))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(162, 162, 162)
+                        .addGap(38, 38, 38)
                         .addComponent(jLabel9)
                         .addGap(18, 18, 18)
                         .addComponent(jButton1))
@@ -345,17 +347,15 @@ public class NewModel extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 516, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(9, 9, 9)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(jLabel9))
-                    .addComponent(jButton1))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jLabel9))
                 .addGap(12, 12, 12)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 8, 8)

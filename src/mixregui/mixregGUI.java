@@ -134,6 +134,7 @@ public class mixregGUI extends javax.swing.JFrame {
         StageOneList = new DefaultComboBoxModel<String>();
         StageTwoList = new DefaultComboBoxModel<String>();
         NoAssociationRadio.setSelected(true);
+        stage_1_regs = new stageOneRegs();
 
         i = newModel.getRLE();
         System.out.println(String.valueOf(i));
@@ -2375,11 +2376,25 @@ public class mixregGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_advancedOptionsButtonActionPerformed
 
     private void addStageOneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStageOneButtonActionPerformed
+        
+        if (stage_1_regs.isVisible()){ //if it is already open and visible in the background
+            
+           // stage_1_regs.set
+           stage_1_regs.setFocusable(true);
+           stageOneClicked = 1;
+           addStageTwoTabTwo.setEnabled(true);
+        
+        } else {
+        
         stageOneClicked = 1;
         addStageTwoTabTwo.setEnabled(true);
-        stage_1_regs = new stageOneRegs();
+        
         stage_1_regs.setVisible(true);
         stage_1_regs.updateAllVariables();
+            
+        }
+        
+        
     }//GEN-LAST:event_addStageOneButtonActionPerformed
 
     private void IDvariableComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDvariableComboActionPerformed
@@ -2798,6 +2813,7 @@ public class mixregGUI extends javax.swing.JFrame {
             
                     levelTwoBoxes.get(j).get(2).setEnabled(false);
             }
+            
 
             constraints.gridy++;
 
