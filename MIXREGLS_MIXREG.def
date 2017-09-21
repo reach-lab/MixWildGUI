@@ -1,29 +1,29 @@
-jjg
-gfdgf
+gg
+gg
 /Users/adityaponnada/Downloads/sampleNovel_dataSet.csv
-Output_gfdgf
-156  1  1  2  1  0  0  1  2  0  0.001  11  1  100  -9999  null  0  0.15
+Output_gg
+156  1  2  1  1  0  0  1  1  0  0.001  11  0  100  -9999  0  0  0.15
 1  2
-7
-12
-11  7
-9
-11  9
+11
+6  11
+11
+10
+10
 
 WAVE
-FULLTIME
-TOD
-WEEKEND  DAY
-DAY
-DAY  WEEKEND
+WEEKEND
+DAY_COUNT  WEEKEND
+DOW
+DOW
+DOW
 
-2  2  2  0
+2  1  2  0
 3
-15  8
-15  8
-15  8
+13  8
+8
+13  8
 
 DATA
-DATE  REPROMPTS
-DATE  REPROMPTS
-DATE  REPROMPTS
+DATE  TYPE
+DATE
+DATE  TYPE
