@@ -39,7 +39,7 @@ public class NewModel extends javax.swing.JFrame {
     static mixregGUI mxr;
     InstructionsGUI instructions;
     static boolean isRandomScale = false;
-    
+    static String dataFileNameRef;
     final ImageIcon icon;
     
     
@@ -440,6 +440,7 @@ public class NewModel extends javax.swing.JFrame {
         
         //get file path to display on the text box
         String fileName = file.getAbsolutePath();
+        dataFileNameRef = fileName;
         
         filePath.setText(fileName);
         
@@ -846,6 +847,11 @@ public static String[] getVariableNames(){
 return variableArray;
 }
 
+public static String getDataFileName(){
+
+return dataFileNameRef;
+}
+
 //get the instance of the model mixReg declared in newModel
 public mixregGUI getMixReg(){
 
@@ -926,5 +932,7 @@ public String getOutPutFileName() {
       
       //return "";
     }
+
+
 
 }

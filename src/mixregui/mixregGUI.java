@@ -38,6 +38,7 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.AbstractButton;
@@ -119,6 +120,10 @@ public class mixregGUI extends javax.swing.JFrame {
     JFileChooser fileChooser = new JFileChooser();
     int selectedModel;
     String defFilePath;
+    
+    String[] dataValues;
+    String[] Columns;
+    
 
     /**
      * Creates new form mixregGUI
@@ -187,6 +192,8 @@ public class mixregGUI extends javax.swing.JFrame {
             addStageTwoTabTwo.setEnabled(true);
         }
         
+        
+            
 //        //set advanced options defaults
 //        try {
 //            NewModel.defFile.setModelFixedInt(String.valueOf(1));
@@ -269,6 +276,7 @@ public class mixregGUI extends javax.swing.JFrame {
 //            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
 //        }
         
+        
        
 
     }
@@ -345,6 +353,10 @@ public class mixregGUI extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 2), new java.awt.Dimension(0, 2), new java.awt.Dimension(32767, 2));
         jSeparator14 = new javax.swing.JSeparator();
+        outcomeCatButton = new javax.swing.JButton();
+        jSeparator3 = new javax.swing.JSeparator();
+        jPanel5 = new javax.swing.JPanel();
+        outcomeCatText = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -592,7 +604,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 addStageTwoTabTwoActionPerformed(evt);
             }
         });
-        jPanel12.add(addStageTwoTabTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 190, 40));
+        jPanel12.add(addStageTwoTabTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 210, 40));
 
         jLabel17.setText("Random Scale");
         jPanel12.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 60, -1, -1));
@@ -642,15 +654,15 @@ public class mixregGUI extends javax.swing.JFrame {
                 suppressIntCheckBoxActionPerformed(evt);
             }
         });
-        jPanel12.add(suppressIntCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 210, -1));
+        jPanel12.add(suppressIntCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 200, -1));
 
         stageTwoOutcome.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel12.add(stageTwoOutcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 190, 30));
+        jPanel12.add(stageTwoOutcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 210, 30));
 
         jLabel22.setText("Stage 2 Outcome:");
-        jPanel12.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, -1, -1));
-        jPanel12.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 190, -1));
-        jPanel12.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, 190, -1));
+        jPanel12.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, -1, -1));
+        jPanel12.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 210, -1));
+        jPanel12.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 210, -1));
 
         jButton1.setText("Reset");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -665,6 +677,32 @@ public class mixregGUI extends javax.swing.JFrame {
         jPanel12.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 470, -1, 30));
         jPanel12.add(filler1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 570, -1, 80));
         jPanel12.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 40, 320, 10));
+
+        outcomeCatButton.setText("Get outcome categories");
+        outcomeCatButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                outcomeCatButtonActionPerformed(evt);
+            }
+        });
+        jPanel12.add(outcomeCatButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 210, 40));
+        jPanel12.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 210, -1));
+
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Outcome categories"));
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addGap(0, 6, Short.MAX_VALUE)
+                .addComponent(outcomeCatText, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(outcomeCatText, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+        );
+
+        jPanel12.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, -1, 190));
 
         stageOneTabs.addTab("Stage 2 Configuration", jPanel12);
 
@@ -2435,6 +2473,81 @@ public class mixregGUI extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void outcomeCatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_outcomeCatButtonActionPerformed
+        // TODO add your handling code here:
+        //get the categories of the stage two outcome variable
+        String dataFileName = NewModel.getDataFileName();
+        File file = new File(dataFileName);
+//        try {
+//            Scanner inputStream = new Scanner(file);
+//            inputStream.next(); //ignore the first line of column names
+//            while (inputStream.hasNext()){
+//                String dataColumn = inputStream.next();
+//                System.out.println("first part of"+dataColumn);
+//                dataValues = dataColumn.split(",");
+//                System.out.println("second part of"+dataColumn);
+////                System.out.println("FILE NAME IS: " + dataFileName);
+////                System.out.println("SELECTED INDEX STAGE TWO IS: " + stageTwoOutcome.getSelectedIndex());
+////                System.out.println("DATA VALUES SIZE IS: " + String.valueOf(dataValues.length));
+//                //System.out.println(dataValues[2]); //print everything in that column //TYPE example
+//                System.out.println("The stage two outcome is "+stageTwoOutcome.getSelectedItem().toString());
+//                System.out.println(dataValues[stageTwoOutcome.getSelectedIndex()]);
+//                System.out.println(String.valueOf(stageTwoOutcome.getSelectedIndex()));
+//            }
+
+            
+            
+//            for (int index = 0; index < dataValues.length; index++){
+//                System.out.println(dataValues[stageTwoOutcome.getSelectedIndex()]);
+//            }
+//            
+//            
+//            
+//            
+//            } catch (FileNotFoundException ex) {
+//            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+//            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+//        }
+
+
+        //String csvFile = "/Users/chaitanyakaul/Desktop/myCSV.csv";
+        BufferedReader br = null;
+        String line = "";
+        String commaSplitter = ",";
+
+        try{
+            br = new BufferedReader(new FileReader(dataFileName));
+            line = br.readLine(); //consumes the first row
+            while ((line = br.readLine())!=null)
+            {
+                Columns = line.split(commaSplitter);
+                int index = stageTwoOutcome.getSelectedIndex();
+                System.out.println(Columns[index]);
+            }
+
+        }
+        catch (FileNotFoundException e){
+            e.printStackTrace();
+            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, e);
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+        finally {
+            if(br!=null)
+            {
+                try{
+                    br.close();
+                } catch (IOException e)
+                {
+                    e.printStackTrace();
+                }
+            }
+        }
+        
+    }//GEN-LAST:event_outcomeCatButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2527,6 +2640,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
@@ -2537,6 +2651,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator12;
     private javax.swing.JSeparator jSeparator14;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
@@ -2556,6 +2671,8 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem modifyStageOneMenu;
     private javax.swing.JMenuItem modifyStageTwoMenu;
     private javax.swing.JMenuItem newModelMenu;
+    private javax.swing.JButton outcomeCatButton;
+    private javax.swing.JTextField outcomeCatText;
     private javax.swing.JPanel parentPanel;
     private javax.swing.JButton resetButton;
     private javax.swing.JButton runTabTwoStageOneTwo;
