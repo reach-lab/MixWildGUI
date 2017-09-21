@@ -74,6 +74,8 @@ public class NewModel extends javax.swing.JFrame {
        newModelMissingValues.setSelected(true);
        noneRadio.setEnabled(false);
        randomScaleCheckBox.setEnabled(false);
+       oneRLERadio.setEnabled(false);
+       moreThanOneRLERadio.setEnabled(false);
        
        dataFileLabel.setToolTipText("Insert a data file in .csv format");
        fileBrowseButton.setToolTipText("Insert a data file in .csv format");
@@ -442,6 +444,8 @@ public class NewModel extends javax.swing.JFrame {
         titleField.setEnabled(true);
         subtitleField.setEnabled(true);
         //randomLocationEffects.setEnabled(true);
+        oneRLERadio.setEnabled(true);
+        moreThanOneRLERadio.setEnabled(true);
         continuousRadio.setEnabled(true);
         dichotomousRadio.setEnabled(true);
        // randomLocationEffects.setEnabled(true);
