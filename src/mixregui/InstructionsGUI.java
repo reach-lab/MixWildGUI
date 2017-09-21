@@ -5,6 +5,8 @@
  */
 package mixregui;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author adityaponnada
@@ -19,6 +21,7 @@ public class InstructionsGUI extends javax.swing.JFrame {
     public InstructionsGUI() {
         initComponents();
         //nm = new NewModel();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     /**
