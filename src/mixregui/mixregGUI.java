@@ -4634,24 +4634,24 @@ public class mixregGUI extends javax.swing.JFrame {
 //        }
         //test code:
         //test code for background process:
-        new Thread(new Runnable() {
-            public void run() {
-                for (i = 0; i <= 100; i++) {
-
-                    // Runs inside of the Swing UI thread
-                    SwingUtilities.invokeLater(new Runnable() {
-                        public void run() {
-                            //progressBar.setValue(i); //Add command reading code here
-                        }
-                    });
-
-                    try {
-                        java.lang.Thread.sleep(100); //need to check what it does
-                    } catch (Exception e) {
-                    }
-                }
-            }
-        }).start();
+//        new Thread(new Runnable() {
+//            public void run() {
+//                for (i = 0; i <= 100; i++) { //maybe switch this to while:
+//
+//                    // Runs inside of the Swing UI thread
+//                    SwingUtilities.invokeLater(new Runnable() {
+//                        public void run() {
+//                            //progressBar.setValue(i); //Add command reading code here
+//                        }
+//                    });
+//
+//                    try {
+//                        java.lang.Thread.sleep(100); //need to check what it does
+//                    } catch (Exception e) {
+//                    }
+//                }
+//            }
+//        }).start();
 
         
         //test code for reading command line

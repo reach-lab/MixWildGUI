@@ -1,30 +1,30 @@
 title
-out
+sutitle
 /Users/adityaponnada/Downloads/sampleNovel_dataSet.csv
-Output_out
-156  2  3  1  1  1  1  0  1  0  0.001  11  0  100  -9999  0  0  0.15
+Output_sutitle
+156  2  1  1  1  1  1  0  1  0  0.001  11  0  100  -9999  0  0  0.15
 1  2
-8  14
-3  8  14
-14
+9  16
+16
+9
 
-13
+9
 
 WAVE
-DATE  PROMPT
-DATE  DATA  PROMPT
-DATE
+DAY  COMPLY
+COMPLY
+DAY
 
-TYPE
+DAY
 
-3  2  3  1
+2  2  2  1
 3
-6  17  5
-17  5
-6  17  5
-5
+18  11
+18  11
+18  11
+18
 DATA
-ID_COUNT  DEMO_SEX  DAY_COUNT
-ID_COUNT  DEMO_SEX
-ID_COUNT  DEMO_SEX  DAY_COUNT
-ID_COUNT
+WEEKEND  DEMO_MARITAL_STATUS
+WEEKEND  DEMO_MARITAL_STATUS
+WEEKEND  DEMO_MARITAL_STATUS
+DEMO_MARITAL_STATUS

@@ -30,6 +30,7 @@ import javax.swing.JEditorPane;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.text.Document;
@@ -71,7 +72,10 @@ public class DefinitionHelper {
     JEditorPane myPane;
     
     int selectedModel;
-    String defFilePath;
+    //String defFilePath;
+    File newDefFile = new File("MIXREGLS_MIXREG_KEY");
+    String filePath = newDefFile.getAbsolutePath();
+    String defFilePath = filePath.substring(0,filePath.lastIndexOf(File.separator)) + "/";
     /**
      * Initial Definition Parameters
      */
@@ -1923,6 +1927,26 @@ public class DefinitionHelper {
                     
                         
                     runModels(); //@Eldin: Check if this is the right way to call the function.
+                    
+                    //read output in real time here:
+                    new Thread(new Runnable() {
+            public void run() {
+                for (int i = 0; i <= 100; i++) { //maybe switch this to while:
+
+                    // Runs inside of the Swing UI thread
+                    SwingUtilities.invokeLater(new Runnable() {
+                        public void run() {
+                            //progressBar.setValue(i); //Add command reading code here
+                        }
+                    });
+
+                    try {
+                        java.lang.Thread.sleep(100); //need to check what it does
+                    } catch (Exception e) {
+                    }
+                }
+            }
+        }).start();
 
                     //select the program here
                     // then read the output
@@ -1949,7 +1973,7 @@ public class DefinitionHelper {
             Document defDoc = myPane.getDocument();
             int length = defDoc.getLength();
             
-            File newDefFile = new File("MIXREGLS_MIXREG_KEY");
+            //File newDefFile = new File("MIXREGLS_MIXREG_KEY");
             
             if (selectedModel == DefinitionHelper.MIXREGLS_MIXREG_KEY){
                 newDefFile = new File("MIXREGLS_MIXREG");
@@ -1969,8 +1993,8 @@ public class DefinitionHelper {
               new FileOutputStream(newDefFile + ".def"));
             Writer w = new OutputStreamWriter(os);
             myPane.write(w);
-            String filePath = newDefFile.getAbsolutePath();
-            defFilePath = filePath.substring(0,filePath.lastIndexOf(File.separator)) + "/";
+            //String filePath = newDefFile.getAbsolutePath();
+            //defFilePath = filePath.substring(0,filePath.lastIndexOf(File.separator)) + "/";
             System.out.println("PATH-NAME: " + defFilePath);
             w.close();
         }
