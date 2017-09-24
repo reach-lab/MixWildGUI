@@ -1929,24 +1929,24 @@ public class DefinitionHelper {
                     runModels(); //@Eldin: Check if this is the right way to call the function.
                     
                     //read output in real time here:
-                    new Thread(new Runnable() {
-            public void run() {
-                for (int i = 0; i <= 100; i++) { //maybe switch this to while:
-
-                    // Runs inside of the Swing UI thread
-                    SwingUtilities.invokeLater(new Runnable() {
-                        public void run() {
-                            //progressBar.setValue(i); //Add command reading code here
-                        }
-                    });
-
-                    try {
-                        java.lang.Thread.sleep(100); //need to check what it does
-                    } catch (Exception e) {
-                    }
-                }
-            }
-        }).start();
+//                    new Thread(new Runnable() {
+//                        public void run() {
+//                            for (int i = 0; i <= 100; i++) { //maybe switch this to while:
+//
+//                                // Runs inside of the Swing UI thread
+//                                SwingUtilities.invokeLater(new Runnable() {
+//                                    public void run() {
+//                                        //progressBar.setValue(i); //Add command reading code here
+//                                    }
+//                                });
+//
+//                                try {
+//                                    java.lang.Thread.sleep(100); //need to check what it does
+//                                } catch (Exception e) {
+//                                }
+//                            }
+//                        }
+//                    }).start();
 
                     //select the program here
                     // then read the output
