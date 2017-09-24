@@ -1922,7 +1922,7 @@ public class DefinitionHelper {
                 public void actionPerformed(ActionEvent e){
                     
                         
-                    runModels();
+                    runModels(); //@Eldin: Check if this is the right way to call the function.
 
                     //select the program here
                     // then read the output
