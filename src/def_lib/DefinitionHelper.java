@@ -1969,7 +1969,8 @@ public class DefinitionHelper {
               new FileOutputStream(newDefFile + ".def"));
             Writer w = new OutputStreamWriter(os);
             myPane.write(w);
-            defFilePath = newDefFile.getAbsolutePath();
+            String filePath = newDefFile.getAbsolutePath();
+            defFilePath = filePath.substring(0,filePath.lastIndexOf(File.separator)) + "/";
             System.out.println("PATH-NAME: " + defFilePath);
             w.close();
         }
