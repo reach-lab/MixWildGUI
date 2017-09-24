@@ -1,29 +1,30 @@
-kjhjh
-kjhkhj
+jhjhjh
+jhjh
 /Users/adityaponnada/Downloads/sampleNovel_dataSet.csv
-Output_kjhkhj
-156  2  2  2  1  0  0  1  1  0  0.001  11  0  100  -9999  0  0  0.15
+Output_jhjh
+156  2  1  3  1  0  0  1  2  0  0.001  11  0  100  -9999  0  0  0.15
 1  2
-5  12
-9  15
-5  12
-9
-5
+10  7
+7
+10  4  7
+4
+10  4
 
 WAVE
-ID_COUNT  TOD
-DAY  REPROMPTS
-ID_COUNT  ID_COUNT
-DAY
-ID_COUNT
+DOW  FULLTIME
+FULLTIME
+NOVEL_ID  DOW  NOVEL_ID
+NOVEL_ID
+NOVEL_ID  DOW
 
-1  1  1  0
+2  2  2  1
 3
-8
-8
-8
-
+8  9
+8  9
+8  9
+9
 DATA
-DATE
-DATE
-DATE
+DAY  DATE
+DAY  DATE
+DAY  DATE
+DAY

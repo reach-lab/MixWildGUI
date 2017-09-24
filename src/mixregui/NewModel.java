@@ -134,14 +134,17 @@ public class NewModel extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("New Model for Stage 1 Analysis");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         dataFileLabel.setText("Data File: ");
+        getContentPane().add(dataFileLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, -1, -1));
 
         filePath.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 filePathActionPerformed(evt);
             }
         });
+        getContentPane().add(filePath, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 205, -1));
 
         fileBrowseButton.setText("Browse");
         fileBrowseButton.addActionListener(new java.awt.event.ActionListener() {
@@ -149,26 +152,33 @@ public class NewModel extends javax.swing.JFrame {
                 fileBrowseButtonActionPerformed(evt);
             }
         });
+        getContentPane().add(fileBrowseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 70, -1, -1));
 
         jLabel2.setText("Title:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, -1, -1));
 
         titleField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 titleFieldActionPerformed(evt);
             }
         });
+        getContentPane().add(titleField, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 205, -1));
 
         jLabel3.setText("Output/Definition File:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
 
         subtitleField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 subtitleFieldActionPerformed(evt);
             }
         });
+        getContentPane().add(subtitleField, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 205, -1));
 
         jLabel4.setText("Random Location Effects:");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
 
         jLabel5.setText("Stage 2 Outcome Type:");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 294, -1, -1));
 
         buttonGroup1.add(continuousRadio);
         continuousRadio.setText("Continuous");
@@ -177,6 +187,7 @@ public class NewModel extends javax.swing.JFrame {
                 continuousRadioActionPerformed(evt);
             }
         });
+        getContentPane().add(continuousRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 294, -1, -1));
 
         buttonGroup1.add(dichotomousRadio);
         dichotomousRadio.setText("Dichotomous/Ordinal");
@@ -185,6 +196,7 @@ public class NewModel extends javax.swing.JFrame {
                 dichotomousRadioActionPerformed(evt);
             }
         });
+        getContentPane().add(dichotomousRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 294, -1, -1));
 
         newModelSubmit.setText("Submit");
         newModelSubmit.addActionListener(new java.awt.event.ActionListener() {
@@ -192,6 +204,7 @@ public class NewModel extends javax.swing.JFrame {
                 newModelSubmitActionPerformed(evt);
             }
         });
+        getContentPane().add(newModelSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(402, 411, -1, -1));
 
         newModelCancel.setText("Cancel");
         newModelCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -199,6 +212,7 @@ public class NewModel extends javax.swing.JFrame {
                 newModelCancelActionPerformed(evt);
             }
         });
+        getContentPane().add(newModelCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(202, 411, -1, -1));
 
         newModel_resetButton.setText("Reset");
         newModel_resetButton.addActionListener(new java.awt.event.ActionListener() {
@@ -206,14 +220,18 @@ public class NewModel extends javax.swing.JFrame {
                 newModel_resetButtonActionPerformed(evt);
             }
         });
+        getContentPane().add(newModel_resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(306, 411, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(538, 334, -1, -1));
 
         newModelMissingValues.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newModelMissingValuesActionPerformed(evt);
             }
         });
+        getContentPane().add(newModelMissingValues, new org.netbeans.lib.awtextra.AbsoluteConstraints(209, 340, -1, -1));
 
         jLabel6.setText("Missing value code:");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 345, -1, -1));
 
         newModelMissingValueCode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -225,10 +243,13 @@ public class NewModel extends javax.swing.JFrame {
                 newModelMissingValueCodeKeyTyped(evt);
             }
         });
+        getContentPane().add(newModelMissingValueCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(445, 340, 77, -1));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/mixLogo.png"))); // NOI18N
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 409, -1, 31));
 
         jLabel8.setText("Any missing values in data?");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 340, -1, -1));
 
         buttonGroup1.add(noneRadio);
         noneRadio.setText("None");
@@ -237,6 +258,7 @@ public class NewModel extends javax.swing.JFrame {
                 noneRadioActionPerformed(evt);
             }
         });
+        getContentPane().add(noneRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(473, 294, -1, -1));
 
         jButton1.setText("Instructions");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -244,180 +266,31 @@ public class NewModel extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(391, 9, -1, -1));
 
         jLabel9.setText("Before importing a data file, please go through these:");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 14, -1, -1));
 
         jLabel10.setText("Random Scale?");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 254, -1, -1));
 
         randomScaleCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 randomScaleCheckBoxActionPerformed(evt);
             }
         });
+        getContentPane().add(randomScaleCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 247, -1, -1));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 520, -1));
+        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 184, 524, 10));
 
         buttonGroup2.add(oneRLERadio);
         oneRLERadio.setText("One");
+        getContentPane().add(oneRLERadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(186, 206, -1, -1));
 
         buttonGroup2.add(moreThanOneRLERadio);
         moreThanOneRLERadio.setText("More than one");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(oneRLERadio)
-                        .addGap(18, 18, 18)
-                        .addComponent(moreThanOneRLERadio))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(jLabel9)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(120, 120, 120)
-                        .addComponent(dataFileLabel)
-                        .addGap(17, 17, 17)
-                        .addComponent(filePath, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(15, 15, 15)
-                        .addComponent(fileBrowseButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(140, 140, 140)
-                        .addComponent(jLabel2)
-                        .addGap(28, 28, 28)
-                        .addComponent(titleField, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(jLabel3)
-                        .addGap(16, 16, 16)
-                        .addComponent(subtitleField, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel1)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel5)
-                                            .addGap(15, 15, 15))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel10)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                            .addComponent(jLabel7)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(randomScaleCheckBox)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(newModelCancel)
-                                                .addComponent(continuousRadio))
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addGap(5, 5, 5)
-                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(layout.createSequentialGroup()
-                                                            .addComponent(jLabel6)
-                                                            .addGap(28, 28, 28)
-                                                            .addComponent(newModelMissingValueCode, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addGroup(layout.createSequentialGroup()
-                                                            .addComponent(dichotomousRadio)
-                                                            .addGap(10, 10, 10)
-                                                            .addComponent(noneRadio))))
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addGap(18, 18, 18)
-                                                    .addComponent(newModel_resetButton)
-                                                    .addGap(18, 18, 18)
-                                                    .addComponent(newModelSubmit)))))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(newModelMissingValues))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 516, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(9, 9, 9)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jLabel9))
-                .addGap(12, 12, 12)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(8, 8, 8)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(dataFileLabel))
-                    .addComponent(filePath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fileBrowseButton))
-                .addGap(11, 11, 11)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel2))
-                    .addComponent(titleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(4, 4, 4)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel3))
-                    .addComponent(subtitleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(oneRLERadio)
-                    .addComponent(moreThanOneRLERadio))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(randomScaleCheckBox)
-                    .addComponent(jLabel10))
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(continuousRadio)
-                    .addComponent(dichotomousRadio)
-                    .addComponent(noneRadio))
-                .addGap(17, 17, 17)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addComponent(newModelMissingValues)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel6)
-                        .addComponent(newModelMissingValueCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(newModel_resetButton)
-                            .addComponent(newModelCancel)
-                            .addComponent(newModelSubmit)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(23, 23, 23))
-        );
+        getContentPane().add(moreThanOneRLERadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(261, 206, -1, -1));
+        getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 384, 516, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

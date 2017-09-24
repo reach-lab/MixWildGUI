@@ -78,10 +78,13 @@ public class stageTwoRegs extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Add Stage 2 regressors");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Variables");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
         jLabel2.setText("Level-II (Time Invariant)");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, -1, -1));
 
         stageTwoAddButton.setText("Add");
         stageTwoAddButton.addActionListener(new java.awt.event.ActionListener() {
@@ -89,6 +92,7 @@ public class stageTwoRegs extends javax.swing.JFrame {
                 stageTwoAddButtonActionPerformed(evt);
             }
         });
+        getContentPane().add(stageTwoAddButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(226, 85, 89, -1));
 
         stageTwoRemoveButton.setText("Remove");
         stageTwoRemoveButton.addActionListener(new java.awt.event.ActionListener() {
@@ -96,6 +100,7 @@ public class stageTwoRegs extends javax.swing.JFrame {
                 stageTwoRemoveButtonActionPerformed(evt);
             }
         });
+        getContentPane().add(stageTwoRemoveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(226, 120, 89, -1));
 
         stageTwoResetButton.setText("Reset");
         stageTwoResetButton.addActionListener(new java.awt.event.ActionListener() {
@@ -103,6 +108,7 @@ public class stageTwoRegs extends javax.swing.JFrame {
                 stageTwoResetButtonActionPerformed(evt);
             }
         });
+        getContentPane().add(stageTwoResetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(319, 460, 96, -1));
 
         stageTwoSubmitButton.setText("Submit");
         stageTwoSubmitButton.addActionListener(new java.awt.event.ActionListener() {
@@ -110,12 +116,18 @@ public class stageTwoRegs extends javax.swing.JFrame {
                 stageTwoSubmitButtonActionPerformed(evt);
             }
         });
+        getContentPane().add(stageTwoSubmitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(419, 460, 96, -1));
 
         jScrollPane1.setViewportView(StageTwoAllVariables);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 55, 179, 372));
+
         jScrollPane2.setViewportView(StageTwoLevelTwoVariables);
 
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(342, 55, 162, 177));
+
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/mixLogo.png"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 460, -1, 36));
 
         stageTwoCancel.setText("Cancel");
         stageTwoCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -123,74 +135,10 @@ public class stageTwoRegs extends javax.swing.JFrame {
                 stageTwoCancelActionPerformed(evt);
             }
         });
+        getContentPane().add(stageTwoCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 460, -1, -1));
 
         jButton1.setText("?");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jLabel1)
-                        .addGap(273, 273, 273)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(121, 121, 121)
-                                .addComponent(stageTwoCancel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(stageTwoResetButton, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(4, 4, 4)
-                                .addComponent(stageTwoSubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(stageTwoAddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(stageTwoRemoveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(27, 27, 27))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(29, 29, 29)))
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(30, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addGap(9, 9, 9)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(stageTwoAddButton)
-                        .addGap(6, 6, 6)
-                        .addComponent(stageTwoRemoveButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(stageTwoResetButton)
-                        .addComponent(stageTwoCancel))
-                    .addComponent(stageTwoSubmitButton)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(8, Short.MAX_VALUE))
-        );
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(272, 155, 41, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
