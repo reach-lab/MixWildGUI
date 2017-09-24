@@ -38,6 +38,7 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.AbstractButton;
@@ -52,6 +53,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import static javax.swing.SwingConstants.CENTER;
+import javax.swing.SwingUtilities;
 import javax.swing.border.MatteBorder;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -98,7 +100,7 @@ public class mixregGUI extends javax.swing.JFrame {
     ArrayList<ArrayList<JCheckBox>> stageTwoGridBoxes;
 
     ArrayList<ArrayList<JCheckBox>> disaggVarianceBoxes;
-    
+
     boolean scaleChecked = false;
     boolean randomChecked = false;
 
@@ -115,10 +117,13 @@ public class mixregGUI extends javax.swing.JFrame {
     static ActionListener actionListener;
 
     int stageOneClicked = 0;
-    
+
     JFileChooser fileChooser = new JFileChooser();
     int selectedModel;
     String defFilePath;
+
+    String[] dataValues;
+    // String[] Columns;
 
     /**
      * Creates new form mixregGUI
@@ -134,9 +139,12 @@ public class mixregGUI extends javax.swing.JFrame {
         StageOneList = new DefaultComboBoxModel<String>();
         StageTwoList = new DefaultComboBoxModel<String>();
         NoAssociationRadio.setSelected(true);
+        stage_1_regs = new stageOneRegs();
 
         i = newModel.getRLE();
         System.out.println(String.valueOf(i));
+
+        stageOneTabs.setEnabledAt(1, false);
 
         //Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/resources/mixLogo.png"));
         //setIconImage(image);
@@ -163,9 +171,9 @@ public class mixregGUI extends javax.swing.JFrame {
         levelTwoPanel.setLayout(new BorderLayout());
 
         stageTwoPanel.setLayout(new BorderLayout());
-        
+
         System.out.println("Right before");
-        if (outcomeNone == true){
+        if (outcomeNone == true) {
             System.out.println("In isOutcomeNone MixReg");
             startStageTwo.setText("Run Stage 1");
             System.out.println(startStageTwo.getText());
@@ -183,7 +191,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
             addStageTwoTabTwo.setEnabled(true);
         }
-        
+
 //        //set advanced options defaults
 //        try {
 //            NewModel.defFile.setModelFixedInt(String.valueOf(1));
@@ -265,9 +273,6 @@ public class mixregGUI extends javax.swing.JFrame {
 //            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
 //            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
 //        }
-        
-       
-
     }
 
     /**
@@ -342,6 +347,11 @@ public class mixregGUI extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 2), new java.awt.Dimension(0, 2), new java.awt.Dimension(32767, 2));
         jSeparator14 = new javax.swing.JSeparator();
+        outcomeCatButton = new javax.swing.JButton();
+        jSeparator3 = new javax.swing.JSeparator();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        numberOfCategories = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -510,7 +520,7 @@ public class mixregGUI extends javax.swing.JFrame {
         jPanel8.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 270, -1));
         jPanel8.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 270, -1));
 
-        addStageOneButton.setText("Add Stage 1 Regressors ...");
+        addStageOneButton.setText("Modify Stage 1 Regressors ...");
         addStageOneButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addStageOneButtonActionPerformed(evt);
@@ -529,8 +539,8 @@ public class mixregGUI extends javax.swing.JFrame {
 
         associationPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        associationLabel.setText("<html>Specify the relationship between the <br>random location and within subject variance.<br>(i.e. relation between variance and slope) </html>");
-        associationPanel.add(associationLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 290, 70));
+        associationLabel.setText("<html>Specify the relationship between the <br>mean and WS variance.<br></html>");
+        associationPanel.add(associationLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 260, 40));
 
         buttonGroup1.add(NoAssociationRadio);
         NoAssociationRadio.setText("No Association");
@@ -539,7 +549,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 NoAssociationRadioActionPerformed(evt);
             }
         });
-        associationPanel.add(NoAssociationRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
+        associationPanel.add(NoAssociationRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
 
         buttonGroup1.add(LinearAssociationRadio);
         LinearAssociationRadio.setText("Linear Association");
@@ -548,11 +558,11 @@ public class mixregGUI extends javax.swing.JFrame {
                 LinearAssociationRadioActionPerformed(evt);
             }
         });
-        associationPanel.add(LinearAssociationRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
+        associationPanel.add(LinearAssociationRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
         buttonGroup1.add(QuadraticAssociationRadio);
         QuadraticAssociationRadio.setText("Quadratic Association");
-        associationPanel.add(QuadraticAssociationRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
+        associationPanel.add(QuadraticAssociationRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
 
         jPanel8.add(associationPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 290, 180));
 
@@ -580,21 +590,21 @@ public class mixregGUI extends javax.swing.JFrame {
         jLabel12.setText("Stage 2 Interactions");
         jPanel12.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 20, -1, 20));
 
-        jLabel15.setText("Random Scale");
-        jPanel12.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 60, -1, -1));
+        jLabel15.setText("Randome Location");
+        jPanel12.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 60, -1, -1));
 
-        addStageTwoTabTwo.setText("Modify Regressors");
+        addStageTwoTabTwo.setText("Modify Stage 2 Regressors ...");
         addStageTwoTabTwo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addStageTwoTabTwoActionPerformed(evt);
             }
         });
-        jPanel12.add(addStageTwoTabTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 190, 40));
+        jPanel12.add(addStageTwoTabTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 210, 40));
 
-        jLabel17.setText("Random Intercept");
-        jPanel12.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 60, -1, -1));
+        jLabel17.setText("Random Scale");
+        jPanel12.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 60, -1, -1));
 
-        jLabel18.setText("Scale X Random");
+        jLabel18.setText("Location X Scale");
         jPanel12.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 60, 110, -1));
 
         jSeparator6.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -608,11 +618,17 @@ public class mixregGUI extends javax.swing.JFrame {
         stageTwoPanel.setLayout(stageTwoPanelLayout);
         stageTwoPanelLayout.setHorizontalGroup(
             stageTwoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(stageTwoRegsGrid, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
+            .addGroup(stageTwoPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(stageTwoRegsGrid, javax.swing.GroupLayout.DEFAULT_SIZE, 654, Short.MAX_VALUE)
+                .addGap(48, 48, 48))
         );
         stageTwoPanelLayout.setVerticalGroup(
             stageTwoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(stageTwoRegsGrid, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
+            .addGroup(stageTwoPanelLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(stageTwoRegsGrid, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         stageTwoRegsGrid.getAccessibleContext().setAccessibleParent(jPanel12);
@@ -627,23 +643,28 @@ public class mixregGUI extends javax.swing.JFrame {
         });
         jPanel12.add(runTabTwoStageOneTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 470, 160, 40));
 
-        suppressIntCheckBox.setText("Suppress Scale X Random");
+        suppressIntCheckBox.setText("<html>Suppress Scale X Random<br> Interaction </br></html>");
         suppressIntCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 suppressIntCheckBoxActionPerformed(evt);
             }
         });
-        jPanel12.add(suppressIntCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 210, -1));
+        jPanel12.add(suppressIntCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 200, -1));
 
         stageTwoOutcome.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel12.add(stageTwoOutcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 190, 30));
+        jPanel12.add(stageTwoOutcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 210, 30));
 
         jLabel22.setText("Stage 2 Outcome:");
-        jPanel12.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, -1, -1));
-        jPanel12.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 190, -1));
-        jPanel12.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, 190, -1));
+        jPanel12.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, -1, -1));
+        jPanel12.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 210, -1));
+        jPanel12.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 210, -1));
 
         jButton1.setText("Reset");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel12.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 470, 140, 40));
         jPanel12.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 520, 740, -1));
 
@@ -651,6 +672,42 @@ public class mixregGUI extends javax.swing.JFrame {
         jPanel12.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 470, -1, 30));
         jPanel12.add(filler1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 570, -1, 80));
         jPanel12.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 40, 320, 10));
+
+        outcomeCatButton.setText("Get outcome categories");
+        outcomeCatButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                outcomeCatButtonActionPerformed(evt);
+            }
+        });
+        jPanel12.add(outcomeCatButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 210, 40));
+        jPanel12.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 210, -1));
+
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Outcome categories"));
+
+        jLabel7.setText("Number of categories:");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(numberOfCategories)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel7)
+                .addGap(18, 18, 18)
+                .addComponent(numberOfCategories)
+                .addContainerGap(102, Short.MAX_VALUE))
+        );
+
+        jPanel12.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 210, 190));
 
         stageOneTabs.addTab("Stage 2 Configuration", jPanel12);
 
@@ -880,8 +937,8 @@ public class mixregGUI extends javax.swing.JFrame {
 
         // opens new model window
         newModel.setVisible(true);
-       // instructions.setVisible(true);
-        
+        // instructions.setVisible(true);
+
 
     }//GEN-LAST:event_newModelMenuActionPerformed
 
@@ -918,6 +975,16 @@ public class mixregGUI extends javax.swing.JFrame {
         buttonGroup1.clearSelection();
 
         addStageTwoTabTwo.setEnabled(false);
+        //levelOneGrid.removeAll();
+        //levelTwoGrid.removeAll();
+
+        levelTwoPanel.removeAll();
+        levelTwoPanel.revalidate();
+        levelTwoPanel.repaint();
+
+        levelOnePanel.removeAll();
+        levelOnePanel.revalidate();
+        levelOnePanel.repaint();
 
 
     }//GEN-LAST:event_resetButtonActionPerformed
@@ -994,7 +1061,7 @@ public class mixregGUI extends javax.swing.JFrame {
         // Reads selected ID variable and outcome variable from the first two comboboxes
         //String[] idOutcome = {String.valueOf(IDvariableCombo.getSelectedIndex() + 1), String.valueOf(StageOneVariableCombo.getSelectedIndex() + 1)};
 
-       /* try {
+        /* try {
             tryCount = 1;
             NewModel.defFile.setIdOutcome(idOutcome);
             System.out.println("From defHelper | ID and Outcome indices: " + Arrays.toString(NewModel.defFile.getIdOutcome()));
@@ -1003,7 +1070,6 @@ public class mixregGUI extends javax.swing.JFrame {
             Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }*/
-
 //        try {
 //            tryCount = 1;
 //            NewModel.defFile.setLabelModelOutcome(getOutcomeLabel());
@@ -1013,9 +1079,7 @@ public class mixregGUI extends javax.swing.JFrame {
 //            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
 //            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
 //        }
-        
         // =======
-
         try {
             NewModel.defFile.setStageTwoOutcomeField(getStageTwoOutcomePosition());
             System.out.println("From defHelper | Outcome variable Position STAGE TWO: " + NewModel.defFile.getStageTwoOutcomeField());
@@ -1070,7 +1134,6 @@ public class mixregGUI extends javax.swing.JFrame {
 //                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
 //                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
 //            }
-
             // ---- Check if the association radio buttons have been selected (Advanced effect of mean) ----
             //count field array sizes     
             if (NoAssociationRadio.isSelected()) {
@@ -1253,7 +1316,6 @@ public class mixregGUI extends javax.swing.JFrame {
 //                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
 //                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
 //            }
-
             //******************************************************************
         } else if (i > 1) {
 
@@ -1458,7 +1520,6 @@ public class mixregGUI extends javax.swing.JFrame {
 //                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
 //                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
 //            }
-
         }
         // =p=p=p=p=
 
@@ -1488,9 +1549,9 @@ public class mixregGUI extends javax.swing.JFrame {
             Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
-        
+
         if (suppressed == false) {
-            
+
             try {
                 NewModel.defFile.setStageTwoIntOfInteraction(String.valueOf(countStageTwoInteractions()));
                 System.out.println("From defHelper | STAGE TWO INTERACTIONS COUNT: " + NewModel.defFile.getStageTwoIntOfInteraction().toString());
@@ -1499,7 +1560,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
-            
+
         }
 
         try {
@@ -1529,9 +1590,8 @@ public class mixregGUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
 
-        
         if (suppressed == false) {
-            
+
             try {
                 NewModel.defFile.setStageTwoFirstIntFields(getInteractionFieldRegressors_StageTwo());
                 System.out.println("From defHelper | STAGE TWO  INTERACTIONS REGRESSOR Positions: " + Arrays.toString(NewModel.defFile.getStageTwoFirstIntFields()));
@@ -1603,28 +1663,30 @@ public class mixregGUI extends javax.swing.JFrame {
 
             // do nothing
         }
-        
-        try {
-            produceStageTwoOutput();
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        try {
-            produceStageOneOutput();
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
+//        try {
+//            produceStageTwoOutput();
+//        } catch (IOException ex) {
+//            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//
+//        try {
+//            produceStageOneOutput();
+//        } catch (FileNotFoundException ex) {
+//            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+//        } //Todo: Update this once bugs are fixed
 
     }//GEN-LAST:event_runTabTwoStageOneTwoActionPerformed
 
     private void startStageTwoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startStageTwoActionPerformed
         // TODO add your handling code here:
-        
-        
-        
-            int tryCount = 0;
-            int catchCount = 0;
+
+        if (outcomeNone == false) {
+            stageOneTabs.setEnabledAt(1, true);
+        }
+
+        int tryCount = 0;
+        int catchCount = 0;
 
         // *********************************************************************
         // Test printing statements counting mean regressors
@@ -1636,7 +1698,7 @@ public class mixregGUI extends javax.swing.JFrame {
         System.out.println("Total selected mean regressors in level two: " + String.valueOf(countLevelTwoBeta()));
         System.out.println("Total selected BS variances in level two: " + String.valueOf(countLevelTwoAlpha()));
         System.out.println("Total selected WS variances in level two: " + String.valueOf(countLevelTwoTau()));
-        
+
         // Reads selected ID variable and outcome variable from the first two comboboxes
         String[] idOutcome = {String.valueOf(IDvariableCombo.getSelectedIndex() + 1), String.valueOf(StageOneVariableCombo.getSelectedIndex() + 1)};
 
@@ -1659,11 +1721,10 @@ public class mixregGUI extends javax.swing.JFrame {
             Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
-        
+
         // i is the number of random location effects selected by the users
         if (i == 1) {
-            
-            
+
             try {
                 tryCount = 1;
                 int MeanCount = countLevelOneBeta() + countLevelTwoBeta() - countLevelOneDicompMean(); //check this ======================
@@ -1883,7 +1944,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
             //******************************************************************
         } else if (i > 1) {
-            
+
             try {
                 tryCount = 1;
                 int MeanCount = countLevelOneBeta() + countLevelTwoBeta() - countLevelOneDicompMean();
@@ -1920,7 +1981,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
-            
+
             try {
                 tryCount = 1;
 
@@ -1954,7 +2015,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
-            
+
             //Check if the effect of mean on WS variances options have been selected
             if (NoAssociationRadio.isSelected()) {
 
@@ -1977,7 +2038,7 @@ public class mixregGUI extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
             }
-            
+
             try {
                 NewModel.defFile.setLabelModelMeanRegressors(ModelMeansLabelsArray());
                 System.out.println("From defHelper | Stage 1 MEAN REGRESSOR LABELS): " + Arrays.toString(NewModel.defFile.getLabelModelMeanRegressors()));
@@ -2144,7 +2205,6 @@ public class mixregGUI extends javax.swing.JFrame {
 //                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
 //                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
 //            }
-
 //            try {
 //                NewModel.defFile.setLabelModelMeanRegressors(ModelMeansLabelsArray());
 //                System.out.println("From defHelper | Stage 1 MEAN REGRESSOR LABELS): " + Arrays.toString(NewModel.defFile.getLabelModelMeanRegressors()));
@@ -2252,7 +2312,6 @@ public class mixregGUI extends javax.swing.JFrame {
 //                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
 //                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
 //            }
-
 //            try {
 //                tryCount = 1;
 //                int MeanCount = countLevelOneBeta() + countLevelTwoBeta() - countLevelOneDicompMean();
@@ -2291,46 +2350,44 @@ public class mixregGUI extends javax.swing.JFrame {
 //            }
 //
 //        }
-        
-        if (outcomeNone == true){
-            
+        if (outcomeNone == true) {
+
             if (catchCount == 0) {
-            int defTry = 0;
-            int defCatch = 0;
-            try {
-                List<String> defFileOutput;
-                
-                NewModel.defFile.writeDefFileToFolder();
+                int defTry = 0;
+                int defCatch = 0;
+                try {
+                    List<String> defFileOutput;
 
-                defFileOutput = NewModel.defFile.buildStageOneDefinitonList();
+                    NewModel.defFile.writeDefFileToFolder();
 
-                System.out.println("From defHelper | Stage 1 def file created successfully!");
+                    defFileOutput = NewModel.defFile.buildStageOneDefinitonList();
 
-            } catch (Exception ex) {
-                defCatch = 1;
-                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                System.out.println("From defHelper | Stage 1 def file failed!");
-            }
+                    System.out.println("From defHelper | Stage 1 def file created successfully!");
 
-            if (defCatch == 0) {
-                stageOneTabs.setSelectedIndex(3);
+                } catch (Exception ex) {
+                    defCatch = 1;
+                    Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                    System.out.println("From defHelper | Stage 1 def file failed!");
+                }
+
+                if (defCatch == 0) {
+                    stageOneTabs.setSelectedIndex(3);
+                }
+
+            } else {
+
+                //stageOneTabs.setSelectedIndex(1);
+                //System.out.println("outcome not true!!!!");
             }
 
         } else {
 
-            //stageOneTabs.setSelectedIndex(1);
-            //System.out.println("outcome not true!!!!");
-        }
-        
-        } else {
-            
             stageOneTabs.setSelectedIndex(1);
             System.out.println("outcome not none!!!!");
-        
+
         }
-        
-        
+
         try {
             produceStageOneOutput();
         } catch (FileNotFoundException ex) {
@@ -2346,11 +2403,25 @@ public class mixregGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_advancedOptionsButtonActionPerformed
 
     private void addStageOneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStageOneButtonActionPerformed
-        stageOneClicked = 1;
-        addStageTwoTabTwo.setEnabled(true);
-        stage_1_regs = new stageOneRegs();
-        stage_1_regs.setVisible(true);
-        stage_1_regs.updateAllVariables();
+
+        if (stage_1_regs.isVisible()) { //if it is already open and visible in the background
+
+            // stage_1_regs.set
+            stage_1_regs.setFocusable(true);
+            stageOneClicked = 1;
+            addStageTwoTabTwo.setEnabled(true);
+
+        } else {
+
+            stageOneClicked = 1;
+            addStageTwoTabTwo.setEnabled(true);
+
+            stage_1_regs.setVisible(true);
+            stage_1_regs.updateAllVariables();
+
+        }
+
+
     }//GEN-LAST:event_addStageOneButtonActionPerformed
 
     private void IDvariableComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDvariableComboActionPerformed
@@ -2380,6 +2451,82 @@ public class mixregGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         saveStageOneOutput();
     }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+
+        stageTwoPanel.removeAll();
+        stageTwoPanel.revalidate();
+        stageTwoPanel.repaint();
+
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void outcomeCatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_outcomeCatButtonActionPerformed
+        // TODO add your handling code here:
+        //get the categories of the stage two outcome variable
+        ArrayList<String> ColumnsCustom = new ArrayList<>();
+        ArrayList<String> UniqueList = new ArrayList<>();
+
+        String dataFileName = NewModel.getDataFileName();
+        File file = new File(dataFileName);
+//        //first get the column
+        BufferedReader br = null;
+        String line = "";
+        String commaSplitter = ",";
+        //
+
+        try {
+            br = new BufferedReader(new FileReader(dataFileName));
+            line = br.readLine(); //consumes the first row
+            while ((line = br.readLine()) != null) {
+                String[] Columns = line.split(commaSplitter);
+
+                int index = stageTwoOutcome.getSelectedIndex();
+                ColumnsCustom.add(Columns[index]);
+                //print the column
+                //System.out.println(Columns[index]);
+
+            }
+
+            System.out.println("COLUMN:");
+            for (int k = 0; k < ColumnsCustom.size(); k++) {
+
+                System.out.println(ColumnsCustom.get(k));
+            }
+
+            //count the unique ones
+            for (int x = 0; x < ColumnsCustom.size(); x++) {
+                if (UniqueList.contains(ColumnsCustom.get(x))) {
+
+                    //do nothing
+                } else {
+
+                    UniqueList.add(ColumnsCustom.get(x));
+                }
+
+            }
+
+            System.out.println("Number of unique categories: " + String.valueOf(UniqueList.size()));
+            numberOfCategories.setText(String.valueOf(UniqueList.size()));
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, e);
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+    }//GEN-LAST:event_outcomeCatButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2459,6 +2606,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuBar jMenuBar1;
@@ -2473,6 +2621,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
@@ -2483,6 +2632,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator12;
     private javax.swing.JSeparator jSeparator14;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
@@ -2502,6 +2652,8 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem modifyStageOneMenu;
     private javax.swing.JMenuItem modifyStageTwoMenu;
     private javax.swing.JMenuItem newModelMenu;
+    private javax.swing.JLabel numberOfCategories;
+    private javax.swing.JButton outcomeCatButton;
     private javax.swing.JPanel parentPanel;
     private javax.swing.JButton resetButton;
     private javax.swing.JButton runTabTwoStageOneTwo;
@@ -2689,11 +2841,10 @@ public class mixregGUI extends javax.swing.JFrame {
 
         }
 
-        
         levelOnePanel.removeAll();
         levelOnePanel.revalidate();
         levelOnePanel.repaint();
-        
+
         levelOnePanel.add(scrollpanel);
         revalidate();
 
@@ -2750,14 +2901,22 @@ public class mixregGUI extends javax.swing.JFrame {
                 levelTwoBoxes.get(j).add(k, new JCheckBox());
                 levelTwoGrid.add(levelTwoBoxes.get(j).get(k), constraints);
             }
-            
-            if (NewModel.isRandomScale){
-                
-                    levelTwoBoxes.get(j).get(2).setEnabled(true);
-                
-                } else {
-            
-                    levelTwoBoxes.get(j).get(2).setEnabled(false);
+
+            if (NewModel.isRandomScale) {
+
+                levelTwoBoxes.get(j).get(2).setEnabled(true);
+
+            } else {
+
+                levelTwoBoxes.get(j).get(2).setEnabled(false);
+            }
+
+            if (i > 1) {
+                levelTwoBoxes.get(j).get(2).setEnabled(false);
+
+            } else {
+
+                levelTwoBoxes.get(j).get(2).setEnabled(true);
             }
 
             constraints.gridy++;
@@ -2773,7 +2932,7 @@ public class mixregGUI extends javax.swing.JFrame {
         levelTwoPanel.removeAll();
         levelTwoPanel.revalidate();
         levelTwoPanel.repaint();
-        
+
         levelTwoPanel.add(scrollpanel);
         revalidate();
 
@@ -2823,21 +2982,19 @@ public class mixregGUI extends javax.swing.JFrame {
             stageTwoGridBoxes.add(j, new ArrayList<JCheckBox>());
 
             for (int k = 0; k < 4; k++) {
-                
-                
-                if (k == 1){
-                
-                constraints.gridx = constraints.gridx + 5;
-                    
+
+                if (k == 1) {
+
+                    constraints.gridx = constraints.gridx + 5;
+
                 } else {
-                constraints.gridx++;
+                    constraints.gridx++;
                 }
 
-                
                 constraints.anchor = GridBagConstraints.CENTER;
                 stageTwoGridBoxes.get(j).add(k, new JCheckBox());
 
-                stageTwoRegsGrid.add(stageTwoGridBoxes.get(j).get(k), constraints);  
+                stageTwoRegsGrid.add(stageTwoGridBoxes.get(j).get(k), constraints);
             }
 
             constraints.gridy++;
@@ -2847,59 +3004,57 @@ public class mixregGUI extends javax.swing.JFrame {
             stageTwoRegsGrid.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
             //System.out.println("after seperator");
             constraints.gridy++;
-            
+
             stageTwoGridBoxes.get(row).get(1).setEnabled(false);
             stageTwoGridBoxes.get(row).get(2).setEnabled(false);
             stageTwoGridBoxes.get(row).get(3).setEnabled(false);
-            
-            
+
             stageTwoGridBoxes.get(j).get(0).addActionListener(new ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
-                        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                        AbstractButton abstractButton = (AbstractButton) e.getSource();
-                        boolean selected = abstractButton.getModel().isSelected();
-                        if (selected) {
-                            System.out.println("Checkbox selected");
-                            //disaggVarianceBoxes.get(row).get(column).setEnabled(true);
-                            stageTwoGridBoxes.get(row).get(1).setEnabled(true);
-                            stageTwoGridBoxes.get(row).get(1).setSelected(false);
-                            stageTwoGridBoxes.get(row).get(2).setEnabled(true);
-                            stageTwoGridBoxes.get(row).get(2).setSelected(false);
-                            System.out.println(disaggVarianceBoxes.size());
-                        } else {
-                            //disaggVarianceBoxes.get(row).get(column).setEnabled(false);
-                            stageTwoGridBoxes.get(row).get(1).setEnabled(false);
-                            stageTwoGridBoxes.get(row).get(1).setSelected(false);
-                            stageTwoGridBoxes.get(row).get(2).setEnabled(false);
-                            stageTwoGridBoxes.get(row).get(2).setSelected(false);
-                            stageTwoGridBoxes.get(row).get(3).setSelected(false);
-                            stageTwoGridBoxes.get(row).get(3).setEnabled(false);
-                        }
-
+                public void actionPerformed(ActionEvent e) {
+                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                    AbstractButton abstractButton = (AbstractButton) e.getSource();
+                    boolean selected = abstractButton.getModel().isSelected();
+                    if (selected) {
+                        System.out.println("Checkbox selected");
+                        //disaggVarianceBoxes.get(row).get(column).setEnabled(true);
+                        stageTwoGridBoxes.get(row).get(1).setEnabled(true);
+                        stageTwoGridBoxes.get(row).get(1).setSelected(false);
+                        stageTwoGridBoxes.get(row).get(2).setEnabled(true);
+                        stageTwoGridBoxes.get(row).get(2).setSelected(false);
+                        System.out.println(disaggVarianceBoxes.size());
+                    } else {
+                        //disaggVarianceBoxes.get(row).get(column).setEnabled(false);
+                        stageTwoGridBoxes.get(row).get(1).setEnabled(false);
+                        stageTwoGridBoxes.get(row).get(1).setSelected(false);
+                        stageTwoGridBoxes.get(row).get(2).setEnabled(false);
+                        stageTwoGridBoxes.get(row).get(2).setSelected(false);
+                        stageTwoGridBoxes.get(row).get(3).setSelected(false);
+                        stageTwoGridBoxes.get(row).get(3).setEnabled(false);
                     }
-                });
-                
-                stageTwoGridBoxes.get(j).get(1).addActionListener(new ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
-                        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                        AbstractButton abstractButton = (AbstractButton) e.getSource();
-                        boolean selected = abstractButton.getModel().isSelected();
-                        if (selected){
-                            scaleChecked = true;
-                            
-                            if (randomChecked == true){
+
+                }
+            });
+
+            stageTwoGridBoxes.get(j).get(1).addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                    AbstractButton abstractButton = (AbstractButton) e.getSource();
+                    boolean selected = abstractButton.getModel().isSelected();
+                    if (selected) {
+                        scaleChecked = true;
+
+                        if (randomChecked == true) {
                             stageTwoGridBoxes.get(row).get(3).setEnabled(true);
                             stageTwoGridBoxes.get(row).get(3).setSelected(false);
-                            }
-                            
-                            
-                        } else {
-                            scaleChecked = false;
-                            stageTwoGridBoxes.get(row).get(3).setEnabled(false);
-                            stageTwoGridBoxes.get(row).get(3).setSelected(false);
                         }
-                        
-                       /* if (selected) {
+
+                    } else {
+                        scaleChecked = false;
+                        stageTwoGridBoxes.get(row).get(3).setEnabled(false);
+                        stageTwoGridBoxes.get(row).get(3).setSelected(false);
+                    }
+
+                    /* if (selected) {
                             System.out.println("Checkbox selected");
                             //disaggVarianceBoxes.get(row).get(column).setEnabled(true);
                             stageTwoGridBoxes.get(row).get(1).setEnabled(true);
@@ -2910,32 +3065,31 @@ public class mixregGUI extends javax.swing.JFrame {
                             stageTwoGridBoxes.get(row).get(1).setEnabled(false);
                             stageTwoGridBoxes.get(row).get(2).setEnabled(false);
                         }*/
+                }
+            });
 
-                    }
-                });
-                
-                stageTwoGridBoxes.get(j).get(2).addActionListener(new ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
-                        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                        AbstractButton abstractButton = (AbstractButton) e.getSource();
-                        boolean selected = abstractButton.getModel().isSelected();
-                        
-                        if (selected){
-                            randomChecked = true;
-                            
-                            if (scaleChecked == true){
+            stageTwoGridBoxes.get(j).get(2).addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                    AbstractButton abstractButton = (AbstractButton) e.getSource();
+                    boolean selected = abstractButton.getModel().isSelected();
+
+                    if (selected) {
+                        randomChecked = true;
+
+                        if (scaleChecked == true) {
                             stageTwoGridBoxes.get(row).get(3).setEnabled(true);
                             stageTwoGridBoxes.get(row).get(3).setSelected(false);
-                            }
-                            
-                        } else {
-                            randomChecked = false;
-                            stageTwoGridBoxes.get(row).get(3).setEnabled(false);
-                            stageTwoGridBoxes.get(row).get(3).setSelected(false);
-                        
                         }
-                        
-                       /* if (selected) {
+
+                    } else {
+                        randomChecked = false;
+                        stageTwoGridBoxes.get(row).get(3).setEnabled(false);
+                        stageTwoGridBoxes.get(row).get(3).setSelected(false);
+
+                    }
+
+                    /* if (selected) {
                             System.out.println("Checkbox selected");
                             //disaggVarianceBoxes.get(row).get(column).setEnabled(true);
                             stageTwoGridBoxes.get(row).get(1).setEnabled(true);
@@ -2946,24 +3100,23 @@ public class mixregGUI extends javax.swing.JFrame {
                             stageTwoGridBoxes.get(row).get(1).setEnabled(false);
                             stageTwoGridBoxes.get(row).get(2).setEnabled(false);
                         }*/
-
-                    }
-                });
+                }
+            });
 
         }
 
         stageTwoPanel.removeAll();
         stageTwoPanel.revalidate();
         stageTwoPanel.repaint();
-        
+
         stageTwoPanel.add(scrollpanel);
         revalidate();
 
     }
-    
+
     public void updateStageTwoGrid_tab2v2(DefaultListModel<String> defaultListModel) {
-    
-    //todo: create two grid layouts here or try with a sep
+
+        //todo: create two grid layouts here or try with a sep
     }
 
     public int countLevelOneBeta() {
@@ -3170,12 +3323,9 @@ public class mixregGUI extends javax.swing.JFrame {
         return stageTwoInter;
 
     }
-    
-    public void disableLevelTwoRandomLocation(){
-    
-    
-    
-    
+
+    public void disableLevelTwoRandomLocation() {
+
     }
 
     public String[] getMeanFieldRegressorLabels_levelOne() {
@@ -4471,146 +4621,173 @@ public class mixregGUI extends javax.swing.JFrame {
         System.out.println("*********************************");
         return regLabels;
     }
-    
-    public void produceStageTwoOutput() throws FileNotFoundException{
-    
-        //FileReader reader = new FileReader("/Users/adityaponnada/NetBeansProjects/mixregMLS/src/resources/mixREGLS51.OUT");
+
+    public void produceStageTwoOutput() throws FileNotFoundException, IOException {
+
+        //@Eldin : this is where we will read the command line info.
+//        FileReader reader = new FileReader("/Users/adityaponnada/NetBeansProjects/mixregMLS/src/resources/mixREGLS51.OUT");
+//        
+//        try {
+//            stageTwoOutput.read(reader, "stageTwoOutput");
+//        } catch (IOException ex) {
+//            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+        //test code:
+        //test code for background process:
+        new Thread(new Runnable() {
+            public void run() {
+                for (i = 0; i <= 100; i++) {
+
+                    // Runs inside of the Swing UI thread
+                    SwingUtilities.invokeLater(new Runnable() {
+                        public void run() {
+                            //progressBar.setValue(i); //Add command reading code here
+                        }
+                    });
+
+                    try {
+                        java.lang.Thread.sleep(100); //need to check what it does
+                    } catch (Exception e) {
+                    }
+                }
+            }
+        }).start();
+
         
-        FileReader reader = new FileReader("/Users/adityaponnada/NetBeansProjects/mixregMLS/src/resources/mixREGLS51.OUT");
-        
-        try {
-            stageTwoOutput.read(reader, "stageTwoOutput");
-        } catch (IOException ex) {
-            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+        //test code for reading command line
+        Runtime rt = Runtime.getRuntime();
+        String[] commands = {"system.exe", "-get t"}; //this is where the command will go.
+        Process proc = rt.exec(commands);
+
+        BufferedReader stdInput = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+
+        BufferedReader stdError = new BufferedReader(new InputStreamReader(proc.getErrorStream()));
+
+        // read the output from the command
+        System.out.println("Here is the standard output of the command:\n");
+        String s = null;
+        while ((s = stdInput.readLine()) != null) {
+            System.out.println(s);
+            stageTwoOutput.append(s); //adds the output from command/terminal to stageTwoOutput screen
         }
-    }
-    
-    public void produceStageOneOutput() throws FileNotFoundException{
-    
-        //FileReader reader = new FileReader("/Users/adityaponnada/NetBeansProjects/mixregMLS/src/resources/mixREGLS51.OUT");
-        
-        FileReader reader = new FileReader("/Users/adityaponnada/NetBeansProjects/mixregMLS/src/resources/mixREGLS51.OUT");
-        
-        try {
-            stageOneOutput.read(reader, "stageOneOutput");
-        } catch (IOException ex) {
-            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+
+        // read any errors from the attempted command
+        System.out.println("Here is the standard error of the command (if any):\n");
+        while ((s = stdError.readLine()) != null) {
+            System.out.println(s);
+            stageTwoOutput.append(s); //adds the output from command/terminal to stageTwoOutput screen
         }
+
     }
-    
-    
-    public void saveStageTwoOutput() throws IOException{
-        
-      FileFilter filter = new FileNameExtensionFilter("TEXT FILE","txt");
-    
-      JFileChooser saver = new JFileChooser("./");
+
+    public void produceStageOneOutput() throws FileNotFoundException {
+
+        //@Eldin : this is where we will read the command line info.
+        //FileReader reader = new FileReader("/Users/adityaponnada/NetBeansProjects/mixregMLS/src/resources/mixREGLS51.OUT");
+//        FileReader reader = new FileReader("/Users/adityaponnada/NetBeansProjects/mixregMLS/src/resources/mixREGLS51.OUT");
+//        
+//        try {
+//            stageOneOutput.read(reader, "stageOneOutput");
+//        } catch (IOException ex) {
+//            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+    }
+
+    public void saveStageTwoOutput() throws IOException {
+
+        FileFilter filter = new FileNameExtensionFilter("TEXT FILE", "txt");
+
+        JFileChooser saver = new JFileChooser("./");
         saver.setFileFilter(filter);
         int returnVal = saver.showSaveDialog(this);
         File file = saver.getSelectedFile();
         BufferedWriter writer = null;
-        if (returnVal == JFileChooser.APPROVE_OPTION)
-        {
-            try
-            {
-            writer = new BufferedWriter( new FileWriter( file.getName()+".txt"));
-            writer.write( stageTwoOutput.getText());
-            writer.close( );
-            JOptionPane.showMessageDialog(this, "The Message was Saved Successfully!",
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            try {
+                writer = new BufferedWriter(new FileWriter(file.getName() + ".txt"));
+                writer.write(stageTwoOutput.getText());
+                writer.close();
+                JOptionPane.showMessageDialog(this, "The Message was Saved Successfully!",
                         "Success!", JOptionPane.INFORMATION_MESSAGE);
-            }
-            catch (IOException e)
-            {
-            JOptionPane.showMessageDialog(this, "The Text could not be Saved!",
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(this, "The Text could not be Saved!",
                         "Error!", JOptionPane.INFORMATION_MESSAGE);
             }
         }
     }
-    
-    public void saveStageOneOutput(){
-        FileFilter filter = new FileNameExtensionFilter("TEXT FILE","txt");
-    
-      JFileChooser saver = new JFileChooser("./");
+
+    public void saveStageOneOutput() {
+        FileFilter filter = new FileNameExtensionFilter("TEXT FILE", "txt");
+
+        JFileChooser saver = new JFileChooser("./");
         saver.setFileFilter(filter);
         int returnVal = saver.showSaveDialog(this);
         File file = saver.getSelectedFile();
         BufferedWriter writer = null;
-        if (returnVal == JFileChooser.APPROVE_OPTION)
-        {
-            try
-            {
-            writer = new BufferedWriter( new FileWriter( file.getName()+".txt"));
-            writer.write( stageOneOutput.getText());
-            writer.close( );
-            JOptionPane.showMessageDialog(this, "The Message was Saved Successfully!",
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            try {
+                writer = new BufferedWriter(new FileWriter(file.getName() + ".txt"));
+                writer.write(stageOneOutput.getText());
+                writer.close();
+                JOptionPane.showMessageDialog(this, "The Message was Saved Successfully!",
                         "Success!", JOptionPane.INFORMATION_MESSAGE);
-            }
-            catch (IOException e)
-            {
-            JOptionPane.showMessageDialog(this, "The Text could not be Saved!",
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(this, "The Text could not be Saved!",
                         "Error!", JOptionPane.INFORMATION_MESSAGE);
             }
         }
     }
-    
-    public void runMixedModels(){
-    
-        String absoluteJavaPath = System.getProperty( "user.dir" );
+
+    public void runMixedModels() {
+
+        String absoluteJavaPath = System.getProperty("user.dir");
         String defFileName = executableModel(selectedModel);
-        try {          
-            try 
-            { 
+        try {
+            try {
                 copyExecutable(defFilePath, selectedModel); //get the def file path after it is saved
-                Process p=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && dir && "
-                        + defFileName); // does it save it in the same directory
-                
-                p.waitFor(); 
-                BufferedReader reader=new BufferedReader(new InputStreamReader(p.getInputStream())); 
-                String line=reader.readLine(); 
-                while(line!=null) 
-                { 
-                System.out.println(line); 
-                line=reader.readLine(); 
-                } 
-             } 
-            catch(FileNotFoundException fnfe1){
-             System.out.println("File not found Exception"); 
+                Process p = Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && dir && "
+                        + defFileName); // does it save it in the same directory //@Eldin: This is where it is copying it twice.
+                                        //@Eldin: This is where we may want to keeo the terminal open in the background.
+
+                p.waitFor();
+                BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
+                String line = reader.readLine();
+                while (line != null) {
+                    System.out.println(line);
+                    line = reader.readLine();
+                }
+            } catch (FileNotFoundException fnfe1) {
+                System.out.println("File not found Exception");
+            } catch (IOException e1) {
+                System.out.println("IO Exception");
             }
-            catch(IOException e1) {
-              System.out.println("IO Exception"); 
-            } 
-            
-            try 
-            { 
-                Process p=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && del /f " + defFileName);
-                p.waitFor(); 
-                BufferedReader reader=new BufferedReader(new InputStreamReader(p.getInputStream())); 
-                String line=reader.readLine(); 
-                while(line!=null) 
-                { 
-                System.out.println(line); 
-                line=reader.readLine(); 
-                } 
-             } 
-            catch(FileNotFoundException fnfe1){
-             System.out.println("File not found Exception 2"); 
+
+            try {
+                Process p = Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && del /f " + defFileName);
+                p.waitFor();
+                BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
+                String line = reader.readLine();
+                while (line != null) {
+                    System.out.println(line);
+                    line = reader.readLine();
+                }
+            } catch (FileNotFoundException fnfe1) {
+                System.out.println("File not found Exception 2");
+            } catch (IOException e1) {
+                System.out.println("IO Exception 2 ");
             }
-            catch(IOException e1) {
-              System.out.println("IO Exception 2 "); 
-            }
-            
+
             JOptionPane.showMessageDialog(null, defFilePath);
-            
-        }
-        catch (Exception ex){
+
+        } catch (Exception ex) {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Failed");
         }
- 
+
     }
-    
-    
-    private String executableModel(int modelSelection){
-        switch(modelSelection){
+
+    private String executableModel(int modelSelection) {
+        switch (modelSelection) {
             case DefinitionHelper.MIXREGLS_MIXREG_KEY:
                 return "mixregls_mixreg.exe";
             case DefinitionHelper.MIXREGLS_MIXOR_KEY:
@@ -4619,17 +4796,16 @@ public class mixregGUI extends javax.swing.JFrame {
                 return "mixregmls_mixreg.exe";
             case DefinitionHelper.MIXREGMLS_MIXOR_KEY:
                 return "mixregmls_mixor.exe";
-           
+
             default:
                 return "mixregls_mixreg.exe";
         }
     }
-    
-    
-    private void copyExecutable(String absoluteDirectoryPath, int modelSelection) throws FileNotFoundException, IOException{
+
+    private void copyExecutable(String absoluteDirectoryPath, int modelSelection) throws FileNotFoundException, IOException {
         String modelPath;
         String executableName = executableModel(modelSelection);
-        switch(modelSelection){
+        switch (modelSelection) {
             case DefinitionHelper.MIXREGLS_MIXREG_KEY:
                 modelPath = "resources/Windows/mixregls_mixreg.exe";
                 break;
@@ -4647,10 +4823,9 @@ public class mixregGUI extends javax.swing.JFrame {
                 break;
         }
         InputStream stream = getClass().getClassLoader().getResourceAsStream(modelPath);
-        
-        
-        OutputStream outputStream = 
-                new FileOutputStream(new File(absoluteDirectoryPath + executableName));
+
+        OutputStream outputStream
+                = new FileOutputStream(new File(absoluteDirectoryPath + executableName));
 
         int read;
         byte[] bytes = new byte[4096];
@@ -4661,12 +4836,10 @@ public class mixregGUI extends javax.swing.JFrame {
         stream.close();
         outputStream.close();
     }
-    
-    
-    public void runMixRegLS_mixor(){
-        
+
+    public void runMixRegLS_mixor() {
+
         // if then select def file type
-        
         int selectedModel = DefinitionHelper.MIXREGLS_MIXREG_KEY;
         /*defLib = new DefinitionHelper(1,false);
         runButton.setEnabled(true);
@@ -4675,32 +4848,19 @@ public class mixregGUI extends javax.swing.JFrame {
         MixRegMLS_Mixreg.setEnabled(false);
         MixRegMLS_Mixor.setEnabled(false);
         LoadButton.setEnabled(true);*/
-        
-        
-    
-    
-    
+
     }
-    
-    public void runMixRegLS_mixreg(){
-    
-    
-    
+
+    public void runMixRegLS_mixreg() {
+
     }
-    
-    public void runMixRegMLS_mixor(){
-    
-    
-    
+
+    public void runMixRegMLS_mixor() {
+
     }
-    
-    public void runMixRegMLS_mixreg(){
-    
-    
-    
+
+    public void runMixRegMLS_mixreg() {
+
     }
-    
-    
-    
 
 }

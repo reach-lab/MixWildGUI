@@ -39,8 +39,10 @@ public class NewModel extends javax.swing.JFrame {
     static mixregGUI mxr;
     InstructionsGUI instructions;
     static boolean isRandomScale = false;
-    
+    static String dataFileNameRef;
     final ImageIcon icon;
+    
+    
     
     /**
      *
@@ -66,7 +68,7 @@ public class NewModel extends javax.swing.JFrame {
        subtitleField.setEnabled(false);
        continuousRadio.setEnabled(false);
        dichotomousRadio.setEnabled(false);
-       randomLocationEffects.setEnabled(false);
+       //randomLocationEffects.setEnabled(false);
        newModelSubmit.setEnabled(false);
        newModelMissingValueCode.setText("-9999");
        newModelMissingValueCode.setEnabled(false);
@@ -74,6 +76,8 @@ public class NewModel extends javax.swing.JFrame {
        newModelMissingValues.setSelected(true);
        noneRadio.setEnabled(false);
        randomScaleCheckBox.setEnabled(false);
+       oneRLERadio.setEnabled(false);
+       moreThanOneRLERadio.setEnabled(false);
        
        dataFileLabel.setToolTipText("Insert a data file in .csv format");
        fileBrowseButton.setToolTipText("Insert a data file in .csv format");
@@ -81,7 +85,7 @@ public class NewModel extends javax.swing.JFrame {
        filePath.setToolTipText("Insert a data file in .csv format");
        titleField.setToolTipText("Insert title for the model");
        subtitleField.setToolTipText("Insert subtitle for the model");
-       randomLocationEffects.setToolTipText("Select the number of random location effects. Minimum value is 1");
+       //randomLocationEffects.setToolTipText("Select the number of random location effects. Minimum value is 1");
        
       
     }
@@ -96,6 +100,7 @@ public class NewModel extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         dataFileLabel = new javax.swing.JLabel();
         filePath = new javax.swing.JTextField();
         fileBrowseButton = new javax.swing.JButton();
@@ -104,7 +109,6 @@ public class NewModel extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         subtitleField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        randomLocationEffects = new javax.swing.JSpinner();
         jLabel5 = new javax.swing.JLabel();
         continuousRadio = new javax.swing.JRadioButton();
         dichotomousRadio = new javax.swing.JRadioButton();
@@ -124,17 +128,23 @@ public class NewModel extends javax.swing.JFrame {
         randomScaleCheckBox = new javax.swing.JCheckBox();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
+        oneRLERadio = new javax.swing.JRadioButton();
+        moreThanOneRLERadio = new javax.swing.JRadioButton();
+        jSeparator3 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("New Model for Stage 1 Analysis");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         dataFileLabel.setText("Data File: ");
+        getContentPane().add(dataFileLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, -1, -1));
 
         filePath.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 filePathActionPerformed(evt);
             }
         });
+        getContentPane().add(filePath, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 205, -1));
 
         fileBrowseButton.setText("Browse");
         fileBrowseButton.addActionListener(new java.awt.event.ActionListener() {
@@ -142,28 +152,33 @@ public class NewModel extends javax.swing.JFrame {
                 fileBrowseButtonActionPerformed(evt);
             }
         });
+        getContentPane().add(fileBrowseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 70, -1, -1));
 
         jLabel2.setText("Title:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, -1, -1));
 
         titleField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 titleFieldActionPerformed(evt);
             }
         });
+        getContentPane().add(titleField, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 205, -1));
 
         jLabel3.setText("Output/Definition File:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
 
         subtitleField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 subtitleFieldActionPerformed(evt);
             }
         });
+        getContentPane().add(subtitleField, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 205, -1));
 
         jLabel4.setText("Random Location Effects:");
-
-        randomLocationEffects.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
 
         jLabel5.setText("Stage 2 Outcome Type:");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 294, -1, -1));
 
         buttonGroup1.add(continuousRadio);
         continuousRadio.setText("Continuous");
@@ -172,6 +187,7 @@ public class NewModel extends javax.swing.JFrame {
                 continuousRadioActionPerformed(evt);
             }
         });
+        getContentPane().add(continuousRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 294, -1, -1));
 
         buttonGroup1.add(dichotomousRadio);
         dichotomousRadio.setText("Dichotomous/Ordinal");
@@ -180,6 +196,7 @@ public class NewModel extends javax.swing.JFrame {
                 dichotomousRadioActionPerformed(evt);
             }
         });
+        getContentPane().add(dichotomousRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 294, -1, -1));
 
         newModelSubmit.setText("Submit");
         newModelSubmit.addActionListener(new java.awt.event.ActionListener() {
@@ -187,6 +204,7 @@ public class NewModel extends javax.swing.JFrame {
                 newModelSubmitActionPerformed(evt);
             }
         });
+        getContentPane().add(newModelSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(402, 411, -1, -1));
 
         newModelCancel.setText("Cancel");
         newModelCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -194,6 +212,7 @@ public class NewModel extends javax.swing.JFrame {
                 newModelCancelActionPerformed(evt);
             }
         });
+        getContentPane().add(newModelCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(202, 411, -1, -1));
 
         newModel_resetButton.setText("Reset");
         newModel_resetButton.addActionListener(new java.awt.event.ActionListener() {
@@ -201,14 +220,18 @@ public class NewModel extends javax.swing.JFrame {
                 newModel_resetButtonActionPerformed(evt);
             }
         });
+        getContentPane().add(newModel_resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(306, 411, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(538, 334, -1, -1));
 
         newModelMissingValues.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newModelMissingValuesActionPerformed(evt);
             }
         });
+        getContentPane().add(newModelMissingValues, new org.netbeans.lib.awtextra.AbsoluteConstraints(209, 340, -1, -1));
 
         jLabel6.setText("Missing value code:");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 345, -1, -1));
 
         newModelMissingValueCode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -220,10 +243,13 @@ public class NewModel extends javax.swing.JFrame {
                 newModelMissingValueCodeKeyTyped(evt);
             }
         });
+        getContentPane().add(newModelMissingValueCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(445, 340, 77, -1));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/mixLogo.png"))); // NOI18N
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 409, -1, 31));
 
-        jLabel8.setText("Add missing value code?");
+        jLabel8.setText("Any missing values in data?");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 340, -1, -1));
 
         buttonGroup1.add(noneRadio);
         noneRadio.setText("None");
@@ -232,164 +258,39 @@ public class NewModel extends javax.swing.JFrame {
                 noneRadioActionPerformed(evt);
             }
         });
+        getContentPane().add(noneRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(473, 294, -1, -1));
 
-        jButton1.setText("Instructions!");
+        jButton1.setText("Instructions");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(391, 9, -1, -1));
 
-        jLabel9.setText("Please go through the following");
+        jLabel9.setText("Before importing a data file, please go through these:");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 14, -1, -1));
 
         jLabel10.setText("Random Scale?");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 254, -1, -1));
 
         randomScaleCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 randomScaleCheckBoxActionPerformed(evt);
             }
         });
+        getContentPane().add(randomScaleCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 247, -1, -1));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 520, -1));
+        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 184, 524, 10));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(162, 162, 162)
-                        .addComponent(jLabel9)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(120, 120, 120)
-                        .addComponent(dataFileLabel)
-                        .addGap(17, 17, 17)
-                        .addComponent(filePath, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(15, 15, 15)
-                        .addComponent(fileBrowseButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(140, 140, 140)
-                        .addComponent(jLabel2)
-                        .addGap(28, 28, 28)
-                        .addComponent(titleField, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(jLabel3)
-                        .addGap(16, 16, 16)
-                        .addComponent(subtitleField, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jLabel4)
-                        .addGap(20, 20, 20)
-                        .addComponent(randomLocationEffects, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(jLabel10)
-                        .addGap(18, 18, 18)
-                        .addComponent(randomScaleCheckBox))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jLabel5)
-                        .addGap(15, 15, 15)
-                        .addComponent(continuousRadio)
-                        .addGap(5, 5, 5)
-                        .addComponent(dichotomousRadio)
-                        .addGap(10, 10, 10)
-                        .addComponent(noneRadio))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(jLabel6)
-                        .addGap(16, 16, 16)
-                        .addComponent(newModelMissingValueCode, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(43, 43, 43)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(139, 139, 139)
-                                .addComponent(jLabel1)))
-                        .addGap(15, 15, 15)
-                        .addComponent(newModelMissingValues))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jLabel7)
-                        .addGap(82, 82, 82)
-                        .addComponent(newModelCancel)
-                        .addGap(28, 28, 28)
-                        .addComponent(newModel_resetButton)
-                        .addGap(36, 36, 36)
-                        .addComponent(newModelSubmit))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(35, 35, 35))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(9, 9, 9)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(jLabel9))
-                    .addComponent(jButton1))
-                .addGap(12, 12, 12)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(8, 8, 8)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(dataFileLabel))
-                    .addComponent(filePath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fileBrowseButton))
-                .addGap(11, 11, 11)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel2))
-                    .addComponent(titleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(4, 4, 4)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel3))
-                    .addComponent(subtitleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel4))
-                    .addComponent(randomLocationEffects, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10)
-                    .addComponent(randomScaleCheckBox))
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(continuousRadio)
-                    .addComponent(dichotomousRadio)
-                    .addComponent(noneRadio))
-                .addGap(17, 17, 17)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(newModelMissingValueCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(jLabel1))
-                    .addComponent(newModelMissingValues))
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(newModelCancel)
-                            .addComponent(newModel_resetButton)
-                            .addComponent(newModelSubmit)))))
-        );
+        buttonGroup2.add(oneRLERadio);
+        oneRLERadio.setText("One");
+        getContentPane().add(oneRLERadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(186, 206, -1, -1));
+
+        buttonGroup2.add(moreThanOneRLERadio);
+        moreThanOneRLERadio.setText("More than one");
+        getContentPane().add(moreThanOneRLERadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(261, 206, -1, -1));
+        getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 384, 516, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -412,16 +313,19 @@ public class NewModel extends javax.swing.JFrame {
         
         //get file path to display on the text box
         String fileName = file.getAbsolutePath();
+        dataFileNameRef = fileName;
         
         filePath.setText(fileName);
         
         //enable other buttons here:
         titleField.setEnabled(true);
         subtitleField.setEnabled(true);
-        randomLocationEffects.setEnabled(true);
+        //randomLocationEffects.setEnabled(true);
+        oneRLERadio.setEnabled(true);
+        moreThanOneRLERadio.setEnabled(true);
         continuousRadio.setEnabled(true);
         dichotomousRadio.setEnabled(true);
-        randomLocationEffects.setEnabled(true);
+       // randomLocationEffects.setEnabled(true);
         newModelSubmit.setEnabled(true);
         newModelMissingValues.setEnabled(true);
         newModelMissingValueCode.setEnabled(true);
@@ -443,7 +347,17 @@ public class NewModel extends javax.swing.JFrame {
 
     private void newModelSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModelSubmitActionPerformed
         
-        RLE = (Integer) randomLocationEffects.getValue();
+        //RLE = (Integer) randomLocationEffects.getValue(); //todo: Change stuff here assign the option button code
+        
+        if (oneRLERadio.isSelected() == true){
+            
+            RLE = 1;
+    
+    } else if (moreThanOneRLERadio.isSelected() == true) {
+            
+            RLE = 2;
+    
+    }
         
         defFile = new DefinitionHelper(RLE, !isOutcomeContinous());
         System.out.println("RLE: " + String.valueOf(RLE));
@@ -645,12 +559,20 @@ public class NewModel extends javax.swing.JFrame {
         titleField.setEnabled(false);
         subtitleField.setEditable(false);
         subtitleField.setText("");
-        randomLocationEffects.setValue(1);
-        randomLocationEffects.setEnabled(false);
+        //randomLocationEffects.setValue(1);
+        //randomLocationEffects.setEnabled(false);
         continuousRadio.setEnabled(false);
         dichotomousRadio.setEnabled(false);
-        randomLocationEffects.setEnabled(false);
+        //randomLocationEffects.setEnabled(false);
         newModelSubmit.setEnabled(false);
+        newModelMissingValues.setEnabled(false);
+        newModelMissingValueCode.setEnabled(false);
+        noneRadio.setSelected(false);
+        noneRadio.setEnabled(false);
+        randomScaleCheckBox.setSelected(false);
+        randomScaleCheckBox.setEnabled(false);
+        
+        
         
         
     }//GEN-LAST:event_newModel_resetButtonActionPerformed
@@ -751,6 +673,7 @@ public class NewModel extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JRadioButton continuousRadio;
     private javax.swing.JLabel dataFileLabel;
     private javax.swing.JRadioButton dichotomousRadio;
@@ -769,13 +692,15 @@ public class NewModel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JRadioButton moreThanOneRLERadio;
     private javax.swing.JButton newModelCancel;
     private javax.swing.JTextField newModelMissingValueCode;
     private javax.swing.JCheckBox newModelMissingValues;
     private javax.swing.JButton newModelSubmit;
     private javax.swing.JButton newModel_resetButton;
     private javax.swing.JRadioButton noneRadio;
-    private javax.swing.JSpinner randomLocationEffects;
+    private javax.swing.JRadioButton oneRLERadio;
     private javax.swing.JCheckBox randomScaleCheckBox;
     private javax.swing.JTextField subtitleField;
     private javax.swing.JTextField titleField;
@@ -793,6 +718,11 @@ public int getRLE(){
 public static String[] getVariableNames(){
 
 return variableArray;
+}
+
+public static String getDataFileName(){
+
+return dataFileNameRef;
 }
 
 //get the instance of the model mixReg declared in newModel
@@ -875,5 +805,7 @@ public String getOutPutFileName() {
       
       //return "";
     }
+
+
 
 }

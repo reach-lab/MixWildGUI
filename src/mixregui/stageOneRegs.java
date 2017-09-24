@@ -102,17 +102,23 @@ public class stageOneRegs extends javax.swing.JFrame {
         StageOneLevelTwoList = new javax.swing.JList<>();
         jLabel4 = new javax.swing.JLabel();
         stageOneCancel = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         label1.setText("label1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Add Stage 1 Regressors");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Variables");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 37, -1, -1));
 
-        jLabel2.setText("Level-I (Time Varying)");
+        jLabel2.setText("Level-1 (Time Varying)");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 37, -1, -1));
 
-        jLabel3.setText("Level-II (Time Unvarying)");
+        jLabel3.setText("Level-2 (Time Invariant)");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(486, 257, -1, -1));
 
         stageOneSubmitButton.setText("Submit");
         stageOneSubmitButton.addActionListener(new java.awt.event.ActionListener() {
@@ -120,6 +126,7 @@ public class stageOneRegs extends javax.swing.JFrame {
                 stageOneSubmitButtonActionPerformed(evt);
             }
         });
+        getContentPane().add(stageOneSubmitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 467, -1, -1));
 
         stageOneResetButton.setText("Reset");
         stageOneResetButton.addActionListener(new java.awt.event.ActionListener() {
@@ -127,6 +134,7 @@ public class stageOneRegs extends javax.swing.JFrame {
                 stageOneResetButtonActionPerformed(evt);
             }
         });
+        getContentPane().add(stageOneResetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(469, 467, 89, -1));
 
         removeLevelButton.setText("Remove");
         removeLevelButton.addActionListener(new java.awt.event.ActionListener() {
@@ -134,6 +142,7 @@ public class stageOneRegs extends javax.swing.JFrame {
                 removeLevelButtonActionPerformed(evt);
             }
         });
+        getContentPane().add(removeLevelButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 112, -1, -1));
 
         levelOneAddButton.setText("Add");
         levelOneAddButton.addActionListener(new java.awt.event.ActionListener() {
@@ -141,6 +150,7 @@ public class stageOneRegs extends javax.swing.JFrame {
                 levelOneAddButtonActionPerformed(evt);
             }
         });
+        getContentPane().add(levelOneAddButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 77, 93, -1));
 
         removeLevelTwoButton.setText("Remove");
         removeLevelTwoButton.addActionListener(new java.awt.event.ActionListener() {
@@ -148,6 +158,7 @@ public class stageOneRegs extends javax.swing.JFrame {
                 removeLevelTwoButtonActionPerformed(evt);
             }
         });
+        getContentPane().add(removeLevelTwoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 332, -1, -1));
 
         addLevelTwoButton.setText("Add");
         addLevelTwoButton.addActionListener(new java.awt.event.ActionListener() {
@@ -155,14 +166,22 @@ public class stageOneRegs extends javax.swing.JFrame {
                 addLevelTwoButtonActionPerformed(evt);
             }
         });
+        getContentPane().add(addLevelTwoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 297, 93, -1));
 
         jScrollPane1.setViewportView(AllVariablesList);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 59, 198, 388));
+
         jScrollPane2.setViewportView(StageOneLevelOneList);
+
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 59, 287, 164));
 
         jScrollPane3.setViewportView(StageOneLevelTwoList);
 
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 284, 287, 163));
+
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/mixLogo.png"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 467, -1, 34));
 
         stageOneCancel.setText("Cancel");
         stageOneCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -170,80 +189,18 @@ public class stageOneRegs extends javax.swing.JFrame {
                 stageOneCancelActionPerformed(evt);
             }
         });
+        getContentPane().add(stageOneCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(371, 467, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(jLabel1)
-                        .addGap(393, 393, 393)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(262, 262, 262)
-                                .addComponent(stageOneCancel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(stageOneResetButton, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(12, 12, 12)
-                                .addComponent(stageOneSubmitButton))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(levelOneAddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(removeLevelButton)
-                                    .addComponent(addLevelTwoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(removeLevelTwoButton))
-                                .addGap(6, 6, 6)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(133, 133, 133)
-                                        .addComponent(jLabel3))
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(54, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(levelOneAddButton)
-                        .addGap(6, 6, 6)
-                        .addComponent(removeLevelButton)
-                        .addGap(156, 156, 156)
-                        .addComponent(addLevelTwoButton)
-                        .addGap(6, 6, 6)
-                        .addComponent(removeLevelTwoButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
-                        .addComponent(jLabel3)
-                        .addGap(11, 11, 11)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(stageOneResetButton)
-                        .addComponent(stageOneCancel))
-                    .addComponent(stageOneSubmitButton)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
+        jButton1.setText("?");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(301, 147, 40, -1));
+
+        jButton2.setText("?");
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(301, 367, 40, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -352,6 +309,10 @@ public class stageOneRegs extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_stageOneCancelActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -392,6 +353,8 @@ public class stageOneRegs extends javax.swing.JFrame {
     private javax.swing.JList<String> StageOneLevelOneList;
     private javax.swing.JList<String> StageOneLevelTwoList;
     private javax.swing.JButton addLevelTwoButton;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

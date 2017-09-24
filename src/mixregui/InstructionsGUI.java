@@ -5,6 +5,8 @@
  */
 package mixregui;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author adityaponnada
@@ -19,6 +21,7 @@ public class InstructionsGUI extends javax.swing.JFrame {
     public InstructionsGUI() {
         initComponents();
         //nm = new NewModel();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -35,14 +38,19 @@ public class InstructionsGUI extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         proceedButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Please follow these instructions ...");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 36, -1, -1));
 
         jLabel2.setText("- You should always use a .csv file");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 95, -1, -1));
 
         jLabel3.setText("- You should ensure that missing values are not blanks");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 129, -1, -1));
 
         proceedButton.setText("Got it");
         proceedButton.addActionListener(new java.awt.event.ActionListener() {
@@ -50,39 +58,13 @@ public class InstructionsGUI extends javax.swing.JFrame {
                 proceedButtonActionPerformed(evt);
             }
         });
+        getContentPane().add(proceedButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(304, 229, -1, -1));
 
         jLabel4.setText("- Please ensure that the data is sorted by IDs");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 195, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(proceedButton)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel3)
-                        .addComponent(jLabel2)
-                        .addComponent(jLabel1)
-                        .addComponent(jLabel4)))
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(jLabel1)
-                .addGap(43, 43, 43)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel4)
-                .addGap(25, 25, 25)
-                .addComponent(proceedButton)
-                .addContainerGap(40, Short.MAX_VALUE))
-        );
+        jLabel5.setText("- Missing value codes should be numeric only");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 161, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -135,6 +117,7 @@ public class InstructionsGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JButton proceedButton;
     // End of variables declaration//GEN-END:variables
 }

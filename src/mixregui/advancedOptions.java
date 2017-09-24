@@ -100,6 +100,7 @@ public class advancedOptions extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Advanced Options ...");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -156,6 +157,8 @@ public class advancedOptions extends javax.swing.JFrame {
         quadriturePoints.setModel(new javax.swing.SpinnerNumberModel(11, 1, 255, 1));
         jPanel1.add(quadriturePoints, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 128, 69, -1));
 
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 21, 260, 201));
+
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -187,12 +190,15 @@ public class advancedOptions extends javax.swing.JFrame {
         resampleSpinner.setModel(new javax.swing.SpinnerNumberModel(100, 1, 10000, 1));
         jPanel2.add(resampleSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 60, -1));
 
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(294, 21, 260, 201));
+
         jButton1.setText("Submit");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(466, 234, -1, -1));
 
         advancedOptions_resetButton.setText("Reset");
         advancedOptions_resetButton.addActionListener(new java.awt.event.ActionListener() {
@@ -200,8 +206,10 @@ public class advancedOptions extends javax.swing.JFrame {
                 advancedOptions_resetButtonActionPerformed(evt);
             }
         });
+        getContentPane().add(advancedOptions_resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(376, 234, -1, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/mixLogo.png"))); // NOI18N
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 231, -1, 29));
 
         advancedOptionsCancel.setText("Cancel");
         advancedOptionsCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -209,49 +217,7 @@ public class advancedOptions extends javax.swing.JFrame {
                 advancedOptionsCancelActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(13, 13, 13)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addGap(177, 177, 177)
-                        .addComponent(advancedOptionsCancel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(advancedOptions_resetButton)
-                        .addGap(12, 12, 12)
-                        .addComponent(jButton1)))
-                .addContainerGap(26, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(advancedOptions_resetButton)
-                                .addComponent(advancedOptionsCancel))
-                            .addComponent(jButton1))
-                        .addContainerGap(12, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(15, 15, 15))))
-        );
+        getContentPane().add(advancedOptionsCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(278, 234, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -400,11 +366,13 @@ public class advancedOptions extends javax.swing.JFrame {
 
         adaptiveQuadritureCheckBox.setSelected(false);
         centerRegressorsCheckBox.setSelected(false);
+        
 
-        maximumIterations.setValue(1);
+        maximumIterations.setValue(100);
        // missingValuesCheckBox.setSelected(false);
         //standardizedCoeff.setSelected(false);
         ridgeSpinner.setValue(0.15);
+        resampleSpinner.setValue(100);
 
     }//GEN-LAST:event_advancedOptions_resetButtonActionPerformed
 
