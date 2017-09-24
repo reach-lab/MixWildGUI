@@ -35,7 +35,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.text.Document;
 import static mixregui.NewModel.defFile;
 
-/*****
+/*
  * Exposed Methods:
  * readDefinitionFile: takes File as parameter, assigns all variables and then attempts to validate file
  * buildStageOneDefinitionList: returns ArrayList<String> that can be passed to a FileWriter class, validates first
