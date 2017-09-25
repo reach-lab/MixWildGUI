@@ -1,26 +1,28 @@
-kjhkj                                                                   
+kjhkjh                                                                  
 kjhkjh                                                                  
 C:\Users\Dharam\Downloads\sampleNovel_dataSet.csv                               
 Output_kjhkjh                                                                   
-156  1  2  2  1  0  0  1  0  0  0.1E-002  11 0  100-9999.000 0 0 0.150
+156  1  1  1  1  0  0  1  1  1  0.1E-002  11 0  100-9999.000 0 0 0.150
   1  2
- 11
- 10 11
- 10 11
- 10
+ 13
+ 13
+ 13
+  8
+  8
+  8
  WAVE            
- WEEKEND         
- DOW             WEEKEND         
- DOW             DOW             
- DOW         
-           1           1           1           1
+ TYPE            
+ TYPE            
+ DATE            
+ DATE        
+ DATE        
+ DATE        
+           1           1           1           0
            3
-           9
-           9
-           9
-           9
+           6
+           6
+           6
  DATA            
- DAY             
- DAY             
- DAY             
- DAY             
+ DAY_COUNT       
+ DAY_COUNT       
+ DAY_COUNT       

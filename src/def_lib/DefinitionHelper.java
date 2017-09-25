@@ -2127,11 +2127,9 @@ public class DefinitionHelper {
                             while ( (line = br.readLine()) != null){
                                 System.out.println("MIXWILD:" + line);
                                 progressPane.append("MIXWILD:" + line + "\n"); //should append all the text after a new line to the text area
+                                progressPane.setCaretPosition(progressPane.getDocument().getLength());
                             }
-//                                progressPane.setCaretPosition(progressPane.getDocument().getLength());
-
-                                
-                                
+  
                             } catch (IOException ioe)
                               {
                                 ioe.printStackTrace();  
