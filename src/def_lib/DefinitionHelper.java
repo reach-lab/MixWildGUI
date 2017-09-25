@@ -20,6 +20,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -36,6 +37,7 @@ import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.text.Document;
 import static mixregui.NewModel.defFile;
+import static sun.management.snmp.jvminstr.JvmThreadInstanceEntryImpl.ThreadStateMap.Byte0.runnable;
 
 /**
  * Exposed Methods:
@@ -2091,14 +2093,14 @@ public class DefinitionHelper {
             //progressPane = new JEditorPane();
             progressPane = new JTextArea();
             
-            progressPane.setSize(500, 500);
+            progressPane.setSize(1000, 1000);
             // progressPane.setContentType("text/plain");
             progressPane.setFont(new Font("Monospaced", 0, 12));
             progressPane.setText("Please wait while we crunch some numbers .." + "\n");
             
             
             
-            progressWindow.add(myPane);
+            progressWindow.add(progressPane);
             JButton cancelButton = new JButton("Cancel Analysis");
             
             progressWindow.add(cancelButton);
@@ -2106,24 +2108,28 @@ public class DefinitionHelper {
             
             
             progressWindow.setComponentOrientation(ComponentOrientation.UNKNOWN);
+            progressWindow.setVisible(true);
             
             
         
         try {          
                copyExecutable(defFilePath, selectedModel);
                Process p=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && dir && "
-                        + defFileName); // does it save it in the same directory
+                        + defFileName); 
                
                Thread runCMD = new Thread(new Runnable(){
                    public void run() {
+                       System.out.println("Inside the thread");
                        try{
                             InputStreamReader isr = new InputStreamReader(p.getInputStream());
                             BufferedReader br = new BufferedReader(isr);
-                            String line=null;  // UI magic should run in here @adityaponnada
-                            while ( (line = br.readLine()) != null)
+                            String line="";  // UI magic should run in here @adityapona
+                            while ( (line = br.readLine()) != null){
                                 System.out.println("MIXWILD:" + line);
-                                progressPane.append("MIXWILD: " + line + "\n"); //should append all the text after a new line to the text area
-                                
+                                progressPane.append("MIXWILD:" + line + "\n"); //should append all the text after a new line to the text area
+                                progressPane.setCaretPosition(progressPane.getDocument().getLength());
+                            }
+  
                             } catch (IOException ioe)
                               {
                                 ioe.printStackTrace();  
@@ -2131,14 +2137,14 @@ public class DefinitionHelper {
                    }
                    
                });
-               
-               runCMD.start(); 
-               
+          
+              runCMD.start(); 
+            
                cancelButton.addActionListener(new ActionListener() {
                 
                 public void actionPerformed(ActionEvent e){
                         
-                  //runCMD
+                 
                     p.destroy();
                     
                     progressWindow.dispose();
@@ -2148,7 +2154,7 @@ public class DefinitionHelper {
                
                int exitVal = p.waitFor();
                System.out.println("ExitValue: " + exitVal); // Non-zero is an error
-               progressPane.append("MIXWILD: " + String.valueOf(exitVal) + "\n"); //should append all the text after a new line to the text area
+               progressPane.append("MIXWILD::Exit Value: " + String.valueOf(exitVal) + "\n"); //should append all the text after a new line to the text area
                if (exitVal == 0){
                progressWindow.dispose(); //should close the window when done after this line
                Process p2=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && del /f " + defFileName); //delete the file when everything works great.
@@ -2253,6 +2259,19 @@ public class DefinitionHelper {
     public int getSelectedModel(){
     
     return selectedModel;
+    
+    }
+    
+    public void updateProgressPane(String input){
+        SwingUtilities.invokeLater(
+                new Runnable(){
+                @Override
+                public void run(){
+                progressPane.append(input);
+                }
+                
+                });
+    
     
     }
     
