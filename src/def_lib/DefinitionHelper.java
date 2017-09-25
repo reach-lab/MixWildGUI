@@ -2159,6 +2159,7 @@ public class DefinitionHelper {
         catch (Exception ex){
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Failed");
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
         }
     
     
