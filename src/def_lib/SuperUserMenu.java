@@ -10,6 +10,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -19,10 +20,15 @@ import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JEditorPane;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.text.Document;
 import static mixregui.NewModel.defFile;
@@ -202,50 +208,34 @@ public class SuperUserMenu extends javax.swing.JFrame {
        // String absoluteDefFilePath = "C:/Users/Eldin/Desktop/";
         String absoluteJavaPath = System.getProperty( "user.dir" );
         String defFileName = executableModel(selectedModel);
+        
         try {          
-            try 
-            { 
-                copyExecutable(defFilePath, selectedModel);
-                Process p=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && dir && "
+               copyExecutable(defFilePath, selectedModel);
+               Process p=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && dir && "
                         + defFileName); // does it save it in the same directory
-                
-                p.waitFor(); 
-                BufferedReader reader=new BufferedReader(new InputStreamReader(p.getInputStream())); 
-                String line=reader.readLine(); 
-                while(line!=null) 
-                { 
-                System.out.println(line); 
-                line=reader.readLine(); 
-                } 
-             } 
-            catch(FileNotFoundException fnfe1){
-             System.out.println("File not found Exception"); 
-            }
-            catch(IOException e1) {
-              System.out.println("IO Exception"); 
-            } 
-            
-            try 
-            { 
-                Process p=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && del /f " + defFileName);
-                p.waitFor(); 
-                BufferedReader reader=new BufferedReader(new InputStreamReader(p.getInputStream())); 
-                String line=reader.readLine(); 
-                while(line!=null) 
-                { 
-                System.out.println(line); 
-                line=reader.readLine(); 
-                } 
-             } 
-            catch(FileNotFoundException fnfe1){
-             System.out.println("File not found Exception 2"); 
-            }
-            catch(IOException e1) {
-              System.out.println("IO Exception 2 "); 
-            }
-            
-            JOptionPane.showMessageDialog(null, defFilePath);
-            
+               
+               Thread runCMD = new Thread(new Runnable(){
+                   public void run() {
+                       try{
+                            InputStreamReader isr = new InputStreamReader(p.getInputStream());
+                            BufferedReader br = new BufferedReader(isr);
+                            String line=null;  // UI magic should run in here @adityaponnada
+                            while ( (line = br.readLine()) != null)
+                                System.out.println("MIXWILD:" + line);    
+                            } catch (IOException ioe)
+                              {
+                                ioe.printStackTrace();  
+                              }                       
+                   }
+                   
+               });
+               
+               runCMD.start(); 
+               
+               int exitVal = p.waitFor();
+               System.out.println("ExitValue: " + exitVal); // Non-zero is an error
+               Process p2=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && del /f " + defFileName);
+
         }
         catch (Exception ex){
             ex.printStackTrace();
