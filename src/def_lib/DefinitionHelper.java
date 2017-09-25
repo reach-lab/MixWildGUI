@@ -1,6 +1,7 @@
 package def_lib;
 
 import java.awt.ComponentOrientation;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -31,6 +32,7 @@ import javax.swing.JEditorPane;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileFilter;
@@ -1952,6 +1954,7 @@ public class DefinitionHelper {
             });
             
             myFrame.setVisible(true); 
+            myFrame.setAlwaysOnTop(true);
             Document defDoc = myPane.getDocument();
             int length = defDoc.getLength();
             
@@ -2089,29 +2092,30 @@ public class DefinitionHelper {
             progressWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             progressWindow.setSize(550,550);
             
-           
+           //progressWindow.setPreferredSize(new Dimension(500, 500));
             //progressPane = new JEditorPane();
             progressPane = new JTextArea();
             
-            progressPane.setSize(1000, 1000);
+            progressPane.setSize(500, 500);
+            progressPane.setLineWrap(false);
+            progressPane.setWrapStyleWord(false);
+            
             // progressPane.setContentType("text/plain");
             progressPane.setFont(new Font("Monospaced", 0, 12));
             progressPane.setText("Please wait while we crunch some numbers .." + "\n");
             
-            
-            
-            progressWindow.add(progressPane);
+            JScrollPane scroller = new JScrollPane(progressPane, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+            scroller.setSize(500,500);
+      
+           // progressWindow.add(progressPane);
+           progressWindow.add(scroller);
             JButton cancelButton = new JButton("Cancel Analysis");
             
             progressWindow.add(cancelButton);
-            //JButton saveDefFile = new JButton("Save Def File");
-            
             
             progressWindow.setComponentOrientation(ComponentOrientation.UNKNOWN);
             progressWindow.setVisible(true);
             
-            
-        
         try {          
                copyExecutable(defFilePath, selectedModel);
                Process p=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && dir && "
@@ -2123,7 +2127,7 @@ public class DefinitionHelper {
                        try{
                             InputStreamReader isr = new InputStreamReader(p.getInputStream());
                             BufferedReader br = new BufferedReader(isr);
-                            String line="";  // UI magic should run in here @adityapona
+                            String line=null;  // UI magic should run in here @adityapona
                             while ( (line = br.readLine()) != null){
                                 System.out.println("MIXWILD:" + line);
                                 progressPane.append("MIXWILD:" + line + "\n"); //should append all the text after a new line to the text area
