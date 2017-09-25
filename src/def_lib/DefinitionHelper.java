@@ -1929,7 +1929,7 @@ public class DefinitionHelper {
                 public void actionPerformed(ActionEvent e){
                     
                         
-                    runModels();
+                    runMixRegModels(); // run the updated functions of executing Don's code
                     
                     
                     myFrame.dispose();
