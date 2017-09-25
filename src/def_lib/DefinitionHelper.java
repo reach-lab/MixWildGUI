@@ -30,6 +30,7 @@ import javax.swing.JEditorPane;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -69,6 +70,8 @@ public class DefinitionHelper {
     private boolean stageTwoBinary = Boolean.FALSE;
     
     JFrame myFrame;
+    JFrame progressWindow;
+    JTextArea progressPane;
     JEditorPane myPane;
     
     int selectedModel;
@@ -1926,30 +1929,7 @@ public class DefinitionHelper {
                 public void actionPerformed(ActionEvent e){
                     
                         
-                    runModels(); //@Eldin: Check if this is the right way to call the function.
-                    
-                    //read output in real time here:
-//                    new Thread(new Runnable() {
-//                        public void run() {
-//                            for (int i = 0; i <= 100; i++) { //maybe switch this to while:
-//
-//                                // Runs inside of the Swing UI thread
-//                                SwingUtilities.invokeLater(new Runnable() {
-//                                    public void run() {
-//                                        //progressBar.setValue(i); //Add command reading code here
-//                                    }
-//                                });
-//
-//                                try {
-//                                    java.lang.Thread.sleep(100); //need to check what it does
-//                                } catch (Exception e) {
-//                                }
-//                            }
-//                        }
-//                    }).start();
-
-                    //select the program here
-                    // then read the output
+                    runMixRegModels(); // run the updated functions of executing Don's code
                     
                     
                     myFrame.dispose();
@@ -2089,6 +2069,100 @@ public class DefinitionHelper {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
         }
 
+    }
+    
+    public void runMixRegModels(){
+    
+    String absoluteJavaPath = System.getProperty( "user.dir" );
+        String defFileName = executableModel(selectedModel);
+        
+        progressWindow = new JFrame("Please wait ...");
+        
+            GridLayout defFileGrid = new GridLayout(0,2);
+            
+            FlowLayout defFileFlow = new FlowLayout();
+        
+            progressWindow.setLayout(defFileFlow);
+            defFileFlow.setAlignment(FlowLayout.TRAILING);
+            progressWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            progressWindow.setSize(550,550);
+            
+           
+            //progressPane = new JEditorPane();
+            progressPane = new JTextArea();
+            
+            progressPane.setSize(500, 500);
+            // progressPane.setContentType("text/plain");
+            progressPane.setFont(new Font("Monospaced", 0, 12));
+            progressPane.setText("Please wait while we crunch some numbers .." + "\n");
+            
+            
+            
+            progressWindow.add(myPane);
+            JButton cancelButton = new JButton("Cancel Analysis");
+            
+            progressWindow.add(cancelButton);
+            //JButton saveDefFile = new JButton("Save Def File");
+            
+            
+            progressWindow.setComponentOrientation(ComponentOrientation.UNKNOWN);
+            
+            
+        
+        try {          
+               copyExecutable(defFilePath, selectedModel);
+               Process p=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && dir && "
+                        + defFileName); // does it save it in the same directory
+               
+               Thread runCMD = new Thread(new Runnable(){
+                   public void run() {
+                       try{
+                            InputStreamReader isr = new InputStreamReader(p.getInputStream());
+                            BufferedReader br = new BufferedReader(isr);
+                            String line=null;  // UI magic should run in here @adityaponnada
+                            while ( (line = br.readLine()) != null)
+                                System.out.println("MIXWILD:" + line);
+                                progressPane.append("MIXWILD: " + line + "\n"); //should append all the text after a new line to the text area
+                                
+                            } catch (IOException ioe)
+                              {
+                                ioe.printStackTrace();  
+                              }                       
+                   }
+                   
+               });
+               
+               runCMD.start(); 
+               
+               cancelButton.addActionListener(new ActionListener() {
+                
+                public void actionPerformed(ActionEvent e){
+                        
+                  //runCMD
+                    p.destroy();
+                    
+                    progressWindow.dispose();
+                }
+            
+            });
+               
+               int exitVal = p.waitFor();
+               System.out.println("ExitValue: " + exitVal); // Non-zero is an error
+               progressPane.append("MIXWILD: " + String.valueOf(exitVal) + "\n"); //should append all the text after a new line to the text area
+               if (exitVal == 0){
+               progressWindow.dispose(); //should close the window when done after this line
+               Process p2=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && del /f " + defFileName); //delete the file when everything works great.
+               }
+               
+
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Failed");
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+        }
+    
+    
     }
     
     private String executableModel(int modelSelection){
