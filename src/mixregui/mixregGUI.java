@@ -921,6 +921,11 @@ public class mixregGUI extends javax.swing.JFrame {
         helpMenu.add(jMenuItem7);
 
         jMenuItem8.setText("Documentation");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
         helpMenu.add(jMenuItem8);
 
         jMenuItem9.setText("About");
@@ -2527,6 +2532,74 @@ public class mixregGUI extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_outcomeCatButtonActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        // TODO add your handling code here:
+        
+        if (Desktop.isDesktopSupported()) {
+            try {
+                // File in user working directory, System.getProperty("user.dir");
+                File file = new File("HelpFile.pdf");
+                if (!file.exists()) {
+                    OutputStream outputStream = null;
+                    try {
+                        // In JAR
+                        InputStream inputStream = ClassLoader.getSystemClassLoader()
+                                .getResourceAsStream("resources/Help/HelpFile.pdf");
+                        // Copy file
+                        outputStream = new FileOutputStream(file);
+                        byte[] buffer = new byte[1024];
+                        int length;
+                        while ((length = inputStream.read(buffer)) > 0) {
+                            outputStream.write(buffer, 0, length);
+                        }   outputStream.close();
+                        inputStream.close();
+                    } catch (FileNotFoundException ex) {
+                        Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (IOException ex) {
+                        Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+                    } finally {
+                        try {
+                            outputStream.close();
+                        } catch (IOException ex) {
+                            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                }
+                // Open file
+                Desktop.getDesktop().open(file);
+            } catch (IOException ex) {
+                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+//        if (Desktop.isDesktopSupported()) {
+//            try {
+//                
+//               String resourcePath = "/resources/Help/HelpFile.pdf";
+//               // File helpDoc = new File("/path/to/file.pdf");
+//               File helpDoc = new File("/Users/adityaponnada/Downloads/UbiComp17_Final_v7.pdf");
+//               //File helpDoc = getClass().getClassLoader().getResource(resourcePath);
+//               //ClassLoader classLoader = getClass().getClassLoader().getResource(resourcePath);
+//              // File helpDoc = new File(classLoader.getResource("HelpFile.pdf").getFile());
+//                Desktop.getDesktop().open(helpDoc);
+//            } catch (IOException ex) {
+//                // no application registered for PDFs
+//            }
+//        }
+        
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     /**
      * @param args the command line arguments
