@@ -2137,11 +2137,9 @@ public class DefinitionHelper {
                cancelButton.addActionListener(new ActionListener() {
                 
                 public void actionPerformed(ActionEvent e){
-                    
                         
-                    //runCMD
+                  //runCMD
                     p.destroy();
-                    
                     
                     progressWindow.dispose();
                 }
@@ -2150,6 +2148,7 @@ public class DefinitionHelper {
                
                int exitVal = p.waitFor();
                System.out.println("ExitValue: " + exitVal); // Non-zero is an error
+               progressPane.append("MIXWILD: " + String.valueOf(exitVal) + "\n"); //should append all the text after a new line to the text area
                Process p2=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && del /f " + defFileName);
 
         }

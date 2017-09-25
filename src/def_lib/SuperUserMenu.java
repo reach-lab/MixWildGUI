@@ -233,7 +233,7 @@ public class SuperUserMenu extends javax.swing.JFrame {
                runCMD.start(); 
                
                int exitVal = p.waitFor();
-               System.out.println("ExitValue: " + exitVal); // Non-zero is an error
+               System.out.println("ExitValue: " + exitVal); // Non-zero is an error //@Eldin: should we add a condition that the p2 process will run only when the exit value is zero?
                Process p2=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && del /f " + defFileName);
 
         }
