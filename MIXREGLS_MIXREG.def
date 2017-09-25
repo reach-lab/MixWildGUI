@@ -1,29 +1,30 @@
-kjhkjh
-kjhkjh
+khkh
+khkh
 C:\Users\Dharam\Downloads\sampleNovel_dataSet.csv
-Output_kjhkjh
-156  1  1  1  1  0  0  1  1  1  0.001  11  0  100  -9999  0  0  0.15
+Output_khkh
+156  2  1  2  1  0  0  0  1  0  0.001  11  0  100  -9999  0  0  0.15
 1  2
-13
-13
-13
-8
-8
-8
-WAVE
-TYPE
-TYPE
-DATE
-DATE
-DATE
-DATE
-1  1  1  0
-3
-6
-6
+6  16
+16
+6  16
+
 6
 
+WAVE
+DAY_COUNT  COMPLY
+COMPLY
+DAY_COUNT  DAY_COUNT
+
+DAY_COUNT
+
+1  1  1  1
+3
+12
+12
+12
+12
 DATA
-DAY_COUNT
-DAY_COUNT
-DAY_COUNT
+TOD
+TOD
+TOD
+TOD
