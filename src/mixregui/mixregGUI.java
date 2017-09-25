@@ -2535,7 +2535,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
         // TODO add your handling code here:
-        
+
         if (Desktop.isDesktopSupported()) {
             try {
                 // File in user working directory, System.getProperty("user.dir");
@@ -2552,7 +2552,8 @@ public class mixregGUI extends javax.swing.JFrame {
                         int length;
                         while ((length = inputStream.read(buffer)) > 0) {
                             outputStream.write(buffer, 0, length);
-                        }   outputStream.close();
+                        }
+                        outputStream.close();
                         inputStream.close();
                     } catch (FileNotFoundException ex) {
                         Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -2572,18 +2573,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
 //        if (Desktop.isDesktopSupported()) {
 //            try {
 //                
@@ -2598,7 +2588,7 @@ public class mixregGUI extends javax.swing.JFrame {
 //                // no application registered for PDFs
 //            }
 //        }
-        
+
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     /**
@@ -4725,8 +4715,6 @@ public class mixregGUI extends javax.swing.JFrame {
 //                }
 //            }
 //        }).start();
-
-        
         //test code for reading command line
         Runtime rt = Runtime.getRuntime();
         String[] commands = {"system.exe", "-get t"}; //this is where the command will go.
@@ -4820,7 +4808,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 copyExecutable(defFilePath, selectedModel); //get the def file path after it is saved
                 Process p = Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && dir && "
                         + defFileName); // does it save it in the same directory //@Eldin: This is where it is copying it twice.
-                                        //@Eldin: This is where we may want to keeo the terminal open in the background.
+                //@Eldin: This is where we may want to keeo the terminal open in the background.
 
                 p.waitFor();
                 BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
