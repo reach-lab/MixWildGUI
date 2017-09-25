@@ -2149,7 +2149,11 @@ public class DefinitionHelper {
                int exitVal = p.waitFor();
                System.out.println("ExitValue: " + exitVal); // Non-zero is an error
                progressPane.append("MIXWILD: " + String.valueOf(exitVal) + "\n"); //should append all the text after a new line to the text area
-               Process p2=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && del /f " + defFileName);
+               if (exitVal == 0){
+               progressWindow.dispose(); //should close the window when done after this line
+               Process p2=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && del /f " + defFileName); //delete the file when everything works great.
+               }
+               
 
         }
         catch (Exception ex){
