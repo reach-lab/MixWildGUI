@@ -411,8 +411,6 @@ public class mixregGUI extends javax.swing.JFrame {
 
         parentPanel.add(imageView, "card3");
 
-        stageOneTabs.setFocusTraversalKeysEnabled(false);
-
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         resetButton.setText("Reset");
@@ -760,12 +758,12 @@ public class mixregGUI extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel8)
-                        .addGap(297, 297, 297)
-                        .addComponent(jButton9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton9)
+                        .addGap(18, 18, 18)
                         .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(223, Short.MAX_VALUE))
+                .addContainerGap(226, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -823,7 +821,7 @@ public class mixregGUI extends javax.swing.JFrame {
         jPanel4.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 390, 232, 39));
 
         jButton12.setText("Save Stage 1 and 2 Def File As ...");
-        jPanel4.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 390, -1, 39));
+        jPanel4.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 390, -1, 39));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/mixLogo.png"))); // NOI18N
         jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 390, -1, 39));

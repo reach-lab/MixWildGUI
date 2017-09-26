@@ -126,7 +126,7 @@ public class stageOneRegs extends javax.swing.JFrame {
                 stageOneSubmitButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(stageOneSubmitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 467, -1, -1));
+        getContentPane().add(stageOneSubmitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(557, 467, 80, -1));
 
         stageOneResetButton.setText("Reset");
         stageOneResetButton.addActionListener(new java.awt.event.ActionListener() {
@@ -134,7 +134,7 @@ public class stageOneRegs extends javax.swing.JFrame {
                 stageOneResetButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(stageOneResetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(469, 467, 89, -1));
+        getContentPane().add(stageOneResetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 470, 89, -1));
 
         removeLevelButton.setText("Remove");
         removeLevelButton.addActionListener(new java.awt.event.ActionListener() {
@@ -142,7 +142,7 @@ public class stageOneRegs extends javax.swing.JFrame {
                 removeLevelButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(removeLevelButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 112, -1, -1));
+        getContentPane().add(removeLevelButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 112, 90, -1));
 
         levelOneAddButton.setText("Add");
         levelOneAddButton.addActionListener(new java.awt.event.ActionListener() {
@@ -158,7 +158,7 @@ public class stageOneRegs extends javax.swing.JFrame {
                 removeLevelTwoButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(removeLevelTwoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 332, -1, -1));
+        getContentPane().add(removeLevelTwoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 332, 90, -1));
 
         addLevelTwoButton.setText("Add");
         addLevelTwoButton.addActionListener(new java.awt.event.ActionListener() {
@@ -189,7 +189,7 @@ public class stageOneRegs extends javax.swing.JFrame {
                 stageOneCancelActionPerformed(evt);
             }
         });
-        getContentPane().add(stageOneCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(371, 467, -1, -1));
+        getContentPane().add(stageOneCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 470, 80, -1));
 
         jButton1.setText("?");
         jButton1.addActionListener(new java.awt.event.ActionListener() {

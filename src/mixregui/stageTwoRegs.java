@@ -135,7 +135,7 @@ public class stageTwoRegs extends javax.swing.JFrame {
                 stageTwoCancelActionPerformed(evt);
             }
         });
-        getContentPane().add(stageTwoCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 460, -1, -1));
+        getContentPane().add(stageTwoCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 460, 90, -1));
 
         jButton1.setText("?");
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(272, 155, 41, -1));
