@@ -50,7 +50,9 @@ import static sun.management.snmp.jvminstr.JvmThreadInstanceEntryImpl.ThreadStat
  * @author Eldin Dzubur
  */
 public class DefinitionHelper {
-
+    
+    
+    public int terminalVal;
     /**
      * Private Class Keys
      */
@@ -2096,9 +2098,9 @@ public class DefinitionHelper {
             //progressPane = new JEditorPane();
             progressPane = new JTextArea();
             
-            progressPane.setSize(500, 500);
-            progressPane.setLineWrap(false);
-            progressPane.setWrapStyleWord(false);
+            progressPane.setSize(400, 400);
+            progressPane.setLineWrap(true);
+            progressPane.setWrapStyleWord(true);
             
             // progressPane.setContentType("text/plain");
             progressPane.setFont(new Font("Monospaced", 0, 12));
@@ -2108,7 +2110,8 @@ public class DefinitionHelper {
             scroller.setSize(500,500);
       
            // progressWindow.add(progressPane);
-           progressWindow.add(scroller);
+          // progressWindow.add(scroller);
+           progressWindow.getContentPane().add(scroller);
             JButton cancelButton = new JButton("Cancel Analysis");
             
             progressWindow.add(cancelButton);
@@ -2160,6 +2163,9 @@ public class DefinitionHelper {
                System.out.println("ExitValue: " + exitVal); // Non-zero is an error
                progressPane.append("MIXWILD::Exit Value: " + String.valueOf(exitVal) + "\n"); //should append all the text after a new line to the text area
                if (exitVal == 0){
+                   //send the out to StageTwoOutPu from here
+               // FileReader reader = new FileReader(absoluteJavaPath + ".out file name");
+                terminalVal = exitVal;
                progressWindow.dispose(); //should close the window when done after this line
                Process p2=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && del /f " + defFileName); //delete the file when everything works great.
                }
@@ -2172,6 +2178,12 @@ public class DefinitionHelper {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
         }
     
+    
+    }
+    
+    public int getExitVal(){
+    
+        return terminalVal;
     
     }
     

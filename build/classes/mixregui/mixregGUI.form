@@ -183,9 +183,6 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JTabbedPane" name="stageOneTabs">
-          <Properties>
-            <Property name="focusTraversalKeysEnabled" type="boolean" value="false"/>
-          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
               <CardConstraints cardName="card2"/>
@@ -984,14 +981,14 @@
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" attributes="0">
                                   <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="297" max="-2" attributes="0"/>
-                                  <Component id="jButton9" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="jButton9" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jButton8" min="-2" pref="218" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jPanel10" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="223" max="32767" attributes="0"/>
+                          <EmptySpace pref="226" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1186,7 +1183,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="400" y="390" width="-1" height="39"/>
+                      <AbsoluteConstraints x="440" y="390" width="-1" height="39"/>
                     </Constraint>
                   </Constraints>
                 </Component>

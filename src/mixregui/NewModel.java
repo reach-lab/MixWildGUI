@@ -152,7 +152,7 @@ public class NewModel extends javax.swing.JFrame {
                 fileBrowseButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(fileBrowseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 70, -1, -1));
+        getContentPane().add(fileBrowseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 70, 90, -1));
 
         jLabel2.setText("Title:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, -1, -1));
@@ -204,7 +204,7 @@ public class NewModel extends javax.swing.JFrame {
                 newModelSubmitActionPerformed(evt);
             }
         });
-        getContentPane().add(newModelSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(402, 411, -1, -1));
+        getContentPane().add(newModelSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(427, 410, 90, -1));
 
         newModelCancel.setText("Cancel");
         newModelCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -212,7 +212,7 @@ public class NewModel extends javax.swing.JFrame {
                 newModelCancelActionPerformed(evt);
             }
         });
-        getContentPane().add(newModelCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(202, 411, -1, -1));
+        getContentPane().add(newModelCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 410, 90, -1));
 
         newModel_resetButton.setText("Reset");
         newModel_resetButton.addActionListener(new java.awt.event.ActionListener() {
@@ -220,7 +220,7 @@ public class NewModel extends javax.swing.JFrame {
                 newModel_resetButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(newModel_resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(306, 411, -1, -1));
+        getContentPane().add(newModel_resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 410, 90, -1));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(538, 334, -1, -1));
 
         newModelMissingValues.addActionListener(new java.awt.event.ActionListener() {
@@ -228,10 +228,10 @@ public class NewModel extends javax.swing.JFrame {
                 newModelMissingValuesActionPerformed(evt);
             }
         });
-        getContentPane().add(newModelMissingValues, new org.netbeans.lib.awtextra.AbsoluteConstraints(209, 340, -1, -1));
+        getContentPane().add(newModelMissingValues, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 338, -1, 20));
 
         jLabel6.setText("Missing value code:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 345, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 330, -1, 30));
 
         newModelMissingValueCode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -243,7 +243,7 @@ public class NewModel extends javax.swing.JFrame {
                 newModelMissingValueCodeKeyTyped(evt);
             }
         });
-        getContentPane().add(newModelMissingValueCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(445, 340, 77, -1));
+        getContentPane().add(newModelMissingValueCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 330, 77, -1));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/mixLogo.png"))); // NOI18N
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 409, -1, 31));
@@ -258,7 +258,7 @@ public class NewModel extends javax.swing.JFrame {
                 noneRadioActionPerformed(evt);
             }
         });
-        getContentPane().add(noneRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(473, 294, -1, -1));
+        getContentPane().add(noneRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 288, -1, 30));
 
         jButton1.setText("Instructions");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -266,10 +266,10 @@ public class NewModel extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(391, 9, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(391, 9, 110, -1));
 
         jLabel9.setText("Before importing a data file, please go through these:");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 14, -1, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, -1));
 
         jLabel10.setText("Random Scale?");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 254, -1, -1));
@@ -304,14 +304,20 @@ public class NewModel extends javax.swing.JFrame {
         //fileChooser.showOpenDialog(null);
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Data files","csv");
         
+        
         fileChooser.setFileFilter(filter);
         
-        fileOpen();
+       // fileOpen();
+        
+       int returnVal = fileChooser.showOpenDialog(this);
+    if (returnVal == JFileChooser.APPROVE_OPTION) {
+       // File file = fileChooser.getSelectedFile();
+        // What to do with the file, e.g. display it in a TextArea
+        //textarea.read( new FileReader( file.getAbsolutePath() ), null );
         
         //Select file from the file object
         file = fileChooser.getSelectedFile();
-        
-        //get file path to display on the text box
+      //get file path to display on the text box
         String fileName = file.getAbsolutePath();
         dataFileNameRef = fileName;
         
@@ -335,6 +341,12 @@ public class NewModel extends javax.swing.JFrame {
         
         newModelMissingValueCode.selectAll();
         
+        System.out.println(file.getAbsolutePath());
+    } else {
+        System.out.println("File access cancelled by user.");
+    }
+        
+      
     }//GEN-LAST:event_fileBrowseButtonActionPerformed
 
     private void subtitleFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subtitleFieldActionPerformed

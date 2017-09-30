@@ -123,6 +123,8 @@ public class mixregGUI extends javax.swing.JFrame {
     String defFilePath;
 
     String[] dataValues;
+    
+    static String outPutStageTwo;
     // String[] Columns;
 
     /**
@@ -410,8 +412,6 @@ public class mixregGUI extends javax.swing.JFrame {
         imageView.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, 680, 400));
 
         parentPanel.add(imageView, "card3");
-
-        stageOneTabs.setFocusTraversalKeysEnabled(false);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -760,12 +760,12 @@ public class mixregGUI extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel8)
-                        .addGap(297, 297, 297)
-                        .addComponent(jButton9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton9)
+                        .addGap(18, 18, 18)
                         .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(223, Short.MAX_VALUE))
+                .addContainerGap(226, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -823,7 +823,7 @@ public class mixregGUI extends javax.swing.JFrame {
         jPanel4.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 390, 232, 39));
 
         jButton12.setText("Save Stage 1 and 2 Def File As ...");
-        jPanel4.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 390, -1, 39));
+        jPanel4.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 390, -1, 39));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/mixLogo.png"))); // NOI18N
         jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 390, -1, 39));
@@ -4688,56 +4688,15 @@ public class mixregGUI extends javax.swing.JFrame {
     public void produceStageTwoOutput() throws FileNotFoundException, IOException {
 
         //@Eldin : this is where we will read the command line info.
-//        FileReader reader = new FileReader("/Users/adityaponnada/NetBeansProjects/mixregMLS/src/resources/mixREGLS51.OUT");
+        
+//        while (NewModel.defFile.getExitVal() == 0){
+//        String absoluteJavaPath = System.getProperty( "user.dir" );
+////
+////        FileReader reader = new FileReader(absoluteJavaPath + ".out file name");
+//////       
+////        stageTwoOutput.read(reader, "stageTwoOutput");
 //        
-//        try {
-//            stageTwoOutput.read(reader, "stageTwoOutput");
-//        } catch (IOException ex) {
-//            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
 //        }
-        //test code:
-        //test code for background process:
-//        new Thread(new Runnable() {
-//            public void run() {
-//                for (i = 0; i <= 100; i++) { //maybe switch this to while:
-//
-//                    // Runs inside of the Swing UI thread
-//                    SwingUtilities.invokeLater(new Runnable() {
-//                        public void run() {
-//                            //progressBar.setValue(i); //Add command reading code here
-//                        }
-//                    });
-//
-//                    try {
-//                        java.lang.Thread.sleep(100); //need to check what it does
-//                    } catch (Exception e) {
-//                    }
-//                }
-//            }
-//        }).start();
-        //test code for reading command line
-        Runtime rt = Runtime.getRuntime();
-        String[] commands = {"system.exe", "-get t"}; //this is where the command will go.
-        Process proc = rt.exec(commands);
-
-        BufferedReader stdInput = new BufferedReader(new InputStreamReader(proc.getInputStream()));
-
-        BufferedReader stdError = new BufferedReader(new InputStreamReader(proc.getErrorStream()));
-
-        // read the output from the command
-        System.out.println("Here is the standard output of the command:\n");
-        String s = null;
-        while ((s = stdInput.readLine()) != null) {
-            System.out.println(s);
-            stageTwoOutput.append(s); //adds the output from command/terminal to stageTwoOutput screen
-        }
-
-        // read any errors from the attempted command
-        System.out.println("Here is the standard error of the command (if any):\n");
-        while ((s = stdError.readLine()) != null) {
-            System.out.println(s);
-            stageTwoOutput.append(s); //adds the output from command/terminal to stageTwoOutput screen
-        }
 
     }
 
@@ -4808,7 +4767,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 copyExecutable(defFilePath, selectedModel); //get the def file path after it is saved
                 Process p = Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && dir && "
                         + defFileName); // does it save it in the same directory //@Eldin: This is where it is copying it twice.
-                //@Eldin: This is where we may want to keeo the terminal open in the background.
+                //@Eldin: This is where we may want to keep the terminal open in the background.
 
                 p.waitFor();
                 BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));

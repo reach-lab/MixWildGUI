@@ -198,7 +198,7 @@ public class advancedOptions extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(466, 234, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(467, 230, 90, -1));
 
         advancedOptions_resetButton.setText("Reset");
         advancedOptions_resetButton.addActionListener(new java.awt.event.ActionListener() {
@@ -206,7 +206,7 @@ public class advancedOptions extends javax.swing.JFrame {
                 advancedOptions_resetButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(advancedOptions_resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(376, 234, -1, -1));
+        getContentPane().add(advancedOptions_resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 230, 90, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/mixLogo.png"))); // NOI18N
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 231, -1, 29));
@@ -217,7 +217,7 @@ public class advancedOptions extends javax.swing.JFrame {
                 advancedOptionsCancelActionPerformed(evt);
             }
         });
-        getContentPane().add(advancedOptionsCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(278, 234, -1, -1));
+        getContentPane().add(advancedOptionsCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 90, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
