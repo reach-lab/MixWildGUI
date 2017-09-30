@@ -123,6 +123,8 @@ public class mixregGUI extends javax.swing.JFrame {
     String defFilePath;
 
     String[] dataValues;
+    
+    static String outPutStageTwo;
     // String[] Columns;
 
     /**
@@ -4686,13 +4688,15 @@ public class mixregGUI extends javax.swing.JFrame {
     public void produceStageTwoOutput() throws FileNotFoundException, IOException {
 
         //@Eldin : this is where we will read the command line info.
+        
+//        while (NewModel.defFile.getExitVal() == 0){
+//        String absoluteJavaPath = System.getProperty( "user.dir" );
+////
+////        FileReader reader = new FileReader(absoluteJavaPath + ".out file name");
+//////       
+////        stageTwoOutput.read(reader, "stageTwoOutput");
 //        
-         String absoluteJavaPath = System.getProperty( "user.dir" );
-
-        FileReader reader = new FileReader(absoluteJavaPath + ".out file name");
-//       
-        stageTwoOutput.read(reader, "stageTwoOutput");
-       
+//        }
 
     }
 
@@ -4763,7 +4767,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 copyExecutable(defFilePath, selectedModel); //get the def file path after it is saved
                 Process p = Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && dir && "
                         + defFileName); // does it save it in the same directory //@Eldin: This is where it is copying it twice.
-                //@Eldin: This is where we may want to keeo the terminal open in the background.
+                //@Eldin: This is where we may want to keep the terminal open in the background.
 
                 p.waitFor();
                 BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
