@@ -2098,9 +2098,9 @@ public class DefinitionHelper {
             //progressPane = new JEditorPane();
             progressPane = new JTextArea();
             
-            progressPane.setSize(500, 500);
-            progressPane.setLineWrap(false);
-            progressPane.setWrapStyleWord(false);
+            progressPane.setSize(400, 400);
+            progressPane.setLineWrap(true);
+            progressPane.setWrapStyleWord(true);
             
             // progressPane.setContentType("text/plain");
             progressPane.setFont(new Font("Monospaced", 0, 12));
@@ -2110,7 +2110,8 @@ public class DefinitionHelper {
             scroller.setSize(500,500);
       
            // progressWindow.add(progressPane);
-           progressWindow.add(scroller);
+          // progressWindow.add(scroller);
+           progressWindow.getContentPane().add(scroller);
             JButton cancelButton = new JButton("Cancel Analysis");
             
             progressWindow.add(cancelButton);
