@@ -1,29 +1,29 @@
-khkjh
-khkh
+jhgjgh
+jkgjkg
 C:\Users\Dharam\Downloads\sampleNovel_dataSet.csv
-Output_khkh
-156  1  1  2  1  0  0  1  1  0  0.001  11  0  100  -9999  0  0  0.15
+Output_jkgjkg
+156  2  0  0  1  0  0  0  1  0  0.001  11  0  100  -9999  0  0  0.15
 1  2
-14
-14
-6  14
-6
-6
+9  14
+
+
+
+9
 
 WAVE
-PROMPT
-PROMPT
-DAY_COUNT  DAY_COUNT
-DAY_COUNT
-DAY_COUNT
+DAY  PROMPT
 
-1  1  1  0
+
+
+DAY
+
+1  1  0  0
 3
-12
-12
-12
+11
+11
+
 
 DATA
-TOD
-TOD
-TOD
+WEEKEND
+WEEKEND
+
