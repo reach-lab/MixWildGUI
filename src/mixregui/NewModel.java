@@ -304,14 +304,20 @@ public class NewModel extends javax.swing.JFrame {
         //fileChooser.showOpenDialog(null);
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Data files","csv");
         
+        
         fileChooser.setFileFilter(filter);
         
-        fileOpen();
+       // fileOpen();
+        
+       int returnVal = fileChooser.showOpenDialog(this);
+    if (returnVal == JFileChooser.APPROVE_OPTION) {
+       // File file = fileChooser.getSelectedFile();
+        // What to do with the file, e.g. display it in a TextArea
+        //textarea.read( new FileReader( file.getAbsolutePath() ), null );
         
         //Select file from the file object
         file = fileChooser.getSelectedFile();
-        
-        //get file path to display on the text box
+      //get file path to display on the text box
         String fileName = file.getAbsolutePath();
         dataFileNameRef = fileName;
         
@@ -335,6 +341,12 @@ public class NewModel extends javax.swing.JFrame {
         
         newModelMissingValueCode.selectAll();
         
+        System.out.println(file.getAbsolutePath());
+    } else {
+        System.out.println("File access cancelled by user.");
+    }
+        
+      
     }//GEN-LAST:event_fileBrowseButtonActionPerformed
 
     private void subtitleFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subtitleFieldActionPerformed

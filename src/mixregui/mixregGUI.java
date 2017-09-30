@@ -4686,56 +4686,13 @@ public class mixregGUI extends javax.swing.JFrame {
     public void produceStageTwoOutput() throws FileNotFoundException, IOException {
 
         //@Eldin : this is where we will read the command line info.
-//        FileReader reader = new FileReader("/Users/adityaponnada/NetBeansProjects/mixregMLS/src/resources/mixREGLS51.OUT");
 //        
-//        try {
-//            stageTwoOutput.read(reader, "stageTwoOutput");
-//        } catch (IOException ex) {
-//            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-        //test code:
-        //test code for background process:
-//        new Thread(new Runnable() {
-//            public void run() {
-//                for (i = 0; i <= 100; i++) { //maybe switch this to while:
-//
-//                    // Runs inside of the Swing UI thread
-//                    SwingUtilities.invokeLater(new Runnable() {
-//                        public void run() {
-//                            //progressBar.setValue(i); //Add command reading code here
-//                        }
-//                    });
-//
-//                    try {
-//                        java.lang.Thread.sleep(100); //need to check what it does
-//                    } catch (Exception e) {
-//                    }
-//                }
-//            }
-//        }).start();
-        //test code for reading command line
-        Runtime rt = Runtime.getRuntime();
-        String[] commands = {"system.exe", "-get t"}; //this is where the command will go.
-        Process proc = rt.exec(commands);
+         String absoluteJavaPath = System.getProperty( "user.dir" );
 
-        BufferedReader stdInput = new BufferedReader(new InputStreamReader(proc.getInputStream()));
-
-        BufferedReader stdError = new BufferedReader(new InputStreamReader(proc.getErrorStream()));
-
-        // read the output from the command
-        System.out.println("Here is the standard output of the command:\n");
-        String s = null;
-        while ((s = stdInput.readLine()) != null) {
-            System.out.println(s);
-            stageTwoOutput.append(s); //adds the output from command/terminal to stageTwoOutput screen
-        }
-
-        // read any errors from the attempted command
-        System.out.println("Here is the standard error of the command (if any):\n");
-        while ((s = stdError.readLine()) != null) {
-            System.out.println(s);
-            stageTwoOutput.append(s); //adds the output from command/terminal to stageTwoOutput screen
-        }
+        FileReader reader = new FileReader(absoluteJavaPath + ".out file name");
+//       
+        stageTwoOutput.read(reader, "stageTwoOutput");
+       
 
     }
 
