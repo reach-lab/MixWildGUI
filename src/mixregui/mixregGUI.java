@@ -197,10 +197,14 @@ public class mixregGUI extends javax.swing.JFrame {
         if (!newModel.isOutcomeContinous()){
         
             outcomeCatButton.setEnabled(true);
+            jPanel5.setEnabled(true);
+            jLabel7.setEnabled(true);
         
         } else {
         
             outcomeCatButton.setEnabled(false);
+            jPanel5.setEnabled(false);
+            jLabel7.setEnabled(false);
         }
 
 //        //set advanced options defaults
@@ -682,7 +686,7 @@ public class mixregGUI extends javax.swing.JFrame {
         jPanel12.add(filler1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 570, -1, 80));
         jPanel12.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 40, 320, 10));
 
-        outcomeCatButton.setText("Get outcome categories");
+        outcomeCatButton.setText("Show outcome categories");
         outcomeCatButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 outcomeCatButtonActionPerformed(evt);
