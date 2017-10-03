@@ -284,11 +284,11 @@ public class NewModel extends javax.swing.JFrame {
         getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 184, 524, 10));
 
         buttonGroup2.add(oneRLERadio);
-        oneRLERadio.setText("One");
+        oneRLERadio.setText("Intercept");
         getContentPane().add(oneRLERadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(186, 206, -1, -1));
 
         buttonGroup2.add(moreThanOneRLERadio);
-        moreThanOneRLERadio.setText("More than one");
+        moreThanOneRLERadio.setText("Intercept + Slope(s)");
         getContentPane().add(moreThanOneRLERadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(261, 206, -1, -1));
         getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 384, 516, -1));
 
