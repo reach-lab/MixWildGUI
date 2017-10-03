@@ -177,8 +177,8 @@ public class NewModel extends javax.swing.JFrame {
         jLabel4.setText("Random Location Effects:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
 
-        jLabel5.setText("Stage 2 Outcome Type:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 294, -1, -1));
+        jLabel5.setText("Stage 2 Outcome:");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 286, -1, 30));
 
         buttonGroup1.add(continuousRadio);
         continuousRadio.setText("Continuous");
