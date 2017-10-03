@@ -193,6 +193,15 @@ public class mixregGUI extends javax.swing.JFrame {
 
             addStageTwoTabTwo.setEnabled(true);
         }
+        
+        if (!newModel.isOutcomeContinous()){
+        
+            outcomeCatButton.setEnabled(true);
+        
+        } else {
+        
+            outcomeCatButton.setEnabled(false);
+        }
 
 //        //set advanced options defaults
 //        try {
