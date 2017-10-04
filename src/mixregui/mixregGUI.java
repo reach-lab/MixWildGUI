@@ -124,6 +124,8 @@ public class mixregGUI extends javax.swing.JFrame {
 
     String[] dataValues;
     
+    boolean outComeType;
+    
     static String outPutStageTwo;
     // String[] Columns;
 
@@ -136,6 +138,7 @@ public class mixregGUI extends javax.swing.JFrame {
         //instructions = new InstructionsGUI();
         variableNamesCombo = newModel.getVariableNames();
         outcomeNone = newModel.getNoneVar();
+        outComeType = newModel.getOutComeType();
 
         IDList = new DefaultComboBoxModel<String>();
         StageOneList = new DefaultComboBoxModel<String>();
@@ -194,100 +197,22 @@ public class mixregGUI extends javax.swing.JFrame {
             addStageTwoTabTwo.setEnabled(true);
         }
         
-        if (!newModel.isOutcomeContinous()){
+        if (outComeType == false){
         
             outcomeCatButton.setEnabled(true);
+            System.out.println("outCatButton Enabled: " + String.valueOf(newModel.isOutcomeContinous()));
             jPanel5.setEnabled(true);
             jLabel7.setEnabled(true);
         
-        } else {
+        } else if (outComeType == true) {
         
             outcomeCatButton.setEnabled(false);
+            System.out.println("outCatButton Enabled: " + String.valueOf(newModel.isOutcomeContinous()));
             jPanel5.setEnabled(false);
             jLabel7.setEnabled(false);
         }
 
-//        //set advanced options defaults
-//        try {
-//            NewModel.defFile.setModelFixedInt(String.valueOf(1));
-//            System.out.println("From defHelper | Mean SubModel Checked?: " + NewModel.defFile.getModelFixedInt());
-//            //tryCount = 1;
-//        } catch (Exception ex) {
-//            //catchCount = 1;
-//            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-//            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-//        }
 //        
-//        try {
-//            NewModel.defFile.setModelRandomInt(String.valueOf(1));
-//            System.out.println("From defHelper | BS SubModel Checked?: " + NewModel.defFile.getModelRandomInt());
-//            
-//        } catch (Exception ex) {
-//            
-//            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-//            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-//        }
-//        
-//        try {
-//            NewModel.defFile.setModelScaleInt(String.valueOf(1));
-//            System.out.println("From defHelper | WS SubModel Checked?: " + NewModel.defFile.getModelScaleInt());
-//            //tryCount = 1;
-//        } catch (Exception ex) {
-//            //catchCount = 1;
-//            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-//            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-//        }
-//        
-//        try {
-//            NewModel.defFile.setAdvancedAdaptiveQuad(String.valueOf(1));
-//            System.out.println("From defHelper | Adaptive Quadriture Checked?: " + NewModel.defFile.getAdvancedAdaptiveQuad());
-//            //tryCount = 1;
-//        } catch (Exception ex) {
-//            //catchCount = 1;
-//            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-//            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-//        }
-//        
-//        try {
-//            NewModel.defFile.setAdvancedConvergence(String.valueOf(0.001));
-//            System.out.println("From defHelper | Convergence: " + NewModel.defFile.getAdvancedConvergence());
-//            //tryCount = 1;
-//
-//        } catch (Exception ex) {
-//            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-//            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-//            //catchCount = 1;
-//        }
-//        
-//        try {
-//            NewModel.defFile.setAdvancedQuadPoints(String.valueOf(11));
-//            System.out.println("From defHelper | Quadriture Points: " + NewModel.defFile.getAdvancedQuadPoints());
-//            //tryCount = 1;
-//        } catch (Exception ex) {
-//            //catchCount = 1;
-//            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-//            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-//        }
-//        
-//        try {
-//            NewModel.defFile.setAdvancedMaxIteration(String.valueOf(100));
-//            System.out.println("From defHelper | Maximum Iteraions: " + NewModel.defFile.getAdvancedMaxIteration());
-//            //tryCount = 1;
-//        } catch (Exception ex) {
-//            //catchCount = 1;
-//            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-//            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-//        }
-//        
-//        try {
-//            NewModel.defFile.setAdvancedRidge(String.valueOf(0.15));
-//            System.out.println("From defHelper | Ridge: " + NewModel.defFile.getAdvancedRidge());
-//            //tryCount = 1;
-//        } catch (Exception ex) {
-//            //catchCount = 1;
-//            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-//            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-//        }
     }
 
     /**
@@ -2502,9 +2427,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
                 int index = stageTwoOutcome.getSelectedIndex();
                 ColumnsCustom.add(Columns[index]);
-                //print the column
-                //System.out.println(Columns[index]);
-
+             
             }
 
             System.out.println("COLUMN:");
@@ -2516,7 +2439,6 @@ public class mixregGUI extends javax.swing.JFrame {
             //count the unique ones
             for (int x = 0; x < ColumnsCustom.size(); x++) {
                 if (UniqueList.contains(ColumnsCustom.get(x))) {
-
                     //do nothing
                 } else {
 
@@ -2526,7 +2448,11 @@ public class mixregGUI extends javax.swing.JFrame {
             }
 
             System.out.println("Number of unique categories: " + String.valueOf(UniqueList.size()));
-            numberOfCategories.setText(String.valueOf(UniqueList.size()));
+            numberOfCategories.setText(String.valueOf(UniqueList.size()) + "\nThe categories are:\n");
+            for (int index = 0; index < UniqueList.size(); index++){
+                //numberOfCategories.setT
+                numberOfCategories.setText(numberOfCategories.getText() +"\n" + String.valueOf(index + 1) + ":" + UniqueList.get(index) + "\n");
+            }
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();

@@ -36,6 +36,7 @@ public class NewModel extends javax.swing.JFrame {
     static String[] variableArray;
     static int RLE;
     static boolean NoneVar;
+    static boolean outComeBoolean;
     static mixregGUI mxr;
     InstructionsGUI instructions;
     static boolean isRandomScale = false;
@@ -434,6 +435,7 @@ public class NewModel extends javax.swing.JFrame {
         // Read random location effects from new Model
         //RLE = (Integer) randomLocationEffects.getValue();
         NoneVar = isOutcomeNone();
+        outComeBoolean = isOutcomeContinous();
        
         System.out.println("NoneVar: " + String.valueOf(NoneVar));
         
@@ -455,11 +457,7 @@ public class NewModel extends javax.swing.JFrame {
             isRandomScale = false;
        
        }
-       
      
-       
-       
-        
        mxr = new mixregGUI();
        mxr.isSubmitClicked();
        mxr.setVisible(true);
@@ -772,12 +770,15 @@ public boolean isOutcomeContinous(){
     if (continuousRadio.isSelected() == true){
     
     selection = true;
+    System.out.println("Outcome selected at Newmodel: " + String.valueOf(selection));
             }
     else if (dichotomousRadio.isSelected() == true){
     
     selection = false;
+    System.out.println("Outcome selected at Newmodel: " + String.valueOf(selection));
     }
-
+    
+    System.out.println("Outcome selected at Newmodel: " + String.valueOf(selection));
     return selection;
 }
 
@@ -799,6 +800,11 @@ public boolean isOutcomeNone(){
 public boolean getNoneVar(){
 return NoneVar;
 
+}
+
+public boolean getOutComeType(){
+
+return outComeBoolean;
 }
 
 
