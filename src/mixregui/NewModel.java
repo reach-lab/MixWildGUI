@@ -36,6 +36,7 @@ public class NewModel extends javax.swing.JFrame {
     static String[] variableArray;
     static int RLE;
     static boolean NoneVar;
+    static boolean outComeBoolean;
     static mixregGUI mxr;
     InstructionsGUI instructions;
     static boolean isRandomScale = false;
@@ -177,8 +178,8 @@ public class NewModel extends javax.swing.JFrame {
         jLabel4.setText("Random Location Effects:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
 
-        jLabel5.setText("Stage 2 Outcome Type:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 294, -1, -1));
+        jLabel5.setText("Stage 2 Outcome:");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 286, -1, 30));
 
         buttonGroup1.add(continuousRadio);
         continuousRadio.setText("Continuous");
@@ -284,11 +285,11 @@ public class NewModel extends javax.swing.JFrame {
         getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 184, 524, 10));
 
         buttonGroup2.add(oneRLERadio);
-        oneRLERadio.setText("One");
+        oneRLERadio.setText("Intercept");
         getContentPane().add(oneRLERadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(186, 206, -1, -1));
 
         buttonGroup2.add(moreThanOneRLERadio);
-        moreThanOneRLERadio.setText("More than one");
+        moreThanOneRLERadio.setText("Intercept + Slope(s)");
         getContentPane().add(moreThanOneRLERadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(261, 206, -1, -1));
         getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 384, 516, -1));
 
@@ -434,6 +435,7 @@ public class NewModel extends javax.swing.JFrame {
         // Read random location effects from new Model
         //RLE = (Integer) randomLocationEffects.getValue();
         NoneVar = isOutcomeNone();
+        outComeBoolean = isOutcomeContinous();
        
         System.out.println("NoneVar: " + String.valueOf(NoneVar));
         
@@ -455,11 +457,7 @@ public class NewModel extends javax.swing.JFrame {
             isRandomScale = false;
        
        }
-       
      
-       
-       
-        
        mxr = new mixregGUI();
        mxr.isSubmitClicked();
        mxr.setVisible(true);
@@ -772,12 +770,15 @@ public boolean isOutcomeContinous(){
     if (continuousRadio.isSelected() == true){
     
     selection = true;
+    System.out.println("Outcome selected at Newmodel: " + String.valueOf(selection));
             }
     else if (dichotomousRadio.isSelected() == true){
     
     selection = false;
+    System.out.println("Outcome selected at Newmodel: " + String.valueOf(selection));
     }
-
+    
+    System.out.println("Outcome selected at Newmodel: " + String.valueOf(selection));
     return selection;
 }
 
@@ -799,6 +800,11 @@ public boolean isOutcomeNone(){
 public boolean getNoneVar(){
 return NoneVar;
 
+}
+
+public boolean getOutComeType(){
+
+return outComeBoolean;
 }
 
 
