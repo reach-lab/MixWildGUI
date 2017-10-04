@@ -202,14 +202,14 @@ public class mixregGUI extends javax.swing.JFrame {
             outcomeCatButton.setEnabled(true);
             System.out.println("outCatButton Enabled: " + String.valueOf(newModel.isOutcomeContinous()));
             jPanel5.setEnabled(true);
-            jLabel7.setEnabled(true);
+            
         
         } else if (outComeType == true) {
         
             outcomeCatButton.setEnabled(false);
             System.out.println("outCatButton Enabled: " + String.valueOf(newModel.isOutcomeContinous()));
             jPanel5.setEnabled(false);
-            jLabel7.setEnabled(false);
+            
         }
 
 //        
@@ -290,8 +290,9 @@ public class mixregGUI extends javax.swing.JFrame {
         outcomeCatButton = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
         jPanel5 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
         numberOfCategories = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        outComeText = new javax.swing.JTextArea();
         jPanel3 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -557,15 +558,15 @@ public class mixregGUI extends javax.swing.JFrame {
         stageTwoPanelLayout.setHorizontalGroup(
             stageTwoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(stageTwoPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(stageTwoRegsGrid, javax.swing.GroupLayout.DEFAULT_SIZE, 654, Short.MAX_VALUE)
+                .addGap(250, 250, 250)
+                .addComponent(stageTwoRegsGrid, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
                 .addGap(48, 48, 48))
         );
         stageTwoPanelLayout.setVerticalGroup(
             stageTwoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(stageTwoPanelLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(stageTwoRegsGrid, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
+                .addComponent(stageTwoRegsGrid, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -622,7 +623,9 @@ public class mixregGUI extends javax.swing.JFrame {
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Outcome categories"));
 
-        jLabel7.setText("Number of categories:");
+        outComeText.setColumns(20);
+        outComeText.setRows(5);
+        jScrollPane3.setViewportView(outComeText);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -630,19 +633,19 @@ public class mixregGUI extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(numberOfCategories)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(numberOfCategories)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLabel7)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
                 .addComponent(numberOfCategories)
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel12.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 210, 190));
@@ -2448,10 +2451,13 @@ public class mixregGUI extends javax.swing.JFrame {
             }
 
             System.out.println("Number of unique categories: " + String.valueOf(UniqueList.size()));
-            numberOfCategories.setText(String.valueOf(UniqueList.size()) + "\nThe categories are:\n");
+            //numberOfCategories.setText(String.valueOf(UniqueList.size()) + "\nThe categories are:\n");
+            outComeText.setText(UniqueList.size() + " Categories:\n");
             for (int index = 0; index < UniqueList.size(); index++){
                 //numberOfCategories.setT
-                numberOfCategories.setText(numberOfCategories.getText() +"\n" + String.valueOf(index + 1) + ":" + UniqueList.get(index) + "\n");
+                //numberOfCategories.setText(numberOfCategories.getText() +"<html><br></html>" + String.valueOf(index + 1) + ":" + UniqueList.get(index) + "<html><br></html>");
+                outComeText.append(String.valueOf(index + 1) + ") " + UniqueList.get(index) + "\n" );
+            
             }
 
         } catch (FileNotFoundException e) {
@@ -2608,7 +2614,6 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuBar jMenuBar1;
@@ -2628,6 +2633,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
@@ -2655,6 +2661,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem modifyStageTwoMenu;
     private javax.swing.JMenuItem newModelMenu;
     private javax.swing.JLabel numberOfCategories;
+    private javax.swing.JTextArea outComeText;
     private javax.swing.JButton outcomeCatButton;
     private javax.swing.JPanel parentPanel;
     private javax.swing.JButton resetButton;
