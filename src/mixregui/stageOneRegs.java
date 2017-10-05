@@ -126,7 +126,7 @@ public class stageOneRegs extends javax.swing.JFrame {
                 stageOneSubmitButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(stageOneSubmitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(557, 467, 80, -1));
+        getContentPane().add(stageOneSubmitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 470, 80, -1));
 
         stageOneResetButton.setText("Reset");
         stageOneResetButton.addActionListener(new java.awt.event.ActionListener() {
