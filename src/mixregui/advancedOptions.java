@@ -99,7 +99,7 @@ public class advancedOptions extends javax.swing.JFrame {
         advancedOptionsCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Advanced Options ...");
+        setTitle("Options ...");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
