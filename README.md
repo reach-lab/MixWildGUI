@@ -1,7 +1,7 @@
 # README #
 
 ### What is this project about? ###
-MixWild is a desktop GUI based application to easily perform multilevel mixed model analysis of intensive longitudinal data.
+MixWILD (Also Mixed model analysis with Intensive Longitudinal Data) is a desktop GUI based application to easily perform multilevel mixed model analysis of intensive longitudinal data.
 
 ### Join the Reach Lab Slack for development discussion: ###
 
