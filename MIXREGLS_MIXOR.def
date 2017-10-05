@@ -1,29 +1,30 @@
-tititle
-sfndkj
-/Users/adityaponnada/Downloads/sampleNovel_dataSet.csv
-Output_sfndkj
-156  2  1  2  1  0  0  0  1  0  0.001  11  0  100  -9999  0  0  0.15
+1
+1
+C:\Users\Dharam\Downloads\sampleNovel_dataSet.csv
+Output_1
+156  1  2  2  1  0  0  1  0  0  0.001  11  0  100  -9999  0  0  0.15
 1  2
-5  16
 16
-5  16
+10  16
+10  16
+10
 
-5
 
 WAVE
-ID_COUNT  COMPLY
 COMPLY
-ID_COUNT  ID_COUNT
+DOW  COMPLY
+DOW  DOW
+DOW
 
-ID_COUNT
 
-1  1  1  0  null
+2  2  2  1  null
 3
-10
-10
-10
-
+11  9
+11  9
+11  9
+11
 DATA
-DOW
-DOW
-DOW
+DAY  WEEKEND
+DAY  WEEKEND
+DAY  WEEKEND
+WEEKEND
