@@ -150,6 +150,7 @@ public class mixregGUI extends javax.swing.JFrame {
         System.out.println(String.valueOf(i));
 
         stageOneTabs.setEnabledAt(1, false);
+        suppressIntCheckBox.setVisible(false);
 
         //Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/resources/mixLogo.png"));
         //setIconImage(image);
