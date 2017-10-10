@@ -201,6 +201,7 @@ public class mixregGUI extends javax.swing.JFrame {
         
             outcomeCatButton.setEnabled(true);
             outComeText.setEnabled(true);
+            outComeText.setEditable(false);
             System.out.println("outCatButton Enabled: " + String.valueOf(newModel.isOutcomeContinous()));
             jPanel5.setEnabled(true);
             
