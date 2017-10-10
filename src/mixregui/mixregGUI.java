@@ -200,6 +200,7 @@ public class mixregGUI extends javax.swing.JFrame {
         if (outComeType == false){
         
             outcomeCatButton.setEnabled(true);
+            outComeText.setEnabled(true);
             System.out.println("outCatButton Enabled: " + String.valueOf(newModel.isOutcomeContinous()));
             jPanel5.setEnabled(true);
             
@@ -207,6 +208,7 @@ public class mixregGUI extends javax.swing.JFrame {
         } else if (outComeType == true) {
         
             outcomeCatButton.setEnabled(false);
+            outComeText.setEnabled(false);
             System.out.println("outCatButton Enabled: " + String.valueOf(newModel.isOutcomeContinous()));
             jPanel5.setEnabled(false);
             
