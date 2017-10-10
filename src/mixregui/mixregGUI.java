@@ -541,7 +541,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 addStageTwoTabTwoActionPerformed(evt);
             }
         });
-        jPanel12.add(addStageTwoTabTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 400, 210, 40));
+        jPanel12.add(addStageTwoTabTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 360, 210, 40));
 
         jLabel17.setText("Random Scale");
         jPanel12.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 60, -1, -1));
@@ -598,7 +598,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
         jLabel22.setText("Stage 2 Outcome:");
         jPanel12.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, -1, -1));
-        jPanel12.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, 210, -1));
+        jPanel12.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 332, 210, 10));
 
         jButton1.setText("Reset");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -643,13 +643,13 @@ public class mixregGUI extends javax.swing.JFrame {
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53)
                 .addComponent(numberOfCategories)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel12.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 210, 190));
+        jPanel12.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 210, 130));
         jPanel12.add(jSeparator15, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 660, -1, -1));
 
         stageOneTabs.addTab("Stage 2 Configuration", jPanel12);

@@ -681,7 +681,7 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="130" y="400" width="210" height="40"/>
+                      <AbsoluteConstraints x="130" y="360" width="210" height="40"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -824,7 +824,7 @@
                 <Component class="javax.swing.JSeparator" name="jSeparator8">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="130" y="390" width="210" height="-1"/>
+                      <AbsoluteConstraints x="130" y="332" width="210" height="10"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -911,7 +911,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="130" y="190" width="210" height="190"/>
+                      <AbsoluteConstraints x="130" y="190" width="210" height="130"/>
                     </Constraint>
                   </Constraints>
 
@@ -932,8 +932,8 @@
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jScrollPane3" min="-2" pref="139" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                              <Component id="jScrollPane3" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                               <Component id="numberOfCategories" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
