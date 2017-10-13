@@ -2020,154 +2020,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
             } // field array counting ends
 
-            // get selected regressor labels and read them into defFile
-            //            try {
-                //                NewModel.defFile.setLabelModelMeanRegressors(ModelMeansLabelsArray());
-                //                System.out.println("From defHelper | Stage 1 MEAN REGRESSOR LABELS): " + Arrays.toString(NewModel.defFile.getLabelModelMeanRegressors()));
-                //            } catch (Exception ex) {
-                //                catchCount = 1;
-                //                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                //                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                //            }
-            //
-            //            try {
-                //                NewModel.defFile.setLabelModelBSRegressors(ModelBSLabelsArray());
-                //                System.out.println("From defHelper | Stage 1 BS REGRESSOR LABELS): " + Arrays.toString(NewModel.defFile.getLabelModelBSRegressors()));
-                //            } catch (Exception ex) {
-                //                catchCount = 1;
-                //                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                //                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                //            }
-            //
-            //            try {
-                //                NewModel.defFile.setLabelModelWSRegressors(ModelWSLabelsArray());
-                //                System.out.println("From defHelper | Stage 1 WS REGRESSOR LABELS): " + Arrays.toString(NewModel.defFile.getLabelModelWSRegressors()));
-                //            } catch (Exception ex) {
-                //                catchCount = 1;
-                //                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                //                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                //            }
-            //
-            //            // Reads the variable names of variables that have been selected as mean regressors
-            //            try {
-                //                NewModel.defFile.setFieldModelMeanRegressors(fieldModelMeanArray());
-                //                System.out.println("From defHelper | #Stage One Mean Regressors: " + NewModel.defFile.getFieldModelMeanRegressors().length);
-                //                System.out.println("From defHelper | Stage One Mean Regressors Selected: " + Arrays.toString(NewModel.defFile.getFieldModelMeanRegressors()));
-                //            } catch (Exception ex) {
-                //                catchCount = 1;
-                //                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                //                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                //            }
-            //
-            //            // Reads the variable names of variables that have been selected as BS Variances
-            //            try {
-                //                NewModel.defFile.setFieldModelBSRegressors(fieldModelBSArray());
-                //                System.out.println("From defHelper | #Stage One BS Regressors: " + NewModel.defFile.getFieldModelBSRegressors().length);
-                //                System.out.println("From defHelper | Stage One BS Var. Regressors Selected: " + Arrays.toString(NewModel.defFile.getFieldModelBSRegressors()));
-                //            } catch (Exception ex) {
-                //                catchCount = 1;
-                //                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                //                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                //            }
-            //
-            //            // Reads the variable names of variables that have been selected as WS Variances
-            //            try {
-                //                NewModel.defFile.setFieldModelWSRegressors(fieldModelWSArray());
-                //                System.out.println("From defHelper | #Stage One WS Regressors: " + NewModel.defFile.getFieldModelWSRegressors().length);
-                //                System.out.println("From defHelper | Stage One WS Var. Regressors Selected: " + Arrays.toString(NewModel.defFile.getFieldModelWSRegressors()));
-                //            } catch (Exception ex) {
-                //                catchCount = 1;
-                //                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                //                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                //            }
-            //
-            //            try {
-                //                NewModel.defFile.setFieldDecompMeanRegressors(getMeanDecompFieldRegressorLabels_levelOne());
-                //                System.out.println("From defHelper | #Stage One Mean + Disagg. Regressors: " + NewModel.defFile.getFieldDecompMeanRegressors().length);
-                //            } catch (Exception ex) {
-                //                catchCount = 1;
-                //                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                //                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                //            }
-            //
-            //            try {
-                //                NewModel.defFile.setFieldDecompBSRegressors(getBSDecompFieldRegressorLabels_levelOne());
-                //                System.out.println("From defHelper | #Stage One BS + Disagg. Regressors: " + NewModel.defFile.getFieldDecompBSRegressors().length);
-                //            } catch (Exception ex) {
-                //                catchCount = 1;
-                //                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                //                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                //            }
-            //
-            //            try {
-                //                NewModel.defFile.setFieldDecompWSRegressors(getWSDecompFieldRegressorLabels_levelOne());
-                //                System.out.println("From defHelper | #Stage One WS + Disagg. Regressors: " + NewModel.defFile.getFieldDecompWSRegressors().length);
-                //            } catch (Exception ex) {
-                //                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                //                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                //            }
-            //
-            //            try {
-                //                tryCount = 1;
-                //                int MeanCount = countLevelOneBeta() + countLevelTwoBeta() - countLevelOneDicompMean();
-                //                // count total mean regressors in level one and level two
-                //                NewModel.defFile.setModelMeanCount(String.valueOf(MeanCount));
-                //                System.out.println("From defHelper | Stage 1 Model Mean Count: " + NewModel.defFile.getModelMeanCount().toString());
-                //            } catch (Exception ex) {
-                //                catchCount = 1;
-                //                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                //                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                //            }
-            //
-            //            try {
-                //                tryCount = 1;
-                //                int betweenCount = countLevelOneAlpha() + countLevelTwoAlpha() - countLevelOneDicompBS();
-                //                NewModel.defFile.setModelBetweenCount(String.valueOf(betweenCount));
-                //                System.out.println("From defHelper | Model Between Count: " + NewModel.defFile.getModelBetweenCount().toString());
-                //            } catch (Exception ex) {
-                //                catchCount = 1;
-                //                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                //                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                //            }
-            //
-            //            try {
-                //                tryCount = 1;
-                //                int withinCount = countLevelOneTau() + countLevelTwoTau() - countLevelOneDicompWS();
-                //                NewModel.defFile.setModelWithinCount(String.valueOf(withinCount));
-                //                System.out.println("From defHelper | Model Within Count: " + NewModel.defFile.getModelBetweenCount().toString());
-                //            } catch (Exception ex) {
-                //                catchCount = 1;
-                //                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                //                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                //            }
-            //
-            //            try {
-                //                NewModel.defFile.setLabelDecompMeanRegressors(getDecompMeanLabelsLevelOne());
-                //                System.out.println("From defHelper | Model Decomp + Mean Labels: " + Arrays.toString(NewModel.defFile.getLabelDecompMeanRegressors()));
-                //
-                //            } catch (Exception ex) {
-                //                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                //                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                //            }
-            //
-            //            try {
-                //                NewModel.defFile.setLabelDecompBSRegressors(getDecompBSLabelsLevelOne());
-                //                System.out.println("From defHelper | Model Decomp + BS Labels: " + Arrays.toString(NewModel.defFile.getLabelDecompBSRegressors()));
-                //
-                //            } catch (Exception ex) {
-                //                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                //                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                //            }
-            //
-            //            try {
-                //                NewModel.defFile.setLabelDecompWSRegressors(getDecompWSLabelsLevelOne());
-                //                System.out.println("From defHelper | Model Decomp + WS Labels: " + Arrays.toString(NewModel.defFile.getLabelDecompWSRegressors()));
-                //
-                //            } catch (Exception ex) {
-                //                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                //                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                //            }
-            //******************************************************************
+            
         } else if (i > 1) {
 
             //Check if the effect of mean on WS variances options have been selected
@@ -2192,185 +2045,6 @@ public class mixregGUI extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
             }
-
-            //            try {
-                //                tryCount = 1;
-                //
-                //                //Disagg means count
-                //                NewModel.defFile.setDecompMeanCount(String.valueOf(countLevelOneDicompMean()));
-                //                System.out.println("From defHelper | Stage 1 Decomp Model Mean Count: " + NewModel.defFile.getDecompMeanCount().toString());
-                //            } catch (Exception ex) {
-                //                catchCount = 1;
-                //                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                //                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                //            }
-            //
-            //            try {
-                //                tryCount = 1;
-                //                //Disagg Random Location count
-                //                NewModel.defFile.setDecompLocRanCount(String.valueOf(countLevelOneDicompBS()));
-                //                System.out.println("From defHelper | Stage 1 Decomp Model Loc Random Count: " + NewModel.defFile.getDecompMeanCount().toString());
-                //            } catch (Exception ex) {
-                //                catchCount = 1;
-                //                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                //                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                //            }
-            //
-            //            try {
-                //                tryCount = 1;
-                //                //Disagg scale count
-                //                NewModel.defFile.setDecompScaleCount(String.valueOf(countLevelOneDicompWS()));
-                //                System.out.println("From defHelper | Stage 1 Decomp Scale Count: " + NewModel.defFile.getDecompScaleCount().toString());
-                //            } catch (Exception ex) {
-                //                catchCount = 1;
-                //                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                //                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                //            }
-            //
-            //            try {
-                //                NewModel.defFile.setLabelModelMeanRegressors(ModelMeansLabelsArray());
-                //                System.out.println("From defHelper | Stage 1 MEAN REGRESSOR LABELS): " + Arrays.toString(NewModel.defFile.getLabelModelMeanRegressors()));
-                //            } catch (Exception ex) {
-                //                catchCount = 1;
-                //                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                //                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                //            }
-            //
-            //            try {
-                //                NewModel.defFile.setLabelModelLocRanRegressors(ModelBSLabelsArray());
-                //                System.out.println("From defHelper | Stage 1 LocRan REGRESSOR LABELS): " + Arrays.toString(NewModel.defFile.getLabelModelLocRanRegressors()));
-                //            } catch (Exception ex) {
-                //                catchCount = 1;
-                //                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                //                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                //            }
-            //
-            //            try {
-                //                NewModel.defFile.setLabelModelScaleRegressors(ModelWSLabelsArray());
-                //                System.out.println("From defHelper | Stage 1 Scale REGRESSOR LABELS): " + Arrays.toString(NewModel.defFile.getLabelModelScaleRegressors()));
-                //            } catch (Exception ex) {
-                //                catchCount = 1;
-                //                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                //                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                //            }
-            //
-            //            // count field labels
-            //            try {
-                //                // get variable names from selected mean regressors
-                //                NewModel.defFile.setFieldModelMeanRegressors(fieldModelMeanArray());
-                //                System.out.println("From defHelper | #Stage One Mean Regressors: " + NewModel.defFile.getFieldModelMeanRegressors().length);
-                //            } catch (Exception ex) {
-                //                catchCount = 1;
-                //                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                //                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                //            }
-            //
-            //            try {
-                //                // get variable names from selected random location regressors
-                //                NewModel.defFile.setFieldModelLocRanRegressors(fieldModelBSArray());
-                //                System.out.println("From defHelper | #Stage One BS(RanLoc) Regressors: " + NewModel.defFile.getFieldModelLocRanRegressors().length);
-                //            } catch (Exception ex) {
-                //                catchCount = 1;
-                //                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                //                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                //            }
-            //
-            //            try {
-                //                // get variable names from selected scale regressors
-                //                NewModel.defFile.setFieldModelScaleRegressors(fieldModelWSArray());
-                //                System.out.println("From defHelper | #Stage One WS(Scale) Regressors: " + NewModel.defFile.getFieldModelScaleRegressors().length);
-                //            } catch (Exception ex) {
-                //                catchCount = 1;
-                //                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                //                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                //            }
-            //
-            //            try {
-                //                NewModel.defFile.setFieldDecompMeanRegressors(getMeanDecompFieldRegressorLabels_levelOne());
-                //                System.out.println("From defHelper | #Stage One Mean + Disagg. Regressors: " + NewModel.defFile.getFieldDecompMeanRegressors().length);
-                //            } catch (Exception ex) {
-                //                catchCount = 1;
-                //                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                //                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                //            }
-            //
-            //            try {
-                //                NewModel.defFile.setFieldDecompLocRanRegressors(getBSFieldRegressorLabels_levelOne());
-                //                System.out.println("From defHelper | #Stage One BS(RanLoc) + Disagg. Regressors: " + NewModel.defFile.getFieldDecompLocRanRegressors().length);
-                //            } catch (Exception ex) {
-                //                catchCount = 1;
-                //                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                //                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                //            }
-            //
-            //            try {
-                //                NewModel.defFile.setFieldDecompScaleRegressors(getWSDecompFieldRegressorLabels_levelOne());
-                //                System.out.println("From defHelper | #Stage One WS(Scale) + Disagg. Regressors: " + NewModel.defFile.getFieldDecompScaleRegressors().length);
-                //            } catch (Exception ex) {
-                //                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                //                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                //            }
-            //
-            //            try {
-                //                NewModel.defFile.setLabelDecompMeanRegressors(getDecompMeanLabelsLevelOne());
-                //                System.out.println("From defHelper | Model Decomp + Mean Labels: " + Arrays.toString(NewModel.defFile.getLabelDecompMeanRegressors()));
-                //            } catch (Exception ex) {
-                //                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                //                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                //            }
-            //
-            //            try {
-                //                NewModel.defFile.setLabelDecompLocRanRegressors(getDecompBSLabelsLevelOne());
-                //                System.out.println("From defHelper | Model Decomp + LocRan Labels: " + Arrays.toString(NewModel.defFile.getLabelDecompLocRanRegressors()));
-                //            } catch (Exception ex) {
-                //                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                //                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                //            }
-            //
-            //            try {
-                //                NewModel.defFile.setLabelDecompScaleRegressors(getDecompWSLabelsLevelOne());
-                //                System.out.println("From defHelper | Model Decomp + Scale Labels: " + Arrays.toString(NewModel.defFile.getLabelDecompScaleRegressors()));
-                //            } catch (Exception ex) {
-                //                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                //                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                //            }
-            //
-            //            try {
-                //                tryCount = 1;
-                //                int MeanCount = countLevelOneBeta() + countLevelTwoBeta() - countLevelOneDicompMean();
-                //
-                //                // count total mean regressors in level one and level two
-                //                NewModel.defFile.setModelMeanCount(String.valueOf(MeanCount));
-                //                System.out.println("From defHelper | Stage 1 Model Mean Count: " + NewModel.defFile.getModelMeanCount().toString());
-                //            } catch (Exception ex) {
-                //                catchCount = 1;
-                //                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                //                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                //            }
-            //
-            //            try {
-                //                int LocRanCount = countLevelOneAlpha() + countLevelTwoAlpha() - countLevelOneDicompBS();
-                //                // count total random location regressors in level one and level two
-                //                NewModel.defFile.setModelLocRanCount(String.valueOf(LocRanCount));
-                //                System.out.println("From defHelper | Stage 1 Model Loc Ran Count: " + NewModel.defFile.getModelLocRanCount().toString());
-                //                tryCount = 1;
-                //            } catch (Exception ex) {
-                //                catchCount = 1;
-                //                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                //                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                //            }
-            //
-            //            try {
-                //                tryCount = 1;
-                //                int ScaleCount = countLevelOneTau() + countLevelTwoTau() - countLevelOneDicompWS();
-                //                // count total scale regressors in level one and level two
-                //                NewModel.defFile.setModelScaleCount(String.valueOf(ScaleCount));
-                //                System.out.println("From defHelper | Stage 1 Model Scale Count: " + NewModel.defFile.getModelLocRanCount().toString());
-                //            } catch (Exception ex) {
-                //                catchCount = 1;
-                //                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                //                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                //            }
         }
         // =p=p=p=p=
 
@@ -2488,7 +2162,25 @@ public class mixregGUI extends javax.swing.JFrame {
             Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
-
+        
+        try {
+            NewModel.defFile.setStageTwoOutcomeCatCount(String.valueOf(getStagetwoOutcomeCats()));
+            System.out.println("From defHelper | STAGE TWO OUTCOME CATEGORY NUMBERS: " + NewModel.defFile.getStageTwoOutcomeCatCount());
+        } catch (Exception ex) {
+            catchCount = 1;
+            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+        }
+        
+        try {
+            NewModel.defFile.setStageTwoOutcomeCatLabel(getStageTwoOutcomeValues());
+            System.out.println("From defHelper | STAGE TWO OUTCOME CATEGORY VALUES: " + NewModel.defFile.getStageTwoOutcomeCatLabel());
+        } catch (Exception ex) {
+            catchCount = 1;
+            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+        }
+        
         if (catchCount == 0) {
             int defTry = 0;
             int defCatch = 0;
@@ -2515,17 +2207,7 @@ public class mixregGUI extends javax.swing.JFrame {
             // do nothing
         }
 
-        //        try {
-            //            produceStageTwoOutput();
-            //        } catch (IOException ex) {
-            //            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-            //        }
-        //
-        //        try {
-            //            produceStageOneOutput();
-            //        } catch (FileNotFoundException ex) {
-            //            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-            //        } //Todo: Update this once bugs are fixed
+        
     }//GEN-LAST:event_runTabTwoStageOneTwoActionPerformed
 
     private void addStageTwoTabTwoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStageTwoTabTwoActionPerformed
@@ -4529,7 +4211,6 @@ public class mixregGUI extends javax.swing.JFrame {
                 fieldLabel = stageTwoSelected_tab2.get(p);
                 System.out.println("Stage-Two/mixRegGUI/Regressor-Fields-(SCALE): " + regressorLabels.get(index));
                 index++;
-
             }
         }
 
@@ -4817,6 +4498,116 @@ public class mixregGUI extends javax.swing.JFrame {
         MixRegMLS_Mixor.setEnabled(false);
         LoadButton.setEnabled(true);*/
 
+    }
+    
+    public int getStagetwoOutcomeCats(){
+        ArrayList<String> ColumnsCustom = new ArrayList<>();
+        ArrayList<String> UniqueList = new ArrayList<>();
+
+        String dataFileName = NewModel.getDataFileName();
+        File file = new File(dataFileName);
+         //first get the column
+        BufferedReader br = null;
+        String line = "";
+        String commaSplitter = ",";
+        //
+        try {
+            br = new BufferedReader(new FileReader(dataFileName));
+            line = br.readLine(); //consumes the first row
+            while ((line = br.readLine()) != null) {
+                String[] Columns = line.split(commaSplitter);
+                int index = stageTwoOutcome.getSelectedIndex();
+                ColumnsCustom.add(Columns[index]);
+            }
+            System.out.println("COLUMN:");
+            for (int k = 0; k < ColumnsCustom.size(); k++) {
+
+                System.out.println(ColumnsCustom.get(k));
+            }
+            //count the unique ones
+            for (int x = 0; x < ColumnsCustom.size(); x++) {
+                if (UniqueList.contains(ColumnsCustom.get(x))) {
+                    //do nothing
+                } else {
+                    UniqueList.add(ColumnsCustom.get(x));
+                }
+            }
+            System.out.println("Number of unique categories: " + String.valueOf(UniqueList.size()));
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, e);
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    return UniqueList.size();
+    }
+    
+    public String[] getStageTwoOutcomeValues(){
+    
+        ArrayList<String> ColumnsCustom = new ArrayList<>();
+        ArrayList<String> UniqueList = new ArrayList<>();
+
+        String dataFileName = NewModel.getDataFileName();
+        File file = new File(dataFileName);
+         //first get the column
+        BufferedReader br = null;
+        String line = "";
+        String commaSplitter = ",";
+        //
+        try {
+            br = new BufferedReader(new FileReader(dataFileName));
+            line = br.readLine(); //consumes the first row
+            while ((line = br.readLine()) != null) {
+                String[] Columns = line.split(commaSplitter);
+                int index = stageTwoOutcome.getSelectedIndex();
+                ColumnsCustom.add(Columns[index]);
+            }
+            //System.out.println("COLUMN:");
+            for (int k = 0; k < ColumnsCustom.size(); k++) {
+                System.out.println(ColumnsCustom.get(k));
+            }
+            //count the unique ones
+            for (int x = 0; x < ColumnsCustom.size(); x++) {
+                if (UniqueList.contains(ColumnsCustom.get(x))) {
+                    //do nothing
+                } else {
+                    UniqueList.add(ColumnsCustom.get(x));
+                }
+            }
+           // System.out.println("Number of unique categories: " + String.valueOf(UniqueList.size()));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, e);
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        
+        String[] outcomeCats = new String[UniqueList.size()];
+
+        for (int pos = 0; pos < outcomeCats.length; pos++) {
+            outcomeCats[pos] = UniqueList.get(pos);
+            System.out.println("Reg_LABEL: " + outcomeCats[pos]);
+        }
+    return outcomeCats;
     }
 
     public void runMixRegLS_mixreg() {
