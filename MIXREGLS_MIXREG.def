@@ -2,29 +2,29 @@
 1
 C:\Users\Dharam\Downloads\test.csv
 Output_1
-11  1  2  2  1  0  0  1  0  0  0.001  11  0  100  -9999  0  0  0.15
+11  2  4  3  1  0  0  1  0  0  0.001  11  0  100  -9999  0  0  0.15
 1  2
-9
 5  9
-5  9
-5
+5  6  4  9
+5  6  9
+6
 
 
 DOW
-BMI_recode
 POS_AFFECT  BMI_recode
-POS_AFFECT  POS_AFFECT
-POS_AFFECT
+LOG_MVPA  POS_AFFECT  BMI_recode  DEMO_SEX
+LOG_MVPA  POS_AFFECT  LOG_MVPA
+LOG_MVPA
 
 
-1  1  1  1
+2  2  2  2
 3
-8
-8
-8
-8
+6  1
+6  1
+6  1
+6  1
 WEEKEND
-OBESE
-OBESE
-OBESE
-OBESE
+NewID  LOG_MVPA
+NewID  LOG_MVPA
+NewID  LOG_MVPA
+NewID  LOG_MVPA

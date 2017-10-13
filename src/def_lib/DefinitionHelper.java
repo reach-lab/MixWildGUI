@@ -1919,7 +1919,7 @@ import org.netbeans.lib.awtextra.AbsoluteLayout;
                 myFrame.setLayout(defFileFlow);
                 defFileFlow.setAlignment(FlowLayout.TRAILING);
                 myFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                myFrame.setSize(550,650);
+                myFrame.setSize(550,700);
                 myPane = new JEditorPane();
                 myPane.setSize(500, 500);
                 myPane.setContentType("text/plain");
