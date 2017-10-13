@@ -377,6 +377,8 @@ public class NewModel extends javax.swing.JFrame {
         
         defFile.modelSelector(RLE, isOutcomeContinous());
         
+        
+        
         System.out.println("MODEL SELECTOR: " + String.valueOf(defFile.getSelectedModel()));
         
         if (filePath.getText().toString().equals("")){
