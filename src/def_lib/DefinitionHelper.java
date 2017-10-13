@@ -37,6 +37,7 @@
     import javax.swing.SwingUtilities;
     import javax.swing.filechooser.FileFilter;
     import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.text.DefaultCaret;
     import javax.swing.text.Document;
     import static mixregui.NewModel.defFile;
     import static sun.management.snmp.jvminstr.JvmThreadInstanceEntryImpl.ThreadStateMap.Byte0.runnable;
@@ -81,10 +82,19 @@
         JEditorPane myPane;
 
         int selectedModel;
-        //String defFilePath;
-        File newDefFile = new File("MIXREGLS_MIXREG_KEY");
-        String filePath = newDefFile.getAbsolutePath();
-        String defFilePath = filePath.substring(0,filePath.lastIndexOf(File.separator)) + "/";
+        String defFilePath;
+        File newDefFile;
+        
+//        String filePath = newDefFile.getAbsolutePath();
+//        defFilePath = filePath.substring(0,filePath.lastIndexOf(File.separator)) + "/";
+        
+        
+        //get def file path from here ...
+        //First get the def file from the location where it is created ...
+//        File file = new File("example.txt"); //insert def file to this
+//        String fileLocation = file.getAbsolutePath(); //get the path of the def file
+//        String definitionFileLoc = fileLocation.substring(0,fileLocation.lastIndexOf(File.separator)) + "/"; //subset the string.
+        
         /**
          * Initial Definition Parameters
          */
@@ -1934,7 +1944,11 @@
 
                     public void actionPerformed(ActionEvent e){
 
-
+                       // modelSelector();
+                      // System.out.println("SELECTED MODEL: " + );
+                      
+                        
+                        
                         runMixRegModels(); // run the updated functions of executing Don's code
 
 
@@ -1982,7 +1996,7 @@
                 myPane.write(w);
                 //String filePath = newDefFile.getAbsolutePath();
                 //defFilePath = filePath.substring(0,filePath.lastIndexOf(File.separator)) + "/";
-                System.out.println("PATH-NAME: " + defFilePath);
+                //System.out.println("PATH-NAME: " + defFilePath);
                 w.close();
             }
             catch(Exception exception){
@@ -2021,7 +2035,8 @@
 
         public void runModels(){
 
-        String absoluteJavaPath = System.getProperty( "user.dir" );
+            
+            String absoluteJavaPath = System.getProperty( "user.dir" );
             String defFileName = executableModel(selectedModel);
 
             try {          
@@ -2079,51 +2094,47 @@
         }
 
         public void runMixRegModels(){
-
-        String absoluteJavaPath = System.getProperty( "user.dir" );
+            
+            //@Eldin: This is the part where it may be throwing exceptions. Why do you have "/" at the end?
+            String filePath = newDefFile.getAbsolutePath();
+            System.out.println("THE DEF FILE IS: " + filePath);
+            defFilePath = filePath.substring(0,filePath.lastIndexOf(File.separator)) + "/";
+            System.out.println("THE DEF FILE PATH IS: " + defFilePath);
+            selectedModel = getSelectedModel();
+            String absoluteJavaPath = System.getProperty( "user.dir" );
+            //selectedModel = DefinitionHelper.MIXREGLS_MIXREG_KEY;
             String defFileName = executableModel(selectedModel);
-
             progressWindow = new JFrame("Please wait ...");
-
                 GridLayout defFileGrid = new GridLayout(0,2);
-
                 FlowLayout defFileFlow = new FlowLayout();
-
                 progressWindow.setLayout(defFileFlow);
                 defFileFlow.setAlignment(FlowLayout.TRAILING);
                 progressWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 progressWindow.setSize(550,550);
-
                //progressWindow.setPreferredSize(new Dimension(500, 500));
                 //progressPane = new JEditorPane();
                 progressPane = new JTextArea();
-
+                DefaultCaret caret = (DefaultCaret)progressPane.getCaret();
+                caret.setUpdatePolicy(DefaultCaret.OUT_BOTTOM);
                 progressPane.setSize(400, 400);
-                progressPane.setLineWrap(true);
-                progressPane.setWrapStyleWord(true);
-
+               // progressPane.setLineWrap(true);
+               // progressPane.setWrapStyleWord(true);
                 // progressPane.setContentType("text/plain");
                 progressPane.setFont(new Font("Monospaced", 0, 12));
                 progressPane.setText("Please wait while we crunch some numbers .." + "\n");
-
-                JScrollPane scroller = new JScrollPane(progressPane, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-                scroller.setSize(500,500);
-
-               // progressWindow.add(progressPane);
+//                JScrollPane scroller = new JScrollPane(progressPane, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+//                scroller.setSize(500,500);
+               progressWindow.add(progressPane);
               // progressWindow.add(scroller);
-               progressWindow.getContentPane().add(scroller);
+//               progressWindow.getContentPane().add(scroller);
                 JButton cancelButton = new JButton("Cancel Analysis");
-
                 progressWindow.add(cancelButton);
-
                 progressWindow.setComponentOrientation(ComponentOrientation.UNKNOWN);
                 progressWindow.setVisible(true);
-
-            try {          
+            try {         
                    copyExecutable(defFilePath, selectedModel);
                    Process p=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && dir && "
                             + defFileName); 
-
                    Thread runCMD = new Thread(new Runnable(){
                        public void run() {
                            System.out.println("Inside the thread");
@@ -2136,29 +2147,21 @@
                                     progressPane.append("MIXWILD:" + line + "\n"); //should append all the text after a new line to the text area
                                     progressPane.setCaretPosition(progressPane.getDocument().getLength());
                                 }
-
                                 } catch (IOException ioe)
                                   {
                                     ioe.printStackTrace();  
                                   }                       
                        }
-
                    });
-
                   runCMD.start(); 
-
+                  
                    cancelButton.addActionListener(new ActionListener() {
-
+                       
                     public void actionPerformed(ActionEvent e){
-
-
                         p.destroy();
-
                         progressWindow.dispose();
                     }
-
                 });
-
                    int exitVal = p.waitFor();
                    System.out.println("ExitValue: " + exitVal); // Non-zero is an error
                    progressPane.append("MIXWILD::Exit Value: " + String.valueOf(exitVal) + "\n"); //should append all the text after a new line to the text area
@@ -2169,24 +2172,18 @@
                    Process p2=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && del /f " + defFileName); //delete the file when everything works great.
                    progressWindow.dispose(); //should close the window when done after this line
                    } else {
-
                       JOptionPane.showMessageDialog(null, "Executaion failed. Please revisit your regressors and try again.", "Caution!", JOptionPane.INFORMATION_MESSAGE);
 
                       Process p2=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && del /f " + defFileName);
                       terminalVal = exitVal;
-                      progressWindow.dispose();
-
+                      //progressWindow.dispose();
                    }
-
-
             }
             catch (Exception ex){
                 ex.printStackTrace();
                 JOptionPane.showMessageDialog(null, "Failed");
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
             }
-
-
         }
 
         public int getExitVal(){
@@ -2198,16 +2195,16 @@
         private String executableModel(int modelSelection){
             switch(modelSelection){
                 case DefinitionHelper.MIXREGLS_MIXREG_KEY:
-                    return "mixregls_mixreg.exe";
-                case DefinitionHelper.MIXREGLS_MIXOR_KEY:
-                    return "mixregls_mixor.exe";
-                case DefinitionHelper.MIXREGMLS_MIXREG_KEY:
-                    return "mixregmls_mixreg.exe";
-                case DefinitionHelper.MIXREGMLS_MIXOR_KEY:
-                    return "mixregmls_mixor.exe";
-
-                default:
-                    return "mixregls_mixreg.exe";
+                return "mixregls_mixreg.exe";
+            case DefinitionHelper.MIXREGLS_MIXOR_KEY:
+                return "mixregls_mixor.exe";
+            case DefinitionHelper.MIXREGMLS_MIXREG_KEY:
+                return "mixregmls_mixreg.exe";
+            case DefinitionHelper.MIXREGMLS_MIXOR_KEY:
+                return "mixregmls_mixor.exe";
+           
+            default:
+                return "mixregls_mixreg.exe";
             }
         }
 
@@ -2251,13 +2248,13 @@
 
             System.out.println("inside MODEL SELECTOR");
 
-            if(randomLocEffects == 1 && outcomeContinious == true){
+            if(randomLocEffects == 1 && outcomeContinious == true){ //stage two binary false
 
                 selectedModel = MIXREGLS_MIXREG_KEY;
 
                 System.out.println("MODEL SELECTED: " + "DEFFILE" + String.valueOf(selectedModel));
 
-            } else if (randomLocEffects == 1 && outcomeContinious == false) {
+            } else if (randomLocEffects == 1 && outcomeContinious == false) { //stage two binary true
 
                 selectedModel = MIXREGLS_MIXOR_KEY;
 
@@ -2295,8 +2292,16 @@
                     }
 
                     });
-
-
+        }
+        
+        public String setDefFileLocation(){
+        
+        File file = new File("example.txt"); //insert def file to this
+        String fileLocation = file.getAbsolutePath(); //get the path of the def file
+        String definitionFileLoc = fileLocation.substring(0,fileLocation.lastIndexOf(File.separator)) + "/"; //subset the string.
+        
+        return definitionFileLoc;
+        
         }
 
     }
