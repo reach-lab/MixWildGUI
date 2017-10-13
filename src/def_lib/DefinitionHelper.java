@@ -1914,20 +1914,18 @@ import org.netbeans.lib.awtextra.AbsoluteLayout;
             try{
                 myFrame = new JFrame("Definition File Preview");
 
-                GridLayout defFileGrid = new GridLayout(0,2);
-
                 FlowLayout defFileFlow = new FlowLayout();
 
                 myFrame.setLayout(defFileFlow);
                 defFileFlow.setAlignment(FlowLayout.TRAILING);
                 myFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                myFrame.setSize(550,550);
-
-
+                myFrame.setSize(550,650);
                 myPane = new JEditorPane();
                 myPane.setSize(500, 500);
                 myPane.setContentType("text/plain");
                 myPane.setFont(new Font("Monospaced", 0, 12));
+                myPane.setLayout(new BorderLayout(500, 500));
+                myPane.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
                 try{
                 myPane.setText(String.join("\n",debugStageOneDefinitonList()).replace("[", "").replace("]", ""));
                 }
@@ -2109,35 +2107,27 @@ import org.netbeans.lib.awtextra.AbsoluteLayout;
             String defFileName = executableModel(selectedModel);
            
             progressWindow = new JFrame("Please wait ...");
-                //GridLayout defFileGrid = new GridLayout(0,2);
-                //AbsoluteLayout defFileAbsolute = new AbsoluteLayout();
-             
+              
                 FlowLayout defFileFlow = new FlowLayout();
                progressWindow.setLayout(defFileFlow);
                 defFileFlow.setAlignment(FlowLayout.TRAILING);
                 progressWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 progressWindow.setSize(550,680);
-               //progressWindow.setPreferredSize(new Dimension(500, 500));
-                //progressPane = new JEditorPane();
+               
                 progressPane = new JTextArea(30, 80);
                 DefaultCaret caret = (DefaultCaret)progressPane.getCaret();
                 caret.setUpdatePolicy(DefaultCaret.OUT_BOTTOM);
-              // progressPane.setSize(500, 400);
-               //progressPane.setLineWrap(true);
-              // progressPane.setWrapStyleWord(true);
+             
                progressPane.setLayout(new BorderLayout(500, 500));
                progressPane.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-               //progressPane.setSize(500, 500);
                
                 progressPane.setFont(new Font("Monospaced", 0, 12));
                 progressPane.setText("Please wait while we crunch some numbers .." + "\n");
                 JScrollPane scroller = new JScrollPane(progressPane, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
                 
-                //scroller.setSize(500);
                progressWindow.add(scroller);
                scroller.setBounds(0, 0, 500, 500);
-              //progressWindow.add(scroller, BorderLayout.PAGE_START);
-               //progressWindow.getContentPane().add(scroller);
+              
                 JButton cancelButton = new JButton("Cancel Analysis");
                 progressWindow.add(cancelButton);
                 progressWindow.setComponentOrientation(ComponentOrientation.UNKNOWN);
