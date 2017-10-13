@@ -2162,7 +2162,7 @@ public class mixregGUI extends javax.swing.JFrame {
             Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
-        
+        if (outComeType == false){
         try {
             NewModel.defFile.setStageTwoOutcomeCatCount(String.valueOf(getStagetwoOutcomeCats()));
             System.out.println("From defHelper | STAGE TWO OUTCOME CATEGORY NUMBERS: " + NewModel.defFile.getStageTwoOutcomeCatCount());
@@ -2181,6 +2181,12 @@ public class mixregGUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
         
+        } else {
+        
+        // do nothing ...
+            
+        }
+               
         if (catchCount == 0) {
             int defTry = 0;
             int defCatch = 0;

@@ -2,23 +2,25 @@
 1                                                                       
 C:\Users\Dharam\Downloads\test.csv                                              
 Output_1                                                                        
- 11  1  2  2  1  0  0  1  0  0  0.1E-002  11 0  100-9999.000 0 0 0.150
+ 11  2  4  3  1  0  0  1  0  0  0.1E-002  11 0  100-9999.000 0 0 0.150
   1  2
-  4
-  6  4
-  6  4
+  5  9
+  5  6  4  9
+  5  6  9
   6
  DOW             
- DEMO_SEX        
- LOG_MVPA        DEMO_SEX        
- LOG_MVPA        LOG_MVPA        
+ POS_AFFECT      BMI_recode      
+ LOG_MVPA        POS_AFFECT      BMI_recode      DEMO_SEX        
+ LOG_MVPA        POS_AFFECT      LOG_MVPA        
  LOG_MVPA    
-           1           1           1           0
-           9
-           7
-           7
-           7
- BMI_recode      
- SED_MEAN        
- SED_MEAN        
- SED_MEAN        
+           2           2           2           2
+           3
+           6           1
+           6           1
+           6           1
+           6           1
+ WEEKEND         
+ NewID           LOG_MVPA        
+ NewID           LOG_MVPA        
+ NewID           LOG_MVPA        
+ NewID           LOG_MVPA        
