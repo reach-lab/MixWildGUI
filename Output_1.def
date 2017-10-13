@@ -4,23 +4,21 @@ C:\Users\Dharam\Downloads\test.csv
 Output_1                                                                        
  11  1  2  2  1  0  0  1  0  0  0.1E-002  11 0  100-9999.000 0 0 0.150
   1  2
- 11
-  8 11
-  8 11
-  8
+ 10
+  5 10
+  5 10
+  5
  DOW             
- NEG_AFFECT      
- OBESE           NEG_AFFECT      
- OBESE           OBESE           
- OBESE       
-           1           1           1           1
+ NewAge          
+ POS_AFFECT      NewAge          
+ POS_AFFECT      POS_AFFECT      
+ POS_AFFECT  
+           1           1           1           0
            3
            6
            6
            6
-           6
  WEEKEND         
- LOG_MVPA        
  LOG_MVPA        
  LOG_MVPA        
  LOG_MVPA        

@@ -28,6 +28,7 @@ import java.awt.BorderLayout;
     import java.util.List;
     import java.util.logging.Level;
     import java.util.logging.Logger;
+import javax.swing.BorderFactory;
     import javax.swing.JButton;
     import javax.swing.JEditorPane;
     import javax.swing.JFileChooser;
@@ -41,6 +42,7 @@ import java.awt.BorderLayout;
 import javax.swing.text.DefaultCaret;
     import javax.swing.text.Document;
     import static mixregui.NewModel.defFile;
+import org.netbeans.lib.awtextra.AbsoluteLayout;
     import static sun.management.snmp.jvminstr.JvmThreadInstanceEntryImpl.ThreadStateMap.Byte0.runnable;
 
     /**
@@ -2103,31 +2105,39 @@ import javax.swing.text.DefaultCaret;
             System.out.println("THE DEF FILE PATH IS: " + defFilePath);
             selectedModel = getSelectedModel();
             String absoluteJavaPath = System.getProperty( "user.dir" );
-            //selectedModel = DefinitionHelper.MIXREGLS_MIXREG_KEY;
+         
             String defFileName = executableModel(selectedModel);
+           
             progressWindow = new JFrame("Please wait ...");
                 //GridLayout defFileGrid = new GridLayout(0,2);
+                //AbsoluteLayout defFileAbsolute = new AbsoluteLayout();
+             
                 FlowLayout defFileFlow = new FlowLayout();
-                progressWindow.setLayout(defFileFlow);
+               progressWindow.setLayout(defFileFlow);
                 defFileFlow.setAlignment(FlowLayout.TRAILING);
                 progressWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                progressWindow.setSize(550,550);
+                progressWindow.setSize(550,680);
                //progressWindow.setPreferredSize(new Dimension(500, 500));
                 //progressPane = new JEditorPane();
-                progressPane = new JTextArea();
+                progressPane = new JTextArea(30, 80);
                 DefaultCaret caret = (DefaultCaret)progressPane.getCaret();
                 caret.setUpdatePolicy(DefaultCaret.OUT_BOTTOM);
-                progressPane.setSize(400, 400);
-               // progressPane.setLineWrap(true);
-               // progressPane.setWrapStyleWord(true);
-                //progressPane.setContentType("text/plain");
+              // progressPane.setSize(500, 400);
+               //progressPane.setLineWrap(true);
+              // progressPane.setWrapStyleWord(true);
+               progressPane.setLayout(new BorderLayout(500, 500));
+               progressPane.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+               //progressPane.setSize(500, 500);
+               
                 progressPane.setFont(new Font("Monospaced", 0, 12));
                 progressPane.setText("Please wait while we crunch some numbers .." + "\n");
-                JScrollPane scroller = new JScrollPane(progressPane, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-                scroller.setSize(500,500);
-               progressWindow.add(progressPane);
-              progressWindow.add(scroller, BorderLayout.PAGE_START);
-               progressWindow.getContentPane().add(scroller);
+                JScrollPane scroller = new JScrollPane(progressPane, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+                
+                //scroller.setSize(500);
+               progressWindow.add(scroller);
+               scroller.setBounds(0, 0, 500, 500);
+              //progressWindow.add(scroller, BorderLayout.PAGE_START);
+               //progressWindow.getContentPane().add(scroller);
                 JButton cancelButton = new JButton("Cancel Analysis");
                 progressWindow.add(cancelButton);
                 progressWindow.setComponentOrientation(ComponentOrientation.UNKNOWN);
@@ -2146,7 +2156,7 @@ import javax.swing.text.DefaultCaret;
                                 while ( (line = br.readLine()) != null){
                                     System.out.println("MIXWILD:" + line);
                                     progressPane.append("MIXWILD:" + line + "\n"); //should append all the text after a new line to the text area
-                                    progressPane.setCaretPosition(progressPane.getDocument().getLength());
+                                   // progressPane.setCaretPosition(progressPane.getDocument().getLength());
                                 }
                                 } catch (IOException ioe)
                                   {
