@@ -1,29 +1,30 @@
-tititle
-sfndkj
-/Users/adityaponnada/Downloads/sampleNovel_dataSet.csv
-Output_sfndkj
-156  2  1  2  1  0  0  0  1  0  0.001  11  0  100  -9999  0  0  0.15
+1
+1
+C:\Users\Dharam\Downloads\test.csv
+Output_1
+11  1  2  2  1  0  0  1  0  0  0.001  11  0  100  -9999  0  0  0.15
 1  2
-5  16
-16
-5  16
-
+4
+5  4
+5  4
 5
 
-WAVE
-ID_COUNT  COMPLY
-COMPLY
-ID_COUNT  ID_COUNT
 
-ID_COUNT
+DOW
+DEMO_SEX
+POS_AFFECT  DEMO_SEX
+POS_AFFECT  POS_AFFECT
+POS_AFFECT
 
-1  1  1  0  null
-3
-10
-10
-10
 
-DATA
-DOW
-DOW
-DOW
+1  1  1  1  3
+4
+8
+8
+8
+8
+DEMO_SEX
+OBESE
+OBESE
+OBESE
+OBESE

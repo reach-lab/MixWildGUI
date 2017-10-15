@@ -1,29 +1,30 @@
-title
-subtitle
-/Users/adityaponnada/Downloads/sampleNovel_dataSet.csv
-Output_subtitle
-156  1  2  2  1  0  0  1  0  0  0.001  11  0  100  -9999  0  0  0.15
+1
+1
+C:\Users\Dharam\Downloads\test.csv
+Output_1
+11  2  4  3  1  0  0  1  0  0  0.001  11  0  100  -9999  0  0  0.15
 1  2
-15
-5  15
-5  15
-5
+5  9
+5  6  4  9
+5  6  9
+6
 
 
-WAVE
-REPROMPTS
-ID_COUNT  REPROMPTS
-ID_COUNT  ID_COUNT
-ID_COUNT
+DOW
+POS_AFFECT  BMI_recode
+LOG_MVPA  POS_AFFECT  BMI_recode  DEMO_SEX
+LOG_MVPA  POS_AFFECT  LOG_MVPA
+LOG_MVPA
 
 
-2  2  2  0
+2  2  2  2
 3
-12  8
-12  8
-12  8
-
-DATA
-DATE  TOD
-DATE  TOD
-DATE  TOD
+6  1
+6  1
+6  1
+6  1
+WEEKEND
+NewID  LOG_MVPA
+NewID  LOG_MVPA
+NewID  LOG_MVPA
+NewID  LOG_MVPA
