@@ -55,7 +55,7 @@ import org.netbeans.lib.awtextra.AbsoluteLayout;
      */
     public class DefinitionHelper {
 
-
+//
         public int terminalVal;
         /**
          * Private Class Keys
