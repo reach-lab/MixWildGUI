@@ -42,7 +42,7 @@ public class NewModel extends javax.swing.JFrame {
     static boolean isRandomScale = false;
     static String dataFileNameRef;
     final ImageIcon icon;
-    String missingValue;
+    String missingValue = "0";
     
     
     
@@ -345,6 +345,7 @@ public class NewModel extends javax.swing.JFrame {
 
     private void newModelSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModelSubmitActionPerformed
         
+        //check if missing value is set as zero by the user
         
         
     if (oneRLERadio.isSelected() == true){
@@ -413,10 +414,7 @@ public class NewModel extends javax.swing.JFrame {
                 Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
             }
                 System.out.println("From defHelper | Missing Value: " + defFile.getAdvancedMissingValue());
-
-        }
-        
-       
+        }      
         // Read random location effects from new Model
         //RLE = (Integer) randomLocationEffects.getValue();
         NoneVar = isOutcomeNone();
@@ -443,11 +441,11 @@ public class NewModel extends javax.swing.JFrame {
        
        }
      
-       mxr = new mixregGUI();
-       mxr.isSubmitClicked();
-       mxr.setVisible(true);
-       //Update ID, stage one and stage two variable comboboxes
-       mxr.updateComboBoxes();
+//       mxr = new mixregGUI();
+//       mxr.isSubmitClicked();
+//       mxr.setVisible(true);
+//       //Update ID, stage one and stage two variable comboboxes
+//       mxr.updateComboBoxes();
        
        NewModel.defFile.setModelSubtitle("Created with MixWILD GUI");
        System.out.println("From defHelper | Subtitle: " + NewModel.defFile.getModelSubtitle());
@@ -537,7 +535,21 @@ public class NewModel extends javax.swing.JFrame {
             NewModel.defFile.setOutputPrefix(extractDatFileName() + "_Output");
             System.out.println("From defHelper | Output file name: " + NewModel.defFile.getOutputPrefix());
        
-        this.dispose();
+        
+            //set conditions here:
+            if (newModelMissingValueCode.getText().equals("0") || newModelMissingValueCode.getText().equals("00") || newModelMissingValueCode.getText().equals("000")){
+            //show message alert here:
+            JOptionPane.showMessageDialog(null, "Invalid missing value code, 0 implies there are no missing values. Please use some other value. E.g., -9999", "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+            
+            } else {
+                 mxr = new mixregGUI();
+                 mxr.isSubmitClicked();
+                 mxr.setVisible(true);
+                //Update ID, stage one and stage two variable comboboxes
+                mxr.updateComboBoxes();
+                this.dispose();
+            }
+            
         }
     }//GEN-LAST:event_newModelSubmitActionPerformed
 
@@ -580,28 +592,28 @@ public class NewModel extends javax.swing.JFrame {
         if (newModelMissingValues.isSelected() == true) {
             newModelMissingValueCode.setEnabled(true);
             newModelMissingValueCode.setText("-9999");
-            missingValue = newModelMissingValueCode.getText();
+            //missingValue = newModelMissingValueCode.getText();
             
-            try {
-                NewModel.defFile.setAdvancedMissingValue(newModelMissingValueCode.getText());
-                System.out.println("From defHelper | MissingValue when present: " + NewModel.defFile.getAdvancedMissingValue());
-            } catch (Exception ex) {
-                Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-            }  
+//            try {
+//                NewModel.defFile.setAdvancedMissingValue(newModelMissingValueCode.getText().toString());
+//                System.out.println("From defHelper | MissingValue when present: " + NewModel.defFile.getAdvancedMissingValue());
+//            } catch (Exception ex) {
+//                Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
+//                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+//            }  
         } else {
             
             newModelMissingValueCode.setEnabled(false);
-            //newModelMissingValueCode. 
-            missingValue = "0";
-            
-            try {
-                NewModel.defFile.setAdvancedMissingValue(missingValue);
-                System.out.println("From defHelper | MissingValue when unchecked: " + NewModel.defFile.getAdvancedMissingValue());
-            } catch (Exception ex) {
-                Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-            }  
+//            //newModelMissingValueCode. 
+//            //missingValue = "0";
+//            
+//            try {
+//                NewModel.defFile.setAdvancedMissingValue(missingValue);
+//                System.out.println("From defHelper | MissingValue when unchecked: " + NewModel.defFile.getAdvancedMissingValue());
+//            } catch (Exception ex) {
+//                Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
+//                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+//            }  
         }
         
     }//GEN-LAST:event_newModelMissingValuesActionPerformed
