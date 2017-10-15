@@ -372,9 +372,18 @@ public class stageOneRegs extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public void updateAllVariables() {
+        
+       // mixregGUI.g
+       
+       int idIndex = mixregGUI.getIDFieldPosition();
+       int stageOneIndex = mixregGUI.getStageOneDVFieldPosition();
 
         for (int j = 0; j < variableNamesList.length; j++) {
+            if (j == idIndex || j == stageOneIndex){
+            //do nothing               
+            } else {
             varList.addElement(variableNamesList[j]);
+            }           
         }
 
         AllVariablesList.setModel(varList);

@@ -50,6 +50,9 @@ public class advancedOptions extends javax.swing.JFrame {
         WSVarianceCheckBox.setSelected(true);
         adaptiveQuadritureCheckBox.setSelected(true);
         
+        //variables to save values:
+        
+        
         if (NewModel.NoneVar == true) {
             
             resampleSpinner.setEnabled(false);

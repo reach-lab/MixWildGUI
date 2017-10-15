@@ -100,6 +100,10 @@ public class mixregGUI extends javax.swing.JFrame {
     ArrayList<ArrayList<JCheckBox>> stageTwoGridBoxes;
 
     ArrayList<ArrayList<JCheckBox>> disaggVarianceBoxes;
+    
+    public static int IDpos;
+    public static int stageOnePos;
+    public static int stageTwoPos;
 
     boolean scaleChecked = false;
     boolean randomChecked = false;
@@ -1677,6 +1681,11 @@ public class mixregGUI extends javax.swing.JFrame {
 
     private void addStageOneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStageOneButtonActionPerformed
 
+       IDpos = IDvariableCombo.getSelectedIndex();
+       stageOnePos = StageOneVariableCombo.getSelectedIndex();
+       stageTwoPos = stageTwoOutcome.getSelectedIndex();
+        
+        
         if (stage_1_regs.isVisible()) { //if it is already open and visible in the background
 
             // stage_1_regs.set
@@ -1693,6 +1702,7 @@ public class mixregGUI extends javax.swing.JFrame {
             stage_1_regs.updateAllVariables();
 
         }
+        
 
 
     }//GEN-LAST:event_addStageOneButtonActionPerformed
@@ -2412,13 +2422,18 @@ public class mixregGUI extends javax.swing.JFrame {
     }
 
     //get ID variable selected by the user
-    public String getIDVariable() {
-        String ID;
+    public int getIDVariable() {
+       // String ID;
 
-        ID = IDvariableCombo.getItemAt(IDvariableCombo.getSelectedIndex());
+       int pos = IDvariableCombo.getSelectedIndex();
 
-        return ID;
-
+        return pos;
+    }
+    
+    public static int getIDFieldPosition(){
+    
+    
+    return IDpos;
     }
 
     //get Stage One DV variable selected by the user
@@ -2430,6 +2445,11 @@ public class mixregGUI extends javax.swing.JFrame {
         return StageOneDV;
 
     }
+    
+    public static int getStageOneDVFieldPosition(){
+  
+    return stageOnePos;
+    }
 
     //get Stage Two variable selected by the user
     public String getStageTwoDV() {
@@ -2438,7 +2458,12 @@ public class mixregGUI extends javax.swing.JFrame {
         StageTwoDV = stageTwoOutcome.getItemAt(stageTwoOutcome.getSelectedIndex());
 
         return StageTwoDV;
-
+    }
+    
+    public static int getStageTwoDVFieldPosition(){
+    
+    
+    return stageTwoPos;
     }
 
     public void updateLevelOneGrid_version2(DefaultListModel<String> defaultListModel) {
