@@ -42,6 +42,7 @@ public class NewModel extends javax.swing.JFrame {
     static boolean isRandomScale = false;
     static String dataFileNameRef;
     final ImageIcon icon;
+    String missingValue;
     
     
     
@@ -66,7 +67,7 @@ public class NewModel extends javax.swing.JFrame {
       //subtitle ---> ouput prefix + date and time
        
        titleField.setEnabled(false);
-       subtitleField.setEnabled(false);
+      // subtitleField.setEnabled(false);
        continuousRadio.setEnabled(false);
        dichotomousRadio.setEnabled(false);
        //randomLocationEffects.setEnabled(false);
@@ -85,7 +86,7 @@ public class NewModel extends javax.swing.JFrame {
        
        filePath.setToolTipText("Insert a data file in .csv format");
        titleField.setToolTipText("Insert title for the model");
-       subtitleField.setToolTipText("Insert subtitle for the model");
+      // subtitleField.setToolTipText("Insert subtitle for the model");
        //randomLocationEffects.setToolTipText("Select the number of random location effects. Minimum value is 1");
        
       
@@ -107,8 +108,6 @@ public class NewModel extends javax.swing.JFrame {
         fileBrowseButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         titleField = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        subtitleField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         continuousRadio = new javax.swing.JRadioButton();
@@ -165,21 +164,11 @@ public class NewModel extends javax.swing.JFrame {
         });
         getContentPane().add(titleField, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 205, -1));
 
-        jLabel3.setText("Output/Definition File:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
-
-        subtitleField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                subtitleFieldActionPerformed(evt);
-            }
-        });
-        getContentPane().add(subtitleField, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 205, -1));
-
         jLabel4.setText("Random Location Effects:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
 
         jLabel5.setText("Stage 2 Outcome:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 286, -1, 30));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, -1, 30));
 
         buttonGroup1.add(continuousRadio);
         continuousRadio.setText("Continuous");
@@ -188,7 +177,7 @@ public class NewModel extends javax.swing.JFrame {
                 continuousRadioActionPerformed(evt);
             }
         });
-        getContentPane().add(continuousRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 294, -1, -1));
+        getContentPane().add(continuousRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, -1, -1));
 
         buttonGroup1.add(dichotomousRadio);
         dichotomousRadio.setText("Dichotomous/Ordinal");
@@ -197,7 +186,7 @@ public class NewModel extends javax.swing.JFrame {
                 dichotomousRadioActionPerformed(evt);
             }
         });
-        getContentPane().add(dichotomousRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 294, -1, -1));
+        getContentPane().add(dichotomousRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, -1, -1));
 
         newModelSubmit.setText("Submit");
         newModelSubmit.addActionListener(new java.awt.event.ActionListener() {
@@ -205,7 +194,7 @@ public class NewModel extends javax.swing.JFrame {
                 newModelSubmitActionPerformed(evt);
             }
         });
-        getContentPane().add(newModelSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(427, 410, 90, -1));
+        getContentPane().add(newModelSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 360, 90, -1));
 
         newModelCancel.setText("Cancel");
         newModelCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -213,7 +202,7 @@ public class NewModel extends javax.swing.JFrame {
                 newModelCancelActionPerformed(evt);
             }
         });
-        getContentPane().add(newModelCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 410, 90, -1));
+        getContentPane().add(newModelCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 360, 90, -1));
 
         newModel_resetButton.setText("Reset");
         newModel_resetButton.addActionListener(new java.awt.event.ActionListener() {
@@ -221,7 +210,7 @@ public class NewModel extends javax.swing.JFrame {
                 newModel_resetButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(newModel_resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 410, 90, -1));
+        getContentPane().add(newModel_resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 360, 90, -1));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(538, 334, -1, -1));
 
         newModelMissingValues.addActionListener(new java.awt.event.ActionListener() {
@@ -229,10 +218,10 @@ public class NewModel extends javax.swing.JFrame {
                 newModelMissingValuesActionPerformed(evt);
             }
         });
-        getContentPane().add(newModelMissingValues, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 338, -1, 20));
+        getContentPane().add(newModelMissingValues, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, -1, 20));
 
         jLabel6.setText("Missing value code:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 330, -1, 30));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, -1, 30));
 
         newModelMissingValueCode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -244,13 +233,13 @@ public class NewModel extends javax.swing.JFrame {
                 newModelMissingValueCodeKeyTyped(evt);
             }
         });
-        getContentPane().add(newModelMissingValueCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 330, 77, -1));
+        getContentPane().add(newModelMissingValueCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 290, 77, 30));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/mixLogo.png"))); // NOI18N
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 409, -1, 31));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, -1, 31));
 
         jLabel8.setText("Any missing values in data?");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 340, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, -1));
 
         buttonGroup1.add(noneRadio);
         noneRadio.setText("None");
@@ -259,7 +248,7 @@ public class NewModel extends javax.swing.JFrame {
                 noneRadioActionPerformed(evt);
             }
         });
-        getContentPane().add(noneRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 288, -1, 30));
+        getContentPane().add(noneRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 240, -1, 30));
 
         jButton1.setText("Instructions");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -273,25 +262,25 @@ public class NewModel extends javax.swing.JFrame {
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, -1));
 
         jLabel10.setText("Random Scale?");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 254, -1, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, -1, -1));
 
         randomScaleCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 randomScaleCheckBoxActionPerformed(evt);
             }
         });
-        getContentPane().add(randomScaleCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 247, -1, -1));
+        getContentPane().add(randomScaleCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, -1, -1));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 520, -1));
-        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 184, 524, 10));
+        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 144, 524, 10));
 
         buttonGroup2.add(oneRLERadio);
         oneRLERadio.setText("Intercept");
-        getContentPane().add(oneRLERadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(186, 206, -1, -1));
+        getContentPane().add(oneRLERadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, -1, -1));
 
         buttonGroup2.add(moreThanOneRLERadio);
         moreThanOneRLERadio.setText("Intercept + Slope(s)");
-        getContentPane().add(moreThanOneRLERadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(261, 206, -1, -1));
-        getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 384, 516, -1));
+        getContentPane().add(moreThanOneRLERadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, -1, -1));
+        getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 336, 516, 10));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -326,7 +315,7 @@ public class NewModel extends javax.swing.JFrame {
         
         //enable other buttons here:
         titleField.setEnabled(true);
-        subtitleField.setEnabled(true);
+        //subtitleField.setEnabled(true);
         //randomLocationEffects.setEnabled(true);
         oneRLERadio.setEnabled(true);
         moreThanOneRLERadio.setEnabled(true);
@@ -350,26 +339,18 @@ public class NewModel extends javax.swing.JFrame {
       
     }//GEN-LAST:event_fileBrowseButtonActionPerformed
 
-    private void subtitleFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subtitleFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_subtitleFieldActionPerformed
-
     private void continuousRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuousRadioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_continuousRadioActionPerformed
 
     private void newModelSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModelSubmitActionPerformed
         
-        //RLE = (Integer) randomLocationEffects.getValue(); //todo: Change stuff here assign the option button code
         
-        if (oneRLERadio.isSelected() == true){
-            
+        
+    if (oneRLERadio.isSelected() == true){
             RLE = 1;
-    
     } else if (moreThanOneRLERadio.isSelected() == true) {
-            
             RLE = 2;
-    
     }
         
         defFile = new DefinitionHelper(RLE, !isOutcomeContinous());
@@ -424,12 +405,14 @@ public class NewModel extends javax.swing.JFrame {
                 Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
             }
-            
-            NewModel.defFile.setOutputPrefix("Output_" + getOutPutFileName());
-            System.out.println("From defHelper | Output file name: " + NewModel.defFile.getOutputPrefix());
-
         } else {
-            // do nothing and go next
+            try {
+                // do nothing and go next
+              defFile.setAdvancedMissingValue(missingValue);
+            } catch (Exception ex) {
+                Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                System.out.println("From defHelper | Missing Value: " + defFile.getAdvancedMissingValue());
 
         }
         
@@ -448,7 +431,7 @@ public class NewModel extends javax.swing.JFrame {
        defFile.setModelTitle(getTitle());
        System.out.println("From defHelper | Title: " + defFile.getModelTitle());
        
-       defFile.setModelSubtitle(getSubTitle());
+       //defFile.setModelSubtitle(getSubTitle());
        System.out.println("From defHelper | Subtitle: " + defFile.getModelSubtitle());
        
        if (randomScaleCheckBox.isSelected()){
@@ -465,6 +448,9 @@ public class NewModel extends javax.swing.JFrame {
        mxr.setVisible(true);
        //Update ID, stage one and stage two variable comboboxes
        mxr.updateComboBoxes();
+       
+       NewModel.defFile.setModelSubtitle("Created with MixWILD GUI");
+       System.out.println("From defHelper | Subtitle: " + NewModel.defFile.getModelSubtitle());
        
        //set advanced options defaults
         try {
@@ -547,7 +533,9 @@ public class NewModel extends javax.swing.JFrame {
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
-      
+        
+            NewModel.defFile.setOutputPrefix(extractDatFileName() + "_Output");
+            System.out.println("From defHelper | Output file name: " + NewModel.defFile.getOutputPrefix());
        
         this.dispose();
         }
@@ -569,8 +557,8 @@ public class NewModel extends javax.swing.JFrame {
         filePath.setText("");
         titleField.setText("");
         titleField.setEnabled(false);
-        subtitleField.setEditable(false);
-        subtitleField.setText("");
+       // subtitleField.setEditable(false);
+       // subtitleField.setText("");
         //randomLocationEffects.setValue(1);
         //randomLocationEffects.setEnabled(false);
         continuousRadio.setEnabled(false);
@@ -583,10 +571,7 @@ public class NewModel extends javax.swing.JFrame {
         noneRadio.setEnabled(false);
         randomScaleCheckBox.setSelected(false);
         randomScaleCheckBox.setEnabled(false);
-        
-        
-        
-        
+
     }//GEN-LAST:event_newModel_resetButtonActionPerformed
 
     private void newModelMissingValuesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModelMissingValuesActionPerformed
@@ -595,8 +580,28 @@ public class NewModel extends javax.swing.JFrame {
         if (newModelMissingValues.isSelected() == true) {
             newModelMissingValueCode.setEnabled(true);
             newModelMissingValueCode.setText("-9999");
+            missingValue = newModelMissingValueCode.getText();
+            
+            try {
+                NewModel.defFile.setAdvancedMissingValue(newModelMissingValueCode.getText());
+                System.out.println("From defHelper | MissingValue when present: " + NewModel.defFile.getAdvancedMissingValue());
+            } catch (Exception ex) {
+                Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+            }  
         } else {
+            
             newModelMissingValueCode.setEnabled(false);
+            //newModelMissingValueCode. 
+            missingValue = "0";
+            
+            try {
+                NewModel.defFile.setAdvancedMissingValue(missingValue);
+                System.out.println("From defHelper | MissingValue when unchecked: " + NewModel.defFile.getAdvancedMissingValue());
+            } catch (Exception ex) {
+                Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+            }  
         }
         
     }//GEN-LAST:event_newModelMissingValuesActionPerformed
@@ -695,7 +700,6 @@ public class NewModel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -714,7 +718,6 @@ public class NewModel extends javax.swing.JFrame {
     private javax.swing.JRadioButton noneRadio;
     private javax.swing.JRadioButton oneRLERadio;
     private javax.swing.JCheckBox randomScaleCheckBox;
-    private javax.swing.JTextField subtitleField;
     private javax.swing.JTextField titleField;
     // End of variables declaration//GEN-END:variables
 
@@ -754,13 +757,13 @@ public String getTitle(){
 }
 
 //get subtitle from the text box
-public String getSubTitle(){
-
-       String SubTitleString = subtitleField.getText().toString();
-
-       return SubTitleString;
-    
-}
+//public String getSubTitle(){
+//
+//       String SubTitleString = subtitleField.getText().toString();
+//
+//       return SubTitleString;
+//    
+//}
 
 
 
@@ -815,16 +818,30 @@ public DefinitionHelper getDefFile(){
 return defFile;
 }
 
-public String getOutPutFileName() {
+//public String getOutPutFileName() {
+//
+//      String outPut;
+//
+//        outPut = subtitleField.getText().toString();
+//
+//        return outPut;
+//      
+//      //return "";
+//    }
 
-      String outPut;
 
-        outPut = subtitleField.getText().toString();
+public String extractDatFileName(){
 
-        return outPut;
-      
-      //return "";
+    String fileLoc = file.getAbsolutePath();
+    String fileName = fileLoc.substring(fileLoc.lastIndexOf(File.separator) + 1);
+    int iend = fileName.indexOf(".");
+    
+    if (iend != -1){
+    fileName = fileName.substring(0, iend);
     }
+
+    return fileName;
+}
 
 
 

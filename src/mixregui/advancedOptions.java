@@ -50,6 +50,9 @@ public class advancedOptions extends javax.swing.JFrame {
         WSVarianceCheckBox.setSelected(true);
         adaptiveQuadritureCheckBox.setSelected(true);
         
+        //variables to save values:
+        
+        
         if (NewModel.NoneVar == true) {
             
             resampleSpinner.setEnabled(false);
@@ -168,10 +171,10 @@ public class advancedOptions extends javax.swing.JFrame {
         jLabel11.setText("Ridge:");
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
 
-        maximumIterations.setModel(new javax.swing.SpinnerNumberModel(100, 1, null, 1));
+        maximumIterations.setModel(new javax.swing.SpinnerNumberModel(200, 1, null, 100));
         jPanel2.add(maximumIterations, new org.netbeans.lib.awtextra.AbsoluteConstraints(182, 7, 69, -1));
 
-        ridgeSpinner.setModel(new javax.swing.SpinnerNumberModel(0.15d, 0.0d, 1.0d, 0.01d));
+        ridgeSpinner.setModel(new javax.swing.SpinnerNumberModel(0.1d, 0.0d, 1.0d, 0.01d));
         jPanel2.add(ridgeSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, 68, -1));
 
         jLabel15.setText("Standardize All Regressors?");
@@ -451,9 +454,9 @@ public class advancedOptions extends javax.swing.JFrame {
         int checked = 0;
 
         if (meanSubmodelCheckBox.isSelected() == true) {
-            checked = 1;
-        } else {
             checked = 0;
+        } else {
+            checked = 1;
         }
 
         return checked;
@@ -465,9 +468,9 @@ public class advancedOptions extends javax.swing.JFrame {
         int checked = 0;
 
         if (BSVarianceCheckBox.isSelected() == true) {
-            checked = 1;
-        } else {
             checked = 0;
+        } else {
+            checked = 1;
         }
 
         return checked;
@@ -479,9 +482,9 @@ public class advancedOptions extends javax.swing.JFrame {
         int checked = 0;
 
         if (WSVarianceCheckBox.isSelected() == true) {
-            checked = 1;
-        } else {
             checked = 0;
+        } else {
+            checked = 1;
         }
 
         return checked;
@@ -505,10 +508,10 @@ public class advancedOptions extends javax.swing.JFrame {
         int checked = 0;
 
         if (adaptiveQuadritureCheckBox.isSelected() == true) {
-            checked = 0;
+            checked = 1;
         } else {
 
-            checked = 1;
+            checked = 0;
         }
 
         return checked;
