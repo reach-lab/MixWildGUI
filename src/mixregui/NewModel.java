@@ -345,15 +345,7 @@ public class NewModel extends javax.swing.JFrame {
 
     private void newModelSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModelSubmitActionPerformed
         
-        //check the missing value error first
         
-        if (newModelMissingValueCode.equals("0")){
-        //pop up m,essage: you can't have 0 as a missing value
-        
-        } else {
-        
-        //carry on ...
-        }
         
     if (oneRLERadio.isSelected() == true){
             RLE = 1;
@@ -456,6 +448,9 @@ public class NewModel extends javax.swing.JFrame {
        mxr.setVisible(true);
        //Update ID, stage one and stage two variable comboboxes
        mxr.updateComboBoxes();
+       
+       NewModel.defFile.setModelSubtitle("Created with MixWILD GUI");
+       System.out.println("From defHelper | Subtitle: " + NewModel.defFile.getModelSubtitle());
        
        //set advanced options defaults
         try {
