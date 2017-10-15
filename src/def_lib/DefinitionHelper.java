@@ -1194,7 +1194,7 @@ import org.netbeans.lib.awtextra.AbsoluteLayout;
         public void setAdvancedConvergence(String advancedConvergence) throws Exception {
             try {
                 if (Double.parseDouble(advancedConvergence) >= 0 && Double.parseDouble(advancedConvergence) <= 1) {
-                    this.advancedConvergence = advancedConvergence;
+                    this.advancedConvergence = String.format("%.5f", Double.parseDouble(advancedConvergence));
                 } else {
                     throw new Exception("Invalid convergence criteria in .dat file specified, line 5");
                 }
@@ -1292,7 +1292,7 @@ import org.netbeans.lib.awtextra.AbsoluteLayout;
         public void setAdvancedRidge(String advancedRidge) throws Exception {
             try {
                 if (Double.parseDouble(advancedRidge) >= 0 && Double.parseDouble(advancedRidge) <= 1) {
-                    this.advancedRidge = advancedRidge;
+                    this.advancedRidge = String.format("%.2f", Double.parseDouble(advancedRidge));
                 } else {
                     throw new Exception("Invalid initial ridge value in .dat file specified, line 5");
                 }
@@ -1926,11 +1926,12 @@ import org.netbeans.lib.awtextra.AbsoluteLayout;
                 myPane.setFont(new Font("Monospaced", 0, 12));
                 myPane.setLayout(new BorderLayout(500, 500));
                 myPane.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+                String newline = System.getProperty("line.separator");
                 try{
-                myPane.setText(String.join("\n",debugStageOneDefinitonList()).replace("[", "").replace("]", ""));
+                myPane.setText(String.join(newline,debugStageOneDefinitonList()).replace("[", "").replace("]", ""));
                 }
                 catch(Exception e){
-                myPane.setText(String.join("\n",debugStageOneDefinitonList()).replace("[", "").replace("]", ""));
+                myPane.setText(String.join(newline,debugStageOneDefinitonList()).replace("[", "").replace("]", ""));
                 }
 
                 JButton proceedButton = new JButton("Proceed");
@@ -1976,29 +1977,35 @@ import org.netbeans.lib.awtextra.AbsoluteLayout;
                 int length = defDoc.getLength();
 
                 //File newDefFile = new File("MIXREGLS_MIXREG_KEY");
-
+                String dataFileSample = new File(this.getDataFilename()).getAbsolutePath();
+                String newDefFilePrefix = dataFileSample.substring(0,dataFileSample.lastIndexOf(File.separator)) + "/";
+                
                 if (selectedModel == DefinitionHelper.MIXREGLS_MIXREG_KEY){
-                    newDefFile = new File("MIXREGLS_MIXREG");
+                    newDefFile = new File(newDefFilePrefix+"MIXREGLS_MIXREG");
                 } else if (selectedModel == DefinitionHelper.MIXREGLS_MIXOR_KEY){
 
-                    newDefFile = new File("MIXREGLS_MIXOR");
+                    newDefFile = new File(newDefFilePrefix+"MIXREGLS_MIXOR");
                 } else if (selectedModel == DefinitionHelper.MIXREGMLS_MIXREG_KEY){
 
-                    newDefFile = new File("MIXREGMLS_MIXREG");
+                    newDefFile = new File(newDefFilePrefix+"MIXREGMLS_MIXREG");
                 } else if (selectedModel == DefinitionHelper.MIXREGMLS_MIXOR_KEY) {
 
-                    newDefFile = new File("MIXREGMLS_MIXOR");
+                    newDefFile = new File(newDefFilePrefix+"MIXREGMLS_MIXOR");
                 }
 
                // File newDefFile = new File("tester");
-                OutputStream os = new BufferedOutputStream(
+                /*OutputStream os = new BufferedOutputStream(
                   new FileOutputStream(newDefFile + ".def"));
-                Writer w = new OutputStreamWriter(os);
-                myPane.write(w);
+                Writer w = new OutputStreamWriter(os);*/
+                
+                FileWriter out = new FileWriter(newDefFile + ".def");
+                out.write(myPane.getText());
+                out.close();
+               ////myPane.write(w);
                 //String filePath = newDefFile.getAbsolutePath();
                 //defFilePath = filePath.substring(0,filePath.lastIndexOf(File.separator)) + "/";
                 //System.out.println("PATH-NAME: " + defFilePath);
-                w.close();
+               /////w.close();
             }
             catch(Exception exception){
                 exception.printStackTrace();
