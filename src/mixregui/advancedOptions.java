@@ -508,10 +508,10 @@ public class advancedOptions extends javax.swing.JFrame {
         int checked = 0;
 
         if (adaptiveQuadritureCheckBox.isSelected() == true) {
-            checked = 0;
+            checked = 1;
         } else {
 
-            checked = 1;
+            checked = 0;
         }
 
         return checked;
