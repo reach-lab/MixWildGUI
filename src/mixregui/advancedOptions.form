@@ -211,7 +211,7 @@
         <Component class="javax.swing.JSpinner" name="maximumIterations">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-              <SpinnerModel initial="100" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
+              <SpinnerModel initial="200" minimum="1" numberType="java.lang.Integer" stepSize="100" type="number"/>
             </Property>
           </Properties>
           <Constraints>
@@ -223,7 +223,7 @@
         <Component class="javax.swing.JSpinner" name="ridgeSpinner">
           <Properties>
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-              <SpinnerModel initial="0.15" maximum="1.0" minimum="0.0" numberType="java.lang.Double" stepSize="0.01" type="number"/>
+              <SpinnerModel initial="0.1" maximum="1.0" minimum="0.0" numberType="java.lang.Double" stepSize="0.01" type="number"/>
             </Property>
           </Properties>
           <Constraints>
