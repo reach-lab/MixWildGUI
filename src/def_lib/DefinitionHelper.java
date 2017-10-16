@@ -44,6 +44,11 @@ import javax.swing.text.DefaultCaret;
     import static mixregui.NewModel.defFile;
 import org.netbeans.lib.awtextra.AbsoluteLayout;
     import static sun.management.snmp.jvminstr.JvmThreadInstanceEntryImpl.ThreadStateMap.Byte0.runnable;
+    import com.opencsv.CSVReader;
+     import com.opencsv.CSVWriter;
+    import org.apache.commons.io.FilenameUtils;
+
+
 
     /**
      * Exposed Methods:
@@ -203,6 +208,26 @@ import org.netbeans.lib.awtextra.AbsoluteLayout;
         public boolean isStageTwoBinary() {
             return stageTwoBinary;
         }
+        
+         public static void csvToDatConverter(File csvFileToConvert) throws IOException {
+            String fileName = csvFileToConvert.getAbsolutePath();
+            String fileNameShort = FilenameUtils.removeExtension(fileName);
+            String filePath = fileName.substring(0,fileName.lastIndexOf(File.separator)) + "/"; //subset the string.
+                           
+            try (CSVReader reader = new CSVReader(new FileReader(fileName))) {
+                List<String[]> csvRows = reader.readAll();
+                reader.close();
+                System.out.println(Arrays.toString(csvRows.get(0)) + " to be removed");
+                csvRows.remove(0); // TODO: make sure this isn't removing data
+                System.out.println("New:" + Arrays.toString(csvRows.get(0)));
+
+                CSVWriter writer = new CSVWriter(new FileWriter(fileNameShort+".dat"),' ',CSVWriter.NO_QUOTE_CHARACTER,
+                CSVWriter.NO_ESCAPE_CHARACTER,CSVWriter.RFC4180_LINE_END);
+                writer.writeAll(csvRows);
+                writer.close();
+            }
+        }
+        
 
         /**
          *
@@ -2311,5 +2336,5 @@ import org.netbeans.lib.awtextra.AbsoluteLayout;
         return definitionFileLoc;
         
         }
-
+        
     }
