@@ -73,6 +73,7 @@ public class SuperUserMenu extends javax.swing.JFrame {
         viewDefButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        csvToDat = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -140,6 +141,13 @@ public class SuperUserMenu extends javax.swing.JFrame {
 
         jLabel2.setText("Welcome to Superuser, a menu for advanced functions and UI override.");
 
+        csvToDat.setText("Convert CSV to DAT");
+        csvToDat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                csvToDatActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -173,8 +181,12 @@ public class SuperUserMenu extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLabel2)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 10, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(122, 122, 122)
+                .addComponent(csvToDat)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,7 +195,9 @@ public class SuperUserMenu extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(14, 14, 14)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addComponent(csvToDat)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(MixRegLS_Mixreg, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(MixRegMLS_Mixor, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -375,6 +389,25 @@ public class SuperUserMenu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_viewDefButtonActionPerformed
 
+    private void csvToDatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_csvToDatActionPerformed
+       FileNameExtensionFilter filter = new FileNameExtensionFilter("CSV files","csv");
+        
+        fileChooser.setFileFilter(filter);
+        
+        fileOpen();
+        
+        //Select file from the file object
+        File file = fileChooser.getSelectedFile();
+        try {
+            DefinitionHelper.csvToDatConverter(file);
+            JOptionPane.showMessageDialog(null, "Success!");
+            
+        } catch (IOException ex) {
+            Logger.getLogger(SuperUserMenu.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Something went wrong, please try again. Error: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_csvToDatActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -417,6 +450,7 @@ public class SuperUserMenu extends javax.swing.JFrame {
     private javax.swing.JButton MixRegMLS_Mixreg;
     private javax.swing.JButton MixregLS_Mixor;
     private javax.swing.JButton ResetButton;
+    private javax.swing.JButton csvToDat;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton runButton;
