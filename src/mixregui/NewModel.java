@@ -21,6 +21,7 @@ import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import org.apache.commons.io.FilenameUtils;
 
 /**
  *
@@ -359,6 +360,14 @@ public class NewModel extends javax.swing.JFrame {
         
         defFile.modelSelector(RLE, isOutcomeContinous());
         
+        try {
+            //convert csv to .dat file ...
+            //defFile.
+            defFile.csvToDatConverter(file);
+        } catch (IOException ex) {
+            Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!",JOptionPane.INFORMATION_MESSAGE);
+        }
         
         
         System.out.println("MODEL SELECTOR: " + String.valueOf(defFile.getSelectedModel()));
@@ -372,7 +381,6 @@ public class NewModel extends javax.swing.JFrame {
             
             // Read file contents
             Scanner inputStream = new Scanner(file);
-            
            
             // Read variable names from row 1
             String variableNames = inputStream.next();
@@ -383,7 +391,7 @@ public class NewModel extends javax.swing.JFrame {
             
             String[] varTemp = getVariableNames();
             
-           defFile.setDataFilename(file.getAbsolutePath());
+           defFile.setDataFilename(extractDatFilePath()); //change this to .dat file location
            
            defFile.setDataVariableCount(String.valueOf(variableArray.length));
            System.out.println("From defHelper | Variable count: " + defFile.getDataVariableCount());
@@ -853,6 +861,15 @@ public String extractDatFileName(){
     }
 
     return fileName;
+}
+
+public String extractDatFilePath(){
+
+String csvPath = file.getAbsolutePath();
+String datPath = FilenameUtils.removeExtension(csvPath) + ".dat";
+
+
+return datPath;
 }
 
 
