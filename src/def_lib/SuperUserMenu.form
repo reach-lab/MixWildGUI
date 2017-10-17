@@ -62,10 +62,15 @@
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
+              <Component id="csvToDat" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -76,7 +81,9 @@
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="79" max="32767" attributes="0"/>
+              <EmptySpace pref="38" max="32767" attributes="0"/>
+              <Component id="csvToDat" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="MixRegLS_Mixreg" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                   <Component id="MixRegMLS_Mixor" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
@@ -177,6 +184,14 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Welcome to Superuser, a menu for advanced functions and UI override."/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="csvToDat">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Convert CSV to DAT"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="csvToDatActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
