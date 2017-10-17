@@ -56,8 +56,9 @@ import org.netbeans.lib.awtextra.AbsoluteLayout;
      * buildStageOneDefinitionList: returns ArrayList<String> that can be passed to a FileWriter class, validates first
      * @note: Both classes should pass Exceptions to the view and interrupt until user fixes error  
      *  
-     * @author Eldin Dzubur
+     * @author Eldin Dzubur.
      */
+    
     public class DefinitionHelper {
 
         
