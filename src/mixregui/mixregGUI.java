@@ -57,6 +57,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.border.MatteBorder;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import org.apache.commons.io.FilenameUtils;
 
 /**
  * d
@@ -4345,7 +4346,7 @@ public class mixregGUI extends javax.swing.JFrame {
         return regLabels;
     }
 
-    public void produceStageTwoOutput() throws FileNotFoundException, IOException {
+    public static void produceStageTwoOutput(File filename) throws FileNotFoundException, IOException {
 
         //@Eldin : this is where we will read the command line info.
         
@@ -4355,10 +4356,25 @@ public class mixregGUI extends javax.swing.JFrame {
 ////        FileReader reader = new FileReader(absoluteJavaPath + ".out file name");
 //////       
 ////        stageTwoOutput.read(reader, "stageTwoOutput");
+
+            String outputFileName = FilenameUtils.removeExtension(NewModel.getDataFileName()) + "_output_1" + ".out";
 //        
 //        }
 
+        //read file here
+        FileReader reader = new FileReader(outputFileName);
+//        try {
+//            
+//            //stageTwoOutput.read(reader, "stageOneOutput");
+//        } catch (IOException ex) {
+//            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+
     }
+    
+   
+    
+    
 
     public void produceStageOneOutput() throws FileNotFoundException {
 

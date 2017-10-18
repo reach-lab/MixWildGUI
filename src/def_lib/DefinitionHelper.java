@@ -2204,6 +2204,9 @@ import org.netbeans.lib.awtextra.AbsoluteLayout;
                     terminalVal = exitVal;
                    Process p2=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && del /f " + defFileName); //delete the file when everything works great.
                    progressWindow.dispose(); //should close the window when done after this line
+                   
+                  // FileReader reader = new FileReader(absoluteJavaPath + ".out file name");
+                   
                    } else {
                       JOptionPane.showMessageDialog(null, "Executaion failed. Please revisit your regressors and try again.", "Caution!", JOptionPane.INFORMATION_MESSAGE);
 
