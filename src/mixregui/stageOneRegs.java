@@ -5,7 +5,9 @@
  */
 package mixregui;
 
+import java.awt.Dimension;
 import java.awt.List;
+import java.awt.Toolkit;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
@@ -48,6 +50,9 @@ public class stageOneRegs extends javax.swing.JFrame {
 
         newModel2 = new NewModel();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
+                Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+                this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
 
         //get variable names from the data set
         //variableNamesList = newModel2.getVariableNames();

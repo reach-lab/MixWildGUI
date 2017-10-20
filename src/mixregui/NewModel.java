@@ -60,6 +60,9 @@ public class NewModel extends javax.swing.JFrame {
         
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
+                Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+                this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        
        fileChooser = new JFileChooser();
        instructions = new InstructionsGUI();
        icon = new ImageIcon(getClass().getResource("/resources/mixLogo.png"));
@@ -169,7 +172,7 @@ public class NewModel extends javax.swing.JFrame {
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
 
         jLabel5.setText("Stage 2 Outcome:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, -1, 30));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, -1, 40));
 
         buttonGroup1.add(continuousRadio);
         continuousRadio.setText("Continuous");
@@ -222,7 +225,7 @@ public class NewModel extends javax.swing.JFrame {
         getContentPane().add(newModelMissingValues, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, -1, 20));
 
         jLabel6.setText("Missing value code:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, -1, 30));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, -1, 40));
 
         newModelMissingValueCode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -249,7 +252,7 @@ public class NewModel extends javax.swing.JFrame {
                 noneRadioActionPerformed(evt);
             }
         });
-        getContentPane().add(noneRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 240, -1, 30));
+        getContentPane().add(noneRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 240, -1, 40));
 
         jButton1.setText("Instructions");
         jButton1.addActionListener(new java.awt.event.ActionListener() {

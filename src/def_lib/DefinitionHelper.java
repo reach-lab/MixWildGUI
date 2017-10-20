@@ -46,6 +46,7 @@ import org.netbeans.lib.awtextra.AbsoluteLayout;
     import static sun.management.snmp.jvminstr.JvmThreadInstanceEntryImpl.ThreadStateMap.Byte0.runnable;
     import com.opencsv.CSVReader;
      import com.opencsv.CSVWriter;
+import java.awt.Toolkit;
     import org.apache.commons.io.FilenameUtils;
 
 
@@ -1999,6 +2000,10 @@ import org.netbeans.lib.awtextra.AbsoluteLayout;
 
                 myFrame.setVisible(true); 
                 myFrame.setAlwaysOnTop(true);
+                
+                Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+                myFrame.setLocation(dim.width/2-myFrame.getSize().width/2, dim.height/2-myFrame.getSize().height/2);
+                
                 Document defDoc = myPane.getDocument();
                 int length = defDoc.getLength();
 
@@ -2165,6 +2170,11 @@ import org.netbeans.lib.awtextra.AbsoluteLayout;
                 progressWindow.add(cancelButton);
                 progressWindow.setComponentOrientation(ComponentOrientation.UNKNOWN);
                 progressWindow.setVisible(true);
+                progressWindow.setAlwaysOnTop(true);
+                
+                Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+                progressWindow.setLocation(dim.width/2-progressWindow.getSize().width/2, dim.height/2-progressWindow.getSize().height/2);
+                
             try {         
                    copyExecutable(defFilePath, selectedModel);
                    Process p=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && dir && "
@@ -2205,6 +2215,9 @@ import org.netbeans.lib.awtextra.AbsoluteLayout;
                     terminalVal = exitVal;
                    Process p2=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && del /f " + defFileName); //delete the file when everything works great.
                    progressWindow.dispose(); //should close the window when done after this line
+                   
+                  // FileReader reader = new FileReader(absoluteJavaPath + ".out file name");
+                   
                    } else {
                       JOptionPane.showMessageDialog(null, "Executaion failed. Please revisit your regressors and try again.", "Caution!", JOptionPane.INFORMATION_MESSAGE);
 
