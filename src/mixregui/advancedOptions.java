@@ -192,7 +192,7 @@ public class advancedOptions extends javax.swing.JFrame {
         jLabel9.setText("Resample");
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
 
-        resampleSpinner.setModel(new javax.swing.SpinnerNumberModel(100, 1, 10000, 1));
+        resampleSpinner.setModel(new javax.swing.SpinnerNumberModel(200, 1, 10000, 1));
         jPanel2.add(resampleSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 118, 60, -1));
         jPanel2.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, -1, -1));
 
