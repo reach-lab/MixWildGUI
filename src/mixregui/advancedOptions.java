@@ -145,10 +145,10 @@ public class advancedOptions extends javax.swing.JFrame {
         jLabel4.setText("Convergence Criteria:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 94, -1, -1));
 
-        jLabel5.setText("Quadriture Points:");
+        jLabel5.setText("Quadrature Points:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 128, -1, -1));
 
-        jLabel6.setText("Adaptive Quadriture:");
+        jLabel6.setText("Adaptive Quadrature:");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 162, -1, -1));
 
         adaptiveQuadritureCheckBox.addActionListener(new java.awt.event.ActionListener() {

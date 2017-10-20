@@ -540,7 +540,7 @@ public class mixregGUI extends javax.swing.JFrame {
         jLabel12.setText("Stage 2 Interactions");
         jPanel12.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 20, -1, 20));
 
-        jLabel15.setText("Randome Location");
+        jLabel15.setText("Random Location");
         jPanel12.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 90, -1, -1));
 
         addStageTwoTabTwo.setText("Modify Stage 2 Regressors ...");
