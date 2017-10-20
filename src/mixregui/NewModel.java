@@ -60,6 +60,9 @@ public class NewModel extends javax.swing.JFrame {
         
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
+                Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+                this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        
        fileChooser = new JFileChooser();
        instructions = new InstructionsGUI();
        icon = new ImageIcon(getClass().getResource("/resources/mixLogo.png"));
