@@ -1699,7 +1699,10 @@ public class mixregGUI extends javax.swing.JFrame {
             addStageTwoTabTwo.setEnabled(true);
 
         } else {
-
+            //stage_1_regs.revalidate();
+            //stage_1_regs.repaint();
+           // stage_1_regs.removeAll();
+            
             stageOneClicked = 1;
             addStageTwoTabTwo.setEnabled(true);
 

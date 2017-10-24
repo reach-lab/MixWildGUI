@@ -382,6 +382,8 @@ public class stageOneRegs extends javax.swing.JFrame {
        
        int idIndex = mixregGUI.getIDFieldPosition();
        int stageOneIndex = mixregGUI.getStageOneDVFieldPosition();
+       
+       varList.removeAllElements();
 
         for (int j = 0; j < variableNamesList.length; j++) {
             if (j == idIndex || j == stageOneIndex){
