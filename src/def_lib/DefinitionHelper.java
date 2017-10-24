@@ -46,7 +46,11 @@ import org.netbeans.lib.awtextra.AbsoluteLayout;
     import static sun.management.snmp.jvminstr.JvmThreadInstanceEntryImpl.ThreadStateMap.Byte0.runnable;
     import com.opencsv.CSVReader;
      import com.opencsv.CSVWriter;
+import java.awt.Graphics;
 import java.awt.Toolkit;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.SwingWorker;
     import org.apache.commons.io.FilenameUtils;
 
 
@@ -64,6 +68,8 @@ import java.awt.Toolkit;
 
         
         public int terminalVal;
+        
+        private ProgressStatus progressStatus;
         /**
          * Private Class Keys
          */
@@ -1973,12 +1979,18 @@ import java.awt.Toolkit;
 
                     public void actionPerformed(ActionEvent e){
 
-                       // modelSelector();
-                      // System.out.println("SELECTED MODEL: " + );
-                      
-                        
-                        
-                        runMixRegModels(); // run the updated functions of executing Don's code
+                        try {
+                            // modelSelector();
+                            // System.out.println("SELECTED MODEL: " + );
+                            
+                            
+                            
+                            //runMixRegModels(); // run the updated functions of executing Don's code
+                            progressStatus = new ProgressStatus();
+                            progressStatus.execute();
+                        } catch (Exception ex) {
+                            Logger.getLogger(DefinitionHelper.class.getName()).log(Level.SEVERE, null, ex);
+                        }
 
 
                         myFrame.dispose();
@@ -2165,6 +2177,15 @@ import java.awt.Toolkit;
                 
                progressWindow.add(scroller);
                scroller.setBounds(0, 0, 500, 500);
+               
+//               JLabel loaderLabel = new JLabel();
+//               
+//                ImageIcon loader = new ImageIcon(this.getClass().getResource(
+//                    "preloader.gif"));
+//                
+//                loaderLabel.setIcon(loader);
+//                loader.setImageObserver(loaderLabel);
+//                progressWindow.add(loaderLabel);
               
                 JButton cancelButton = new JButton("Cancel Analysis");
                 progressWindow.add(cancelButton);
@@ -2174,6 +2195,11 @@ import java.awt.Toolkit;
                 
                 Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
                 progressWindow.setLocation(dim.width/2-progressWindow.getSize().width/2, dim.height/2-progressWindow.getSize().height/2);
+                
+                
+                
+//                progressPane.revalidate();
+//                progressPane.repaint();
                 
             try {         
                    copyExecutable(defFilePath, selectedModel);
@@ -2188,13 +2214,18 @@ import java.awt.Toolkit;
                                 String line=null;  // UI magic should run in here @adityapona
                                 while ( (line = br.readLine()) != null){
                                     System.out.println("MIXWILD:" + line);
-                                    progressPane.append("MIXWILD:" + line + "\n"); //should append all the text after a new line to the text area
+                                    
+                                    progressPane.append("MIXWILD:" + line + "\n");
+                                   // progressPane.repaint();
+                                    //should append all the text after a new line to the text area
                                    // progressPane.setCaretPosition(progressPane.getDocument().getLength());
+//                                   Graphics g = progressPane.getGraphics();
+//                                   paint(g);
                                 }
                                 } catch (IOException ioe)
                                   {
                                     ioe.printStackTrace();  
-                                  }                       
+                                  }                 
                        }
                    });
                   runCMD.start(); 
@@ -2231,6 +2262,28 @@ import java.awt.Toolkit;
                 JOptionPane.showMessageDialog(null, "Failed");
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
             }
+        }
+        
+        class ProgressStatus extends SwingWorker<Void, Void>{
+
+        @Override
+        protected Void doInBackground() throws Exception {
+            
+            //wait for the execution here
+            
+            runMixRegModels();
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+        
+        @Override
+        public void done()
+        {
+        progressWindow.dispose();
+        System.out.println("THE PROCESS IS COMPLETE");
+        
+        }
+        
+        
         }
 
         public int getExitVal(){

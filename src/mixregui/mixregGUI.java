@@ -1699,7 +1699,10 @@ public class mixregGUI extends javax.swing.JFrame {
             addStageTwoTabTwo.setEnabled(true);
 
         } else {
-
+            //stage_1_regs.revalidate();
+            //stage_1_regs.repaint();
+           // stage_1_regs.removeAll();
+            
             stageOneClicked = 1;
             addStageTwoTabTwo.setEnabled(true);
 
@@ -2420,7 +2423,13 @@ public class mixregGUI extends javax.swing.JFrame {
 
     public DefaultListModel<String> getSavedVariables() {
 
-        savedVariablesStageOne = stage_1_regs.getListModel();
+        int index = stageTwoOutcome.getSelectedIndex();
+        
+        DefaultListModel<String> tempModel = stage_1_regs.getListModel();
+        
+        tempModel.removeElement(stageTwoOutcome.getSelectedItem());
+        
+        savedVariablesStageOne = tempModel;
 
         return savedVariablesStageOne;
 
