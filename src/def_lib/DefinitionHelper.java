@@ -48,6 +48,8 @@ import org.netbeans.lib.awtextra.AbsoluteLayout;
      import com.opencsv.CSVWriter;
 import java.awt.Graphics;
 import java.awt.Toolkit;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.SwingWorker;
     import org.apache.commons.io.FilenameUtils;
 
@@ -2175,6 +2177,15 @@ import javax.swing.SwingWorker;
                 
                progressWindow.add(scroller);
                scroller.setBounds(0, 0, 500, 500);
+               
+//               JLabel loaderLabel = new JLabel();
+//               
+//                ImageIcon loader = new ImageIcon(this.getClass().getResource(
+//                    "preloader.gif"));
+//                
+//                loaderLabel.setIcon(loader);
+//                loader.setImageObserver(loaderLabel);
+//                progressWindow.add(loaderLabel);
               
                 JButton cancelButton = new JButton("Cancel Analysis");
                 progressWindow.add(cancelButton);
