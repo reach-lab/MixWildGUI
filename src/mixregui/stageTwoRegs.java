@@ -5,6 +5,8 @@
  */
 package mixregui;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -34,6 +36,9 @@ public class stageTwoRegs extends javax.swing.JFrame {
     public stageTwoRegs() {
         initComponents();
         //create list models
+        
+                Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+                this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
 
         newModel2 = new NewModel();
         icon = new ImageIcon(getClass().getResource("/resources/mixLogo.png"));
@@ -253,7 +258,10 @@ public class stageTwoRegs extends javax.swing.JFrame {
     public void updateStageTwoVariables(DefaultListModel<String> defaultListModel) {
 
         //updates variables in stage two list (to add regressors)
-        //Add model to stage two variables, to display items    
+        //Add model to stage two variables, to display items  
+        
+        
+        
         StageTwoAllVariables.setModel(defaultListModel);
 
         StageTwoAllVariables.setSelectedIndex(2);

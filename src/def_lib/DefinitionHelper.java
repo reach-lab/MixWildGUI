@@ -46,6 +46,11 @@ import org.netbeans.lib.awtextra.AbsoluteLayout;
     import static sun.management.snmp.jvminstr.JvmThreadInstanceEntryImpl.ThreadStateMap.Byte0.runnable;
     import com.opencsv.CSVReader;
      import com.opencsv.CSVWriter;
+import java.awt.Graphics;
+import java.awt.Toolkit;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.SwingWorker;
     import org.apache.commons.io.FilenameUtils;
 
 
@@ -63,6 +68,8 @@ import org.netbeans.lib.awtextra.AbsoluteLayout;
 
         
         public int terminalVal;
+        
+        private ProgressStatus progressStatus;
         /**
          * Private Class Keys
          */
@@ -1972,12 +1979,18 @@ import org.netbeans.lib.awtextra.AbsoluteLayout;
 
                     public void actionPerformed(ActionEvent e){
 
-                       // modelSelector();
-                      // System.out.println("SELECTED MODEL: " + );
-                      
-                        
-                        
-                        runMixRegModels(); // run the updated functions of executing Don's code
+                        try {
+                            // modelSelector();
+                            // System.out.println("SELECTED MODEL: " + );
+                            
+                            
+                            
+                            //runMixRegModels(); // run the updated functions of executing Don's code
+                            progressStatus = new ProgressStatus();
+                            progressStatus.execute();
+                        } catch (Exception ex) {
+                            Logger.getLogger(DefinitionHelper.class.getName()).log(Level.SEVERE, null, ex);
+                        }
 
 
                         myFrame.dispose();
@@ -1999,6 +2012,10 @@ import org.netbeans.lib.awtextra.AbsoluteLayout;
 
                 myFrame.setVisible(true); 
                 myFrame.setAlwaysOnTop(true);
+                
+                Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+                myFrame.setLocation(dim.width/2-myFrame.getSize().width/2, dim.height/2-myFrame.getSize().height/2);
+                
                 Document defDoc = myPane.getDocument();
                 int length = defDoc.getLength();
 
@@ -2160,11 +2177,30 @@ import org.netbeans.lib.awtextra.AbsoluteLayout;
                 
                progressWindow.add(scroller);
                scroller.setBounds(0, 0, 500, 500);
+               
+//               JLabel loaderLabel = new JLabel();
+//               
+//                ImageIcon loader = new ImageIcon(this.getClass().getResource(
+//                    "preloader.gif"));
+//                
+//                loaderLabel.setIcon(loader);
+//                loader.setImageObserver(loaderLabel);
+//                progressWindow.add(loaderLabel);
               
                 JButton cancelButton = new JButton("Cancel Analysis");
                 progressWindow.add(cancelButton);
                 progressWindow.setComponentOrientation(ComponentOrientation.UNKNOWN);
                 progressWindow.setVisible(true);
+                progressWindow.setAlwaysOnTop(true);
+                
+                Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+                progressWindow.setLocation(dim.width/2-progressWindow.getSize().width/2, dim.height/2-progressWindow.getSize().height/2);
+                
+                
+                
+//                progressPane.revalidate();
+//                progressPane.repaint();
+                
             try {         
                    copyExecutable(defFilePath, selectedModel);
                    Process p=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && dir && "
@@ -2178,13 +2214,18 @@ import org.netbeans.lib.awtextra.AbsoluteLayout;
                                 String line=null;  // UI magic should run in here @adityapona
                                 while ( (line = br.readLine()) != null){
                                     System.out.println("MIXWILD:" + line);
-                                    progressPane.append("MIXWILD:" + line + "\n"); //should append all the text after a new line to the text area
+                                    
+                                    progressPane.append("MIXWILD:" + line + "\n");
+                                   // progressPane.repaint();
+                                    //should append all the text after a new line to the text area
                                    // progressPane.setCaretPosition(progressPane.getDocument().getLength());
+//                                   Graphics g = progressPane.getGraphics();
+//                                   paint(g);
                                 }
                                 } catch (IOException ioe)
                                   {
                                     ioe.printStackTrace();  
-                                  }                       
+                                  }                 
                        }
                    });
                   runCMD.start(); 
@@ -2205,6 +2246,9 @@ import org.netbeans.lib.awtextra.AbsoluteLayout;
                     terminalVal = exitVal;
                    Process p2=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && del /f " + defFileName); //delete the file when everything works great.
                    progressWindow.dispose(); //should close the window when done after this line
+                   
+                  // FileReader reader = new FileReader(absoluteJavaPath + ".out file name");
+                   
                    } else {
                       JOptionPane.showMessageDialog(null, "Executaion failed. Please revisit your regressors and try again.", "Caution!", JOptionPane.INFORMATION_MESSAGE);
 
@@ -2218,6 +2262,28 @@ import org.netbeans.lib.awtextra.AbsoluteLayout;
                 JOptionPane.showMessageDialog(null, "Failed");
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
             }
+        }
+        
+        class ProgressStatus extends SwingWorker<Void, Void>{
+
+        @Override
+        protected Void doInBackground() throws Exception {
+            
+            //wait for the execution here
+            
+            runMixRegModels();
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+        
+        @Override
+        public void done()
+        {
+        progressWindow.dispose();
+        System.out.println("THE PROCESS IS COMPLETE");
+        
+        }
+        
+        
         }
 
         public int getExitVal(){

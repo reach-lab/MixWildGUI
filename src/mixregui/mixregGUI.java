@@ -57,6 +57,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.border.MatteBorder;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import org.apache.commons.io.FilenameUtils;
 
 /**
  * d
@@ -138,6 +139,10 @@ public class mixregGUI extends javax.swing.JFrame {
      */
     public mixregGUI() {
         initComponents();
+        
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        
         newModel = new NewModel();
         //instructions = new InstructionsGUI();
         variableNamesCombo = newModel.getVariableNames();
@@ -539,7 +544,7 @@ public class mixregGUI extends javax.swing.JFrame {
         jLabel12.setText("Stage 2 Interactions");
         jPanel12.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 20, -1, 20));
 
-        jLabel15.setText("Randome Location");
+        jLabel15.setText("Random Location");
         jPanel12.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 90, -1, -1));
 
         addStageTwoTabTwo.setText("Modify Stage 2 Regressors ...");
@@ -1694,7 +1699,10 @@ public class mixregGUI extends javax.swing.JFrame {
             addStageTwoTabTwo.setEnabled(true);
 
         } else {
-
+            //stage_1_regs.revalidate();
+            //stage_1_regs.repaint();
+           // stage_1_regs.removeAll();
+            
             stageOneClicked = 1;
             addStageTwoTabTwo.setEnabled(true);
 
@@ -2415,7 +2423,13 @@ public class mixregGUI extends javax.swing.JFrame {
 
     public DefaultListModel<String> getSavedVariables() {
 
-        savedVariablesStageOne = stage_1_regs.getListModel();
+        int index = stageTwoOutcome.getSelectedIndex();
+        
+        DefaultListModel<String> tempModel = stage_1_regs.getListModel();
+        
+        tempModel.removeElement(stageTwoOutcome.getSelectedItem());
+        
+        savedVariablesStageOne = tempModel;
 
         return savedVariablesStageOne;
 
@@ -4345,7 +4359,7 @@ public class mixregGUI extends javax.swing.JFrame {
         return regLabels;
     }
 
-    public void produceStageTwoOutput() throws FileNotFoundException, IOException {
+    public static void produceStageTwoOutput(File filename) throws FileNotFoundException, IOException {
 
         //@Eldin : this is where we will read the command line info.
         
@@ -4355,10 +4369,25 @@ public class mixregGUI extends javax.swing.JFrame {
 ////        FileReader reader = new FileReader(absoluteJavaPath + ".out file name");
 //////       
 ////        stageTwoOutput.read(reader, "stageTwoOutput");
+
+            String outputFileName = FilenameUtils.removeExtension(NewModel.getDataFileName()) + "_output_1" + ".out";
 //        
 //        }
 
+        //read file here
+        FileReader reader = new FileReader(outputFileName);
+//        try {
+//            
+//            //stageTwoOutput.read(reader, "stageOneOutput");
+//        } catch (IOException ex) {
+//            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+
     }
+    
+   
+    
+    
 
     public void produceStageOneOutput() throws FileNotFoundException {
 
