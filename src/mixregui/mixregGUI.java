@@ -2420,7 +2420,13 @@ public class mixregGUI extends javax.swing.JFrame {
 
     public DefaultListModel<String> getSavedVariables() {
 
-        savedVariablesStageOne = stage_1_regs.getListModel();
+        int index = stageTwoOutcome.getSelectedIndex();
+        
+        DefaultListModel<String> tempModel = stage_1_regs.getListModel();
+        
+        tempModel.removeElement(stageTwoOutcome.getSelectedItem());
+        
+        savedVariablesStageOne = tempModel;
 
         return savedVariablesStageOne;
 

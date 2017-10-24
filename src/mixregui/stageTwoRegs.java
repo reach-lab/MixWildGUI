@@ -258,7 +258,10 @@ public class stageTwoRegs extends javax.swing.JFrame {
     public void updateStageTwoVariables(DefaultListModel<String> defaultListModel) {
 
         //updates variables in stage two list (to add regressors)
-        //Add model to stage two variables, to display items    
+        //Add model to stage two variables, to display items  
+        
+        
+        
         StageTwoAllVariables.setModel(defaultListModel);
 
         StageTwoAllVariables.setSelectedIndex(2);
