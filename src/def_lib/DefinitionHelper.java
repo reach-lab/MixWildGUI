@@ -59,16 +59,16 @@ import javax.swing.SwingWorker;
      * Exposed Methods:
      * readDefinitionFile: takes File as parameter, assigns all variables and then attempts to validate file
      * buildStageOneDefinitionList: returns ArrayList<String> that can be passed to a FileWriter class, validates first
-     * @note: Both classes should pass Exceptions to the view and interrupt until user fixes error  
-     *  
+     * @note: Both classes should pass Exceptions to the view and interrupt until user fixes error
+     *
      * @author Eldin Dzubur.
      */
-    
+
     public class DefinitionHelper {
 
-        
+
         public int terminalVal;
-        
+
         private ProgressStatus progressStatus;
         /**
          * Private Class Keys
@@ -100,17 +100,17 @@ import javax.swing.SwingWorker;
         int selectedModel;
         String defFilePath;
         File newDefFile;
-        
+
 //        String filePath = newDefFile.getAbsolutePath();
 //        defFilePath = filePath.substring(0,filePath.lastIndexOf(File.separator)) + "/";
-        
-        
+
+
         //get def file path from here ...
         //First get the def file from the location where it is created ...
 //        File file = new File("example.txt"); //insert def file to this
 //        String fileLocation = file.getAbsolutePath(); //get the path of the def file
 //        String definitionFileLoc = fileLocation.substring(0,fileLocation.lastIndexOf(File.separator)) + "/"; //subset the string.
-        
+
         /**
          * Initial Definition Parameters
          */
@@ -149,12 +149,12 @@ import javax.swing.SwingWorker;
          * Stage 1 Model Specification
          */
         private String[] idOutcome;
-        private String[] fieldModelMeanRegressors; // stage 1 under mean - disagg. 
+        private String[] fieldModelMeanRegressors; // stage 1 under mean - disagg.
         private String[] fieldModelBSRegressors; // random intercept
         private String[] fieldModelWSRegressors; // random scale
         private String[] fieldModelLocRanRegressors;
         private String[] fieldModelScaleRegressors;
-        private String[] fieldDecompMeanRegressors; 
+        private String[] fieldDecompMeanRegressors;
         private String[] fieldDecompBSRegressors;
         private String[] fieldDecompWSRegressors;
         private String[] fieldDecompLocRanRegressors;
@@ -216,12 +216,12 @@ import javax.swing.SwingWorker;
         public boolean isStageTwoBinary() {
             return stageTwoBinary;
         }
-        
+
          public static void csvToDatConverter(File csvFileToConvert) throws IOException {
             String fileName = csvFileToConvert.getAbsolutePath();
             String fileNameShort = FilenameUtils.removeExtension(fileName);
             String filePath = fileName.substring(0,fileName.lastIndexOf(File.separator)) + "/"; //subset the string.
-                           
+
             try (CSVReader reader = new CSVReader(new FileReader(fileName))) {
                 List<String[]> csvRows = reader.readAll();
                 reader.close();
@@ -235,7 +235,7 @@ import javax.swing.SwingWorker;
                 writer.close();
             }
         }
-        
+
 
         /**
          *
@@ -370,7 +370,7 @@ import javax.swing.SwingWorker;
                 if(!validateFieldLabels(getDecompScaleCount(),getLabelDecompScaleRegressors())){
                     throw new Exception("Fatal variance decomposition error: number of SCALE regressors does not equal SCALE labels");
                 }
-             }   
+             }
              if(!validateFieldLabels(getStageTwoFixedCount(),getStageTwoFixedLabels())){
                  throw new Exception("Fatal stage two label error: number of FIXED regressors does not equal FIXED labels");
              }
@@ -429,7 +429,7 @@ import javax.swing.SwingWorker;
                     newDefinitionFile.add(Arrays.toString(getLabelDecompBSRegressors()).replaceAll(",", " "));
                     newDefinitionFile.add(Arrays.toString(getLabelDecompWSRegressors()).replaceAll(",", " "));
 
-                    newDefinitionFile.add(Arrays.toString(advancedOptionsTwo).replaceAll(",", " ")); 
+                    newDefinitionFile.add(Arrays.toString(advancedOptionsTwo).replaceAll(",", " "));
                     newDefinitionFile.add(getStageTwoOutcomeField());
                     newDefinitionFile.add(Arrays.toString(getStageTwoFixedFields()).replaceAll(",", " "));
                     newDefinitionFile.add(Arrays.toString(getStageTwoLocRanIntFields()).replaceAll(",", " "));
@@ -455,7 +455,7 @@ import javax.swing.SwingWorker;
                     newDefinitionFile.add(Arrays.toString(getLabelDecompBSRegressors()).replaceAll(",", " "));
                     newDefinitionFile.add(Arrays.toString(getLabelDecompWSRegressors()).replaceAll(",", " "));
 
-                    newDefinitionFile.add(Arrays.toString(advancedOptionsTwo).replaceAll(",", " ")); 
+                    newDefinitionFile.add(Arrays.toString(advancedOptionsTwo).replaceAll(",", " "));
                     newDefinitionFile.add(getStageTwoOutcomeField());
                     newDefinitionFile.add(Arrays.toString(getStageTwoFixedFields()).replaceAll(",", " "));
                     newDefinitionFile.add(Arrays.toString(getStageTwoLocRanIntFields()).replaceAll(",", " "));
@@ -481,7 +481,7 @@ import javax.swing.SwingWorker;
                     newDefinitionFile.add(Arrays.toString(getLabelDecompLocRanRegressors()).replaceAll(",", " "));
                     newDefinitionFile.add(Arrays.toString(getLabelDecompScaleRegressors()).replaceAll(",", " "));
 
-                    newDefinitionFile.add(Arrays.toString(advancedOptionsTwo).replaceAll(",", " ")); 
+                    newDefinitionFile.add(Arrays.toString(advancedOptionsTwo).replaceAll(",", " "));
                     newDefinitionFile.add(getStageTwoOutcomeField());
                     newDefinitionFile.add(Arrays.toString(getStageTwoFixedFields()).replaceAll(",", " "));
                     newDefinitionFile.add(Arrays.toString(getStageTwoLocRanIntFields()).replaceAll(",", " "));
@@ -507,7 +507,7 @@ import javax.swing.SwingWorker;
                     newDefinitionFile.add(Arrays.toString(getLabelDecompLocRanRegressors()).replaceAll(",", " "));
                     newDefinitionFile.add(Arrays.toString(getLabelDecompScaleRegressors()).replaceAll(",", " "));
 
-                    newDefinitionFile.add(Arrays.toString(advancedOptionsTwo).replaceAll(",", " ")); 
+                    newDefinitionFile.add(Arrays.toString(advancedOptionsTwo).replaceAll(",", " "));
                     newDefinitionFile.add(getStageTwoOutcomeField());
                     newDefinitionFile.add(Arrays.toString(getStageTwoFixedFields()).replaceAll(",", " "));
                     newDefinitionFile.add(Arrays.toString(getStageTwoLocRanIntFields()).replaceAll(",", " "));
@@ -520,7 +520,7 @@ import javax.swing.SwingWorker;
                     newDefinitionFile.add(Arrays.toString(getStageTwoFirstIntLabels()).replaceAll(",", " "));
                     break;
                 default:
-                //TODO: Log this error     
+                //TODO: Log this error
             }
 
 
@@ -559,7 +559,7 @@ import javax.swing.SwingWorker;
                     newDefinitionFile.add(Arrays.toString(getLabelDecompBSRegressors()).replaceAll(",", " "));
                     newDefinitionFile.add(Arrays.toString(getLabelDecompWSRegressors()).replaceAll(",", " "));
 
-                    newDefinitionFile.add(Arrays.toString(advancedOptionsTwo).replaceAll(",", " ")); 
+                    newDefinitionFile.add(Arrays.toString(advancedOptionsTwo).replaceAll(",", " "));
                     newDefinitionFile.add(getStageTwoOutcomeField());
                     newDefinitionFile.add(Arrays.toString(getStageTwoFixedFields()).replaceAll(",", " "));
                     newDefinitionFile.add(Arrays.toString(getStageTwoLocRanIntFields()).replaceAll(",", " "));
@@ -585,7 +585,7 @@ import javax.swing.SwingWorker;
                     newDefinitionFile.add(Arrays.toString(getLabelDecompBSRegressors()).replaceAll(",", " "));
                     newDefinitionFile.add(Arrays.toString(getLabelDecompWSRegressors()).replaceAll(",", " "));
 
-                    newDefinitionFile.add(Arrays.toString(advancedOptionsTwo).replaceAll(",", " ")); 
+                    newDefinitionFile.add(Arrays.toString(advancedOptionsTwo).replaceAll(",", " "));
                     newDefinitionFile.add(getStageTwoOutcomeField());
                     newDefinitionFile.add(Arrays.toString(getStageTwoFixedFields()).replaceAll(",", " "));
                     newDefinitionFile.add(Arrays.toString(getStageTwoLocRanIntFields()).replaceAll(",", " "));
@@ -611,7 +611,7 @@ import javax.swing.SwingWorker;
                     newDefinitionFile.add(Arrays.toString(getLabelDecompLocRanRegressors()).replaceAll(",", " "));
                     newDefinitionFile.add(Arrays.toString(getLabelDecompScaleRegressors()).replaceAll(",", " "));
 
-                    newDefinitionFile.add(Arrays.toString(advancedOptionsTwo).replaceAll(",", " ")); 
+                    newDefinitionFile.add(Arrays.toString(advancedOptionsTwo).replaceAll(",", " "));
                     newDefinitionFile.add(getStageTwoOutcomeField());
                     newDefinitionFile.add(Arrays.toString(getStageTwoFixedFields()).replaceAll(",", " "));
                     newDefinitionFile.add(Arrays.toString(getStageTwoLocRanIntFields()).replaceAll(",", " "));
@@ -637,7 +637,7 @@ import javax.swing.SwingWorker;
                     newDefinitionFile.add(Arrays.toString(getLabelDecompLocRanRegressors()).replaceAll(",", " "));
                     newDefinitionFile.add(Arrays.toString(getLabelDecompScaleRegressors()).replaceAll(",", " "));
 
-                    newDefinitionFile.add(Arrays.toString(advancedOptionsTwo).replaceAll(",", " ")); 
+                    newDefinitionFile.add(Arrays.toString(advancedOptionsTwo).replaceAll(",", " "));
                     newDefinitionFile.add(getStageTwoOutcomeField());
                     newDefinitionFile.add(Arrays.toString(getStageTwoFixedFields()).replaceAll(",", " "));
                     newDefinitionFile.add(Arrays.toString(getStageTwoLocRanIntFields()).replaceAll(",", " "));
@@ -650,7 +650,7 @@ import javax.swing.SwingWorker;
                     newDefinitionFile.add(Arrays.toString(getStageTwoFirstIntLabels()).replaceAll(",", " "));
                     break;
                 default:
-                //TODO: Log this error     
+                //TODO: Log this error
             }
 
             exportValidatorStageOne();
@@ -675,8 +675,8 @@ import javax.swing.SwingWorker;
             setFieldDecompMeanRegressors(readDefinitionFile.get(9).split("\\s+"));
             setLabelModelOutcome(readDefinitionFile.get(12));
             setLabelModelMeanRegressors(readDefinitionFile.get(13).split("\\s+"));
-            setLabelDecompMeanRegressors(readDefinitionFile.get(16).split("\\s+")); 
-            advancedVariableAssignment(2,readDefinitionFile.get(19).split("\\s+")); 
+            setLabelDecompMeanRegressors(readDefinitionFile.get(16).split("\\s+"));
+            advancedVariableAssignment(2,readDefinitionFile.get(19).split("\\s+"));
             setStageTwoOutcomeField(readDefinitionFile.get(20));
             switch (sequenceDecision()) {
                 case MIXREGLS_MIXREG_KEY:
@@ -754,11 +754,11 @@ import javax.swing.SwingWorker;
                     setStageTwoFixedLabels(readDefinitionFile.get(27).split("\\s+"));
                     setStageTwoLocRanIntLabels(readDefinitionFile.get(28).split("\\s+"));
                     setStageTwoScaleIntLabels(readDefinitionFile.get(29).split("\\s+"));
-                    setStageTwoFirstIntLabels(readDefinitionFile.get(30).split("\\s+"));              
+                    setStageTwoFirstIntLabels(readDefinitionFile.get(30).split("\\s+"));
 
                     break;
                 default:
-                //TODO: Log this error     
+                //TODO: Log this error
             }
             exportValidatorStageOne();
         }
@@ -852,7 +852,7 @@ import javax.swing.SwingWorker;
                         advancedVars.add(getAdvancedRidge());
                         break;
                     default:
-                    //TODO: Log this error 
+                    //TODO: Log this error
                 }
             } else {
                 switch (sequenceDecision()) {
@@ -883,7 +883,7 @@ import javax.swing.SwingWorker;
                         advancedVars.add(getStageTwoOutcomeCatCount());
                         break;
                     default:
-                    //TODO: Log this error 
+                    //TODO: Log this error
                 }
             }
             String[] returnVars = new String[advancedVars.size()];
@@ -950,7 +950,7 @@ import javax.swing.SwingWorker;
                         setAdvancedRidge(advancedVars[17]);
                         break;
                     default:
-                    //TODO: Log this error 
+                    //TODO: Log this error
                 }
             } else {
                 setStageTwoFixedCount(advancedVars[0]);
@@ -1292,7 +1292,7 @@ import javax.swing.SwingWorker;
                 }
             }
             else{
-                try { 
+                try {
                     if(Double.parseDouble(advancedMissingValue)>=(-Double.MAX_VALUE) && Double.parseDouble(advancedMissingValue)<=Double.MAX_VALUE){
                         this.advancedMissingValue = advancedMissingValue;
                     }
@@ -1387,7 +1387,7 @@ import javax.swing.SwingWorker;
             return decompBSCount;
         }
 
-        // done 
+        // done
         public void setDecompBSCount(String decompBSCount) throws Exception {
             if (setValidator("number of between-subject variance regressors for BS/WS decomposition", "5", decompBSCount, 0, 255, MIX_INTEGER)) {
                 this.decompBSCount = decompBSCount;
@@ -1722,7 +1722,7 @@ import javax.swing.SwingWorker;
         public void setLabelDecompBSRegressors(String[] labelDecompBSRegressors) throws Exception {
             if (getDecompBSCount().matches("0")){
                 this.labelDecompBSRegressors = new String[0];
-            } 
+            }
             else if (loopSetValidator("model BS variance regressor for BS/WS decomposition labels", "18", labelDecompBSRegressors, 1, 255, MIX_STRING)) {
                 this.labelDecompBSRegressors = labelDecompBSRegressors;
             }
@@ -1736,7 +1736,7 @@ import javax.swing.SwingWorker;
         public void setLabelDecompWSRegressors(String[] labelDecompWSRegressors) throws Exception {
             if (getDecompWSCount().matches("0")){
                 this.labelDecompWSRegressors = new String[0];
-            } 
+            }
             else if (loopSetValidator("model WS variance regressor for BS/WS decomposition labels", "19", labelDecompWSRegressors, 1, 255, MIX_STRING)) {
                 this.labelDecompWSRegressors = labelDecompWSRegressors;
             }
@@ -1828,7 +1828,7 @@ import javax.swing.SwingWorker;
         public void setStageTwoFixedFields(String[] stageTwoFixedFields) throws Exception {
             if (getStageTwoFixedCount().matches("0")){
                 this.stageTwoFixedFields = new String[0];
-            } 
+            }
             else if (loopSetValidator("fields of fixed regressors", "22(mixreg)/23((mixor)", stageTwoFixedFields, 1, 255, MIX_INTEGER)) {
                 this.stageTwoFixedFields = stageTwoFixedFields;
             }
@@ -1842,7 +1842,7 @@ import javax.swing.SwingWorker;
         public void setStageTwoLocRanIntFields(String[] stageTwoLocRanIntFields) throws Exception {
             if (getStageTwoLocRanInteractions().matches("0")){
                 this.stageTwoLocRanIntFields = new String[0];
-            } 
+            }
             else if (loopSetValidator("fields of regressors to interact with location random effects", "23(mixreg)/24((mixor)", stageTwoLocRanIntFields, 1, 255, MIX_INTEGER)) {
                 this.stageTwoLocRanIntFields = stageTwoLocRanIntFields;
             }
@@ -1856,7 +1856,7 @@ import javax.swing.SwingWorker;
         public void setStageTwoScaleIntFields(String[] stageTwoScaleIntFields) throws Exception {
             if (getStageTwoScaleInteractions().matches("0")){
                 this.stageTwoScaleIntFields = new String[0];
-            } 
+            }
             else if (loopSetValidator("fields of regressors to interact with scale random effects", "24(mixreg)/25((mixor)", stageTwoScaleIntFields, 1, 255, MIX_INTEGER)) {
                 this.stageTwoScaleIntFields = stageTwoScaleIntFields;
             }
@@ -1869,7 +1869,7 @@ import javax.swing.SwingWorker;
         public void setStageTwoFirstIntFields(String[] stageTwoFirstIntFields) throws Exception {
             if (getStageTwoIntOfInteraction().matches("0")){
                 this.stageTwoFirstIntFields = new String[0];
-            } 
+            }
             else if  (loopSetValidator("fields of regressors to interact with the interaction of the location random effects", "25(mixreg)/26((mixor)", stageTwoFirstIntFields, 1, 255, MIX_INTEGER)) {
                 this.stageTwoFirstIntFields = stageTwoFirstIntFields;
             }
@@ -1894,7 +1894,7 @@ import javax.swing.SwingWorker;
         public void setStageTwoFixedLabels(String[] stageTwoFixedLabels) throws Exception {
             if (getStageTwoFixedCount().matches("0")){
                 this.stageTwoFixedLabels = new String[0];
-            } 
+            }
             else if (loopSetValidator("label of stage two fixed regressors", "27(mixreg)/28((mixor)", stageTwoFixedLabels, 1, 255, MIX_STRING)) {
                 this.stageTwoFixedLabels = stageTwoFixedLabels;
             }
@@ -1908,7 +1908,7 @@ import javax.swing.SwingWorker;
         public void setStageTwoLocRanIntLabels(String[] stageTwoLocRanIntLabels) throws Exception {
             if (getStageTwoLocRanInteractions().matches("0")){
                 this.stageTwoLocRanIntLabels = new String[0];
-            } 
+            }
             else if (loopSetValidator("labels of stage two regressors to interact with location random effect", "28(mixreg)/29((mixor)", stageTwoLocRanIntLabels, 1, 255, MIX_STRING)) {
                 this.stageTwoLocRanIntLabels = stageTwoLocRanIntLabels;
             }
@@ -1922,7 +1922,7 @@ import javax.swing.SwingWorker;
         public void setStageTwoScaleIntLabels(String[] stageTwoScaleIntLabels) throws Exception {
             if (getStageTwoScaleInteractions().matches("0")){
                 this.stageTwoScaleIntLabels = new String[0];
-            } 
+            }
             else if  (loopSetValidator("labels of stage two regressors to interact with scale effect", "29(mixreg)/30((mixor)", stageTwoScaleIntLabels, 1, 255, MIX_STRING)) {
                 this.stageTwoScaleIntLabels = stageTwoScaleIntLabels;
             }
@@ -1935,7 +1935,7 @@ import javax.swing.SwingWorker;
         public void setStageTwoFirstIntLabels(String[] stageTwoFirstIntLabels) throws Exception {
             if (getStageTwoIntOfInteraction().matches("0")){
                 this.stageTwoFirstIntLabels = new String[0];
-            } 
+            }
             else if (loopSetValidator("labels of stage two regressors to interact with the interaction of the location random effect", "30(mixreg)/31(mixor)", stageTwoFirstIntLabels, 1, 255, MIX_STRING)) {
                 this.stageTwoFirstIntLabels = stageTwoFirstIntLabels;
             }
@@ -1982,9 +1982,9 @@ import javax.swing.SwingWorker;
                         try {
                             // modelSelector();
                             // System.out.println("SELECTED MODEL: " + );
-                            
-                            
-                            
+
+
+
                             //runMixRegModels(); // run the updated functions of executing Don's code
                             progressStatus = new ProgressStatus();
                             progressStatus.execute();
@@ -2010,19 +2010,19 @@ import javax.swing.SwingWorker;
 
                 });
 
-                myFrame.setVisible(true); 
+                myFrame.setVisible(true);
                 myFrame.setAlwaysOnTop(true);
-                
+
                 Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
                 myFrame.setLocation(dim.width/2-myFrame.getSize().width/2, dim.height/2-myFrame.getSize().height/2);
-                
+
                 Document defDoc = myPane.getDocument();
                 int length = defDoc.getLength();
 
                 //File newDefFile = new File("MIXREGLS_MIXREG_KEY");
                 String dataFileSample = new File(this.getDataFilename()).getAbsolutePath();
                 String newDefFilePrefix = dataFileSample.substring(0,dataFileSample.lastIndexOf(File.separator)) + "/";
-                
+
                 if (selectedModel == DefinitionHelper.MIXREGLS_MIXREG_KEY){
                     newDefFile = new File(newDefFilePrefix+"MIXREGLS_MIXREG");
                 } else if (selectedModel == DefinitionHelper.MIXREGLS_MIXOR_KEY){
@@ -2040,7 +2040,7 @@ import javax.swing.SwingWorker;
                 /*OutputStream os = new BufferedOutputStream(
                   new FileOutputStream(newDefFile + ".def"));
                 Writer w = new OutputStreamWriter(os);*/
-                
+
                 FileWriter out = new FileWriter(newDefFile + ".def");
                 out.write(myPane.getText());
                 out.close();
@@ -2086,50 +2086,50 @@ import javax.swing.SwingWorker;
 
         public void runModels(){
 
-            
+
             String absoluteJavaPath = System.getProperty( "user.dir" );
             String defFileName = executableModel(selectedModel);
 
-            try {          
-                try 
-                { 
+            try {
+                try
+                {
                     copyExecutable(defFilePath, selectedModel);
                     Process p=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && dir && "
                             + defFileName); // does it save it in the same directory
 
-                    p.waitFor(); 
-                    BufferedReader reader=new BufferedReader(new InputStreamReader(p.getInputStream())); 
-                    String line=reader.readLine(); 
-                    while(line!=null) 
-                    { 
-                    System.out.println(line); 
-                    line=reader.readLine(); 
-                    } 
-                 } 
+                    p.waitFor();
+                    BufferedReader reader=new BufferedReader(new InputStreamReader(p.getInputStream()));
+                    String line=reader.readLine();
+                    while(line!=null)
+                    {
+                    System.out.println(line);
+                    line=reader.readLine();
+                    }
+                 }
                 catch(FileNotFoundException fnfe1){
-                 System.out.println("File not found Exception"); 
+                 System.out.println("File not found Exception");
                 }
                 catch(IOException e1) {
-                  System.out.println("IO Exception"); 
-                } 
+                  System.out.println("IO Exception");
+                }
 
-                try 
-                { 
+                try
+                {
                     Process p=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && del /f " + defFileName);
-                    p.waitFor(); 
-                    BufferedReader reader=new BufferedReader(new InputStreamReader(p.getInputStream())); 
-                    String line=reader.readLine(); 
-                    while(line!=null) 
-                    { 
-                    System.out.println(line); 
-                    line=reader.readLine(); 
-                    } 
-                 } 
+                    p.waitFor();
+                    BufferedReader reader=new BufferedReader(new InputStreamReader(p.getInputStream()));
+                    String line=reader.readLine();
+                    while(line!=null)
+                    {
+                    System.out.println(line);
+                    line=reader.readLine();
+                    }
+                 }
                 catch(FileNotFoundException fnfe1){
-                 System.out.println("File not found Exception 2"); 
+                 System.out.println("File not found Exception 2");
                 }
                 catch(IOException e1) {
-                  System.out.println("IO Exception 2 "); 
+                  System.out.println("IO Exception 2 ");
                 }
 
                 JOptionPane.showMessageDialog(null, defFilePath);
@@ -2145,7 +2145,7 @@ import javax.swing.SwingWorker;
         }
 
         public void runMixRegModels(){
-            
+
             //@Eldin: This is the part where it may be throwing exceptions. Why do you have "/" at the end?
             String filePath = newDefFile.getAbsolutePath();
             System.out.println("THE DEF FILE IS: " + filePath);
@@ -2153,58 +2153,58 @@ import javax.swing.SwingWorker;
             System.out.println("THE DEF FILE PATH IS: " + defFilePath);
             selectedModel = getSelectedModel();
             String absoluteJavaPath = System.getProperty( "user.dir" );
-         
+
             String defFileName = executableModel(selectedModel);
-           
+
             progressWindow = new JFrame("Please wait ...");
-              
+
                 FlowLayout defFileFlow = new FlowLayout();
                progressWindow.setLayout(defFileFlow);
                 defFileFlow.setAlignment(FlowLayout.TRAILING);
                 progressWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 progressWindow.setSize(550,680);
-               
+
                 progressPane = new JTextArea(30, 80);
                 DefaultCaret caret = (DefaultCaret)progressPane.getCaret();
                 caret.setUpdatePolicy(DefaultCaret.OUT_BOTTOM);
-             
+
                progressPane.setLayout(new BorderLayout(500, 500));
                progressPane.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-               
+
                 progressPane.setFont(new Font("Monospaced", 0, 12));
                 progressPane.setText("Please wait while we crunch some numbers .." + "\n");
                 JScrollPane scroller = new JScrollPane(progressPane, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-                
+
                progressWindow.add(scroller);
                scroller.setBounds(0, 0, 500, 500);
-               
+
 //               JLabel loaderLabel = new JLabel();
-//               
+//
 //                ImageIcon loader = new ImageIcon(this.getClass().getResource(
 //                    "preloader.gif"));
-//                
+//
 //                loaderLabel.setIcon(loader);
 //                loader.setImageObserver(loaderLabel);
 //                progressWindow.add(loaderLabel);
-              
+
                 JButton cancelButton = new JButton("Cancel Analysis");
                 progressWindow.add(cancelButton);
                 progressWindow.setComponentOrientation(ComponentOrientation.UNKNOWN);
                 progressWindow.setVisible(true);
                 progressWindow.setAlwaysOnTop(true);
-                
+
                 Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
                 progressWindow.setLocation(dim.width/2-progressWindow.getSize().width/2, dim.height/2-progressWindow.getSize().height/2);
-                
-                
-                
+
+
+
 //                progressPane.revalidate();
 //                progressPane.repaint();
-                
-            try {         
+
+            try {
                    copyExecutable(defFilePath, selectedModel);
                    Process p=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && dir && "
-                            + defFileName); 
+                            + defFileName);
                    Thread runCMD = new Thread(new Runnable(){
                        public void run() {
                            System.out.println("Inside the thread");
@@ -2214,7 +2214,7 @@ import javax.swing.SwingWorker;
                                 String line=null;  // UI magic should run in here @adityapona
                                 while ( (line = br.readLine()) != null){
                                     System.out.println("MIXWILD:" + line);
-                                    
+
                                     progressPane.append("MIXWILD:" + line + "\n");
                                    // progressPane.repaint();
                                     //should append all the text after a new line to the text area
@@ -2224,14 +2224,14 @@ import javax.swing.SwingWorker;
                                 }
                                 } catch (IOException ioe)
                                   {
-                                    ioe.printStackTrace();  
-                                  }                 
+                                    ioe.printStackTrace();
+                                  }
                        }
                    });
-                  runCMD.start(); 
-                  
+                  runCMD.start();
+
                    cancelButton.addActionListener(new ActionListener() {
-                       
+
                     public void actionPerformed(ActionEvent e){
                         p.destroy();
                         progressWindow.dispose();
@@ -2243,12 +2243,17 @@ import javax.swing.SwingWorker;
                    if (exitVal == 0){
                        //send the out to StageTwoOutPu from here
                    // FileReader reader = new FileReader(absoluteJavaPath + ".out file name");
+                   
+                   
+                   
+                   
+                   
                     terminalVal = exitVal;
                    Process p2=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && del /f " + defFileName); //delete the file when everything works great.
                    progressWindow.dispose(); //should close the window when done after this line
-                   
+
                   // FileReader reader = new FileReader(absoluteJavaPath + ".out file name");
-                   
+
                    } else {
                       JOptionPane.showMessageDialog(null, "Executaion failed. Please revisit your regressors and try again.", "Caution!", JOptionPane.INFORMATION_MESSAGE);
 
@@ -2263,27 +2268,27 @@ import javax.swing.SwingWorker;
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
             }
         }
-        
+
         class ProgressStatus extends SwingWorker<Void, Void>{
 
         @Override
         protected Void doInBackground() throws Exception {
-            
+
             //wait for the execution here
-            
+
             runMixRegModels();
             throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
-        
+
         @Override
         public void done()
         {
         progressWindow.dispose();
         System.out.println("THE PROCESS IS COMPLETE");
-        
+
         }
-        
-        
+
+
         }
 
         public int getExitVal(){
@@ -2302,7 +2307,7 @@ import javax.swing.SwingWorker;
                 return "mixregmls_mixreg.exe";
             case DefinitionHelper.MIXREGMLS_MIXOR_KEY:
                 return "mixregmls_mixor.exe";
-           
+
             default:
                 return "mixregls_mixreg.exe";
             }
@@ -2331,7 +2336,7 @@ import javax.swing.SwingWorker;
             InputStream stream = getClass().getClassLoader().getResourceAsStream(modelPath);
 
 
-            OutputStream outputStream = 
+            OutputStream outputStream =
                     new FileOutputStream(new File(absoluteDirectoryPath + executableName));
 
             int read;
@@ -2393,15 +2398,15 @@ import javax.swing.SwingWorker;
 
                     });
         }
-        
+
         public String setDefFileLocation(){
-        
+
         File file = new File("example.txt"); //insert def file to this
         String fileLocation = file.getAbsolutePath(); //get the path of the def file
         String definitionFileLoc = fileLocation.substring(0,fileLocation.lastIndexOf(File.separator)) + "/"; //subset the string.
-        
+
         return definitionFileLoc;
-        
+
         }
-        
+
     }
