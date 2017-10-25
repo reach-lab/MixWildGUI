@@ -472,16 +472,16 @@ public class SuperUserMenu extends javax.swing.JFrame {
     private String executableModel(int modelSelection){
         switch(modelSelection){
             case DefinitionHelper.MIXREGLS_MIXREG_KEY:
-                return "mixregls_mixreg.exe";
+                return "mixregls_random_mixreg.exe";
             case DefinitionHelper.MIXREGLS_MIXOR_KEY:
-                return "mixregls_mixor.exe";
+                return "mixregls_random_mixor.exe";
             case DefinitionHelper.MIXREGMLS_MIXREG_KEY:
-                return "mixregmls_mixreg.exe";
+                return "mixregmls_random_mixreg.exe";
             case DefinitionHelper.MIXREGMLS_MIXOR_KEY:
-                return "mixregmls_mixor.exe";
+                return "mixregmls_random_mixor.exe";
            
             default:
-                return "mixregls_mixreg.exe";
+                return "mixregls__random_mixreg.exe";
         }
     }
     
@@ -490,19 +490,19 @@ public class SuperUserMenu extends javax.swing.JFrame {
         String executableName = executableModel(modelSelection);
         switch(modelSelection){
             case DefinitionHelper.MIXREGLS_MIXREG_KEY:
-                modelPath = "resources/Windows/mixregls_mixreg.exe";
+                modelPath = "resources/WindowsNew/mixregls_random_mixreg.exe";
                 break;
             case DefinitionHelper.MIXREGLS_MIXOR_KEY:
-                modelPath = "resources/Windows/mixregls_mixor.exe";
+                modelPath = "resources/WindowsNew/mixregls_random_mixor.exe";
                 break;
             case DefinitionHelper.MIXREGMLS_MIXREG_KEY:
-                modelPath = "resources/Windows/mixregmls_mixreg.exe";
+                modelPath = "resources/WindowsNew/mixregmls_random_mixreg.exe";
                 break;
             case DefinitionHelper.MIXREGMLS_MIXOR_KEY:
-                modelPath = "resources/Windows/mixregmls_mixor.exe";
+                modelPath = "resources/WindowsNew/mixregmls_random_mixor.exe";
                 break;
             default:
-                modelPath = "resources/Windows/mixregls_mixreg.exe";
+                modelPath = "resources/WindowsNew/mixregls_random_mixreg.exe";
                 break;
         }
         InputStream stream = getClass().getClassLoader().getResourceAsStream(modelPath);
