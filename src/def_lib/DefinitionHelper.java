@@ -145,6 +145,12 @@ import javax.swing.SwingWorker;
         private String decompBSCount = "0";
         private String decompWSCount = "0";
         private String advancedEffectMeanWS;
+        private String advancedResampleCount = "200";
+        private String advancedCutoffLower = "0";
+        private String advancedRandomScaleNotIncluded = "0";
+        private String advancedDropSecondStage = "0";
+        private String advancedDiscardSubjects = "0";
+        
         /**
          * Stage 1 Model Specification
          */
@@ -790,6 +796,11 @@ import javax.swing.SwingWorker;
                         advancedVars.add(getAdvancedCenterScale());
                         advancedVars.add(getAdvancedEffectMeanWS());
                         advancedVars.add(getAdvancedRidge());
+                        advancedVars.add(getAdvancedResampleCount());
+                        advancedVars.add(getAdvancedCutoffLower());
+                        advancedVars.add(getAdvancedRandomScaleNotIncluded());
+                        advancedVars.add(getAdvancedDropSecondStage());
+                        advancedVars.add(getAdvancedDiscardSubjects());
                         break;
                     case MIXREGLS_MIXOR_KEY:
                         advancedVars.add(getDataVariableCount());
@@ -810,6 +821,11 @@ import javax.swing.SwingWorker;
                         advancedVars.add(getAdvancedCenterScale());
                         advancedVars.add(getAdvancedEffectMeanWS());
                         advancedVars.add(getAdvancedRidge());
+                        advancedVars.add(getAdvancedResampleCount());
+                        advancedVars.add(getAdvancedCutoffLower());
+                        advancedVars.add(getAdvancedRandomScaleNotIncluded());
+                        advancedVars.add(getAdvancedDropSecondStage());
+                        advancedVars.add(getAdvancedDiscardSubjects());
                         break;
                     case MIXREGMLS_MIXREG_KEY:
                         advancedVars.add(getDataVariableCount());
@@ -830,6 +846,11 @@ import javax.swing.SwingWorker;
                         advancedVars.add(getAdvancedCenterScale());
                         advancedVars.add(getAdvancedEffectMeanWS());
                         advancedVars.add(getAdvancedRidge());
+                        advancedVars.add(getAdvancedResampleCount());
+                        advancedVars.add(getAdvancedCutoffLower());
+                        advancedVars.add(getAdvancedRandomScaleNotIncluded());
+                        advancedVars.add(getAdvancedDropSecondStage());
+                        advancedVars.add(getAdvancedDiscardSubjects());
                         break;
                     case MIXREGMLS_MIXOR_KEY:
                         advancedVars.add(getDataVariableCount());
@@ -850,6 +871,11 @@ import javax.swing.SwingWorker;
                         advancedVars.add(getAdvancedCenterScale());
                         advancedVars.add(getAdvancedEffectMeanWS());
                         advancedVars.add(getAdvancedRidge());
+                        advancedVars.add(getAdvancedResampleCount());
+                        advancedVars.add(getAdvancedCutoffLower());
+                        advancedVars.add(getAdvancedRandomScaleNotIncluded());
+                        advancedVars.add(getAdvancedDropSecondStage());
+                        advancedVars.add(getAdvancedDiscardSubjects());
                         break;
                     default:
                     //TODO: Log this error 
@@ -918,6 +944,11 @@ import javax.swing.SwingWorker;
                         setDecompWSCount(advancedVars[9]);
                         setAdvancedEffectMeanWS(advancedVars[16]);
                         setAdvancedRidge(advancedVars[17]);
+                        setAdvancedResampleCount(advancedVars[18]);
+                        setAdvancedCutoffLower(advancedVars[19]);
+                        setAdvancedRandomScaleNotIncluded(advancedVars[20]);
+                        setAdvancedDropSecondStage(advancedVars[21]);
+                        setAdvancedDiscardSubjects(advancedVars[22]);
                         break;
                     case MIXREGLS_MIXOR_KEY:
                         setModelBetweenCount(advancedVars[2]);
@@ -928,6 +959,11 @@ import javax.swing.SwingWorker;
                         setDecompWSCount(advancedVars[9]);
                         setAdvancedEffectMeanWS(advancedVars[16]);
                         setAdvancedRidge(advancedVars[17]);
+                        setAdvancedResampleCount(advancedVars[18]);
+                        setAdvancedCutoffLower(advancedVars[19]);
+                        setAdvancedRandomScaleNotIncluded(advancedVars[20]);
+                        setAdvancedDropSecondStage(advancedVars[21]);
+                        setAdvancedDiscardSubjects(advancedVars[22]);
                         break;
                     case MIXREGMLS_MIXREG_KEY:
                         setModelLocRanCount(advancedVars[2]);
@@ -938,6 +974,11 @@ import javax.swing.SwingWorker;
                         setDecompScaleCount(advancedVars[9]);
                         setAdvancedEffectMeanWS(advancedVars[16]);
                         setAdvancedRidge(advancedVars[17]);
+                        setAdvancedResampleCount(advancedVars[18]);
+                        setAdvancedCutoffLower(advancedVars[19]);
+                        setAdvancedRandomScaleNotIncluded(advancedVars[20]);
+                        setAdvancedDropSecondStage(advancedVars[21]);
+                        setAdvancedDiscardSubjects(advancedVars[22]);
                         break;
                     case MIXREGMLS_MIXOR_KEY:
                         setModelLocRanCount(advancedVars[2]);
@@ -948,6 +989,11 @@ import javax.swing.SwingWorker;
                         setDecompScaleCount(advancedVars[9]);
                         setAdvancedEffectMeanWS(advancedVars[16]);
                         setAdvancedRidge(advancedVars[17]);
+                        setAdvancedResampleCount(advancedVars[18]);
+                        setAdvancedCutoffLower(advancedVars[19]);
+                        setAdvancedRandomScaleNotIncluded(advancedVars[20]);
+                        setAdvancedDropSecondStage(advancedVars[21]);
+                        setAdvancedDiscardSubjects(advancedVars[22]);
                         break;
                     default:
                     //TODO: Log this error 
@@ -2402,6 +2448,58 @@ import javax.swing.SwingWorker;
         
         return definitionFileLoc;
         
+        }
+        
+        public String getAdvancedResampleCount() {
+            return advancedResampleCount;
+        }
+
+        public void setAdvancedResampleCount(String advancedResampleCount) throws Exception {
+            if (setValidator("number of resamples", "5", advancedResampleCount, 0, Integer.MAX_VALUE, MIX_INTEGER)) {
+                this.advancedResampleCount = advancedResampleCount;
+            }
+        }
+
+        public String getAdvancedCutoffLower() {
+            return advancedCutoffLower;
+        }
+
+        public void setAdvancedCutoffLower(String advancedCutoffLower) throws Exception {
+             try {
+                    this.advancedCutoffLower = String.format("%.5f", Double.parseDouble(advancedCutoffLower));
+             } catch (NumberFormatException nfe) {
+                    throw new Exception("Invalid character for lower cutoff in .dat file specified, line 5");
+             }
+        }
+
+        public String getAdvancedRandomScaleNotIncluded() {
+            return advancedRandomScaleNotIncluded;
+        }
+
+        public void setAdvancedRandomScaleNotIncluded(String advancedRandomScaleNotIncluded) throws Exception {
+            if (setValidator("inclusion of random scale", "5", advancedRandomScaleNotIncluded, 0, 1, MIX_INTEGER)) {
+                this.advancedRandomScaleNotIncluded = advancedRandomScaleNotIncluded;
+            }
+        }
+
+        public String getAdvancedDropSecondStage() {
+            return advancedDropSecondStage;
+        }
+
+        public void setAdvancedDropSecondStage(String advancedDropSecondStage) throws Exception {
+            if (setValidator("decision to drop second stage model", "5", advancedDropSecondStage, 0, 1, MIX_INTEGER)) {
+                this.advancedDropSecondStage = advancedDropSecondStage;
+            }
+        }
+
+        public String getAdvancedDiscardSubjects() {
+            return advancedDiscardSubjects;
+        }
+
+        public void setAdvancedDiscardSubjects(String advancedDiscardSubjects) throws Exception {
+            if (setValidator("decision to discard subjects with no variance", "5", advancedDiscardSubjects, 0, 1, MIX_INTEGER)) {
+                this.advancedDiscardSubjects = advancedDiscardSubjects;
+            }
         }
         
     }
