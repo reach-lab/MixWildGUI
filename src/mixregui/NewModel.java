@@ -575,6 +575,28 @@ public class NewModel extends javax.swing.JFrame {
             }
         
         }
+        
+        if (isOutcomeNone()){
+            try {
+                NewModel.defFile.setAdvancedDropSecondStage("1");
+                System.out.println("DROP SECOND STAGE?: " + NewModel.defFile.getAdvancedDropSecondStage());
+            } catch (Exception ex) {
+                Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+            }
+        
+        } else {
+        
+            try {
+                NewModel.defFile.setAdvancedDropSecondStage("0");
+                 System.out.println("DROP SECOND STAGE?: " + NewModel.defFile.getAdvancedDropSecondStage());
+            } catch (Exception ex) {
+                Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+            }
+        
+        }
+        
             //set conditions here:
             if (newModelMissingValueCode.getText().equals("0") || newModelMissingValueCode.getText().equals("00") || newModelMissingValueCode.getText().equals("000")){
             //show message alert here:
