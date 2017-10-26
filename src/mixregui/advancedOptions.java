@@ -364,6 +364,16 @@ public class advancedOptions extends javax.swing.JFrame {
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
+        
+        try {
+            NewModel.defFile.setAdvancedResampleCount(getResamplingRate());
+            System.out.println("From defHelper | Scale Regressor: " + NewModel.defFile.getAdvancedResampleCount());
+        } catch (Exception ex) {
+            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+        }
+        
+        
 
         if (catchCount == 0) {
             //do nothing
@@ -395,7 +405,7 @@ public class advancedOptions extends javax.swing.JFrame {
        // missingValuesCheckBox.setSelected(false);
         //standardizedCoeff.setSelected(false);
         ridgeSpinner.setValue(0.15);
-        resampleSpinner.setValue(100);
+        resampleSpinner.setValue(200);
 
     }//GEN-LAST:event_advancedOptions_resetButtonActionPerformed
 
@@ -615,9 +625,9 @@ public class advancedOptions extends javax.swing.JFrame {
 //        return checked;
 //    }
     
-    public Integer getResamplingRate() {
+    public String getResamplingRate() {
 
-        return (Integer) resampleSpinner.getValue();
+        return String.valueOf(resampleSpinner.getValue());
 
     }
 
