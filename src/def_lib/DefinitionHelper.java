@@ -48,6 +48,7 @@ import org.netbeans.lib.awtextra.AbsoluteLayout;
      import com.opencsv.CSVWriter;
 import java.awt.Graphics;
 import java.awt.Toolkit;
+import java.io.Serializable;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.SwingWorker;
@@ -64,7 +65,7 @@ import javax.swing.SwingWorker;
      * @author Eldin Dzubur.
      */
     
-    public class DefinitionHelper {
+    public class DefinitionHelper implements Serializable {
 
         
         public int terminalVal;
@@ -136,7 +137,7 @@ import javax.swing.SwingWorker;
         private String advancedAdaptiveQuad;
         private String advancedMaxIteration;
         private String advancedMissingValue;
-        private String advancedCenterScale;
+        private String advancedCenterScale = "0";
         private String advancedRidge;
         private String modelBetweenCount = "0";
         private String modelWithinCount = "0";
@@ -176,6 +177,21 @@ import javax.swing.SwingWorker;
         private String[] labelDecompScaleRegressors;
         private String[] labelDecompBSRegressors;
         private String[] labelDecompWSRegressors;
+        
+        /**
+         * Stage 1 GUI Serializable Specifications
+         */
+        private String[] labelModelMeanRegressorsLevelOne;
+        private String[] labelModelLocRanRegressorsLevelOne;
+        private String[] labelModelScaleRegressorsLevelOne;
+        private String[] labelModelBSRegressorsLevelOne;
+        private String[] labelModelWSRegressorsLevelOne;
+        private String[] labelModelMeanRegressorsLevelTwo;
+        private String[] labelModelLocRanRegressorsLevelTwo;
+        private String[] labelModelScaleRegressorsLevelTwo;
+        private String[] labelModelBSRegressorsLevelTwo;
+        private String[] labelModelWSRegressorsLevelTwo;
+        
         /**
          * Stage 2 Advanced Options
          */
@@ -1860,7 +1876,7 @@ import javax.swing.SwingWorker;
 
         //todo
         public void setStageTwoOutcomeCatLabel(String[] stageTwoOutcomeCatLabel) throws Exception {
-            if (loopSetValidator("numeric categories of outcome variable", "21", stageTwoOutcomeCatLabel, 0, 255, MIX_INTEGER)) {
+            if (loopSetValidator("numeric categories of outcome variable", "21", stageTwoOutcomeCatLabel, Integer.MIN_VALUE, Integer.MAX_VALUE, MIX_INTEGER)) {
                 this.stageTwoOutcomeCatLabel = stageTwoOutcomeCatLabel;
             }
         }
@@ -2501,5 +2517,86 @@ import javax.swing.SwingWorker;
                 this.advancedDiscardSubjects = advancedDiscardSubjects;
             }
         }
+
+        public String[] getLabelModelMeanRegressorsLevelOne() {
+            return labelModelMeanRegressorsLevelOne;
+        }
+
+        public void setLabelModelMeanRegressorsLevelOne(String[] labelModelMeanRegressorsLevelOne) {
+            this.labelModelMeanRegressorsLevelOne = labelModelMeanRegressorsLevelOne;
+        }
+
+        public String[] getLabelModelLocRanRegressorsLevelOne() {
+            return labelModelLocRanRegressorsLevelOne;
+        }
+
+        public void setLabelModelLocRanRegressorsLevelOne(String[] labelModelLocRanRegressorsLevelOne) {
+            this.labelModelLocRanRegressorsLevelOne = labelModelLocRanRegressorsLevelOne;
+        }
+
+        public String[] getLabelModelScaleRegressorsLevelOne() {
+            return labelModelScaleRegressorsLevelOne;
+        }
+
+        public void setLabelModelScaleRegressorsLevelOne(String[] labelModelScaleRegressorsLevelOne) {
+            this.labelModelScaleRegressorsLevelOne = labelModelScaleRegressorsLevelOne;
+        }
+
+        public String[] getLabelModelBSRegressorsLevelOne() {
+            return labelModelBSRegressorsLevelOne;
+        }
+
+        public void setLabelModelBSRegressorsLevelOne(String[] labelModelBSRegressorsLevelOne) {
+            this.labelModelBSRegressorsLevelOne = labelModelBSRegressorsLevelOne;
+        }
+
+        public String[] getLabelModelWSRegressorsLevelOne() {
+            return labelModelWSRegressorsLevelOne;
+        }
+
+        public void setLabelModelWSRegressorsLevelOne(String[] labelModelWSRegressorsLevelOne) {
+            this.labelModelWSRegressorsLevelOne = labelModelWSRegressorsLevelOne;
+        }
+
+        public String[] getLabelModelMeanRegressorsLevelTwo() {
+            return labelModelMeanRegressorsLevelTwo;
+        }
+
+        public void setLabelModelMeanRegressorsLevelTwo(String[] labelModelMeanRegressorsLevelTwo) {
+            this.labelModelMeanRegressorsLevelTwo = labelModelMeanRegressorsLevelTwo;
+        }
+
+        public String[] getLabelModelLocRanRegressorsLevelTwo() {
+            return labelModelLocRanRegressorsLevelTwo;
+        }
+
+        public void setLabelModelLocRanRegressorsLevelTwo(String[] labelModelLocRanRegressorsLevelTwo) {
+            this.labelModelLocRanRegressorsLevelTwo = labelModelLocRanRegressorsLevelTwo;
+        }
+
+        public String[] getLabelModelScaleRegressorsLevelTwo() {
+            return labelModelScaleRegressorsLevelTwo;
+        }
+
+        public void setLabelModelScaleRegressorsLevelTwo(String[] labelModelScaleRegressorsLevelTwo) {
+            this.labelModelScaleRegressorsLevelTwo = labelModelScaleRegressorsLevelTwo;
+        }
+
+        public String[] getLabelModelBSRegressorsLevelTwo() {
+            return labelModelBSRegressorsLevelTwo;
+        }
+
+        public void setLabelModelBSRegressorsLevelTwo(String[] labelModelBSRegressorsLevelTwo) {
+            this.labelModelBSRegressorsLevelTwo = labelModelBSRegressorsLevelTwo;
+        }
+
+        public String[] getLabelModelWSRegressorsLevelTwo() {
+            return labelModelWSRegressorsLevelTwo;
+        }
+
+        public void setLabelModelWSRegressorsLevelTwo(String[] labelModelWSRegressorsLevelTwo) {
+            this.labelModelWSRegressorsLevelTwo = labelModelWSRegressorsLevelTwo;
+        }
+        
         
     }

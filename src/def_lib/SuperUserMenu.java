@@ -74,6 +74,7 @@ public class SuperUserMenu extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         csvToDat = new javax.swing.JButton();
+        PrintMeanModel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -148,6 +149,13 @@ public class SuperUserMenu extends javax.swing.JFrame {
             }
         });
 
+        PrintMeanModel.setText("Print Mean Model");
+        PrintMeanModel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PrintMeanModelActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -166,7 +174,9 @@ public class SuperUserMenu extends javax.swing.JFrame {
                                     .addComponent(MixRegMLS_Mixreg, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
                                     .addComponent(MixRegMLS_Mixor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(LoadButton)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(LoadButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(PrintMeanModel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(viewDefButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -206,7 +216,9 @@ public class SuperUserMenu extends javax.swing.JFrame {
                     .addComponent(MixregLS_Mixor, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(MixRegMLS_Mixreg, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
-                .addComponent(ResetButton)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ResetButton)
+                    .addComponent(PrintMeanModel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(runButton)
@@ -408,6 +420,16 @@ public class SuperUserMenu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_csvToDatActionPerformed
 
+    private void PrintMeanModelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrintMeanModelActionPerformed
+        ModelBuilder newMeanModel = new ModelBuilder(defFile);
+        JOptionPane.showMessageDialog(null, newMeanModel.meanEquation());
+        try {
+            newMeanModel.saveWildFile();
+        } catch (IOException ex) {
+            Logger.getLogger(SuperUserMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_PrintMeanModelActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -449,6 +471,7 @@ public class SuperUserMenu extends javax.swing.JFrame {
     private javax.swing.JButton MixRegMLS_Mixor;
     private javax.swing.JButton MixRegMLS_Mixreg;
     private javax.swing.JButton MixregLS_Mixor;
+    private javax.swing.JButton PrintMeanModel;
     private javax.swing.JButton ResetButton;
     private javax.swing.JButton csvToDat;
     private javax.swing.JLabel jLabel1;
