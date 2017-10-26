@@ -555,11 +555,30 @@ public class NewModel extends javax.swing.JFrame {
             NewModel.defFile.setOutputPrefix(extractDatFileName() + "_Output");
             System.out.println("From defHelper | Output file name: " + NewModel.defFile.getOutputPrefix());
        
+        if (randomScaleCheckBox.isSelected()){
+            try {
+                NewModel.defFile.setAdvancedRandomScaleNotIncluded("0");
+                System.out.println("IS RANDOM SCALE INCLUDED: " + NewModel.defFile.getAdvancedRandomScaleNotIncluded());
+            } catch (Exception ex) {
+                Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+            }
         
+        } else {
+        
+        try {
+                NewModel.defFile.setAdvancedRandomScaleNotIncluded("1");
+                System.out.println("IS RANDOM SCALE INCLUDED: " + NewModel.defFile.getAdvancedRandomScaleNotIncluded());
+            } catch (Exception ex) {
+                Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+            }
+        
+        }
             //set conditions here:
             if (newModelMissingValueCode.getText().equals("0") || newModelMissingValueCode.getText().equals("00") || newModelMissingValueCode.getText().equals("000")){
             //show message alert here:
-            JOptionPane.showMessageDialog(null, "Invalid missing value code, 0 implies there are no missing values. Please use some other value. E.g., -9999", "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+            JOptionPane.showMessageDialog(null, "Invalid missing value code, 0 implies there are no missing values. Please use some other value. E.g., -999", "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             
             } else {
                  mxr = new mixregGUI();
