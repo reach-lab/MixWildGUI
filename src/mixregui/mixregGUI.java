@@ -1836,9 +1836,11 @@ public class mixregGUI extends javax.swing.JFrame {
             for (int x = 0; x < ColumnsCustom.size(); x++) {
                 if (UniqueList.contains(ColumnsCustom.get(x))) {
                     //do nothing
+                } else if (ColumnsCustom.get(x).equals(NewModel.defFile.getAdvancedMissingValue())){ //compare if the category is a missing value, then don't consider it as a category
+                    //do nothing
+                    
                 } else {
-
-                    UniqueList.add(ColumnsCustom.get(x));
+                UniqueList.add(ColumnsCustom.get(x));
                 }
 
             }
@@ -4588,8 +4590,11 @@ public class mixregGUI extends javax.swing.JFrame {
             for (int x = 0; x < ColumnsCustom.size(); x++) {
                 if (UniqueList.contains(ColumnsCustom.get(x))) {
                     //do nothing
+                } else if (ColumnsCustom.get(x).equals(NewModel.defFile.getAdvancedMissingValue())){ //compare if the category is a missing value, then don't consider it as a category
+                    //do nothing
+                    
                 } else {
-                    UniqueList.add(ColumnsCustom.get(x));
+                UniqueList.add(ColumnsCustom.get(x));
                 }
             }
             System.out.println("Number of unique categories: " + String.valueOf(UniqueList.size()));
@@ -4640,8 +4645,11 @@ public class mixregGUI extends javax.swing.JFrame {
             for (int x = 0; x < ColumnsCustom.size(); x++) {
                 if (UniqueList.contains(ColumnsCustom.get(x))) {
                     //do nothing
+                } else if (ColumnsCustom.get(x).equals(NewModel.defFile.getAdvancedMissingValue())){ //compare if the category is a missing value, then don't consider it as a category
+                    //do nothing
+                    
                 } else {
-                    UniqueList.add(ColumnsCustom.get(x));
+                UniqueList.add(ColumnsCustom.get(x));
                 }
             }
            // System.out.println("Number of unique categories: " + String.valueOf(UniqueList.size()));
