@@ -543,6 +543,15 @@ public class NewModel extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
         
+        try {
+            NewModel.defFile.setAdvancedCenterScale(String.valueOf(0));
+            System.out.println("From defHelper | Scale Regressor: " + NewModel.defFile.getAdvancedCenterScale());
+            
+        } catch (Exception ex) {
+            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+        }
+        
             NewModel.defFile.setOutputPrefix(extractDatFileName() + "_Output");
             System.out.println("From defHelper | Output file name: " + NewModel.defFile.getOutputPrefix());
        
