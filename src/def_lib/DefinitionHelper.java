@@ -2239,15 +2239,7 @@ import javax.swing.SwingWorker;
                 
                progressWindow.add(scroller);
                scroller.setBounds(0, 0, 500, 500);
-               
-//               JLabel loaderLabel = new JLabel();
-//               
-//                ImageIcon loader = new ImageIcon(this.getClass().getResource(
-//                    "preloader.gif"));
-//                
-//                loaderLabel.setIcon(loader);
-//                loader.setImageObserver(loaderLabel);
-//                progressWindow.add(loaderLabel);
+             
               
                 JButton cancelButton = new JButton("Cancel Analysis");
                 progressWindow.add(cancelButton);
@@ -2257,11 +2249,7 @@ import javax.swing.SwingWorker;
                 
                 Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
                 progressWindow.setLocation(dim.width/2-progressWindow.getSize().width/2, dim.height/2-progressWindow.getSize().height/2);
-                
-                
-                
-//                progressPane.revalidate();
-//                progressPane.repaint();
+
                 
             try {         
                    copyExecutable(defFilePath, selectedModel);
@@ -2278,11 +2266,7 @@ import javax.swing.SwingWorker;
                                     System.out.println("MIXWILD:" + line);
                                     
                                     progressPane.append("MIXWILD:" + line + "\n");
-                                   // progressPane.repaint();
-                                    //should append all the text after a new line to the text area
-                                   // progressPane.setCaretPosition(progressPane.getDocument().getLength());
-//                                   Graphics g = progressPane.getGraphics();
-//                                   paint(g);
+                                   
                                 }
                                 } catch (IOException ioe)
                                   {
