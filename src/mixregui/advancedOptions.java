@@ -199,7 +199,7 @@ public class advancedOptions extends javax.swing.JFrame {
         jLabel9.setText("Resample stage 2:");
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
 
-        resampleSpinner.setModel(new javax.swing.SpinnerNumberModel(200, 1, 10000, 1));
+        resampleSpinner.setModel(new javax.swing.SpinnerNumberModel(500, 1, 10000, 1));
         jPanel2.add(resampleSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 70, -1));
 
         resampleCheckBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -377,7 +377,7 @@ public class advancedOptions extends javax.swing.JFrame {
         
         try {
             NewModel.defFile.setAdvancedResampleCount(getResamplingRate());
-            System.out.println("From defHelper | Scale Regressor: " + NewModel.defFile.getAdvancedResampleCount());
+            System.out.println("From defHelper | Resample count: " + NewModel.defFile.getAdvancedResampleCount());
         } catch (Exception ex) {
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
