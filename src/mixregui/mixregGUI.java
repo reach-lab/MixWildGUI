@@ -1653,6 +1653,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
                 if (defCatch == 0) {
                     stageOneTabs.setSelectedIndex(2);
+                    stageOneTabs.setEnabledAt(3, false);
                 }
 
             } else {
