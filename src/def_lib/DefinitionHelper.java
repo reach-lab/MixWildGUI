@@ -52,6 +52,7 @@ import java.io.Serializable;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.SwingWorker;
+import mixregui.mixregGUI;
     import org.apache.commons.io.FilenameUtils;
 
 
@@ -2291,6 +2292,9 @@ import javax.swing.SwingWorker;
                    // FileReader reader = new FileReader(absoluteJavaPath + ".out file name");
                     terminalVal = exitVal;
                    Process p2=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && del /f " + defFileName); //delete the file when everything works great.
+                   mixregGUI.stageOneOutput.setText("Stage 1 output");
+                   mixregGUI.stageTwoOutput.setText("Stage 2 output");
+                   
                    progressWindow.dispose(); //should close the window when done after this line
                    
                   // FileReader reader = new FileReader(absoluteJavaPath + ".out file name");
@@ -2328,8 +2332,7 @@ import javax.swing.SwingWorker;
         System.out.println("THE PROCESS IS COMPLETE");
         
         }
-        
-        
+
         }
 
         public int getExitVal(){

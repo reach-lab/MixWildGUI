@@ -2222,7 +2222,7 @@ public class mixregGUI extends javax.swing.JFrame {
             }
 
             if (defCatch == 0) {
-                stageOneTabs.setSelectedIndex(3);
+                stageOneTabs.setSelectedIndex(3);//todo: get output as soon as it is ready
             }
 
         } else {
@@ -2374,10 +2374,10 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JButton resetButton;
     private javax.swing.JButton runTabTwoStageOneTwo;
     private javax.swing.JButton saveStage2OutButton;
-    private javax.swing.JTextArea stageOneOutput;
+    public static javax.swing.JTextArea stageOneOutput;
     private javax.swing.JTabbedPane stageOneTabs;
     private javax.swing.JComboBox<String> stageTwoOutcome;
-    private javax.swing.JTextArea stageTwoOutput;
+    public static javax.swing.JTextArea stageTwoOutput;
     private javax.swing.JPanel stageTwoPanel;
     private javax.swing.JPanel stageTwoRegsGrid;
     private javax.swing.JButton startStageTwo;
