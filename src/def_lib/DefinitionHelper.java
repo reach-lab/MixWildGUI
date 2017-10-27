@@ -2227,7 +2227,7 @@ import mixregui.mixregGUI;
                progressWindow.setLayout(defFileFlow);
                 defFileFlow.setAlignment(FlowLayout.TRAILING);
                 progressWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                progressWindow.setSize(500,680);
+                progressWindow.setSize(630,680);
                 progressWindow.setResizable(false);
                
                 progressPane = new JTextArea(30, 80);
