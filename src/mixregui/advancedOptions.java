@@ -54,6 +54,7 @@ public class advancedOptions extends javax.swing.JFrame {
         BSVarianceCheckBox.setSelected(true);
         WSVarianceCheckBox.setSelected(true);
         adaptiveQuadritureCheckBox.setSelected(true);
+        discardSubjectsCheckBox.setSelected(false);
         
         resampleCheckBox.setSelected(true);
         
@@ -106,7 +107,7 @@ public class advancedOptions extends javax.swing.JFrame {
         resampleCheckBox = new javax.swing.JCheckBox();
         jLabel10 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        discardSubjectsCheckBox = new javax.swing.JCheckBox();
         jButton1 = new javax.swing.JButton();
         advancedOptions_resetButton = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
@@ -217,7 +218,7 @@ public class advancedOptions extends javax.swing.JFrame {
 
         jLabel12.setText("Discard Subjects?");
         jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
-        jPanel2.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, -1, -1));
+        jPanel2.add(discardSubjectsCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, -1, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(294, 21, 260, 230));
 
@@ -293,7 +294,17 @@ public class advancedOptions extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-             catchCount = 1;
+            catchCount = 1;
+        }
+        
+        try {
+            NewModel.defFile.setAdvancedDiscardSubjects(getDiscardSubjectsCheck());
+            System.out.println("DISCARD SUBJECTS: " + NewModel.defFile.getAdvancedDiscardSubjects());
+            tryCount = 1;
+        } catch (Exception ex) {
+            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+            catchCount = 1;
         }
 
         //set quadriture points
@@ -483,8 +494,8 @@ public class advancedOptions extends javax.swing.JFrame {
     private javax.swing.JButton advancedOptions_resetButton;
     private javax.swing.JCheckBox centerRegressorsCheckBox;
     private javax.swing.JSpinner convergenceCriteria;
+    private javax.swing.JCheckBox discardSubjectsCheckBox;
     private javax.swing.JButton jButton1;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -647,6 +658,21 @@ public class advancedOptions extends javax.swing.JFrame {
 
         return String.valueOf(resampleSpinner.getValue());
 
+    }
+    
+    public String getDiscardSubjectsCheck(){
+        
+        String check = "0";
+        
+        if (discardSubjectsCheckBox.isSelected()){
+        
+        check = "1";
+        } else {
+        check = "0";
+        
+        }
+        
+        return check;
     }
 
 }
