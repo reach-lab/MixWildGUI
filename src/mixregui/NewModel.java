@@ -57,6 +57,7 @@ public class NewModel extends javax.swing.JFrame {
      */
     public NewModel() {
         initComponents();
+        this.setResizable(false);
         
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
