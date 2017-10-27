@@ -960,6 +960,9 @@ public class mixregGUI extends javax.swing.JFrame {
 
         if (outcomeNone == false) {
             stageOneTabs.setEnabledAt(1, true);
+        } else {
+        
+        stageOneTabs.setEnabledAt(1, false);
         }
 
         int tryCount = 0;
@@ -1635,9 +1638,9 @@ public class mixregGUI extends javax.swing.JFrame {
                 try {
                     List<String> defFileOutput;
 
-                    NewModel.defFile.writeDefFileToFolder();
+                    NewModel.defFile.writeStageOneOnlyDefFileToFolder();
 
-                    defFileOutput = NewModel.defFile.buildStageOneDefinitonList();
+                    //defFileOutput = NewModel.defFile.buildStageOneOnlyDefinitonList();
 
                     System.out.println("From defHelper | Stage 1 def file created successfully!");
 
@@ -1649,7 +1652,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 }
 
                 if (defCatch == 0) {
-                    stageOneTabs.setSelectedIndex(3);
+                    stageOneTabs.setSelectedIndex(2);
                 }
 
             } else {

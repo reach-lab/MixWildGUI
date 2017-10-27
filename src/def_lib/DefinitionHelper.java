@@ -550,6 +550,133 @@ import mixregui.mixregGUI;
 
             return newDefinitionFile;
         }
+        
+        
+        public List<String> debugStageOneOnlyDefinitonList() throws Exception {
+            List<String> newDefinitionFile = new ArrayList();
+            newDefinitionFile.add(getModelTitle());
+            newDefinitionFile.add(getModelSubtitle());
+            newDefinitionFile.add(getDataFilename());
+            newDefinitionFile.add(getOutputPrefix());
+            String[] advancedOptionsOne = advancedVariableBuild(1);
+            newDefinitionFile.add(Arrays.toString(advancedOptionsOne).replaceAll(",", " "));
+            newDefinitionFile.add(Arrays.toString(getIdOutcome()).replaceAll(",", " "));
+            newDefinitionFile.add(Arrays.toString(getFieldModelMeanRegressors()).replaceAll(",", " "));
+            String[] advancedOptionsTwo = advancedVariableBuild(2);
+
+
+            switch (sequenceDecision()) {
+                case MIXREGLS_MIXREG_KEY:
+                    newDefinitionFile.add(Arrays.toString(getFieldModelBSRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getFieldModelWSRegressors()).replaceAll(",", " "));
+                     newDefinitionFile.add(Arrays.toString(getFieldDecompMeanRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getFieldDecompBSRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getFieldDecompWSRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(getLabelModelOutcome());
+                      newDefinitionFile.add(Arrays.toString(getLabelModelMeanRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getLabelModelBSRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getLabelModelWSRegressors()).replaceAll(",", " "));
+                     newDefinitionFile.add(Arrays.toString(getLabelDecompMeanRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getLabelDecompBSRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getLabelDecompWSRegressors()).replaceAll(",", " "));
+
+                    newDefinitionFile.add(Arrays.toString(advancedOptionsTwo).replaceAll(",", " ")); 
+//                    newDefinitionFile.add(getStageTwoOutcomeField());
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoFixedFields()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoLocRanIntFields()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoScaleIntFields()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoFirstIntFields()).replaceAll(",", " "));
+//                    newDefinitionFile.add(getStageTwoOutcomeLabel());
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoFixedLabels()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoLocRanIntLabels()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoScaleIntLabels()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoFirstIntLabels()).replaceAll(",", " "));
+                    break;
+                case MIXREGLS_MIXOR_KEY:
+                    newDefinitionFile.add(Arrays.toString(getFieldModelBSRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getFieldModelWSRegressors()).replaceAll(",", " "));
+                     newDefinitionFile.add(Arrays.toString(getFieldDecompMeanRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getFieldDecompBSRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getFieldDecompWSRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(getLabelModelOutcome());
+                     newDefinitionFile.add(Arrays.toString(getLabelModelMeanRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getLabelModelBSRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getLabelModelWSRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getLabelDecompMeanRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getLabelDecompBSRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getLabelDecompWSRegressors()).replaceAll(",", " "));
+
+                    newDefinitionFile.add(Arrays.toString(advancedOptionsTwo).replaceAll(",", " ")); 
+//                    newDefinitionFile.add(getStageTwoOutcomeField());
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoFixedFields()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoLocRanIntFields()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoScaleIntFields()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoFirstIntFields()).replaceAll(",", " "));
+//                    newDefinitionFile.add(getStageTwoOutcomeLabel());
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoFixedLabels()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoLocRanIntLabels()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoScaleIntLabels()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoFirstIntLabels()).replaceAll(",", " "));
+                    break;
+                case MIXREGMLS_MIXREG_KEY:
+                    newDefinitionFile.add(Arrays.toString(getFieldModelLocRanRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getFieldModelScaleRegressors()).replaceAll(",", " "));
+                     newDefinitionFile.add(Arrays.toString(getFieldDecompMeanRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getFieldDecompLocRanRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getFieldDecompScaleRegressors()).replaceAll(",", " "));
+                     newDefinitionFile.add(getLabelModelOutcome());
+                      newDefinitionFile.add(Arrays.toString(getLabelModelMeanRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getLabelModelLocRanRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getLabelModelScaleRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getLabelDecompMeanRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getLabelDecompLocRanRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getLabelDecompScaleRegressors()).replaceAll(",", " "));
+
+                    newDefinitionFile.add(Arrays.toString(advancedOptionsTwo).replaceAll(",", " ")); 
+//                    newDefinitionFile.add(getStageTwoOutcomeField());
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoFixedFields()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoLocRanIntFields()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoScaleIntFields()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoFirstIntFields()).replaceAll(",", " "));
+//                    newDefinitionFile.add(getStageTwoOutcomeLabel());
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoFixedLabels()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoLocRanIntLabels()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoScaleIntLabels()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoFirstIntLabels()).replaceAll(",", " "));
+                    break;
+                case MIXREGMLS_MIXOR_KEY:
+                    newDefinitionFile.add(Arrays.toString(getFieldModelLocRanRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getFieldModelScaleRegressors()).replaceAll(",", " "));
+                     newDefinitionFile.add(Arrays.toString(getFieldDecompMeanRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getFieldDecompLocRanRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getFieldDecompScaleRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(getLabelModelOutcome());
+                     newDefinitionFile.add(Arrays.toString(getLabelModelMeanRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getLabelModelLocRanRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getLabelModelScaleRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getLabelDecompMeanRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getLabelDecompLocRanRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getLabelDecompScaleRegressors()).replaceAll(",", " "));
+
+                    newDefinitionFile.add(Arrays.toString(advancedOptionsTwo).replaceAll(",", " ")); 
+//                    newDefinitionFile.add(getStageTwoOutcomeField());
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoFixedFields()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoLocRanIntFields()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoScaleIntFields()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoFirstIntFields()).replaceAll(",", " "));
+//                    newDefinitionFile.add(getStageTwoOutcomeLabel());
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoFixedLabels()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoLocRanIntLabels()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoScaleIntLabels()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoFirstIntLabels()).replaceAll(",", " "));
+                    break;
+                default:
+                //TODO: Log this error     
+            }
+
+
+            return newDefinitionFile;
+        }
 
         /**
          *
@@ -672,6 +799,133 @@ import mixregui.mixregGUI;
                     newDefinitionFile.add(Arrays.toString(getStageTwoLocRanIntLabels()).replaceAll(",", " "));
                     newDefinitionFile.add(Arrays.toString(getStageTwoScaleIntLabels()).replaceAll(",", " "));
                     newDefinitionFile.add(Arrays.toString(getStageTwoFirstIntLabels()).replaceAll(",", " "));
+                    break;
+                default:
+                //TODO: Log this error     
+            }
+
+            exportValidatorStageOne();
+            return newDefinitionFile;
+        }
+        
+        
+        public List<String> buildStageOneOnlyDefinitonList() throws Exception { //does this create the def file
+            List<String> newDefinitionFile = new ArrayList();
+            newDefinitionFile.add(getModelTitle());
+            newDefinitionFile.add(getModelSubtitle());
+            newDefinitionFile.add(getDataFilename());
+            newDefinitionFile.add(getOutputPrefix());
+            String[] advancedOptionsOne = advancedVariableBuild(1);
+            newDefinitionFile.add(Arrays.toString(advancedOptionsOne).replaceAll(",", " "));
+            newDefinitionFile.add(Arrays.toString(getIdOutcome()).replaceAll(",", " "));
+            newDefinitionFile.add(Arrays.toString(getFieldModelMeanRegressors()).replaceAll(",", " "));
+            String[] advancedOptionsTwo = advancedVariableBuild(2);
+
+
+            switch (sequenceDecision()) {
+                case MIXREGLS_MIXREG_KEY:
+                    newDefinitionFile.add(Arrays.toString(getFieldModelBSRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getFieldModelWSRegressors()).replaceAll(",", " "));
+                     newDefinitionFile.add(Arrays.toString(getFieldDecompMeanRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getFieldDecompBSRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getFieldDecompWSRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(getLabelModelOutcome());
+                      newDefinitionFile.add(Arrays.toString(getLabelModelMeanRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getLabelModelBSRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getLabelModelWSRegressors()).replaceAll(",", " "));
+                     newDefinitionFile.add(Arrays.toString(getLabelDecompMeanRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getLabelDecompBSRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getLabelDecompWSRegressors()).replaceAll(",", " "));
+
+                    newDefinitionFile.add(Arrays.toString(advancedOptionsTwo).replaceAll(",", " ")); 
+//                    newDefinitionFile.add(getStageTwoOutcomeField());
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoFixedFields()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoLocRanIntFields()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoScaleIntFields()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoFirstIntFields()).replaceAll(",", " "));
+//                    newDefinitionFile.add(getStageTwoOutcomeLabel());
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoFixedLabels()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoLocRanIntLabels()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoScaleIntLabels()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoFirstIntLabels()).replaceAll(",", " "));
+                    break;
+                case MIXREGLS_MIXOR_KEY:
+                    newDefinitionFile.add(Arrays.toString(getFieldModelBSRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getFieldModelWSRegressors()).replaceAll(",", " "));
+                     newDefinitionFile.add(Arrays.toString(getFieldDecompMeanRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getFieldDecompBSRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getFieldDecompWSRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(getLabelModelOutcome());
+                     newDefinitionFile.add(Arrays.toString(getLabelModelMeanRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getLabelModelBSRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getLabelModelWSRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getLabelDecompMeanRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getLabelDecompBSRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getLabelDecompWSRegressors()).replaceAll(",", " "));
+
+                    newDefinitionFile.add(Arrays.toString(advancedOptionsTwo).replaceAll(",", " ")); 
+//                    newDefinitionFile.add(getStageTwoOutcomeField());
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoFixedFields()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoLocRanIntFields()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoScaleIntFields()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoFirstIntFields()).replaceAll(",", " "));
+//                    newDefinitionFile.add(getStageTwoOutcomeLabel());
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoFixedLabels()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoLocRanIntLabels()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoScaleIntLabels()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoFirstIntLabels()).replaceAll(",", " "));
+                    break;
+                case MIXREGMLS_MIXREG_KEY:
+                    newDefinitionFile.add(Arrays.toString(getFieldModelLocRanRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getFieldModelScaleRegressors()).replaceAll(",", " "));
+                     newDefinitionFile.add(Arrays.toString(getFieldDecompMeanRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getFieldDecompLocRanRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getFieldDecompScaleRegressors()).replaceAll(",", " "));
+                     newDefinitionFile.add(getLabelModelOutcome());
+                      newDefinitionFile.add(Arrays.toString(getLabelModelMeanRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getLabelModelLocRanRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getLabelModelScaleRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getLabelDecompMeanRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getLabelDecompLocRanRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getLabelDecompScaleRegressors()).replaceAll(",", " "));
+
+                    newDefinitionFile.add(Arrays.toString(advancedOptionsTwo).replaceAll(",", " ")); 
+//                    newDefinitionFile.add(getStageTwoOutcomeField());
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoFixedFields()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoLocRanIntFields()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoScaleIntFields()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoFirstIntFields()).replaceAll(",", " "));
+//                    newDefinitionFile.add(getStageTwoOutcomeLabel());
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoFixedLabels()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoLocRanIntLabels()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoScaleIntLabels()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoFirstIntLabels()).replaceAll(",", " "));
+                    break;
+                case MIXREGMLS_MIXOR_KEY:
+                    newDefinitionFile.add(Arrays.toString(getFieldModelLocRanRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getFieldModelScaleRegressors()).replaceAll(",", " "));
+                     newDefinitionFile.add(Arrays.toString(getFieldDecompMeanRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getFieldDecompLocRanRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getFieldDecompScaleRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(getLabelModelOutcome());
+                     newDefinitionFile.add(Arrays.toString(getLabelModelMeanRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getLabelModelLocRanRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getLabelModelScaleRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getLabelDecompMeanRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getLabelDecompLocRanRegressors()).replaceAll(",", " "));
+                    newDefinitionFile.add(Arrays.toString(getLabelDecompScaleRegressors()).replaceAll(",", " "));
+
+                    newDefinitionFile.add(Arrays.toString(advancedOptionsTwo).replaceAll(",", " ")); 
+//                    newDefinitionFile.add(getStageTwoOutcomeField());
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoFixedFields()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoLocRanIntFields()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoScaleIntFields()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoFirstIntFields()).replaceAll(",", " "));
+//                    newDefinitionFile.add(getStageTwoOutcomeLabel());
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoFixedLabels()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoLocRanIntLabels()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoScaleIntLabels()).replaceAll(",", " "));
+//                    newDefinitionFile.add(Arrays.toString(getStageTwoFirstIntLabels()).replaceAll(",", " "));
                     break;
                 default:
                 //TODO: Log this error     
@@ -2121,6 +2375,122 @@ import mixregui.mixregGUI;
 
 
         }
+        
+        public void writeStageOneOnlyDefFileToFolder(){
+
+            try{
+                myFrame = new JFrame("Definition File Preview");
+
+                FlowLayout defFileFlow = new FlowLayout();
+
+                myFrame.setLayout(defFileFlow);
+                defFileFlow.setAlignment(FlowLayout.TRAILING);
+                myFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                myFrame.setSize(510,700);
+                myFrame.setResizable(false);
+                myPane = new JEditorPane();
+                myPane.setSize(500, 500);
+                myPane.setContentType("text/plain");
+                myPane.setFont(new Font("Monospaced", 0, 12));
+                myPane.setLayout(new BorderLayout(500, 500));
+                myPane.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+                String newline = System.getProperty("line.separator");
+                try{
+                myPane.setText(String.join(newline,debugStageOneDefinitonList()).replace("[", "").replace("]", ""));
+                }
+                catch(Exception e){
+                myPane.setText(String.join(newline,debugStageOneDefinitonList()).replace("[", "").replace("]", ""));
+                }
+
+                JButton proceedButton = new JButton("Proceed");
+                JButton saveDefFile = new JButton("Save Def File");
+
+                myFrame.add(myPane);
+                myFrame.add(proceedButton);
+                myFrame.add(saveDefFile);
+                myFrame.setComponentOrientation(ComponentOrientation.UNKNOWN);
+
+                proceedButton.addActionListener(new ActionListener() {
+
+                    public void actionPerformed(ActionEvent e){
+
+                        try {
+                            // modelSelector();
+                            // System.out.println("SELECTED MODEL: " + );
+                            
+                            
+                            
+                            //runMixRegModels(); // run the updated functions of executing Don's code
+                            progressStatus = new ProgressStatus();
+                            progressStatus.execute();
+                        } catch (Exception ex) {
+                            Logger.getLogger(DefinitionHelper.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+
+
+                        myFrame.dispose();
+                    }
+
+                });
+
+                saveDefFile.addActionListener(new ActionListener() {
+
+                    public void actionPerformed(ActionEvent e){
+                        try {
+                            saveDefFileLocally();
+                        } catch (IOException ex) {
+                            Logger.getLogger(DefinitionHelper.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+
+                });
+
+                myFrame.setVisible(true); 
+                myFrame.setAlwaysOnTop(true);
+                
+                Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+                myFrame.setLocation(dim.width/2-myFrame.getSize().width/2, dim.height/2-myFrame.getSize().height/2);
+                
+                Document defDoc = myPane.getDocument();
+                int length = defDoc.getLength();
+
+                //File newDefFile = new File("MIXREGLS_MIXREG_KEY");
+                String dataFileSample = new File(this.getDataFilename()).getAbsolutePath();
+                String newDefFilePrefix = dataFileSample.substring(0,dataFileSample.lastIndexOf(File.separator)) + "/";
+                
+                if (selectedModel == DefinitionHelper.MIXREGLS_MIXREG_KEY){
+                    newDefFile = new File(newDefFilePrefix+"MIXREGLS_RANDOM_MIXREG");
+                } else if (selectedModel == DefinitionHelper.MIXREGLS_MIXOR_KEY){
+
+                    newDefFile = new File(newDefFilePrefix+"MIXREGLS_RANDOM_MIXOR");
+                } else if (selectedModel == DefinitionHelper.MIXREGMLS_MIXREG_KEY){
+
+                    newDefFile = new File(newDefFilePrefix+"MIXREGMLS_RANDOM_MIXREG");
+                } else if (selectedModel == DefinitionHelper.MIXREGMLS_MIXOR_KEY) {
+
+                    newDefFile = new File(newDefFilePrefix+"MIXREGMLS_RANDOM_MIXOR");
+                }
+
+               // File newDefFile = new File("tester");
+                /*OutputStream os = new BufferedOutputStream(
+                  new FileOutputStream(newDefFile + ".def"));
+                Writer w = new OutputStreamWriter(os);*/
+                
+                FileWriter out = new FileWriter(newDefFile + ".def");
+                out.write(myPane.getText());
+                out.close();
+               ////myPane.write(w);
+                //String filePath = newDefFile.getAbsolutePath();
+                //defFilePath = filePath.substring(0,filePath.lastIndexOf(File.separator)) + "/";
+                //System.out.println("PATH-NAME: " + defFilePath);
+               /////w.close();
+            }
+            catch(Exception exception){
+                exception.printStackTrace();
+            }
+
+
+        }
 
         public void saveDefFileLocally() throws IOException{
 
@@ -2606,6 +2976,12 @@ import mixregui.mixregGUI;
         }
         
         public void readStageTwoOutputfile() throws FileNotFoundException, IOException{
+           
+            
+            if (NewModel.defFile.getAdvancedDropSecondStage().equals("1")){
+            
+            //do nothing
+            } else {
             String fileName = NewModel.defFile.getDataFilename();
             String outputFilePath = FilenameUtils.removeExtension(fileName) + "_Output_2.out";
             File file = new File(outputFilePath);
@@ -2619,8 +2995,8 @@ import mixregui.mixregGUI;
 	}
  
 	br.close();
+            
+            }
 
         }
-        
-        
     }
