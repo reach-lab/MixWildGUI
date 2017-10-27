@@ -1,13 +1,16 @@
 package def_lib;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import java.awt.Font;
+import java.awt.Graphics;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 import org.apache.commons.io.FilenameUtils;
@@ -23,7 +26,9 @@ public class ModelBuilder {
     
     private static final String KEY_ALPHA = "\u03b1";
     private static final String KEY_BETA = "\u03b2";
-    private static final String KEY_EPSILON = "\03b5";
+    private static final String KEY_EPSILON = "\u03b5";
+    private static final String KEY_I = "\u1d62";
+    private static final String KEY_IJ = "\u1d62" + "\u2c7c";
     private static final String KEY_PLUS = " + ";
     
     
@@ -44,10 +49,10 @@ public class ModelBuilder {
     }
     
     public String meanEquation(){
-        String prefix = "yij = ";
-        String constant = KEY_BETA + " + ";
-        String bsvar = "ui + ";
-        String wsvar = KEY_EPSILON + "ij";
+        String prefix = "Y" + KEY_IJ + " = ";
+        String constant = KEY_BETA + KEY_IJ + KEY_PLUS;
+        String bsvar = "u" + KEY_I + KEY_PLUS;
+        String wsvar = KEY_EPSILON + KEY_IJ;
         if(buildFile.getModelFixedInt().matches("0")){
             constant="";
         }
@@ -58,17 +63,31 @@ public class ModelBuilder {
         }
         String[] decompMeanArray = buildFile.getLabelDecompMeanRegressors();
         for(int i = 0; i < decompMeanArray.length; i++){
-            regressors += decompMeanArray[i].toUpperCase() + "_BS"+ KEY_BETA + "i" + KEY_PLUS + decompMeanArray[i].toUpperCase() + "_WS" + KEY_BETA + "ij" + KEY_PLUS;    
+            regressors += decompMeanArray[i].toUpperCase() + "_BS"+ KEY_BETA + KEY_I + KEY_PLUS + decompMeanArray[i].toUpperCase() + "_WS" + KEY_BETA + KEY_IJ + KEY_PLUS;    
         }
+        
+        //Font equation = new Font(Font.SERIF,Font.ITALIC,16);
+        //Font regreressors = new Font(Font.MONOSPACED,Font.ITALIC,16);
+        
         return prefix + constant + regressors + bsvar + wsvar;
     }
     
-    public void saveWildFile() throws FileNotFoundException, IOException {
-        FileInputStream in = new FileInputStream(buildFile.getDataFilename());
-        String fileNamePath = FilenameUtils.getFullPath(buildFile.getDataFilename());
+    public static void saveWildDefinitionFile(String filePath, DefinitionHelper defLib) throws FileNotFoundException, IOException {
+        FileOutputStream fos2 = new FileOutputStream(filePath);
+        ObjectOutputStream out2= new ObjectOutputStream(fos2);
+        out2.writeObject(defLib);  
+        out2.flush();
+        out2.close();
+        fos2.close();
+    }
+    
+    
+    public static void saveWildFile(DefinitionHelper defLib) throws FileNotFoundException, IOException {
+        FileInputStream in = new FileInputStream(defLib.getDataFilename());
+        String fileNamePath = FilenameUtils.getFullPath(defLib.getDataFilename());
 
-        ZipOutputStream out = new ZipOutputStream(new FileOutputStream(fileNamePath + buildFile.getOutputPrefix() + ".mwa"));
-        out.putNextEntry(new ZipEntry(FilenameUtils.getName(buildFile.getDataFilename()))); 
+        ZipOutputStream out = new ZipOutputStream(new FileOutputStream(fileNamePath + defLib.getOutputPrefix() + ".mwa"));
+        out.putNextEntry(new ZipEntry(FilenameUtils.getName(defLib.getDataFilename()))); 
 
         byte[] b = new byte[1024];
         int count;
@@ -79,16 +98,10 @@ public class ModelBuilder {
         out.closeEntry();
         in.close();
         
-        //Gson gson = new GsonBuilder().create();
-        //String jsonString = gson.toJson(buildFile);
-        FileOutputStream fos2 = new FileOutputStream(fileNamePath + buildFile.getOutputPrefix() + ".mwd");
-        ObjectOutputStream out2= new ObjectOutputStream(fos2);
-        out2.writeObject(buildFile);  
-        out2.flush();
-        out2.close();
+        saveWildDefinitionFile(fileNamePath + defLib.getOutputPrefix() + ".mwd", defLib);
         
-        FileInputStream in2 = new FileInputStream(fileNamePath + buildFile.getOutputPrefix() + ".mwd");
-        out.putNextEntry(new ZipEntry(buildFile.getOutputPrefix() + ".mwd"));
+        FileInputStream in2 = new FileInputStream(fileNamePath + defLib.getOutputPrefix() + ".mwd");
+        out.putNextEntry(new ZipEntry(defLib.getOutputPrefix() + ".mwd"));
         byte[] b2 = new byte[1024];
         int count2;
         
@@ -96,11 +109,14 @@ public class ModelBuilder {
             out.write(b2, 0, count2);
         }
         out.close();
-        in2.close();
+        in2.close();   
     }
     
-}
-     
+    public static DefinitionHelper loadWildFile (String filePath) throws IOException, ClassNotFoundException {
+        ObjectInputStream ino =new ObjectInputStream(new FileInputStream(filePath));  
+        DefinitionHelper s;
+        s = (DefinitionHelper)ino.readObject(); 
+        return s;
+    }
     
-    
-    
+} 

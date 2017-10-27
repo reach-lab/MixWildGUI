@@ -423,11 +423,6 @@ public class SuperUserMenu extends javax.swing.JFrame {
     private void PrintMeanModelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrintMeanModelActionPerformed
         ModelBuilder newMeanModel = new ModelBuilder(defFile);
         JOptionPane.showMessageDialog(null, newMeanModel.meanEquation());
-        try {
-            newMeanModel.saveWildFile();
-        } catch (IOException ex) {
-            Logger.getLogger(SuperUserMenu.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }//GEN-LAST:event_PrintMeanModelActionPerformed
 
     /**
