@@ -2396,10 +2396,10 @@ import mixregui.mixregGUI;
                 myPane.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
                 String newline = System.getProperty("line.separator");
                 try{
-                myPane.setText(String.join(newline,debugStageOneDefinitonList()).replace("[", "").replace("]", ""));
+                myPane.setText(String.join(newline,debugStageOneOnlyDefinitonList()).replace("[", "").replace("]", ""));
                 }
                 catch(Exception e){
-                myPane.setText(String.join(newline,debugStageOneDefinitonList()).replace("[", "").replace("]", ""));
+                myPane.setText(String.join(newline,debugStageOneOnlyDefinitonList()).replace("[", "").replace("]", ""));
                 }
 
                 JButton proceedButton = new JButton("Proceed");
