@@ -52,6 +52,7 @@ import java.io.Serializable;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.SwingWorker;
+import mixregui.NewModel;
 import mixregui.mixregGUI;
     import org.apache.commons.io.FilenameUtils;
 
@@ -2292,8 +2293,8 @@ import mixregui.mixregGUI;
                    // FileReader reader = new FileReader(absoluteJavaPath + ".out file name");
                     terminalVal = exitVal;
                    Process p2=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && del /f " + defFileName); //delete the file when everything works great.
-                   mixregGUI.stageOneOutput.setText("Stage 1 output");
-                   mixregGUI.stageTwoOutput.setText("Stage 2 output");
+                   readStageOneOutputfile();
+                   readStageTwoOutputfile();
                    
                    progressWindow.dispose(); //should close the window when done after this line
                    
@@ -2583,6 +2584,40 @@ import mixregui.mixregGUI;
 
         public void setLabelModelWSRegressorsLevelTwo(String[] labelModelWSRegressorsLevelTwo) {
             this.labelModelWSRegressorsLevelTwo = labelModelWSRegressorsLevelTwo;
+        }
+        
+        public void readStageOneOutputfile() throws FileNotFoundException, IOException{
+            String fileName = NewModel.defFile.getDataFilename();
+            String outputFilePath = FilenameUtils.removeExtension(fileName) + "_Output_1.out";
+            File file = new File(outputFilePath);
+            BufferedReader br = null;
+            String line = "";
+            
+            br = new BufferedReader(new FileReader(file));
+            while ((line = br.readLine()) != null) {
+		//System.out.println(line);
+                mixregGUI.stageOneOutput.append(line + "\n");
+	}
+ 
+	br.close();
+
+        }
+        
+        public void readStageTwoOutputfile() throws FileNotFoundException, IOException{
+            String fileName = NewModel.defFile.getDataFilename();
+            String outputFilePath = FilenameUtils.removeExtension(fileName) + "_Output_2.out";
+            File file = new File(outputFilePath);
+            BufferedReader br = null;
+            String line = "";
+            
+            br = new BufferedReader(new FileReader(file));
+            while ((line = br.readLine()) != null) {
+		//System.out.println(line);
+                mixregGUI.stageTwoOutput.append(line + "\n");
+	}
+ 
+	br.close();
+
         }
         
         
