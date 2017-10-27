@@ -279,6 +279,16 @@ public class advancedOptions extends javax.swing.JFrame {
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
             catchCount = 1;
         }
+        
+        try {
+            NewModel.defFile.setAdvancedCutoffLower("0");
+            System.out.println("CUT OFF: " + NewModel.defFile.getAdvancedCutoffLower());
+            tryCount = 1;
+        } catch (Exception ex) {
+            Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+             catchCount = 1;
+        }
 
         //set quadriture points
         try {
