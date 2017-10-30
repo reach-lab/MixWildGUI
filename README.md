@@ -22,8 +22,9 @@ Please go to downloads and click on the file ... (Pending)
 3. NOTE: It is important to keep the JAVA on your PC updated to run a .Jar file
 
 ### Running a .exe file ###
-1. Please go to downloads and click on the file ...
+1. Please go to downloads folder of the bitbucket and click on the latest version of MixWILD-X.0.exe
 2. Once downloaded, click "Open", then hit "Run"
+3. For the first time users, it will install the application and then run
 
 ### Important instructions ###
 1. If using a Windows PC, please ensure that your Java is upto date
