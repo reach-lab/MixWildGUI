@@ -2194,7 +2194,7 @@ public class mixregGUI extends javax.swing.JFrame {
         
         try {
             NewModel.defFile.setStageTwoOutcomeCatLabel(getStageTwoOutcomeValues());
-            System.out.println("From defHelper | STAGE TWO OUTCOME CATEGORY VALUES: " + NewModel.defFile.getStageTwoOutcomeCatLabel());
+            System.out.println("From defHelper | STAGE TWO OUTCOME CATEGORY VALUES: " + Arrays.toString(NewModel.defFile.getStageTwoOutcomeCatLabel()));
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);

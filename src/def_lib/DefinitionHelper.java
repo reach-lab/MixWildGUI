@@ -478,6 +478,7 @@ import mixregui.mixregGUI;
                     newDefinitionFile.add(Arrays.toString(getLabelDecompMeanRegressors()).replaceAll(",", " "));
                     newDefinitionFile.add(Arrays.toString(getLabelDecompBSRegressors()).replaceAll(",", " "));
                     newDefinitionFile.add(Arrays.toString(getLabelDecompWSRegressors()).replaceAll(",", " "));
+                    
 
                     newDefinitionFile.add(Arrays.toString(advancedOptionsTwo).replaceAll(",", " ")); 
                     newDefinitionFile.add(getStageTwoOutcomeField());
