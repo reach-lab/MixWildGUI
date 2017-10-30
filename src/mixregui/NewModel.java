@@ -72,6 +72,7 @@ public class NewModel extends javax.swing.JFrame {
       //subtitle ---> ouput prefix + date and time
        
        titleField.setEnabled(false);
+       newModel_resetButton.setEnabled(false);
       // subtitleField.setEnabled(false);
        continuousRadio.setEnabled(false);
        dichotomousRadio.setEnabled(false);
@@ -331,6 +332,7 @@ public class NewModel extends javax.swing.JFrame {
         newModelMissingValues.setEnabled(true);
         newModelMissingValueCode.setEnabled(true);
         noneRadio.setEnabled(true);
+         newModel_resetButton.setEnabled(true);
         randomScaleCheckBox.setEnabled(true);
         randomScaleCheckBox.setSelected(true);
         

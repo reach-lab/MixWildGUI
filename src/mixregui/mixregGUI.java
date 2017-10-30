@@ -918,6 +918,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private void goBackMxrButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackMxrButtonActionPerformed
 
         newModel.setVisible(true);
+        
     }//GEN-LAST:event_goBackMxrButtonActionPerformed
 
     private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
