@@ -139,7 +139,7 @@ public class mixregGUI extends javax.swing.JFrame {
      */
     public mixregGUI() {
         initComponents();
-        this.setResizable(false);
+        //this.setResizable(false);
         
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
@@ -323,6 +323,9 @@ public class mixregGUI extends javax.swing.JFrame {
         jPanel9 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        dataTable = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         newModelMenu = new javax.swing.JMenuItem();
@@ -684,11 +687,11 @@ public class mixregGUI extends javax.swing.JFrame {
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 508, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jButton8.setText("Save Output As ...");
+        jButton8.setText("Save Results As ...");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton8ActionPerformed(evt);
@@ -749,7 +752,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        saveStage2OutButton.setText("Save Output As ...");
+        saveStage2OutButton.setText("Save Results As ...");
         saveStage2OutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveStage2OutButtonActionPerformed(evt);
@@ -812,6 +815,28 @@ public class mixregGUI extends javax.swing.JFrame {
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 550, -1, 40));
 
         stageOneTabs.addTab("View Model", jPanel2);
+
+        dataTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane4.setViewportView(dataTable);
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 1162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(32, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 609, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(179, Short.MAX_VALUE))
+        );
+
+        stageOneTabs.addTab("View Data", jPanel6);
 
         parentPanel.add(stageOneTabs, "card2");
 
@@ -918,6 +943,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private void goBackMxrButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackMxrButtonActionPerformed
 
         newModel.setVisible(true);
+        
     }//GEN-LAST:event_goBackMxrButtonActionPerformed
 
     private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
@@ -2193,7 +2219,7 @@ public class mixregGUI extends javax.swing.JFrame {
         
         try {
             NewModel.defFile.setStageTwoOutcomeCatLabel(getStageTwoOutcomeValues());
-            System.out.println("From defHelper | STAGE TWO OUTCOME CATEGORY VALUES: " + NewModel.defFile.getStageTwoOutcomeCatLabel());
+            System.out.println("From defHelper | STAGE TWO OUTCOME CATEGORY VALUES: " + Arrays.toString(NewModel.defFile.getStageTwoOutcomeCatLabel()));
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -2295,6 +2321,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JLabel associationLabel;
     private javax.swing.JPanel associationPanel;
     private javax.swing.ButtonGroup buttonGroup1;
+    public static javax.swing.JTable dataTable;
     private javax.swing.JMenuItem diagramMenu;
     private javax.swing.JMenuItem exitMenu;
     private javax.swing.JMenu fileMenu;
@@ -2335,11 +2362,13 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
@@ -2648,11 +2677,11 @@ public class mixregGUI extends javax.swing.JFrame {
             }
 
             if (i > 1) {
-                levelTwoBoxes.get(j).get(2).setEnabled(false);
+                levelTwoBoxes.get(j).get(1).setEnabled(false);
 
             } else {
 
-                levelTwoBoxes.get(j).get(2).setEnabled(true);
+                levelTwoBoxes.get(j).get(1).setEnabled(true);
             }
 
             constraints.gridy++;
@@ -4411,7 +4440,7 @@ public class mixregGUI extends javax.swing.JFrame {
         BufferedWriter writer = null;
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             try {
-                writer = new BufferedWriter(new FileWriter(file.getName() + ".txt"));
+                writer = new BufferedWriter(new FileWriter(file));
                 writer.write(stageTwoOutput.getText());
                 writer.close();
                 JOptionPane.showMessageDialog(this, "The Message was Saved Successfully!",
@@ -4433,7 +4462,7 @@ public class mixregGUI extends javax.swing.JFrame {
         BufferedWriter writer = null;
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             try {
-                writer = new BufferedWriter(new FileWriter(file.getName() + ".txt"));
+                writer = new BufferedWriter(new FileWriter(file));
                 writer.write(stageOneOutput.getText());
                 writer.close();
                 JOptionPane.showMessageDialog(this, "The Message was Saved Successfully!",

@@ -6,6 +6,7 @@
  */
 package mixregui;
 
+import com.opencsv.CSVReader;
 import com.sun.glass.events.KeyEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -18,9 +19,12 @@ import javax.swing.JOptionPane;
 import def_lib.DefinitionHelper;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.FileReader;
+import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
 import org.apache.commons.io.FilenameUtils;
 
 /**
@@ -72,6 +76,7 @@ public class NewModel extends javax.swing.JFrame {
       //subtitle ---> ouput prefix + date and time
        
        titleField.setEnabled(false);
+       newModel_resetButton.setEnabled(false);
       // subtitleField.setEnabled(false);
        continuousRadio.setEnabled(false);
        dichotomousRadio.setEnabled(false);
@@ -331,6 +336,7 @@ public class NewModel extends javax.swing.JFrame {
         newModelMissingValues.setEnabled(true);
         newModelMissingValueCode.setEnabled(true);
         noneRadio.setEnabled(true);
+         newModel_resetButton.setEnabled(true);
         randomScaleCheckBox.setEnabled(true);
         randomScaleCheckBox.setSelected(true);
         
@@ -630,6 +636,14 @@ public class NewModel extends javax.swing.JFrame {
                 this.dispose();
             }
             
+        }
+        
+        try {
+            getDataFromCSV();
+            System.out.println("NEW MODEL DATA READ");
+        } catch (IOException ex) {
+            Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
     }//GEN-LAST:event_newModelSubmitActionPerformed
 
@@ -942,6 +956,46 @@ String datPath = FilenameUtils.removeExtension(csvPath) + ".dat";
 
 
 return datPath;
+}
+
+public void getDataFromCSV() throws FileNotFoundException, IOException{
+
+Object[] columnnames;
+
+CSVReader CSVFileReader = new CSVReader(new FileReader(file));
+List myEntries = CSVFileReader.readAll();
+columnnames = (String[]) myEntries.get(0);
+DefaultTableModel tableModel = new DefaultTableModel(columnnames, myEntries.size()-1){
+
+@Override
+    public boolean isCellEditable(int row, int column) {
+       //all cells false
+       return false;
+    }
+};
+int rowcount = tableModel.getRowCount();
+
+for (int x = 0; x<rowcount+1; x++)
+       {
+          int columnnumber = 0;
+         // if x = 0 this is the first row...skip it... data used for columnnames
+         if (x>0)
+         {
+       for (String thiscellvalue : (String[])myEntries.get(x))
+       {
+           tableModel.setValueAt(thiscellvalue, x-1, columnnumber);
+          columnnumber++;
+       }
+         }
+
+}
+
+mixregGUI.dataTable.setModel(tableModel);
+
+//mixregGUI.dataTable.revalidate();
+//mixregGUI.dataTable.repaint();
+
+
 }
 
 
