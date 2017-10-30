@@ -35,6 +35,7 @@ public class stageTwoRegs extends javax.swing.JFrame {
      */
     public stageTwoRegs() {
         initComponents();
+        this.setResizable(false);
         //create list models
         
                 Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();

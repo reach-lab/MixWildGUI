@@ -139,6 +139,7 @@ public class mixregGUI extends javax.swing.JFrame {
      */
     public mixregGUI() {
         initComponents();
+        this.setResizable(false);
         
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
@@ -311,15 +312,12 @@ public class mixregGUI extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         stageOneOutput = new javax.swing.JTextArea();
         jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         stageTwoOutput = new javax.swing.JTextArea();
         saveStage2OutButton = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
@@ -678,29 +676,22 @@ public class mixregGUI extends javax.swing.JFrame {
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 697, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 809, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 508, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jButton8.setText("Save Output As ...");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton8ActionPerformed(evt);
-            }
-        });
-
-        jButton9.setText("Save Stage 1+2 Def File As ...");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
             }
         });
 
@@ -716,29 +707,23 @@ public class mixregGUI extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton9)
-                        .addGap(18, 18, 18)
                         .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(226, Short.MAX_VALUE))
+                .addContainerGap(220, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(345, Short.MAX_VALUE))
+                    .addComponent(jButton8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(177, 177, 177))
         );
 
         stageOneTabs.addTab("Stage 1 Results", jPanel3);
-
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -752,19 +737,17 @@ public class mixregGUI extends javax.swing.JFrame {
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
-                .addGap(115, 115, 115)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 698, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 807, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 486, Short.MAX_VALUE)
+                .addContainerGap())
         );
-
-        jPanel4.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 24, 940, -1));
 
         saveStage2OutButton.setText("Save Output As ...");
         saveStage2OutButton.addActionListener(new java.awt.event.ActionListener() {
@@ -772,16 +755,35 @@ public class mixregGUI extends javax.swing.JFrame {
                 saveStage2OutButtonActionPerformed(evt);
             }
         });
-        jPanel4.add(saveStage2OutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 390, 227, 39));
-
-        jButton11.setText("Save Stage 2 Def File As ...");
-        jPanel4.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 390, 232, 39));
-
-        jButton12.setText("Save Stage 1 and 2 Def File As ...");
-        jPanel4.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 390, -1, 39));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/mixLogo.png"))); // NOI18N
-        jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 390, -1, 39));
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(192, 192, 192)
+                        .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 820, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(190, 190, 190)
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(saveStage2OutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(212, 212, 212))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(saveStage2OutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
 
         stageOneTabs.addTab("Stage 2 Results", jPanel4);
 
@@ -907,10 +909,6 @@ public class mixregGUI extends javax.swing.JFrame {
         isSubmitClicked();
     }//GEN-LAST:event_modifyStageOneMenuActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton9ActionPerformed
-
     private void diagramMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_diagramMenuActionPerformed
         //opens webpage with the url
         openWebpage("http://myquitadmin.usc.edu/mixsuite.php");
@@ -962,6 +960,9 @@ public class mixregGUI extends javax.swing.JFrame {
 
         if (outcomeNone == false) {
             stageOneTabs.setEnabledAt(1, true);
+        } else {
+        
+        stageOneTabs.setEnabledAt(1, false);
         }
 
         int tryCount = 0;
@@ -1637,9 +1638,9 @@ public class mixregGUI extends javax.swing.JFrame {
                 try {
                     List<String> defFileOutput;
 
-                    NewModel.defFile.writeDefFileToFolder();
+                    NewModel.defFile.writeStageOneOnlyDefFileToFolder();
 
-                    defFileOutput = NewModel.defFile.buildStageOneDefinitonList();
+                    //defFileOutput = NewModel.defFile.buildStageOneOnlyDefinitonList();
 
                     System.out.println("From defHelper | Stage 1 def file created successfully!");
 
@@ -1651,7 +1652,8 @@ public class mixregGUI extends javax.swing.JFrame {
                 }
 
                 if (defCatch == 0) {
-                    stageOneTabs.setSelectedIndex(3);
+                    stageOneTabs.setSelectedIndex(2);
+                    stageOneTabs.setEnabledAt(3, false);
                 }
 
             } else {
@@ -2222,7 +2224,7 @@ public class mixregGUI extends javax.swing.JFrame {
             }
 
             if (defCatch == 0) {
-                stageOneTabs.setSelectedIndex(3);
+                stageOneTabs.setSelectedIndex(3);//todo: get output as soon as it is ready
             }
 
         } else {
@@ -2301,10 +2303,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JMenu helpMenu;
     private javax.swing.JPanel imageView;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -2374,10 +2373,10 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JButton resetButton;
     private javax.swing.JButton runTabTwoStageOneTwo;
     private javax.swing.JButton saveStage2OutButton;
-    private javax.swing.JTextArea stageOneOutput;
+    public static javax.swing.JTextArea stageOneOutput;
     private javax.swing.JTabbedPane stageOneTabs;
     private javax.swing.JComboBox<String> stageTwoOutcome;
-    private javax.swing.JTextArea stageTwoOutput;
+    public static javax.swing.JTextArea stageTwoOutput;
     private javax.swing.JPanel stageTwoPanel;
     private javax.swing.JPanel stageTwoRegsGrid;
     private javax.swing.JButton startStageTwo;
