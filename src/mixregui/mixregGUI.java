@@ -2648,11 +2648,11 @@ public class mixregGUI extends javax.swing.JFrame {
             }
 
             if (i > 1) {
-                levelTwoBoxes.get(j).get(2).setEnabled(false);
+                levelTwoBoxes.get(j).get(1).setEnabled(false);
 
             } else {
 
-                levelTwoBoxes.get(j).get(2).setEnabled(true);
+                levelTwoBoxes.get(j).get(1).setEnabled(true);
             }
 
             constraints.gridy++;
