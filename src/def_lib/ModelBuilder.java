@@ -56,18 +56,32 @@ public class ModelBuilder {
         if(buildFile.getModelFixedInt().matches("0")){
             constant="";
         }
-        String regressors = "";
-        String[] meanArray = buildFile.getLabelModelMeanRegressors();
-        for(int i = 0; i < meanArray.length; i++){
-            regressors += meanArray[i].toUpperCase() + KEY_PLUS;    
+        String regressorsOne = "";
+        String regressorsTwo = "";
+        String[] meanArrayOne = buildFile.getLabelModelMeanRegressorsLevelOne();
+        String[] meanArrayTwo = buildFile.getLabelModelMeanRegressorsLevelTwo();
+        try {
+            for(int i = 0; i < meanArrayOne.length; i++){
+                regressorsOne += meanArrayOne[i].toUpperCase() + KEY_IJ + KEY_PLUS;    
+            }
         }
+        catch (NullPointerException npe){
+            
+        }
+        try {
+            for(int i = 0; i < meanArrayTwo.length; i++){
+                regressorsOne += meanArrayTwo[i].toUpperCase() + KEY_I + KEY_PLUS;    
+            }
+        }
+        catch(NullPointerException npe) {
+           
+        }
+           
+        String regressors = regressorsOne + regressorsTwo;
         String[] decompMeanArray = buildFile.getLabelDecompMeanRegressors();
         for(int i = 0; i < decompMeanArray.length; i++){
             regressors += decompMeanArray[i].toUpperCase() + "_BS"+ KEY_BETA + KEY_I + KEY_PLUS + decompMeanArray[i].toUpperCase() + "_WS" + KEY_BETA + KEY_IJ + KEY_PLUS;    
         }
-        
-        //Font equation = new Font(Font.SERIF,Font.ITALIC,16);
-        //Font regreressors = new Font(Font.MONOSPACED,Font.ITALIC,16);
         
         return prefix + constant + regressors + bsvar + wsvar;
     }
