@@ -323,6 +323,7 @@ public class mixregGUI extends javax.swing.JFrame {
         jPanel9 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         newModelMenu = new javax.swing.JMenuItem();
@@ -688,7 +689,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jButton8.setText("Save Output As ...");
+        jButton8.setText("Save Results As ...");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton8ActionPerformed(evt);
@@ -749,7 +750,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        saveStage2OutButton.setText("Save Output As ...");
+        saveStage2OutButton.setText("Save Results As ...");
         saveStage2OutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveStage2OutButtonActionPerformed(evt);
@@ -812,6 +813,19 @@ public class mixregGUI extends javax.swing.JFrame {
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 550, -1, 40));
 
         stageOneTabs.addTab("View Model", jPanel2);
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1224, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 780, Short.MAX_VALUE)
+        );
+
+        stageOneTabs.addTab("View Data", jPanel6);
 
         parentPanel.add(stageOneTabs, "card2");
 
@@ -2336,6 +2350,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
