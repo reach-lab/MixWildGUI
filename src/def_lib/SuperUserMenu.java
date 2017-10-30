@@ -5,6 +5,8 @@
  */
 package def_lib;
 
+import java.awt.Font;
+import java.awt.Graphics;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.File;

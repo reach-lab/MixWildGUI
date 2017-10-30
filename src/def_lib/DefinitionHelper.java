@@ -479,6 +479,7 @@ import javax.swing.SwingWorker;
 
                     newDefinitionFile.add(Arrays.toString(advancedOptionsTwo).replaceAll(",", " ")); 
                     newDefinitionFile.add(getStageTwoOutcomeField());
+                    newDefinitionFile.add(Arrays.toString(getStageTwoOutcomeCatLabel()).replaceAll(","," "));
                     newDefinitionFile.add(Arrays.toString(getStageTwoFixedFields()).replaceAll(",", " "));
                     newDefinitionFile.add(Arrays.toString(getStageTwoLocRanIntFields()).replaceAll(",", " "));
                     newDefinitionFile.add(Arrays.toString(getStageTwoScaleIntFields()).replaceAll(",", " "));
@@ -531,6 +532,7 @@ import javax.swing.SwingWorker;
 
                     newDefinitionFile.add(Arrays.toString(advancedOptionsTwo).replaceAll(",", " ")); 
                     newDefinitionFile.add(getStageTwoOutcomeField());
+                    newDefinitionFile.add(Arrays.toString(getStageTwoOutcomeCatLabel()).replaceAll(","," "));
                     newDefinitionFile.add(Arrays.toString(getStageTwoFixedFields()).replaceAll(",", " "));
                     newDefinitionFile.add(Arrays.toString(getStageTwoLocRanIntFields()).replaceAll(",", " "));
                     newDefinitionFile.add(Arrays.toString(getStageTwoScaleIntFields()).replaceAll(",", " "));
