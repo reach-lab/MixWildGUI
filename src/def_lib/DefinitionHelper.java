@@ -2508,7 +2508,8 @@ import mixregui.mixregGUI;
             {
                 try
                 {
-                writer = new BufferedWriter( new FileWriter( file.getName()+".txt"));
+               // writer = new BufferedWriter( new FileWriter( file.getName()+".txt"));
+                writer = new BufferedWriter( new FileWriter(file));
                 writer.write( myPane.getText());
                 writer.close( );
                 JOptionPane.showMessageDialog(myFrame, "The Message was Saved Successfully!",

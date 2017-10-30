@@ -4412,7 +4412,7 @@ public class mixregGUI extends javax.swing.JFrame {
         BufferedWriter writer = null;
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             try {
-                writer = new BufferedWriter(new FileWriter(file.getName() + ".txt"));
+                writer = new BufferedWriter(new FileWriter(file));
                 writer.write(stageTwoOutput.getText());
                 writer.close();
                 JOptionPane.showMessageDialog(this, "The Message was Saved Successfully!",
@@ -4434,7 +4434,7 @@ public class mixregGUI extends javax.swing.JFrame {
         BufferedWriter writer = null;
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             try {
-                writer = new BufferedWriter(new FileWriter(file.getName() + ".txt"));
+                writer = new BufferedWriter(new FileWriter(file));
                 writer.write(stageOneOutput.getText());
                 writer.close();
                 JOptionPane.showMessageDialog(this, "The Message was Saved Successfully!",
