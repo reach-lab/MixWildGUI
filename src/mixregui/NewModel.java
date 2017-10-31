@@ -965,7 +965,14 @@ Object[] columnnames;
 CSVReader CSVFileReader = new CSVReader(new FileReader(file));
 List myEntries = CSVFileReader.readAll();
 columnnames = (String[]) myEntries.get(0);
-DefaultTableModel tableModel = new DefaultTableModel(columnnames, myEntries.size()-1);
+DefaultTableModel tableModel = new DefaultTableModel(columnnames, myEntries.size()-1){
+
+@Override
+    public boolean isCellEditable(int row, int column) {
+       //all cells false
+       return false;
+    }
+};
 int rowcount = tableModel.getRowCount();
 
 for (int x = 0; x<rowcount+1; x++)
@@ -984,6 +991,7 @@ for (int x = 0; x<rowcount+1; x++)
 }
 
 mixregGUI.dataTable.setModel(tableModel);
+
 //mixregGUI.dataTable.revalidate();
 //mixregGUI.dataTable.repaint();
 
