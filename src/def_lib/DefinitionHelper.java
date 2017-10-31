@@ -2736,38 +2736,51 @@ import mixregui.mixregGUI;
 
         private void copyExecutable(String absoluteDirectoryPath, int modelSelection) throws FileNotFoundException, IOException{
             String modelPath;
-            String executableName = executableModel(modelSelection);
+            String MIX_RANDOM = "resources/WindowsNew/mix_random.exe";
+            String FIRST;
+            String REPEAT;
             switch(modelSelection){
                 case DefinitionHelper.MIXREGLS_MIXREG_KEY:
                     modelPath = "resources/WindowsNew/mixregls_random_mixreg.exe";
+                    REPEAT = "resources/WindowsNew/repeat_mixreg.exe";
+                    FIRST = "resources/WindowsNew/mixreg.exe";
                     break;
                 case DefinitionHelper.MIXREGLS_MIXOR_KEY:
                     modelPath = "resources/WindowsNew/mixregls_random_mixor.exe";
+                    REPEAT = "resources/WindowsNew/repeat_mixor.exe";
+                    FIRST = "resources/WindowsNew/mixor.exe";
                     break;
                 case DefinitionHelper.MIXREGMLS_MIXREG_KEY:
                     modelPath = "resources/WindowsNew/mixregmls_random_mixreg.exe";
+                    REPEAT = "resources/WindowsNew/repeat_mixreg.exe";
+                    FIRST = "resources/WindowsNew/mixreg.exe";
                     break;
                 case DefinitionHelper.MIXREGMLS_MIXOR_KEY:
                     modelPath = "resources/WindowsNew/mixregmls_random_mixor.exe";
+                    REPEAT = "resources/WindowsNew/repeat_mixor.exe";
+                    FIRST = "resources/WindowsNew/mixor.exe";
                     break;
                 default:
                     modelPath = "resources/WindowsNew/mixregls_random_mixreg.exe";
+                    REPEAT = "resources/WindowsNew/repeat_mixreg.exe";
+                    FIRST = "resources/WindowsNew/mixreg.exe";
                     break;
             }
-            InputStream stream = getClass().getClassLoader().getResourceAsStream(modelPath);
+            String[] exeArray = {modelPath, MIX_RANDOM, FIRST, REPEAT}; 
+            for(String exe: exeArray){
+                InputStream stream = getClass().getClassLoader().getResourceAsStream(exe);
+                OutputStream outputStream = 
+                        new FileOutputStream(new File(absoluteDirectoryPath + FilenameUtils.getName(exe)));
 
+                int read;
+                byte[] bytes = new byte[4096];
 
-            OutputStream outputStream = 
-                    new FileOutputStream(new File(absoluteDirectoryPath + executableName));
-
-            int read;
-            byte[] bytes = new byte[4096];
-
-            while ((read = stream.read(bytes)) > 0) {
-                outputStream.write(bytes, 0, read);
-            }
-            stream.close();
-            outputStream.close();
+                while ((read = stream.read(bytes)) > 0) {
+                    outputStream.write(bytes, 0, read);
+                }
+                stream.close();
+                outputStream.close();
+                }   
         }
 
         public void modelSelector(int randomLocEffects, boolean outcomeContinious){
