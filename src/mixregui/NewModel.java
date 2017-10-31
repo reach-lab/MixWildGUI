@@ -23,6 +23,7 @@ import java.io.FileReader;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JTable;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import org.apache.commons.io.FilenameUtils;
@@ -991,6 +992,8 @@ for (int x = 0; x<rowcount+1; x++)
 }
 
 mixregGUI.dataTable.setModel(tableModel);
+mixregGUI.dataTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+mixregGUI.dataTable.setAutoscrolls(true);
 
 //mixregGUI.dataTable.revalidate();
 //mixregGUI.dataTable.repaint();
