@@ -268,8 +268,15 @@ public class stageOneRegs extends javax.swing.JFrame {
         if (!StageOneLevelOneList.isSelectionEmpty()){
             
             stageOneSubmitButton.setEnabled(true);
+            
+            //add an if condition here
+            if(!varList.contains(StageOneLevelOneList.getSelectedValue())){
+            
+            varList.addElement(StageOneLevelOneList.getSelectedValue());
+            
+            }
 
-        varList.addElement(StageOneLevelOneList.getSelectedValue());
+        
 
         AllVariablesList.setModel(varList);
 
@@ -288,8 +295,14 @@ public class stageOneRegs extends javax.swing.JFrame {
         
         if (!StageOneLevelTwoList.isSelectionEmpty()){
         stageOneSubmitButton.setEnabled(true);
+        
+         if(!varList.contains(StageOneLevelTwoList.getSelectedValue())){
+            
+            varList.addElement(StageOneLevelTwoList.getSelectedValue());
+            
+            }
 
-        varList.addElement(StageOneLevelTwoList.getSelectedValue());
+        //varList.addElement(StageOneLevelTwoList.getSelectedValue());
 
         AllVariablesList.setModel(varList);
 

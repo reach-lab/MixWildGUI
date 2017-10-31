@@ -478,6 +478,7 @@ import mixregui.mixregGUI;
                     newDefinitionFile.add(Arrays.toString(getLabelDecompMeanRegressors()).replaceAll(",", " "));
                     newDefinitionFile.add(Arrays.toString(getLabelDecompBSRegressors()).replaceAll(",", " "));
                     newDefinitionFile.add(Arrays.toString(getLabelDecompWSRegressors()).replaceAll(",", " "));
+                    
 
                     newDefinitionFile.add(Arrays.toString(advancedOptionsTwo).replaceAll(",", " ")); 
                     newDefinitionFile.add(getStageTwoOutcomeField());
@@ -2507,7 +2508,8 @@ import mixregui.mixregGUI;
             {
                 try
                 {
-                writer = new BufferedWriter( new FileWriter( file.getName()+".txt"));
+               // writer = new BufferedWriter( new FileWriter( file.getName()+".txt"));
+                writer = new BufferedWriter( new FileWriter(file));
                 writer.write( myPane.getText());
                 writer.close( );
                 JOptionPane.showMessageDialog(myFrame, "The Message was Saved Successfully!",

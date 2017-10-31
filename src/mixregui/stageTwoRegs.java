@@ -187,7 +187,14 @@ public class stageTwoRegs extends javax.swing.JFrame {
         //Remove an item from the model
         if (!StageTwoLevelTwoVariables.isSelectionEmpty()){
             stageTwoSubmitButton.setEnabled(true);
-        stageTwoLevelTwo.remove(StageTwoLevelTwoVariables.getSelectedIndex());
+            
+//            if(!StageTwoAllVariables.contains(StageTwoLevelTwoVariables.getSelectedValue())){
+//            
+//            StageTwoAllVariables.addElement(StageTwoLevelTwoVariables.getSelectedValue());
+//            
+//            }
+            
+            stageTwoLevelTwo.remove(StageTwoLevelTwoVariables.getSelectedIndex());
         
         } else {
         JOptionPane.showMessageDialog(null, "Please select a variable from stage two.", "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
