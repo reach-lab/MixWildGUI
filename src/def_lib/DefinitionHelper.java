@@ -2986,6 +2986,7 @@ import mixregui.mixregGUI;
             while ((line = br.readLine()) != null) {
 		//System.out.println(line);
                 mixregGUI.stageOneOutput.append(line + "\n");
+                
 	}
  
 	br.close();

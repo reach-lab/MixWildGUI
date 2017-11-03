@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import def_lib.DefinitionHelper;
+import def_lib.ModelBuilder;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.FileReader;
@@ -56,6 +57,7 @@ public class NewModel extends javax.swing.JFrame {
      *
      */
     public static DefinitionHelper defFile;
+    public static ModelBuilder modelBuilder;
      
     /**
      * Creates new form NewModel
@@ -145,6 +147,7 @@ public class NewModel extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("New Model for Stage 1 Analysis");
+        setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         dataFileLabel.setText("Data File: ");
@@ -188,7 +191,7 @@ public class NewModel extends javax.swing.JFrame {
                 continuousRadioActionPerformed(evt);
             }
         });
-        getContentPane().add(continuousRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, -1, -1));
+        getContentPane().add(continuousRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(186, 250, 90, -1));
 
         buttonGroup1.add(dichotomousRadio);
         dichotomousRadio.setText("Dichotomous/Ordinal");
@@ -229,10 +232,10 @@ public class NewModel extends javax.swing.JFrame {
                 newModelMissingValuesActionPerformed(evt);
             }
         });
-        getContentPane().add(newModelMissingValues, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, -1, 20));
+        getContentPane().add(newModelMissingValues, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 300, 30, 20));
 
         jLabel6.setText("Missing value code:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, -1, 40));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, -1, 50));
 
         newModelMissingValueCode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -261,16 +264,17 @@ public class NewModel extends javax.swing.JFrame {
         });
         getContentPane().add(noneRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 240, -1, 40));
 
-        jButton1.setText("Instructions");
+        jButton1.setText("Check here...");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(391, 9, 110, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 110, -1));
 
-        jLabel9.setText("Before importing a data file, please go through these:");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, -1));
+        jLabel9.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel9.setText("Is your dataset Mix{WILD} friendly?");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, 30));
 
         jLabel10.setText("Random Scale?");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, -1, -1));
@@ -367,6 +371,7 @@ public class NewModel extends javax.swing.JFrame {
     }
         
         defFile = new DefinitionHelper(RLE, !isOutcomeContinous());
+//        modelBuilder = new ModelBuilder(defFile);
         System.out.println("RLE: " + String.valueOf(RLE));
         
         defFile.modelSelector(RLE, isOutcomeContinous());
@@ -641,6 +646,7 @@ public class NewModel extends javax.swing.JFrame {
         
         try {
             getDataFromCSV();
+            printFileName();
             System.out.println("NEW MODEL DATA READ");
         } catch (IOException ex) {
             Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
@@ -995,9 +1001,16 @@ mixregGUI.dataTable.setModel(tableModel);
 mixregGUI.dataTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 mixregGUI.dataTable.setAutoscrolls(true);
 
-//mixregGUI.dataTable.revalidate();
-//mixregGUI.dataTable.repaint();
 
+
+//mixregGUI.dataTable.revalidate();
+//mixregGUI.dataTable.repaint()
+}
+
+public void printFileName(){
+    String path = file.getName();
+    
+mixregGUI.printedFileName.setText(path);
 
 }
 

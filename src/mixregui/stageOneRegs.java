@@ -108,8 +108,6 @@ public class stageOneRegs extends javax.swing.JFrame {
         StageOneLevelTwoList = new javax.swing.JList<>();
         jLabel4 = new javax.swing.JLabel();
         stageOneCancel = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
 
         label1.setText("label1");
 
@@ -196,17 +194,6 @@ public class stageOneRegs extends javax.swing.JFrame {
             }
         });
         getContentPane().add(stageOneCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 470, 80, -1));
-
-        jButton1.setText("?");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(301, 147, 40, -1));
-
-        jButton2.setText("?");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(301, 367, 40, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -328,10 +315,6 @@ public class stageOneRegs extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_stageOneCancelActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -372,8 +355,6 @@ public class stageOneRegs extends javax.swing.JFrame {
     private javax.swing.JList<String> StageOneLevelOneList;
     private javax.swing.JList<String> StageOneLevelTwoList;
     private javax.swing.JButton addLevelTwoButton;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
