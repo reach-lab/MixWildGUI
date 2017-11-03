@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import def_lib.DefinitionHelper;
+import def_lib.ModelBuilder;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.FileReader;
@@ -56,6 +57,7 @@ public class NewModel extends javax.swing.JFrame {
      *
      */
     public static DefinitionHelper defFile;
+    public static ModelBuilder modelBuilder;
      
     /**
      * Creates new form NewModel
@@ -367,6 +369,7 @@ public class NewModel extends javax.swing.JFrame {
     }
         
         defFile = new DefinitionHelper(RLE, !isOutcomeContinous());
+//        modelBuilder = new ModelBuilder(defFile);
         System.out.println("RLE: " + String.valueOf(RLE));
         
         defFile.modelSelector(RLE, isOutcomeContinous());

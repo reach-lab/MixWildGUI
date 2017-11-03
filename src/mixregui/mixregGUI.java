@@ -11,6 +11,7 @@ import java.net.URL;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import def_lib.DefinitionHelper;
+import def_lib.ModelBuilder;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.ComponentOrientation;
@@ -321,7 +322,8 @@ public class mixregGUI extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
-        jLabel19 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        modelEquationTextArea = new javax.swing.JTextPane();
         jLabel10 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -793,20 +795,24 @@ public class mixregGUI extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/ModelDiagramV2.jpg"))); // NOI18N
-        jLabel19.setMaximumSize(new java.awt.Dimension(512, 512));
-        jLabel19.setMinimumSize(new java.awt.Dimension(100, 100));
-        jLabel19.setPreferredSize(new java.awt.Dimension(512, 512));
+        modelEquationTextArea.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jScrollPane5.setViewportView(modelEquationTextArea);
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, 1210, Short.MAX_VALUE)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(203, 203, 203)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 645, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(362, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(181, 181, 181)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(237, Short.MAX_VALUE))
         );
 
         jPanel2.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1210, 660));
@@ -2241,6 +2247,12 @@ public class mixregGUI extends javax.swing.JFrame {
                 NewModel.defFile.writeDefFileToFolder();
                 defFileOutput = NewModel.defFile.buildStageOneDefinitonList();
                 System.out.println("From defHelper | Stage 1 def file created successfully!");
+                //NewModel.modelBuilder(NewModel.defFile);
+                NewModel.modelBuilder = new ModelBuilder(NewModel.defFile);
+                modelEquationTextArea.setText(NewModel.modelBuilder.meanEquation());
+                
+                
+//                NewModel.modelBuilder.meanEquation();
 
             } catch (Exception ex) {
                 defCatch = 1;
@@ -2340,7 +2352,6 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
@@ -2369,6 +2380,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
@@ -2392,6 +2404,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JPanel levelOnePanel;
     private javax.swing.JPanel levelTwoGrid;
     private javax.swing.JPanel levelTwoPanel;
+    private javax.swing.JTextPane modelEquationTextArea;
     private javax.swing.JMenuItem modifyStageOneMenu;
     private javax.swing.JMenuItem modifyStageTwoMenu;
     private javax.swing.JMenuItem newModelMenu;
