@@ -2482,7 +2482,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JTextArea outComeText;
     private javax.swing.JButton outcomeCatButton;
     private javax.swing.JPanel parentPanel;
-    private javax.swing.JLabel printedFileName;
+    public static javax.swing.JLabel printedFileName;
     private javax.swing.JButton resetButton;
     private javax.swing.JButton runTabTwoStageOneTwo;
     private javax.swing.JButton saveStage2OutButton;

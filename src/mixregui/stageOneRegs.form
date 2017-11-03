@@ -7,11 +7,6 @@
         <Property name="text" type="java.lang.String" value="label1"/>
       </Properties>
     </Component>
-    <Component class="javax.persistence.EntityManager" name="entityManager1">
-      <Properties>
-        <Property name="persistenceUnit" type="java.lang.String" value="pu"/>
-      </Properties>
-    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>

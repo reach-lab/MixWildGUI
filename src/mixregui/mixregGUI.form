@@ -1452,6 +1452,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="filename"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>

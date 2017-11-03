@@ -91,7 +91,6 @@ public class stageOneRegs extends javax.swing.JFrame {
     private void initComponents() {
 
         label1 = new java.awt.Label();
-        entityManager1 = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory(null).createEntityManager();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -356,7 +355,6 @@ public class stageOneRegs extends javax.swing.JFrame {
     private javax.swing.JList<String> StageOneLevelOneList;
     private javax.swing.JList<String> StageOneLevelTwoList;
     private javax.swing.JButton addLevelTwoButton;
-    private javax.persistence.EntityManager entityManager1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

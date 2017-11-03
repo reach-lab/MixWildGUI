@@ -646,6 +646,7 @@ public class NewModel extends javax.swing.JFrame {
         
         try {
             getDataFromCSV();
+            printFileName();
             System.out.println("NEW MODEL DATA READ");
         } catch (IOException ex) {
             Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
@@ -1000,9 +1001,16 @@ mixregGUI.dataTable.setModel(tableModel);
 mixregGUI.dataTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 mixregGUI.dataTable.setAutoscrolls(true);
 
-//mixregGUI.dataTable.revalidate();
-//mixregGUI.dataTable.repaint();
 
+
+//mixregGUI.dataTable.revalidate();
+//mixregGUI.dataTable.repaint()
+}
+
+public void printFileName(){
+    String path = file.getName();
+    
+mixregGUI.printedFileName.setText(path);
 
 }
 
