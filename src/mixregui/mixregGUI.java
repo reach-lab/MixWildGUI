@@ -179,7 +179,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
             // if random location effects are more than one, change the table column names
             level2_BSVar.setVisible(false);
-            level1_BSVar.setText("Loc. eff.");
+            level1_BSVar.setText("Random Slope");
             level1_WSVar.setText("Scale");
             //level2_BSVar.setText("Loc. eff.");
             level2_WSVar.setText("Scale");
