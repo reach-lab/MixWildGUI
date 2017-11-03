@@ -17,6 +17,7 @@ import java.awt.Color;
 import java.awt.ComponentOrientation;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -330,6 +331,7 @@ public class mixregGUI extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         jScrollPane8 = new javax.swing.JScrollPane();
         equationArea = new javax.swing.JTextArea();
+        eqFrame = new javax.swing.JInternalFrame();
         jLabel10 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -843,22 +845,37 @@ public class mixregGUI extends javax.swing.JFrame {
         equationArea.setRows(5);
         jScrollPane8.setViewportView(equationArea);
 
+        eqFrame.setVisible(true);
+
+        javax.swing.GroupLayout eqFrameLayout = new javax.swing.GroupLayout(eqFrame.getContentPane());
+        eqFrame.getContentPane().setLayout(eqFrameLayout);
+        eqFrameLayout.setHorizontalGroup(
+            eqFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 287, Short.MAX_VALUE)
+        );
+        eqFrameLayout.setVerticalGroup(
+            eqFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 163, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 754, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel9Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel9Layout.createSequentialGroup()
+                        .addGap(530, 530, 530)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel19)
+                            .addComponent(eqFrame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGap(202, 202, 202)
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 754, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel9Layout.createSequentialGroup()
-                                .addGap(530, 530, 530)
-                                .addComponent(jLabel19))
-                            .addGroup(jPanel9Layout.createSequentialGroup()
-                                .addGap(202, 202, 202)
-                                .addComponent(jLabel13)))
-                        .addGap(214, 214, 214)))
+                                .addComponent(jLabel13)
+                                .addGap(214, 214, 214)))))
                 .addContainerGap(254, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
@@ -870,7 +887,9 @@ public class mixregGUI extends javax.swing.JFrame {
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(143, 143, 143)
                 .addComponent(jLabel19)
-                .addContainerGap(330, Short.MAX_VALUE))
+                .addGap(38, 38, 38)
+                .addComponent(eqFrame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(98, Short.MAX_VALUE))
         );
 
         jPanel2.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1210, 660));
@@ -1216,6 +1235,10 @@ public class mixregGUI extends javax.swing.JFrame {
             try {
                 NewModel.defFile.setLabelModelMeanRegressors(ModelMeansLabelsArray());
                 System.out.println("From defHelper | Stage 1 MEAN REGRESSOR LABELS): " + Arrays.toString(NewModel.defFile.getLabelModelMeanRegressors()));
+                NewModel.defFile.setLabelModelMeanRegressorsLevelOne(getModelMeanLabelsLevelOne());
+                System.out.println("From defHelper | LEVEL 1 MEAN REGRESSOR LABELS): " + Arrays.toString(NewModel.defFile.getLabelModelMeanRegressorsLevelOne()));
+                NewModel.defFile.setLabelModelMeanRegressorsLevelTwo(getModelMeanLabelsLevelTwo());
+                System.out.println("From defHelper | LEVEL 2 MEAN REGRESSOR LABELS): " + Arrays.toString(NewModel.defFile.getLabelModelMeanRegressorsLevelTwo()));
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -1225,6 +1248,10 @@ public class mixregGUI extends javax.swing.JFrame {
             try {
                 NewModel.defFile.setLabelModelBSRegressors(ModelBSLabelsArray());
                 System.out.println("From defHelper | Stage 1 BS REGRESSOR LABELS): " + Arrays.toString(NewModel.defFile.getLabelModelBSRegressors()));
+                NewModel.defFile.setLabelModelBSRegressorsLevelOne(getModelBSLabelsLevelOne());
+                System.out.println("From defHelper | LEVEL 1 BS REGRESSOR LABELS): " + Arrays.toString(NewModel.defFile.getLabelModelBSRegressorsLevelOne()));
+                NewModel.defFile.setLabelModelBSRegressorsLevelOne(getModelBSLabelsLevelTwo());
+                System.out.println("From defHelper | LEVEL 2 BS REGRESSOR LABELS): " + Arrays.toString(NewModel.defFile.getLabelModelBSRegressorsLevelTwo()));
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -1234,6 +1261,10 @@ public class mixregGUI extends javax.swing.JFrame {
             try {
                 NewModel.defFile.setLabelModelWSRegressors(ModelWSLabelsArray());
                 System.out.println("From defHelper | Stage 1 WS REGRESSOR LABELS): " + Arrays.toString(NewModel.defFile.getLabelModelWSRegressors()));
+                NewModel.defFile.setLabelModelWSRegressorsLevelOne(getModelWSLabelsLevelOne());
+                System.out.println("From defHelper | LEVEL 1 WS REGRESSOR LABELS): " + Arrays.toString(NewModel.defFile.getLabelModelWSRegressorsLevelOne()));
+                NewModel.defFile.setLabelModelWSRegressorsLevelTwo(getModelWSLabelsLevelTwo());
+                System.out.println("From defHelper | LEVEL 2 WS REGRESSOR LABELS): " + Arrays.toString(NewModel.defFile.getLabelModelWSRegressorsLevelTwo()));
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -1426,6 +1457,10 @@ public class mixregGUI extends javax.swing.JFrame {
             try {
                 NewModel.defFile.setLabelModelMeanRegressors(ModelMeansLabelsArray());
                 System.out.println("From defHelper | Stage 1 MEAN REGRESSOR LABELS): " + Arrays.toString(NewModel.defFile.getLabelModelMeanRegressors()));
+                NewModel.defFile.setLabelModelMeanRegressorsLevelOne(getModelMeanLabelsLevelOne());
+                System.out.println("From defHelper | LEVEL 1 MEAN REGRESSOR LABELS): " + Arrays.toString(NewModel.defFile.getLabelModelMeanRegressorsLevelOne()));
+                NewModel.defFile.setLabelModelMeanRegressorsLevelTwo(getModelMeanLabelsLevelTwo());
+                System.out.println("From defHelper | LEVEL 2 MEAN REGRESSOR LABELS): " + Arrays.toString(NewModel.defFile.getLabelModelMeanRegressorsLevelTwo()));
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -1435,6 +1470,10 @@ public class mixregGUI extends javax.swing.JFrame {
             try {
                 NewModel.defFile.setLabelModelLocRanRegressors(ModelBSLabelsArray());
                 System.out.println("From defHelper | Stage 1 LocRan REGRESSOR LABELS): " + Arrays.toString(NewModel.defFile.getLabelModelLocRanRegressors()));
+                NewModel.defFile.setLabelModelLocRanRegressorsLevelOne(getModelBSLabelsLevelOne());
+                System.out.println("From defHelper | LEVEL 1 LocRan REGRESSOR LABELS): " + Arrays.toString(NewModel.defFile.getLabelModelLocRanRegressorsLevelOne()));
+                NewModel.defFile.setLabelModelLocRanRegressorsLevelTwo(getModelBSLabelsLevelTwo());
+                System.out.println("From defHelper | LEVEL 2 LocRan REGRESSOR LABELS): " + Arrays.toString(NewModel.defFile.getLabelModelLocRanRegressorsLevelTwo()));
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -1444,6 +1483,10 @@ public class mixregGUI extends javax.swing.JFrame {
             try {
                 NewModel.defFile.setLabelModelScaleRegressors(ModelWSLabelsArray());
                 System.out.println("From defHelper | Stage 1 Scale REGRESSOR LABELS): " + Arrays.toString(NewModel.defFile.getLabelModelScaleRegressors()));
+                NewModel.defFile.setLabelModelScaleRegressorsLevelOne(getModelWSLabelsLevelOne());
+                System.out.println("From defHelper | LEVEL 1 Scale REGRESSOR LABELS): " + Arrays.toString(NewModel.defFile.getLabelModelScaleRegressorsLevelOne()));
+                NewModel.defFile.setLabelModelScaleRegressorsLevelTwo(getModelWSLabelsLevelTwo());
+                System.out.println("From defHelper | LEVEL 2 Scale REGRESSOR LABELS): " + Arrays.toString(NewModel.defFile.getLabelModelScaleRegressorsLevelTwo()));
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -2325,6 +2368,9 @@ public class mixregGUI extends javax.swing.JFrame {
 //                testEq.setText(NewModel.modelBuilder.meanEquation());
                 equationArea.setText(NewModel.modelBuilder.meanEquation());
                 
+                
+                
+                
                 NewModel.modelBuilder.saveWildFile(NewModel.defFile);
 //                NewModel.modelBuilder.meanEquation();
 
@@ -2409,6 +2455,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     public static javax.swing.JTable dataTable;
     private javax.swing.JMenuItem diagramMenu;
+    private javax.swing.JInternalFrame eqFrame;
     private javax.swing.JTextArea equationArea;
     private javax.swing.JMenuItem exitMenu;
     private javax.swing.JMenu fileMenu;

@@ -554,7 +554,7 @@ import mixregui.mixregGUI;
             return newDefinitionFile;
         }
         
-        
+        //when stage two outcome is none
         public List<String> debugStageOneOnlyDefinitonList() throws Exception {
             List<String> newDefinitionFile = new ArrayList();
             newDefinitionFile.add(getModelTitle());
@@ -811,7 +811,7 @@ import mixregui.mixregGUI;
             return newDefinitionFile;
         }
         
-        
+        //When stage two outcome is none
         public List<String> buildStageOneOnlyDefinitonList() throws Exception { //does this create the def file
             List<String> newDefinitionFile = new ArrayList();
             newDefinitionFile.add(getModelTitle());
@@ -2894,83 +2894,84 @@ import mixregui.mixregGUI;
                 this.advancedDiscardSubjects = advancedDiscardSubjects;
             }
         }
-
+        
+        //Done
         public String[] getLabelModelMeanRegressorsLevelOne() {
             return labelModelMeanRegressorsLevelOne;
         }
-
+        //Done
         public void setLabelModelMeanRegressorsLevelOne(String[] labelModelMeanRegressorsLevelOne) {
             this.labelModelMeanRegressorsLevelOne = labelModelMeanRegressorsLevelOne;
         }
-
+        //Done
         public String[] getLabelModelLocRanRegressorsLevelOne() {
             return labelModelLocRanRegressorsLevelOne;
         }
-
+        //Done
         public void setLabelModelLocRanRegressorsLevelOne(String[] labelModelLocRanRegressorsLevelOne) {
             this.labelModelLocRanRegressorsLevelOne = labelModelLocRanRegressorsLevelOne;
         }
-
+        //Done
         public String[] getLabelModelScaleRegressorsLevelOne() {
             return labelModelScaleRegressorsLevelOne;
         }
-
+        //Done
         public void setLabelModelScaleRegressorsLevelOne(String[] labelModelScaleRegressorsLevelOne) {
             this.labelModelScaleRegressorsLevelOne = labelModelScaleRegressorsLevelOne;
         }
-
+        //Done
         public String[] getLabelModelBSRegressorsLevelOne() {
             return labelModelBSRegressorsLevelOne;
         }
-
+        //Done
         public void setLabelModelBSRegressorsLevelOne(String[] labelModelBSRegressorsLevelOne) {
             this.labelModelBSRegressorsLevelOne = labelModelBSRegressorsLevelOne;
         }
-
+        //Done
         public String[] getLabelModelWSRegressorsLevelOne() {
             return labelModelWSRegressorsLevelOne;
         }
-
+        //Done
         public void setLabelModelWSRegressorsLevelOne(String[] labelModelWSRegressorsLevelOne) {
             this.labelModelWSRegressorsLevelOne = labelModelWSRegressorsLevelOne;
         }
-
+        //Done
         public String[] getLabelModelMeanRegressorsLevelTwo() {
             return labelModelMeanRegressorsLevelTwo;
         }
-
+        //Done
         public void setLabelModelMeanRegressorsLevelTwo(String[] labelModelMeanRegressorsLevelTwo) {
             this.labelModelMeanRegressorsLevelTwo = labelModelMeanRegressorsLevelTwo;
         }
-
+        //Done
         public String[] getLabelModelLocRanRegressorsLevelTwo() {
             return labelModelLocRanRegressorsLevelTwo;
         }
-
+        //Done
         public void setLabelModelLocRanRegressorsLevelTwo(String[] labelModelLocRanRegressorsLevelTwo) {
             this.labelModelLocRanRegressorsLevelTwo = labelModelLocRanRegressorsLevelTwo;
         }
-
+        //Done
         public String[] getLabelModelScaleRegressorsLevelTwo() {
             return labelModelScaleRegressorsLevelTwo;
         }
-
+        //Done
         public void setLabelModelScaleRegressorsLevelTwo(String[] labelModelScaleRegressorsLevelTwo) {
             this.labelModelScaleRegressorsLevelTwo = labelModelScaleRegressorsLevelTwo;
         }
-
+        //Done
         public String[] getLabelModelBSRegressorsLevelTwo() {
             return labelModelBSRegressorsLevelTwo;
         }
-
+        //Done
         public void setLabelModelBSRegressorsLevelTwo(String[] labelModelBSRegressorsLevelTwo) {
             this.labelModelBSRegressorsLevelTwo = labelModelBSRegressorsLevelTwo;
         }
-
+        //Done
         public String[] getLabelModelWSRegressorsLevelTwo() {
             return labelModelWSRegressorsLevelTwo;
         }
-
+        //Done
         public void setLabelModelWSRegressorsLevelTwo(String[] labelModelWSRegressorsLevelTwo) {
             this.labelModelWSRegressorsLevelTwo = labelModelWSRegressorsLevelTwo;
         }
