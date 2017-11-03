@@ -2977,6 +2977,7 @@ import mixregui.mixregGUI;
         }
         
         public void readStageOneOutputfile() throws FileNotFoundException, IOException{
+            mixregGUI.stageOneOutput.setText("");
             String fileName = NewModel.defFile.getDataFilename();
             String outputFilePath = FilenameUtils.removeExtension(fileName) + "_Output_1.out";
             File file = new File(outputFilePath);
@@ -2996,7 +2997,7 @@ import mixregui.mixregGUI;
         
         public void readStageTwoOutputfile() throws FileNotFoundException, IOException{
            
-            
+            mixregGUI.stageTwoOutput.setText("");
             if (NewModel.defFile.getAdvancedDropSecondStage().equals("1")){
             
             //do nothing
