@@ -1436,7 +1436,7 @@ public class mixregGUI extends javax.swing.JFrame {
             if (NoAssociationRadio.isSelected()) {
 
                 try {
-                    NewModel.defFile.setAdvancedEffectMeanWS(String.valueOf(0));
+                    NewModel.defFile.setAdvancedEffectMeanWS(String.valueOf(1));
                     System.out.println("From defHelper | Stage 1 Association of random location & scale?: " + NewModel.defFile.getAdvancedEffectMeanWS());
                 } catch (Exception ex) {
                     catchCount = 1;
@@ -1446,7 +1446,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
             } else if (LinearAssociationRadio.isSelected()) {
                 try {
-                    NewModel.defFile.setAdvancedEffectMeanWS(String.valueOf(1));
+                    NewModel.defFile.setAdvancedEffectMeanWS(String.valueOf(0));
                     System.out.println("From defHelper | Stage 1 Association of random location & scale?: " + NewModel.defFile.getAdvancedEffectMeanWS());
                 } catch (Exception ex) {
                     catchCount = 1;
