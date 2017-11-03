@@ -178,9 +178,10 @@ public class mixregGUI extends javax.swing.JFrame {
             associationLabel.setText("Association of random location & scale?");
 
             // if random location effects are more than one, change the table column names
+            level2_BSVar.setVisible(false);
             level1_BSVar.setText("Loc. eff.");
             level1_WSVar.setText("Scale");
-            level2_BSVar.setText("Loc. eff.");
+            //level2_BSVar.setText("Loc. eff.");
             level2_WSVar.setText("Scale");
 
         }
@@ -2816,13 +2817,15 @@ public class mixregGUI extends javax.swing.JFrame {
             } else {
 
                 levelTwoBoxes.get(j).get(2).setEnabled(false);
+                levelTwoBoxes.get(j).get(2).setVisible(false);
             }
 
             if (i > 1) {
-                levelTwoBoxes.get(j).get(1).setEnabled(false);
+                levelTwoBoxes.get(j).get(1).setVisible(false);
 
             } else {
 
+                levelTwoBoxes.get(j).get(1).setVisible(true);
                 levelTwoBoxes.get(j).get(1).setEnabled(true);
             }
 
