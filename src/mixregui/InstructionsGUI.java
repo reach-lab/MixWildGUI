@@ -50,6 +50,7 @@ public class InstructionsGUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setText("Please follow these instructions ...");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 36, -1, -1));
 
@@ -65,7 +66,7 @@ public class InstructionsGUI extends javax.swing.JFrame {
                 proceedButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(proceedButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 280, -1, -1));
+        getContentPane().add(proceedButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(286, 280, 80, -1));
 
         jLabel4.setText("- The first row in the .csv file should be column names");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
