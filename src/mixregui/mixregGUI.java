@@ -243,6 +243,8 @@ public class mixregGUI extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         jSeparator5 = new javax.swing.JSeparator();
         jSeparator13 = new javax.swing.JSeparator();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jEditorPane1 = new javax.swing.JEditorPane();
         parentPanel = new javax.swing.JPanel();
         imageView = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
@@ -324,10 +326,10 @@ public class mixregGUI extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        modelEquationTextArea = new javax.swing.JTextPane();
         jLabel13 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        equationArea = new javax.swing.JTextArea();
         jLabel10 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -358,6 +360,8 @@ public class mixregGUI extends javax.swing.JFrame {
             jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 300, Short.MAX_VALUE)
         );
+
+        jScrollPane6.setViewportView(jEditorPane1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Mix Suite");
@@ -827,43 +831,46 @@ public class mixregGUI extends javax.swing.JFrame {
 
         stageOneTabs.addTab("Stage 2 Results", jPanel4);
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        modelEquationTextArea.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jScrollPane5.setViewportView(modelEquationTextArea);
 
         jLabel13.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel13.setText("Your resulting model equation");
 
         jLabel19.setText("resized model image here (pending ...)");
 
+        equationArea.setColumns(20);
+        equationArea.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        equationArea.setRows(5);
+        jScrollPane8.setViewportView(equationArea);
+
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 754, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addGap(202, 202, 202)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel13)
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 677, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addGap(530, 530, 530)
-                        .addComponent(jLabel19)))
-                .addContainerGap(331, Short.MAX_VALUE))
+                            .addGroup(jPanel9Layout.createSequentialGroup()
+                                .addGap(530, 530, 530)
+                                .addComponent(jLabel19))
+                            .addGroup(jPanel9Layout.createSequentialGroup()
+                                .addGap(202, 202, 202)
+                                .addComponent(jLabel13)))
+                        .addGap(214, 214, 214)))
+                .addContainerGap(254, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addComponent(jLabel13)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(135, 135, 135)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(143, 143, 143)
                 .addComponent(jLabel19)
-                .addContainerGap(325, Short.MAX_VALUE))
+                .addContainerGap(330, Short.MAX_VALUE))
         );
 
         jPanel2.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1210, 660));
@@ -2314,7 +2321,9 @@ public class mixregGUI extends javax.swing.JFrame {
                 System.out.println("From defHelper | Stage 1 def file created successfully!");
                 //NewModel.modelBuilder(NewModel.defFile);
                 NewModel.modelBuilder = new ModelBuilder(NewModel.defFile);
-                modelEquationTextArea.setText(NewModel.modelBuilder.meanEquation());
+//                modelEquationTextArea.setText(NewModel.modelBuilder.meanEquation());
+//                testEq.setText(NewModel.modelBuilder.meanEquation());
+                equationArea.setText(NewModel.modelBuilder.meanEquation());
                 
                 NewModel.modelBuilder.saveWildFile(NewModel.defFile);
 //                NewModel.modelBuilder.meanEquation();
@@ -2400,6 +2409,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     public static javax.swing.JTable dataTable;
     private javax.swing.JMenuItem diagramMenu;
+    private javax.swing.JTextArea equationArea;
     private javax.swing.JMenuItem exitMenu;
     private javax.swing.JMenu fileMenu;
     private javax.swing.Box.Filler filler1;
@@ -2408,6 +2418,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JPanel imageView;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton8;
+    private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -2450,7 +2461,8 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
@@ -2474,7 +2486,6 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JPanel levelOnePanel;
     private javax.swing.JPanel levelTwoGrid;
     private javax.swing.JPanel levelTwoPanel;
-    private javax.swing.JTextPane modelEquationTextArea;
     private javax.swing.JMenuItem modifyStageOneMenu;
     private javax.swing.JMenuItem modifyStageTwoMenu;
     private javax.swing.JMenuItem newModelMenu;
