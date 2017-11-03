@@ -2251,7 +2251,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 NewModel.modelBuilder = new ModelBuilder(NewModel.defFile);
                 modelEquationTextArea.setText(NewModel.modelBuilder.meanEquation());
                 
-                
+                NewModel.modelBuilder.saveWildFile(NewModel.defFile);
 //                NewModel.modelBuilder.meanEquation();
 
             } catch (Exception ex) {
