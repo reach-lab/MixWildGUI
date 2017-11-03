@@ -214,7 +214,9 @@ public class mixregGUI extends javax.swing.JFrame {
         if (outComeType == false){
         
             outcomeCatButton.setEnabled(true);
+            outcomeCatButton.setVisible(true);
             outComeText.setEnabled(true);
+            outComeText.setVisible(true);
             outComeText.setEditable(false);
             System.out.println("outCatButton Enabled: " + String.valueOf(newModel.isOutcomeContinous()));
             jPanel5.setEnabled(true);
@@ -222,10 +224,10 @@ public class mixregGUI extends javax.swing.JFrame {
         
         } else if (outComeType == true) {
         
-            outcomeCatButton.setEnabled(false);
-            outComeText.setEnabled(false);
+            outcomeCatButton.setVisible(false);
+            outComeText.setVisible(false);
             System.out.println("outCatButton Enabled: " + String.valueOf(newModel.isOutcomeContinous()));
-            jPanel5.setEnabled(false);
+            jPanel5.setVisible(false);
             
         }
 
@@ -579,7 +581,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 addStageTwoTabTwoActionPerformed(evt);
             }
         });
-        jPanel12.add(addStageTwoTabTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 440, 210, 40));
+        jPanel12.add(addStageTwoTabTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 440, 220, 40));
 
         jLabel17.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jLabel17.setText("Random Scale");
