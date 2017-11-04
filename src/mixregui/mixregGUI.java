@@ -1985,7 +1985,7 @@ public class mixregGUI extends javax.swing.JFrame {
             for (int x = 0; x < ColumnsCustom.size(); x++) {
                 if (UniqueList.contains(ColumnsCustom.get(x))) {
                     //do nothing
-                } else if (ColumnsCustom.get(x).equals(NewModel.defFile.getAdvancedMissingValue())){ //compare if the category is a missing value, then don't consider it as a category
+                } else if (ColumnsCustom.get(x).equals(NewModel.defFile.getAdvancedMissingValue())&& !ColumnsCustom.get(x).equals("0")){ //compare if the category is a missing value, then don't consider it as a category
                     //do nothing
                     
                 } else {
@@ -4762,7 +4762,7 @@ public class mixregGUI extends javax.swing.JFrame {
             for (int x = 0; x < ColumnsCustom.size(); x++) {
                 if (UniqueList.contains(ColumnsCustom.get(x))) {
                     //do nothing
-                } else if (ColumnsCustom.get(x).equals(NewModel.defFile.getAdvancedMissingValue())){ //compare if the category is a missing value, then don't consider it as a category
+                } else if (ColumnsCustom.get(x).equals(NewModel.defFile.getAdvancedMissingValue())&& !ColumnsCustom.get(x).equals("0")){ //compare if the category is a missing value, then don't consider it as a category
                     //do nothing
                     
                 } else {
@@ -4817,7 +4817,7 @@ public class mixregGUI extends javax.swing.JFrame {
             for (int x = 0; x < ColumnsCustom.size(); x++) {
                 if (UniqueList.contains(ColumnsCustom.get(x))) {
                     //do nothing
-                } else if (ColumnsCustom.get(x).equals(NewModel.defFile.getAdvancedMissingValue())){ //compare if the category is a missing value, then don't consider it as a category
+                } else if (ColumnsCustom.get(x).equals(NewModel.defFile.getAdvancedMissingValue())&& !ColumnsCustom.get(x).equals("0")){ //compare if the category is a missing value, then don't consider it as a category
                     //do nothing
                     
                 } else {
