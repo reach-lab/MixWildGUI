@@ -408,9 +408,7 @@ public class NewModel extends javax.swing.JFrame {
             Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
         }
-        
-        
-    
+
     } else if (missingValueAbsent.isSelected()){
         try {
             defFile.setAdvancedMissingValue(String.valueOf(missingValue));
@@ -606,6 +604,14 @@ public class NewModel extends javax.swing.JFrame {
             NewModel.defFile.setAdvancedCenterScale(String.valueOf(0));
             System.out.println("From defHelper | Scale Regressor: " + NewModel.defFile.getAdvancedCenterScale());
             
+        } catch (Exception ex) {
+            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+        }
+        
+        try {
+            NewModel.defFile.setAdvancedResampleCount("500");
+            System.out.println("From defHelper | Resample count: " + NewModel.defFile.getAdvancedResampleCount());
         } catch (Exception ex) {
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
