@@ -85,10 +85,12 @@ public class NewModel extends javax.swing.JFrame {
        dichotomousRadio.setEnabled(false);
        //randomLocationEffects.setEnabled(false);
        newModelSubmit.setEnabled(false);
-       newModelMissingValueCode.setText("-9999");
-       newModelMissingValueCode.setEnabled(false);
-       newModelMissingValues.setEnabled(false);
-       newModelMissingValues.setSelected(true);
+       //newModelMissingValueCode.setText("-999");
+      // newModelMissingValueCode.setEnabled(false);
+//       newModelMissingValues.setEnabled(false);
+//       newModelMissingValues.setSelected(true);
+       missingValuePresent.setEnabled(false);
+       missingValueAbsent.setEnabled(false);
        noneRadio.setEnabled(false);
        randomScaleCheckBox.setEnabled(false);
        oneRLERadio.setEnabled(false);
@@ -116,6 +118,8 @@ public class NewModel extends javax.swing.JFrame {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
+        buttonGroup4 = new javax.swing.ButtonGroup();
         dataFileLabel = new javax.swing.JLabel();
         filePath = new javax.swing.JTextField();
         fileBrowseButton = new javax.swing.JButton();
@@ -129,11 +133,9 @@ public class NewModel extends javax.swing.JFrame {
         newModelCancel = new javax.swing.JButton();
         newModel_resetButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        newModelMissingValues = new javax.swing.JCheckBox();
         jLabel6 = new javax.swing.JLabel();
         newModelMissingValueCode = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         noneRadio = new javax.swing.JRadioButton();
         jButton1 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
@@ -144,6 +146,9 @@ public class NewModel extends javax.swing.JFrame {
         oneRLERadio = new javax.swing.JRadioButton();
         moreThanOneRLERadio = new javax.swing.JRadioButton();
         jSeparator3 = new javax.swing.JSeparator();
+        jLabel3 = new javax.swing.JLabel();
+        missingValuePresent = new javax.swing.JRadioButton();
+        missingValueAbsent = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("New Model for Stage 1 Analysis");
@@ -208,7 +213,7 @@ public class NewModel extends javax.swing.JFrame {
                 newModelSubmitActionPerformed(evt);
             }
         });
-        getContentPane().add(newModelSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 360, 90, -1));
+        getContentPane().add(newModelSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 440, 90, -1));
 
         newModelCancel.setText("Cancel");
         newModelCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -216,7 +221,7 @@ public class NewModel extends javax.swing.JFrame {
                 newModelCancelActionPerformed(evt);
             }
         });
-        getContentPane().add(newModelCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 360, 90, -1));
+        getContentPane().add(newModelCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 440, 90, -1));
 
         newModel_resetButton.setText("Reset");
         newModel_resetButton.addActionListener(new java.awt.event.ActionListener() {
@@ -224,18 +229,11 @@ public class NewModel extends javax.swing.JFrame {
                 newModel_resetButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(newModel_resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 360, 90, -1));
+        getContentPane().add(newModel_resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 440, 90, -1));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(538, 334, -1, -1));
 
-        newModelMissingValues.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newModelMissingValuesActionPerformed(evt);
-            }
-        });
-        getContentPane().add(newModelMissingValues, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 300, 30, 20));
-
         jLabel6.setText("Missing value code:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, -1, 50));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, -1, 50));
 
         newModelMissingValueCode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -247,13 +245,10 @@ public class NewModel extends javax.swing.JFrame {
                 newModelMissingValueCodeKeyTyped(evt);
             }
         });
-        getContentPane().add(newModelMissingValueCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 290, 77, 30));
+        getContentPane().add(newModelMissingValueCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, 77, 30));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/mixLogo.png"))); // NOI18N
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, -1, 31));
-
-        jLabel8.setText("Any missing values in data?");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, -1, 31));
 
         buttonGroup1.add(noneRadio);
         noneRadio.setText("None");
@@ -295,7 +290,28 @@ public class NewModel extends javax.swing.JFrame {
         buttonGroup2.add(moreThanOneRLERadio);
         moreThanOneRLERadio.setText("Intercept + Slope(s)");
         getContentPane().add(moreThanOneRLERadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, -1, -1));
-        getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 336, 516, 10));
+        getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 416, 516, 10));
+
+        jLabel3.setText("Contains missing values?");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
+
+        buttonGroup4.add(missingValuePresent);
+        missingValuePresent.setText("Yes");
+        missingValuePresent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                missingValuePresentActionPerformed(evt);
+            }
+        });
+        getContentPane().add(missingValuePresent, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 298, 50, 20));
+
+        buttonGroup4.add(missingValueAbsent);
+        missingValueAbsent.setText("No");
+        missingValueAbsent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                missingValueAbsentActionPerformed(evt);
+            }
+        });
+        getContentPane().add(missingValueAbsent, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 298, -1, 20));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -338,14 +354,16 @@ public class NewModel extends javax.swing.JFrame {
         dichotomousRadio.setEnabled(true);
        // randomLocationEffects.setEnabled(true);
         newModelSubmit.setEnabled(true);
-        newModelMissingValues.setEnabled(true);
-        newModelMissingValueCode.setEnabled(true);
+//        newModelMissingValues.setEnabled(true);
+        missingValuePresent.setEnabled(true);
+        missingValueAbsent.setEnabled(true);
+       // newModelMissingValueCode.setEnabled(true);
         noneRadio.setEnabled(true);
          newModel_resetButton.setEnabled(true);
         randomScaleCheckBox.setEnabled(true);
         randomScaleCheckBox.setSelected(true);
         
-        newModelMissingValueCode.selectAll();
+       // newModelMissingValueCode.selectAll();
         
         System.out.println(file.getAbsolutePath());
     } else {
@@ -369,12 +387,41 @@ public class NewModel extends javax.swing.JFrame {
     } else if (moreThanOneRLERadio.isSelected() == true) {
             RLE = 2;
     }
+ 
         
         defFile = new DefinitionHelper(RLE, !isOutcomeContinous());
 //        modelBuilder = new ModelBuilder(defFile);
         System.out.println("RLE: " + String.valueOf(RLE));
         
         defFile.modelSelector(RLE, isOutcomeContinous());
+        
+         if (missingValuePresent.isSelected()){
+       
+        System.out.println("NEW MODEL | MISSING VALUE = " + newModelMissingValueCode.getText());
+        
+        try {
+            System.out.println("NEW MODEL | MISSING VALUE = " + newModelMissingValueCode.getText());
+            defFile.setAdvancedMissingValue(String.valueOf(newModelMissingValueCode.getText()));
+            
+            System.out.println("From defHelper | Missing Value: " + defFile.getAdvancedMissingValue());
+        } catch (Exception ex) {
+            Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        
+    
+    } else if (missingValueAbsent.isSelected()){
+        try {
+            defFile.setAdvancedMissingValue(String.valueOf(missingValue));
+            System.out.println("From defHelper | Missing Value: " + defFile.getAdvancedMissingValue());
+        } catch (Exception ex) {
+            Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+        }
+        //do nothing
+    
+    }
         
         try {
             //convert csv to .dat file ...
@@ -419,26 +466,7 @@ public class NewModel extends javax.swing.JFrame {
                 Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
             }
         
-         if (newModelMissingValueCode.isEnabled()) {
-
-            try {
-                defFile.setAdvancedMissingValue(newModelMissingValueCode.getText().toString());
-                System.out.println("From defHelper | Missing Value: " + defFile.getAdvancedMissingValue());
-//                tryCount = 1;
-            } catch (Exception ex) {
-                //catchCount = 1;
-                Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
-            }
-        } else {
-            try {
-                // do nothing and go next
-              defFile.setAdvancedMissingValue(missingValue);
-            } catch (Exception ex) {
-                Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
-            }
-                System.out.println("From defHelper | Missing Value: " + defFile.getAdvancedMissingValue());
-        }      
+               
         // Read random location effects from new Model
         //RLE = (Integer) randomLocationEffects.getValue();
         NoneVar = isOutcomeNone();
@@ -678,7 +706,7 @@ public class NewModel extends javax.swing.JFrame {
         dichotomousRadio.setEnabled(false);
         //randomLocationEffects.setEnabled(false);
         newModelSubmit.setEnabled(false);
-        newModelMissingValues.setEnabled(false);
+//        newModelMissingValues.setEnabled(false);
         newModelMissingValueCode.setEnabled(false);
         noneRadio.setSelected(false);
         noneRadio.setEnabled(false);
@@ -686,38 +714,6 @@ public class NewModel extends javax.swing.JFrame {
         randomScaleCheckBox.setEnabled(false);
 
     }//GEN-LAST:event_newModel_resetButtonActionPerformed
-
-    private void newModelMissingValuesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModelMissingValuesActionPerformed
-        // TODO add your handling code here:
-        
-        if (newModelMissingValues.isSelected() == true) {
-            newModelMissingValueCode.setEnabled(true);
-            newModelMissingValueCode.setText("-9999");
-            //missingValue = newModelMissingValueCode.getText();
-            
-//            try {
-//                NewModel.defFile.setAdvancedMissingValue(newModelMissingValueCode.getText().toString());
-//                System.out.println("From defHelper | MissingValue when present: " + NewModel.defFile.getAdvancedMissingValue());
-//            } catch (Exception ex) {
-//                Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
-//                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-//            }  
-        } else {
-            
-            newModelMissingValueCode.setEnabled(false);
-//            //newModelMissingValueCode. 
-//            //missingValue = "0";
-//            
-//            try {
-//                NewModel.defFile.setAdvancedMissingValue(missingValue);
-//                System.out.println("From defHelper | MissingValue when unchecked: " + NewModel.defFile.getAdvancedMissingValue());
-//            } catch (Exception ex) {
-//                Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
-//                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-//            }  
-        }
-        
-    }//GEN-LAST:event_newModelMissingValuesActionPerformed
 
     private void newModelMissingValueCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModelMissingValueCodeActionPerformed
         // TODO add your handling code here:
@@ -749,6 +745,25 @@ public class NewModel extends javax.swing.JFrame {
     private void dichotomousRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dichotomousRadioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_dichotomousRadioActionPerformed
+
+    private void missingValuePresentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_missingValuePresentActionPerformed
+        // TODO add your handling code here:
+        if (missingValuePresent.isSelected()){
+        newModelMissingValueCode.setEnabled(true);
+        newModelMissingValueCode.setText("-999");
+        newModelMissingValueCode.selectAll();
+        }
+        
+    }//GEN-LAST:event_missingValuePresentActionPerformed
+
+    private void missingValueAbsentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_missingValueAbsentActionPerformed
+        // TODO add your handling code here:
+         if (missingValueAbsent.isSelected()){
+         newModelMissingValueCode.setEnabled(false);
+         newModelMissingValueCode.setText("");
+         }
+         
+    }//GEN-LAST:event_missingValueAbsentActionPerformed
 
     /**
      * @param args the command line arguments
@@ -804,6 +819,8 @@ public class NewModel extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
+    private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.JRadioButton continuousRadio;
     private javax.swing.JLabel dataFileLabel;
     private javax.swing.JRadioButton dichotomousRadio;
@@ -813,19 +830,20 @@ public class NewModel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JRadioButton missingValueAbsent;
+    private javax.swing.JRadioButton missingValuePresent;
     private javax.swing.JRadioButton moreThanOneRLERadio;
     private javax.swing.JButton newModelCancel;
     private javax.swing.JTextField newModelMissingValueCode;
-    private javax.swing.JCheckBox newModelMissingValues;
     private javax.swing.JButton newModelSubmit;
     private javax.swing.JButton newModel_resetButton;
     private javax.swing.JRadioButton noneRadio;
