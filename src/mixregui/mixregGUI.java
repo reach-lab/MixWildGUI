@@ -215,9 +215,12 @@ public class mixregGUI extends javax.swing.JFrame {
         
             outcomeCatButton.setEnabled(true);
             outcomeCatButton.setVisible(true);
-            outComeText.setEnabled(true);
-            outComeText.setVisible(true);
-            outComeText.setEditable(false);
+            //outComeText.setEnabled(true);
+            outCategoryDisplay.setEnabled(true);
+            //outComeText.setVisible(true);
+            outCategoryDisplay.setVisible(true);
+            //outComeText.setEditable(false);
+            outCategoryDisplay.setEnabled(true);
             System.out.println("outCatButton Enabled: " + String.valueOf(newModel.isOutcomeContinous()));
             jPanel5.setEnabled(true);
             
@@ -225,7 +228,7 @@ public class mixregGUI extends javax.swing.JFrame {
         } else if (outComeType == true) {
         
             outcomeCatButton.setVisible(false);
-            outComeText.setVisible(false);
+            //outComeText.setVisible(false);
             System.out.println("outCatButton Enabled: " + String.valueOf(newModel.isOutcomeContinous()));
             jPanel5.setVisible(false);
             
@@ -302,18 +305,17 @@ public class mixregGUI extends javax.swing.JFrame {
         suppressIntCheckBox = new javax.swing.JCheckBox();
         stageTwoOutcome = new javax.swing.JComboBox<>();
         jLabel22 = new javax.swing.JLabel();
-        jSeparator8 = new javax.swing.JSeparator();
         jButton1 = new javax.swing.JButton();
         jSeparator12 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 2), new java.awt.Dimension(0, 2), new java.awt.Dimension(32767, 2));
         jSeparator14 = new javax.swing.JSeparator();
-        outcomeCatButton = new javax.swing.JButton();
-        jPanel5 = new javax.swing.JPanel();
-        numberOfCategories = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        outComeText = new javax.swing.JTextArea();
         jSeparator15 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        jPanel5 = new javax.swing.JPanel();
+        outcomeCatButton = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        outCategoryDisplay = new javax.swing.JTextPane();
         jPanel3 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -581,7 +583,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 addStageTwoTabTwoActionPerformed(evt);
             }
         });
-        jPanel12.add(addStageTwoTabTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 440, 220, 40));
+        jPanel12.add(addStageTwoTabTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, 230, 40));
 
         jLabel17.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jLabel17.setText("Random Scale");
@@ -636,11 +638,10 @@ public class mixregGUI extends javax.swing.JFrame {
         jPanel12.add(suppressIntCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 530, 240, -1));
 
         stageTwoOutcome.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel12.add(stageTwoOutcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 210, 30));
+        jPanel12.add(stageTwoOutcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, 230, 30));
 
         jLabel22.setText("Stage 2 Outcome:");
-        jPanel12.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, -1, -1));
-        jPanel12.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 422, 210, 10));
+        jPanel12.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 110, -1));
 
         jButton1.setText("Reset");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -655,6 +656,10 @@ public class mixregGUI extends javax.swing.JFrame {
         jPanel12.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 530, -1, 30));
         jPanel12.add(filler1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 570, -1, 80));
         jPanel12.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 70, 320, 10));
+        jPanel12.add(jSeparator15, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 660, -1, -1));
+        jPanel12.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 262, 220, 0));
+
+        jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         outcomeCatButton.setText("Check outcome categories");
         outcomeCatButton.addActionListener(new java.awt.event.ActionListener() {
@@ -662,37 +667,30 @@ public class mixregGUI extends javax.swing.JFrame {
                 outcomeCatButtonActionPerformed(evt);
             }
         });
-        jPanel12.add(outcomeCatButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 210, 40));
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Outcome categories"));
-
-        outComeText.setColumns(20);
-        outComeText.setRows(5);
-        jScrollPane3.setViewportView(outComeText);
+        jScrollPane5.setViewportView(outCategoryDisplay);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(numberOfCategories)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(outcomeCatButton, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                    .addComponent(jScrollPane5))
+                .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(outcomeCatButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(numberOfCategories)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        jPanel12.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 210, 150));
-        jPanel12.add(jSeparator15, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 660, -1, -1));
+        jPanel12.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 240, 250));
 
         stageOneTabs.addTab("Stage 2 Configuration", jPanel12);
 
@@ -1996,11 +1994,20 @@ public class mixregGUI extends javax.swing.JFrame {
 
             System.out.println("Number of unique categories: " + String.valueOf(UniqueList.size()));
             //numberOfCategories.setText(String.valueOf(UniqueList.size()) + "\nThe categories are:\n");
-            outComeText.setText(UniqueList.size() + " Categories:\n");
+//            outComeText.setText(UniqueList.size() + " Categories:\n");
+//            for (int index = 0; index < UniqueList.size(); index++){
+//                //numberOfCategories.setT
+//                //numberOfCategories.setText(numberOfCategories.getText() +"<html><br></html>" + String.valueOf(index + 1) + ":" + UniqueList.get(index) + "<html><br></html>");
+//                outComeText.append(String.valueOf(index + 1) + ") " + UniqueList.get(index) + "\n" );
+//
+//            }
+            
+            outCategoryDisplay.setText(UniqueList.size() + " Categories:\n");
             for (int index = 0; index < UniqueList.size(); index++){
                 //numberOfCategories.setT
                 //numberOfCategories.setText(numberOfCategories.getText() +"<html><br></html>" + String.valueOf(index + 1) + ":" + UniqueList.get(index) + "<html><br></html>");
-                outComeText.append(String.valueOf(index + 1) + ") " + UniqueList.get(index) + "\n" );
+                outCategoryDisplay.setText(outCategoryDisplay.getText() + String.valueOf(index + 1) + ") " + UniqueList.get(index) + "\n" );
+                
 
             }
 
@@ -2509,8 +2516,8 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JSeparator jSeparator1;
@@ -2521,10 +2528,10 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator14;
     private javax.swing.JSeparator jSeparator15;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
-    private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JLabel level1_BSVar;
     private javax.swing.JLabel level1_MeanReg;
@@ -2539,8 +2546,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem modifyStageOneMenu;
     private javax.swing.JMenuItem modifyStageTwoMenu;
     private javax.swing.JMenuItem newModelMenu;
-    private javax.swing.JLabel numberOfCategories;
-    private javax.swing.JTextArea outComeText;
+    private javax.swing.JTextPane outCategoryDisplay;
     private javax.swing.JButton outcomeCatButton;
     private javax.swing.JPanel parentPanel;
     public static javax.swing.JLabel printedFileName;
