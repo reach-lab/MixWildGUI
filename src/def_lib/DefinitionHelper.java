@@ -429,7 +429,7 @@ import mixregui.mixregGUI;
             List<String> newDefinitionFile = new ArrayList();
             newDefinitionFile.add(getModelTitle());
             newDefinitionFile.add(getModelSubtitle());
-            newDefinitionFile.add(getDataFilename());
+            newDefinitionFile.add("\"" + getDataFilename() + "\"");
             newDefinitionFile.add(getOutputPrefix());
             String[] advancedOptionsOne = advancedVariableBuild(1);
             newDefinitionFile.add(Arrays.toString(advancedOptionsOne).replaceAll(",", " "));
@@ -559,7 +559,7 @@ import mixregui.mixregGUI;
             List<String> newDefinitionFile = new ArrayList();
             newDefinitionFile.add(getModelTitle());
             newDefinitionFile.add(getModelSubtitle());
-            newDefinitionFile.add(getDataFilename());
+            newDefinitionFile.add("\"" + getDataFilename() + "\"");
             newDefinitionFile.add(getOutputPrefix());
             String[] advancedOptionsOne = advancedVariableBuild(1);
             newDefinitionFile.add(Arrays.toString(advancedOptionsOne).replaceAll(",", " "));
@@ -689,7 +689,7 @@ import mixregui.mixregGUI;
             List<String> newDefinitionFile = new ArrayList();
             newDefinitionFile.add(getModelTitle());
             newDefinitionFile.add(getModelSubtitle());
-            newDefinitionFile.add(getDataFilename());
+            newDefinitionFile.add("\"" + getDataFilename() + "\"");
             newDefinitionFile.add(getOutputPrefix());
             String[] advancedOptionsOne = advancedVariableBuild(1);
             newDefinitionFile.add(Arrays.toString(advancedOptionsOne).replaceAll(",", " "));
@@ -816,7 +816,7 @@ import mixregui.mixregGUI;
             List<String> newDefinitionFile = new ArrayList();
             newDefinitionFile.add(getModelTitle());
             newDefinitionFile.add(getModelSubtitle());
-            newDefinitionFile.add(getDataFilename());
+            newDefinitionFile.add("\"" + getDataFilename() + "\"");
             newDefinitionFile.add(getOutputPrefix());
             String[] advancedOptionsOne = advancedVariableBuild(1);
             newDefinitionFile.add(Arrays.toString(advancedOptionsOne).replaceAll(",", " "));
@@ -947,7 +947,7 @@ import mixregui.mixregGUI;
         private void assignDefinitionVariables(List<String> readDefinitionFile) throws Exception {
             setModelTitle(readDefinitionFile.get(0));
             setModelSubtitle(readDefinitionFile.get(1));
-            setDataFilename(readDefinitionFile.get(2));
+            setDataFilename(readDefinitionFile.get(2).replace("/", ""));
             setOutputPrefix(readDefinitionFile.get(3));
             advancedVariableAssignment(1,readDefinitionFile.get(4).split("\\s+"));
 
@@ -1398,10 +1398,10 @@ import mixregui.mixregGUI;
         // read fileName
         //done
         public void setDataFilename(String dataFilename) throws Exception {
-            if (dataFilename.endsWith(".dat\"") || dataFilename.endsWith(".csv\"")) {
+            if (dataFilename.endsWith(".dat") || dataFilename.endsWith(".csv")) {
                 this.dataFilename = dataFilename;
             } else {
-                throw new Exception("Filename is not a valid .dat or .csv file or is not contained in double quotes, line 3");
+                throw new Exception("Filename is not a valid .dat or .csv file, line 3");
             }
         }
 
