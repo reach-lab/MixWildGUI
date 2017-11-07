@@ -1398,10 +1398,10 @@ import mixregui.mixregGUI;
         // read fileName
         //done
         public void setDataFilename(String dataFilename) throws Exception {
-            if (dataFilename.endsWith(".dat") || dataFilename.endsWith(".csv")) {
+            if (dataFilename.endsWith(".dat\"") || dataFilename.endsWith(".csv\"")) {
                 this.dataFilename = dataFilename;
             } else {
-                throw new Exception("Filename is not a valid .dat or .csv file, line 3");
+                throw new Exception("Filename is not a valid .dat or .csv file or is not contained in double quotes, line 3");
             }
         }
 
