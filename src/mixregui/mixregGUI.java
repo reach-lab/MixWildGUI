@@ -90,10 +90,6 @@ public class mixregGUI extends javax.swing.JFrame {
 
     DefaultListModel<String> savedVariablesStageOne;
 
-    DefaultComboBoxModel<String> regressorsLevelOne;
-
-    DefaultComboBoxModel<String> regressorsLevelTwo;
-
     ArrayList<ArrayList<JCheckBox>> levelOneBoxes;
 
     ArrayList<ArrayList<JCheckBox>> levelTwoBoxes;
@@ -2410,7 +2406,8 @@ public class mixregGUI extends javax.swing.JFrame {
         //stageOneTabs.setSelectedIndex(1);
 
         stage_2_regs.setVisible(true);
-        stage_2_regs.updateStageTwoVariables(getSavedVariables());
+        //stage_2_regs.updateStageTwoVariables(getSavedVariables());
+        stage_2_regs.updateStageTwoWithoutStageOne();
     }//GEN-LAST:event_addStageTwoTabTwoActionPerformed
 
     /**
@@ -2603,6 +2600,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
         int index = stageTwoOutcome.getSelectedIndex();
         
+       //DefaultListModel<String> tempModel = stage_1_regs.getListModel();
         DefaultListModel<String> tempModel = stage_1_regs.getListModel();
         
         tempModel.removeElement(stageTwoOutcome.getSelectedItem());

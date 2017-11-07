@@ -1058,7 +1058,7 @@ private boolean validateFields(){
     
     if(titleField.getText().trim().length() == 0){
     
-   JOptionPane.showMessageDialog(null, "Please enter a title for the model", "Missing information!", JOptionPane.INFORMATION_MESSAGE, icon);
+    JOptionPane.showMessageDialog(null, "Please enter a title for the model", "Missing information!", JOptionPane.INFORMATION_MESSAGE, icon);
     System.out.println("FIELD VALIDATE: " + "Title missing");
     allFieldsEntered = false;
     }
