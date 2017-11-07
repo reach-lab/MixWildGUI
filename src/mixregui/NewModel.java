@@ -453,7 +453,7 @@ public class NewModel extends javax.swing.JFrame {
             
             String[] varTemp = getVariableNames();
             
-           defFile.setDataFilename("\"" + extractDatFilePath() + "\""); //change this to .dat file location
+           defFile.setDataFilename("\"" + extractDatFilePath() + "\""); //change this to .dat file location (check validation)
            
            defFile.setDataVariableCount(String.valueOf(variableArray.length));
            System.out.println("From defHelper | Variable count: " + defFile.getDataVariableCount());
