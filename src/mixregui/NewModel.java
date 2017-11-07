@@ -379,9 +379,10 @@ public class NewModel extends javax.swing.JFrame {
 
     private void newModelSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModelSubmitActionPerformed
         
-        //check if missing value is set as zero by the user
+        System.out.println("Model submitted" + " called");
         
-        
+    if (validateFields()==true){
+        System.out.print("condition is true");
     if (oneRLERadio.isSelected() == true){
             RLE = 1;
     } else if (moreThanOneRLERadio.isSelected() == true) {
@@ -452,7 +453,7 @@ public class NewModel extends javax.swing.JFrame {
             
             String[] varTemp = getVariableNames();
             
-           defFile.setDataFilename(extractDatFilePath()); //change this to .dat file location
+           defFile.setDataFilename("\"" + extractDatFilePath() + "\""); //change this to .dat file location (check validation)
            
            defFile.setDataVariableCount(String.valueOf(variableArray.length));
            System.out.println("From defHelper | Variable count: " + defFile.getDataVariableCount());
@@ -686,6 +687,13 @@ public class NewModel extends javax.swing.JFrame {
             Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
+    
+    } else {
+    
+    System.out.println("VALIDATION OF FIELDS: " + String.valueOf(false));
+        
+    }
+
     }//GEN-LAST:event_newModelSubmitActionPerformed
 
     private void newModelCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModelCancelActionPerformed
@@ -1038,6 +1046,48 @@ mixregGUI.printedFileName.setText(path);
 
 }
 
+private boolean validateFields(){
+    boolean allFieldsEntered = true;
+    System.out.println("FIELD VALIDATE: " + "Called");
+    
+    if (filePath.getText().trim().length() == 0){
+    allFieldsEntered = false;
+    JOptionPane.showMessageDialog(null, "Please select a .csv file for your analysis", "Missing information!", JOptionPane.INFORMATION_MESSAGE, icon);
+    System.out.println("FIELD VALIDATE: " + "File path missing");
+    } 
+    
+    if(titleField.getText().trim().length() == 0){
+    
+    JOptionPane.showMessageDialog(null, "Please enter a title for the model", "Missing information!", JOptionPane.INFORMATION_MESSAGE, icon);
+    System.out.println("FIELD VALIDATE: " + "Title missing");
+    allFieldsEntered = false;
+    }
 
+    if (buttonGroup2.getSelection() == null){
+    allFieldsEntered = false;
+    JOptionPane.showMessageDialog(null, "Please select random location effects", "Missing information!", JOptionPane.INFORMATION_MESSAGE, icon);
+    System.out.println("FIELD VALIDATE: " + "RLE not selected");
+    }
+    
+    if(buttonGroup1.getSelection() == null) {
+    allFieldsEntered = false;
+    JOptionPane.showMessageDialog(null, "Please select a stage 2 outcome type", "Missing information!", JOptionPane.INFORMATION_MESSAGE, icon);
+    System.out.println("FIELD VALIDATE: " + "Stage 2 outcome missing");
+    }
+    
+    if (buttonGroup4.getSelection() == null){
+    allFieldsEntered = false;
+    JOptionPane.showMessageDialog(null, "Please confirm if your data has missing values", "Missing information!", JOptionPane.INFORMATION_MESSAGE, icon);
+    System.out.println("FIELD VALIDATE: " + "Missing value missing");
+    }
+    
+    if (newModelMissingValueCode.isEnabled() && newModelMissingValueCode.getText().trim().length()==0){
+    allFieldsEntered = false;
+    JOptionPane.showMessageDialog(null, "Please don't leave the missing value as blank", "Missing information!", JOptionPane.INFORMATION_MESSAGE, icon);
+    System.out.println("FIELD VALIDATE: " + "Missing value blank");
+    }
+System.out.println("FIELD VALIDATE: " + "about to exit");
+return allFieldsEntered;
+}
 
 }

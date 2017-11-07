@@ -11,6 +11,8 @@ import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import static mixregui.stageOneRegs.varList;
+import static mixregui.stageOneRegs.variableNamesList;
 
 /**
  *
@@ -172,7 +174,12 @@ public class stageTwoRegs extends javax.swing.JFrame {
         
         stageTwoLevelTwo.addElement(StageTwoAllVariables.getSelectedValue());
         StageTwoLevelTwoVariables.setModel(stageTwoLevelTwo);
-
+        stageTwoListModel.remove(StageTwoAllVariables.getSelectedIndex());
+        
+        for (int k = 0; k < stageTwoListModel.size(); k++){
+        System.out.println("VarList: " + String.valueOf(stageTwoListModel.getElementAt(k)));
+        
+        }
         stageTwoSubmitButton.setEnabled(true);
         
         } else {
@@ -188,13 +195,15 @@ public class stageTwoRegs extends javax.swing.JFrame {
         if (!StageTwoLevelTwoVariables.isSelectionEmpty()){
             stageTwoSubmitButton.setEnabled(true);
             
-//            if(!StageTwoAllVariables.contains(StageTwoLevelTwoVariables.getSelectedValue())){
-//            
-//            StageTwoAllVariables.addElement(StageTwoLevelTwoVariables.getSelectedValue());
-//            
-//            }
+            if(!stageTwoListModel.contains(StageTwoLevelTwoVariables.getSelectedValue())){
+            
+            stageTwoListModel.addElement(StageTwoLevelTwoVariables.getSelectedValue());
+            
+            }
             
             stageTwoLevelTwo.remove(StageTwoLevelTwoVariables.getSelectedIndex());
+            
+            
         
         } else {
         JOptionPane.showMessageDialog(null, "Please select a variable from stage two.", "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
@@ -273,6 +282,33 @@ public class stageTwoRegs extends javax.swing.JFrame {
         StageTwoAllVariables.setModel(defaultListModel);
 
         StageTwoAllVariables.setSelectedIndex(2);
+    }
+    
+    public void updateStageTwoWithoutStageOne(){
+       int idIndex = mixregGUI.getIDFieldPosition();
+       int stageOneIndex = mixregGUI.getStageOneDVFieldPosition();
+       int stageTwoIndex = mixregGUI.getStageTwoDVFieldPosition();
+       
+       stageTwoListModel.removeAllElements();
+       
+       for (int j = 0; j < variableNamesList.length; j++) {
+            if (j == idIndex || j == stageOneIndex || j == stageTwoIndex){
+            //do nothing               
+            } else {
+            stageTwoListModel.addElement(variableNamesList[j]);
+            }           
+        }
+       
+       StageTwoAllVariables.setModel(stageTwoListModel);
+       StageTwoAllVariables.setSelectedIndex(1);
+    
+    
+    }
+    
+    public void updateStageTwoAgain(){
+    
+    StageTwoAllVariables.setModel(StageTwoAllVariables.getModel());
+    
     }
 
 }
