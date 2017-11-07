@@ -947,7 +947,7 @@ import mixregui.mixregGUI;
         private void assignDefinitionVariables(List<String> readDefinitionFile) throws Exception {
             setModelTitle(readDefinitionFile.get(0));
             setModelSubtitle(readDefinitionFile.get(1));
-            setDataFilename(readDefinitionFile.get(2).replace("/", ""));
+            setDataFilename(readDefinitionFile.get(2).replace("\"", ""));
             setOutputPrefix(readDefinitionFile.get(3));
             advancedVariableAssignment(1,readDefinitionFile.get(4).split("\\s+"));
 
