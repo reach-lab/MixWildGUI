@@ -176,7 +176,10 @@ public class stageTwoRegs extends javax.swing.JFrame {
         StageTwoLevelTwoVariables.setModel(stageTwoLevelTwo);
         stageTwoListModel.remove(StageTwoAllVariables.getSelectedIndex());
         
-
+        for (int k = 0; k < stageTwoListModel.size(); k++){
+        System.out.println("VarList: " + String.valueOf(stageTwoListModel.getElementAt(k)));
+        
+        }
         stageTwoSubmitButton.setEnabled(true);
         
         } else {
@@ -299,6 +302,12 @@ public class stageTwoRegs extends javax.swing.JFrame {
        StageTwoAllVariables.setModel(stageTwoListModel);
        StageTwoAllVariables.setSelectedIndex(1);
     
+    
+    }
+    
+    public void updateStageTwoAgain(){
+    
+    StageTwoAllVariables.setModel(StageTwoAllVariables.getModel());
     
     }
 

@@ -110,6 +110,7 @@ public class mixregGUI extends javax.swing.JFrame {
     boolean suppressed = false;
     boolean outcomeNone = false;
     boolean addStageOneCHecked = false;
+    boolean addStageTwoChecked = false;
 
     ArrayList<String> levelOneSelected;
     ArrayList<String> levelTwoSelected;
@@ -154,6 +155,7 @@ public class mixregGUI extends javax.swing.JFrame {
         StageTwoList = new DefaultComboBoxModel<String>();
         NoAssociationRadio.setSelected(true);
         stage_1_regs = new stageOneRegs();
+        stage_2_regs = new stageTwoRegs();
 
         i = newModel.getRLE();
         System.out.println(String.valueOf(i));
@@ -1858,9 +1860,6 @@ public class mixregGUI extends javax.swing.JFrame {
             stage_1_regs.setVisible(true);
             stage_1_regs.updateAllVariables();
             }
-
-            
-
         }
         
         addStageOneCHecked = true;
@@ -2412,13 +2411,38 @@ public class mixregGUI extends javax.swing.JFrame {
 
     private void addStageTwoTabTwoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStageTwoTabTwoActionPerformed
         // TODO add your handling code here:
+        
+        if (stage_2_regs.isVisible()) { //if it is already open and visible in the background
 
-        stage_2_regs = new stageTwoRegs();
+            // stage_1_regs.set
+            stage_2_regs.setFocusable(true);
+            
+
+        } else {
+            //stage_1_regs.revalidate();
+            //stage_1_regs.repaint();
+           // stage_1_regs.removeAll();
+            
+           
+            
+            if (addStageTwoChecked == true) {
+            
+            stage_2_regs.setVisible(true);
+            stage_2_regs.updateStageTwoAgain();
+            } else {
+            stage_2_regs.setVisible(true);
+            stage_2_regs.updateStageTwoWithoutStageOne();
+            }
+        }
+        
+        addStageTwoChecked = true;
+
+//        stage_2_regs = new stageTwoRegs();
         //stageOneTabs.setSelectedIndex(1);
 
-        stage_2_regs.setVisible(true);
-        //stage_2_regs.updateStageTwoVariables(getSavedVariables());
-        stage_2_regs.updateStageTwoWithoutStageOne();
+//        stage_2_regs.setVisible(true);
+//        //stage_2_regs.updateStageTwoVariables(getSavedVariables());
+//        stage_2_regs.updateStageTwoWithoutStageOne();
     }//GEN-LAST:event_addStageTwoTabTwoActionPerformed
 
     /**
