@@ -30,7 +30,7 @@ public class stageOneRegs extends javax.swing.JFrame {
 
     static String[] variableNamesList;
 
-    static DefaultListModel<String> varList;
+    public static DefaultListModel<String> varList;
 
     static DefaultListModel<String> levelOneList;
 
@@ -200,6 +200,12 @@ public class stageOneRegs extends javax.swing.JFrame {
 
     private void stageOneSubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneSubmitButtonActionPerformed
 
+        for (int k = 0; k < varList.size(); k++){
+        System.out.println("VarList Submitted: " + String.valueOf(varList.getElementAt(k)));
+        
+        }
+        
+        
         stageTwo = new stageTwoRegs();
         isSubmitClicked = true;
 
@@ -222,6 +228,11 @@ public class stageOneRegs extends javax.swing.JFrame {
         StageOneLevelOneList.setModel(levelOneList);
         //remove the variable once it is added to levelOne regressors
         varList.remove(AllVariablesList.getSelectedIndex());
+        
+        for (int k = 0; k < varList.size(); k++){
+        System.out.println("VarList: " + String.valueOf(varList.getElementAt(k)));
+        
+        }
 
         stageOneSubmitButton.setEnabled(true);
         } else {
@@ -242,6 +253,10 @@ public class stageOneRegs extends javax.swing.JFrame {
         StageOneLevelTwoList.setModel(levelTwoList);
 
         varList.remove(AllVariablesList.getSelectedIndex());
+        
+        
+        
+        
         } else {
         JOptionPane.showMessageDialog(null, "Please select a variable for level two.", "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
@@ -390,6 +405,13 @@ public class stageOneRegs extends javax.swing.JFrame {
 
         AllVariablesList.setModel(varList);
         AllVariablesList.setSelectedIndex(0);
+    }
+    
+    public void updateStageOneAgain(){
+    
+   
+    AllVariablesList.setModel(AllVariablesList.getModel());
+    
     }
 
     public DefaultListModel<String> getListModel() {

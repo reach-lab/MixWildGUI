@@ -109,6 +109,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
     boolean suppressed = false;
     boolean outcomeNone = false;
+    boolean addStageOneCHecked = false;
 
     ArrayList<String> levelOneSelected;
     ArrayList<String> levelTwoSelected;
@@ -1848,11 +1849,21 @@ public class mixregGUI extends javax.swing.JFrame {
             
             stageOneClicked = 1;
             addStageTwoTabTwo.setEnabled(true);
-
+            
+            if (addStageOneCHecked == true) {
+            
+            stage_1_regs.setVisible(true);
+            stage_1_regs.updateStageOneAgain();
+            } else {
             stage_1_regs.setVisible(true);
             stage_1_regs.updateAllVariables();
+            }
+
+            
 
         }
+        
+        addStageOneCHecked = true;
         
 
 
