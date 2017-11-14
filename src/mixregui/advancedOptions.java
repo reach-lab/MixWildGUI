@@ -65,10 +65,12 @@ public class advancedOptions extends javax.swing.JFrame {
         if (NewModel.NoneVar == true) {
             
             resampleSpinner.setEnabled(false);
+            resampleCheckBox.setEnabled(false);
         
         } else {
         
             resampleSpinner.setEnabled(true);
+            resampleCheckBox.setEnabled(true);
         
         }
        // missingValueCode.setEnabled(false);
