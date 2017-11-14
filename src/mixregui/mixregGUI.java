@@ -4049,7 +4049,7 @@ public class mixregGUI extends javax.swing.JFrame {
         for (int p = 0; p < levelTwoRegSize; p++) {
 
             if (levelTwoBoxes.get(p).get(2).isSelected()) {
-                regressorLabels.add(levelOneSelected.get(p));
+                regressorLabels.add(levelTwoSelected.get(p));
                 System.out.println("From inside mixRegGUI | LEVEL TWO Regressor Fields (WS): " + regressorLabels.get(index));
                 index++;
 

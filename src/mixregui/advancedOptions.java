@@ -65,10 +65,12 @@ public class advancedOptions extends javax.swing.JFrame {
         if (NewModel.NoneVar == true) {
             
             resampleSpinner.setEnabled(false);
+            resampleCheckBox.setEnabled(false);
         
         } else {
         
             resampleSpinner.setEnabled(true);
+            resampleCheckBox.setEnabled(true);
         
         }
        // missingValueCode.setEnabled(false);
@@ -221,7 +223,7 @@ public class advancedOptions extends javax.swing.JFrame {
         jLabel10.setText("No. of  Samples:");
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 110, 20));
 
-        jLabel12.setText("Discard Subjects?");
+        jLabel12.setText("Discard Subjects with no Variance?");
         jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
         jPanel2.add(discardSubjectsCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, -1, -1));
         jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 142, 240, 0));

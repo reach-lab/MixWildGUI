@@ -74,7 +74,7 @@ public class InstructionsGUI extends javax.swing.JFrame {
         jLabel5.setText("- Missing value codes should be numeric only");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 161, -1, -1));
 
-        jLabel6.setText("- Please ensure that the data is sorted by IDs");
+        jLabel6.setText("- Please ensure that the data is sorted by IDs in acsending order");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 195, -1, -1));
 
         pack();
