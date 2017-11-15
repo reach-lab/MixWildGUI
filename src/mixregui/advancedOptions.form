@@ -146,8 +146,8 @@
         </Component>
         <Component class="javax.swing.JSpinner" name="convergenceCriteria">
           <Properties>
-            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-              <SpinnerModel initial="0.001" maximum="1.0" minimum="0.0" numberType="java.lang.Double" stepSize="0.001" type="number"/>
+            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new javax.swing.SpinnerNumberModel(0.001d, 0.0d, 1.0d, 0.0010000000474974513d)" type="code"/>
             </Property>
           </Properties>
           <Constraints>
