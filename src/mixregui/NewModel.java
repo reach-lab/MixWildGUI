@@ -1056,12 +1056,12 @@ private boolean validateFields(){
     System.out.println("FIELD VALIDATE: " + "File path missing");
     } 
     
-    if(titleField.getText().trim().length() == 0){
-    
-    JOptionPane.showMessageDialog(null, "Please enter a title for the model", "Missing information!", JOptionPane.INFORMATION_MESSAGE, icon);
-    System.out.println("FIELD VALIDATE: " + "Title missing");
-    allFieldsEntered = false;
-    }
+//    if(titleField.getText().trim().length() == 0){
+//    
+//    JOptionPane.showMessageDialog(null, "Please enter a title for the model", "Missing information!", JOptionPane.INFORMATION_MESSAGE, icon);
+//    System.out.println("FIELD VALIDATE: " + "Title missing");
+//    allFieldsEntered = false;
+//    }
 
     if (buttonGroup2.getSelection() == null){
     allFieldsEntered = false;
