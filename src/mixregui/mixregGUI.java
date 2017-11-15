@@ -2398,7 +2398,7 @@ public class mixregGUI extends javax.swing.JFrame {
             }
 
             if (defCatch == 0) {
-                stageOneTabs.setSelectedIndex(3);//todo: get output as soon as it is ready
+                stageOneTabs.setSelectedIndex(2);//todo: get output as soon as it is ready
             }
 
         } else {
