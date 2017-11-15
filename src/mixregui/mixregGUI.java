@@ -201,14 +201,14 @@ public class mixregGUI extends javax.swing.JFrame {
         System.out.println("Right after");
 
         //to enable stage two regressor buttos. avoids accidental clicks
-        if (stageOneClicked == 0) {
-
-            addStageTwoTabTwo.setEnabled(false);
-
-        } else {
-
-            addStageTwoTabTwo.setEnabled(true);
-        }
+//        if (stageOneClicked == 0) {
+//
+//            addStageTwoTabTwo.setEnabled(false);
+//
+//        } else {
+//
+//            addStageTwoTabTwo.setEnabled(true);
+//        }
         
         if (outComeType == false){
         
