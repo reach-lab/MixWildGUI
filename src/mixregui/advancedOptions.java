@@ -172,7 +172,7 @@ public class advancedOptions extends javax.swing.JFrame {
         });
         jPanel1.add(adaptiveQuadritureCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, -1, -1));
 
-        convergenceCriteria.setModel(new javax.swing.SpinnerNumberModel(0.001d, 0.0d, 1.0d, 0.0010000000474974513d));
+        convergenceCriteria.setModel(new javax.swing.SpinnerNumberModel(0.0010000000474974513d, 0.0d, 1.0d, 0.0010000000474974513d));
         jPanel1.add(convergenceCriteria, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 69, -1));
 
         quadriturePoints.setModel(new javax.swing.SpinnerNumberModel(11, 1, 255, 1));
