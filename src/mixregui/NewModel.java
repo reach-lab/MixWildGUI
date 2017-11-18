@@ -379,6 +379,16 @@ public class NewModel extends javax.swing.JFrame {
 
     private void newModelSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModelSubmitActionPerformed
         
+       // System.getProperty("os.name");
+       
+//        String osName = System.getProperty("os.name");
+//        System.out.println("YOUR OPERATING SYSTEM IS: " + osName);
+//        if (osName.contains("Windows")){
+//            System.out.println("YES THE OS IS WINDOWS");
+//        } else {
+//            System.out.println("NO THE OS IS NOT WINDOWS");
+//        }
+
         System.out.println("Model submitted" + " called");
         
     if (validateFields()==true){
