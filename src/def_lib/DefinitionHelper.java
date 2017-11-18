@@ -2512,12 +2512,12 @@ import mixregui.mixregGUI;
                 writer = new BufferedWriter( new FileWriter(file));
                 writer.write( myPane.getText());
                 writer.close( );
-                JOptionPane.showMessageDialog(myFrame, "The Message was Saved Successfully!",
+                JOptionPane.showMessageDialog(myFrame, "The .def file was Saved Successfully!",
                             "Success!", JOptionPane.INFORMATION_MESSAGE);
                 }
                 catch (IOException e)
                 {
-                JOptionPane.showMessageDialog(myFrame, "The Text could not be Saved!",
+                JOptionPane.showMessageDialog(myFrame, "The .def file could not be Saved!",
                             "Error!", JOptionPane.INFORMATION_MESSAGE);
                 }
             }
@@ -2629,7 +2629,17 @@ import mixregui.mixregGUI;
                 progressWindow.setLocation(dim.width/2-progressWindow.getSize().width/2, dim.height/2-progressWindow.getSize().height/2);
 
                 
-            try {         
+            try {  
+                
+                
+                //@Eldin: this where we can switch between mixreg binaries
+//                if (getOSName().contains("windows")) {
+//                
+//                
+//                } else if (getOSName().contains("mac")) {
+//                
+//                
+//                }
                    copyExecutable(defFilePath, selectedModel);
                    Process p=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && dir && "
                             + defFileName); 
@@ -3019,4 +3029,13 @@ import mixregui.mixregGUI;
             }
 
         }
+        
+        
+        
+        //@Eldin: This is the function to be used to detect OS
+        public String getOSName(){
+            String osName = System.getProperty("os.name").toLowerCase();
+            return osName; 
+        }
+        
     }
