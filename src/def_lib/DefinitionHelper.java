@@ -2512,12 +2512,12 @@ import mixregui.mixregGUI;
                 writer = new BufferedWriter( new FileWriter(file));
                 writer.write( myPane.getText());
                 writer.close( );
-                JOptionPane.showMessageDialog(myFrame, "The Message was Saved Successfully!",
+                JOptionPane.showMessageDialog(myFrame, "The .def file was Saved Successfully!",
                             "Success!", JOptionPane.INFORMATION_MESSAGE);
                 }
                 catch (IOException e)
                 {
-                JOptionPane.showMessageDialog(myFrame, "The Text could not be Saved!",
+                JOptionPane.showMessageDialog(myFrame, "The .def file could not be Saved!",
                             "Error!", JOptionPane.INFORMATION_MESSAGE);
                 }
             }

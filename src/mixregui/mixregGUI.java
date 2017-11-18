@@ -4629,10 +4629,10 @@ public class mixregGUI extends javax.swing.JFrame {
                 writer = new BufferedWriter(new FileWriter(file));
                 writer.write(stageTwoOutput.getText());
                 writer.close();
-                JOptionPane.showMessageDialog(this, "The Message was Saved Successfully!",
+                JOptionPane.showMessageDialog(this, "Stage 2 output was Saved Successfully!",
                         "Success!", JOptionPane.INFORMATION_MESSAGE);
             } catch (IOException e) {
-                JOptionPane.showMessageDialog(this, "The Text could not be Saved!",
+                JOptionPane.showMessageDialog(this, "Stage 2 output could not be Saved!",
                         "Error!", JOptionPane.INFORMATION_MESSAGE);
             }
         }
@@ -4651,10 +4651,10 @@ public class mixregGUI extends javax.swing.JFrame {
                 writer = new BufferedWriter(new FileWriter(file));
                 writer.write(stageOneOutput.getText());
                 writer.close();
-                JOptionPane.showMessageDialog(this, "The Message was Saved Successfully!",
+                JOptionPane.showMessageDialog(this, "Stage 1 output was Saved Successfully!",
                         "Success!", JOptionPane.INFORMATION_MESSAGE);
             } catch (IOException e) {
-                JOptionPane.showMessageDialog(this, "The Text could not be Saved!",
+                JOptionPane.showMessageDialog(this, "Stage 1 output could not be Saved!",
                         "Error!", JOptionPane.INFORMATION_MESSAGE);
             }
         }
