@@ -91,7 +91,7 @@ public class stageTwoRegs extends javax.swing.JFrame {
         jLabel1.setText("Variables");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
-        jLabel2.setText("Level-II (Time Invariant)");
+        jLabel2.setText("Level 2 (Time Invariant)");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, -1, -1));
 
         stageTwoAddButton.setText("Add");
