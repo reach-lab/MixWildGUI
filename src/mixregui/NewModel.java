@@ -379,6 +379,16 @@ public class NewModel extends javax.swing.JFrame {
 
     private void newModelSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModelSubmitActionPerformed
         
+       // System.getProperty("os.name");
+       
+//        String osName = System.getProperty("os.name");
+//        System.out.println("YOUR OPERATING SYSTEM IS: " + osName);
+//        if (osName.contains("Windows")){
+//            System.out.println("YES THE OS IS WINDOWS");
+//        } else {
+//            System.out.println("NO THE OS IS NOT WINDOWS");
+//        }
+
         System.out.println("Model submitted" + " called");
         
     if (validateFields()==true){
@@ -436,7 +446,7 @@ public class NewModel extends javax.swing.JFrame {
         
         if (filePath.getText().toString().equals("")){
         
-        JOptionPane.showMessageDialog(null, "Please upload a datafile to start your analysis", "Caution!", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Please upload a .csv file to start your analysis", "Caution!", JOptionPane.INFORMATION_MESSAGE);
         } else {
         
         try {
@@ -1056,12 +1066,12 @@ private boolean validateFields(){
     System.out.println("FIELD VALIDATE: " + "File path missing");
     } 
     
-    if(titleField.getText().trim().length() == 0){
-    
-    JOptionPane.showMessageDialog(null, "Please enter a title for the model", "Missing information!", JOptionPane.INFORMATION_MESSAGE, icon);
-    System.out.println("FIELD VALIDATE: " + "Title missing");
-    allFieldsEntered = false;
-    }
+//    if(titleField.getText().trim().length() == 0){
+//    
+//    JOptionPane.showMessageDialog(null, "Please enter a title for the model", "Missing information!", JOptionPane.INFORMATION_MESSAGE, icon);
+//    System.out.println("FIELD VALIDATE: " + "Title missing");
+//    allFieldsEntered = false;
+//    }
 
     if (buttonGroup2.getSelection() == null){
     allFieldsEntered = false;
@@ -1083,7 +1093,7 @@ private boolean validateFields(){
     
     if (newModelMissingValueCode.isEnabled() && newModelMissingValueCode.getText().trim().length()==0){
     allFieldsEntered = false;
-    JOptionPane.showMessageDialog(null, "Please don't leave the missing value as blank", "Missing information!", JOptionPane.INFORMATION_MESSAGE, icon);
+    JOptionPane.showMessageDialog(null, "Please don't leave the missing code value as blank", "Missing information!", JOptionPane.INFORMATION_MESSAGE, icon);
     System.out.println("FIELD VALIDATE: " + "Missing value blank");
     }
 System.out.println("FIELD VALIDATE: " + "about to exit");

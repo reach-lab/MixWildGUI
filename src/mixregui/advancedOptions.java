@@ -65,10 +65,12 @@ public class advancedOptions extends javax.swing.JFrame {
         if (NewModel.NoneVar == true) {
             
             resampleSpinner.setEnabled(false);
+            resampleCheckBox.setEnabled(false);
         
         } else {
         
             resampleSpinner.setEnabled(true);
+            resampleCheckBox.setEnabled(true);
         
         }
        // missingValueCode.setEnabled(false);
@@ -94,9 +96,9 @@ public class advancedOptions extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         adaptiveQuadritureCheckBox = new javax.swing.JCheckBox();
-        convergenceCriteria = new javax.swing.JSpinner();
         quadriturePoints = new javax.swing.JSpinner();
         jSeparator1 = new javax.swing.JSeparator();
+        convergenceCriteria = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -170,12 +172,12 @@ public class advancedOptions extends javax.swing.JFrame {
         });
         jPanel1.add(adaptiveQuadritureCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, -1, -1));
 
-        convergenceCriteria.setModel(new javax.swing.SpinnerNumberModel(0.001d, 0.0d, 1.0d, 0.001d));
-        jPanel1.add(convergenceCriteria, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 69, -1));
-
         quadriturePoints.setModel(new javax.swing.SpinnerNumberModel(11, 1, 255, 1));
         jPanel1.add(quadriturePoints, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 69, -1));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 240, -1));
+
+        convergenceCriteria.setText("0.00001");
+        jPanel1.add(convergenceCriteria, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 110, 60, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 21, 260, 230));
 
@@ -221,7 +223,7 @@ public class advancedOptions extends javax.swing.JFrame {
         jLabel10.setText("No. of  Samples:");
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 110, 20));
 
-        jLabel12.setText("Discard Subjects?");
+        jLabel12.setText("Discard Subjects with no Variance?");
         jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
         jPanel2.add(discardSubjectsCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, -1, -1));
         jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 142, 240, 0));
@@ -284,7 +286,7 @@ public class advancedOptions extends javax.swing.JFrame {
 
         //defFile
         try {
-            NewModel.defFile.setAdvancedConvergence(String.valueOf(convergenceCriteria.getValue()));
+            NewModel.defFile.setAdvancedConvergence(String.valueOf(convergenceCriteria.getText()));
             System.out.println("From defHelper | Convergence: " + NewModel.defFile.getAdvancedConvergence());
             tryCount = 1;
 
@@ -428,7 +430,7 @@ public class advancedOptions extends javax.swing.JFrame {
         BSVarianceCheckBox.setSelected(false);
         WSVarianceCheckBox.setSelected(false);
 
-        convergenceCriteria.setValue(0.001);
+        convergenceCriteria.setText("0.00001");
         quadriturePoints.setValue(11);
 
         adaptiveQuadritureCheckBox.setSelected(false);
@@ -500,7 +502,7 @@ public class advancedOptions extends javax.swing.JFrame {
     private javax.swing.JButton advancedOptionsCancel;
     private javax.swing.JButton advancedOptions_resetButton;
     private javax.swing.JCheckBox centerRegressorsCheckBox;
-    private javax.swing.JSpinner convergenceCriteria;
+    private javax.swing.JTextField convergenceCriteria;
     private javax.swing.JCheckBox discardSubjectsCheckBox;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -572,9 +574,9 @@ public class advancedOptions extends javax.swing.JFrame {
     }
 
 // get the convergence criteria
-    public Double getConvergenceCriteria() {
+    public String getConvergenceCriteria() {
 
-        return (Double) convergenceCriteria.getValue();
+        return  convergenceCriteria.getText();
 
     }
 

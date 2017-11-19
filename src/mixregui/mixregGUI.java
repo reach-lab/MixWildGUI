@@ -201,14 +201,14 @@ public class mixregGUI extends javax.swing.JFrame {
         System.out.println("Right after");
 
         //to enable stage two regressor buttos. avoids accidental clicks
-        if (stageOneClicked == 0) {
-
-            addStageTwoTabTwo.setEnabled(false);
-
-        } else {
-
-            addStageTwoTabTwo.setEnabled(true);
-        }
+//        if (stageOneClicked == 0) {
+//
+//            addStageTwoTabTwo.setEnabled(false);
+//
+//        } else {
+//
+//            addStageTwoTabTwo.setEnabled(true);
+//        }
         
         if (outComeType == false){
         
@@ -2398,7 +2398,7 @@ public class mixregGUI extends javax.swing.JFrame {
             }
 
             if (defCatch == 0) {
-                stageOneTabs.setSelectedIndex(3);//todo: get output as soon as it is ready
+                stageOneTabs.setSelectedIndex(2);//todo: get output as soon as it is ready
             }
 
         } else {
@@ -4049,7 +4049,7 @@ public class mixregGUI extends javax.swing.JFrame {
         for (int p = 0; p < levelTwoRegSize; p++) {
 
             if (levelTwoBoxes.get(p).get(2).isSelected()) {
-                regressorLabels.add(levelOneSelected.get(p));
+                regressorLabels.add(levelTwoSelected.get(p));
                 System.out.println("From inside mixRegGUI | LEVEL TWO Regressor Fields (WS): " + regressorLabels.get(index));
                 index++;
 
@@ -4629,10 +4629,10 @@ public class mixregGUI extends javax.swing.JFrame {
                 writer = new BufferedWriter(new FileWriter(file));
                 writer.write(stageTwoOutput.getText());
                 writer.close();
-                JOptionPane.showMessageDialog(this, "The Message was Saved Successfully!",
+                JOptionPane.showMessageDialog(this, "Stage 2 output was Saved Successfully!",
                         "Success!", JOptionPane.INFORMATION_MESSAGE);
             } catch (IOException e) {
-                JOptionPane.showMessageDialog(this, "The Text could not be Saved!",
+                JOptionPane.showMessageDialog(this, "Stage 2 output could not be Saved!",
                         "Error!", JOptionPane.INFORMATION_MESSAGE);
             }
         }
@@ -4651,10 +4651,10 @@ public class mixregGUI extends javax.swing.JFrame {
                 writer = new BufferedWriter(new FileWriter(file));
                 writer.write(stageOneOutput.getText());
                 writer.close();
-                JOptionPane.showMessageDialog(this, "The Message was Saved Successfully!",
+                JOptionPane.showMessageDialog(this, "Stage 1 output was Saved Successfully!",
                         "Success!", JOptionPane.INFORMATION_MESSAGE);
             } catch (IOException e) {
-                JOptionPane.showMessageDialog(this, "The Text could not be Saved!",
+                JOptionPane.showMessageDialog(this, "Stage 1 output could not be Saved!",
                         "Error!", JOptionPane.INFORMATION_MESSAGE);
             }
         }
