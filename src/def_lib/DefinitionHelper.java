@@ -2541,8 +2541,15 @@ import mixregui.mixregGUI;
                             + defFileName);
                     }
                     else {
-                        p=Runtime.getRuntime().exec("cd " + defFilePath + " && ls && ./"
-                            + defFileName);
+                        ProcessBuilder pb = new ProcessBuilder(
+                            "bash",
+                            "-c",
+                            "cd " + defFilePath,
+                            ";ls",
+                            ";./" + defFileName);
+                        pb.redirectErrorStream(true);
+                        p = pb.start();
+                        
                     }
                     
                     p.waitFor(); 
@@ -2568,7 +2575,14 @@ import mixregui.mixregGUI;
                         p=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && del /f " + defFileName);
                     }
                     else {
-                        p=Runtime.getRuntime().exec("cd " + defFilePath + " && rm " + defFileName);
+                        ProcessBuilder pb = new ProcessBuilder(
+                            "bash",
+                            "-c",
+                            "cd " + defFilePath,
+                            ";ls",
+                            ";rm " + defFileName);
+                        pb.redirectErrorStream(true);
+                        p = pb.start();
                     }
                     p.waitFor(); 
                     BufferedReader reader=new BufferedReader(new InputStreamReader(p.getInputStream())); 
@@ -2662,8 +2676,14 @@ import mixregui.mixregGUI;
                             + defFileName); 
                    }
                    else {
-                       p=Runtime.getRuntime().exec("cd " + defFilePath + " && ls && ./"
-                            + defFileName); 
+                       ProcessBuilder pb = new ProcessBuilder(
+                            "bash",
+                            "-c",
+                            "cd " + defFilePath,
+                            ";ls",
+                            ";./" + defFileName);
+                        pb.redirectErrorStream(true);
+                        p = pb.start(); 
                    }
                    
                    Thread runCMD = new Thread(new Runnable(){
@@ -2706,7 +2726,14 @@ import mixregui.mixregGUI;
                        p2=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && del /f " + defFileName); //delete the file when everything works great.
                    }
                    else {
-                       p2=Runtime.getRuntime().exec("cd " + defFilePath + " && rm " + defFileName); //delete the file when everything works great.
+                       ProcessBuilder pb = new ProcessBuilder(
+                            "bash",
+                            "-c",
+                            "cd " + defFilePath,
+                            ";ls",
+                            ";rm " + defFileName);
+                        pb.redirectErrorStream(true);
+                        p2 = pb.start();
                    }
                     
                    readStageOneOutputfile();
@@ -2724,7 +2751,14 @@ import mixregui.mixregGUI;
                      
                       }
                       else {
-                          p2=Runtime.getRuntime().exec("cd " + defFilePath + " && rm " + defFileName);
+                          ProcessBuilder pb = new ProcessBuilder(
+                            "bash",
+                            "-c",
+                            "cd " + defFilePath,
+                            "ls",
+                            ";rm " + defFileName);
+                        pb.redirectErrorStream(true);
+                        p2 = pb.start();
                       
                       }
                       
@@ -2767,18 +2801,35 @@ import mixregui.mixregGUI;
         }
 
         private String executableModel(int modelSelection){
-            switch(modelSelection){
-                case DefinitionHelper.MIXREGLS_MIXREG_KEY:
-                return "mixregls_random_mixreg.exe";
-            case DefinitionHelper.MIXREGLS_MIXOR_KEY:
-                return "mixregls_random_mixor.exe";
-            case DefinitionHelper.MIXREGMLS_MIXREG_KEY:
-                return "mixregmls_random_mixreg.exe";
-            case DefinitionHelper.MIXREGMLS_MIXOR_KEY:
-                return "mixregmls_random_mixor.exe";
-           
-            default:
-                return "mixregls_random_mixreg.exe";
+            if(getOSName().contains("windows")){
+                switch(modelSelection){
+                    case DefinitionHelper.MIXREGLS_MIXREG_KEY:
+                    return "mixregls_random_mixreg.exe";
+                case DefinitionHelper.MIXREGLS_MIXOR_KEY:
+                    return "mixregls_random_mixor.exe";
+                case DefinitionHelper.MIXREGMLS_MIXREG_KEY:
+                    return "mixregmls_random_mixreg.exe";
+                case DefinitionHelper.MIXREGMLS_MIXOR_KEY:
+                    return "mixregmls_random_mixor.exe";
+
+                default:
+                    return "mixregls_random_mixreg.exe";
+                }
+            }
+            else {
+                switch(modelSelection){
+                    case DefinitionHelper.MIXREGLS_MIXREG_KEY:
+                    return "mixregls_random_mixreg";
+                case DefinitionHelper.MIXREGLS_MIXOR_KEY:
+                    return "mixregls_random_mixor";
+                case DefinitionHelper.MIXREGMLS_MIXREG_KEY:
+                    return "mixregmls_random_mixreg";
+                case DefinitionHelper.MIXREGMLS_MIXOR_KEY:
+                    return "mixregmls_random_mixor";
+
+                default:
+                    return "mixregls_random_mixreg";
+                 }
             }
         }
 
@@ -2858,7 +2909,24 @@ import mixregui.mixregGUI;
                 }
                 stream.close();
                 outputStream.close();
-                }   
+                }  
+            
+            if (!getOSName().contains("windows")) {
+                String filenameBinary = FilenameUtils.getBaseName(modelPath);
+                ProcessBuilder pb1 = new ProcessBuilder(
+                    "bash",
+                    "-c",
+                    "cd " + defFilePath,
+                    ";chmod u+x mix_random",
+                    ";chmod u+x mixreg",
+                    ";chmod u+x repeat_mixreg",
+                    ";chmod u+x mixor",
+                    ";chmod u+x repeat_mixor",
+                    ";chmod u+x " + filenameBinary);
+                pb1.redirectErrorStream(true);
+                Process p0 = pb1.start();
+            }
+            
         }
 
         public void modelSelector(int randomLocEffects, boolean outcomeContinious){
