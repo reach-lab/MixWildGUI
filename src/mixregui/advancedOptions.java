@@ -351,7 +351,9 @@ public class advancedOptions extends javax.swing.JFrame {
 
         try {
             NewModel.defFile.setModelRandomInt(String.valueOf(isBSVarianceChecked()));
+            NewModel.defFile.setModelBetweenInt(String.valueOf(isBSVarianceChecked()));
             System.out.println("From defHelper | BS SubModel Checked?: " + NewModel.defFile.getModelRandomInt());
+            System.out.println("From defHelper | BS SubModel Checked?: " + NewModel.defFile.getModelBetweenInt());
             tryCount = 1;
         } catch (Exception ex) {
             catchCount = 1;
@@ -361,7 +363,9 @@ public class advancedOptions extends javax.swing.JFrame {
 
         try {
             NewModel.defFile.setModelScaleInt(String.valueOf(isWSVarianceChecked()));
+            NewModel.defFile.setModelWithinInt(String.valueOf(isWSVarianceChecked()));
             System.out.println("From defHelper | WS SubModel Checked?: " + NewModel.defFile.getModelScaleInt());
+            System.out.println("From defHelper | WS SubModel Checked?: " + NewModel.defFile.getModelWithinInt());
             tryCount = 1;
         } catch (Exception ex) {
             catchCount = 1;
@@ -437,11 +441,11 @@ public class advancedOptions extends javax.swing.JFrame {
         centerRegressorsCheckBox.setSelected(false);
         
 
-        maximumIterations.setValue(100);
+        maximumIterations.setValue(200);
        // missingValuesCheckBox.setSelected(false);
         //standardizedCoeff.setSelected(false);
         ridgeSpinner.setValue(0.15);
-        resampleSpinner.setValue(200);
+        resampleSpinner.setValue(500);
 
     }//GEN-LAST:event_advancedOptions_resetButtonActionPerformed
 
@@ -537,9 +541,9 @@ public class advancedOptions extends javax.swing.JFrame {
         int checked = 0;
 
         if (meanSubmodelCheckBox.isSelected() == true) {
-            checked = 0;
-        } else {
             checked = 1;
+        } else {
+            checked = 0;
         }
 
         return checked;
@@ -551,9 +555,9 @@ public class advancedOptions extends javax.swing.JFrame {
         int checked = 0;
 
         if (BSVarianceCheckBox.isSelected() == true) {
-            checked = 0;
-        } else {
             checked = 1;
+        } else {
+            checked = 0;
         }
 
         return checked;
@@ -565,9 +569,9 @@ public class advancedOptions extends javax.swing.JFrame {
         int checked = 0;
 
         if (WSVarianceCheckBox.isSelected() == true) {
-            checked = 0;
-        } else {
             checked = 1;
+        } else {
+            checked = 0;
         }
 
         return checked;

@@ -524,7 +524,9 @@ public class NewModel extends javax.swing.JFrame {
         
         try {
             NewModel.defFile.setModelRandomInt(String.valueOf(1));
+            NewModel.defFile.setModelBetweenInt(String.valueOf(1));
             System.out.println("From defHelper | BS SubModel Checked?: " + NewModel.defFile.getModelRandomInt());
+            System.out.println("From defHelper | BS SubModel Checked?: " + NewModel.defFile.getModelBetweenInt());
             
         } catch (Exception ex) {
             
@@ -534,7 +536,9 @@ public class NewModel extends javax.swing.JFrame {
         
         try {
             NewModel.defFile.setModelScaleInt(String.valueOf(1));
+            NewModel.defFile.setModelWithinInt(String.valueOf(1));
             System.out.println("From defHelper | WS SubModel Checked?: " + NewModel.defFile.getModelScaleInt());
+            System.out.println("From defHelper | WS SubModel Checked?: " + NewModel.defFile.getModelWithinInt());
             //tryCount = 1;
         } catch (Exception ex) {
             //catchCount = 1;
@@ -574,7 +578,7 @@ public class NewModel extends javax.swing.JFrame {
         }
         
         try {
-            NewModel.defFile.setAdvancedMaxIteration(String.valueOf(100));
+            NewModel.defFile.setAdvancedMaxIteration(String.valueOf(200));
             System.out.println("From defHelper | Maximum Iteraions: " + NewModel.defFile.getAdvancedMaxIteration());
             //tryCount = 1;
         } catch (Exception ex) {
