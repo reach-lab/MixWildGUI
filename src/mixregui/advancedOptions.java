@@ -541,9 +541,9 @@ public class advancedOptions extends javax.swing.JFrame {
         int checked = 0;
 
         if (meanSubmodelCheckBox.isSelected() == true) {
-            checked = 1;
-        } else {
             checked = 0;
+        } else {
+            checked = 1;
         }
 
         return checked;
@@ -555,9 +555,9 @@ public class advancedOptions extends javax.swing.JFrame {
         int checked = 0;
 
         if (BSVarianceCheckBox.isSelected() == true) {
-            checked = 1;
-        } else {
             checked = 0;
+        } else {
+            checked = 1;
         }
 
         return checked;
@@ -569,9 +569,9 @@ public class advancedOptions extends javax.swing.JFrame {
         int checked = 0;
 
         if (WSVarianceCheckBox.isSelected() == true) {
-            checked = 1;
-        } else {
             checked = 0;
+        } else {
+            checked = 1;
         }
 
         return checked;
