@@ -94,6 +94,8 @@ import mixregui.mixregGUI;
 
         private int randomLocationEffects = 1;
         private boolean stageTwoBinary = Boolean.FALSE;
+        
+        private String[] exeArray = new String[6];
 
         JFrame myFrame;
         JFrame progressWindow;
@@ -2746,37 +2748,67 @@ import mixregui.mixregGUI;
 
         private void copyExecutable(String absoluteDirectoryPath, int modelSelection) throws FileNotFoundException, IOException{
             String modelPath;
-            String MIX_RANDOM = "resources/WindowsNew/mix_random.exe";
-            String FIRST;
-            String REPEAT;
-            switch(modelSelection){
+            String MIX_RANDOM;
+            String REPEAT_MIXREG;
+            String REPEAT_MIXOR;
+            String MIXREG;
+            String MIXOR;
+            if (getOSName().contains("windows")) {
+                MIX_RANDOM = "resources/WindowsNew/mix_random.exe";
+                REPEAT_MIXREG = "resources/WindowsNew/repeat_mixreg.exe";
+                REPEAT_MIXOR = "resources/WindowsNew/repeat_mixor.exe";
+                MIXREG = "resources/WindowsNew/mixreg.exe";
+                MIXOR = "resources/WindowsNew/mixor.exe";
+                switch(modelSelection){
                 case DefinitionHelper.MIXREGLS_MIXREG_KEY:
                     modelPath = "resources/WindowsNew/mixregls_random_mixreg.exe";
-                    REPEAT = "resources/WindowsNew/repeat_mixreg.exe";
-                    FIRST = "resources/WindowsNew/mixreg.exe";
                     break;
                 case DefinitionHelper.MIXREGLS_MIXOR_KEY:
                     modelPath = "resources/WindowsNew/mixregls_random_mixor.exe";
-                    REPEAT = "resources/WindowsNew/repeat_mixor.exe";
-                    FIRST = "resources/WindowsNew/mixor.exe";
                     break;
                 case DefinitionHelper.MIXREGMLS_MIXREG_KEY:
                     modelPath = "resources/WindowsNew/mixregmls_random_mixreg.exe";
-                    REPEAT = "resources/WindowsNew/repeat_mixreg.exe";
-                    FIRST = "resources/WindowsNew/mixreg.exe";
                     break;
                 case DefinitionHelper.MIXREGMLS_MIXOR_KEY:
                     modelPath = "resources/WindowsNew/mixregmls_random_mixor.exe";
-                    REPEAT = "resources/WindowsNew/repeat_mixor.exe";
-                    FIRST = "resources/WindowsNew/mixor.exe";
                     break;
                 default:
                     modelPath = "resources/WindowsNew/mixregls_random_mixreg.exe";
-                    REPEAT = "resources/WindowsNew/repeat_mixreg.exe";
-                    FIRST = "resources/WindowsNew/mixreg.exe";
                     break;
+                }
             }
-            String[] exeArray = {modelPath, MIX_RANDOM, FIRST, REPEAT}; 
+            else {
+                MIX_RANDOM = "resources/macOS/mix_random";
+                REPEAT_MIXREG = "resources/macOS/repeat_mixreg";
+                REPEAT_MIXOR = "resources/macOS/repeat_mixor";
+                MIXREG = "resources/macOS/mixreg";
+                MIXOR = "resources/macOS/mixor";
+                switch(modelSelection){
+                case DefinitionHelper.MIXREGLS_MIXREG_KEY:
+                    modelPath = "resources/macOS/mixregls_random_mixreg";
+                    break;
+                case DefinitionHelper.MIXREGLS_MIXOR_KEY:
+                    modelPath = "resources/macOS/mixregls_random_mixor";
+                    break;
+                case DefinitionHelper.MIXREGMLS_MIXREG_KEY:
+                    modelPath = "resources/macOS/mixregmls_random_mixreg";
+                    break;
+                case DefinitionHelper.MIXREGMLS_MIXOR_KEY:
+                    modelPath = "resources/macOS/mixregmls_random_mixor";
+                    break;
+                default:
+                    modelPath = "resources/macOS/mixregls_random_mixreg";
+                    break;
+                }
+            }
+            
+            exeArray[0] = modelPath;
+            exeArray[1] = MIX_RANDOM;
+            exeArray[2] = REPEAT_MIXREG;
+            exeArray[3] = REPEAT_MIXOR;
+            exeArray[4] = MIXOR;
+            exeArray[5] = MIXREG; 
+            
             for(String exe: exeArray){
                 InputStream stream = getClass().getClassLoader().getResourceAsStream(exe);
                 OutputStream outputStream = 
