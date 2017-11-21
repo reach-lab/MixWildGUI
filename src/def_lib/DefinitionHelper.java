@@ -2535,9 +2535,16 @@ import mixregui.mixregGUI;
                 try 
                 { 
                     copyExecutable(defFilePath, selectedModel);
-                    Process p=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && dir && "
-                            + defFileName); // does it save it in the same directory
-
+                    Process p;
+                    if (getOSName().contains("windows")) {
+                        p=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && dir && "
+                            + defFileName);
+                    }
+                    else {
+                        p=Runtime.getRuntime().exec("cd " + defFilePath + " && ls && ./"
+                            + defFileName);
+                    }
+                    
                     p.waitFor(); 
                     BufferedReader reader=new BufferedReader(new InputStreamReader(p.getInputStream())); 
                     String line=reader.readLine(); 
@@ -2556,7 +2563,13 @@ import mixregui.mixregGUI;
 
                 try 
                 { 
-                    Process p=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && del /f " + defFileName);
+                    Process p;
+                    if (getOSName().contains("windows")) {
+                        p=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && del /f " + defFileName);
+                    }
+                    else {
+                        p=Runtime.getRuntime().exec("cd " + defFilePath + " && rm " + defFileName);
+                    }
                     p.waitFor(); 
                     BufferedReader reader=new BufferedReader(new InputStreamReader(p.getInputStream())); 
                     String line=reader.readLine(); 
@@ -2643,8 +2656,16 @@ import mixregui.mixregGUI;
 //                
 //                }
                    copyExecutable(defFilePath, selectedModel);
-                   Process p=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && dir && "
+                   Process p;
+                   if (getOSName().contains("windows")) {
+                       p=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && dir && "
                             + defFileName); 
+                   }
+                   else {
+                       p=Runtime.getRuntime().exec("cd " + defFilePath + " && ls && ./"
+                            + defFileName); 
+                   }
+                   
                    Thread runCMD = new Thread(new Runnable(){
                        public void run() {
                            System.out.println("Inside the thread");
@@ -2680,7 +2701,14 @@ import mixregui.mixregGUI;
                        //send the out to StageTwoOutPu from here
                    // FileReader reader = new FileReader(absoluteJavaPath + ".out file name");
                     terminalVal = exitVal;
-                   Process p2=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && del /f " + defFileName); //delete the file when everything works great.
+                   Process p2;
+                   if (getOSName().contains("windows")) {
+                       p2=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && del /f " + defFileName); //delete the file when everything works great.
+                   }
+                   else {
+                       p2=Runtime.getRuntime().exec("cd " + defFilePath + " && rm " + defFileName); //delete the file when everything works great.
+                   }
+                    
                    readStageOneOutputfile();
                    readStageTwoOutputfile();
                    
@@ -2690,8 +2718,16 @@ import mixregui.mixregGUI;
                    
                    } else {
                       JOptionPane.showMessageDialog(null, "Executaion failed. Please revisit your regressors and try again.", "Caution!", JOptionPane.INFORMATION_MESSAGE);
-
-                      Process p2=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && del /f " + defFileName);
+                      Process p2;
+                      if (getOSName().contains("windows")) {
+                          p2=Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && del /f " + defFileName);
+                     
+                      }
+                      else {
+                          p2=Runtime.getRuntime().exec("cd " + defFilePath + " && rm " + defFileName);
+                      
+                      }
+                      
                       terminalVal = exitVal;
                       //progressWindow.dispose();
                    }
