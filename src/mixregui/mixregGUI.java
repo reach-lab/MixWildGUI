@@ -257,7 +257,6 @@ public class mixregGUI extends javax.swing.JFrame {
         stageOneTabs = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         resetButton = new javax.swing.JButton();
-        goBackMxrButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         level1_MeanReg = new javax.swing.JLabel();
         level1_WSVar = new javax.swing.JLabel();
@@ -393,14 +392,6 @@ public class mixregGUI extends javax.swing.JFrame {
             }
         });
         jPanel1.add(resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 560, 135, 40));
-
-        goBackMxrButton.setText("Go Back");
-        goBackMxrButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                goBackMxrButtonActionPerformed(evt);
-            }
-        });
-        jPanel1.add(goBackMxrButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 560, 147, 40));
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setText("Stage 1 Regressors");
@@ -1036,12 +1027,6 @@ public class mixregGUI extends javax.swing.JFrame {
         openWebpage("http://myquitadmin.usc.edu/mixsuite.php");
 
     }//GEN-LAST:event_diagramMenuActionPerformed
-
-    private void goBackMxrButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackMxrButtonActionPerformed
-
-        newModel.setVisible(true);
-        
-    }//GEN-LAST:event_goBackMxrButtonActionPerformed
 
     private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
         // TODO add your handling code here:
@@ -2502,7 +2487,6 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem exitMenu;
     private javax.swing.JMenu fileMenu;
     private javax.swing.Box.Filler filler1;
-    private javax.swing.JButton goBackMxrButton;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JPanel imageView;
     private javax.swing.JButton jButton1;
