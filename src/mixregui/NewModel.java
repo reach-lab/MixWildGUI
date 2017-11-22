@@ -686,6 +686,8 @@ public class NewModel extends javax.swing.JFrame {
                  mxr = new mixregGUI();
                  mxr.isSubmitClicked();
                  mxr.setVisible(true);
+                 mxr.randomLocationEffectsLabel.setText("Random location effects: " + randomLocationEffects());
+                 mxr.stageTwoOutcomePrintLabel.setText("Stage 2 outcome: " + outComeTypeString());
                 //Update ID, stage one and stage two variable comboboxes
                 mxr.updateComboBoxes();
                 this.dispose();
@@ -1102,6 +1104,39 @@ private boolean validateFields(){
     }
 System.out.println("FIELD VALIDATE: " + "about to exit");
 return allFieldsEntered;
+}
+
+public String randomLocationEffects(){
+
+    String randLocString = "";
+    
+    if (oneRLERadio.isSelected()){
+        randLocString = "Intercept";
+    
+    } else if (moreThanOneRLERadio.isSelected()){
+        randLocString = "Intercept + Slope";
+    
+    }
+    
+    return randLocString;
+}
+
+public String outComeTypeString() {
+
+    String outcomeTypeText = "";
+    
+    if (continuousRadio.isSelected()){
+    
+        outcomeTypeText = "Continious";
+    } else if (dichotomousRadio.isSelected()){
+    
+        outcomeTypeText = "Dichotomous";
+    } else if (noneRadio.isSelected()){
+    
+        outcomeTypeText = "None";
+    }
+    return outcomeTypeText;
+
 }
 
 }
