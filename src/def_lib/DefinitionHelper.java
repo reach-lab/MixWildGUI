@@ -2544,9 +2544,8 @@ import mixregui.mixregGUI;
                         ProcessBuilder pb = new ProcessBuilder(
                             "bash",
                             "-c",
-                            "cd " + defFilePath,
-                            ";ls",
-                            ";./" + defFileName);
+                            defFilePath + defFileName);
+                        pb.directory(new File(defFilePath));
                         pb.redirectErrorStream(true);
                         p = pb.start();
                         
@@ -2576,11 +2575,9 @@ import mixregui.mixregGUI;
                     }
                     else {
                         ProcessBuilder pb = new ProcessBuilder(
-                            "bash",
-                            "-c",
-                            "cd " + defFilePath,
-                            ";ls",
-                            ";rm " + defFileName);
+                                "bash",
+                                "-c",
+                            "rm " + defFilePath + defFileName);
                         pb.redirectErrorStream(true);
                         p = pb.start();
                     }
@@ -2679,9 +2676,8 @@ import mixregui.mixregGUI;
                        ProcessBuilder pb = new ProcessBuilder(
                             "bash",
                             "-c",
-                            "cd " + defFilePath,
-                            ";ls",
-                            ";./" + defFileName);
+                            defFilePath + defFileName);
+                        pb.directory(new File(defFilePath));
                         pb.redirectErrorStream(true);
                         p = pb.start(); 
                    }
@@ -2727,11 +2723,9 @@ import mixregui.mixregGUI;
                    }
                    else {
                        ProcessBuilder pb = new ProcessBuilder(
-                            "bash",
-                            "-c",
-                            "cd " + defFilePath,
-                            ";ls",
-                            ";rm " + defFileName);
+                               "bash",
+                                "-c",
+                            "rm " + defFilePath + defFileName);
                         pb.redirectErrorStream(true);
                         p2 = pb.start();
                    }
@@ -2752,11 +2746,9 @@ import mixregui.mixregGUI;
                       }
                       else {
                           ProcessBuilder pb = new ProcessBuilder(
-                            "bash",
-                            "-c",
-                            "cd " + defFilePath,
-                            "ls",
-                            ";rm " + defFileName);
+                                  "bash",
+                                "-c",
+                            "rm " + defFilePath + defFileName);
                         pb.redirectErrorStream(true);
                         p2 = pb.start();
                       
@@ -2913,18 +2905,27 @@ import mixregui.mixregGUI;
             
             if (!getOSName().contains("windows")) {
                 String filenameBinary = FilenameUtils.getBaseName(modelPath);
-                ProcessBuilder pb1 = new ProcessBuilder(
-                    "bash",
-                    "-c",
-                    "cd " + defFilePath,
-                    ";chmod u+x mix_random",
-                    ";chmod u+x mixreg",
-                    ";chmod u+x repeat_mixreg",
-                    ";chmod u+x mixor",
-                    ";chmod u+x repeat_mixor",
-                    ";chmod u+x " + filenameBinary);
-                pb1.redirectErrorStream(true);
-                Process p0 = pb1.start();
+                String[] commands = {"chmod u+x " + defFilePath + "mix_random",
+                    "chmod u+x " + defFilePath + "mixreg",
+                    "chmod u+x " + defFilePath + "repeat_mixreg",
+                    "chmod u+x " + defFilePath + "mixor",
+                    "chmod u+x " + defFilePath + "repeat_mixor",
+                    "chmod u+x " + defFilePath + filenameBinary };
+                for(String command:commands){
+                    ProcessBuilder pb1 = new ProcessBuilder(
+                        "bash",
+                        "-c",
+                        command);
+                    System.out.print(Arrays.toString(pb1.command().toArray()));
+                    pb1.redirectErrorStream(true);
+                    Process p0 = pb1.start();
+                    try {
+                        p0.waitFor();
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(DefinitionHelper.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                
             }
             
         }
