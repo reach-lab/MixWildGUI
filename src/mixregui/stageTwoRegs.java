@@ -11,7 +11,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import static mixregui.stageOneRegs.varList;
+//import static mixregui.stageOneRegs.varList;
 import static mixregui.stageOneRegs.variableNamesList;
 
 /**
@@ -307,7 +307,8 @@ public class stageTwoRegs extends javax.swing.JFrame {
     
     public void updateStageTwoAgain(){
     
-    StageTwoAllVariables.setModel(StageTwoAllVariables.getModel());
+    //StageTwoAllVariables.setModel(StageTwoAllVariables.getModel());
+    StageTwoAllVariables.setModel(stageTwoListModel);
     
     }
 

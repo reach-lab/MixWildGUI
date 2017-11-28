@@ -78,7 +78,10 @@ public class mixregGUI extends javax.swing.JFrame {
     // i represents number of random location effects selected in new model
     int i;
 
-    int levelOneRegSize, levelTwoRegSize, stageTwoRegSize, levelOneDisaggSize;
+    int levelOneRegSize = 0;
+    int levelTwoRegSize = 0;
+    int stageTwoRegSize = 0;
+    int levelOneDisaggSize = 0;
 
     String[] variableNamesCombo;
 
@@ -106,6 +109,9 @@ public class mixregGUI extends javax.swing.JFrame {
 
     boolean scaleChecked = false;
     boolean randomChecked = false;
+    boolean isIDChanged = false;
+    boolean isStageOneOutcomeChanged = false;
+    boolean isStageTwoOutcomeChanged = false;
 
     boolean suppressed = false;
     boolean outcomeNone = false;
@@ -232,6 +238,12 @@ public class mixregGUI extends javax.swing.JFrame {
             jPanel5.setVisible(false);
             
         }
+        
+//       IDpos = IDvariableCombo.getSelectedIndex();
+//       stageOnePos = StageOneVariableCombo.getSelectedIndex();
+//       stageTwoPos = stageTwoOutcome.getSelectedIndex();
+        
+       
 
 //        
     }
@@ -473,6 +485,11 @@ public class mixregGUI extends javax.swing.JFrame {
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         StageOneVariableCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        StageOneVariableCombo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                StageOneVariableComboItemStateChanged(evt);
+            }
+        });
         StageOneVariableCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 StageOneVariableComboActionPerformed(evt);
@@ -484,6 +501,11 @@ public class mixregGUI extends javax.swing.JFrame {
         jPanel8.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, -1));
 
         IDvariableCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        IDvariableCombo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                IDvariableComboItemStateChanged(evt);
+            }
+        });
         IDvariableCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 IDvariableComboActionPerformed(evt);
@@ -690,6 +712,11 @@ public class mixregGUI extends javax.swing.JFrame {
         jPanel12.add(suppressIntCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 530, 240, -1));
 
         stageTwoOutcome.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        stageTwoOutcome.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                stageTwoOutcomeItemStateChanged(evt);
+            }
+        });
         jPanel12.add(stageTwoOutcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, 230, 30));
 
         jLabel22.setText("Stage 2 Outcome:");
@@ -1899,6 +1926,14 @@ public class mixregGUI extends javax.swing.JFrame {
             stageOneClicked = 1;
             addStageTwoTabTwo.setEnabled(true);
             
+//            if (levelOneRegSize == 0 && levelTwoRegSize ==0){
+//            
+//            //refresh as normal
+//            } else {
+//            
+//            
+//            }
+            
             if (addStageOneCHecked == true) {
             
             stage_1_regs.setVisible(true);
@@ -2476,6 +2511,7 @@ public class mixregGUI extends javax.swing.JFrame {
             
             stage_2_regs.setVisible(true);
             stage_2_regs.updateStageTwoAgain();
+//            stage_2_regs.updateStageTwoWithoutStageOne();
             } else {
             stage_2_regs.setVisible(true);
             stage_2_regs.updateStageTwoWithoutStageOne();
@@ -2491,6 +2527,28 @@ public class mixregGUI extends javax.swing.JFrame {
 //        //stage_2_regs.updateStageTwoVariables(getSavedVariables());
 //        stage_2_regs.updateStageTwoWithoutStageOne();
     }//GEN-LAST:event_addStageTwoTabTwoActionPerformed
+
+    private void IDvariableComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_IDvariableComboItemStateChanged
+        // TODO add your handling code here:
+        
+        IDpos = IDvariableCombo.getSelectedIndex();
+       System.out.println("ID CHANGED: " + String.valueOf(IDpos));
+       isIDChanged = true;
+    }//GEN-LAST:event_IDvariableComboItemStateChanged
+
+    private void StageOneVariableComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_StageOneVariableComboItemStateChanged
+        // TODO add your handling code here:
+        stageOnePos = StageOneVariableCombo.getSelectedIndex();
+        System.out.println("STAGE ONE OUTCOME CHANGED: " + String.valueOf(stageOnePos));
+        isStageOneOutcomeChanged = true;
+    }//GEN-LAST:event_StageOneVariableComboItemStateChanged
+
+    private void stageTwoOutcomeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_stageTwoOutcomeItemStateChanged
+        // TODO add your handling code here:
+        stageTwoPos = stageTwoOutcome.getSelectedIndex();
+        System.out.println("STAGE TWO OUTCOME CHANGED: " + String.valueOf(stageTwoPos));
+        isStageTwoOutcomeChanged = true;
+    }//GEN-LAST:event_stageTwoOutcomeItemStateChanged
 
     /**
      * @param args the command line arguments
