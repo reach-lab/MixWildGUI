@@ -2967,7 +2967,10 @@ public class mixregGUI extends javax.swing.JFrame {
             } else {
 
                 levelTwoBoxes.get(j).get(2).setEnabled(false);
-                levelTwoBoxes.get(j).get(2).setVisible(false);
+                //levelTwoBoxes.get(j).get(2).setVisible(false);
+                //level2_WSVar.setVisible(false);
+//                level2_MeanReg.setLocation(level2_MeanReg.getX() + 5, level2_MeanReg.getY());
+//                level2_BSVar.setLocation(level2_BSVar.getX() + 5, level2_BSVar.getY());
             }
 
             if (i > 1) {
@@ -2977,6 +2980,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
                 levelTwoBoxes.get(j).get(1).setVisible(true);
                 levelTwoBoxes.get(j).get(1).setEnabled(true);
+                
             }
 
             constraints.gridy++;
