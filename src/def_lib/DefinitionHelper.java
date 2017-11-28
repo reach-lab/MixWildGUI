@@ -2668,7 +2668,7 @@ public class DefinitionHelper implements Serializable {
 
                 // FileReader reader = new FileReader(absoluteJavaPath + ".out file name");
             } else {
-                JOptionPane.showMessageDialog(null, "Executaion failed. Please revisit your regressors and try again.", "Caution!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Failed to build model. Please revisit your regressors and try again. For more information, checkout help docs.", "Execution failed!", JOptionPane.INFORMATION_MESSAGE);
                 Process p2;
                 if (getOSName().contains("windows")) {
                     p2 = Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && del /f " + defFileName);
