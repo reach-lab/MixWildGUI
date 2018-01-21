@@ -30,7 +30,7 @@ public class stageOneRegs extends javax.swing.JFrame {
 
     static String[] variableNamesList;
 
-    public static DefaultListModel<String> varList;
+    public DefaultListModel<String> varList;
 
     static DefaultListModel<String> levelOneList;
 
@@ -78,6 +78,7 @@ public class stageOneRegs extends javax.swing.JFrame {
         }
 
         stageOneSubmitButton.setEnabled(false);
+        // updateAllVariables();
 
     }
 
@@ -391,7 +392,9 @@ public class stageOneRegs extends javax.swing.JFrame {
        // mixregGUI.g
        
        int idIndex = mixregGUI.getIDFieldPosition();
+       System.out.println("STAGE ONE | THE ID IS: " + String.valueOf(idIndex));
        int stageOneIndex = mixregGUI.getStageOneDVFieldPosition();
+       System.out.println("STAGE ONE | THE OUTCOME IS: " + String.valueOf(stageOneIndex));
        
        varList.removeAllElements();
 
@@ -410,7 +413,8 @@ public class stageOneRegs extends javax.swing.JFrame {
     public void updateStageOneAgain(){
     
    
-    AllVariablesList.setModel(AllVariablesList.getModel());
+    //AllVariablesList.setModel(AllVariablesList.getModel());
+   AllVariablesList.setModel(varList);
     
     }
 
