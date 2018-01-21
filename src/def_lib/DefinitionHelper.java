@@ -2243,7 +2243,7 @@ public class DefinitionHelper implements Serializable {
             myFrame.setLayout(defFileFlow);
             defFileFlow.setAlignment(FlowLayout.TRAILING);
             myFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            myFrame.setSize(510, 700);
+            myFrame.setSize(550, 700);
             myFrame.setResizable(false);
             myPane = new JEditorPane();
             myPane.setSize(500, 500);
