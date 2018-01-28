@@ -22,6 +22,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.FileReader;
 import java.util.List;
+import java.util.prefs.Preferences;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JTable;
@@ -70,7 +71,7 @@ public class NewModel extends javax.swing.JFrame {
         
                 Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
                 this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
-        
+              
        fileChooser = new JFileChooser();
        instructions = new InstructionsGUI();
        icon = new ImageIcon(getClass().getResource("/resources/mixLogo.png"));

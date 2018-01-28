@@ -3417,7 +3417,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
                     if (variableNamesCombo[q].equals(fieldLabel)) {
                         //position[index] = String.valueOf(q + 1);
-                        position.add(posIndex, String.valueOf(q + 1));
+                        position.add(String.valueOf(q + 1));
                         System.out.println("Regressor position test: " + String.valueOf(q + 1));
                         System.out.println("From inside mixRegGUI | Position of this regressor: " + position.get(posIndex));
                         System.out.println("Position array: " + position);
@@ -3472,7 +3472,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
                     if (variableNamesCombo[q].equals(fieldLabel)) {
                         //position[index] = String.valueOf(q + 1);
-                        position.add(posIndex, String.valueOf(q + 1));
+                        position.add(String.valueOf(q + 1));
                         System.out.println("Regressor position test: " + String.valueOf(q + 1));
                         System.out.println("From inside mixRegGUI | Position of this regressor in level2: " + position.get(posIndex));
                         System.out.println("Position array: " + position);
@@ -3552,9 +3552,10 @@ public class mixregGUI extends javax.swing.JFrame {
 
                     if (variableNamesCombo[q].equals(fieldLabel)) {
                         //position[index] = String.valueOf(q + 1);
-                        position.add(posIndex, String.valueOf(q + 1));
+                        System.out.println("The current position to add in ArrayList is: " + String.valueOf(posIndex));
+                        position.add(String.valueOf(q + 1));
                         System.out.println("Regressor position test: " + String.valueOf(q + 1));
-                        System.out.println("From inside mixRegGUI | Position of this regressor: " + position.get(posIndex));
+                        System.out.println("From inside mixRegGUI | Position of this regressor: " + position.get(posIndex) + "@" + String.valueOf(posIndex));
                         System.out.println("Position array: " + position);
                         posIndex++;
 
@@ -3565,6 +3566,11 @@ public class mixregGUI extends javax.swing.JFrame {
 
         }
         System.out.println("Position Aray Size here: " + String.valueOf(position.size()));
+        System.out.println("Position ArrayList of Means: " + Arrays.toString(position.toArray()));
+        
+        for (int testPos = 0; testPos < position.size(); testPos++){
+            System.out.println("This ArrayList contains: " + position.get(testPos));
+        }
 
         String[] positionArray = new String[position.size()];
 
@@ -3604,7 +3610,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 for (int q = 0; q < variableNamesCombo.length; q++) {
 
                     if (variableNamesCombo[q].equals(fieldLabel)) {
-                        position.add(posIndex, String.valueOf(q + 1));
+                        position.add(String.valueOf(q + 1));
                         System.out.println("Regressor position test: " + String.valueOf(q + 1));
                         System.out.println("From inside mixRegGUI | Position of this regressor: " + position.get(posIndex));
                         System.out.println("Position array: " + position);
@@ -3655,7 +3661,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 for (int q = 0; q < variableNamesCombo.length; q++) {
 
                     if (variableNamesCombo[q].equals(fieldLabel)) {
-                        position.add(posIndex, String.valueOf(q + 1));
+                        position.add(String.valueOf(q + 1));
                         System.out.println("Regressor position test: " + String.valueOf(q + 1));
                         System.out.println("From inside mixRegGUI | Position of this regressor: " + position.get(posIndex));
                         System.out.println("Position array: " + position);
@@ -3732,7 +3738,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 for (int q = 0; q < variableNamesCombo.length; q++) {
 
                     if (variableNamesCombo[q].equals(fieldLabel)) {
-                        position.add(posIndex, String.valueOf(q + 1));
+                        position.add(String.valueOf(q + 1));
                         System.out.println("Regressor position test: " + String.valueOf(q + 1));
                         System.out.println("From inside mixRegGUI | Position of this regressor: " + position.get(posIndex));
                         System.out.println("Position array: " + position);
@@ -3782,7 +3788,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 for (int q = 0; q < variableNamesCombo.length; q++) {
 
                     if (variableNamesCombo[q].equals(fieldLabel)) {
-                        position.add(posIndex, String.valueOf(q + 1));
+                        position.add(String.valueOf(q + 1));
                         System.out.println("Regressor position test: " + String.valueOf(q + 1));
                         System.out.println("From inside mixRegGUI | Position of this regressor: " + position.get(posIndex));
                         System.out.println("Position array: " + position);
@@ -3834,7 +3840,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 for (int q = 0; q < variableNamesCombo.length; q++) {
 
                     if (variableNamesCombo[q].equals(fieldLabel)) {
-                        position.add(posIndex, String.valueOf(q + 1));
+                        position.add(String.valueOf(q + 1));
                         System.out.println("Regressor position test: " + String.valueOf(q + 1));
                         System.out.println("From inside mixRegGUI | Position of this regressor: " + position.get(posIndex));
                         System.out.println("Position array: " + position);
@@ -3911,7 +3917,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 for (int q = 0; q < variableNamesCombo.length; q++) {
 
                     if (variableNamesCombo[q].equals(fieldLabel)) {
-                        position.add(posIndex, String.valueOf(q + 1));
+                        position.add(String.valueOf(q + 1));
                         System.out.println("Regressor position test: " + String.valueOf(q + 1));
                         System.out.println("From inside mixRegGUI | Position of this regressor: " + position.get(posIndex));
                         System.out.println("Position array: " + position);
@@ -4360,7 +4366,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
                     if (variableNamesCombo[q].equals(fieldLabel)) {
                         //position[index] = String.valueOf(q + 1);
-                        position.add(posIndex, String.valueOf(q + 1));
+                        position.add(String.valueOf(q + 1));
                         System.out.println("Regressor position test: " + String.valueOf(q + 1));
                         System.out.println("From inside mixRegGUI | Position of this regressor: " + position.get(posIndex));
                         System.out.println("Position array: " + position);
@@ -4415,7 +4421,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
                     if (variableNamesCombo[q].equals(fieldLabel)) {
                         //position[index] = String.valueOf(q + 1);
-                        position.add(posIndex, String.valueOf(q + 1));
+                        position.add(String.valueOf(q + 1));
                         System.out.println("Regressor position test: " + String.valueOf(q + 1));
                         System.out.println("From inside mixRegGUI | Position of this regressor: " + position.get(posIndex));
                         System.out.println("Position array: " + position);
@@ -4470,7 +4476,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
                     if (variableNamesCombo[q].equals(fieldLabel)) {
                         //position[index] = String.valueOf(q + 1);
-                        position.add(posIndex, String.valueOf(q + 1));
+                        position.add(String.valueOf(q + 1));
                         System.out.println("Regressor position test: " + String.valueOf(q + 1));
                         System.out.println("Stage-two/mixRegGUI/Position of this regressor: " + position.get(posIndex));
                         System.out.println("Position array: " + position);
@@ -4623,7 +4629,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
                     if (variableNamesCombo[q].equals(fieldLabel)) {
                         //position[index] = String.valueOf(q + 1);
-                        position.add(posIndex, String.valueOf(q + 1));
+                        position.add(String.valueOf(q + 1));
                         System.out.println("Stage-Two/Regressor-position-test: " + String.valueOf(q + 1));
                         System.out.println("Stage-Two/mixRegGUI | Position of this regressor: " + position.get(posIndex));
                         System.out.println("Stage-Two/Position array: " + position);
