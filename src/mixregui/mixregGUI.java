@@ -348,10 +348,9 @@ public class mixregGUI extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
         jScrollPane8 = new javax.swing.JScrollPane();
         equationArea = new javax.swing.JTextArea();
-        eqFrame = new javax.swing.JInternalFrame();
+        jLabel23 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -918,45 +917,29 @@ public class mixregGUI extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel13.setText("Your resulting model equation");
 
-        jLabel19.setText("resized model image here (pending ...)");
-
         equationArea.setColumns(20);
         equationArea.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         equationArea.setRows(5);
         jScrollPane8.setViewportView(equationArea);
 
-        eqFrame.setVisible(true);
-
-        javax.swing.GroupLayout eqFrameLayout = new javax.swing.GroupLayout(eqFrame.getContentPane());
-        eqFrame.getContentPane().setLayout(eqFrameLayout);
-        eqFrameLayout.setHorizontalGroup(
-            eqFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 287, Short.MAX_VALUE)
-        );
-        eqFrameLayout.setVerticalGroup(
-            eqFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 163, Short.MAX_VALUE)
-        );
+        jLabel23.setText("You can copy this model equation directly into Latex, Word or any other text editor.");
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap(162, Short.MAX_VALUE)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 885, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(163, Short.MAX_VALUE))
             .addGroup(jPanel9Layout.createSequentialGroup()
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel9Layout.createSequentialGroup()
-                        .addGap(530, 530, 530)
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel19)
-                            .addComponent(eqFrame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addGap(202, 202, 202)
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 754, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel9Layout.createSequentialGroup()
-                                .addComponent(jLabel13)
-                                .addGap(214, 214, 214)))))
-                .addContainerGap(254, Short.MAX_VALUE))
+                .addGap(367, 367, 367)
+                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel13)
+                .addGap(486, 486, 486))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -965,11 +948,9 @@ public class mixregGUI extends javax.swing.JFrame {
                 .addComponent(jLabel13)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(143, 143, 143)
-                .addComponent(jLabel19)
-                .addGap(38, 38, 38)
-                .addComponent(eqFrame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
+                .addComponent(jLabel23)
+                .addContainerGap(445, Short.MAX_VALUE))
         );
 
         jPanel2.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1210, 660));
@@ -2602,7 +2583,6 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     public static javax.swing.JTable dataTable;
     private javax.swing.JMenuItem diagramMenu;
-    private javax.swing.JInternalFrame eqFrame;
     private javax.swing.JTextArea equationArea;
     private javax.swing.JMenuItem exitMenu;
     private javax.swing.JMenu fileMenu;
@@ -2623,11 +2603,11 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
