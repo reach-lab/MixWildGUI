@@ -56,20 +56,20 @@ import mixregui.NewModel;
 import mixregui.mixregGUI;
 import org.apache.commons.io.FilenameUtils;
 
-
-
-    /******
-     * Exposed Methods: //
-     * readDefinitionFile: takes File as parameter, assigns all variables and then attempts to validate file
-     * buildStageOneDefinitionList: returns ArrayList<String> that can be passed to a FileWriter class, validates first
-     * @note: Both classes should pass Exceptions to the view and interrupt until user fixes error
-     *
-     * @author Eldin Dzubur.
-     */
-
+/**
+ * ****
+ * Exposed Methods: // readDefinitionFile: takes File as parameter, assigns all
+ * variables and then attempts to validate file buildStageOneDefinitionList:
+ * returns ArrayList<String> that can be passed to a FileWriter class, validates
+ * first
+ *
+ * @note: Both classes should pass Exceptions to the view and interrupt until
+ * user fixes error
+ *
+ * @author Eldin Dzubur.
+ */
 public class DefinitionHelper implements Serializable {
 
-    
     public int terminalVal;
 
     private ProgressStatus progressStatus;
@@ -3109,7 +3109,7 @@ public class DefinitionHelper implements Serializable {
 
     }
 
-    //@Eldin: This is the function to be used to detect OS
+    //Get the operating system type before running models
     public String getOSName() {
         String osName = System.getProperty("os.name").toLowerCase();
         return osName;
