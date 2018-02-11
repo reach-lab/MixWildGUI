@@ -35,11 +35,9 @@ import org.apache.commons.io.FilenameUtils;
  * @author adityaponnada
  */
 public class NewModel extends javax.swing.JFrame {
-    
 
     //Object declarations
-    
-    JFileChooser fileChooser; 
+    JFileChooser fileChooser;
     File file;
     static String[] variableArray;
     static int RLE;
@@ -51,61 +49,57 @@ public class NewModel extends javax.swing.JFrame {
     static String dataFileNameRef;
     final ImageIcon icon;
     String missingValue = "0";
-    
-    
-    
+
     /**
-     *
+     * Declare libraries
      */
     public static DefinitionHelper defFile;
     public static ModelBuilder modelBuilder;
-     
+
     /**
      * Creates new form NewModel
      */
     public NewModel() {
         initComponents();
         this.setResizable(false);
-        
+
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        
-                Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-                this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
-              
-       fileChooser = new JFileChooser();
-       instructions = new InstructionsGUI();
-       icon = new ImageIcon(getClass().getResource("/resources/mixLogo.png"));
-      // defFile = new def_lib.DefinitionHelper();
-      
-      //subtitle ---> ouput prefix + date and time
-       
-       titleField.setEnabled(false);
-       newModel_resetButton.setEnabled(false);
-      // subtitleField.setEnabled(false);
-       continuousRadio.setEnabled(false);
-       dichotomousRadio.setEnabled(false);
-       //randomLocationEffects.setEnabled(false);
-       newModelSubmit.setEnabled(false);
-       //newModelMissingValueCode.setText("-999");
-      // newModelMissingValueCode.setEnabled(false);
-//       newModelMissingValues.setEnabled(false);
-//       newModelMissingValues.setSelected(true);
-       missingValuePresent.setEnabled(false);
-       missingValueAbsent.setEnabled(false);
-       noneRadio.setEnabled(false);
-       randomScaleCheckBox.setEnabled(false);
-       oneRLERadio.setEnabled(false);
-       moreThanOneRLERadio.setEnabled(false);
-       
-       dataFileLabel.setToolTipText("Insert a data file in .csv format");
-       fileBrowseButton.setToolTipText("Insert a data file in .csv format");
-       
-       filePath.setToolTipText("Insert a data file in .csv format");
-       titleField.setToolTipText("Insert title for the model");
-      // subtitleField.setToolTipText("Insert subtitle for the model");
-       //randomLocationEffects.setToolTipText("Select the number of random location effects. Minimum value is 1");
-       
-      
+
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
+
+        fileChooser = new JFileChooser();
+        instructions = new InstructionsGUI();
+        icon = new ImageIcon(getClass().getResource("/resources/mixLogo.png"));
+        // defFile = new def_lib.DefinitionHelper();
+
+        //subtitle ---> ouput prefix + date and time
+        //Set fields disabled till a data file is loaded
+        titleField.setEnabled(false);
+        newModel_resetButton.setEnabled(false);
+        // subtitleField.setEnabled(false);
+        continuousRadio.setEnabled(false);
+        dichotomousRadio.setEnabled(false);
+        //randomLocationEffects.setEnabled(false);
+        newModelSubmit.setEnabled(false);
+        //newModelMissingValueCode.setText("-999");
+        // newModelMissingValueCode.setEnabled(false);
+        // newModelMissingValues.setEnabled(false);
+        // newModelMissingValues.setSelected(true);
+        missingValuePresent.setEnabled(false);
+        missingValueAbsent.setEnabled(false);
+        noneRadio.setEnabled(false);
+        randomScaleCheckBox.setEnabled(false);
+        oneRLERadio.setEnabled(false);
+        moreThanOneRLERadio.setEnabled(false);
+
+        dataFileLabel.setToolTipText("Insert a data file in .csv format");
+        fileBrowseButton.setToolTipText("Insert a data file in .csv format");
+
+        filePath.setToolTipText("Insert a data file in .csv format");
+        titleField.setToolTipText("Insert title for the model");
+        // subtitleField.setToolTipText("Insert subtitle for the model");
+        //randomLocationEffects.setToolTipText("Select the number of random location effects. Minimum value is 1");
     }
 
     /**
@@ -324,54 +318,44 @@ public class NewModel extends javax.swing.JFrame {
     private void fileBrowseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileBrowseButtonActionPerformed
         //JFileChooser fileChooser = new JFileChooser();
         //fileChooser.showOpenDialog(null);
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("Data files","csv");
-        
-        
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Data files", "csv");
         fileChooser.setFileFilter(filter);
-        
-       // fileOpen();
-        
-       int returnVal = fileChooser.showOpenDialog(this);
-    if (returnVal == JFileChooser.APPROVE_OPTION) {
-       // File file = fileChooser.getSelectedFile();
-        // What to do with the file, e.g. display it in a TextArea
-        //textarea.read( new FileReader( file.getAbsolutePath() ), null );
-        
-        //Select file from the file object
-        file = fileChooser.getSelectedFile();
-      //get file path to display on the text box
-        String fileName = file.getAbsolutePath();
-        dataFileNameRef = fileName;
-        
-        filePath.setText(fileName);
-        
-        //enable other buttons here:
-        titleField.setEnabled(true);
-        //subtitleField.setEnabled(true);
-        //randomLocationEffects.setEnabled(true);
-        oneRLERadio.setEnabled(true);
-        moreThanOneRLERadio.setEnabled(true);
-        continuousRadio.setEnabled(true);
-        dichotomousRadio.setEnabled(true);
-       // randomLocationEffects.setEnabled(true);
-        newModelSubmit.setEnabled(true);
-//        newModelMissingValues.setEnabled(true);
-        missingValuePresent.setEnabled(true);
-        missingValueAbsent.setEnabled(true);
-       // newModelMissingValueCode.setEnabled(true);
-        noneRadio.setEnabled(true);
-         newModel_resetButton.setEnabled(true);
-        randomScaleCheckBox.setEnabled(true);
-        randomScaleCheckBox.setSelected(true);
-        
-       // newModelMissingValueCode.selectAll();
-        
-        System.out.println(file.getAbsolutePath());
-    } else {
-        System.out.println("File access cancelled by user.");
-    }
-        
-      
+        int returnVal = fileChooser.showOpenDialog(this);
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            // File file = fileChooser.getSelectedFile();
+            // What to do with the file, e.g. display it in a TextArea
+            //textarea.read( new FileReader( file.getAbsolutePath() ), null );
+            //Select file from the file object
+            file = fileChooser.getSelectedFile();
+            //get file path to display on the text box
+            String fileName = file.getAbsolutePath();
+            dataFileNameRef = fileName;
+            filePath.setText(fileName);
+            //enable other buttons here:
+            titleField.setEnabled(true);
+            //subtitleField.setEnabled(true);
+            //randomLocationEffects.setEnabled(true);
+            oneRLERadio.setEnabled(true);
+            moreThanOneRLERadio.setEnabled(true);
+            continuousRadio.setEnabled(true);
+            dichotomousRadio.setEnabled(true);
+            // randomLocationEffects.setEnabled(true);
+            newModelSubmit.setEnabled(true);
+            // newModelMissingValues.setEnabled(true);
+            missingValuePresent.setEnabled(true);
+            missingValueAbsent.setEnabled(true);
+            // newModelMissingValueCode.setEnabled(true);
+            noneRadio.setEnabled(true);
+            newModel_resetButton.setEnabled(true);
+            randomScaleCheckBox.setEnabled(true);
+            randomScaleCheckBox.setSelected(true);
+            // newModelMissingValueCode.selectAll();
+            System.out.println(file.getAbsolutePath());
+        } else {
+            System.out.println("File access cancelled by user.");
+        }
+
+
     }//GEN-LAST:event_fileBrowseButtonActionPerformed
 
     private void continuousRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuousRadioActionPerformed
@@ -379,9 +363,8 @@ public class NewModel extends javax.swing.JFrame {
     }//GEN-LAST:event_continuousRadioActionPerformed
 
     private void newModelSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModelSubmitActionPerformed
-        
-       // System.getProperty("os.name");
-       
+
+        // System.getProperty("os.name");
 //        String osName = System.getProperty("os.name");
 //        System.out.println("YOUR OPERATING SYSTEM IS: " + osName);
 //        if (osName.contains("Windows")){
@@ -389,327 +372,290 @@ public class NewModel extends javax.swing.JFrame {
 //        } else {
 //            System.out.println("NO THE OS IS NOT WINDOWS");
 //        }
-
         System.out.println("Model submitted" + " called");
-        
-    if (validateFields()==true){
-        System.out.print("condition is true");
-    if (oneRLERadio.isSelected() == true){
-            RLE = 1;
-    } else if (moreThanOneRLERadio.isSelected() == true) {
-            RLE = 2;
-    }
- 
-        
-        defFile = new DefinitionHelper(RLE, !isOutcomeContinous());
-//        modelBuilder = new ModelBuilder(defFile);
-        System.out.println("RLE: " + String.valueOf(RLE));
-        
-        defFile.modelSelector(RLE, isOutcomeContinous());
-        
-         if (missingValuePresent.isSelected()){
-       
-        System.out.println("NEW MODEL | MISSING VALUE = " + newModelMissingValueCode.getText());
-        
-        try {
-            System.out.println("NEW MODEL | MISSING VALUE = " + newModelMissingValueCode.getText());
-            defFile.setAdvancedMissingValue(String.valueOf(newModelMissingValueCode.getText()));
-            
-            System.out.println("From defHelper | Missing Value: " + defFile.getAdvancedMissingValue());
-        } catch (Exception ex) {
-            Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
-        }
 
-    } else if (missingValueAbsent.isSelected()){
-        try {
-            defFile.setAdvancedMissingValue(String.valueOf(missingValue));
-            System.out.println("From defHelper | Missing Value: " + defFile.getAdvancedMissingValue());
-        } catch (Exception ex) {
-            Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
-        }
-        //do nothing
-    
-    }
-        
-        try {
-            //convert csv to .dat file ...
-            //defFile.
-            defFile.csvToDatConverter(file);
-        } catch (IOException ex) {
-            Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!",JOptionPane.INFORMATION_MESSAGE);
-        }
-        
-        
-        System.out.println("MODEL SELECTOR: " + String.valueOf(defFile.getSelectedModel()));
-        
-        if (filePath.getText().toString().equals("")){
-        
-        JOptionPane.showMessageDialog(null, "Please upload a .csv file to start your analysis", "Caution!", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-        
-        try {
-            
-            // Read file contents
-            Scanner inputStream = new Scanner(file);
-           
-            // Read variable names from row 1
-            String variableNames = inputStream.next();
-            
-            variableArray = variableNames.split(",");
-            
-           // save all variables in an array
-            
-            String[] varTemp = getVariableNames();
-            
-           defFile.setDataFilename(extractDatFilePath()); //change this to .dat file location (check validation)
-           
-           defFile.setDataVariableCount(String.valueOf(variableArray.length));
-           System.out.println("From defHelper | Variable count: " + defFile.getDataVariableCount());
-        
-            
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
-        }   catch (Exception ex) {
-                Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
+        if (validateFields() == true) {
+            System.out.print("condition is true");
+            if (oneRLERadio.isSelected() == true) {
+                RLE = 1;
+            } else if (moreThanOneRLERadio.isSelected() == true) {
+                RLE = 2;
             }
-        
-               
-        // Read random location effects from new Model
-        //RLE = (Integer) randomLocationEffects.getValue();
-        NoneVar = isOutcomeNone();
-        outComeBoolean = isOutcomeContinous();
-       
-        System.out.println("NoneVar: " + String.valueOf(NoneVar));
-        
-        System.out.println(String.valueOf(isOutcomeContinous()));
-        System.out.println("IsOutcomeNone: " + String.valueOf(isOutcomeNone()));
-        
-       // set Values in def helper
-       defFile.setModelTitle(getTitle());
-       System.out.println("From defHelper | Title: " + defFile.getModelTitle());
-       
-       //defFile.setModelSubtitle(getSubTitle());
-       System.out.println("From defHelper | Subtitle: " + defFile.getModelSubtitle());
-       
-       if (randomScaleCheckBox.isSelected()){
-           
-            isRandomScale = true;
-        
-        } else {
-            isRandomScale = false;
-       
-       }
-     
-//       mxr = new mixregGUI();
-//       mxr.isSubmitClicked();
-//       mxr.setVisible(true);
-//       //Update ID, stage one and stage two variable comboboxes
-//       mxr.updateComboBoxes();
-       
-       NewModel.defFile.setModelSubtitle("Created with MixWILD GUI");
-       System.out.println("From defHelper | Subtitle: " + NewModel.defFile.getModelSubtitle());
-       
-       //set advanced options defaults
-        try {
-            NewModel.defFile.setModelFixedInt(String.valueOf(0));
-            System.out.println("From defHelper | Mean SubModel Checked?: " + NewModel.defFile.getModelFixedInt());
-            //tryCount = 1;
-        } catch (Exception ex) {
-            //catchCount = 1;
-            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-        }
-        
-        try {
-            NewModel.defFile.setModelRandomInt(String.valueOf(0));
-            NewModel.defFile.setModelBetweenInt(String.valueOf(0));
-            System.out.println("From defHelper | BS SubModel Checked?: " + NewModel.defFile.getModelRandomInt());
-            System.out.println("From defHelper | BS SubModel Checked?: " + NewModel.defFile.getModelBetweenInt());
-            
-        } catch (Exception ex) {
-            
-            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-        }
-        
-        try {
-            NewModel.defFile.setModelScaleInt(String.valueOf(0));
-            NewModel.defFile.setModelWithinInt(String.valueOf(0));
-            System.out.println("From defHelper | WS SubModel Checked?: " + NewModel.defFile.getModelScaleInt());
-            System.out.println("From defHelper | WS SubModel Checked?: " + NewModel.defFile.getModelWithinInt());
-            //tryCount = 1;
-        } catch (Exception ex) {
-            //catchCount = 1;
-            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-        }
-        
-        try {
-            NewModel.defFile.setAdvancedAdaptiveQuad(String.valueOf(1));
-            System.out.println("From defHelper | Adaptive Quadriture Checked?: " + NewModel.defFile.getAdvancedAdaptiveQuad());
-            //tryCount = 1;
-        } catch (Exception ex) {
-            //catchCount = 1;
-            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-        }
-        
-        try {
-            NewModel.defFile.setAdvancedConvergence(String.valueOf(0.00001));
-            System.out.println("From defHelper | Convergence: " + NewModel.defFile.getAdvancedConvergence());
-            //tryCount = 1;
 
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-            //catchCount = 1;
-        }
-        
-        try {
-            NewModel.defFile.setAdvancedQuadPoints(String.valueOf(11));
-            System.out.println("From defHelper | Quadriture Points: " + NewModel.defFile.getAdvancedQuadPoints());
-            //tryCount = 1;
-        } catch (Exception ex) {
-            //catchCount = 1;
-            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-        }
-        
-        try {
-            NewModel.defFile.setAdvancedMaxIteration(String.valueOf(200));
-            System.out.println("From defHelper | Maximum Iteraions: " + NewModel.defFile.getAdvancedMaxIteration());
-            //tryCount = 1;
-        } catch (Exception ex) {
-            //catchCount = 1;
-            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-        }
-        
-        try {
-            NewModel.defFile.setAdvancedRidge(String.valueOf(0.15));
-            System.out.println("From defHelper | Ridge: " + NewModel.defFile.getAdvancedRidge());
-            //tryCount = 1;
-        } catch (Exception ex) {
-            //catchCount = 1;
-            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-        }
-        
-        try {
-            NewModel.defFile.setAdvancedCutoffLower("0");
-            System.out.println("CUT OFF: " + NewModel.defFile.getAdvancedCutoffLower());
-        } catch (Exception ex) {
-            Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-        }
-        
-        try {
-            NewModel.defFile.setAdvancedDiscardSubjects("0");
-            System.out.println("DISCARD SUBJECTS: " + NewModel.defFile.getAdvancedDiscardSubjects());
-            
-        } catch (Exception ex) {
-            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-            
-        }
-        
-        try {
-            NewModel.defFile.setAdvancedCenterScale(String.valueOf(0));
-            System.out.println("From defHelper | Scale Regressor: " + NewModel.defFile.getAdvancedCenterScale());
-            
-        } catch (Exception ex) {
-            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-        }
-        
-        try {
-            NewModel.defFile.setAdvancedResampleCount("500");
-            System.out.println("From defHelper | Resample count: " + NewModel.defFile.getAdvancedResampleCount());
-        } catch (Exception ex) {
-            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-        }
-        
-            NewModel.defFile.setOutputPrefix(extractDatFileName() + "_Output");
-            System.out.println("From defHelper | Output file name: " + NewModel.defFile.getOutputPrefix());
-       
-        if (randomScaleCheckBox.isSelected()){
+            defFile = new DefinitionHelper(RLE, !isOutcomeContinous());
+            // modelBuilder = new ModelBuilder(defFile);
+            System.out.println("RLE: " + String.valueOf(RLE));
+
+            defFile.modelSelector(RLE, isOutcomeContinous());
+
+            if (missingValuePresent.isSelected()) {
+
+                System.out.println("NEW MODEL | MISSING VALUE = " + newModelMissingValueCode.getText());
+
+                try {
+                    System.out.println("NEW MODEL | MISSING VALUE = " + newModelMissingValueCode.getText());
+                    defFile.setAdvancedMissingValue(String.valueOf(newModelMissingValueCode.getText()));
+
+                    System.out.println("From defHelper | Missing Value: " + defFile.getAdvancedMissingValue());
+                } catch (Exception ex) {
+                    Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+                }
+
+            } else if (missingValueAbsent.isSelected()) {
+                try {
+                    defFile.setAdvancedMissingValue(String.valueOf(missingValue));
+                    System.out.println("From defHelper | Missing Value: " + defFile.getAdvancedMissingValue());
+                } catch (Exception ex) {
+                    Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+                }
+                //do nothing
+            }
+
             try {
-                NewModel.defFile.setAdvancedRandomScaleNotIncluded("0");
-                System.out.println("IS RANDOM SCALE INCLUDED: " + NewModel.defFile.getAdvancedRandomScaleNotIncluded());
-            } catch (Exception ex) {
+                //convert csv to .dat file ...
+                //defFile.
+                defFile.csvToDatConverter(file);
+            } catch (IOException ex) {
                 Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
             }
-        
-        } else {
-        
-        try {
-                NewModel.defFile.setAdvancedRandomScaleNotIncluded("1");
-                System.out.println("IS RANDOM SCALE INCLUDED: " + NewModel.defFile.getAdvancedRandomScaleNotIncluded());
-            } catch (Exception ex) {
-                Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-            }
-        
-        }
-        
-        if (isOutcomeNone()){
-            try {
-                NewModel.defFile.setAdvancedDropSecondStage("1");
-                System.out.println("DROP SECOND STAGE?: " + NewModel.defFile.getAdvancedDropSecondStage());
-            } catch (Exception ex) {
-                Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-            }
-        
-        } else {
-        
-            try {
-                NewModel.defFile.setAdvancedDropSecondStage("0");
-                 System.out.println("DROP SECOND STAGE?: " + NewModel.defFile.getAdvancedDropSecondStage());
-            } catch (Exception ex) {
-                Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-            }
-        
-        }
-        
-            //set conditions here:
-            if (newModelMissingValueCode.getText().equals("0") || newModelMissingValueCode.getText().equals("00") || newModelMissingValueCode.getText().equals("000")){
-            //show message alert here:
-            JOptionPane.showMessageDialog(null, "Invalid missing value code, 0 implies there are no missing values. Please use some other value. E.g., -999", "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-            
+
+            System.out.println("MODEL SELECTOR: " + String.valueOf(defFile.getSelectedModel()));
+
+            if (filePath.getText().toString().equals("")) {
+                JOptionPane.showMessageDialog(null, "Please upload a .csv file to start your analysis", "Caution!", JOptionPane.INFORMATION_MESSAGE);
             } else {
-                 mxr = new mixregGUI();
-                 mxr.isSubmitClicked();
-                 mxr.setVisible(true);
-                 mxr.randomLocationEffectsLabel.setText("Random location effects: " + randomLocationEffects());
-                 mxr.stageTwoOutcomePrintLabel.setText("Stage 2 outcome: " + outComeTypeString());
-                //Update ID, stage one and stage two variable comboboxes
-                mxr.updateComboBoxes();
-                this.dispose();
+
+                try {
+
+                    // Read file contents
+                    Scanner inputStream = new Scanner(file);
+
+                    // Read variable names from row 1
+                    String variableNames = inputStream.next();
+                    variableArray = variableNames.split(",");
+                    // save all variables in an array
+                    String[] varTemp = getVariableNames();
+                    defFile.setDataFilename(extractDatFilePath());
+                    defFile.setDataVariableCount(String.valueOf(variableArray.length));
+                    System.out.println("From defHelper | Variable count: " + defFile.getDataVariableCount());
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (Exception ex) {
+                    Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                // Read random location effects from new Model
+                //RLE = (Integer) randomLocationEffects.getValue();
+                NoneVar = isOutcomeNone();
+                outComeBoolean = isOutcomeContinous();
+                System.out.println("NoneVar: " + String.valueOf(NoneVar));
+                System.out.println(String.valueOf(isOutcomeContinous()));
+                System.out.println("IsOutcomeNone: " + String.valueOf(isOutcomeNone()));
+                // set Values in def helper
+                defFile.setModelTitle(getTitle());
+                System.out.println("From defHelper | Title: " + defFile.getModelTitle());
+                //defFile.setModelSubtitle(getSubTitle());
+                System.out.println("From defHelper | Subtitle: " + defFile.getModelSubtitle());
+
+                //Check if the randome scale is checked or not
+                if (randomScaleCheckBox.isSelected()) {
+                    isRandomScale = true;
+                } else {
+                    isRandomScale = false;
+                }
+
+                //       mxr = new mixregGUI();
+                //       mxr.isSubmitClicked();
+                //       mxr.setVisible(true);
+                //       //Update ID, stage one and stage two variable comboboxes
+                //       mxr.updateComboBoxes();
+                NewModel.defFile.setModelSubtitle("Created with MixWILD GUI");
+                System.out.println("From defHelper | Subtitle: " + NewModel.defFile.getModelSubtitle());
+
+                //set advanced options defaults and assign values to defition library
+                try {
+                    NewModel.defFile.setModelFixedInt(String.valueOf(0));
+                    System.out.println("From defHelper | Mean SubModel Checked?: " + NewModel.defFile.getModelFixedInt());
+                    //tryCount = 1;
+                } catch (Exception ex) {
+                    //catchCount = 1;
+                    Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                }
+                try {
+                    NewModel.defFile.setModelRandomInt(String.valueOf(0));
+                    NewModel.defFile.setModelBetweenInt(String.valueOf(0));
+                    System.out.println("From defHelper | BS SubModel Checked?: " + NewModel.defFile.getModelRandomInt());
+                    System.out.println("From defHelper | BS SubModel Checked?: " + NewModel.defFile.getModelBetweenInt());
+                } catch (Exception ex) {
+                    Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                }
+                try {
+                    NewModel.defFile.setModelScaleInt(String.valueOf(0));
+                    NewModel.defFile.setModelWithinInt(String.valueOf(0));
+                    System.out.println("From defHelper | WS SubModel Checked?: " + NewModel.defFile.getModelScaleInt());
+                    System.out.println("From defHelper | WS SubModel Checked?: " + NewModel.defFile.getModelWithinInt());
+                    //tryCount = 1;
+                } catch (Exception ex) {
+                    //catchCount = 1;
+                    Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                }
+                try {
+                    NewModel.defFile.setAdvancedAdaptiveQuad(String.valueOf(1));
+                    System.out.println("From defHelper | Adaptive Quadriture Checked?: " + NewModel.defFile.getAdvancedAdaptiveQuad());
+                    //tryCount = 1;
+                } catch (Exception ex) {
+                    //catchCount = 1;
+                    Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                }
+                try {
+                    NewModel.defFile.setAdvancedConvergence(String.valueOf(0.00001));
+                    System.out.println("From defHelper | Convergence: " + NewModel.defFile.getAdvancedConvergence());
+                    //tryCount = 1;
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                    Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+                    //catchCount = 1;
+                }
+                try {
+                    NewModel.defFile.setAdvancedQuadPoints(String.valueOf(11));
+                    System.out.println("From defHelper | Quadriture Points: " + NewModel.defFile.getAdvancedQuadPoints());
+                    //tryCount = 1;
+                } catch (Exception ex) {
+                    //catchCount = 1;
+                    Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                }
+                try {
+                    NewModel.defFile.setAdvancedMaxIteration(String.valueOf(200));
+                    System.out.println("From defHelper | Maximum Iteraions: " + NewModel.defFile.getAdvancedMaxIteration());
+                    //tryCount = 1;
+                } catch (Exception ex) {
+                    //catchCount = 1;
+                    Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                }
+                try {
+                    NewModel.defFile.setAdvancedRidge(String.valueOf(0.15));
+                    System.out.println("From defHelper | Ridge: " + NewModel.defFile.getAdvancedRidge());
+                    //tryCount = 1;
+                } catch (Exception ex) {
+                    //catchCount = 1;
+                    Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                }
+                try {
+                    NewModel.defFile.setAdvancedCutoffLower("0");
+                    System.out.println("CUT OFF: " + NewModel.defFile.getAdvancedCutoffLower());
+                } catch (Exception ex) {
+                    Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                }
+                try {
+                    NewModel.defFile.setAdvancedDiscardSubjects("0");
+                    System.out.println("DISCARD SUBJECTS: " + NewModel.defFile.getAdvancedDiscardSubjects());
+
+                } catch (Exception ex) {
+                    Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                }
+                try {
+                    NewModel.defFile.setAdvancedCenterScale(String.valueOf(0));
+                    System.out.println("From defHelper | Scale Regressor: " + NewModel.defFile.getAdvancedCenterScale());
+                } catch (Exception ex) {
+                    Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                }
+                try {
+                    NewModel.defFile.setAdvancedResampleCount("500");
+                    System.out.println("From defHelper | Resample count: " + NewModel.defFile.getAdvancedResampleCount());
+                } catch (Exception ex) {
+                    Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                }
+
+                NewModel.defFile.setOutputPrefix(extractDatFileName() + "_Output");
+                System.out.println("From defHelper | Output file name: " + NewModel.defFile.getOutputPrefix());
+
+                if (randomScaleCheckBox.isSelected()) {
+                    try {
+                        NewModel.defFile.setAdvancedRandomScaleNotIncluded("0");
+                        System.out.println("IS RANDOM SCALE INCLUDED: " + NewModel.defFile.getAdvancedRandomScaleNotIncluded());
+                    } catch (Exception ex) {
+                        Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
+                        JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                    }
+
+                } else {
+
+                    try {
+                        NewModel.defFile.setAdvancedRandomScaleNotIncluded("1");
+                        System.out.println("IS RANDOM SCALE INCLUDED: " + NewModel.defFile.getAdvancedRandomScaleNotIncluded());
+                    } catch (Exception ex) {
+                        Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
+                        JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                    }
+
+                }
+
+                if (isOutcomeNone()) {
+                    try {
+                        NewModel.defFile.setAdvancedDropSecondStage("1");
+                        System.out.println("DROP SECOND STAGE?: " + NewModel.defFile.getAdvancedDropSecondStage());
+                    } catch (Exception ex) {
+                        Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
+                        JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                    }
+
+                } else {
+
+                    try {
+                        NewModel.defFile.setAdvancedDropSecondStage("0");
+                        System.out.println("DROP SECOND STAGE?: " + NewModel.defFile.getAdvancedDropSecondStage());
+                    } catch (Exception ex) {
+                        Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
+                        JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                    }
+
+                }
+
+                //set conditions here:
+                if (newModelMissingValueCode.getText().equals("0") || newModelMissingValueCode.getText().equals("00") || newModelMissingValueCode.getText().equals("000")) {
+                    //show message alert here:
+                    JOptionPane.showMessageDialog(null, "Invalid missing value code, 0 implies there are no missing values. Please use some other value. E.g., -999", "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                } else {
+                    mxr = new mixregGUI();
+                    mxr.isSubmitClicked();
+                    mxr.setVisible(true);
+                    mxr.randomLocationEffectsLabel.setText("Random location effects: " + randomLocationEffects());
+                    mxr.stageTwoOutcomePrintLabel.setText("Stage 2 outcome: " + outComeTypeString());
+                    //Update ID, stage one and stage two variable comboboxes
+                    mxr.updateComboBoxes();
+                    this.dispose();
+                }
+
             }
-            
+
+            try {
+                getDataFromCSV();
+                printFileName();
+                System.out.println("NEW MODEL DATA READ");
+            } catch (IOException ex) {
+                Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+            }
+
+        } else {
+
+            System.out.println("VALIDATION OF FIELDS: " + String.valueOf(false));
+
         }
-        
-        try {
-            getDataFromCSV();
-            printFileName();
-            System.out.println("NEW MODEL DATA READ");
-        } catch (IOException ex) {
-            Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-        }
-    
-    } else {
-    
-    System.out.println("VALIDATION OF FIELDS: " + String.valueOf(false));
-        
-    }
 
     }//GEN-LAST:event_newModelSubmitActionPerformed
 
@@ -725,19 +671,19 @@ public class NewModel extends javax.swing.JFrame {
 
     private void newModel_resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModel_resetButtonActionPerformed
         // TODO add your handling code here:
-        
+
         filePath.setText("");
         titleField.setText("");
         titleField.setEnabled(false);
-       // subtitleField.setEditable(false);
-       // subtitleField.setText("");
+        // subtitleField.setEditable(false);
+        // subtitleField.setText("");
         //randomLocationEffects.setValue(1);
         //randomLocationEffects.setEnabled(false);
         continuousRadio.setEnabled(false);
         dichotomousRadio.setEnabled(false);
         //randomLocationEffects.setEnabled(false);
         newModelSubmit.setEnabled(false);
-//        newModelMissingValues.setEnabled(false);
+        // newModelMissingValues.setEnabled(false);
         newModelMissingValueCode.setEnabled(false);
         noneRadio.setSelected(false);
         noneRadio.setEnabled(false);
@@ -756,12 +702,12 @@ public class NewModel extends javax.swing.JFrame {
 
     private void newModelMissingValueCodeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_newModelMissingValueCodeKeyTyped
         // TODO add your handling code here:
-        
+
         char vchar = evt.getKeyChar();
-        if (!((Character.isDigit(vchar)) || (vchar == KeyEvent.VK_BACKSPACE) || (vchar == KeyEvent.VK_DELETE) || (vchar == KeyEvent.VK_MINUS))){
+        if (!((Character.isDigit(vchar)) || (vchar == KeyEvent.VK_BACKSPACE) || (vchar == KeyEvent.VK_DELETE) || (vchar == KeyEvent.VK_MINUS))) {
             evt.consume();
         }
-        
+
     }//GEN-LAST:event_newModelMissingValueCodeKeyTyped
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -779,21 +725,21 @@ public class NewModel extends javax.swing.JFrame {
 
     private void missingValuePresentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_missingValuePresentActionPerformed
         // TODO add your handling code here:
-        if (missingValuePresent.isSelected()){
-        newModelMissingValueCode.setEnabled(true);
-        newModelMissingValueCode.setText("-999");
-        newModelMissingValueCode.selectAll();
+        if (missingValuePresent.isSelected()) {
+            newModelMissingValueCode.setEnabled(true);
+            newModelMissingValueCode.setText("-999");
+            newModelMissingValueCode.selectAll();
         }
-        
+
     }//GEN-LAST:event_missingValuePresentActionPerformed
 
     private void missingValueAbsentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_missingValueAbsentActionPerformed
         // TODO add your handling code here:
-         if (missingValueAbsent.isSelected()){
-         newModelMissingValueCode.setEnabled(false);
-         newModelMissingValueCode.setText("");
-         }
-         
+        if (missingValueAbsent.isSelected()) {
+            newModelMissingValueCode.setEnabled(false);
+            newModelMissingValueCode.setText("");
+        }
+
     }//GEN-LAST:event_missingValueAbsentActionPerformed
 
     /**
@@ -831,22 +777,21 @@ public class NewModel extends javax.swing.JFrame {
         });
     }
 
-    
-    //Open data file
+    //Open data file - unused
     private void fileOpen() {
-    int returnVal = fileChooser.showOpenDialog(this);
-    if (returnVal == JFileChooser.APPROVE_OPTION) {
-        File file = fileChooser.getSelectedFile();
-        // What to do with the file, e.g. display it in a TextArea
-        //textarea.read( new FileReader( file.getAbsolutePath() ), null );
-        
-        System.out.println(file.getAbsolutePath());
-    } else {
-        System.out.println("File access cancelled by user.");
+        int returnVal = fileChooser.showOpenDialog(this);
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            File file = fileChooser.getSelectedFile();
+            // What to do with the file, e.g. display it in a TextArea
+            //textarea.read( new FileReader( file.getAbsolutePath() ), null );
+
+            System.out.println(file.getAbsolutePath());
+        } else {
+            System.out.println("File access cancelled by user.");
+        }
     }
-} 
-  
-    
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
@@ -883,261 +828,216 @@ public class NewModel extends javax.swing.JFrame {
     private javax.swing.JTextField titleField;
     // End of variables declaration//GEN-END:variables
 
-
-
-//get the number of random location effects    
-public int getRLE(){
-    return RLE;
+    //get the number of random location effects    
+    public int getRLE() {
+        return RLE;
     }
 
+    //get the variable names from the data file
+    public static String[] getVariableNames() {
 
-//get the variable names from the data file
-public static String[] getVariableNames(){
+        return variableArray;
+    }
 
-return variableArray;
-}
+    //get data file name when created
+    public static String getDataFileName() {
 
-public static String getDataFileName(){
+        return dataFileNameRef;
+    }
 
-return dataFileNameRef;
-}
+    //get the instance of the model mixReg declared in newModel
+    public mixregGUI getMixReg() {
 
-//get the instance of the model mixReg declared in newModel
-public mixregGUI getMixReg(){
+        return mxr;
+    }
 
-return mxr;
-}
+    //get title from the text box
+    public String getTitle() {
 
+        String titleString = titleField.getText().toString();
 
-//get title from the text box
-public String getTitle(){
+        return titleString;
 
-    String titleString = titleField.getText().toString();
-
-    return titleString;
-    
-}
-
-//get subtitle from the text box
-//public String getSubTitle(){
-//
-//       String SubTitleString = subtitleField.getText().toString();
-//
-//       return SubTitleString;
-//    
-//}
-
-
+    }
 
 //check if the outcome type is selected as continuos or dichotomous
-public boolean isOutcomeContinous(){
-    
-    boolean selection = true;
-    
-    if (continuousRadio.isSelected() == true){
-    
-    selection = true;
-    System.out.println("Outcome selected at Newmodel: " + String.valueOf(selection));
+    public boolean isOutcomeContinous() {
+
+        boolean selection = true;
+
+        if (continuousRadio.isSelected() == true) {
+
+            selection = true;
+            System.out.println("Outcome selected at Newmodel: " + String.valueOf(selection));
+        } else if (dichotomousRadio.isSelected() == true) {
+
+            selection = false;
+            System.out.println("Outcome selected at Newmodel: " + String.valueOf(selection));
+        }
+
+        System.out.println("Outcome selected at Newmodel: " + String.valueOf(selection));
+        return selection;
+    }
+
+    public boolean isOutcomeNone() {
+        System.out.println("In isOutcomeNone NewModel");
+
+        boolean selection = false;
+
+        if (noneRadio.isSelected() == true) {
+            selection = true;
+            System.out.println("In isOutcomeNone true");
+        } else if (noneRadio.isSelected() == false) {
+
+            selection = false;
+        }
+        return selection;
+    }
+
+    public boolean getNoneVar() {
+        return NoneVar;
+
+    }
+
+    public boolean getOutComeType() {
+
+        return outComeBoolean;
+    }
+
+    public DefinitionHelper getDefFile() {
+
+        return defFile;
+    }
+
+    public String extractDatFileName() {
+
+        String fileLoc = file.getAbsolutePath();
+        String fileName = fileLoc.substring(fileLoc.lastIndexOf(File.separator) + 1);
+        int iend = fileName.indexOf(".");
+
+        if (iend != -1) {
+            fileName = fileName.substring(0, iend);
+        }
+
+        return fileName;
+    }
+
+    public String extractDatFilePath() {
+
+        String csvPath = file.getAbsolutePath();
+        String datPath = FilenameUtils.removeExtension(csvPath) + ".dat";
+
+        return datPath;
+    }
+
+    public void getDataFromCSV() throws FileNotFoundException, IOException {
+
+        Object[] columnnames;
+
+        CSVReader CSVFileReader = new CSVReader(new FileReader(file));
+        List myEntries = CSVFileReader.readAll();
+        columnnames = (String[]) myEntries.get(0);
+        DefaultTableModel tableModel = new DefaultTableModel(columnnames, myEntries.size() - 1) {
+
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                //all cells false
+                return false;
             }
-    else if (dichotomousRadio.isSelected() == true){
-    
-    selection = false;
-    System.out.println("Outcome selected at Newmodel: " + String.valueOf(selection));
-    }
-    
-    System.out.println("Outcome selected at Newmodel: " + String.valueOf(selection));
-    return selection;
-}
+        };
+        int rowcount = tableModel.getRowCount();
 
-public boolean isOutcomeNone(){
-    System.out.println("In isOutcomeNone NewModel");
+        for (int x = 0; x < rowcount + 1; x++) {
+            int columnnumber = 0;
+            // if x = 0 this is the first row...skip it... data used for columnnames
+            if (x > 0) {
+                for (String thiscellvalue : (String[]) myEntries.get(x)) {
+                    tableModel.setValueAt(thiscellvalue, x - 1, columnnumber);
+                    columnnumber++;
+                }
+            }
+        }
 
-    boolean selection = false;
-    
-    if (noneRadio.isSelected() == true){
-        selection = true;
-        System.out.println("In isOutcomeNone true");
-    } else if (noneRadio.isSelected() == false){
-    
-        selection = false;
-    }
-    return selection;
-}
-
-public boolean getNoneVar(){
-return NoneVar;
-
-}
-
-public boolean getOutComeType(){
-
-return outComeBoolean;
-}
-
-
-public DefinitionHelper getDefFile(){
-
-return defFile;
-}
-
-//public String getOutPutFileName() {
-//
-//      String outPut;
-//
-//        outPut = subtitleField.getText().toString();
-//
-//        return outPut;
-//      
-//      //return "";
-//    }
-
-
-public String extractDatFileName(){
-
-    String fileLoc = file.getAbsolutePath();
-    String fileName = fileLoc.substring(fileLoc.lastIndexOf(File.separator) + 1);
-    int iend = fileName.indexOf(".");
-    
-    if (iend != -1){
-    fileName = fileName.substring(0, iend);
+        mixregGUI.dataTable.setModel(tableModel);
+        mixregGUI.dataTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        mixregGUI.dataTable.setAutoscrolls(true);
     }
 
-    return fileName;
-}
+    public void printFileName() {
+        String path = file.getName();
 
-public String extractDatFilePath(){
+        mixregGUI.printedFileName.setText(path);
 
-String csvPath = file.getAbsolutePath();
-String datPath = FilenameUtils.removeExtension(csvPath) + ".dat";
-
-
-return datPath;
-}
-
-public void getDataFromCSV() throws FileNotFoundException, IOException{
-
-Object[] columnnames;
-
-CSVReader CSVFileReader = new CSVReader(new FileReader(file));
-List myEntries = CSVFileReader.readAll();
-columnnames = (String[]) myEntries.get(0);
-DefaultTableModel tableModel = new DefaultTableModel(columnnames, myEntries.size()-1){
-
-@Override
-    public boolean isCellEditable(int row, int column) {
-       //all cells false
-       return false;
     }
-};
-int rowcount = tableModel.getRowCount();
 
-for (int x = 0; x<rowcount+1; x++)
-       {
-          int columnnumber = 0;
-         // if x = 0 this is the first row...skip it... data used for columnnames
-         if (x>0)
-         {
-       for (String thiscellvalue : (String[])myEntries.get(x))
-       {
-           tableModel.setValueAt(thiscellvalue, x-1, columnnumber);
-          columnnumber++;
-       }
-         }
+    private boolean validateFields() {
+        boolean allFieldsEntered = true;
+        System.out.println("FIELD VALIDATE: " + "Called");
 
-}
+        if (filePath.getText().trim().length() == 0) {
+            allFieldsEntered = false;
+            JOptionPane.showMessageDialog(null, "Please select a .csv file for your analysis", "Missing information!", JOptionPane.INFORMATION_MESSAGE, icon);
+            System.out.println("FIELD VALIDATE: " + "File path missing");
+        }
+        //radio buttons for random location effects
+        if (buttonGroup2.getSelection() == null) {
+            allFieldsEntered = false;
+            JOptionPane.showMessageDialog(null, "Please select random location effects", "Missing information!", JOptionPane.INFORMATION_MESSAGE, icon);
+            System.out.println("FIELD VALIDATE: " + "RLE not selected");
+        }
+        //for stage 2 outcome type
+        if (buttonGroup1.getSelection() == null) {
+            allFieldsEntered = false;
+            JOptionPane.showMessageDialog(null, "Please select a stage 2 outcome type", "Missing information!", JOptionPane.INFORMATION_MESSAGE, icon);
+            System.out.println("FIELD VALIDATE: " + "Stage 2 outcome missing");
+        }
+        //For missing values, yes or no.
+        if (buttonGroup4.getSelection() == null) {
+            allFieldsEntered = false;
+            JOptionPane.showMessageDialog(null, "Please confirm if your data has missing values", "Missing information!", JOptionPane.INFORMATION_MESSAGE, icon);
+            System.out.println("FIELD VALIDATE: " + "Missing value missing");
+        }
 
-mixregGUI.dataTable.setModel(tableModel);
-mixregGUI.dataTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-mixregGUI.dataTable.setAutoscrolls(true);
-
-
-
-//mixregGUI.dataTable.revalidate();
-//mixregGUI.dataTable.repaint()
-}
-
-public void printFileName(){
-    String path = file.getName();
-    
-mixregGUI.printedFileName.setText(path);
-
-}
-
-private boolean validateFields(){
-    boolean allFieldsEntered = true;
-    System.out.println("FIELD VALIDATE: " + "Called");
-    
-    if (filePath.getText().trim().length() == 0){
-    allFieldsEntered = false;
-    JOptionPane.showMessageDialog(null, "Please select a .csv file for your analysis", "Missing information!", JOptionPane.INFORMATION_MESSAGE, icon);
-    System.out.println("FIELD VALIDATE: " + "File path missing");
-    } 
-    
-//    if(titleField.getText().trim().length() == 0){
-//    
-//    JOptionPane.showMessageDialog(null, "Please enter a title for the model", "Missing information!", JOptionPane.INFORMATION_MESSAGE, icon);
-//    System.out.println("FIELD VALIDATE: " + "Title missing");
-//    allFieldsEntered = false;
-//    }
-
-    if (buttonGroup2.getSelection() == null){
-    allFieldsEntered = false;
-    JOptionPane.showMessageDialog(null, "Please select random location effects", "Missing information!", JOptionPane.INFORMATION_MESSAGE, icon);
-    System.out.println("FIELD VALIDATE: " + "RLE not selected");
+        if (newModelMissingValueCode.isEnabled() && newModelMissingValueCode.getText().trim().length() == 0) {
+            allFieldsEntered = false;
+            JOptionPane.showMessageDialog(null, "Please don't leave the missing code value as blank", "Missing information!", JOptionPane.INFORMATION_MESSAGE, icon);
+            System.out.println("FIELD VALIDATE: " + "Missing value blank");
+        }
+        System.out.println("FIELD VALIDATE: " + "about to exit");
+        return allFieldsEntered;
     }
-    
-    if(buttonGroup1.getSelection() == null) {
-    allFieldsEntered = false;
-    JOptionPane.showMessageDialog(null, "Please select a stage 2 outcome type", "Missing information!", JOptionPane.INFORMATION_MESSAGE, icon);
-    System.out.println("FIELD VALIDATE: " + "Stage 2 outcome missing");
-    }
-    
-    if (buttonGroup4.getSelection() == null){
-    allFieldsEntered = false;
-    JOptionPane.showMessageDialog(null, "Please confirm if your data has missing values", "Missing information!", JOptionPane.INFORMATION_MESSAGE, icon);
-    System.out.println("FIELD VALIDATE: " + "Missing value missing");
-    }
-    
-    if (newModelMissingValueCode.isEnabled() && newModelMissingValueCode.getText().trim().length()==0){
-    allFieldsEntered = false;
-    JOptionPane.showMessageDialog(null, "Please don't leave the missing code value as blank", "Missing information!", JOptionPane.INFORMATION_MESSAGE, icon);
-    System.out.println("FIELD VALIDATE: " + "Missing value blank");
-    }
-System.out.println("FIELD VALIDATE: " + "about to exit");
-return allFieldsEntered;
-}
 
-public String randomLocationEffects(){
+    public String randomLocationEffects() {
 
-    String randLocString = "";
-    
-    if (oneRLERadio.isSelected()){
-        randLocString = "Intercept";
-    
-    } else if (moreThanOneRLERadio.isSelected()){
-        randLocString = "Intercept + Slope";
-    
+        String randLocString = "";
+
+        if (oneRLERadio.isSelected()) {
+            randLocString = "Intercept";
+
+        } else if (moreThanOneRLERadio.isSelected()) {
+            randLocString = "Intercept + Slope";
+
+        }
+
+        return randLocString;
     }
-    
-    return randLocString;
-}
 
-public String outComeTypeString() {
+    public String outComeTypeString() {
 
-    String outcomeTypeText = "";
-    
-    if (continuousRadio.isSelected()){
-    
-        outcomeTypeText = "Continious";
-    } else if (dichotomousRadio.isSelected()){
-    
-        outcomeTypeText = "Dichotomous";
-    } else if (noneRadio.isSelected()){
-    
-        outcomeTypeText = "None";
+        String outcomeTypeText = "";
+
+        if (continuousRadio.isSelected()) {
+
+            outcomeTypeText = "Continious";
+        } else if (dichotomousRadio.isSelected()) {
+
+            outcomeTypeText = "Dichotomous";
+        } else if (noneRadio.isSelected()) {
+
+            outcomeTypeText = "None";
+        }
+        return outcomeTypeText;
+
     }
-    return outcomeTypeText;
-
-}
 
 }

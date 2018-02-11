@@ -16,7 +16,6 @@ import javax.swing.JOptionPane;
 
 // Group the first three advanced options
 // rename based on stage 1 column names (keep RLE in mind)
-
 /**
  *
  * @author adityaponnada
@@ -25,8 +24,6 @@ public class advancedOptions extends javax.swing.JFrame {
 
     DefinitionHelper defFile3;
     final ImageIcon icon;
-    
-    
 
     /**
      * Creates new form advancedOptions
@@ -34,11 +31,12 @@ public class advancedOptions extends javax.swing.JFrame {
     public advancedOptions() {
         initComponents();
         this.setResizable(false);
-        
-                Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-                this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        //Add tool tips to advanced options
         icon = new ImageIcon(getClass().getResource("/resources/mixLogo.png"));
         meanSubmodelCheckBox.setToolTipText("Check mean submodel");
         BSVarianceCheckBox.setToolTipText("Check mean submodel");
@@ -50,30 +48,28 @@ public class advancedOptions extends javax.swing.JFrame {
         //standardizedCoeff.setToolTipText("Tool tip here");
         ridgeSpinner.setToolTipText("Tool tip here");
         centerRegressorsCheckBox.setToolTipText("Tool tip here");
-        
+
+        //set default selections
         meanSubmodelCheckBox.setSelected(true);
         BSVarianceCheckBox.setSelected(true);
         WSVarianceCheckBox.setSelected(true);
         adaptiveQuadritureCheckBox.setSelected(true);
         discardSubjectsCheckBox.setSelected(false);
-        
+
         resampleCheckBox.setSelected(true);
-        
+
         //variables to save values:
-        
-        
         if (NewModel.NoneVar == true) {
-            
+
             resampleSpinner.setEnabled(false);
             resampleCheckBox.setEnabled(false);
-        
+
         } else {
-        
+
             resampleSpinner.setEnabled(true);
             resampleCheckBox.setEnabled(true);
-        
+
         }
-       // missingValueCode.setEnabled(false);
     }
 
     /**
@@ -263,7 +259,7 @@ public class advancedOptions extends javax.swing.JFrame {
 
     private void meanSubmodelCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_meanSubmodelCheckBoxActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_meanSubmodelCheckBoxActionPerformed
 
     private void BSVarianceCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSVarianceCheckBoxActionPerformed
@@ -284,7 +280,7 @@ public class advancedOptions extends javax.swing.JFrame {
         int tryCount = 0;
         int catchCount = 0;
 
-        //defFile
+        //Assign parameters to definition library
         try {
             NewModel.defFile.setAdvancedConvergence(String.valueOf(convergenceCriteria.getText()));
             System.out.println("From defHelper | Convergence: " + NewModel.defFile.getAdvancedConvergence());
@@ -295,7 +291,7 @@ public class advancedOptions extends javax.swing.JFrame {
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
             catchCount = 1;
         }
-        
+
         try {
             NewModel.defFile.setAdvancedCutoffLower("0");
             System.out.println("CUT OFF: " + NewModel.defFile.getAdvancedCutoffLower());
@@ -305,7 +301,7 @@ public class advancedOptions extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             catchCount = 1;
         }
-        
+
         try {
             NewModel.defFile.setAdvancedDiscardSubjects(getDiscardSubjectsCheck());
             System.out.println("DISCARD SUBJECTS: " + NewModel.defFile.getAdvancedDiscardSubjects());
@@ -316,7 +312,7 @@ public class advancedOptions extends javax.swing.JFrame {
             catchCount = 1;
         }
 
-        //set quadriture points
+        //set quadrature points
         try {
             NewModel.defFile.setAdvancedQuadPoints(String.valueOf(quadriturePoints.getValue()));
             System.out.println("From defHelper | Quadriture Points: " + NewModel.defFile.getAdvancedQuadPoints());
@@ -336,8 +332,6 @@ public class advancedOptions extends javax.swing.JFrame {
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
-
-       
 
         try {
             NewModel.defFile.setModelFixedInt(String.valueOf(isMeanSubModelChecked()));
@@ -383,9 +377,6 @@ public class advancedOptions extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
 
-        //NewModel.defFile.setOutputPrefix("Output_" + getOutPutFileName());
-        //System.out.println("From defHelper | Output file name: " + NewModel.defFile.getOutputPrefix());
-
         try {
             NewModel.defFile.setAdvancedRidge(String.valueOf(getRidge()));
             System.out.println("From defHelper | Ridge: " + NewModel.defFile.getAdvancedRidge());
@@ -404,7 +395,7 @@ public class advancedOptions extends javax.swing.JFrame {
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
-        
+
         try {
             NewModel.defFile.setAdvancedResampleCount(getResamplingRate());
             System.out.println("From defHelper | Resample count: " + NewModel.defFile.getAdvancedResampleCount());
@@ -412,8 +403,6 @@ public class advancedOptions extends javax.swing.JFrame {
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
-        
-        
 
         if (catchCount == 0) {
             //do nothing
@@ -439,10 +428,9 @@ public class advancedOptions extends javax.swing.JFrame {
 
         adaptiveQuadritureCheckBox.setSelected(false);
         centerRegressorsCheckBox.setSelected(false);
-        
 
         maximumIterations.setValue(200);
-       // missingValuesCheckBox.setSelected(false);
+        // missingValuesCheckBox.setSelected(false);
         //standardizedCoeff.setSelected(false);
         ridgeSpinner.setValue(0.15);
         resampleSpinner.setValue(500);
@@ -456,12 +444,12 @@ public class advancedOptions extends javax.swing.JFrame {
 
     private void resampleCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resampleCheckBoxActionPerformed
         // TODO add your handling code here:
-        
-        if (resampleCheckBox.isSelected()){
+
+        if (resampleCheckBox.isSelected()) {
             resampleSpinner.setEnabled(true);
         } else {
             resampleSpinner.setEnabled(false);
-                }
+        }
     }//GEN-LAST:event_resampleCheckBoxActionPerformed
 
     /**
@@ -580,7 +568,7 @@ public class advancedOptions extends javax.swing.JFrame {
 // get the convergence criteria
     public String getConvergenceCriteria() {
 
-        return  convergenceCriteria.getText();
+        return convergenceCriteria.getText();
 
     }
 
@@ -611,22 +599,6 @@ public class advancedOptions extends javax.swing.JFrame {
 
     }
 
-
-
-//check if standardized coefficients is checked
-   /* public int isStandardizedCoefChecked() {
-        int checked = 0;
-
-        if (standardizedCoeff.isSelected() == true) {
-            checked = 1;
-        } else {
-
-            checked = 0;
-        }
-
-        return checked;
-    }*/
-
 // get the ridge value
     public Double getRidge() {
 
@@ -646,17 +618,6 @@ public class advancedOptions extends javax.swing.JFrame {
         return value;
     }
 
-    public String getOutPutFileName() {
-
-      /*  String outPut;
-
-        outPut = outputTextField.getText().toString();
-
-        return outPut;*/
-      
-      return "";
-    }
-    
 //    public int isResamplingChecked() {
 //
 //        int checked = 0;
@@ -669,25 +630,24 @@ public class advancedOptions extends javax.swing.JFrame {
 //
 //        return checked;
 //    }
-    
     public String getResamplingRate() {
 
         return String.valueOf(resampleSpinner.getValue());
 
     }
-    
-    public String getDiscardSubjectsCheck(){
-        
+
+    public String getDiscardSubjectsCheck() {
+
         String check = "0";
-        
-        if (discardSubjectsCheckBox.isSelected()){
-        
-        check = "1";
+
+        if (discardSubjectsCheckBox.isSelected()) {
+
+            check = "1";
         } else {
-        check = "0";
-        
+            check = "0";
+
         }
-        
+
         return check;
     }
 
