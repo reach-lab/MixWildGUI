@@ -37,10 +37,8 @@ public class stageOneRegs extends javax.swing.JFrame {
     static DefaultListModel<String> levelTwoList;
 
     static boolean isSubmitClicked = false;
-    
+
     final ImageIcon icon;
-    
-    
 
     /**
      * Creates new form stageOneRegs
@@ -51,16 +49,15 @@ public class stageOneRegs extends javax.swing.JFrame {
 
         newModel2 = new NewModel();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        
-                Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-                this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
 
         //get variable names from the data set
         //variableNamesList = newModel2.getVariableNames();
         variableNamesList = NewModel.getVariableNames();
-        
+
         icon = new ImageIcon(getClass().getResource("/resources/mixLogo.png"));
-        
 
         if (!isSubmitClicked) {
             varList = new DefaultListModel<String>();
@@ -201,12 +198,11 @@ public class stageOneRegs extends javax.swing.JFrame {
 
     private void stageOneSubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneSubmitButtonActionPerformed
 
-        for (int k = 0; k < varList.size(); k++){
-        System.out.println("VarList Submitted: " + String.valueOf(varList.getElementAt(k)));
-        
+        for (int k = 0; k < varList.size(); k++) {
+            System.out.println("VarList Submitted: " + String.valueOf(varList.getElementAt(k)));
+
         }
-        
-        
+
         stageTwo = new stageTwoRegs();
         isSubmitClicked = true;
 
@@ -224,97 +220,89 @@ public class stageOneRegs extends javax.swing.JFrame {
 
     private void levelOneAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_levelOneAddButtonActionPerformed
 
-        if (!AllVariablesList.isSelectionEmpty()){
-        levelOneList.addElement(AllVariablesList.getSelectedValue());
-        StageOneLevelOneList.setModel(levelOneList);
-        //remove the variable once it is added to levelOne regressors
-        varList.remove(AllVariablesList.getSelectedIndex());
-        
-        for (int k = 0; k < varList.size(); k++){
-        System.out.println("VarList: " + String.valueOf(varList.getElementAt(k)));
-        
+        if (!AllVariablesList.isSelectionEmpty()) {
+            levelOneList.addElement(AllVariablesList.getSelectedValue());
+            StageOneLevelOneList.setModel(levelOneList);
+            //remove the variable once it is added to levelOne regressors
+            varList.remove(AllVariablesList.getSelectedIndex());
+
+            for (int k = 0; k < varList.size(); k++) {
+                System.out.println("VarList: " + String.valueOf(varList.getElementAt(k)));
+
+            }
+
+            stageOneSubmitButton.setEnabled(true);
+        } else {
+
+            JOptionPane.showMessageDialog(null, "Please select a variable for level one.", "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+
         }
 
-        stageOneSubmitButton.setEnabled(true);
-        } else {
-            
-            JOptionPane.showMessageDialog(null, "Please select a variable for level one.", "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-        
-        }
-        
 
     }//GEN-LAST:event_levelOneAddButtonActionPerformed
 
     private void addLevelTwoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addLevelTwoButtonActionPerformed
 
-        if (!AllVariablesList.isSelectionEmpty()){
-        stageOneSubmitButton.setEnabled(true);
+        if (!AllVariablesList.isSelectionEmpty()) {
+            stageOneSubmitButton.setEnabled(true);
 
-        levelTwoList.addElement(AllVariablesList.getSelectedValue());
-        StageOneLevelTwoList.setModel(levelTwoList);
+            levelTwoList.addElement(AllVariablesList.getSelectedValue());
+            StageOneLevelTwoList.setModel(levelTwoList);
 
-        varList.remove(AllVariablesList.getSelectedIndex());
-        
-        
-        
-        
+            varList.remove(AllVariablesList.getSelectedIndex());
+
         } else {
-        JOptionPane.showMessageDialog(null, "Please select a variable for level two.", "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+            JOptionPane.showMessageDialog(null, "Please select a variable for level two.", "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
-        
+
 
     }//GEN-LAST:event_addLevelTwoButtonActionPerformed
 
     private void removeLevelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeLevelButtonActionPerformed
 
-        
-        if (!StageOneLevelOneList.isSelectionEmpty()){
-            
+        if (!StageOneLevelOneList.isSelectionEmpty()) {
+
             stageOneSubmitButton.setEnabled(true);
-            
+
             //add an if condition here
-            if(!varList.contains(StageOneLevelOneList.getSelectedValue())){
-            
-            varList.addElement(StageOneLevelOneList.getSelectedValue());
-            
+            if (!varList.contains(StageOneLevelOneList.getSelectedValue())) {
+
+                varList.addElement(StageOneLevelOneList.getSelectedValue());
+
             }
 
-        
+            AllVariablesList.setModel(varList);
 
-        AllVariablesList.setModel(varList);
+            levelOneList.remove(StageOneLevelOneList.getSelectedIndex());
 
-        levelOneList.remove(StageOneLevelOneList.getSelectedIndex());
-        
         } else {
             JOptionPane.showMessageDialog(null, "Please select a variable from level one.", "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-        
+
         }
-        
+
 
     }//GEN-LAST:event_removeLevelButtonActionPerformed
 
     private void removeLevelTwoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeLevelTwoButtonActionPerformed
 
-        
-        if (!StageOneLevelTwoList.isSelectionEmpty()){
-        stageOneSubmitButton.setEnabled(true);
-        
-         if(!varList.contains(StageOneLevelTwoList.getSelectedValue())){
-            
-            varList.addElement(StageOneLevelTwoList.getSelectedValue());
-            
+        if (!StageOneLevelTwoList.isSelectionEmpty()) {
+            stageOneSubmitButton.setEnabled(true);
+
+            if (!varList.contains(StageOneLevelTwoList.getSelectedValue())) {
+
+                varList.addElement(StageOneLevelTwoList.getSelectedValue());
+
             }
 
-        //varList.addElement(StageOneLevelTwoList.getSelectedValue());
+            //varList.addElement(StageOneLevelTwoList.getSelectedValue());
+            AllVariablesList.setModel(varList);
 
-        AllVariablesList.setModel(varList);
-
-        levelTwoList.remove(StageOneLevelTwoList.getSelectedIndex());
+            levelTwoList.remove(StageOneLevelTwoList.getSelectedIndex());
         } else {
-        
-        JOptionPane.showMessageDialog(null, "Please select a variable from level two.", "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+
+            JOptionPane.showMessageDialog(null, "Please select a variable from level two.", "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
-        
+
     }//GEN-LAST:event_removeLevelTwoButtonActionPerformed
 
     private void stageOneResetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneResetButtonActionPerformed
@@ -388,34 +376,32 @@ public class stageOneRegs extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public void updateAllVariables() {
-        
-       // mixregGUI.g
-       
-       int idIndex = mixregGUI.getIDFieldPosition();
-       System.out.println("STAGE ONE | THE ID IS: " + String.valueOf(idIndex));
-       int stageOneIndex = mixregGUI.getStageOneDVFieldPosition();
-       System.out.println("STAGE ONE | THE OUTCOME IS: " + String.valueOf(stageOneIndex));
-       
-       varList.removeAllElements();
+
+        // mixregGUI.g
+        int idIndex = mixregGUI.getIDFieldPosition();
+        System.out.println("STAGE ONE | THE ID IS: " + String.valueOf(idIndex));
+        int stageOneIndex = mixregGUI.getStageOneDVFieldPosition();
+        System.out.println("STAGE ONE | THE OUTCOME IS: " + String.valueOf(stageOneIndex));
+
+        varList.removeAllElements();
 
         for (int j = 0; j < variableNamesList.length; j++) {
-            if (j == idIndex || j == stageOneIndex){
-            //do nothing               
+            if (j == idIndex || j == stageOneIndex) {
+                //do nothing               
             } else {
-            varList.addElement(variableNamesList[j]);
-            }           
+                varList.addElement(variableNamesList[j]);
+            }
         }
 
         AllVariablesList.setModel(varList);
         AllVariablesList.setSelectedIndex(0);
     }
-    
-    public void updateStageOneAgain(){
-    
-   
-    //AllVariablesList.setModel(AllVariablesList.getModel());
-   AllVariablesList.setModel(varList);
-    
+
+    public void updateStageOneAgain() {
+
+        //AllVariablesList.setModel(AllVariablesList.getModel());
+        AllVariablesList.setModel(varList);
+
     }
 
     public DefaultListModel<String> getListModel() {
@@ -452,5 +438,4 @@ public class stageOneRegs extends javax.swing.JFrame {
 
     }
 
-    
 }
