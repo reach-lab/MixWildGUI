@@ -2469,7 +2469,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 
                 
                 
-                NewModel.modelBuilder.saveWildFile(NewModel.defFile);
+                //NewModel.modelBuilder.saveWildFile(NewModel.defFile);
 //                NewModel.modelBuilder.meanEquation();
 
             } catch (Exception ex) {
