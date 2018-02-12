@@ -55,6 +55,9 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JCheckBox" name="meanSubmodelCheckBox">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Include submodel intercepts (Default is on)"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="meanSubmodelCheckBoxActionPerformed"/>
           </Events>
@@ -75,6 +78,9 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JCheckBox" name="BSVarianceCheckBox">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Include submodel intercepts (default is on)"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BSVarianceCheckBoxActionPerformed"/>
           </Events>
@@ -95,6 +101,9 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JCheckBox" name="WSVarianceCheckBox">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Include submodel intercepts (default is on)"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="WSVarianceCheckBoxActionPerformed"/>
           </Events>
@@ -135,6 +144,9 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JCheckBox" name="adaptiveQuadritureCheckBox">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Adaptive quadrature, usually on to maximize convergence"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="adaptiveQuadritureCheckBoxActionPerformed"/>
           </Events>
@@ -149,6 +161,7 @@
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
               <SpinnerModel initial="11" maximum="255" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Number of quadrature points (usually set to 10 or 11, however more points may be necessary for complex models)"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -166,6 +179,7 @@
         <Component class="javax.swing.JTextField" name="convergenceCriteria">
           <Properties>
             <Property name="text" type="java.lang.String" value="0.00001"/>
+            <Property name="toolTipText" type="java.lang.String" value="Convergence requirement for the maximum correction (change to aid in convergence)"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -218,6 +232,7 @@
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
               <SpinnerModel initial="200" minimum="1" numberType="java.lang.Integer" stepSize="100" type="number"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Maximum number of iterations"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -230,6 +245,7 @@
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
               <SpinnerModel initial="0.1" maximum="1.0" minimum="0.0" numberType="java.lang.Double" stepSize="0.01" type="number"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Initial value for a ridge (a numeric value that adds to the diagonal of the second derivative matrix, which can aid in convergence of the solution; usually set to 0 or some small fractional value)"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -248,6 +264,9 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JCheckBox" name="centerRegressorsCheckBox">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Center and scale all variables"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="centerRegressorsCheckBoxActionPerformed"/>
           </Events>
@@ -272,6 +291,7 @@
             <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
               <SpinnerModel initial="500" maximum="10000" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Select the number of resamples for stage 2"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -281,6 +301,7 @@
         </Component>
         <Component class="javax.swing.JCheckBox" name="resampleCheckBox">
           <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Select to resample stage 2 analysis"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>
@@ -315,6 +336,9 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JCheckBox" name="discardSubjectsCheckBox">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Discard all the subjects with no variance"/>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="210" y="110" width="-1" height="-1"/>

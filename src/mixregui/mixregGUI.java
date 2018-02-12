@@ -59,6 +59,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.border.MatteBorder;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import static mixregui.NewModel.dataFileNameRef;
 import org.apache.commons.io.FilenameUtils;
 
 /**
@@ -137,7 +138,6 @@ public class mixregGUI extends javax.swing.JFrame {
     boolean outComeType;
 
     static String outPutStageTwo;
-    
 
     /**
      * Creates new form mixregGUI
@@ -345,6 +345,7 @@ public class mixregGUI extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         newModelMenu = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         modifyStageOneMenu = new javax.swing.JMenuItem();
         modifyStageTwoMenu = new javax.swing.JMenuItem();
         superUserMenu = new javax.swing.JMenuItem();
@@ -995,6 +996,14 @@ public class mixregGUI extends javax.swing.JFrame {
             }
         });
         fileMenu.add(newModelMenu);
+
+        jMenuItem1.setText("Open .mwd ...");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        fileMenu.add(jMenuItem1);
 
         modifyStageOneMenu.setText("Modify Stage 1 and 2");
         modifyStageOneMenu.addActionListener(new java.awt.event.ActionListener() {
@@ -1901,7 +1910,6 @@ public class mixregGUI extends javax.swing.JFrame {
         //**********************************************************************
         // Reads selected ID variable and outcome variable from the first two comboboxes
         //String[] idOutcome = {String.valueOf(IDvariableCombo.getSelectedIndex() + 1), String.valueOf(StageOneVariableCombo.getSelectedIndex() + 1)};
-
         try {
             NewModel.defFile.setStageTwoOutcomeField(getStageTwoOutcomePosition());
             System.out.println("From defHelper | Outcome variable Position STAGE TWO: " + NewModel.defFile.getStageTwoOutcomeField());
@@ -2212,6 +2220,19 @@ public class mixregGUI extends javax.swing.JFrame {
         isStageTwoOutcomeChanged = true;
     }//GEN-LAST:event_stageTwoOutcomeItemStateChanged
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        JFileChooser fileChooser = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Data files", "csv");
+        fileChooser.setFileFilter(filter);
+        int returnVal = fileChooser.showOpenDialog(this);
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            System.out.println("File chosen");
+        } else {
+            System.out.println("File access cancelled by user.");
+        }
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2297,6 +2318,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
@@ -4337,7 +4359,6 @@ public class mixregGUI extends javax.swing.JFrame {
 
     public void produceStageOneOutput() throws FileNotFoundException {
 
-       
     }
 
     public void saveStageTwoOutput() throws IOException {

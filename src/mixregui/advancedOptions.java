@@ -125,6 +125,7 @@ public class advancedOptions extends javax.swing.JFrame {
         jLabel1.setText("Mean Intercept:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 7, -1, -1));
 
+        meanSubmodelCheckBox.setToolTipText("Include submodel intercepts (Default is on)");
         meanSubmodelCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 meanSubmodelCheckBoxActionPerformed(evt);
@@ -135,6 +136,7 @@ public class advancedOptions extends javax.swing.JFrame {
         jLabel2.setText("BS Variance Intercept:  ");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 36, -1, -1));
 
+        BSVarianceCheckBox.setToolTipText("Include submodel intercepts (default is on)");
         BSVarianceCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BSVarianceCheckBoxActionPerformed(evt);
@@ -145,6 +147,7 @@ public class advancedOptions extends javax.swing.JFrame {
         jLabel3.setText("WS Variance Intercept:  ");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 65, -1, -1));
 
+        WSVarianceCheckBox.setToolTipText("Include submodel intercepts (default is on)");
         WSVarianceCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 WSVarianceCheckBoxActionPerformed(evt);
@@ -161,6 +164,7 @@ public class advancedOptions extends javax.swing.JFrame {
         jLabel6.setText("Adaptive Quadrature:");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
 
+        adaptiveQuadritureCheckBox.setToolTipText("Adaptive quadrature, usually on to maximize convergence");
         adaptiveQuadritureCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 adaptiveQuadritureCheckBoxActionPerformed(evt);
@@ -169,10 +173,12 @@ public class advancedOptions extends javax.swing.JFrame {
         jPanel1.add(adaptiveQuadritureCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, -1, -1));
 
         quadriturePoints.setModel(new javax.swing.SpinnerNumberModel(11, 1, 255, 1));
+        quadriturePoints.setToolTipText("Number of quadrature points (usually set to 10 or 11, however more points may be necessary for complex models)");
         jPanel1.add(quadriturePoints, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 69, -1));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 240, -1));
 
         convergenceCriteria.setText("0.00001");
+        convergenceCriteria.setToolTipText("Convergence requirement for the maximum correction (change to aid in convergence)");
         jPanel1.add(convergenceCriteria, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 110, 60, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 21, 260, 230));
@@ -187,14 +193,17 @@ public class advancedOptions extends javax.swing.JFrame {
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 46, -1, 20));
 
         maximumIterations.setModel(new javax.swing.SpinnerNumberModel(200, 1, null, 100));
+        maximumIterations.setToolTipText("Maximum number of iterations");
         jPanel2.add(maximumIterations, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 69, -1));
 
         ridgeSpinner.setModel(new javax.swing.SpinnerNumberModel(0.1d, 0.0d, 1.0d, 0.01d));
+        ridgeSpinner.setToolTipText("Initial value for a ridge (a numeric value that adds to the diagonal of the second derivative matrix, which can aid in convergence of the solution; usually set to 0 or some small fractional value)");
         jPanel2.add(ridgeSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, 70, -1));
 
         jLabel15.setText("Standardize All Regressors?");
         jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
 
+        centerRegressorsCheckBox.setToolTipText("Center and scale all variables");
         centerRegressorsCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 centerRegressorsCheckBoxActionPerformed(evt);
@@ -206,8 +215,10 @@ public class advancedOptions extends javax.swing.JFrame {
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
 
         resampleSpinner.setModel(new javax.swing.SpinnerNumberModel(500, 1, 10000, 1));
+        resampleSpinner.setToolTipText("Select the number of resamples for stage 2");
         jPanel2.add(resampleSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, 70, -1));
 
+        resampleCheckBox.setToolTipText("Select to resample stage 2 analysis");
         resampleCheckBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         resampleCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -221,6 +232,8 @@ public class advancedOptions extends javax.swing.JFrame {
 
         jLabel12.setText("Discard Subjects with no Variance?");
         jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
+
+        discardSubjectsCheckBox.setToolTipText("Discard all the subjects with no variance");
         jPanel2.add(discardSubjectsCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, -1, -1));
         jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 142, 240, 0));
         jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 240, 10));
