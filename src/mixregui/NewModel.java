@@ -925,8 +925,9 @@ public class NewModel extends javax.swing.JFrame {
     public String extractDatFilePath() {
 
         String csvPath = file.getAbsolutePath();
-        String datPath = FilenameUtils.removeExtension(csvPath) + ".dat";
-
+        String datPath = FilenameUtils.getFullPath(csvPath) +
+                 defFile.getUtcDirPath() +
+                FilenameUtils.getBaseName(csvPath) + ".dat";
         return datPath;
     }
 

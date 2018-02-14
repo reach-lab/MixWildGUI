@@ -120,6 +120,8 @@ public class DefinitionHelper implements Serializable {
     private String modelSubtitle;
     private String dataFilename;
     private String outputPrefix;
+    private String utcDirPath;
+   
     /**
      * Stage 1 Advanced Options
      */
@@ -239,20 +241,33 @@ public class DefinitionHelper implements Serializable {
     public boolean isStageTwoBinary() {
         return stageTwoBinary;
     }
+    
+     public void setUtcDirPath(File csvFileLocation) throws IOException {
+        String utcDirPath = ModelBuilder.buildFolder(csvFileLocation); 
+        this.utcDirPath = utcDirPath;
+    }
+    
+    public String getUtcDirPath() {
+        return utcDirPath;
+    }
 
-    public static void csvToDatConverter(File csvFileToConvert) throws IOException {
+    public void csvToDatConverter(File csvFileToConvert) throws IOException {
         String fileName = csvFileToConvert.getAbsolutePath();
         String fileNameShort = FilenameUtils.removeExtension(fileName);
-        String filePath = fileName.substring(0, fileName.lastIndexOf(File.separator)) + "/"; //subset the string.
-
+        String baseName = FilenameUtils.getBaseName(fileName);
+        String filePath = FilenameUtils.getFullPath(fileName);
+        // TODO: Deprecate
+        //String filePath = fileName.substring(0, fileName.lastIndexOf(File.separator)) + "/"; //subset the string.
+        
         try (CSVReader reader = new CSVReader(new FileReader(fileName))) {
+            setUtcDirPath(csvFileToConvert);
             List<String[]> csvRows = reader.readAll();
             reader.close();
             System.out.println(Arrays.toString(csvRows.get(0)) + " to be removed");
             csvRows.remove(0); // TODO: make sure this isn't removing data
             System.out.println("New:" + Arrays.toString(csvRows.get(0)));
 
-            CSVWriter writer = new CSVWriter(new FileWriter(fileNameShort + ".dat"), ' ', CSVWriter.NO_QUOTE_CHARACTER,
+            CSVWriter writer = new CSVWriter(new FileWriter(filePath + utcDirPath + baseName + ".dat"), ' ', CSVWriter.NO_QUOTE_CHARACTER,
                     CSVWriter.NO_ESCAPE_CHARACTER, CSVWriter.RFC4180_LINE_END);
             writer.writeAll(csvRows);
             writer.close();
@@ -434,7 +449,7 @@ public class DefinitionHelper implements Serializable {
         List<String> newDefinitionFile = new ArrayList();
         newDefinitionFile.add(getModelTitle());
         newDefinitionFile.add(getModelSubtitle());
-        newDefinitionFile.add("\"" + getDataFilename() + "\"");
+        newDefinitionFile.add("\"" + FilenameUtils.getName(getDataFilename()) + "\"");
         newDefinitionFile.add(getOutputPrefix());
         String[] advancedOptionsOne = advancedVariableBuild(1);
         newDefinitionFile.add(Arrays.toString(advancedOptionsOne).replaceAll(",", " "));
@@ -689,7 +704,7 @@ public class DefinitionHelper implements Serializable {
         List<String> newDefinitionFile = new ArrayList();
         newDefinitionFile.add(getModelTitle());
         newDefinitionFile.add(getModelSubtitle());
-        newDefinitionFile.add("\"" + getDataFilename() + "\"");
+        newDefinitionFile.add("\"" + FilenameUtils.getName(getDataFilename()) + "\"");
         newDefinitionFile.add(getOutputPrefix());
         String[] advancedOptionsOne = advancedVariableBuild(1);
         newDefinitionFile.add(Arrays.toString(advancedOptionsOne).replaceAll(",", " "));
@@ -815,7 +830,7 @@ public class DefinitionHelper implements Serializable {
         List<String> newDefinitionFile = new ArrayList();
         newDefinitionFile.add(getModelTitle());
         newDefinitionFile.add(getModelSubtitle());
-        newDefinitionFile.add("\"" + getDataFilename() + "\"");
+        newDefinitionFile.add("\"" + FilenameUtils.getName(getDataFilename()) + "\"");
         newDefinitionFile.add(getOutputPrefix());
         String[] advancedOptionsOne = advancedVariableBuild(1);
         newDefinitionFile.add(Arrays.toString(advancedOptionsOne).replaceAll(",", " "));
@@ -2485,13 +2500,13 @@ public class DefinitionHelper implements Serializable {
                 copyExecutable(defFilePath, selectedModel);
                 Process p;
                 if (getOSName().contains("windows")) {
-                    p = Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && dir && "
+                    p = Runtime.getRuntime().exec("cmd /c dir && cd " + "\"" + defFilePath + "\"" + " && dir && "
                             + defFileName);
                 } else {
                     ProcessBuilder pb = new ProcessBuilder(
                             "bash",
                             "-c",
-                            defFilePath + defFileName);
+                            "\"" + defFilePath + defFileName + "\"");
                     pb.directory(new File(defFilePath));
                     pb.redirectErrorStream(true);
                     p = pb.start();
@@ -2514,12 +2529,12 @@ public class DefinitionHelper implements Serializable {
             try {
                 Process p;
                 if (getOSName().contains("windows")) {
-                    p = Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && del /f " + defFileName);
+                    p = Runtime.getRuntime().exec("cmd /c dir && cd " + "\"" + defFilePath + "\""  + " && del /f " + "\"" + defFileName + "\"" );
                 } else {
                     ProcessBuilder pb = new ProcessBuilder(
                             "bash",
                             "-c",
-                            "rm " + defFilePath + defFileName);
+                            "rm " + "\"" + defFilePath  + defFileName + "\"" );
                     pb.redirectErrorStream(true);
                     p = pb.start();
                 }
@@ -2603,13 +2618,13 @@ public class DefinitionHelper implements Serializable {
             copyExecutable(defFilePath, selectedModel);
             Process p;
             if (getOSName().contains("windows")) {
-                p = Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && dir && "
+                p = Runtime.getRuntime().exec("cmd /c dir && cd " + "\"" + defFilePath + "\"" + " && dir && "
                         + defFileName);
             } else {
                 ProcessBuilder pb = new ProcessBuilder(
                         "bash",
                         "-c",
-                        defFilePath + defFileName);
+                        "\"" + defFilePath + defFileName + "\"");
                 pb.directory(new File(defFilePath));
                 pb.redirectErrorStream(true);
                 p = pb.start();
@@ -2651,12 +2666,12 @@ public class DefinitionHelper implements Serializable {
                 terminalVal = exitVal;
                 Process p2;
                 if (getOSName().contains("windows")) {
-                    p2 = Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && del /f " + defFileName); //delete the file when everything works great.
+                    p2 = Runtime.getRuntime().exec("cmd /c dir && cd " + "\"" + defFilePath + "\"" + " && del /f " + "\"" + defFileName + "\"" ); //delete the file when everything works great.
                 } else {
                     ProcessBuilder pb = new ProcessBuilder(
                             "bash",
                             "-c",
-                            "rm " + defFilePath + defFileName);
+                            "rm " + "\"" + defFilePath + defFileName + "\"");
                     pb.redirectErrorStream(true);
                     p2 = pb.start();
                 }
@@ -2671,13 +2686,13 @@ public class DefinitionHelper implements Serializable {
                 JOptionPane.showMessageDialog(null, "Failed to build model. Please revisit your regressors and try again. For more information, checkout help docs.", "Execution failed!", JOptionPane.INFORMATION_MESSAGE);
                 Process p2;
                 if (getOSName().contains("windows")) {
-                    p2 = Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && del /f " + defFileName);
+                    p2 = Runtime.getRuntime().exec("cmd /c dir && cd " + "\"" + defFilePath + "\"" + " && del /f " + "\"" + defFileName + "\"" );
 
                 } else {
                     ProcessBuilder pb = new ProcessBuilder(
                             "bash",
                             "-c",
-                            "rm " + defFilePath + defFileName);
+                            "rm " + "\"" + defFilePath + defFileName + "\"" );
                     pb.redirectErrorStream(true);
                     p2 = pb.start();
 
@@ -2829,12 +2844,12 @@ public class DefinitionHelper implements Serializable {
 
         if (!getOSName().contains("windows")) {
             String filenameBinary = FilenameUtils.getBaseName(modelPath);
-            String[] commands = {"chmod u+x " + defFilePath + "mix_random",
-                "chmod u+x " + defFilePath + "mixreg",
-                "chmod u+x " + defFilePath + "repeat_mixreg",
-                "chmod u+x " + defFilePath + "mixor",
-                "chmod u+x " + defFilePath + "repeat_mixor",
-                "chmod u+x " + defFilePath + filenameBinary};
+            String[] commands = {"chmod u+x " + "\"" + defFilePath + "\"" + "mix_random",
+                "chmod u+x " + "\"" + defFilePath + "\"" + "mixreg",
+                "chmod u+x " + "\"" + defFilePath + "\"" + "repeat_mixreg",
+                "chmod u+x " + "\"" + defFilePath + "\"" + "mixor",
+                "chmod u+x " + "\"" + defFilePath + "\"" + "repeat_mixor",
+                "chmod u+x " + "\"" + defFilePath + "\"" + filenameBinary};
             for (String command : commands) {
                 ProcessBuilder pb1 = new ProcessBuilder(
                         "bash",

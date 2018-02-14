@@ -2,6 +2,7 @@ package def_lib;
 
 import java.awt.Font;
 import java.awt.Graphics;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -9,6 +10,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.time.Instant;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.zip.ZipEntry;
@@ -132,5 +134,21 @@ public class ModelBuilder {
         s = (DefinitionHelper)ino.readObject(); 
         return s;
     }
+    
+    public static String buildFolder(File csvFile) throws IOException {
+        String absolutePath = csvFile.getAbsolutePath();
+        String folderPath = FilenameUtils.getFullPath(absolutePath);
+        String dirName = Long.toString(Instant.now().getEpochSecond());
+        String newPath = folderPath + "MIXWILD" + dirName + "/";
+        File dirGen = new File(newPath);
+        System.out.println(newPath);
+        boolean genTrue = dirGen.mkdirs();
+        if(!genTrue){
+            throw new IOException("Cannot generate temporary work directory, please check folder permissions");
+        }
+        return "MIXWILD"  + dirName + "/";
+    }
+    
+    
     
 } 

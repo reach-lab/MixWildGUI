@@ -420,7 +420,7 @@ public class SuperUserMenu extends javax.swing.JFrame {
         //Select file from the file object
         File file = fileChooser.getSelectedFile();
         try {
-            DefinitionHelper.csvToDatConverter(file);
+            defLib.csvToDatConverter(file);
             JOptionPane.showMessageDialog(null, "Success!");
             
         } catch (IOException ex) {
@@ -435,33 +435,16 @@ public class SuperUserMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_PrintMeanModelActionPerformed
 
     private void runMacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_runMacActionPerformed
-        try {                                       
-            System.out.print("ELDIN: In CHMOD conversion");
-            System.out.print("ELDIN: Binary is:" + "mixregls_random_mixor");
-            /*Process p=Runtime.getRuntime().exec("/bin/bash -c \"cd " + "/Users/eldin/Downloads/2stage_exes_and_docs-7/" +
-                    " ; chmod u+x mix_random ; chmod u+x mixreg ; chmod u+x repeat_mixreg" +
-                    " ; chmod u+x mixor ; chmod u+x repeat_mixor" +
-                    " ; chmod u+x " + "mixregls_random_mixor" + "\"");*/
-            String[] commands = {"echo Hello"};
-            for(String command : commands){
-                Process p=Runtime.getRuntime().exec(command);
-                try {
-                    p.waitFor();
-                    BufferedReader reader=new BufferedReader(new InputStreamReader(p.getInputStream()));
-                    String line=reader.readLine();
-                    while(line!=null)
-                    {
-                        System.out.println(line);
-                        line=reader.readLine();
-                    }
-                    } catch (InterruptedException ex) {
-                    Logger.getLogger(DefinitionHelper.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-            } catch (IOException ex) {
-                            Logger.getLogger(SuperUserMenu.class.getName()).log(Level.SEVERE, null, ex);
-            } 
-                    
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("CSV files","csv");
+        fileChooser.setFileFilter(filter);
+        fileOpen();
+        File file = fileChooser.getSelectedFile();
+        try {
+            ModelBuilder.buildFolder(file);
+        } catch (Exception ex) {
+            Logger.getLogger(SuperUserMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_runMacActionPerformed
 
     /**
