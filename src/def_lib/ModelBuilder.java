@@ -149,6 +149,12 @@ public class ModelBuilder {
         return "MIXWILD"  + dirName + "/";
     }
     
+    public static void archiveFolder(DefinitionHelper defLib) {
+        
+    }
     
+    public static void accessFolderArchive(File mwaFile) {
+        
+    }
     
 } 
