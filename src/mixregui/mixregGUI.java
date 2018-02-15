@@ -1811,6 +1811,11 @@ public class mixregGUI extends javax.swing.JFrame {
                 System.out.println(ColumnsCustom.get(k));
             }
 
+            
+//            if (NewModel.defFile.getAdvancedMissingValue().contains(".")){
+//            String strippedMissingVal = NewModel.defFile.getAdvancedMissingValue().substring(0,NewModel.defFile.getAdvancedMissingValue().indexOf('.'));
+//            }
+//            
             //count the unique ones
             for (int x = 0; x < ColumnsCustom.size(); x++) {
                 if (UniqueList.contains(ColumnsCustom.get(x))) {

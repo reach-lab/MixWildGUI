@@ -40,21 +40,21 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="- You should always use a .csv file"/>
+        <Property name="text" type="java.lang.String" value="1) You should always use a .csv file"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="33" y="95" width="-1" height="-1"/>
+          <AbsoluteConstraints x="30" y="90" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="- You should ensure that missing values are not blanks"/>
+        <Property name="text" type="java.lang.String" value="2) You should ensure that missing values are not blanks"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="33" y="129" width="-1" height="-1"/>
+          <AbsoluteConstraints x="30" y="120" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -73,31 +73,41 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
-        <Property name="text" type="java.lang.String" value="- The first row in the .csv file should be column names"/>
+        <Property name="text" type="java.lang.String" value="6) The first row in the .csv file should be column names"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="30" y="230" width="-1" height="-1"/>
+          <AbsoluteConstraints x="30" y="240" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
-        <Property name="text" type="java.lang.String" value="- Missing value codes should be numeric only"/>
+        <Property name="text" type="java.lang.String" value="3) Missing value codes should be numeric only"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="33" y="161" width="-1" height="-1"/>
+          <AbsoluteConstraints x="30" y="150" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
-        <Property name="text" type="java.lang.String" value="- Please ensure that the data is sorted by IDs"/>
+        <Property name="text" type="java.lang.String" value="5) Please ensure that the data is sorted by IDs"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="33" y="195" width="-1" height="-1"/>
+          <AbsoluteConstraints x="30" y="210" width="-1" height="-1"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel7">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="4) Make sure your missing value code is the same as your dataset"/>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="30" y="180" width="360" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
