@@ -46,6 +46,7 @@ public class InstructionsGUI extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -54,11 +55,11 @@ public class InstructionsGUI extends javax.swing.JFrame {
         jLabel1.setText("Please follow these instructions ...");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 36, -1, -1));
 
-        jLabel2.setText("- You should always use a .csv file");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 95, -1, -1));
+        jLabel2.setText("1) You should always use a .csv file");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
 
-        jLabel3.setText("- You should ensure that missing values are not blanks");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 129, -1, -1));
+        jLabel3.setText("2) You should ensure that missing values are not blanks");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
 
         proceedButton.setText("Got it");
         proceedButton.addActionListener(new java.awt.event.ActionListener() {
@@ -68,14 +69,17 @@ public class InstructionsGUI extends javax.swing.JFrame {
         });
         getContentPane().add(proceedButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(286, 280, 80, -1));
 
-        jLabel4.setText("- The first row in the .csv file should be column names");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
+        jLabel4.setText("6) The first row in the .csv file should be column names");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
 
-        jLabel5.setText("- Missing value codes should be numeric only");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 161, -1, -1));
+        jLabel5.setText("3) Missing value codes should be numeric only");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
 
-        jLabel6.setText("- Please ensure that the data is sorted by IDs");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 195, -1, -1));
+        jLabel6.setText("5) Please ensure that the data is sorted by IDs");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
+
+        jLabel7.setText("4) Make sure your missing value code is the same as your dataset");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 360, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -130,6 +134,7 @@ public class InstructionsGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JButton proceedButton;
     // End of variables declaration//GEN-END:variables
 }
