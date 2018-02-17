@@ -242,9 +242,13 @@ public class DefinitionHelper implements Serializable {
         return stageTwoBinary;
     }
     
-     public void setUtcDirPath(File csvFileLocation) throws IOException {
+    public void setUtcDirPath(File csvFileLocation) throws IOException {
         String utcDirPath = ModelBuilder.buildFolder(csvFileLocation); 
         this.utcDirPath = utcDirPath;
+    }
+    
+    public void setUtcDirPath(String folderAbsolutePath) {
+        this.utcDirPath = folderAbsolutePath;
     }
     
     public String getUtcDirPath() {
