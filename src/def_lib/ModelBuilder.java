@@ -11,9 +11,12 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 import org.apache.commons.io.FilenameUtils;
 
@@ -89,15 +92,14 @@ public class ModelBuilder {
     }
     
     public static void saveWildDefinitionFile(String filePath, DefinitionHelper defLib) throws FileNotFoundException, IOException {
-        FileOutputStream fos2 = new FileOutputStream(filePath);
-        ObjectOutputStream out2= new ObjectOutputStream(fos2);
-        out2.writeObject(defLib);  
-        out2.flush();
-        out2.close();
-        fos2.close();
+        FileOutputStream fos = new FileOutputStream(filePath);
+        ObjectOutputStream oos= new ObjectOutputStream(fos);
+        oos.writeObject(defLib);  
+        oos.close();
+        fos.close();
     }
     
-    
+    /*
     public static void saveWildFile(DefinitionHelper defLib) throws FileNotFoundException, IOException {
         FileInputStream in = new FileInputStream(defLib.getDataFilename());
         String fileNamePath = FilenameUtils.getFullPath(defLib.getDataFilename());
@@ -127,11 +129,15 @@ public class ModelBuilder {
         out.close();
         in2.close();   
     }
+    */
     
-    public static DefinitionHelper loadWildFile (String filePath) throws IOException, ClassNotFoundException {
-        ObjectInputStream ino =new ObjectInputStream(new FileInputStream(filePath));  
+    public static DefinitionHelper loadWildFile (String filePath) throws IOException, ClassNotFoundException {        
+        FileInputStream fis = new FileInputStream(filePath);
+        ObjectInputStream ino = new ObjectInputStream(fis);  
         DefinitionHelper s;
         s = (DefinitionHelper)ino.readObject(); 
+        ino.close();
+        fis.close();
         return s;
     }
     
@@ -149,12 +155,105 @@ public class ModelBuilder {
         return "MIXWILD"  + dirName + "/";
     }
     
-    public static void archiveFolder(DefinitionHelper defLib) {
+    public static void archiveFolder(DefinitionHelper defLib, String absoluteWorkingDirectory) throws IOException {
+        System.out.println(defLib.getUtcDirPath());
+        System.out.println(absoluteWorkingDirectory);
+        String folderPath = absoluteWorkingDirectory + defLib.getUtcDirPath();
+        byte[] buffer = new byte[1024];
+        FileOutputStream fos = null;
+        ZipOutputStream zos = null;
+        String outputZip = absoluteWorkingDirectory +  defLib.getUtcDirPath().replace("/", "") + ".mwa";
+        List<String> fileList = new ArrayList<String>();
+        saveWildDefinitionFile(folderPath + "model.mwd", defLib);
+        createZipEntryList(new File(folderPath), fileList, folderPath);
+            
+        fos = new FileOutputStream(outputZip);
+        zos = new ZipOutputStream(fos);
+
+        System.out.println("Input folderpath: " + folderPath);
+        System.out.println("Output filename: " + outputZip);
+
+
+        for(String file : fileList){
+                System.out.println("File in: " + file);
+                ZipEntry ze= new ZipEntry(file);
+                zos.putNextEntry(ze);
+
+                FileInputStream in =
+                       new FileInputStream(folderPath + "/" + file);
+
+                int len;
+                while ((len = in.read(buffer)) > 0) {
+                        zos.write(buffer, 0, len);
+                }
+
+                in.close();
+        }
         
+
+        zos.closeEntry();
+        zos.close();
+        
+        System.out.println("Complete: Save");
+            
     }
     
-    public static void accessFolderArchive(File mwaFile) {
+    public static DefinitionHelper accessFolderArchive(File mwaFile) throws IOException, ClassNotFoundException {
+        String folderPath = FilenameUtils.getFullPath(mwaFile.getAbsolutePath());
+        String dirName = Long.toString(Instant.now().getEpochSecond());
+        String outputPath = folderPath + "MIXWILD" + dirName + "/";
+        byte[] buffer = new byte[1024];
+
+        File folder = new File(outputPath);
+    	if(!folder.exists()){
+    		folder.mkdir();
+    	}
+        FileInputStream fis = new FileInputStream(mwaFile.getAbsolutePath());
+    	ZipInputStream zis = new ZipInputStream(fis);
+    	ZipEntry ze = zis.getNextEntry();
+
+    	while(ze!=null){
+    	   String fileName = ze.getName();
+           File newFile = new File(outputPath + "/" + fileName);
+           System.out.println("Unzipped: "+ newFile.getAbsoluteFile());
+           
+           new File(newFile.getParent()).mkdirs();
+           FileOutputStream fos = new FileOutputStream(newFile);
+           int len;
+           while ((len = zis.read(buffer)) > 0) {
+               fos.write(buffer, 0, len);
+           }
+           fos.close();
+           ze = zis.getNextEntry();
+    	}
         
+        zis.closeEntry();
+    	zis.close();
+        fis.close();
+
+        DefinitionHelper returnDefLib = loadWildFile(outputPath + "model.mwd");
+        returnDefLib.setUtcDirPath(mwaFile.getAbsolutePath());
+     
+    	System.out.println("Complete: Open");
+        return returnDefLib;
+    }
+    
+    private static String createZipEntry(String file, String source){
+    	return file.substring(source.length(), file.length());
+    }
+    
+    private static void createZipEntryList(File input, List fileList, String source){
+	if(input.isFile()){
+            fileList.add(createZipEntry(input.getAbsoluteFile().toString(), source));
+	}
+
+	if(input.isDirectory()){
+		String[] subInput = input.list();
+		for(String filename : subInput){
+			createZipEntryList(new File(input, filename), fileList, source);
+		}
+	}
+
     }
     
 } 

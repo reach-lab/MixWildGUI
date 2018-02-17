@@ -435,16 +435,54 @@ public class SuperUserMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_PrintMeanModelActionPerformed
 
     private void runMacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_runMacActionPerformed
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("CSV files","csv");
-        fileChooser.setFileFilter(filter);
-        fileOpen();
-        File file = fileChooser.getSelectedFile();
         try {
-            ModelBuilder.buildFolder(file);
-        } catch (Exception ex) {
+            ModelBuilder.archiveFolder(defFile, "/Users/Eldin/Desktop/Don Test/LS_OR/WILD/");
+        }
+        catch(IOException ioe){
+            ioe.printStackTrace();
+        }
+        /*
+        try {
+            ModelBuilder.saveWildDefinitionFile("/Users/Eldin/Desktop/Don Test/LS_OR/WILD/test1.mwd", defFile);
+        } catch (IOException ex) {
             Logger.getLogger(SuperUserMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("MWD files","mwd");
+        
+        fileChooser.setFileFilter(filter);
+        
+        fileOpen();
+        
+        //Select file from the file object
+        File file = fileChooser.getSelectedFile();
+        try {
+            ModelBuilder.loadWildFile(file.getAbsolutePath());
+        } catch (IOException ex) {
+            Logger.getLogger(SuperUserMenu.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(SuperUserMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        */
+    
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("MWA files","mwa");
+        
+        fileChooser.setFileFilter(filter);
+        
+        fileOpen();
+        
+        
+        File file = fileChooser.getSelectedFile();
+
+        try {
+            defFile = ModelBuilder.accessFolderArchive(file);
+        } catch (IOException ex) {
+            Logger.getLogger(SuperUserMenu.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(SuperUserMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+         
     }//GEN-LAST:event_runMacActionPerformed
 
     /**
