@@ -150,6 +150,7 @@ public class mixregGUI extends javax.swing.JFrame {
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
 
         newModel = new NewModel();
+        advancedOptions_view = new advancedOptions();
         //instructions = new InstructionsGUI();
         variableNamesCombo = newModel.getVariableNames();
         outcomeNone = newModel.getNoneVar();
@@ -180,6 +181,7 @@ public class mixregGUI extends javax.swing.JFrame {
             QuadraticAssociationRadio.setVisible(false);
 
             associationLabel.setText("Association of random location & scale?");
+            LinearAssociationRadio.setSelected(true);
 
             // if random location effects are more than one, change the table column names
             level2_BSVar.setVisible(false);
@@ -549,11 +551,13 @@ public class mixregGUI extends javax.swing.JFrame {
             .addGroup(associationPanelLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(associationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(associationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NoAssociationRadio)
-                    .addComponent(LinearAssociationRadio)
-                    .addComponent(QuadraticAssociationRadio))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(associationLabel)
+                    .addGroup(associationPanelLayout.createSequentialGroup()
+                        .addGroup(associationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(NoAssociationRadio)
+                            .addComponent(LinearAssociationRadio)
+                            .addComponent(QuadraticAssociationRadio))
+                        .addContainerGap(118, Short.MAX_VALUE))))
         );
         associationPanelLayout.setVerticalGroup(
             associationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1661,7 +1665,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
     private void advancedOptionsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_advancedOptionsButtonActionPerformed
         // TODO add your handling code here:
-        advancedOptions_view = new advancedOptions();
+        //advancedOptions_view = new advancedOptions();
 
         advancedOptions_view.setVisible(true);
     }//GEN-LAST:event_advancedOptionsButtonActionPerformed
