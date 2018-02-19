@@ -181,6 +181,7 @@ public class mixregGUI extends javax.swing.JFrame {
             QuadraticAssociationRadio.setVisible(false);
 
             associationLabel.setText("Association of random location & scale?");
+            LinearAssociationRadio.setSelected(true);
 
             // if random location effects are more than one, change the table column names
             level2_BSVar.setVisible(false);
