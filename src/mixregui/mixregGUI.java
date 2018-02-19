@@ -550,11 +550,13 @@ public class mixregGUI extends javax.swing.JFrame {
             .addGroup(associationPanelLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(associationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(associationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NoAssociationRadio)
-                    .addComponent(LinearAssociationRadio)
-                    .addComponent(QuadraticAssociationRadio))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(associationLabel)
+                    .addGroup(associationPanelLayout.createSequentialGroup()
+                        .addGroup(associationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(NoAssociationRadio)
+                            .addComponent(LinearAssociationRadio)
+                            .addComponent(QuadraticAssociationRadio))
+                        .addContainerGap(118, Short.MAX_VALUE))))
         );
         associationPanelLayout.setVerticalGroup(
             associationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

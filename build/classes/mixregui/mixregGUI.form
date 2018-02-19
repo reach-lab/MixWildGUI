@@ -574,12 +574,16 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="associationLabel" min="-2" pref="219" max="-2" attributes="0"/>
-                                      <Component id="NoAssociationRadio" min="-2" max="-2" attributes="0"/>
-                                      <Component id="LinearAssociationRadio" min="-2" max="-2" attributes="0"/>
-                                      <Component id="QuadraticAssociationRadio" min="-2" max="-2" attributes="0"/>
+                                      <Component id="associationLabel" max="32767" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="NoAssociationRadio" min="-2" max="-2" attributes="0"/>
+                                              <Component id="LinearAssociationRadio" min="-2" max="-2" attributes="0"/>
+                                              <Component id="QuadraticAssociationRadio" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace pref="118" max="32767" attributes="0"/>
+                                      </Group>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
