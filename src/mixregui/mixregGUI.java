@@ -150,6 +150,7 @@ public class mixregGUI extends javax.swing.JFrame {
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
 
         newModel = new NewModel();
+        advancedOptions_view = new advancedOptions();
         //instructions = new InstructionsGUI();
         variableNamesCombo = newModel.getVariableNames();
         outcomeNone = newModel.getNoneVar();
@@ -1661,7 +1662,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
     private void advancedOptionsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_advancedOptionsButtonActionPerformed
         // TODO add your handling code here:
-        advancedOptions_view = new advancedOptions();
+        //advancedOptions_view = new advancedOptions();
 
         advancedOptions_view.setVisible(true);
     }//GEN-LAST:event_advancedOptionsButtonActionPerformed
