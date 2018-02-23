@@ -60,6 +60,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -1810,6 +1811,8 @@ public class mixregGUI extends javax.swing.JFrame {
         //get the categories of the stage two outcome variable
         ArrayList<String> ColumnsCustom = new ArrayList<>();
         ArrayList<String> UniqueList = new ArrayList<>();
+         
+        
 
         String dataFileName = NewModel.getDataFileName();
         File file = new File(dataFileName);
@@ -1853,14 +1856,33 @@ public class mixregGUI extends javax.swing.JFrame {
                 }
 
             }
+            
+            //sort UniqueList First
+            
+            ArrayList<Integer> UniqueIntegers = new ArrayList<>();
+            
+            for (int x=0; x < UniqueList.size(); x++){
+            
+                UniqueIntegers.add(Integer.valueOf(UniqueList.get(x)));
+            
+            }
+            
+            Collections.sort(UniqueIntegers);
 
             System.out.println("Number of unique categories: " + String.valueOf(UniqueList.size()));
 
             outCategoryDisplay.setText(UniqueList.size() + " Categories:\n");
-            for (int index = 0; index < UniqueList.size(); index++) {
+//            for (int index = 0; index < UniqueList.size(); index++) {
+//                //numberOfCategories.setT
+//                //numberOfCategories.setText(numberOfCategories.getText() +"<html><br></html>" + String.valueOf(index + 1) + ":" + UniqueList.get(index) + "<html><br></html>");
+//                outCategoryDisplay.setText(outCategoryDisplay.getText() + String.valueOf(index + 1) + ") " + UniqueList.get(index) + "\n");
+//
+//            }
+            
+            for (int index = 0; index < UniqueIntegers.size(); index++) {
                 //numberOfCategories.setT
                 //numberOfCategories.setText(numberOfCategories.getText() +"<html><br></html>" + String.valueOf(index + 1) + ":" + UniqueList.get(index) + "<html><br></html>");
-                outCategoryDisplay.setText(outCategoryDisplay.getText() + String.valueOf(index + 1) + ") " + UniqueList.get(index) + "\n");
+                outCategoryDisplay.setText(outCategoryDisplay.getText() + String.valueOf(index + 1) + ") " + String.valueOf(UniqueIntegers.get(index)) + "\n");
 
             }
 
