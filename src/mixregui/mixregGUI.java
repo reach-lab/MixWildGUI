@@ -60,6 +60,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -1808,6 +1809,8 @@ public class mixregGUI extends javax.swing.JFrame {
     private void outcomeCatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_outcomeCatButtonActionPerformed
         // TODO add your handling code here:
         //get the categories of the stage two outcome variable
+        System.out.println("Inside click for categories");
+        
         ArrayList<String> ColumnsCustom = new ArrayList<>();
         ArrayList<String> UniqueList = new ArrayList<>();
 
@@ -1836,7 +1839,6 @@ public class mixregGUI extends javax.swing.JFrame {
                 System.out.println(ColumnsCustom.get(k));
             }
 
-            
 //            if (NewModel.defFile.getAdvancedMissingValue().contains(".")){
 //            String strippedMissingVal = NewModel.defFile.getAdvancedMissingValue().substring(0,NewModel.defFile.getAdvancedMissingValue().indexOf('.'));
 //            }
@@ -1854,14 +1856,39 @@ public class mixregGUI extends javax.swing.JFrame {
 
             }
 
+            //sort UniqueList First
+            ArrayList<Integer> UniqueIntegers = new ArrayList<>();
+
+            for (int x = 0; x < UniqueList.size(); x++) {
+
+                UniqueIntegers.add(Integer.valueOf(UniqueList.get(x)));
+
+            }
+
+            Collections.sort(UniqueIntegers);
+
             System.out.println("Number of unique categories: " + String.valueOf(UniqueList.size()));
 
             outCategoryDisplay.setText(UniqueList.size() + " Categories:\n");
-            for (int index = 0; index < UniqueList.size(); index++) {
+//            for (int index = 0; index < UniqueList.size(); index++) {
+//                //numberOfCategories.setT
+//                //numberOfCategories.setText(numberOfCategories.getText() +"<html><br></html>" + String.valueOf(index + 1) + ":" + UniqueList.get(index) + "<html><br></html>");
+//                outCategoryDisplay.setText(outCategoryDisplay.getText() + String.valueOf(index + 1) + ") " + UniqueList.get(index) + "\n");
+//
+//            }
+
+            for (int index = 0; index < UniqueIntegers.size(); index++) {
                 //numberOfCategories.setT
                 //numberOfCategories.setText(numberOfCategories.getText() +"<html><br></html>" + String.valueOf(index + 1) + ":" + UniqueList.get(index) + "<html><br></html>");
-                outCategoryDisplay.setText(outCategoryDisplay.getText() + String.valueOf(index + 1) + ") " + UniqueList.get(index) + "\n");
+                outCategoryDisplay.setText(outCategoryDisplay.getText() + String.valueOf(index + 1) + ") " + String.valueOf(UniqueIntegers.get(index)) + "\n");
 
+            }
+
+            String[] outcomeCats = new String[UniqueIntegers.size()];
+
+            for (int pos = 0; pos < outcomeCats.length; pos++) {
+                outcomeCats[pos] = String.valueOf(UniqueIntegers.get(pos));
+                System.out.println("STAGE 2 TESTING OUTCOME CATEGORIES: " + outcomeCats[pos]);
             }
 
         } catch (FileNotFoundException e) {
@@ -1879,6 +1906,8 @@ public class mixregGUI extends javax.swing.JFrame {
                 }
             }
         }
+
+
     }//GEN-LAST:event_outcomeCatButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -4596,8 +4625,11 @@ public class mixregGUI extends javax.swing.JFrame {
 
     public String[] getStageTwoOutcomeValues() {
 
+        System.out.println("Inside getStageTwoOutcomeValues");
+
         ArrayList<String> ColumnsCustom = new ArrayList<>();
         ArrayList<String> UniqueList = new ArrayList<>();
+        ArrayList<Integer> UniqueIntegers = new ArrayList<>();
 
         String dataFileName = NewModel.getDataFileName();
         File file = new File(dataFileName);
@@ -4629,6 +4661,32 @@ public class mixregGUI extends javax.swing.JFrame {
                     UniqueList.add(ColumnsCustom.get(x));
                 }
             }
+
+            for (int x = 0; x < UniqueList.size(); x++) {
+
+                UniqueIntegers.add(Integer.valueOf(UniqueList.get(x)));
+
+            }
+
+            Collections.sort(UniqueIntegers);
+
+            System.out.println("Number of unique categories: " + String.valueOf(UniqueList.size()));
+
+            outCategoryDisplay.setText(UniqueList.size() + " Categories:\n");
+//            for (int index = 0; index < UniqueList.size(); index++) {
+//                //numberOfCategories.setT
+//                //numberOfCategories.setText(numberOfCategories.getText() +"<html><br></html>" + String.valueOf(index + 1) + ":" + UniqueList.get(index) + "<html><br></html>");
+//                outCategoryDisplay.setText(outCategoryDisplay.getText() + String.valueOf(index + 1) + ") " + UniqueList.get(index) + "\n");
+//
+//            }
+
+            for (int index = 0; index < UniqueIntegers.size(); index++) {
+                //numberOfCategories.setT
+                //numberOfCategories.setText(numberOfCategories.getText() +"<html><br></html>" + String.valueOf(index + 1) + ":" + UniqueList.get(index) + "<html><br></html>");
+                outCategoryDisplay.setText(outCategoryDisplay.getText() + String.valueOf(index + 1) + ") " + String.valueOf(UniqueIntegers.get(index)) + "\n");
+
+            }
+
             // System.out.println("Number of unique categories: " + String.valueOf(UniqueList.size()));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -4646,12 +4704,13 @@ public class mixregGUI extends javax.swing.JFrame {
             }
         }
 
-        String[] outcomeCats = new String[UniqueList.size()];
+        String[] outcomeCats = new String[UniqueIntegers.size()];
 
         for (int pos = 0; pos < outcomeCats.length; pos++) {
-            outcomeCats[pos] = UniqueList.get(pos);
-            System.out.println("Reg_LABEL: " + outcomeCats[pos]);
+            outcomeCats[pos] = String.valueOf(UniqueIntegers.get(pos));
+            System.out.println("STAGE 2 OUTCOME CATEGORIES: " + outcomeCats[pos]);
         }
+        System.out.println("Before return getStageTwoOutcomeValues");
         return outcomeCats;
     }
 
