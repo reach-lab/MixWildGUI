@@ -1,0 +1,6 @@
+<form method="POST" action="https://formspree.io/eldind@gmail.com">
+  <input type="email" name="email" placeholder="Your email">
+  <input type="text" name="_gotcha" style="display:none" />
+  <input type="hidden" name="_subject" value="New MixWild User!" />
+  <button type="submit">Send</button>
+</form>
