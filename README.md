@@ -1,5 +1,6 @@
 # README #
-### Please submit your email prior to downloading the application so that we can improve our software. We will only contact for maor version changes###
+
+### Please submit your email prior to downloading the application so that we can improve our software. We will only contact for major version changes###
 {% include formspree.html %}
 
 ### Download MixWild for Mac or PC ###
