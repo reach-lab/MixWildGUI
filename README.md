@@ -1,4 +1,7 @@
 # README #
+### Please submit your email prior to downloading the application so that we can improve our software. We will only contact for maor version changes###
+{% include formspree.html %}
+
 ### Download MixWild for Mac or PC ###
 {% include button.html button_name="macOS" button_class="primary" button_url="https://github.com/reach-lab/MixWildGUI/releases/download/v1.0-beta.1/MixWILD_macOS.zip" %}
 {% include button.html button_name="Windows (32-bit)" button_class="primary" button_url="https://github.com/reach-lab/MixWildGUI/releases/download/v1.0-beta.1/MixWILD_Windows.exe" %}
