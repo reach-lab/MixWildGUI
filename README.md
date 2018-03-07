@@ -4,6 +4,10 @@
 {% include formspree.html %}
 
 ### Download MixWild for Mac or PC ###
+[macOS (64-bit)](https://github.com/reach-lab/MixWildGUI/releases/download/v1.0-beta.1/MixWILD_macOS.zip){: .btn}
+
+[Windows (32-bit)](https://github.com/reach-lab/MixWildGUI/releases/download/v1.0-beta.1/MixWILD_Windows.exe){: .btn}
+
 {% include button.html button_name="macOS" button_class="primary" button_url="https://github.com/reach-lab/MixWildGUI/releases/download/v1.0-beta.1/MixWILD_macOS.zip" %}
 {% include button.html button_name="Windows (32-bit)" button_class="primary" button_url="https://github.com/reach-lab/MixWildGUI/releases/download/v1.0-beta.1/MixWILD_Windows.exe" %}
 
