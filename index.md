@@ -33,8 +33,13 @@ https://uscreachlab.slack.com/messages/mixregmls_gui/
 
 ### Project Information ###
 *Agency:* National Institutes of Health (NIH)
+
 *Institute:* National Heart, Lung, and Blood Institute (NHLBI)
-*Project:* 5**R01**HL121330-05
+
+*Project:* 5R01HL121330-05
+
 *Title:* Novel Statistical Models for EMA Studies of Physical Activity
+
 *Principal Investigator(s):* Hedeker, Donald; Dunton, Genevieve Fridlund
+
 [Additional details...](https://projectreporter.nih.gov/project_info_details.cfm?aid=9268804&icde=0)
