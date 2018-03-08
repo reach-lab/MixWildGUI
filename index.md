@@ -28,9 +28,9 @@ You may post an issue in Github to request access if you do not have a compatibl
 3. When including an issue related to NULL values in the def file, it will be best if you can share the .def file as well as include a screenshot of the model window.
 
 ### Q and A ###
-- For questions on UI, contact Aditya Ponnada (mailto:ponnada.a@husky.neu.edu)
-- For questions on DefHelper classes, contact Dr. Eldin Dzubur (mailto:dzubur@usc.edu)
-- For questions on Mix Reg programs, contact Prof. Don Hedeker (mailto:DHedeker@health.bsd.uchicago.edu)
+- For questions on UI, contact [Aditya Ponnada](mailto:ponnada.a@husky.neu.edu)
+- For questions on DefHelper classes, contact [Dr. Eldin Dzubur](mailto:dzubur@usc.edu)
+- For questions on Mix Reg programs, contact [Prof. Don Hedeker](mailto:DHedeker@health.bsd.uchicago.edu)
 
 ### Project Information ###
 *Agency:* National Institutes of Health (NIH)
