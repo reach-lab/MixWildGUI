@@ -14,7 +14,8 @@ MixWILD (Also Mixed model analysis with Intensive Longitudinal Data) is a deskto
 ### Join the Reach Lab Slack for development discussion: ###
 
 You may post an issue in Github to request access if you do not have a compatible email address.
-https://uscreachlab.slack.com/messages/mixregmls_gui/
+
+[Reach Lab mixregmls Channel](https://uscreachlab.slack.com/messages/mixregmls_gui/)
 
 ### Running a .exe file ###
 1. Please go to downloads folder of the bitbucket and click on the latest version of MixWILD-X.0.exe
