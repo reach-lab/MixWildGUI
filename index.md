@@ -1,6 +1,6 @@
 # MixWild #
 
-### Please submit your email prior to downloading the application so we can notify your of major software updates###
+### Please submit your email prior to downloading the application so we can notify you of major software updates###
 {% include formspree.html %}
 
 ### Download MixWild for Mac or PC ###
