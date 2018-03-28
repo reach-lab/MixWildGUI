@@ -1052,7 +1052,7 @@ public class NewModel extends javax.swing.JFrame {
 
         if (continuousRadio.isSelected()) {
 
-            outcomeTypeText = "Continious";
+            outcomeTypeText = "Continuous";
         } else if (dichotomousRadio.isSelected()) {
 
             outcomeTypeText = "Dichotomous";
