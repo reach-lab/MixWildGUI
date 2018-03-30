@@ -404,8 +404,8 @@ public class mixregGUI extends javax.swing.JFrame {
         imageView.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel16.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/mixWild.png"))); // NOI18N
-        imageView.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, 680, 400));
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/MixWILDLogoResized.PNG"))); // NOI18N
+        imageView.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, 850, 400));
 
         parentPanel.add(imageView, "card3");
 
