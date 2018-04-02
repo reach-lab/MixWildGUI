@@ -135,6 +135,8 @@ public class advancedOptions extends javax.swing.JFrame {
         advancedOptions_resetButton = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         advancedOptionsCancel = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        run32BitCheckBox = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Options ...");
@@ -267,7 +269,7 @@ public class advancedOptions extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 270, 90, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 310, 90, -1));
 
         advancedOptions_resetButton.setText("Reset");
         advancedOptions_resetButton.addActionListener(new java.awt.event.ActionListener() {
@@ -275,10 +277,10 @@ public class advancedOptions extends javax.swing.JFrame {
                 advancedOptions_resetButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(advancedOptions_resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 270, 90, -1));
+        getContentPane().add(advancedOptions_resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 310, 90, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/mixLogo.png"))); // NOI18N
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, 29));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, 29));
 
         advancedOptionsCancel.setText("Cancel");
         advancedOptionsCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -286,7 +288,15 @@ public class advancedOptions extends javax.swing.JFrame {
                 advancedOptionsCancelActionPerformed(evt);
             }
         });
-        getContentPane().add(advancedOptionsCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 270, 90, -1));
+        getContentPane().add(advancedOptionsCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 310, 90, -1));
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        run32BitCheckBox.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        run32BitCheckBox.setText("Run the analysis as a 32-bit for Windows operating system");
+        jPanel3.add(run32BitCheckBox);
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 540, 40));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -546,6 +556,7 @@ public class advancedOptions extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -555,6 +566,7 @@ public class advancedOptions extends javax.swing.JFrame {
     private javax.swing.JCheckBox resampleCheckBox;
     private javax.swing.JSpinner resampleSpinner;
     private javax.swing.JSpinner ridgeSpinner;
+    private javax.swing.JCheckBox run32BitCheckBox;
     // End of variables declaration//GEN-END:variables
 
 //check if mean sub model is checked in advanced options    
@@ -683,6 +695,23 @@ public class advancedOptions extends javax.swing.JFrame {
         }
 
         return check;
+    }
+    
+    public boolean isRun32BitChecked(){
+    
+        boolean run32 = false;
+        
+        if (run32BitCheckBox.isSelected()){
+            
+            run32 = true;
+        
+        } else {
+        
+            run32 = false;
+        
+        }
+
+        return run32;
     }
 
 }

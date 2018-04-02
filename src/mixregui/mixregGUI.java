@@ -404,8 +404,8 @@ public class mixregGUI extends javax.swing.JFrame {
         imageView.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel16.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/mixWild.png"))); // NOI18N
-        imageView.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, 680, 400));
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/MixWILDLogoResized.PNG"))); // NOI18N
+        imageView.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, 850, 400));
 
         parentPanel.add(imageView, "card3");
 
@@ -1505,7 +1505,7 @@ public class mixregGUI extends javax.swing.JFrame {
             if (NoAssociationRadio.isSelected()) {
 
                 try {
-                    NewModel.defFile.setAdvancedEffectMeanWS(String.valueOf(1));
+                    NewModel.defFile.setAdvancedEffectMeanWS(String.valueOf(0));
                     System.out.println("From defHelper | Stage 1 Association of random location & scale?: " + NewModel.defFile.getAdvancedEffectMeanWS());
                 } catch (Exception ex) {
                     catchCount = 1;
@@ -1515,7 +1515,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
             } else if (LinearAssociationRadio.isSelected()) {
                 try {
-                    NewModel.defFile.setAdvancedEffectMeanWS(String.valueOf(0));
+                    NewModel.defFile.setAdvancedEffectMeanWS(String.valueOf(1));
                     System.out.println("From defHelper | Stage 1 Association of random location & scale?: " + NewModel.defFile.getAdvancedEffectMeanWS());
                 } catch (Exception ex) {
                     catchCount = 1;
