@@ -124,6 +124,7 @@ public class DefinitionHelper implements Serializable {
     private boolean stageTwoBinary = Boolean.FALSE;
 
     private String[] exeArray = new String[6];
+    public boolean win32 = Boolean.FALSE;
 
     JFrame myFrame;
     JFrame progressWindow;
@@ -2805,26 +2806,26 @@ public class DefinitionHelper implements Serializable {
         String MIXREG;
         String MIXOR;
         if (getOSName().contains("windows")) {
-            MIX_RANDOM = "resources/WindowsNew/mix_random.exe";
-            REPEAT_MIXREG = "resources/WindowsNew/repeat_mixreg.exe";
-            REPEAT_MIXOR = "resources/WindowsNew/repeat_mixor.exe";
-            MIXREG = "resources/WindowsNew/mixreg.exe";
-            MIXOR = "resources/WindowsNew/mixor.exe";
+            MIX_RANDOM = "resources/Windows64/mix_random.exe";
+            REPEAT_MIXREG = "resources/Windows64/repeat_mixreg.exe";
+            REPEAT_MIXOR = "resources/Windows64/repeat_mixor.exe";
+            MIXREG = "resources/Windows64/mixreg.exe";
+            MIXOR = "resources/Windows64/mixor.exe";
             switch (modelSelection) {
                 case DefinitionHelper.MIXREGLS_MIXREG_KEY:
-                    modelPath = "resources/WindowsNew/mixregls_random_mixreg.exe";
+                    modelPath = "resources/Windows64/mixregls_random_mixreg.exe";
                     break;
                 case DefinitionHelper.MIXREGLS_MIXOR_KEY:
-                    modelPath = "resources/WindowsNew/mixregls_random_mixor.exe";
+                    modelPath = "resources/Windows64/mixregls_random_mixor.exe";
                     break;
                 case DefinitionHelper.MIXREGMLS_MIXREG_KEY:
-                    modelPath = "resources/WindowsNew/mixregmls_random_mixreg.exe";
+                    modelPath = "resources/Windows64/mixregmls_random_mixreg.exe";
                     break;
                 case DefinitionHelper.MIXREGMLS_MIXOR_KEY:
-                    modelPath = "resources/WindowsNew/mixregmls_random_mixor.exe";
+                    modelPath = "resources/Windows64/mixregmls_random_mixor.exe";
                     break;
                 default:
-                    modelPath = "resources/WindowsNew/mixregls_random_mixreg.exe";
+                    modelPath = "resources/Windows64/mixregls_random_mixreg.exe";
                     break;
             }
         } else {
