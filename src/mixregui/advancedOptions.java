@@ -45,6 +45,7 @@ public class advancedOptions extends javax.swing.JFrame {
 
     DefinitionHelper defFile3;
     final ImageIcon icon;
+    boolean osWindows = System.getProperty("os.name").toLowerCase().contains("windows");
 
     /**
      * Creates new form advancedOptions
@@ -52,7 +53,8 @@ public class advancedOptions extends javax.swing.JFrame {
     public advancedOptions() {
         initComponents();
         this.setResizable(false);
-
+        run32BitCheckBox.setVisible(osWindows);
+        
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
 
@@ -293,7 +295,12 @@ public class advancedOptions extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         run32BitCheckBox.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
-        run32BitCheckBox.setText("Run the analysis as a 32-bit for Windows operating system");
+        run32BitCheckBox.setText("Run in 32-bit mode (for older Windows-based machines)");
+        run32BitCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                run32BitCheckBoxActionPerformed(evt);
+            }
+        });
         jPanel3.add(run32BitCheckBox);
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 540, 40));
@@ -495,6 +502,10 @@ public class advancedOptions extends javax.swing.JFrame {
             resampleSpinner.setEnabled(false);
         }
     }//GEN-LAST:event_resampleCheckBoxActionPerformed
+
+    private void run32BitCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_run32BitCheckBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_run32BitCheckBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -713,5 +724,5 @@ public class advancedOptions extends javax.swing.JFrame {
 
         return run32;
     }
-
+    
 }
