@@ -587,34 +587,34 @@ public class SuperUserMenu extends javax.swing.JFrame {
     
     private void copyExecutable(String absoluteDirectoryPath, int modelSelection) throws FileNotFoundException, IOException{
         String modelPath;
-        String MIX_RANDOM = "resources/WindowsNew/mix_random.exe";
+        String MIX_RANDOM = "resources/Windows64/mix_random.exe";
         String FIRST;
         String REPEAT;
         switch(modelSelection){
             case DefinitionHelper.MIXREGLS_MIXREG_KEY:
-                modelPath = "resources/WindowsNew/mixregls_random_mixreg.exe";
-                REPEAT = "resources/WindowsNew/repeat_mixreg.exe";
-                FIRST = "resources/WindowsNew/mixreg.exe";
+                modelPath = "resources/Windows64/mixregls_random_mixreg.exe";
+                REPEAT = "resources/Windows64/repeat_mixreg.exe";
+                FIRST = "resources/Windows64/mixreg.exe";
                 break;
             case DefinitionHelper.MIXREGLS_MIXOR_KEY:
-                modelPath = "resources/WindowsNew/mixregls_random_mixor.exe";
-                REPEAT = "resources/WindowsNew/repeat_mixor.exe";
-                FIRST = "resources/WindowsNew/mixor.exe";
+                modelPath = "resources/Windows64/mixregls_random_mixor.exe";
+                REPEAT = "resources/Windows64/repeat_mixor.exe";
+                FIRST = "resources/Windows64/mixor.exe";
                 break;
             case DefinitionHelper.MIXREGMLS_MIXREG_KEY:
-                modelPath = "resources/WindowsNew/mixregmls_random_mixreg.exe";
-                REPEAT = "resources/WindowsNew/repeat_mixreg.exe";
-                FIRST = "resources/WindowsNew/mixreg.exe";
+                modelPath = "resources/Windows64/mixregmls_random_mixreg.exe";
+                REPEAT = "resources/Windows64/repeat_mixreg.exe";
+                FIRST = "resources/Windows64/mixreg.exe";
                 break;
             case DefinitionHelper.MIXREGMLS_MIXOR_KEY:
-                modelPath = "resources/WindowsNew/mixregmls_random_mixor.exe";
-                REPEAT = "resources/WindowsNew/repeat_mixor.exe";
-                FIRST = "resources/WindowsNew/mixor.exe";
+                modelPath = "resources/Windows64/mixregmls_random_mixor.exe";
+                REPEAT = "resources/Windows64/repeat_mixor.exe";
+                FIRST = "resources/Windows64/mixor.exe";
                 break;
             default:
-                modelPath = "resources/WindowsNew/mixregls_random_mixreg.exe";
-                REPEAT = "resources/WindowsNew/repeat_mixreg.exe";
-                FIRST = "resources/WindowsNew/mixreg.exe";
+                modelPath = "resources/Windows64/mixregls_random_mixreg.exe";
+                REPEAT = "resources/Windows64/repeat_mixreg.exe";
+                FIRST = "resources/Windows64/mixreg.exe";
                 break;
         }
         String[] exeArray = {modelPath, MIX_RANDOM, FIRST, REPEAT}; 
