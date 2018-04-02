@@ -2806,27 +2806,52 @@ public class DefinitionHelper implements Serializable {
         String MIXREG;
         String MIXOR;
         if (getOSName().contains("windows")) {
-            MIX_RANDOM = "resources/Windows64/mix_random.exe";
-            REPEAT_MIXREG = "resources/Windows64/repeat_mixreg.exe";
-            REPEAT_MIXOR = "resources/Windows64/repeat_mixor.exe";
-            MIXREG = "resources/Windows64/mixreg.exe";
-            MIXOR = "resources/Windows64/mixor.exe";
-            switch (modelSelection) {
-                case DefinitionHelper.MIXREGLS_MIXREG_KEY:
-                    modelPath = "resources/Windows64/mixregls_random_mixreg.exe";
-                    break;
-                case DefinitionHelper.MIXREGLS_MIXOR_KEY:
-                    modelPath = "resources/Windows64/mixregls_random_mixor.exe";
-                    break;
-                case DefinitionHelper.MIXREGMLS_MIXREG_KEY:
-                    modelPath = "resources/Windows64/mixregmls_random_mixreg.exe";
-                    break;
-                case DefinitionHelper.MIXREGMLS_MIXOR_KEY:
-                    modelPath = "resources/Windows64/mixregmls_random_mixor.exe";
-                    break;
-                default:
-                    modelPath = "resources/Windows64/mixregls_random_mixreg.exe";
-                    break;
+            if (win32) {
+                MIX_RANDOM = "resources/Windows32/mix_random.exe";
+                REPEAT_MIXREG = "resources/Windows32/repeat_mixreg.exe";
+                REPEAT_MIXOR = "resources/Windows32/repeat_mixor.exe";
+                MIXREG = "resources/Windows32/mixreg.exe";
+                MIXOR = "resources/Windows32/mixor.exe";
+                switch (modelSelection) {
+                    case DefinitionHelper.MIXREGLS_MIXREG_KEY:
+                        modelPath = "resources/Windows32/mixregls_random_mixreg.exe";
+                        break;
+                    case DefinitionHelper.MIXREGLS_MIXOR_KEY:
+                        modelPath = "resources/Windows32/mixregls_random_mixor.exe";
+                        break;
+                    case DefinitionHelper.MIXREGMLS_MIXREG_KEY:
+                        modelPath = "resources/Windows32/mixregmls_random_mixreg.exe";
+                        break;
+                    case DefinitionHelper.MIXREGMLS_MIXOR_KEY:
+                        modelPath = "resources/Windows32/mixregmls_random_mixor.exe";
+                        break;
+                    default:
+                        modelPath = "resources/Windows32/mixregls_random_mixreg.exe";
+                        break;
+                }
+            } else {
+                MIX_RANDOM = "resources/Windows64/mix_random.exe";
+                REPEAT_MIXREG = "resources/Windows64/repeat_mixreg.exe";
+                REPEAT_MIXOR = "resources/Windows64/repeat_mixor.exe";
+                MIXREG = "resources/Windows64/mixreg.exe";
+                MIXOR = "resources/Windows64/mixor.exe";
+                switch (modelSelection) {
+                    case DefinitionHelper.MIXREGLS_MIXREG_KEY:
+                        modelPath = "resources/Windows64/mixregls_random_mixreg.exe";
+                        break;
+                    case DefinitionHelper.MIXREGLS_MIXOR_KEY:
+                        modelPath = "resources/Windows64/mixregls_random_mixor.exe";
+                        break;
+                    case DefinitionHelper.MIXREGMLS_MIXREG_KEY:
+                        modelPath = "resources/Windows64/mixregmls_random_mixreg.exe";
+                        break;
+                    case DefinitionHelper.MIXREGMLS_MIXOR_KEY:
+                        modelPath = "resources/Windows64/mixregmls_random_mixor.exe";
+                        break;
+                    default:
+                        modelPath = "resources/Windows64/mixregls_random_mixreg.exe";
+                        break;
+                }
             }
         } else {
             MIX_RANDOM = "resources/macOS/mix_random";

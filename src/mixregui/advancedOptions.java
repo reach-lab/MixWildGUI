@@ -497,14 +497,19 @@ public class advancedOptions extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         if (resampleCheckBox.isSelected()) {
-            resampleSpinner.setEnabled(true);
+            NewModel.defFile.win32 = Boolean.TRUE;
         } else {
-            resampleSpinner.setEnabled(false);
+            NewModel.defFile.win32 = Boolean.FALSE;
         }
     }//GEN-LAST:event_resampleCheckBoxActionPerformed
 
     private void run32BitCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_run32BitCheckBoxActionPerformed
         // TODO add your handling code here:
+        if (run32BitCheckBox.isSelected()) {
+            resampleSpinner.setEnabled(true);
+        } else {
+            resampleSpinner.setEnabled(false);
+        }
     }//GEN-LAST:event_run32BitCheckBoxActionPerformed
 
     /**
