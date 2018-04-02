@@ -1,1 +1,5 @@
 /dist/
+/nbproject/project/
+/build/
+/nbbuild/
+/nbdist/
