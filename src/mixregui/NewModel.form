@@ -214,12 +214,12 @@
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/resources/mixLogo.png"/>
+          <Image iconType="3" name="/resources/MixWildLogoTiny.png"/>
         </Property>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="20" y="440" width="-1" height="31"/>
+          <AbsoluteConstraints x="20" y="430" width="-1" height="31"/>
         </Constraint>
       </Constraints>
     </Component>
