@@ -97,6 +97,12 @@ public class stageOneRegs extends javax.swing.JFrame {
 
         stageOneSubmitButton.setEnabled(false);
         // updateAllVariables();
+        AllVariablesList.setToolTipText("List of all available variables detected in data");
+        jLabel1.setToolTipText("List of all available variables detected in data");
+        StageOneLevelOneList.setToolTipText("Variables that vary within-individuals, including time");
+        jLabel2.setToolTipText("Variables that vary within-individuals, including time"); 
+        StageOneLevelTwoList.setToolTipText("Variables consistent within individuals, such as demographics");
+        jLabel3.setToolTipText("Variables consistent within individuals, such as demographics");
 
     }
 
