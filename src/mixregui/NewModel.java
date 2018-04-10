@@ -118,6 +118,22 @@ public class NewModel extends javax.swing.JFrame {
 
         filePath.setToolTipText("Insert a data file in .csv format");
         titleField.setToolTipText("Insert title for the model");
+        jLabel2.setToolTipText("Insert title for the model");
+        jLabel4.setToolTipText("Select which variables define subject  mean (location) in model");
+        oneRLERadio.setToolTipText("Random subject intercept defines the subject mean (location) in the model");
+        moreThanOneRLERadio.setToolTipText("Random subject intercept and random subject slope(s) "
+                + "define the subject mean (location) in the model");
+        jLabel10.setToolTipText("Select whether or not the model will include subject variability (scale)");
+        randomScaleCheckBox.setToolTipText("Select whether or not the model will include subject variability (scale)");
+        jLabel5.setToolTipText("Select the type of outcome variable in the second-stage model; alternately, you may run the first stage only");
+        continuousRadio.setToolTipText("Second stage outcome will be a continuous variable");
+        dichotomousRadio.setToolTipText("Second stage outcome will be a dichotomous or ordinal variable");
+        noneRadio.setToolTipText("The program will not produce a second stage model");
+        jLabel3.setToolTipText("Select whether or not explicitly defined missing values are present in data");
+        missingValuePresent.setToolTipText("Missing values are present and explicitly defined");
+        missingValueAbsent.setToolTipText("There are no missing values in the data");
+        jLabel6.setToolTipText("Specify missing value code");
+        newModelMissingValueCode.setToolTipText("Specify missing value code");
         // subtitleField.setToolTipText("Insert subtitle for the model");
         //randomLocationEffects.setToolTipText("Select the number of random location effects. Minimum value is 1");
     }
@@ -171,14 +187,14 @@ public class NewModel extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         dataFileLabel.setText("Data File: ");
-        getContentPane().add(dataFileLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, -1, -1));
+        getContentPane().add(dataFileLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
         filePath.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 filePathActionPerformed(evt);
             }
         });
-        getContentPane().add(filePath, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 205, -1));
+        getContentPane().add(filePath, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 330, -1));
 
         fileBrowseButton.setText("Browse");
         fileBrowseButton.addActionListener(new java.awt.event.ActionListener() {
@@ -186,23 +202,23 @@ public class NewModel extends javax.swing.JFrame {
                 fileBrowseButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(fileBrowseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 70, 90, -1));
+        getContentPane().add(fileBrowseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 70, 90, -1));
 
         jLabel2.setText("Title:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
 
         titleField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 titleFieldActionPerformed(evt);
             }
         });
-        getContentPane().add(titleField, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 205, -1));
+        getContentPane().add(titleField, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 330, -1));
 
         jLabel4.setText("Random Location Effects:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
 
         jLabel5.setText("Stage 2 Outcome:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, -1, 40));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, 40));
 
         buttonGroup1.add(continuousRadio);
         continuousRadio.setText("Continuous");
@@ -211,7 +227,7 @@ public class NewModel extends javax.swing.JFrame {
                 continuousRadioActionPerformed(evt);
             }
         });
-        getContentPane().add(continuousRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(186, 250, 90, -1));
+        getContentPane().add(continuousRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, 110, -1));
 
         buttonGroup1.add(dichotomousRadio);
         dichotomousRadio.setText("Dichotomous/Ordinal");
@@ -220,7 +236,7 @@ public class NewModel extends javax.swing.JFrame {
                 dichotomousRadioActionPerformed(evt);
             }
         });
-        getContentPane().add(dichotomousRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, -1, -1));
+        getContentPane().add(dichotomousRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 250, 170, -1));
 
         newModelSubmit.setText("Submit");
         newModelSubmit.addActionListener(new java.awt.event.ActionListener() {
@@ -248,7 +264,7 @@ public class NewModel extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(538, 334, -1, -1));
 
         jLabel6.setText("Missing value code:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, -1, 50));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, 50));
 
         newModelMissingValueCode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -260,10 +276,10 @@ public class NewModel extends javax.swing.JFrame {
                 newModelMissingValueCodeKeyTyped(evt);
             }
         });
-        getContentPane().add(newModelMissingValueCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, 77, 30));
+        getContentPane().add(newModelMissingValueCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, 77, 30));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/mixLogo.png"))); // NOI18N
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, -1, 31));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/MixWildLogoTiny.png"))); // NOI18N
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, -1, 31));
 
         buttonGroup1.add(noneRadio);
         noneRadio.setText("None");
@@ -272,7 +288,7 @@ public class NewModel extends javax.swing.JFrame {
                 noneRadioActionPerformed(evt);
             }
         });
-        getContentPane().add(noneRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 240, -1, 40));
+        getContentPane().add(noneRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 240, 70, 40));
 
         jButton1.setText("Check here...");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -282,29 +298,29 @@ public class NewModel extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 110, -1));
 
-        jLabel9.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
         jLabel9.setText("Is your dataset Mix{WILD} friendly?");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, 30));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, -1, 30));
 
         jLabel10.setText("Random Scale?");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, -1, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
 
         randomScaleCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 randomScaleCheckBoxActionPerformed(evt);
             }
         });
-        getContentPane().add(randomScaleCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, -1, -1));
+        getContentPane().add(randomScaleCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, -1, -1));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 520, -1));
         getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 144, 524, 10));
 
         buttonGroup2.add(oneRLERadio);
         oneRLERadio.setText("Intercept");
-        getContentPane().add(oneRLERadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, -1, -1));
+        getContentPane().add(oneRLERadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 90, -1));
 
         buttonGroup2.add(moreThanOneRLERadio);
         moreThanOneRLERadio.setText("Intercept + Slope(s)");
-        getContentPane().add(moreThanOneRLERadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, -1, -1));
+        getContentPane().add(moreThanOneRLERadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 170, -1, -1));
         getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 416, 516, 10));
 
         jLabel3.setText("Contains missing values?");
@@ -317,7 +333,7 @@ public class NewModel extends javax.swing.JFrame {
                 missingValuePresentActionPerformed(evt);
             }
         });
-        getContentPane().add(missingValuePresent, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 298, 50, 20));
+        getContentPane().add(missingValuePresent, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 300, 60, 20));
 
         buttonGroup4.add(missingValueAbsent);
         missingValueAbsent.setText("No");
@@ -326,7 +342,7 @@ public class NewModel extends javax.swing.JFrame {
                 missingValueAbsentActionPerformed(evt);
             }
         });
-        getContentPane().add(missingValueAbsent, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 298, -1, 20));
+        getContentPane().add(missingValueAbsent, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, -1, 20));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

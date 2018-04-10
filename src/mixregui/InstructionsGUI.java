@@ -100,7 +100,7 @@ public class InstructionsGUI extends javax.swing.JFrame {
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
 
         jLabel7.setText("4) Make sure your missing value code is the same as your dataset");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 360, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 430, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

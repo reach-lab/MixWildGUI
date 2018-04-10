@@ -76,6 +76,11 @@ public class stageTwoRegs extends javax.swing.JFrame {
             StageTwoLevelTwoVariables.setModel(stageTwoLevelTwo);
 
         }
+        
+        StageTwoAllVariables.setToolTipText("List of all available variables");
+        jLabel1.setToolTipText("List of all available variables");
+        jLabel2.setToolTipText("Variables consistent within individuals, such as demographics"); 
+        StageTwoLevelTwoVariables.setToolTipText("Variables consistent within individuals, such as demographics");
 
         stageTwoSubmitButton.setEnabled(false);
 
@@ -167,6 +172,11 @@ public class stageTwoRegs extends javax.swing.JFrame {
         getContentPane().add(stageTwoCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 460, 90, -1));
 
         jButton1.setText("?");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(272, 155, 41, -1));
 
         pack();
@@ -237,6 +247,12 @@ public class stageTwoRegs extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_stageTwoCancelActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        JOptionPane.showMessageDialog(null, "Please select additional covariates to include in the stage-two model. "
+                + System.lineSeparator()+
+                "Note: If you wish to re-run the second stage model without running stage 1, you will only be able to remove regressors");
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
