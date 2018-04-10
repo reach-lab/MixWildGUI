@@ -261,6 +261,7 @@ public class mixregGUI extends javax.swing.JFrame {
         catch(Exception eoe){
             System.out.println("No Random Scale Option Set");
         }
+        superUserMenu.setVisible(false);
         
 
 //       IDpos = IDvariableCombo.getSelectedIndex();
@@ -608,8 +609,6 @@ public class mixregGUI extends javax.swing.JFrame {
 
         jPanel8.add(associationPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 290, 160));
 
-        jPanel7.setBorder(null);
-
         randomLocationEffectsLabel.setText("Selected Model");
 
         stageTwoOutcomePrintLabel.setText("State 2 outcome");
@@ -918,7 +917,7 @@ public class mixregGUI extends javax.swing.JFrame {
                                 .addGap(516, 516, 516)
                                 .addComponent(saveStage2OutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 820, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(212, 224, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1054,6 +1053,7 @@ public class mixregGUI extends javax.swing.JFrame {
         modifyStageTwoMenu.setText("Modify Stage 2 Only");
         fileMenu.add(modifyStageTwoMenu);
 
+        superUserMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
         superUserMenu.setText("Super User Mode");
         superUserMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

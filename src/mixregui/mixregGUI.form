@@ -75,6 +75,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="superUserMenu">
               <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+E"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Super User Mode"/>
               </Properties>
               <Events>
