@@ -250,6 +250,18 @@ public class mixregGUI extends javax.swing.JFrame {
             jPanel5.setVisible(false);
 
         }
+        
+        try{
+            if(NewModel.defFile.getAdvancedRandomScaleNotIncluded() == "1"){
+                NoAssociationRadio.setEnabled(false);
+                LinearAssociationRadio.setEnabled(false);
+                QuadraticAssociationRadio.setEnabled(false);
+            } 
+        }
+        catch(Exception eoe){
+            System.out.println("No Random Scale Option Set");
+        }
+        
 
 //       IDpos = IDvariableCombo.getSelectedIndex();
 //       stageOnePos = StageOneVariableCombo.getSelectedIndex();
