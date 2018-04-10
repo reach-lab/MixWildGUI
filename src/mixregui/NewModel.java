@@ -125,6 +125,15 @@ public class NewModel extends javax.swing.JFrame {
                 + "define the subject mean (location) in the model");
         jLabel10.setToolTipText("Select whether or not the model will include subject variability (scale)");
         randomScaleCheckBox.setToolTipText("Select whether or not the model will include subject variability (scale)");
+        jLabel5.setToolTipText("Select the type of outcome variable in the second-stage model; alternately, you may run the first stage only");
+        continuousRadio.setToolTipText("Second stage outcome will be a continuous variable");
+        dichotomousRadio.setToolTipText("Second stage outcome will be a dichotomous or ordinal variable");
+        noneRadio.setToolTipText("The program will not produce a second stage model");
+        jLabel3.setToolTipText("Select whether or not explicitly defined missing values are present in data");
+        missingValuePresent.setToolTipText("Missing values are present and explicitly defined");
+        missingValueAbsent.setToolTipText("There are no missing values in the data");
+        jLabel6.setToolTipText("Specify missing value code");
+        newModelMissingValueCode.setToolTipText("Specify missing value code");
         // subtitleField.setToolTipText("Insert subtitle for the model");
         //randomLocationEffects.setToolTipText("Select the number of random location effects. Minimum value is 1");
     }
