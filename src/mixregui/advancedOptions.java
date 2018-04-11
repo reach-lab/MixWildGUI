@@ -199,12 +199,13 @@ public class advancedOptions extends javax.swing.JFrame {
 
         quadriturePoints.setModel(new javax.swing.SpinnerNumberModel(11, 1, 255, 1));
         quadriturePoints.setToolTipText("Number of quadrature points (usually set to 10 or 11, however more points may be necessary for complex models)");
-        jPanel1.add(quadriturePoints, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 69, -1));
+        jPanel1.add(quadriturePoints, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 150, 90, -1));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 240, -1));
 
+        convergenceCriteria.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         convergenceCriteria.setText("0.00001");
         convergenceCriteria.setToolTipText("Convergence requirement for the maximum correction (change to aid in convergence)");
-        jPanel1.add(convergenceCriteria, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 110, 60, -1));
+        jPanel1.add(convergenceCriteria, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 110, 90, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 21, 260, 230));
 
@@ -219,11 +220,11 @@ public class advancedOptions extends javax.swing.JFrame {
 
         maximumIterations.setModel(new javax.swing.SpinnerNumberModel(200, 1, null, 100));
         maximumIterations.setToolTipText("Maximum number of iterations");
-        jPanel2.add(maximumIterations, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 69, -1));
+        jPanel2.add(maximumIterations, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 69, -1));
 
         ridgeSpinner.setModel(new javax.swing.SpinnerNumberModel(0.1d, 0.0d, 1.0d, 0.01d));
         ridgeSpinner.setToolTipText("Initial value for a ridge (a numeric value that adds to the diagonal of the second derivative matrix, which can aid in convergence of the solution; usually set to 0 or some small fractional value)");
-        jPanel2.add(ridgeSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, 70, -1));
+        jPanel2.add(ridgeSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 70, -1));
 
         jLabel15.setText("Standardize All Regressors?");
         jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
@@ -234,14 +235,14 @@ public class advancedOptions extends javax.swing.JFrame {
                 centerRegressorsCheckBoxActionPerformed(evt);
             }
         });
-        jPanel2.add(centerRegressorsCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, -1, -1));
+        jPanel2.add(centerRegressorsCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, -1, -1));
 
         jLabel9.setText("Resample Stage 2:");
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
 
         resampleSpinner.setModel(new javax.swing.SpinnerNumberModel(500, 1, 10000, 1));
         resampleSpinner.setToolTipText("Select the number of resamples for stage 2");
-        jPanel2.add(resampleSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, 70, -1));
+        jPanel2.add(resampleSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, 70, -1));
 
         resampleCheckBox.setToolTipText("Select to resample stage 2 analysis");
         resampleCheckBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -250,20 +251,20 @@ public class advancedOptions extends javax.swing.JFrame {
                 resampleCheckBoxActionPerformed(evt);
             }
         });
-        jPanel2.add(resampleCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, -1, -1));
+        jPanel2.add(resampleCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, -1, -1));
 
         jLabel10.setText("No. of  Samples:");
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 110, 20));
 
         jLabel12.setText("Discard Subjects with no Variance?");
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 230, -1));
 
         discardSubjectsCheckBox.setToolTipText("Discard all the subjects with no variance");
-        jPanel2.add(discardSubjectsCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, -1, -1));
+        jPanel2.add(discardSubjectsCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, -1, -1));
         jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 142, 240, 0));
-        jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 240, 10));
+        jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 280, 10));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(294, 21, 260, 230));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(294, 21, 300, 230));
 
         jButton1.setText("Submit");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -271,7 +272,7 @@ public class advancedOptions extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 310, 90, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 310, 90, -1));
 
         advancedOptions_resetButton.setText("Reset");
         advancedOptions_resetButton.addActionListener(new java.awt.event.ActionListener() {
@@ -279,9 +280,9 @@ public class advancedOptions extends javax.swing.JFrame {
                 advancedOptions_resetButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(advancedOptions_resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 310, 90, -1));
+        getContentPane().add(advancedOptions_resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 310, 90, -1));
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/mixLogo.png"))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/MixWildLogoTiny.png"))); // NOI18N
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, 29));
 
         advancedOptionsCancel.setText("Cancel");
@@ -290,7 +291,7 @@ public class advancedOptions extends javax.swing.JFrame {
                 advancedOptionsCancelActionPerformed(evt);
             }
         });
-        getContentPane().add(advancedOptionsCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 310, 90, -1));
+        getContentPane().add(advancedOptionsCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 310, 90, -1));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -303,7 +304,7 @@ public class advancedOptions extends javax.swing.JFrame {
         });
         jPanel3.add(run32BitCheckBox);
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 540, 40));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 570, 40));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
