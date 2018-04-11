@@ -8,6 +8,12 @@
 
 [Windows](https://github.com/reach-lab/MixWildGUI/releases/download/v1.0-beta.2/MixWILD-v1.0-beta.2.exe)
 
+### SBM Attendees ###
+
+Download slides for Part 1 here: [Details and Application of EMA](/SBM_Part_1.pdf)
+Download slides for Part 2 here: [Introduction to MixWILD](https://hedeker-sites.uchicago.edu/sites/hedeker.uchicago.edu/files/uploads/SBM_MixWild.pdf)
+
+
 ### What is this project about? ###
 MixWILD (Also Mixed model analysis with Intensive Longitudinal Data) is a desktop GUI based application to easily perform multilevel mixed model analysis of intensive longitudinal data.
 
