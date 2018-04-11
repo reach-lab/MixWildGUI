@@ -209,7 +209,7 @@ public class stageOneRegs extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 284, 287, 163));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/mixLogo.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/MixWildLogoTiny.png"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 467, -1, 34));
 
         stageOneCancel.setText("Cancel");

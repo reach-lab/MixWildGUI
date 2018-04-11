@@ -193,7 +193,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
         //Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/resources/mixLogo.png"));
         //setIconImage(image);
-        icon = new ImageIcon(getClass().getResource("/resources/mixLogo.png"));
+        icon = new ImageIcon(getClass().getResource("/resources/MixWildLogoTiny.png"));
 
         if (i > 1) {
 
