@@ -11,7 +11,7 @@
 ### SBM Attendees ###
 
 Download slides for Part 1 here: [Details and Application of EMA](/SBM_Part_1.pdf)
-
+<br/>
 Download slides for Part 2 here: [Introduction to MixWILD](https://hedeker-sites.uchicago.edu/sites/hedeker.uchicago.edu/files/uploads/SBM_MixWild.pdf)
 
 
