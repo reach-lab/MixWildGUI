@@ -433,8 +433,11 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="sansserif" size="12" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Run the analysis as a 32-bit for Windows operating system"/>
+            <Property name="text" type="java.lang.String" value="Run in 32-bit mode (for older Windows-based machines)"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="run32BitCheckBoxActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
