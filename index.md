@@ -4,9 +4,9 @@
 {% include formspree.html %}
 
 ### Download MixWild for Mac or PC ###
-[macOS (64-bit)](https://github.com/reach-lab/MixWildGUI/releases/download/v1.0-beta.1/MixWILD_macOS.zip)
+[macOS](https://github.com/reach-lab/MixWildGUI/releases/download/v1.0-beta.2/MixWILD_macOS_beta2.zip)
 
-[Windows (32-bit)](https://github.com/reach-lab/MixWildGUI/releases/download/v1.0-beta.1/MixWILD_Windows.exe)
+[Windows](https://github.com/reach-lab/MixWildGUI/releases/download/v1.0-beta.2/MixWILD-v1.0-beta.2.exe)
 
 ### What is this project about? ###
 MixWILD (Also Mixed model analysis with Intensive Longitudinal Data) is a desktop GUI based application to easily perform multilevel mixed model analysis of intensive longitudinal data.
