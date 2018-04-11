@@ -16,7 +16,7 @@ Download slides for Part 2 here: [Introduction to MixWILD](https://hedeker-sites
 <br/>
 Download user guide here: [User Guide for MixWILD](https://hedeker-sites.uchicago.edu/sites/hedeker.uchicago.edu/files/uploads/MIXWILD%20Program%20User%20guide%20v040618.pdf)
 <br/>
-Download user guide data here: [Example Dataset MixWILD](/mixwild_example_dataset.csv)
+Download user guide data here: [Example Dataset MixWILD](/Mixwild_example_data.csv)
 
 
 ### What is this project about? ###
