@@ -312,7 +312,7 @@ public class NewModel extends javax.swing.JFrame {
         });
         getContentPane().add(randomScaleCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, -1, -1));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 520, -1));
-        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 144, 524, 10));
+        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 154, 524, 10));
 
         buttonGroup2.add(oneRLERadio);
         oneRLERadio.setText("Intercept");
