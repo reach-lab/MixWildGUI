@@ -37,6 +37,8 @@ import javax.swing.JFrame;
 public class InstructionsGUI extends javax.swing.JFrame {
     
     NewModel nm;
+    
+    //MixWildLogoTiny.png
 
     /**
      * Creates new form InstructionsGUI

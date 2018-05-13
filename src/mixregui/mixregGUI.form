@@ -727,7 +727,7 @@
                 <Component class="javax.swing.JLabel" name="jLabel6">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/resources/mixLogo.png"/>
+                      <Image iconType="3" name="/resources/MixWildLogoTiny.png"/>
                     </Property>
                   </Properties>
                   <Constraints>
@@ -984,12 +984,12 @@
                 <Component class="javax.swing.JLabel" name="jLabel3">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/resources/mixLogo.png"/>
+                      <Image iconType="3" name="/resources/MixWildLogoTiny.png"/>
                     </Property>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="360" y="530" width="-1" height="30"/>
+                      <AbsoluteConstraints x="90" y="520" width="-1" height="30"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -1208,7 +1208,7 @@
                 <Component class="javax.swing.JLabel" name="jLabel8">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/resources/mixLogo.png"/>
+                      <Image iconType="3" name="/resources/MixWildLogoTiny.png"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -1242,10 +1242,11 @@
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
+                                  <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                       <Group type="102" attributes="0">
                                           <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="516" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
                                           <Component id="saveStage2OutButton" min="-2" pref="227" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="jPanel11" min="-2" pref="820" max="-2" attributes="0"/>
@@ -1338,7 +1339,7 @@
                 <Component class="javax.swing.JLabel" name="jLabel9">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/resources/mixLogo.png"/>
+                      <Image iconType="3" name="/resources/MixWildLogoTiny.png"/>
                     </Property>
                   </Properties>
                 </Component>

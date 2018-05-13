@@ -646,7 +646,7 @@ public class mixregGUI extends javax.swing.JFrame {
         jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 310, 510));
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 530, -1, -1));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/mixLogo.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/MixWildLogoTiny.png"))); // NOI18N
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 550, -1, 30));
 
         startStageTwo.setText("Configure Stage 2");
@@ -753,8 +753,8 @@ public class mixregGUI extends javax.swing.JFrame {
         jPanel12.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 510, 150, 40));
         jPanel12.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 570, 740, 10));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/mixLogo.png"))); // NOI18N
-        jPanel12.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 530, -1, 30));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/MixWildLogoTiny.png"))); // NOI18N
+        jPanel12.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 520, -1, 30));
         jPanel12.add(filler1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 570, -1, 80));
         jPanel12.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 70, 320, 10));
         jPanel12.add(jSeparator15, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 660, -1, -1));
@@ -826,7 +826,7 @@ public class mixregGUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/mixLogo.png"))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/MixWildLogoTiny.png"))); // NOI18N
 
         jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel7.setText("Results from stage 1 analysis");
@@ -894,7 +894,7 @@ public class mixregGUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/mixLogo.png"))); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/MixWildLogoTiny.png"))); // NOI18N
 
         jLabel11.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel11.setText("Results from stage 2 analysis");
@@ -911,10 +911,11 @@ public class mixregGUI extends javax.swing.JFrame {
                         .addComponent(jLabel11)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGap(73, 73, 73)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel9)
-                                .addGap(516, 516, 516)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(saveStage2OutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 820, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
