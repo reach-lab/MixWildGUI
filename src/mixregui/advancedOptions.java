@@ -35,10 +35,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-// Group the first three advanced options
-// rename based on stage 1 column names (keep RLE in mind)
+
 /**
- *
+ * All the advanced functions to support the model
  * @author adityaponnada
  */
 public class advancedOptions extends javax.swing.JFrame {

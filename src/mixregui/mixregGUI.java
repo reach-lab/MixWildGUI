@@ -85,7 +85,8 @@ import static mixregui.NewModel.dataFileNameRef;
 import org.apache.commons.io.FilenameUtils;
 
 /**
- * d
+ * Main class for the program that is used 
+ * to manipulate regressors
  *
  * @author adityaponnada
  */

@@ -51,7 +51,7 @@ import javax.swing.table.DefaultTableModel;
 import org.apache.commons.io.FilenameUtils;
 
 /**
- *
+ * This class creates a new model
  * @author adityaponnada
  */
 public class NewModel extends javax.swing.JFrame {
