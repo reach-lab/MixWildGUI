@@ -36,7 +36,7 @@ import javax.swing.JOptionPane;
 import static mixregui.stageOneRegs.variableNamesList;
 
 /**
- *
+ * Use this class to add stage two regressors in the model
  * @author adityaponnada
  */
 public class stageTwoRegs extends javax.swing.JFrame {

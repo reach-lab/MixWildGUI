@@ -37,7 +37,7 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Use this to add or remove stage 1 regressors into the model
  * @author adityaponnada
  */
 public class stageOneRegs extends javax.swing.JFrame {
