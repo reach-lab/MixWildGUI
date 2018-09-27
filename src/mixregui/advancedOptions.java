@@ -295,7 +295,7 @@ public class advancedOptions extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         run32BitCheckBox.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
-        run32BitCheckBox.setText("Run in 32-bit mode (for older Windows-based machines)");
+        run32BitCheckBox.setText("Run in 32-bit mode (Experimental: for older Windows-based machines)");
         run32BitCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 run32BitCheckBoxActionPerformed(evt);
