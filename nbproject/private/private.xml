@@ -5,8 +5,11 @@
         <group>
             <file>file:/C:/Users/Dharam/Documents/MixWildGUI/src/mixregui/mixregGUI.java</file>
             <file>file:/C:/Users/Dharam/Documents/MixWildGUI/src/mixregui/InstructionsGUI.java</file>
+            <file>file:/C:/Users/Dharam/Documents/MixWildGUI/src/def_lib/DefinitionHelper.java</file>
             <file>file:/C:/Users/Dharam/Documents/MixWildGUI/src/mixregui/advancedOptions.java</file>
             <file>file:/C:/Users/Dharam/Documents/MixWildGUI/src/mixregui/stageTwoRegs.java</file>
+            <file>file:/C:/Users/Dharam/Documents/MixWildGUI/src/def_lib/ModelBuilder.java</file>
+            <file>file:/C:/Users/Dharam/Documents/MixWildGUI/src/def_lib/SuperUserMenu.java</file>
             <file>file:/C:/Users/Dharam/Documents/MixWildGUI/src/mixregui/stageOneRegs.java</file>
             <file>file:/C:/Users/Dharam/Documents/MixWildGUI/src/mixregui/NewModel.java</file>
         </group>
