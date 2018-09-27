@@ -463,6 +463,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
         level1_BSVar.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         level1_BSVar.setText("BS Variance");
+        level1_BSVar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel1.add(level1_BSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 70, 80, -1));
 
         levelOnePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Level-1"));
@@ -732,7 +733,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 suppressIntCheckBoxActionPerformed(evt);
             }
         });
-        jPanel12.add(suppressIntCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 530, 240, -1));
+        jPanel12.add(suppressIntCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 520, 240, -1));
 
         stageTwoOutcome.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         stageTwoOutcome.addItemListener(new java.awt.event.ItemListener() {
