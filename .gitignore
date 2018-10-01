@@ -3,3 +3,5 @@
 /build/
 /nbbuild/
 /nbdist/
+nbproject/private/private.properties
+nbproject/private/private.xml
