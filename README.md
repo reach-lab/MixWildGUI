@@ -1,30 +1,42 @@
 # README #
 
 ### What is this project about? ###
-MixWILD (Also Mixed model analysis with Intensive Longitudinal Data) is a desktop GUI based application to easily perform multilevel mixed model analysis of intensive longitudinal data.
+MixWILD (Also Mixed-effects modeling with Intensive Longitudinal Data) is a desktop GUI based application to easily perform multilevel mixed model analysis of intensive longitudinal data (such as experience sampling data). It has beendeveloped as a collaboration between Northeastern University, University of Southern California, and University of Chicago. 
+
+Want to learn more and get in touch?
 
 ### Join the Reach Lab Slack for development discussion: ###
 
 https://uscreachlab.slack.com/messages/mixregmls_gui/
 
-### Installing NetBeans ###
+Want to try out the code and contribute?
+
+### Clone the repo with the permissions of the admins ###
+
+https://github.com/reach-lab/MixWildGUI/
+
+### Install NetBeans ###
 
 Please go through this link to install netbeans: https://netbeans.org/community/releases/82/install.html
 
 ### For a quick video tutorial ###
 
-Please go to downloads and click on the file ... (Pending)
+We will update this soon. Watch this space.
 
-### Running a .jar file ###
+## Want to try out the tool? ##
 
-1. Please go to downloads and click on the file "MixWild_v1.jar". Link: https://bitbucket.org/adityaponnada/mixreg/downloads/
-2. Once downloaded, run the .jar file
-3. NOTE: It is important to keep the JAVA on your PC updated to run a .Jar file
+### Download the binaries ###
+
+Please go to this link and download the binaries: https://github.com/reach-lab/MixWildGUI/releases/tag/v1.0-beta.3
+
+Please note that MixWILD maynot function the same in 32-bit windows because some of the features are experimental. Mac users should download the Mac binaries.
 
 ### Running a .exe file ###
-1. Please go to downloads folder of the bitbucket and click on the latest version of MixWILD-X.0.exe
-2. Once downloaded, click "Open", then hit "Run"
-3. For the first time users, it will install the application and then run
+1. Once downloaded, click "Open", then hit "Run"
+2. For the first time users, it will install the application and then run. To locate the installed application on your windows PC, please go to this path: C:\Users\[UserName]\AppData\Local\MixWILD
+3. Copy the installed application to a location of your choice.
+
+## Want to report a bug/issue? ##
 
 ### Important instructions ###
 1. If using a Windows PC, please ensure that your Java is upto date
