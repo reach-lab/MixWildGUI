@@ -3,13 +3,13 @@
 ### What is this project about? ###
 MixWILD (Also Mixed-effects modeling with Intensive Longitudinal Data) is a desktop GUI based application to easily perform multilevel mixed model analysis of intensive longitudinal data (such as experience sampling data). It has beendeveloped as a collaboration between Northeastern University, University of Southern California, and University of Chicago. 
 
-Want to learn more and get in touch?
+## Want to learn more and get in touch? ##
 
 ### Join the Reach Lab Slack for development discussion: ###
 
 https://uscreachlab.slack.com/messages/mixregmls_gui/
 
-Want to try out the code and contribute?
+## Want to try out the code and contribute? ##
 
 ### Clone the repo with the permissions of the admins ###
 
