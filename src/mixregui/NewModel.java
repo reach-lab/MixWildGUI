@@ -1,6 +1,6 @@
 /*
  * MixWild, a program to model subject-level slope and variance on continuous or ordinal outcomes
-    Copyright (C) 2018 (not sure what name goes here?)
+    Copyright (C) 2018 Genevieve Dunton & Donald Hedeker
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -51,7 +51,7 @@ import javax.swing.table.DefaultTableModel;
 import org.apache.commons.io.FilenameUtils;
 
 /**
- *
+ * This class creates a new model
  * @author adityaponnada
  */
 public class NewModel extends javax.swing.JFrame {
@@ -296,7 +296,7 @@ public class NewModel extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 110, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, 110, -1));
 
         jLabel9.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
         jLabel9.setText("Is your dataset Mix{WILD} friendly?");
@@ -312,7 +312,7 @@ public class NewModel extends javax.swing.JFrame {
         });
         getContentPane().add(randomScaleCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, -1, -1));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 520, -1));
-        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 144, 524, 10));
+        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 154, 524, 10));
 
         buttonGroup2.add(oneRLERadio);
         oneRLERadio.setText("Intercept");

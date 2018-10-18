@@ -1,6 +1,6 @@
 /*
  * MixWild, a program to model subject-level slope and variance on continuous or ordinal outcomes
-    Copyright (C) 2018 (not sure what name goes here?)
+    Copyright (C) 2018 Genevieve Dunton & Donald Hedeker
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -37,7 +37,7 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Use this to add or remove stage 1 regressors into the model
  * @author adityaponnada
  */
 public class stageOneRegs extends javax.swing.JFrame {

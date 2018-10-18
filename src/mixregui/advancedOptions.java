@@ -1,6 +1,6 @@
 /*
  *MixWild, a program to model subject-level slope and variance on continuous or ordinal outcomes
-    Copyright (C) 2018 (not sure what name goes here?)
+    Copyright (C) 2018 Genevieve Dunton & Donald Hedeker
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -35,10 +35,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-// Group the first three advanced options
-// rename based on stage 1 column names (keep RLE in mind)
+
 /**
- *
+ * All the advanced functions to support the model
  * @author adityaponnada
  */
 public class advancedOptions extends javax.swing.JFrame {
@@ -296,7 +295,7 @@ public class advancedOptions extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         run32BitCheckBox.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
-        run32BitCheckBox.setText("Run in 32-bit mode (for older Windows-based machines)");
+        run32BitCheckBox.setText("Run in 32-bit mode (Experimental: for older Windows-based machines)");
         run32BitCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 run32BitCheckBoxActionPerformed(evt);
