@@ -105,6 +105,8 @@ public class mixregGUI extends javax.swing.JFrame {
     int levelTwoRegSize = 0;
     int stageTwoRegSize = 0;
     int levelOneDisaggSize = 0;
+    
+    int SUPERUSER_KEY = 0;
 
     String[] variableNamesCombo;
 
@@ -262,7 +264,7 @@ public class mixregGUI extends javax.swing.JFrame {
         catch(Exception eoe){
             System.out.println("No Random Scale Option Set");
         }
-        superUserMenu.setVisible(false);
+        superUserMenu.setVisible(SUPERUSER_KEY > 2);
         
 
 //       IDpos = IDvariableCombo.getSelectedIndex();
@@ -1101,6 +1103,11 @@ public class mixregGUI extends javax.swing.JFrame {
         helpMenu.add(jMenuItem8);
 
         jMenuItem9.setText("About");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
         helpMenu.add(jMenuItem9);
 
         jMenuBar1.add(helpMenu);
@@ -2306,6 +2313,12 @@ public class mixregGUI extends javax.swing.JFrame {
             System.out.println("File access cancelled by user.");
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        // TODO add your handling code here:
+        SUPERUSER_KEY++;
+        superUserMenu.setVisible(SUPERUSER_KEY > 2);
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     /**
      * @param args the command line arguments
