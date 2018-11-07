@@ -4,7 +4,7 @@
 {% include formspree.html %}
 
 ### Download MixWild for Mac or PC ###
-[macOS](https://github.com/reach-lab/MixWildGUI/releases/download/v1.0-beta.4/MixWILD_macOS_beta4.zip)
+[macOS](https://github.com/reach-lab/MixWildGUI/releases/download/v1.0-beta.4/MixWILD_macOS_beta.4.zip)
 
 [Windows](https://github.com/reach-lab/MixWildGUI/releases/download/v1.0-beta.4/MixWILD-v1.0-beta.4.exe)
 
