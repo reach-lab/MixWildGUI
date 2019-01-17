@@ -192,7 +192,7 @@ public class mixregGUI extends javax.swing.JFrame {
         System.out.println(String.valueOf(i));
 
         stageOneTabs.setEnabledAt(1, false);
-        suppressIntCheckBox.setVisible(false);
+        suppressIntCheckBox.setVisible(true);
 
         //Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/resources/mixLogo.png"));
         //setIconImage(image);
@@ -205,7 +205,7 @@ public class mixregGUI extends javax.swing.JFrame {
             LinearAssociationRadio.setText("No");
             QuadraticAssociationRadio.setVisible(false);
 
-            associationLabel.setText("Association of random location & scale?");
+            associationLabel.setText("Association of random location & scale?"); //Switch to this when i > 1
             LinearAssociationRadio.setSelected(true);
 
             // if random location effects are more than one, change the table column names
