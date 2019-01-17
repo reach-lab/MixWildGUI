@@ -300,7 +300,7 @@ public class DefinitionHelper implements Serializable {
             csvRows.remove(0); // TODO: make sure this isn't removing data
             System.out.println("New:" + Arrays.toString(csvRows.get(0)));
 
-            CSVWriter writer = new CSVWriter(new FileWriter(filePath + utcDirPath + baseName + ".dat"), ' ', CSVWriter.NO_QUOTE_CHARACTER,
+            CSVWriter writer = new CSVWriter(new FileWriter(filePath + utcDirPath + baseName.replace(" ","_") + ".dat"), ' ', CSVWriter.NO_QUOTE_CHARACTER,
                     CSVWriter.NO_ESCAPE_CHARACTER, CSVWriter.RFC4180_LINE_END);
             writer.writeAll(csvRows);
             writer.close();
@@ -1440,32 +1440,32 @@ public class DefinitionHelper implements Serializable {
     // print file name path
     //done
     public String getDataFilename() {
-        return dataFilename;
+        return dataFilename.replace(" ", "_");
     }
 
     // read fileName
     //done
     public void setDataFilename(String dataFilename) throws Exception {
         if (dataFilename.endsWith(".dat") || dataFilename.endsWith(".csv")) {
-            this.dataFilename = dataFilename;
+            this.dataFilename = dataFilename.replace(" ", "_");
         } else {
             throw new Exception("Filename is not a valid .dat or .csv file, line 3");
         }
     }
 
     public String getOutputPrefix() {
-        return outputPrefix;
+        return outputPrefix.replace(" ", "_");
     }
 
     // check what is this function needed for?
     // done
     public void setOutputPrefix(String outputPrefix) {
         if (outputPrefix.length() > 72) {
-            this.outputPrefix = outputPrefix.substring(0, 200);
+            this.outputPrefix = outputPrefix.substring(0, 200).replace(" ", "_");
         } else {
-            this.outputPrefix = outputPrefix;
+            this.outputPrefix = outputPrefix.replace(" ", "_");;
         }
-        this.outputPrefix = outputPrefix;
+        this.outputPrefix = outputPrefix.replace(" ", "_");;
     }
 
     public String getDataVariableCount() {
