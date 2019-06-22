@@ -609,7 +609,7 @@ public class DefinitionHelper implements Serializable {
         List<String> newDefinitionFile = new ArrayList();
         newDefinitionFile.add(getModelTitle());
         newDefinitionFile.add(getModelSubtitle());
-        newDefinitionFile.add("\"" + getDataFilename() + "\"");
+        newDefinitionFile.add("\"" + FilenameUtils.getName(getDataFilename()) + "\"");
         newDefinitionFile.add(getOutputPrefix());
         String[] advancedOptionsOne = advancedVariableBuild(1);
         newDefinitionFile.add(Arrays.toString(advancedOptionsOne).replaceAll(",", " "));
