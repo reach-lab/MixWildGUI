@@ -762,6 +762,7 @@ public class NewModel extends javax.swing.JFrame {
             //Do nothing
             setSeedLabel.setVisible(false);
             seedTextBox.setVisible(false);
+            seedTextBox.setText("");
         } else {
             setSeedLabel.setVisible(true);
             seedTextBox.setVisible(true);
