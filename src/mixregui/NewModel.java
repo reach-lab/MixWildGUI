@@ -639,6 +639,9 @@ public class NewModel extends javax.swing.JFrame {
                     Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
+                
+                NewModel.defFile.setSeedForStageTwo(seedTextBox.getText());
+                System.out.println("From defHelper | SEED: " + NewModel.defFile.getSeedForStageTwo());
 
                 NewModel.defFile.setOutputPrefix(extractDatFileName() + "_Output");
                 System.out.println("From defHelper | Output file name: " + NewModel.defFile.getOutputPrefix());
@@ -762,7 +765,7 @@ public class NewModel extends javax.swing.JFrame {
             //Do nothing
             setSeedLabel.setVisible(false);
             seedTextBox.setVisible(false);
-            seedTextBox.setText("");
+            seedTextBox.setText("0");
         } else {
             setSeedLabel.setVisible(true);
             seedTextBox.setVisible(true);
