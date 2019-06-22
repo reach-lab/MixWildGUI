@@ -3059,7 +3059,7 @@ public class DefinitionHelper implements Serializable {
     }
     
     public void setSeedForStageTwo(String seed)throws Exception {
-        if (setValidator("Decision to add seed for stage 2", "5", seedForStageTwo, 0, 65535, MIX_INTEGER)) {
+        if (setValidator("Decision to add seed for stage 2", "5", seed, 0, 65535, MIX_INTEGER)) {
             this.seedForStageTwo = seed;
         }
         
