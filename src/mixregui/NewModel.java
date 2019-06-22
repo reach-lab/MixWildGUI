@@ -42,6 +42,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.FileReader;
 import java.util.List;
+import java.util.Random;
 import java.util.prefs.Preferences;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -112,6 +113,9 @@ public class NewModel extends javax.swing.JFrame {
         randomScaleCheckBox.setEnabled(false);
         oneRLERadio.setEnabled(false);
         moreThanOneRLERadio.setEnabled(false);
+        
+        setSeedLabel.setVisible(false);
+        seedTextBox.setVisible(false);
 
         dataFileLabel.setToolTipText("Insert a data file in .csv format");
         fileBrowseButton.setToolTipText("Insert a data file in .csv format");
@@ -180,6 +184,8 @@ public class NewModel extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         missingValuePresent = new javax.swing.JRadioButton();
         missingValueAbsent = new javax.swing.JRadioButton();
+        setSeedLabel = new javax.swing.JLabel();
+        seedTextBox = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("New Model for Stage 1 Analysis");
@@ -244,7 +250,7 @@ public class NewModel extends javax.swing.JFrame {
                 newModelSubmitActionPerformed(evt);
             }
         });
-        getContentPane().add(newModelSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 440, 90, -1));
+        getContentPane().add(newModelSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 500, 90, -1));
 
         newModelCancel.setText("Cancel");
         newModelCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -252,7 +258,7 @@ public class NewModel extends javax.swing.JFrame {
                 newModelCancelActionPerformed(evt);
             }
         });
-        getContentPane().add(newModelCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 440, 90, -1));
+        getContentPane().add(newModelCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 500, 90, -1));
 
         newModel_resetButton.setText("Reset");
         newModel_resetButton.addActionListener(new java.awt.event.ActionListener() {
@@ -260,7 +266,7 @@ public class NewModel extends javax.swing.JFrame {
                 newModel_resetButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(newModel_resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 440, 90, -1));
+        getContentPane().add(newModel_resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 500, 90, -1));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(538, 334, -1, -1));
 
         jLabel6.setText("Missing value code:");
@@ -279,10 +285,15 @@ public class NewModel extends javax.swing.JFrame {
         getContentPane().add(newModelMissingValueCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, 77, 30));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/MixWildLogoTiny.png"))); // NOI18N
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, -1, 31));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, -1, 31));
 
         buttonGroup1.add(noneRadio);
         noneRadio.setText("None");
+        noneRadio.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                noneRadioStateChanged(evt);
+            }
+        });
         noneRadio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 noneRadioActionPerformed(evt);
@@ -321,7 +332,7 @@ public class NewModel extends javax.swing.JFrame {
         buttonGroup2.add(moreThanOneRLERadio);
         moreThanOneRLERadio.setText("Intercept + Slope(s)");
         getContentPane().add(moreThanOneRLERadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 170, -1, -1));
-        getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 416, 516, 10));
+        getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 466, 516, 10));
 
         jLabel3.setText("Contains missing values?");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
@@ -343,6 +354,10 @@ public class NewModel extends javax.swing.JFrame {
             }
         });
         getContentPane().add(missingValueAbsent, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, -1, 20));
+
+        setSeedLabel.setText("Set seed:");
+        getContentPane().add(setSeedLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 390, -1, -1));
+        getContentPane().add(seedTextBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 80, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -396,6 +411,15 @@ public class NewModel extends javax.swing.JFrame {
 
     private void continuousRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuousRadioActionPerformed
         // TODO add your handling code here:
+        if (noneRadio.isSelected()){
+            //Do nothing
+            
+        } else {
+            setSeedLabel.setVisible(true);
+            seedTextBox.setVisible(true);
+            String seedVal = generateSeed();
+            seedTextBox.setText(seedVal);
+        }
     }//GEN-LAST:event_continuousRadioActionPerformed
 
     private void newModelSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModelSubmitActionPerformed
@@ -615,6 +639,15 @@ public class NewModel extends javax.swing.JFrame {
                     Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
+                
+//                try {
+//                    NewModel.defFile.setSeedForStageTwo(seedTextBox.getText());
+//                    System.out.println("From defHelper | SEED: " + NewModel.defFile.getSeedForStageTwo());
+//                } catch (Exception ex) {
+//                    Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
+//                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+//                }
+                
 
                 NewModel.defFile.setOutputPrefix(extractDatFileName() + "_Output");
                 System.out.println("From defHelper | Output file name: " + NewModel.defFile.getOutputPrefix());
@@ -734,6 +767,18 @@ public class NewModel extends javax.swing.JFrame {
 
     private void noneRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noneRadioActionPerformed
         // TODO add your handling code here:
+        if (noneRadio.isSelected()){
+            //Do nothing
+            setSeedLabel.setVisible(false);
+            seedTextBox.setVisible(false);
+            seedTextBox.setText("0");
+        } else {
+            setSeedLabel.setVisible(true);
+            seedTextBox.setVisible(true);
+            String seedVal = generateSeed();
+            seedTextBox.setText(seedVal);
+        }
+        
     }//GEN-LAST:event_noneRadioActionPerformed
 
     private void newModelMissingValueCodeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_newModelMissingValueCodeKeyTyped
@@ -760,6 +805,14 @@ public class NewModel extends javax.swing.JFrame {
 
     private void dichotomousRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dichotomousRadioActionPerformed
         // TODO add your handling code here:
+        if (noneRadio.isSelected()){
+            //Do nothing
+        } else {
+            setSeedLabel.setVisible(true);
+            seedTextBox.setVisible(true);
+            String seedVal = generateSeed();
+            seedTextBox.setText(seedVal);
+        }
     }//GEN-LAST:event_dichotomousRadioActionPerformed
 
     private void missingValuePresentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_missingValuePresentActionPerformed
@@ -780,6 +833,11 @@ public class NewModel extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_missingValueAbsentActionPerformed
+
+    private void noneRadioStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_noneRadioStateChanged
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_noneRadioStateChanged
 
     /**
      * @param args the command line arguments
@@ -829,6 +887,18 @@ public class NewModel extends javax.swing.JFrame {
             System.out.println("File access cancelled by user.");
         }
     }
+    
+    private String generateSeed(){
+        String seed;
+        
+        Random rnd = new Random();
+        
+        int rndSeed = rnd.nextInt(65535) + 1;
+        
+        seed = String.valueOf(rndSeed);
+        
+        return seed;
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -864,6 +934,8 @@ public class NewModel extends javax.swing.JFrame {
     private javax.swing.JRadioButton noneRadio;
     private javax.swing.JRadioButton oneRLERadio;
     private javax.swing.JCheckBox randomScaleCheckBox;
+    private javax.swing.JTextField seedTextBox;
+    private javax.swing.JLabel setSeedLabel;
     private javax.swing.JTextField titleField;
     // End of variables declaration//GEN-END:variables
 
