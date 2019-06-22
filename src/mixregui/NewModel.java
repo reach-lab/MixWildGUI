@@ -640,8 +640,14 @@ public class NewModel extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
                 
-                NewModel.defFile.setSeedForStageTwo(seedTextBox.getText());
-                System.out.println("From defHelper | SEED: " + NewModel.defFile.getSeedForStageTwo());
+                try {
+                    NewModel.defFile.setSeedForStageTwo(seedTextBox.getText());
+                    System.out.println("From defHelper | SEED: " + NewModel.defFile.getSeedForStageTwo());
+                } catch (Exception ex) {
+                    Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                }
+                
 
                 NewModel.defFile.setOutputPrefix(extractDatFileName() + "_Output");
                 System.out.println("From defHelper | Output file name: " + NewModel.defFile.getOutputPrefix());
