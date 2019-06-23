@@ -183,6 +183,7 @@ public class DefinitionHelper implements Serializable {
     private String advancedRandomScaleNotIncluded = "0";
     private String advancedDropSecondStage = "0";
     private String advancedDiscardSubjects = "0";
+    private String seedForStageTwo = "0";
 
     /**
      * Stage 1 Model Specification
@@ -1124,6 +1125,7 @@ public class DefinitionHelper implements Serializable {
                     advancedVars.add(getAdvancedRandomScaleNotIncluded());
                     advancedVars.add(getAdvancedDropSecondStage());
                     advancedVars.add(getAdvancedDiscardSubjects());
+                    advancedVars.add(getSeedForStageTwo());
                     break;
                 case MIXREGLS_MIXOR_KEY:
                     advancedVars.add(getDataVariableCount());
@@ -1149,6 +1151,7 @@ public class DefinitionHelper implements Serializable {
                     advancedVars.add(getAdvancedRandomScaleNotIncluded());
                     advancedVars.add(getAdvancedDropSecondStage());
                     advancedVars.add(getAdvancedDiscardSubjects());
+                    advancedVars.add(getSeedForStageTwo());
                     break;
                 case MIXREGMLS_MIXREG_KEY:
                     advancedVars.add(getDataVariableCount());
@@ -1174,6 +1177,7 @@ public class DefinitionHelper implements Serializable {
                     advancedVars.add(getAdvancedRandomScaleNotIncluded());
                     advancedVars.add(getAdvancedDropSecondStage());
                     advancedVars.add(getAdvancedDiscardSubjects());
+                    advancedVars.add(getSeedForStageTwo());
                     break;
                 case MIXREGMLS_MIXOR_KEY:
                     advancedVars.add(getDataVariableCount());
@@ -1199,6 +1203,7 @@ public class DefinitionHelper implements Serializable {
                     advancedVars.add(getAdvancedRandomScaleNotIncluded());
                     advancedVars.add(getAdvancedDropSecondStage());
                     advancedVars.add(getAdvancedDiscardSubjects());
+                    advancedVars.add(getSeedForStageTwo());
                     break;
                 default:
                 //TODO: Log this error 
@@ -1272,6 +1277,7 @@ public class DefinitionHelper implements Serializable {
                     setAdvancedRandomScaleNotIncluded(advancedVars[20]);
                     setAdvancedDropSecondStage(advancedVars[21]);
                     setAdvancedDiscardSubjects(advancedVars[22]);
+                    setSeedForStageTwo(advancedVars[23]);
                     break;
                 case MIXREGLS_MIXOR_KEY:
                     setModelBetweenCount(advancedVars[2]);
@@ -1287,6 +1293,7 @@ public class DefinitionHelper implements Serializable {
                     setAdvancedRandomScaleNotIncluded(advancedVars[20]);
                     setAdvancedDropSecondStage(advancedVars[21]);
                     setAdvancedDiscardSubjects(advancedVars[22]);
+                    setSeedForStageTwo(advancedVars[23]);
                     break;
                 case MIXREGMLS_MIXREG_KEY:
                     setModelLocRanCount(advancedVars[2]);
@@ -1302,6 +1309,7 @@ public class DefinitionHelper implements Serializable {
                     setAdvancedRandomScaleNotIncluded(advancedVars[20]);
                     setAdvancedDropSecondStage(advancedVars[21]);
                     setAdvancedDiscardSubjects(advancedVars[22]);
+                    setSeedForStageTwo(advancedVars[23]);
                     break;
                 case MIXREGMLS_MIXOR_KEY:
                     setModelLocRanCount(advancedVars[2]);
@@ -1317,6 +1325,7 @@ public class DefinitionHelper implements Serializable {
                     setAdvancedRandomScaleNotIncluded(advancedVars[20]);
                     setAdvancedDropSecondStage(advancedVars[21]);
                     setAdvancedDiscardSubjects(advancedVars[22]);
+                    setSeedForStageTwo(advancedVars[23]);
                     break;
                 default:
                 //TODO: Log this error 
@@ -2280,6 +2289,8 @@ public class DefinitionHelper implements Serializable {
             this.stageTwoFirstIntLabels = stageTwoFirstIntLabels;
         }
     }
+    
+    
 
     public void writeDefFileToFolder() {
 
@@ -2838,18 +2849,23 @@ public class DefinitionHelper implements Serializable {
                 switch (modelSelection) {
                     case DefinitionHelper.MIXREGLS_MIXREG_KEY:
                         modelPath = "resources/Windows64/mixregls_random_mixreg.exe";
+                        System.out.println("Copied " + modelPath);
                         break;
                     case DefinitionHelper.MIXREGLS_MIXOR_KEY:
                         modelPath = "resources/Windows64/mixregls_random_mixor.exe";
+                        System.out.println("Copied " + modelPath);
                         break;
                     case DefinitionHelper.MIXREGMLS_MIXREG_KEY:
                         modelPath = "resources/Windows64/mixregmls_random_mixreg.exe";
+                        System.out.println("Copied " + modelPath);
                         break;
                     case DefinitionHelper.MIXREGMLS_MIXOR_KEY:
                         modelPath = "resources/Windows64/mixregmls_random_mixor.exe";
+                        System.out.println("Copied " + modelPath);
                         break;
                     default:
                         modelPath = "resources/Windows64/mixregls_random_mixreg.exe";
+                        System.out.println("Copied " + modelPath);
                         break;
                 }
             }
@@ -2886,6 +2902,7 @@ public class DefinitionHelper implements Serializable {
         exeArray[5] = MIXREG;
 
         for (String exe : exeArray) {
+            System.out.println("Working on Exes");
             InputStream stream = getClass().getClassLoader().getResourceAsStream(exe);
             OutputStream outputStream
                     = new FileOutputStream(new File(absoluteDirectoryPath + FilenameUtils.getName(exe)));
@@ -2894,6 +2911,7 @@ public class DefinitionHelper implements Serializable {
             byte[] bytes = new byte[4096];
 
             while ((read = stream.read(bytes)) > 0) {
+                //System.out.println("Working on output stream");
                 outputStream.write(bytes, 0, read);
             }
             stream.close();
@@ -2917,14 +2935,16 @@ public class DefinitionHelper implements Serializable {
                 pb1.redirectErrorStream(true);
                 Process p0 = pb1.start();
                 try {
+                    System.out.println("WAITING FOR SYSTEM RESPONSE");
                     p0.waitFor();
                 } catch (InterruptedException ex) {
+                    System.out.println("WAIT FAILED!");
                     Logger.getLogger(DefinitionHelper.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
 
         }
-
+        System.out.println("Copying done!");
     }
 
     public void modelSelector(int randomLocEffects, boolean outcomeContinious) {
@@ -3036,6 +3056,17 @@ public class DefinitionHelper implements Serializable {
         if (setValidator("decision to discard subjects with no variance", "5", advancedDiscardSubjects, 0, 1, MIX_INTEGER)) {
             this.advancedDiscardSubjects = advancedDiscardSubjects;
         }
+    }
+    
+    public void setSeedForStageTwo(String seed)throws Exception {
+        if (setValidator("Decision to add seed for stage 2", "5", seed, 0, 65535, MIX_INTEGER)) {
+            this.seedForStageTwo = seed;
+        }
+        
+    }
+    
+    public String getSeedForStageTwo(){
+        return seedForStageTwo;
     }
 
     //Done
