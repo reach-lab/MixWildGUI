@@ -8,6 +8,10 @@
 
 [Windows](https://github.com/reach-lab/MixWildGUI/releases/download/v1.0-beta7/MixWILD_v1.0-beta7.exe)
 
+### Manuscript Supplement ###
+[MixWild User Guide](/"MixWILD Program Users Guide v080219.pdf")
+[Example Dataset MixWILD](/Mixwild_example_data.csv)
+
 ### SBM Attendees ###
 
 Download slides for Part 1 here: [Details and Application of EMA](/SBM_Part_1.pdf)
