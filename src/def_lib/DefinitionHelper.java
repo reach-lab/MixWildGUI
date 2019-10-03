@@ -71,7 +71,6 @@ import javax.swing.text.DefaultCaret;
 import javax.swing.text.Document;
 import static mixregui.NewModel.defFile;
 import org.netbeans.lib.awtextra.AbsoluteLayout;
-import static sun.management.snmp.jvminstr.JvmThreadInstanceEntryImpl.ThreadStateMap.Byte0.runnable;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
 import java.awt.Graphics;
@@ -379,7 +378,7 @@ public class DefinitionHelper implements Serializable {
         }
         return field == labels;
     }
-
+    
     private void exportValidatorStageOne() throws Exception {
         if (!validateFieldLabels(getModelMeanCount(), getFieldModelMeanRegressors())) {
             throw new Exception("Fatal model error: number of MEAN regressors does not equal MEAN fields");
@@ -2661,6 +2660,7 @@ public class DefinitionHelper implements Serializable {
 //                }
             copyExecutable(defFilePath, selectedModel);
             Process p;
+            String macOSCommand = "\"" + defFilePath + defFileName + "\"";
             if (getOSName().contains("windows")) {
                 p = Runtime.getRuntime().exec("cmd /c dir && cd " + "\"" + defFilePath + "\"" + " && dir && "
                         + defFileName);
@@ -2668,7 +2668,7 @@ public class DefinitionHelper implements Serializable {
                 ProcessBuilder pb = new ProcessBuilder(
                         "bash",
                         "-c",
-                        "\"" + defFilePath + defFileName + "\"");
+                        macOSCommand);
                 pb.directory(new File(defFilePath));
                 pb.redirectErrorStream(true);
                 p = pb.start();
@@ -2676,15 +2676,15 @@ public class DefinitionHelper implements Serializable {
 
             Thread runCMD = new Thread(new Runnable() {
                 public void run() {
-                    System.out.println("Inside the thread");
+                    System.out.println("Inside the thread for: " + macOSCommand);
                     try {
                         InputStreamReader isr = new InputStreamReader(p.getInputStream());
                         BufferedReader br = new BufferedReader(isr);
                         String line = null;  // UI magic should run in here @adityapona
                         while ((line = br.readLine()) != null) {
                             System.out.println("MIXWILD:" + line);
-
-                            progressPane.append("MIXWILD:" + line + "\n");
+                            updateProgressPane("MIXWILD:" + line + "\n");
+                            //progressPane.append();
 
                         }
                     } catch (IOException ioe) {
@@ -2921,11 +2921,11 @@ public class DefinitionHelper implements Serializable {
         if (!getOSName().contains("windows")) {
             String filenameBinary = FilenameUtils.getBaseName(modelPath);
             String[] commands = {"chmod u+x " + "\"" + defFilePath + "\"" + "mix_random",
-                "chmod u+x " + "\"" + defFilePath + "\"" + "mixreg",
-                "chmod u+x " + "\"" + defFilePath + "\"" + "repeat_mixreg",
-                "chmod u+x " + "\"" + defFilePath + "\"" + "mixor",
-                "chmod u+x " + "\"" + defFilePath + "\"" + "repeat_mixor",
-                "chmod u+x " + "\"" + defFilePath + "\"" + filenameBinary};
+                "chmod u+x " + "\"" + defFilePath + "mixreg" + "\"",
+                "chmod u+x " + "\"" + defFilePath + "repeat_mixreg" + "\"",
+                "chmod u+x " + "\"" + defFilePath + "mixor" + "\"",
+                "chmod u+x " + "\"" + defFilePath + "repeat_mixor" + "\"",
+                "chmod u+x " + "\"" + defFilePath + filenameBinary + "\""};
             for (String command : commands) {
                 ProcessBuilder pb1 = new ProcessBuilder(
                         "bash",
