@@ -2868,6 +2868,8 @@ public class mixregGUI extends javax.swing.JFrame {
                         stageTwoGridBoxes.get(row).get(1).setSelected(false);
                         stageTwoGridBoxes.get(row).get(2).setEnabled(true);
                         stageTwoGridBoxes.get(row).get(2).setSelected(false);
+                        randomChecked = false;
+                        scaleChecked = false;
                         System.out.println(disaggVarianceBoxes.size());
                     } else {
                         //disaggVarianceBoxes.get(row).get(column).setEnabled(false);
@@ -2935,6 +2937,9 @@ public class mixregGUI extends javax.swing.JFrame {
                     //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
                     AbstractButton abstractButton = (AbstractButton) e.getSource();
                     boolean selected = abstractButton.getModel().isSelected();
+                    
+                    randomChecked = false;
+                    scaleChecked = false;
 
                    suppressIntCheckBox.setEnabled(true);
                     
