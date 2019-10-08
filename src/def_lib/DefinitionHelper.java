@@ -2703,7 +2703,7 @@ public class DefinitionHelper implements Serializable {
             });
             int exitVal = p.waitFor();
             System.out.println("ExitValue: " + exitVal); // Non-zero is an error
-            progressPane.append("MIXWILD::Exit Value: " + String.valueOf(exitVal) + "\n"); //should append all the text after a new line to the text area
+            updateProgressPane("MIXWILD::Exit Value: " + String.valueOf(exitVal) + "\n"); //should append all the text after a new line to the text area
             if (exitVal == 0) {
                 //send the out to StageTwoOutPu from here
                 // FileReader reader = new FileReader(absoluteJavaPath + ".out file name");
