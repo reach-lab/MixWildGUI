@@ -193,6 +193,8 @@ public class mixregGUI extends javax.swing.JFrame {
 
         stageOneTabs.setEnabledAt(1, false);
         suppressIntCheckBox.setVisible(true);
+        suppressIntCheckBox.setSelected(false);
+        suppressIntCheckBox.setEnabled(false);
 
         //Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/resources/mixLogo.png"));
         //setIconImage(image);
@@ -2870,6 +2872,9 @@ public class mixregGUI extends javax.swing.JFrame {
                         stageTwoGridBoxes.get(row).get(3).setEnabled(false);
                         randomChecked = false;
                         scaleChecked = false;
+                        suppressIntCheckBox.setEnabled(false);
+                        suppressIntCheckBox.setSelected(false);
+                        
                     }
 
                 }
@@ -2918,6 +2923,19 @@ public class mixregGUI extends javax.swing.JFrame {
                     }
                 }
             });
+            
+        stageTwoGridBoxes.get(j).get(3).addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                    AbstractButton abstractButton = (AbstractButton) e.getSource();
+                    boolean selected = abstractButton.getModel().isSelected();
+
+                   suppressIntCheckBox.setEnabled(true);
+                    
+                    
+                }
+            });
+            
 
         }
 
