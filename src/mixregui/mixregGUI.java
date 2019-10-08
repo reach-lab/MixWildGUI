@@ -1960,8 +1960,12 @@ public class mixregGUI extends javax.swing.JFrame {
             suppressed = false;
             for (int p = 0; p < stageTwoRegSize; p++) {
 
-                stageTwoGridBoxes.get(p).get(3).setSelected(false);
-                stageTwoGridBoxes.get(p).get(3).setEnabled(true);
+                if (stageTwoGridBoxes.get(p).get(1).isSelected() && stageTwoGridBoxes.get(p).get(2).isSelected()){
+                    stageTwoGridBoxes.get(p).get(3).setSelected(false);
+                    stageTwoGridBoxes.get(p).get(3).setEnabled(true);
+                }
+                
+                
 
             }
 
