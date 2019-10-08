@@ -2868,6 +2868,8 @@ public class mixregGUI extends javax.swing.JFrame {
                         stageTwoGridBoxes.get(row).get(2).setSelected(false);
                         stageTwoGridBoxes.get(row).get(3).setSelected(false);
                         stageTwoGridBoxes.get(row).get(3).setEnabled(false);
+                        randomChecked = false;
+                        scaleChecked = false;
                     }
 
                 }
