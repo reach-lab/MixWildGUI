@@ -1946,7 +1946,9 @@ public class mixregGUI extends javax.swing.JFrame {
     private void suppressIntCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suppressIntCheckBoxActionPerformed
         // TODO add your handling code here:
 
-        if (suppressed == false) {
+        if (suppressIntCheckBox.isSelected()) {
+            
+            suppressed = true;
 
             for (int p = 0; p < stageTwoRegSize; p++) {
 
@@ -1955,6 +1957,7 @@ public class mixregGUI extends javax.swing.JFrame {
             }
 
         } else {
+            suppressed = false;
             for (int p = 0; p < stageTwoRegSize; p++) {
 
                 stageTwoGridBoxes.get(p).get(3).setSelected(false);
@@ -1964,7 +1967,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
         }
 
-        suppressed = true;
+        //suppressed = true;
     }//GEN-LAST:event_suppressIntCheckBoxActionPerformed
 
     private void runTabTwoStageOneTwoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_runTabTwoStageOneTwoActionPerformed
@@ -2887,7 +2890,6 @@ public class mixregGUI extends javax.swing.JFrame {
                     boolean selected = abstractButton.getModel().isSelected();
                     if (selected) {
                         scaleChecked = true;
-
                         if (randomChecked == true) {
                             stageTwoGridBoxes.get(row).get(3).setEnabled(true);
                             stageTwoGridBoxes.get(row).get(3).setSelected(false);
