@@ -456,7 +456,7 @@ public class DefinitionHelper implements Serializable {
         if (!validateFieldLabels(getStageTwoScaleInteractions(), getStageTwoScaleIntLabels())) {
             throw new Exception("Fatal stage two label error: number of SCALE RANDOM INTERACTIONS does not equal SCALE RANDOM INTERACTIONS labels");
         }
-        if (!validateFieldLabels(getStageTwoIntOfInteraction(), getStageTwoFirstIntLabels())) {
+        if (Integer.parseInt(getStageTwoIntOfInteraction()) != -1 && !validateFieldLabels(getStageTwoIntOfInteraction(), getStageTwoFirstIntLabels())) {
             throw new Exception("Fatal stage two label error: number of regressors THREE-WAY INTERACTION regressors to does not equal THREE-WAY INTERACTION labels");
         }
         if (!validateFieldLabels(getStageTwoFixedCount(), getStageTwoFixedFields())) {
@@ -468,7 +468,7 @@ public class DefinitionHelper implements Serializable {
         if (!validateFieldLabels(getStageTwoScaleInteractions(), getStageTwoScaleIntFields())) {
             throw new Exception("Fatal stage two field error: number of SCALE RANDOM INTERACTIONS does not equal SCALE RANDOM INTERACTIONS fields");
         }
-        if (!validateFieldLabels(getStageTwoIntOfInteraction(), getStageTwoFirstIntFields())) {
+        if (Integer.parseInt(getStageTwoIntOfInteraction()) != -1 && !validateFieldLabels(getStageTwoIntOfInteraction(), getStageTwoFirstIntFields())) {
             throw new Exception("Fatal stage two field error: number of regressors THREE-WAY INTERACTION regressors to does not equal THREE-WAY INTERACTION fields");
         }
     }

@@ -194,7 +194,7 @@ public class mixregGUI extends javax.swing.JFrame {
         stageOneTabs.setEnabledAt(1, false);
         suppressIntCheckBox.setVisible(true);
         suppressIntCheckBox.setSelected(false);
-        suppressIntCheckBox.setEnabled(false);
+        suppressIntCheckBox.setEnabled(true);
 
         //Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/resources/mixLogo.png"));
         //setIconImage(image);
@@ -1949,6 +1949,12 @@ public class mixregGUI extends javax.swing.JFrame {
         if (suppressIntCheckBox.isSelected()) {
             
             suppressed = true;
+            
+            try {
+                NewModel.defFile.setStageTwoIntOfInteraction("-1");
+            } catch (Exception ex) {
+                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
             for (int p = 0; p < stageTwoRegSize; p++) {
 
@@ -1958,6 +1964,13 @@ public class mixregGUI extends javax.swing.JFrame {
 
         } else {
             suppressed = false;
+            
+            try {
+                NewModel.defFile.setStageTwoIntOfInteraction("0");
+            } catch (Exception ex) {
+                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
             for (int p = 0; p < stageTwoRegSize; p++) {
 
                 if (stageTwoGridBoxes.get(p).get(1).isSelected() && stageTwoGridBoxes.get(p).get(2).isSelected()){
