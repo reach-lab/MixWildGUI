@@ -193,6 +193,8 @@ public class mixregGUI extends javax.swing.JFrame {
 
         stageOneTabs.setEnabledAt(1, false);
         suppressIntCheckBox.setVisible(true);
+        suppressIntCheckBox.setSelected(false);
+        suppressIntCheckBox.setEnabled(false);
 
         //Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/resources/mixLogo.png"));
         //setIconImage(image);
@@ -1944,7 +1946,9 @@ public class mixregGUI extends javax.swing.JFrame {
     private void suppressIntCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suppressIntCheckBoxActionPerformed
         // TODO add your handling code here:
 
-        if (suppressed == false) {
+        if (suppressIntCheckBox.isSelected()) {
+            
+            suppressed = true;
 
             for (int p = 0; p < stageTwoRegSize; p++) {
 
@@ -1953,16 +1957,21 @@ public class mixregGUI extends javax.swing.JFrame {
             }
 
         } else {
+            suppressed = false;
             for (int p = 0; p < stageTwoRegSize; p++) {
 
-                stageTwoGridBoxes.get(p).get(3).setSelected(false);
-                stageTwoGridBoxes.get(p).get(3).setEnabled(true);
+                if (stageTwoGridBoxes.get(p).get(1).isSelected() && stageTwoGridBoxes.get(p).get(2).isSelected()){
+                    stageTwoGridBoxes.get(p).get(3).setSelected(false);
+                    stageTwoGridBoxes.get(p).get(3).setEnabled(true);
+                }
+                
+                
 
             }
 
         }
 
-        suppressed = true;
+        //suppressed = true;
     }//GEN-LAST:event_suppressIntCheckBoxActionPerformed
 
     private void runTabTwoStageOneTwoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_runTabTwoStageOneTwoActionPerformed
@@ -2859,6 +2868,8 @@ public class mixregGUI extends javax.swing.JFrame {
                         stageTwoGridBoxes.get(row).get(1).setSelected(false);
                         stageTwoGridBoxes.get(row).get(2).setEnabled(true);
                         stageTwoGridBoxes.get(row).get(2).setSelected(false);
+                        randomChecked = false;
+                        scaleChecked = false;
                         System.out.println(disaggVarianceBoxes.size());
                     } else {
                         //disaggVarianceBoxes.get(row).get(column).setEnabled(false);
@@ -2868,6 +2879,11 @@ public class mixregGUI extends javax.swing.JFrame {
                         stageTwoGridBoxes.get(row).get(2).setSelected(false);
                         stageTwoGridBoxes.get(row).get(3).setSelected(false);
                         stageTwoGridBoxes.get(row).get(3).setEnabled(false);
+                        randomChecked = false;
+                        scaleChecked = false;
+                        suppressIntCheckBox.setEnabled(false);
+                        suppressIntCheckBox.setSelected(false);
+                        
                     }
 
                 }
@@ -2880,7 +2896,6 @@ public class mixregGUI extends javax.swing.JFrame {
                     boolean selected = abstractButton.getModel().isSelected();
                     if (selected) {
                         scaleChecked = true;
-
                         if (randomChecked == true) {
                             stageTwoGridBoxes.get(row).get(3).setEnabled(true);
                             stageTwoGridBoxes.get(row).get(3).setSelected(false);
@@ -2916,6 +2931,22 @@ public class mixregGUI extends javax.swing.JFrame {
                     }
                 }
             });
+            
+        stageTwoGridBoxes.get(j).get(3).addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                    AbstractButton abstractButton = (AbstractButton) e.getSource();
+                    boolean selected = abstractButton.getModel().isSelected();
+                    
+                    randomChecked = false;
+                    scaleChecked = false;
+
+                   suppressIntCheckBox.setEnabled(true);
+                    
+                    
+                }
+            });
+            
 
         }
 
