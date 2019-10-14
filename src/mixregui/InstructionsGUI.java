@@ -36,7 +36,7 @@ import javax.swing.JFrame;
  */
 public class InstructionsGUI extends javax.swing.JFrame {
     
-    NewModel nm;
+    //NewModel nm;
     
     
 

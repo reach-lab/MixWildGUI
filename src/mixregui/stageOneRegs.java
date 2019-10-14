@@ -43,9 +43,7 @@ import javax.swing.JOptionPane;
 public class stageOneRegs extends javax.swing.JFrame {
 
     // declare required jFrame
-    NewModel newModel2;
-
-    mixregGUI mixregStageOne;
+    // NewModel newModel2;
 
     stageTwoRegs stageTwo;
 
@@ -57,7 +55,7 @@ public class stageOneRegs extends javax.swing.JFrame {
 
     static DefaultListModel<String> levelTwoList;
 
-    static boolean isSubmitClicked = false;
+    public static boolean isSubmitClicked = false;
 
     final ImageIcon icon;
 
@@ -68,7 +66,7 @@ public class stageOneRegs extends javax.swing.JFrame {
         initComponents();
         this.setResizable(false);
 
-        newModel2 = new NewModel();
+        //newModel2 = new NewModel();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -76,7 +74,8 @@ public class stageOneRegs extends javax.swing.JFrame {
 
         //get variable names from the data set
         //variableNamesList = newModel2.getVariableNames();
-        variableNamesList = NewModel.getVariableNames();
+        variableNamesList = mixregGUI.getVariableNames();
+        System.out.println("Preparing variables of size: " + variableNamesList.length);
 
         icon = new ImageIcon(getClass().getResource("/resources/mixLogo.png"));
 
@@ -234,13 +233,13 @@ public class stageOneRegs extends javax.swing.JFrame {
         isSubmitClicked = true;
 
         //get the instance of the mixReg model declared
-        mixregStageOne = newModel2.getMixReg();
+        //mixregStageOne = mxr;
 
         //update regressors on stage one regressors window
         // mixregStageOne.updateRegressors(getSelectedLevelOneVars(), getSelectedLevelTwoVars());
         //mixregStageOne.updateLevelOneRegGrid(levelOneList);
-        mixregStageOne.updateLevelTwoGrid_version2(levelTwoList);
-        mixregStageOne.updateLevelOneGrid_version2(levelOneList);
+        mixregGUI.mxr.updateLevelTwoGrid_version2(levelTwoList);
+        mixregGUI.mxr.updateLevelOneGrid_version2(levelOneList);
 
         this.dispose();
     }//GEN-LAST:event_stageOneSubmitButtonActionPerformed

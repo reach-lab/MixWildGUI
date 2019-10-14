@@ -69,7 +69,6 @@ import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.text.DefaultCaret;
 import javax.swing.text.Document;
-import static mixregui.NewModel.defFile;
 import org.netbeans.lib.awtextra.AbsoluteLayout;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
@@ -79,7 +78,6 @@ import java.io.Serializable;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.SwingWorker;
-import mixregui.NewModel;
 import mixregui.mixregGUI;
 import org.apache.commons.io.FilenameUtils;
 
@@ -3171,7 +3169,7 @@ public class DefinitionHelper implements Serializable {
 
     public void readStageOneOutputfile() throws FileNotFoundException, IOException {
         mixregGUI.stageOneOutput.setText("");
-        String fileName = NewModel.defFile.getDataFilename();
+        String fileName = mixregGUI.defFile.getDataFilename();
         String outputFilePath = FilenameUtils.removeExtension(fileName) + "_Output_1.out";
         File file = new File(outputFilePath);
         BufferedReader br = null;
@@ -3191,11 +3189,11 @@ public class DefinitionHelper implements Serializable {
     public void readStageTwoOutputfile() throws FileNotFoundException, IOException {
 
         mixregGUI.stageTwoOutput.setText("");
-        if (NewModel.defFile.getAdvancedDropSecondStage().equals("1")) {
+        if (mixregGUI.defFile.getAdvancedDropSecondStage().equals("1")) {
 
             //do nothing
         } else {
-            String fileName = NewModel.defFile.getDataFilename();
+            String fileName = mixregGUI.defFile.getDataFilename();
             String outputFilePath = FilenameUtils.removeExtension(fileName) + "_Output_2.out";
             File file = new File(outputFilePath);
             BufferedReader br = null;

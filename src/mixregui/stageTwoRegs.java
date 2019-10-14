@@ -43,8 +43,8 @@ public class stageTwoRegs extends javax.swing.JFrame {
 
     //setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     stageOneRegs stageOne;
-    NewModel newModel2;
-    mixregGUI mixregGUIStageTwo;
+    //NewModel newModel2;
+    //mixregGUI mixregGUIStageTwo;
 
     static DefaultListModel<String> stageTwoListModel;
     static DefaultListModel<String> stageTwoLevelTwo;
@@ -64,7 +64,7 @@ public class stageTwoRegs extends javax.swing.JFrame {
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
 
-        newModel2 = new NewModel();
+        //newModel2 = new NewModel();
         icon = new ImageIcon(getClass().getResource("/resources/mixLogo.png"));
 
         if (!isStageTwoSubmitClicked) {
@@ -187,11 +187,11 @@ public class stageTwoRegs extends javax.swing.JFrame {
         //mixregGUI.
         isStageTwoSubmitClicked = true;
 
-        mixregGUIStageTwo = newModel2.getMixReg();
+        //mixregGUIStageTwo = newModel2.getMixReg();
         // mixregGUIStageTwo.updateStageTwoGrid_version2(stageTwoLevelTwo);
 
         //mixregGUIStageTwo.setSele
-        mixregGUIStageTwo.updateStageTwoGrid_tab2(stageTwoLevelTwo);
+        mixregGUI.mxr.updateStageTwoGrid_tab2(stageTwoLevelTwo);
 
         this.dispose();
     }//GEN-LAST:event_stageTwoSubmitButtonActionPerformed
