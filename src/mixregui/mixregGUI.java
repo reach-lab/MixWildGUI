@@ -1717,6 +1717,12 @@ public class mixregGUI extends javax.swing.JFrame {
                 stageTwoGridBoxes.get(p).get(3).setSelected(false);
                 stageTwoGridBoxes.get(p).get(3).setEnabled(false);
             }
+            try {
+                defFile.setStageTwoFirstIntFields(new String[0]);
+                defFile.setStageTwoFirstIntLabels(new String[0]);
+            } catch (Exception ex) {
+                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
         } else {
             suppressed = false;
@@ -2226,7 +2232,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 System.out.println("From defHelper | Stage 1 BS REGRESSOR LABELS): " + Arrays.toString(defFile.getLabelModelBSRegressors()));
                 defFile.setLabelModelBSRegressorsLevelOne(getModelBSLabelsLevelOne());
                 System.out.println("From defHelper | LEVEL 1 BS REGRESSOR LABELS): " + Arrays.toString(defFile.getLabelModelBSRegressorsLevelOne()));
-                defFile.setLabelModelBSRegressorsLevelOne(getModelBSLabelsLevelTwo());
+                defFile.setLabelModelBSRegressorsLevelTwo(getModelBSLabelsLevelTwo());
                 System.out.println("From defHelper | LEVEL 2 BS REGRESSOR LABELS): " + Arrays.toString(defFile.getLabelModelBSRegressorsLevelTwo()));
             } catch (Exception ex) {
                 catchCount = 1;
@@ -3760,7 +3766,7 @@ public class mixregGUI extends javax.swing.JFrame {
                         stageTwoGridBoxes.get(row).get(2).setSelected(false);
                         randomChecked = false;
                         scaleChecked = false;
-                        System.out.println(disaggVarianceBoxes.size());
+//                        System.out.println(disaggVarianceBoxes.size());
                     } else {
                         //disaggVarianceBoxes.get(row).get(column).setEnabled(false);
                         stageTwoGridBoxes.get(row).get(1).setEnabled(false);
@@ -3787,14 +3793,18 @@ public class mixregGUI extends javax.swing.JFrame {
                     if (selected) {
                         scaleChecked = true;
                         if (randomChecked == true) {
-                            stageTwoGridBoxes.get(row).get(3).setEnabled(true);
-                            stageTwoGridBoxes.get(row).get(3).setSelected(false);
+                            if(!suppressed){
+                                stageTwoGridBoxes.get(row).get(3).setEnabled(true);
+                                stageTwoGridBoxes.get(row).get(3).setSelected(false);
+                            }
                         }
 
                     } else {
                         scaleChecked = false;
-                        stageTwoGridBoxes.get(row).get(3).setEnabled(false);
-                        stageTwoGridBoxes.get(row).get(3).setSelected(false);
+                        if(!suppressed){
+                            stageTwoGridBoxes.get(row).get(3).setEnabled(false);
+                            stageTwoGridBoxes.get(row).get(3).setSelected(false);
+                        }
                     }
                 }
             });
@@ -3809,14 +3819,18 @@ public class mixregGUI extends javax.swing.JFrame {
                         randomChecked = true;
 
                         if (scaleChecked == true) {
-                            stageTwoGridBoxes.get(row).get(3).setEnabled(true);
-                            stageTwoGridBoxes.get(row).get(3).setSelected(false);
+                            if(!suppressed){
+                                stageTwoGridBoxes.get(row).get(3).setEnabled(true);
+                                stageTwoGridBoxes.get(row).get(3).setSelected(false);
+                            }
                         }
 
                     } else {
                         randomChecked = false;
-                        stageTwoGridBoxes.get(row).get(3).setEnabled(false);
-                        stageTwoGridBoxes.get(row).get(3).setSelected(false);
+                        if(!suppressed){
+                            stageTwoGridBoxes.get(row).get(3).setEnabled(false);
+                            stageTwoGridBoxes.get(row).get(3).setSelected(false);
+                        }
 
                     }
                 }
