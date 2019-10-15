@@ -1690,6 +1690,10 @@ public class mixregGUI extends javax.swing.JFrame {
         stageTwoPanel.removeAll();
         stageTwoPanel.revalidate();
         stageTwoPanel.repaint();
+        
+        stage_2_regs.stageTwoLevelTwo.clear();
+        updateStageTwoGrid_tab2(stage_2_regs.stageTwoLevelTwo);
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void stageTwoOutcomeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_stageTwoOutcomeItemStateChanged
@@ -2683,7 +2687,7 @@ public class mixregGUI extends javax.swing.JFrame {
         
         buttonGroup1.clearSelection();
         
-        addStageTwoTabTwo.setEnabled(false);
+        //addStageTwoTabTwo.setEnabled(false);
 
         levelTwoPanel.removeAll();
         levelTwoPanel.revalidate();
@@ -2692,6 +2696,13 @@ public class mixregGUI extends javax.swing.JFrame {
         levelOnePanel.removeAll();
         levelOnePanel.revalidate();
         levelOnePanel.repaint();
+        
+        stage_1_regs.updateAllVariables();
+
+        stage_1_regs.levelOneList.clear();
+        stage_1_regs.levelTwoList.clear();
+        updateLevelTwoGrid_version2(stage_1_regs.levelTwoList);
+        updateLevelOneGrid_version2(stage_1_regs.levelOneList);
         
     }//GEN-LAST:event_resetButtonActionPerformed
 
@@ -3372,7 +3383,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
         buttonGroup1.clearSelection();
         
-        addStageTwoTabTwo.setEnabled(false);
+        //addStageTwoTabTwo.setEnabled(false);
 
         levelTwoPanel.removeAll();
         levelTwoPanel.revalidate();
