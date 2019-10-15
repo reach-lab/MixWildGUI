@@ -722,10 +722,10 @@ public class mixregGUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel24.setText("Random Location Effects:");
+        jLabel24.setText("Specify random location effects:");
 
         buttonGroup2.add(oneRLERadio);
-        oneRLERadio.setText("Intercept");
+        oneRLERadio.setText("Intercept only");
         oneRLERadio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 oneRLERadioActionPerformed(evt);
@@ -733,14 +733,14 @@ public class mixregGUI extends javax.swing.JFrame {
         });
 
         buttonGroup2.add(moreThanOneRLERadio);
-        moreThanOneRLERadio.setText("Intercept + Slope(s)");
+        moreThanOneRLERadio.setText("Intercept and Slope(s)");
         moreThanOneRLERadio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 moreThanOneRLERadioActionPerformed(evt);
             }
         });
 
-        jLabel25.setText("Random Scale?");
+        jLabel25.setText("Include estimates of random scale:");
 
         randomScaleCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -889,7 +889,7 @@ public class mixregGUI extends javax.swing.JFrame {
                                         .addComponent(jLabel28)
                                         .addGap(263, 263, 263))
                                     .addComponent(jSeparator8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(5, 5, 5))
+                        .addGap(49, 49, 49))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel13Layout.createSequentialGroup()
                         .addGap(125, 125, 125)
                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -905,9 +905,9 @@ public class mixregGUI extends javax.swing.JFrame {
                                         .addComponent(randomScaleCheckBox))
                                     .addGroup(jPanel13Layout.createSequentialGroup()
                                         .addComponent(jLabel24)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(oneRLERadio, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(oneRLERadio, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(10, 10, 10)
                                         .addComponent(moreThanOneRLERadio))
                                     .addComponent(jSeparator16, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel13Layout.createSequentialGroup()
@@ -926,8 +926,9 @@ public class mixregGUI extends javax.swing.JFrame {
                                         .addGap(0, 0, 0)
                                         .addComponent(dichotomousRadio)
                                         .addGap(0, 0, 0)
-                                        .addComponent(noneRadio, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                .addGap(381, 381, 381))
+                                        .addComponent(noneRadio, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(44, 44, 44)))
+                .addGap(337, 337, 337))
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -962,14 +963,14 @@ public class mixregGUI extends javax.swing.JFrame {
                         .addComponent(jSeparator16, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(oneRLERadio)
-                                .addComponent(moreThanOneRLERadio))
+                            .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(moreThanOneRLERadio)
+                                .addComponent(oneRLERadio))
                             .addComponent(jLabel24))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel25)
-                            .addComponent(randomScaleCheckBox)))
+                            .addComponent(randomScaleCheckBox)
+                            .addComponent(jLabel25)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLabel30)
