@@ -54,7 +54,7 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.text.Document;
-import static mixregui.NewModel.defFile;
+import static mixregui.mixregGUI.defFile;
 import org.apache.commons.io.FilenameUtils;
 
 /**
