@@ -81,7 +81,7 @@ public class advancedOptions extends javax.swing.JFrame {
         resampleCheckBox.setSelected(true);
 
         //variables to save values:
-        if (NewModel.NoneVar == true) {
+        if (mixregGUI.NoneVar == true) {
 
             resampleSpinner.setEnabled(false);
             resampleCheckBox.setEnabled(false);
@@ -327,14 +327,14 @@ public class advancedOptions extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        //defFile3 = NewModel.defFile;
+        //defFile3 = mixregGUI.defFile;
         int tryCount = 0;
         int catchCount = 0;
 
         //Assign parameters to definition library
         try {
-            NewModel.defFile.setAdvancedConvergence(String.valueOf(convergenceCriteria.getText()));
-            System.out.println("From defHelper | Convergence: " + NewModel.defFile.getAdvancedConvergence());
+            mixregGUI.defFile.setAdvancedConvergence(String.valueOf(convergenceCriteria.getText()));
+            System.out.println("From defHelper | Convergence: " + mixregGUI.defFile.getAdvancedConvergence());
             tryCount = 1;
 
         } catch (Exception ex) {
@@ -344,18 +344,18 @@ public class advancedOptions extends javax.swing.JFrame {
         }
 
         try {
-            NewModel.defFile.setAdvancedCutoffLower("0");
-            System.out.println("CUT OFF: " + NewModel.defFile.getAdvancedCutoffLower());
+            mixregGUI.defFile.setAdvancedCutoffLower("0");
+            System.out.println("CUT OFF: " + mixregGUI.defFile.getAdvancedCutoffLower());
             tryCount = 1;
         } catch (Exception ex) {
-            Logger.getLogger(NewModel.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             catchCount = 1;
         }
 
         try {
-            NewModel.defFile.setAdvancedDiscardSubjects(getDiscardSubjectsCheck());
-            System.out.println("DISCARD SUBJECTS: " + NewModel.defFile.getAdvancedDiscardSubjects());
+            mixregGUI.defFile.setAdvancedDiscardSubjects(getDiscardSubjectsCheck());
+            System.out.println("DISCARD SUBJECTS: " + mixregGUI.defFile.getAdvancedDiscardSubjects());
             tryCount = 1;
         } catch (Exception ex) {
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
@@ -365,8 +365,8 @@ public class advancedOptions extends javax.swing.JFrame {
 
         //set quadrature points
         try {
-            NewModel.defFile.setAdvancedQuadPoints(String.valueOf(quadriturePoints.getValue()));
-            System.out.println("From defHelper | Quadriture Points: " + NewModel.defFile.getAdvancedQuadPoints());
+            mixregGUI.defFile.setAdvancedQuadPoints(String.valueOf(quadriturePoints.getValue()));
+            System.out.println("From defHelper | Quadriture Points: " + mixregGUI.defFile.getAdvancedQuadPoints());
             tryCount = 1;
         } catch (Exception ex) {
             catchCount = 1;
@@ -375,8 +375,8 @@ public class advancedOptions extends javax.swing.JFrame {
         }
 
         try {
-            NewModel.defFile.setAdvancedMaxIteration(String.valueOf(getMaximumIterations()));
-            System.out.println("From defHelper | Maximum Iteraions: " + NewModel.defFile.getAdvancedMaxIteration());
+            mixregGUI.defFile.setAdvancedMaxIteration(String.valueOf(getMaximumIterations()));
+            System.out.println("From defHelper | Maximum Iteraions: " + mixregGUI.defFile.getAdvancedMaxIteration());
             tryCount = 1;
         } catch (Exception ex) {
             catchCount = 1;
@@ -385,8 +385,8 @@ public class advancedOptions extends javax.swing.JFrame {
         }
 
         try {
-            NewModel.defFile.setModelFixedInt(String.valueOf(isMeanSubModelChecked()));
-            System.out.println("From defHelper | Mean SubModel Checked?: " + NewModel.defFile.getModelFixedInt());
+            mixregGUI.defFile.setModelFixedInt(String.valueOf(isMeanSubModelChecked()));
+            System.out.println("From defHelper | Mean SubModel Checked?: " + mixregGUI.defFile.getModelFixedInt());
             tryCount = 1;
         } catch (Exception ex) {
             catchCount = 1;
@@ -395,10 +395,10 @@ public class advancedOptions extends javax.swing.JFrame {
         }
 
         try {
-            NewModel.defFile.setModelRandomInt(String.valueOf(isBSVarianceChecked()));
-            NewModel.defFile.setModelBetweenInt(String.valueOf(isBSVarianceChecked()));
-            System.out.println("From defHelper | BS SubModel Checked?: " + NewModel.defFile.getModelRandomInt());
-            System.out.println("From defHelper | BS SubModel Checked?: " + NewModel.defFile.getModelBetweenInt());
+            mixregGUI.defFile.setModelRandomInt(String.valueOf(isBSVarianceChecked()));
+            mixregGUI.defFile.setModelBetweenInt(String.valueOf(isBSVarianceChecked()));
+            System.out.println("From defHelper | BS SubModel Checked?: " + mixregGUI.defFile.getModelRandomInt());
+            System.out.println("From defHelper | BS SubModel Checked?: " + mixregGUI.defFile.getModelBetweenInt());
             tryCount = 1;
         } catch (Exception ex) {
             catchCount = 1;
@@ -407,10 +407,10 @@ public class advancedOptions extends javax.swing.JFrame {
         }
 
         try {
-            NewModel.defFile.setModelScaleInt(String.valueOf(isWSVarianceChecked()));
-            NewModel.defFile.setModelWithinInt(String.valueOf(isWSVarianceChecked()));
-            System.out.println("From defHelper | WS SubModel Checked?: " + NewModel.defFile.getModelScaleInt());
-            System.out.println("From defHelper | WS SubModel Checked?: " + NewModel.defFile.getModelWithinInt());
+            mixregGUI.defFile.setModelScaleInt(String.valueOf(isWSVarianceChecked()));
+            mixregGUI.defFile.setModelWithinInt(String.valueOf(isWSVarianceChecked()));
+            System.out.println("From defHelper | WS SubModel Checked?: " + mixregGUI.defFile.getModelScaleInt());
+            System.out.println("From defHelper | WS SubModel Checked?: " + mixregGUI.defFile.getModelWithinInt());
             tryCount = 1;
         } catch (Exception ex) {
             catchCount = 1;
@@ -419,8 +419,8 @@ public class advancedOptions extends javax.swing.JFrame {
         }
 
         try {
-            NewModel.defFile.setAdvancedAdaptiveQuad(String.valueOf(isAdaptiveQuadritureChecked()));
-            System.out.println("From defHelper | Adaptive Quadriture Checked?: " + NewModel.defFile.getAdvancedAdaptiveQuad());
+            mixregGUI.defFile.setAdvancedAdaptiveQuad(String.valueOf(isAdaptiveQuadritureChecked()));
+            System.out.println("From defHelper | Adaptive Quadriture Checked?: " + mixregGUI.defFile.getAdvancedAdaptiveQuad());
             tryCount = 1;
         } catch (Exception ex) {
             catchCount = 1;
@@ -429,8 +429,8 @@ public class advancedOptions extends javax.swing.JFrame {
         }
 
         try {
-            NewModel.defFile.setAdvancedRidge(String.valueOf(getRidge()));
-            System.out.println("From defHelper | Ridge: " + NewModel.defFile.getAdvancedRidge());
+            mixregGUI.defFile.setAdvancedRidge(String.valueOf(getRidge()));
+            System.out.println("From defHelper | Ridge: " + mixregGUI.defFile.getAdvancedRidge());
             tryCount = 1;
         } catch (Exception ex) {
             catchCount = 1;
@@ -439,8 +439,8 @@ public class advancedOptions extends javax.swing.JFrame {
         }
 
         try {
-            NewModel.defFile.setAdvancedCenterScale(String.valueOf(isCenterRegressorChecked()));
-            System.out.println("From defHelper | Scale Regressor: " + NewModel.defFile.getAdvancedCenterScale());
+            mixregGUI.defFile.setAdvancedCenterScale(String.valueOf(isCenterRegressorChecked()));
+            System.out.println("From defHelper | Scale Regressor: " + mixregGUI.defFile.getAdvancedCenterScale());
             tryCount = 1;
         } catch (Exception ex) {
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
@@ -448,8 +448,8 @@ public class advancedOptions extends javax.swing.JFrame {
         }
 
         try {
-            NewModel.defFile.setAdvancedResampleCount(getResamplingRate());
-            System.out.println("From defHelper | Resample count: " + NewModel.defFile.getAdvancedResampleCount());
+            mixregGUI.defFile.setAdvancedResampleCount(getResamplingRate());
+            System.out.println("From defHelper | Resample count: " + mixregGUI.defFile.getAdvancedResampleCount());
         } catch (Exception ex) {
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
@@ -497,9 +497,9 @@ public class advancedOptions extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         if (resampleCheckBox.isSelected()) {
-            NewModel.defFile.win32 = Boolean.TRUE;
+            mixregGUI.defFile.win32 = Boolean.TRUE;
         } else {
-            NewModel.defFile.win32 = Boolean.FALSE;
+            mixregGUI.defFile.win32 = Boolean.FALSE;
         }
     }//GEN-LAST:event_resampleCheckBoxActionPerformed
 
