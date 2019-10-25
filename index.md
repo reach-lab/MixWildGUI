@@ -13,6 +13,11 @@
 
 [Example Dataset MixWILD](/Mixwild_example_data.csv)
 
+### Citation request ###
+If you are using MixWILD in your research or data analysis, please cite the following paper:
+
+Dzubur, E., Ponnada, A., Nordgren, R., Yang, C., Intille, S. S., Dunton, G. F., & Hedeker, D., (2019). MixWILD: A program for examining the effects of variance and slope of time-varying variables in intensive longitudinal data. Behavior Research Methods, XX(X), XX-XX (in press).
+
 ### SBM Attendees ###
 
 Download slides for Part 1 here: [Details and Application of EMA](/SBM_Part_1.pdf)
