@@ -1,7 +1,12 @@
 # README #
 
 ### What is this project about? ###
-MixWILD (Also Mixed-effects modeling with Intensive Longitudinal Data) is a desktop GUI based application to easily perform multilevel mixed model analysis of intensive longitudinal data (such as experience sampling data). It has beendeveloped as a collaboration between Northeastern University, University of Southern California, and University of Chicago. 
+MixWILD (Also Mixed-effects modeling with Intensive Longitudinal Data) is a desktop GUI based application to easily perform multilevel mixed model analysis of intensive longitudinal data (such as experience sampling data). It has beendeveloped as a collaboration between Northeastern University, University of Southern California, and University of Chicago.
+
+### Citation request
+If you have used MixWILD in your data analaysis, please cite the following:
+
+Dzubur, E., Ponnada, A., Nordgren, R., Yang, C., Intille, S. S., Dunton, G. F., & Hedeker, D., (2008). MixWILD: A program for examining the effects of variance and slope of time-varying variables in intensive longitudinal data. Behavior Research Methods, XX(X), XX-XX (in press).
 
 ## Want to learn more and get in touch? ##
 
