@@ -1,3 +1,4 @@
+=======
 # README #
 
 ### What is this project about? ###
@@ -52,5 +53,3 @@ Please note that MixWILD maynot function the same in 32-bit windows because some
 - For questions on UI, contact Aditya Ponnada
 - For questions on DefHelper classes, contact Dr. Eldin Dzubur
 - For questions on Mix Reg programs, contact Prof. Don Hedekker
-
-

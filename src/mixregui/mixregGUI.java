@@ -513,7 +513,47 @@ public class mixregGUI extends javax.swing.JFrame {
         icon = new ImageIcon(getClass().getResource("/resources/MixWildLogoTiny.png"));
         //updateMixRegGUI();
         //this.setResizable(false);
-
+        
+        // hide components for user operating in order
+        newModelSubmit.setVisible(false);
+        titleField.setVisible(false);
+        oneRLERadio.setVisible(false);
+        moreThanOneRLERadio.setVisible(false);
+        continuousRadio.setVisible(false);
+        dichotomousRadio.setVisible(false);
+        newModelSubmit.setVisible(false);
+        missingValuePresent.setVisible(false);
+        missingValueAbsent.setVisible(false);
+        noneRadio.setVisible(false);
+        newModel_resetButton.setVisible(false);
+        randomScaleCheckBox.setVisible(false);
+        randomScaleCheckBox.setVisible(false);   
+        
+        jLabel19.setVisible(false);
+        jLabel27.setVisible(false);
+        jLabel28.setVisible(false);
+        newModelMissingValueCode.setVisible(false);
+        
+        jLabel24.setVisible(false);
+        jLabel25.setVisible(false);
+        jLabel30.setVisible(false);
+        
+        jLabel26.setVisible(false);
+        jLabel31.setVisible(false);
+        
+        jSeparator16.setVisible(false);
+        jSeparator8.setVisible(false);
+        
+        setSeedLabel.setVisible(false);
+        seedTextBox.setVisible(false);
+        seedHelpButton.setVisible(false);
+        // hide tabs
+        stageOneTabs.setEnabledAt(1,false);
+        stageOneTabs.setEnabledAt(2,false);
+        stageOneTabs.setEnabledAt(3,false);
+        stageOneTabs.setEnabledAt(4,false);
+        stageOneTabs.setEnabledAt(5,false);
+        stageOneTabs.setEnabledAt(6,false);        
         
         // TODO: Fix superuser menu code
         //superUserMenu.setVisible(SUPERUSER_KEY > 2);
@@ -596,9 +636,9 @@ public class mixregGUI extends javax.swing.JFrame {
         levelTwoPanel = new javax.swing.JPanel();
         levelTwoGrid = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
-        StageOneVariableCombo = new javax.swing.JComboBox<String>();
+        StageOneVariableCombo = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        IDvariableCombo = new javax.swing.JComboBox<String>();
+        IDvariableCombo = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jSeparator9 = new javax.swing.JSeparator();
         jSeparator10 = new javax.swing.JSeparator();
@@ -630,7 +670,7 @@ public class mixregGUI extends javax.swing.JFrame {
         stageTwoRegsGrid = new javax.swing.JPanel();
         runTabTwoStageOneTwo = new javax.swing.JButton();
         suppressIntCheckBox = new javax.swing.JCheckBox();
-        stageTwoOutcome = new javax.swing.JComboBox<String>();
+        stageTwoOutcome = new javax.swing.JComboBox<>();
         jLabel22 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jSeparator12 = new javax.swing.JSeparator();
@@ -688,6 +728,9 @@ public class mixregGUI extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         parentPanel.setLayout(new java.awt.CardLayout());
+
+        stageOneTabs.setToolTipText("");
+        stageOneTabs.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel16.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
         jLabel16.setText("Is your dataset Mix{WILD} friendly?");
@@ -1001,7 +1044,7 @@ public class mixregGUI extends javax.swing.JFrame {
                     .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(newModel_resetButton)
                     .addComponent(newModelSubmit))
-                .addContainerGap(325, Short.MAX_VALUE))
+                .addContainerGap(377, Short.MAX_VALUE))
         );
 
         stageOneTabs.addTab("Model Configuration", jPanel13);
@@ -1091,7 +1134,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        StageOneVariableCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        StageOneVariableCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         StageOneVariableCombo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 StageOneVariableComboItemStateChanged(evt);
@@ -1107,7 +1150,7 @@ public class mixregGUI extends javax.swing.JFrame {
         jLabel2.setText("Stage 1 Outcome:");
         jPanel8.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, -1));
 
-        IDvariableCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        IDvariableCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         IDvariableCombo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 IDvariableComboItemStateChanged(evt);
@@ -1216,7 +1259,7 @@ public class mixregGUI extends javax.swing.JFrame {
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel21)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(randomLocationEffectsLabel)
@@ -1318,7 +1361,7 @@ public class mixregGUI extends javax.swing.JFrame {
         });
         jPanel12.add(suppressIntCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 520, 240, -1));
 
-        stageTwoOutcome.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        stageTwoOutcome.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         stageTwoOutcome.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 stageTwoOutcomeItemStateChanged(evt);
@@ -1399,7 +1442,7 @@ public class mixregGUI extends javax.swing.JFrame {
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 662, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 726, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1429,7 +1472,7 @@ public class mixregGUI extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(226, Short.MAX_VALUE))
+                .addContainerGap(203, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1598,7 +1641,7 @@ public class mixregGUI extends javax.swing.JFrame {
                     .addComponent(printedFileName))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(275, Short.MAX_VALUE))
+                .addContainerGap(343, Short.MAX_VALUE))
         );
 
         stageOneTabs.addTab("View Data", jPanel6);
@@ -2774,7 +2817,44 @@ public class mixregGUI extends javax.swing.JFrame {
             dataFileNameRef = fileName;
             filePath.setText(fileName);
             //enable other buttons here:
+            titleField.setVisible(true);
             titleField.setEnabled(true);
+            
+            // 10/22 reveal components in Model Congifuration
+            newModelSubmit.setVisible(true);
+            titleField.setVisible(true);
+            oneRLERadio.setVisible(true);
+            moreThanOneRLERadio.setVisible(true);
+            continuousRadio.setVisible(true);
+            dichotomousRadio.setVisible(true);
+            newModelSubmit.setVisible(true);
+            missingValuePresent.setVisible(true);
+            missingValueAbsent.setVisible(true);
+            noneRadio.setVisible(true);
+            newModel_resetButton.setVisible(true);
+            randomScaleCheckBox.setVisible(true);
+            randomScaleCheckBox.setVisible(true);   
+
+            jLabel19.setVisible(true);
+            jLabel27.setVisible(true);
+            jLabel28.setVisible(true);
+            newModelMissingValueCode.setVisible(true);
+
+            jLabel24.setVisible(true);
+            jLabel25.setVisible(true);
+            jLabel30.setVisible(true);
+
+            jLabel26.setVisible(true);
+            jLabel31.setVisible(true);
+
+            jSeparator16.setVisible(true);
+            jSeparator8.setVisible(true);
+
+            setSeedLabel.setVisible(true);
+            seedTextBox.setVisible(true);
+            seedHelpButton.setVisible(true);
+
+  
             //subtitleField.setEnabled(true);
             //randomLocationEffects.setEnabled(true);
             oneRLERadio.setEnabled(true);
@@ -3237,7 +3317,16 @@ public class mixregGUI extends javax.swing.JFrame {
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
-
+        
+        // Enable hidden tabs
+        stageOneTabs.setEnabledAt(1,true);
+        stageOneTabs.setEnabledAt(2,true);
+        stageOneTabs.setEnabledAt(3,true);
+        stageOneTabs.setEnabledAt(4,true);
+        stageOneTabs.setEnabledAt(5,true);
+        stageOneTabs.setEnabledAt(6,true);    
+            
+            
         } else {
 
             System.out.println("VALIDATION OF FIELDS: " + String.valueOf(false));
