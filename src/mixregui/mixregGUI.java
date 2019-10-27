@@ -522,8 +522,55 @@ public class mixregGUI extends javax.swing.JFrame {
         stageTwoSingleLevel.setEnabled(true);
         stageTwoSingleLevel.setSelected(true);
         stageTwoMultiLevel.setEnabled(false);
-        
+                    
+      
         icon = new ImageIcon(getClass().getResource("/resources/MixWildLogoTiny.png"));
+        //updateMixRegGUI();
+        //this.setResizable(false);
+        
+        // hide components for user operating in order
+      // fix this code from jixin
+      /*
+        newModelSubmit.setVisible(false);
+        titleField.setVisible(false);
+        oneRLERadio.setVisible(false);
+        moreThanOneRLERadio.setVisible(false);
+        continuousRadio.setVisible(false);
+        dichotomousRadio.setVisible(false);
+        newModelSubmit.setVisible(false);
+        missingValuePresent.setVisible(false);
+        missingValueAbsent.setVisible(false);
+        noneRadio.setVisible(false);
+        newModel_resetButton.setVisible(false);
+        randomScaleCheckBox.setVisible(false);
+        randomScaleCheckBox.setVisible(false);   
+        
+        jLabel19.setVisible(false);
+        jLabel27.setVisible(false);
+        jLabel28.setVisible(false);
+        newModelMissingValueCode.setVisible(false);
+        
+        jLabel24.setVisible(false);
+        jLabel25.setVisible(false);
+        jLabel30.setVisible(false);
+        
+        jLabel26.setVisible(false);
+        jLabel31.setVisible(false);
+        
+        jSeparator16.setVisible(false);
+        jSeparator8.setVisible(false);
+        
+        setSeedLabel.setVisible(false);
+        seedTextBox.setVisible(false);
+        seedHelpButton.setVisible(false);
+        // hide tabs
+        stageOneTabs.setEnabledAt(1,false);
+        stageOneTabs.setEnabledAt(2,false);
+        stageOneTabs.setEnabledAt(3,false);
+        stageOneTabs.setEnabledAt(4,false);
+        stageOneTabs.setEnabledAt(5,false);
+        stageOneTabs.setEnabledAt(6,false);
+        */
         //updateMixRegGUI();
         //this.setResizable(false);
 
