@@ -114,82 +114,17 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="-2" pref="206" max="-2" attributes="0"/>
-                          <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="305" pref="305" max="-2" attributes="0"/>
+                          <Component id="jLabel29" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
                           <Component id="newModel_resetButton" min="-2" pref="90" max="-2" attributes="0"/>
-                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                           <Component id="newModelSubmit" min="-2" pref="90" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="411" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="136" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="jLabel30" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="jLabel32" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="stageOneContinuousRadio" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="stageOneDichotomousRadio" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="stageOneOrdinalRadio" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="stageOneOutcomeHelpButton" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="jSeparator16" min="-2" pref="524" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="oneRLERadio" min="-2" pref="124" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="moreThanOneRLERadio" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="randomScaleSelectionYes" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="randomScaleSelectionNo" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="38" pref="38" max="-2" attributes="0"/>
-                                          <Component id="titleField" min="-2" pref="330" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="dataFileLabel" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="7" pref="7" max="-2" attributes="0"/>
-                                          <Component id="filePath" min="-2" pref="330" max="-2" attributes="0"/>
-                                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                          <Component id="fileBrowseButton" min="-2" pref="90" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="jButton2" min="-2" pref="110" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel27" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel28" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="newModelMissingValueCode" min="-2" pref="77" max="-2" attributes="0"/>
-                                              <Group type="102" attributes="0">
-                                                  <Component id="missingValuePresent" min="-2" pref="60" max="-2" attributes="0"/>
-                                                  <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                                                  <Component id="missingValueAbsent" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="384" max="-2" attributes="0"/>
-                              </Group>
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <Component id="stageTwoModelGiantLabel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
@@ -237,6 +172,74 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="317" max="-2" attributes="0"/>
                               </Group>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="stageOneModelGiantLabel" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <Component id="stageOneOutcomeViewLabel" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="stageOneContinuousRadio" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="stageOneDichotomousRadio" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="stageOneOrdinalRadio" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="stageOneOutcomeHelpButton" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Component id="jSeparator16" min="-2" pref="524" max="-2" attributes="0"/>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="rleViewLabel" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="oneRLERadio" min="-2" pref="124" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="moreThanOneRLERadio" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="randomScaleViewLabel" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                  <Component id="randomScaleSelectionYes" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="randomScaleSelectionNo" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="titleViewLabel" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="38" pref="38" max="-2" attributes="0"/>
+                                                  <Component id="titleField" min="-2" pref="330" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="dataFileLabel" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="7" pref="7" max="-2" attributes="0"/>
+                                                  <Component id="filePath" min="-2" pref="330" max="-2" attributes="0"/>
+                                                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                                                  <Component id="fileBrowseButton" min="-2" pref="90" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                  <Component id="jButton2" min="-2" pref="110" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="missingViewLabel" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="newModelMissingValueCode" min="-2" pref="77" max="-2" attributes="0"/>
+                                                      <Group type="102" attributes="0">
+                                                          <Component id="missingValuePresent" min="-2" pref="60" max="-2" attributes="0"/>
+                                                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                                                          <Component id="missingValueAbsent" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                  </Group>
+                                              </Group>
+                                              <Component id="missingCodeViewLabel" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Component id="hiddenBigIconLabel" alignment="0" min="-2" pref="905" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
@@ -249,7 +252,7 @@
                               <Component id="jLabel16" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                               <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
@@ -258,27 +261,29 @@
                               <Component id="filePath" min="-2" max="-2" attributes="0"/>
                               <Component id="fileBrowseButton" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
+                              <Component id="titleViewLabel" min="-2" max="-2" attributes="0"/>
                               <Component id="titleField" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
+                              <Component id="missingViewLabel" min="-2" max="-2" attributes="0"/>
                               <Component id="missingValuePresent" min="-2" pref="20" max="-2" attributes="0"/>
                               <Component id="missingValueAbsent" min="-2" pref="20" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel28" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                              <Component id="missingCodeViewLabel" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                               <Component id="newModelMissingValueCode" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                          <Component id="jSeparator16" min="-2" pref="25" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
+                          <Component id="hiddenBigIconLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jSeparator16" min="-2" pref="25" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel32" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="stageOneOutcomeViewLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="stageOneContinuousRadio" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="stageOneDichotomousRadio" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="stageOneOrdinalRadio" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -288,7 +293,7 @@
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="rleViewLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="oneRLERadio" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="moreThanOneRLERadio" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
@@ -296,20 +301,20 @@
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jLabel30" min="-2" max="-2" attributes="0"/>
+                                  <Component id="stageOneModelGiantLabel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
+                              <Component id="randomScaleViewLabel" min="-2" max="-2" attributes="0"/>
                               <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                                   <Component id="randomScaleSelectionYes" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="randomScaleSelectionNo" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                           <Component id="jSeparator8" min="-2" pref="25" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="includeStageTwoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="includeStageTwoYes" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -338,19 +343,19 @@
                                   <Component id="stageTwoModelGiantLabel" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="7" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="setSeedLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="seedTextBox" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="seedHelpButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel29" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="jLabel29" pref="63" max="32767" attributes="0"/>
                               <Component id="newModel_resetButton" min="-2" max="-2" attributes="0"/>
                               <Component id="newModelSubmit" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="613" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="613" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -390,7 +395,7 @@
                     <Property name="text" type="java.lang.String" value="Data File: "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel19">
+                <Component class="javax.swing.JLabel" name="titleViewLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Title:"/>
                   </Properties>
@@ -402,7 +407,7 @@
                 </Component>
                 <Component class="javax.swing.JSeparator" name="jSeparator8">
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel24">
+                <Component class="javax.swing.JLabel" name="rleViewLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Specify random location effects:"/>
                   </Properties>
@@ -429,7 +434,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="moreThanOneRLERadioActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel25">
+                <Component class="javax.swing.JLabel" name="randomScaleViewLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Include estimates of random scale:"/>
                   </Properties>
@@ -483,12 +488,12 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="missingValuePresentActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel27">
+                <Component class="javax.swing.JLabel" name="missingViewLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Does your data contain missing values?"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel28">
+                <Component class="javax.swing.JLabel" name="missingCodeViewLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="What is your missing data coded as?"/>
                   </Properties>
@@ -537,7 +542,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="seedHelpButtonActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel30">
+                <Component class="javax.swing.JLabel" name="stageOneModelGiantLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Stage 1 Model"/>
                   </Properties>
@@ -549,7 +554,7 @@
                 </Component>
                 <Component class="javax.swing.JSeparator" name="jSeparator16">
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel32">
+                <Component class="javax.swing.JLabel" name="stageOneOutcomeViewLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Stage 1 outcome:"/>
                   </Properties>
@@ -676,6 +681,8 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stageTwoDescriptionActionPerformed"/>
                   </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="hiddenBigIconLabel">
                 </Component>
               </SubComponents>
             </Container>
@@ -1632,7 +1639,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane2" pref="989" max="32767" attributes="0"/>
+                              <Component id="jScrollPane2" pref="1019" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -1951,7 +1958,7 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jScrollPane4" min="-2" pref="583" max="-2" attributes="0"/>
-                          <EmptySpace pref="592" max="32767" attributes="0"/>
+                          <EmptySpace pref="622" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
