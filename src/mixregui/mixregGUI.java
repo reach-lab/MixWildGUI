@@ -114,6 +114,7 @@ public class mixregGUI extends javax.swing.JFrame {
     static int iconPositionX;
     static int iconPositionY;
     String missingValue = "0";
+    static int revealHiddenTabs;
     
     public static DefinitionHelper defFile;
     public static ModelBuilder modelBuilder;
@@ -604,6 +605,8 @@ public class mixregGUI extends javax.swing.JFrame {
         stageOneTabs.setEnabledAt(4,false);
         stageOneTabs.setEnabledAt(5,false);
         stageOneTabs.setEnabledAt(6,false);
+        stageOneTabs.setEnabledAt(7,false);
+        stageOneTabs.setEnabledAt(8,false);
         
         //updateMixRegGUI();
         //this.setResizable(false);
@@ -780,6 +783,18 @@ public class mixregGUI extends javax.swing.JFrame {
         dataTable = new javax.swing.JTable();
         jLabel20 = new javax.swing.JLabel();
         printedFileName = new javax.swing.JLabel();
+        jPanel14 = new javax.swing.JPanel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel30 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jButton3 = new javax.swing.JButton();
+        jPanel15 = new javax.swing.JPanel();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -1002,6 +1017,12 @@ public class mixregGUI extends javax.swing.JFrame {
             }
         });
 
+        hiddenBigIconLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                hiddenBigIconLabelMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
@@ -1199,7 +1220,7 @@ public class mixregGUI extends javax.swing.JFrame {
                     .addComponent(seedHelpButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
+                    .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
                     .addComponent(newModel_resetButton)
                     .addComponent(newModelSubmit))
                 .addGap(613, 613, 613))
@@ -1372,7 +1393,7 @@ public class mixregGUI extends javax.swing.JFrame {
             .addGroup(associationPanelLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(associationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(associationLabel)
+                    .addComponent(associationLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
                     .addGroup(associationPanelLayout.createSequentialGroup()
                         .addGroup(associationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(NoAssociationRadio)
@@ -1412,7 +1433,7 @@ public class mixregGUI extends javax.swing.JFrame {
                     .addComponent(stageTwoOutcomePrintLabel)
                     .addComponent(randomLocationEffectsLabel)
                     .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1528,7 +1549,7 @@ public class mixregGUI extends javax.swing.JFrame {
         jPanel12.add(stageTwoOutcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, 230, 30));
 
         jLabel22.setText("Stage 2 Outcome:");
-        jPanel12.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 110, -1));
+        jPanel12.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 210, -1));
 
         jButton1.setText("Clear Stage 2");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -1600,7 +1621,7 @@ public class mixregGUI extends javax.swing.JFrame {
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1019, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1056, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1630,7 +1651,7 @@ public class mixregGUI extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(203, Short.MAX_VALUE))
+                .addContainerGap(199, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1788,7 +1809,7 @@ public class mixregGUI extends javax.swing.JFrame {
                         .addGap(31, 31, 31)
                         .addComponent(printedFileName))
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 1098, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1799,10 +1820,98 @@ public class mixregGUI extends javax.swing.JFrame {
                     .addComponent(printedFileName))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(622, Short.MAX_VALUE))
+                .addContainerGap(659, Short.MAX_VALUE))
         );
 
         stageOneTabs.addTab("View Data", jPanel6);
+
+        jLabel19.setText("Stage Two Outcome:");
+
+        jLabel24.setText("Selected Outcome");
+
+        jLabel25.setText("Stage One Outcome:");
+
+        jLabel26.setText("Selected Outcome");
+
+        jLabel27.setText("Selected Model Type at S1 with Model at S2");
+
+        jLabel28.setText("Number of Samples:");
+
+        jTextField1.setText("Selected Samples");
+
+        jLabel30.setText("Cutoff:");
+
+        jTextField2.setText("0.00000");
+
+        jButton3.setText("?");
+
+        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
+        jPanel14.setLayout(jPanel14Layout);
+        jPanel14Layout.setHorizontalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addGap(81, 81, 81)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel30)
+                        .addGap(30, 30, 30)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel27)
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addComponent(jLabel25)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel26))
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addComponent(jLabel19)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel24))
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addComponent(jLabel28)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(851, Short.MAX_VALUE))
+        );
+        jPanel14Layout.setVerticalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel25)
+                    .addComponent(jLabel26))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(jLabel24))
+                .addGap(59, 59, 59)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel28)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel30)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3))
+                .addContainerGap(1087, Short.MAX_VALUE))
+        );
+
+        stageOneTabs.addTab("Postestimation", jPanel14);
+
+        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
+        jPanel15.setLayout(jPanel15Layout);
+        jPanel15Layout.setHorizontalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1203, Short.MAX_VALUE)
+        );
+        jPanel15Layout.setVerticalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1302, Short.MAX_VALUE)
+        );
+
+        stageOneTabs.addTab("Help", jPanel15);
 
         parentPanel.add(stageOneTabs, "card2");
 
@@ -3284,7 +3393,8 @@ public class mixregGUI extends javax.swing.JFrame {
             stageOneTabs.setEnabledAt(3,true);
             stageOneTabs.setEnabledAt(4,true);
             stageOneTabs.setEnabledAt(5,true);
-            stageOneTabs.setEnabledAt(6,true); 
+            stageOneTabs.setEnabledAt(6,true);
+            //stageOneTabs.setEnabledAt(7,true);
 
         } else {
 
@@ -3535,6 +3645,15 @@ public class mixregGUI extends javax.swing.JFrame {
                 "- Dichotomous and ordinal outcomes will run an ordered logistic regression at Stage 2.", "Stage 2 Model", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_stageTwoDescriptionActionPerformed
 
+    private void hiddenBigIconLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hiddenBigIconLabelMouseClicked
+        // TODO add your handling code here:
+        revealHiddenTabs++;
+        if(revealHiddenTabs > 4){
+            stageOneTabs.setEnabledAt(7, true);
+            stageOneTabs.setEnabledAt(8, true);
+        }
+    }//GEN-LAST:event_hiddenBigIconLabelMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -3605,6 +3724,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JRadioButton includeStageTwoYes;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton8;
     private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JFrame jFrame1;
@@ -3618,13 +3738,20 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -3636,6 +3763,8 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -3666,6 +3795,8 @@ public class mixregGUI extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel level1_BSVar;
     private javax.swing.JLabel level1_MeanReg;
     private javax.swing.JLabel level1_WSVar;
