@@ -2259,7 +2259,10 @@ public class mixregGUI extends javax.swing.JFrame {
 
             // do nothing
         }
-
+        
+        stageOneTabs.setEnabledAt(3, true);
+        stageOneTabs.setEnabledAt(4, true);
+        stageOneTabs.setEnabledAt(5, true);
     }//GEN-LAST:event_runTabTwoStageOneTwoActionPerformed
 
     private void addStageTwoTabTwoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStageTwoTabTwoActionPerformed
@@ -2297,13 +2300,6 @@ public class mixregGUI extends javax.swing.JFrame {
 
     private void startStageTwoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startStageTwoActionPerformed
         // TODO add your handling code here:
-
-        if (outcomeNone == false) {
-            stageOneTabs.setEnabledAt(2, true);
-        } else {
-
-            stageOneTabs.setEnabledAt(2, false);
-        }
 
         int tryCount = 0;
         int catchCount = 0;
@@ -2821,11 +2817,16 @@ public class mixregGUI extends javax.swing.JFrame {
             stageOneTabs.setSelectedIndex(2);
             System.out.println("outcome not none!!!!");
         }
-
+        
         try {
             produceStageOneOutput();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        if (outcomeNone == true) {
+            stageOneTabs.setEnabledAt(3, true);
+            stageOneTabs.setEnabledAt(5, true);
         }
     }//GEN-LAST:event_startStageTwoActionPerformed
 
@@ -3256,10 +3257,9 @@ public class mixregGUI extends javax.swing.JFrame {
             }
 
             stageOneTabs.setEnabledAt(1, true);
-            stageOneTabs.setEnabledAt(2, true);
-            stageOneTabs.setEnabledAt(3, true);
-            stageOneTabs.setEnabledAt(4, true);
-            stageOneTabs.setEnabledAt(5, true);
+            if (outcomeNone == false){
+                stageOneTabs.setEnabledAt(2, true);
+            }
 
         } else {
 
