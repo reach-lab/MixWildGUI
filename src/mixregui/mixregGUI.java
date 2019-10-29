@@ -91,19 +91,19 @@ import javax.swing.table.DefaultTableModel;
 import org.apache.commons.io.FilenameUtils;
 
 /**
- * Main class for the program that is used 
- * to manipulate regressors
+ * Main class for the program that is used to manipulate regressors
  *
  * @author adityaponnada
  */
 public class mixregGUI extends javax.swing.JFrame {
+
     public static mixregGUI mxr;
-    
+
     // Declarations from old java
     File file;
-    
+
     static String[] variableArray;
-    
+
     static int RLE;
     static boolean NoneVar;
     static boolean outComeBoolean;
@@ -115,10 +115,10 @@ public class mixregGUI extends javax.swing.JFrame {
     static int iconPositionY;
     String missingValue = "0";
     static int revealHiddenTabs;
-    
+
     public static DefinitionHelper defFile;
     public static ModelBuilder modelBuilder;
-    
+
     public int getRLE() {
         return RLE;
     }
@@ -135,7 +135,6 @@ public class mixregGUI extends javax.swing.JFrame {
         return dataFileNameRef;
     }
 
-  
     //get title from the text box
     public String getTitle() {
 
@@ -210,9 +209,9 @@ public class mixregGUI extends javax.swing.JFrame {
     public String extractDatFilePath() {
 
         String csvPath = file.getAbsolutePath();
-        String datPath = FilenameUtils.getFullPath(csvPath) +
-                 defFile.getUtcDirPath() +
-                FilenameUtils.getBaseName(csvPath) + ".dat";
+        String datPath = FilenameUtils.getFullPath(csvPath)
+                + defFile.getUtcDirPath()
+                + FilenameUtils.getBaseName(csvPath) + ".dat";
         return datPath;
     }
 
@@ -288,7 +287,7 @@ public class mixregGUI extends javax.swing.JFrame {
         return outcomeTypeText;
 
     }
-    
+
     private boolean validateFields() {
         boolean allFieldsEntered = true;
         System.out.println("FIELD VALIDATE: " + "Called");
@@ -325,21 +324,21 @@ public class mixregGUI extends javax.swing.JFrame {
         System.out.println("FIELD VALIDATE: " + "about to exit");
         return allFieldsEntered;
     }
-    
-    private String generateSeed(){
+
+    private String generateSeed() {
         String seed;
-        
+
         Random rnd = new Random();
-        
+
         int rndSeed = rnd.nextInt(65535) + 1;
-        
+
         seed = String.valueOf(rndSeed);
-        
+
         return seed;
     }
-    
+
     // Original declarations
-   // NewModel newModel;
+    // NewModel newModel;
     advancedOptions advancedOptions_view;
     stageOneRegs stage_1_regs;
     stageTwoRegs stage_2_regs;
@@ -352,7 +351,7 @@ public class mixregGUI extends javax.swing.JFrame {
     int levelTwoRegSize = 0;
     int stageTwoRegSize = 0;
     int levelOneDisaggSize = 0;
-    
+
     int SUPERUSER_KEY = 0;
 
     String[] variableNamesCombo;
@@ -408,10 +407,7 @@ public class mixregGUI extends javax.swing.JFrame {
     boolean outComeType;
 
     static String outPutStageTwo;
-    
-    
-    
-    
+
     private void updateMixRegGUI() {
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
@@ -422,7 +418,6 @@ public class mixregGUI extends javax.swing.JFrame {
         variableNamesCombo = getVariableNames();
         outcomeNone = getNoneVar();
         outComeType = getOutComeType();
-        
 
         IDList = new DefaultComboBoxModel<String>();
         StageOneList = new DefaultComboBoxModel<String>();
@@ -430,7 +425,7 @@ public class mixregGUI extends javax.swing.JFrame {
         NoAssociationRadio.setSelected(true);
         stage_1_regs = new stageOneRegs();
         stage_2_regs = new stageTwoRegs();
-        
+
         i = getRLE();
         System.out.println(String.valueOf(i));
 
@@ -441,8 +436,6 @@ public class mixregGUI extends javax.swing.JFrame {
 
         //Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/resources/mixLogo.png"));
         //setIconImage(image);
-
-
         if (i > 1) {
 
             NoAssociationRadio.setText("Yes");
@@ -498,15 +491,14 @@ public class mixregGUI extends javax.swing.JFrame {
             jPanel5.setVisible(false);
 
         }
-        
-        try{
-            if(defFile.getAdvancedRandomScaleNotIncluded() == "1"){
+
+        try {
+            if (defFile.getAdvancedRandomScaleNotIncluded() == "1") {
                 NoAssociationRadio.setEnabled(false);
                 LinearAssociationRadio.setEnabled(false);
                 QuadraticAssociationRadio.setEnabled(false);
-            } 
-        }
-        catch(Exception eoe){
+            }
+        } catch (Exception eoe) {
             System.out.println("No Random Scale Option Set");
         }
     }
@@ -514,68 +506,68 @@ public class mixregGUI extends javax.swing.JFrame {
     private void setFirstTabStatus(boolean turnOn) {
         titleViewLabel.setVisible(turnOn);
         titleField.setVisible(turnOn);
-        
+
         missingViewLabel.setVisible(turnOn);
         missingValueAbsent.setVisible(turnOn);
         missingValuePresent.setVisible(turnOn);
-        
+
         missingCodeViewLabel.setVisible(turnOn);
         newModelMissingValueCode.setVisible(turnOn);
-        
+
         stageOneOutcomeViewLabel.setVisible(turnOn);
         stageOneContinuousRadio.setVisible(turnOn);
         stageOneDichotomousRadio.setVisible(turnOn);
         stageOneOrdinalRadio.setVisible(turnOn);
         stageOneOutcomeHelpButton.setVisible(turnOn);
-        
+
         rleViewLabel.setVisible(turnOn);
         oneRLERadio.setVisible(turnOn);
         moreThanOneRLERadio.setVisible(turnOn);
-        
+
         randomScaleViewLabel.setVisible(turnOn);
         randomScaleSelectionYes.setVisible(turnOn);
         randomScaleSelectionNo.setVisible(turnOn);
-        
+
         includeStageTwoLabel.setVisible(turnOn);
         includeStageTwoYes.setVisible(turnOn);
         includeStageTwoNo.setVisible(turnOn);
         stageTwoDescription.setVisible(turnOn);
-        
+
         stageTwoModelTypeLabel.setVisible(turnOn);
         stageTwoSingleLevel.setVisible(turnOn);
         stageTwoMultiLevel.setVisible(turnOn);
-        
+
         stageTwoOutcomeTypeLabel.setVisible(turnOn);
         continuousRadio.setVisible(turnOn);
         dichotomousRadio.setVisible(turnOn);
         countRadio.setVisible(turnOn);
         multinomialRadio.setVisible(turnOn);
-        
+
         setSeedLabel.setVisible(turnOn);
         seedTextBox.setVisible(turnOn);
         seedHelpButton.setVisible(turnOn);
-        
+
         newModel_resetButton.setVisible(turnOn);
         newModelSubmit.setVisible(turnOn);
-        
+
         stageOneModelGiantLabel.setVisible(turnOn);
         stageTwoModelGiantLabel.setVisible(turnOn);
-        
+
         jSeparator16.setVisible(turnOn);
         jSeparator8.setVisible(turnOn);
         jLabel29.setVisible(turnOn);
-        
-        if(turnOn){
+
+        if (turnOn) {
             hiddenBigIconLabel.setIcon(null);
         } else {
             hiddenBigIconLabel.setIcon(bigIcon);
         }
     }
-    
+
     /**
      * Creates new form mixregGUI
      */
-    public mixregGUI() {        
+    public mixregGUI() {
         initComponents();
         icon = new ImageIcon(getClass().getResource("/resources/MixWildLogoTiny.png"));
         bigIcon = new ImageIcon(getClass().getResource("/resources/MixWILDLogoResized.PNG"));
@@ -583,22 +575,21 @@ public class mixregGUI extends javax.swing.JFrame {
         stageOneContinuousRadio.setSelected(true);
         stageOneDichotomousRadio.setEnabled(false);
         stageOneOrdinalRadio.setEnabled(false);
-        
+
         countRadio.setEnabled(false);
         multinomialRadio.setEnabled(false);
-        
+
         stageTwoSingleLevel.setEnabled(true);
         stageTwoSingleLevel.setSelected(true);
         stageTwoMultiLevel.setEnabled(false);
-                    
-      
+
         //updateMixRegGUI();
         //this.setResizable(false);
-        
         // hide components for user operating in order
         setFirstTabStatus(false);
-      
+
         // hide tabs
+
         stageOneTabs.setEnabledAt(1,false);
         stageOneTabs.setEnabledAt(2,false);
         stageOneTabs.setEnabledAt(3,false);
@@ -607,15 +598,11 @@ public class mixregGUI extends javax.swing.JFrame {
         stageOneTabs.setEnabledAt(6,false);
         stageOneTabs.setEnabledAt(7,false);
         stageOneTabs.setEnabledAt(8,false);
-        
+
         //updateMixRegGUI();
         //this.setResizable(false);
-
-        
         // TODO: Fix superuser menu code
         //superUserMenu.setVisible(SUPERUSER_KEY > 2);
-        
-
 //       IDpos = IDvariableCombo.getSelectedIndex();
 //       stageOnePos = StageOneVariableCombo.getSelectedIndex();
 //       stageTwoPos = stageTwoOutcome.getSelectedIndex();
@@ -1969,8 +1956,8 @@ public class mixregGUI extends javax.swing.JFrame {
             }
 
             //            if (defFile.getAdvancedMissingValue().contains(".")){
-                //            String strippedMissingVal = defFile.getAdvancedMissingValue().substring(0,defFile.getAdvancedMissingValue().indexOf('.'));
-                //            }
+            //            String strippedMissingVal = defFile.getAdvancedMissingValue().substring(0,defFile.getAdvancedMissingValue().indexOf('.'));
+            //            }
             //
             //count the unique ones
             for (int x = 0; x < ColumnsCustom.size(); x++) {
@@ -2000,11 +1987,11 @@ public class mixregGUI extends javax.swing.JFrame {
 
             outCategoryDisplay.setText(UniqueList.size() + " Categories:\n");
             //            for (int index = 0; index < UniqueList.size(); index++) {
-                //                //numberOfCategories.setT
-                //                //numberOfCategories.setText(numberOfCategories.getText() +"<html><br></html>" + String.valueOf(index + 1) + ":" + UniqueList.get(index) + "<html><br></html>");
-                //                outCategoryDisplay.setText(outCategoryDisplay.getText() + String.valueOf(index + 1) + ") " + UniqueList.get(index) + "\n");
-                //
-                //            }
+            //                //numberOfCategories.setT
+            //                //numberOfCategories.setText(numberOfCategories.getText() +"<html><br></html>" + String.valueOf(index + 1) + ":" + UniqueList.get(index) + "<html><br></html>");
+            //                outCategoryDisplay.setText(outCategoryDisplay.getText() + String.valueOf(index + 1) + ") " + UniqueList.get(index) + "\n");
+            //
+            //            }
 
             for (int index = 0; index < UniqueIntegers.size(); index++) {
                 //numberOfCategories.setT
@@ -2044,7 +2031,7 @@ public class mixregGUI extends javax.swing.JFrame {
         stageTwoPanel.removeAll();
         stageTwoPanel.revalidate();
         stageTwoPanel.repaint();
-        
+
         stage_2_regs.stageTwoLevelTwo.clear();
         updateStageTwoGrid_tab2(stage_2_regs.stageTwoLevelTwo);
 
@@ -2093,7 +2080,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
             for (int p = 0; p < stageTwoRegSize; p++) {
 
-                if (stageTwoGridBoxes.get(p).get(1).isSelected() && stageTwoGridBoxes.get(p).get(2).isSelected()){
+                if (stageTwoGridBoxes.get(p).get(1).isSelected() && stageTwoGridBoxes.get(p).get(2).isSelected()) {
                     stageTwoGridBoxes.get(p).get(3).setSelected(false);
                     stageTwoGridBoxes.get(p).get(3).setEnabled(true);
                 }
@@ -2382,7 +2369,10 @@ public class mixregGUI extends javax.swing.JFrame {
 
             // do nothing
         }
-
+        
+        stageOneTabs.setEnabledAt(3, true);
+        stageOneTabs.setEnabledAt(4, true);
+        stageOneTabs.setEnabledAt(5, true);
     }//GEN-LAST:event_runTabTwoStageOneTwoActionPerformed
 
     private void addStageTwoTabTwoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStageTwoTabTwoActionPerformed
@@ -2420,13 +2410,6 @@ public class mixregGUI extends javax.swing.JFrame {
 
     private void startStageTwoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startStageTwoActionPerformed
         // TODO add your handling code here:
-
-        if (outcomeNone == false) {
-            stageOneTabs.setEnabledAt(2, true);
-        } else {
-
-            stageOneTabs.setEnabledAt(2, false);
-        }
 
         int tryCount = 0;
         int catchCount = 0;
@@ -2944,11 +2927,16 @@ public class mixregGUI extends javax.swing.JFrame {
             stageOneTabs.setSelectedIndex(2);
             System.out.println("outcome not none!!!!");
         }
-
+        
         try {
             produceStageOneOutput();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        if (outcomeNone == true) {
+            stageOneTabs.setEnabledAt(3, true);
+            stageOneTabs.setEnabledAt(5, true);
         }
     }//GEN-LAST:event_startStageTwoActionPerformed
 
@@ -2989,12 +2977,12 @@ public class mixregGUI extends javax.swing.JFrame {
             addStageTwoTabTwo.setEnabled(true);
 
             //            if (levelOneRegSize == 0 && levelTwoRegSize ==0){
-                //
-                //            //refresh as normal
-                //            } else {
-                //
-                //
-                //            }
+            //
+            //            //refresh as normal
+            //            } else {
+            //
+            //
+            //            }
             if (addStageOneCHecked == true) {
 
                 stage_1_regs.setVisible(true);
@@ -3034,15 +3022,14 @@ public class mixregGUI extends javax.swing.JFrame {
 
     private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
         // TODO add your handling code here:
-       
+
         IDvariableCombo.setSelectedIndex(0);
         StageOneVariableCombo.setSelectedIndex(1);
         stageTwoOutcome.setSelectedIndex(2);
-        
-        buttonGroup1.clearSelection();
-        
-        //addStageTwoTabTwo.setEnabled(false);
 
+        buttonGroup1.clearSelection();
+
+        //addStageTwoTabTwo.setEnabled(false);
         levelTwoPanel.removeAll();
         levelTwoPanel.revalidate();
         levelTwoPanel.repaint();
@@ -3050,14 +3037,14 @@ public class mixregGUI extends javax.swing.JFrame {
         levelOnePanel.removeAll();
         levelOnePanel.revalidate();
         levelOnePanel.repaint();
-        
+
         stage_1_regs.updateAllVariables();
 
         stage_1_regs.levelOneList.clear();
         stage_1_regs.levelTwoList.clear();
         updateLevelTwoGrid_version2(stage_1_regs.levelTwoList);
         updateLevelOneGrid_version2(stage_1_regs.levelOneList);
-        
+
     }//GEN-LAST:event_resetButtonActionPerformed
 
     private void stageOneContinuousRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneContinuousRadioActionPerformed
@@ -3067,7 +3054,7 @@ public class mixregGUI extends javax.swing.JFrame {
     private void seedHelpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seedHelpButtonActionPerformed
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(null, "A seed is a number used to initialize a random number generator. Different seeds produce different sequences of random numbers."
-            + "\n" + "In the context of two-stage models, a seed is helpful for replicating models with identical results.", "What is a seed?", JOptionPane.INFORMATION_MESSAGE);
+                + "\n" + "In the context of two-stage models, a seed is helpful for replicating models with identical results.", "What is a seed?", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_seedHelpButtonActionPerformed
 
     private void newModelSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModelSubmitActionPerformed
@@ -3076,10 +3063,10 @@ public class mixregGUI extends javax.swing.JFrame {
         //        String osName = System.getProperty("os.name");
         //        System.out.println("YOUR OPERATING SYSTEM IS: " + osName);
         //        if (osName.contains("Windows")){
-            //            System.out.println("YES THE OS IS WINDOWS");
-            //        } else {
-            //            System.out.println("NO THE OS IS NOT WINDOWS");
-            //        }
+        //            System.out.println("YES THE OS IS WINDOWS");
+        //        } else {
+        //            System.out.println("NO THE OS IS NOT WINDOWS");
+        //        }
         System.out.println("Model submitted" + " called");
 
         if (validateFields() == true) {
@@ -3172,7 +3159,7 @@ public class mixregGUI extends javax.swing.JFrame {
                 //Check if the randome scale is checked or not
                 if (randomScaleSelectionYes.isSelected()) {
                     isRandomScale = true;
-                } else if(randomScaleSelectionNo.isSelected()) {
+                } else if (randomScaleSelectionNo.isSelected()) {
                     isRandomScale = false;
                 } else {
                     // randomScaleCheckBox
@@ -3379,14 +3366,11 @@ public class mixregGUI extends javax.swing.JFrame {
 
             }
 
-            try {
-                getDataFromCSV();
-                printFileName();
-                System.out.println("NEW MODEL DATA READ");
-            } catch (IOException ex) {
-                Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+            stageOneTabs.setEnabledAt(1, true);
+            if (outcomeNone == false){
+                stageOneTabs.setEnabledAt(2, true);
             }
+
             
             stageOneTabs.setEnabledAt(1,true);
             stageOneTabs.setEnabledAt(2,true);
@@ -3395,6 +3379,7 @@ public class mixregGUI extends javax.swing.JFrame {
             stageOneTabs.setEnabledAt(5,true);
             stageOneTabs.setEnabledAt(6,true);
             //stageOneTabs.setEnabledAt(7,true);
+
 
         } else {
 
@@ -3431,7 +3416,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
         resetButtonActionPerformed(evt);
         jButton1ActionPerformed(evt);
-        */
+         */
         //updateMixRegGUI();
     }//GEN-LAST:event_newModel_resetButtonActionPerformed
 
@@ -3440,8 +3425,8 @@ public class mixregGUI extends javax.swing.JFrame {
 
         char vchar = evt.getKeyChar();
         //        if (!((Character.isDigit(vchar)) || (vchar == KeyEvent.VK_BACKSPACE) || (vchar == KeyEvent.VK_DELETE) || (vchar == KeyEvent.VK_MINUS))) {
-            //            evt.consume();
-            //        }
+        //            evt.consume();
+        //        }
         if (!((Character.isDigit(vchar)) || (vchar == KeyEvent.VK_BACK_SPACE) || (vchar == KeyEvent.VK_DELETE) || (vchar == KeyEvent.VK_MINUS) || (vchar == '.'))) {
             evt.consume();
         }
@@ -3527,7 +3512,7 @@ public class mixregGUI extends javax.swing.JFrame {
             String fileName = file.getAbsolutePath();
             dataFileNameRef = fileName;
             filePath.setText(fileName);
-             // 10/22 reveal components in Model Congifuration
+            // 10/22 reveal components in Model Congifuration
             setFirstTabStatus(true);
 
             //enable other buttons here:
@@ -3555,7 +3540,20 @@ public class mixregGUI extends javax.swing.JFrame {
             //randomScaleCheckBox.setEnabled(true);
             //randomScaleCheckBox.setSelected(true);
             // newModelMissingValueCode.selectAll();
+
+            stageOneTabs.setEnabledAt(6, true);
+
             System.out.println(file.getAbsolutePath());
+
+            try {
+                getDataFromCSV();
+                printFileName();
+                System.out.println("NEW MODEL DATA READ");
+            } catch (IOException ex) {
+                Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+            }
+            
         } else {
             System.out.println("File access cancelled by user.");
         }
@@ -3571,19 +3569,19 @@ public class mixregGUI extends javax.swing.JFrame {
     private void stageOneOutcomeHelpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneOutcomeHelpButtonActionPerformed
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(null, "(To be implemented in MixWILD 2.0) Currently, you are restricted to continuous Stage 1 outcomes."
-            + "\n" + "Dichotomous and ordinal outcomes will run ordered logistic regressions at Stage 1." + "\n" +
-                "Note that random scale is not available for dichotomous outcomes.", "Stage 1 Outcome Type", JOptionPane.INFORMATION_MESSAGE);
+                + "\n" + "Dichotomous and ordinal outcomes will run ordered logistic regressions at Stage 1." + "\n"
+                + "Note that random scale is not available for dichotomous outcomes.", "Stage 1 Outcome Type", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_stageOneOutcomeHelpButtonActionPerformed
 
     private void includeStageTwoNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_includeStageTwoNoActionPerformed
         // TODO add your handling code here:
-        if (includeStageTwoNo.isSelected()){
+        if (includeStageTwoNo.isSelected()) {
             //Do nothing
             setSeedLabel.setVisible(false);
             seedTextBox.setVisible(false);
             seedHelpButton.setVisible(false);
             seedTextBox.setText("0");
-            
+
             stageTwoSingleLevel.setVisible(false);
             stageTwoMultiLevel.setVisible(false);
             continuousRadio.setVisible(false);
@@ -3593,14 +3591,14 @@ public class mixregGUI extends javax.swing.JFrame {
             stageTwoModelTypeLabel.setVisible(false);
             stageTwoOutcomeTypeLabel.setVisible(false);
             stageTwoModelGiantLabel.setVisible(false);
-            
+
         } else {
             setSeedLabel.setVisible(true);
             seedTextBox.setVisible(true);
             seedHelpButton.setVisible(true);
             String seedVal = generateSeed();
             seedTextBox.setText(seedVal);
-            
+
             stageTwoSingleLevel.setVisible(true);
             stageTwoMultiLevel.setVisible(true);
             continuousRadio.setVisible(true);
@@ -3610,13 +3608,13 @@ public class mixregGUI extends javax.swing.JFrame {
             stageTwoModelTypeLabel.setVisible(true);
             stageTwoOutcomeTypeLabel.setVisible(true);
             stageTwoModelGiantLabel.setVisible(true);
-            
+
         }
     }//GEN-LAST:event_includeStageTwoNoActionPerformed
 
     private void includeStageTwoYesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_includeStageTwoYesActionPerformed
         // TODO add your handling code here:
-        if (includeStageTwoNo.isSelected()){
+        if (includeStageTwoNo.isSelected()) {
             //Do nothing
         } else {
             setSeedLabel.setVisible(true);
@@ -3624,7 +3622,7 @@ public class mixregGUI extends javax.swing.JFrame {
             seedHelpButton.setVisible(true);
             String seedVal = generateSeed();
             seedTextBox.setText(seedVal);
-            
+
             stageTwoSingleLevel.setVisible(true);
             stageTwoMultiLevel.setVisible(true);
             continuousRadio.setVisible(true);
@@ -3640,9 +3638,9 @@ public class mixregGUI extends javax.swing.JFrame {
     private void stageTwoDescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoDescriptionActionPerformed
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(null, "(To be implemented in MixWILD 2.0) Currently, you are restricted to single level models and continuous and dichotomous/ordinal Stage 2 outcomes."
-            + "\n" + "Multilevel models allow for additional estimation at Stage 2 using random intercept mixed effects model in place of the standard single level model, similar to Stage 1." + 
-                "\n" + "- Continuous outcomes will run a linear regression at Stage 2." + "\n" +
-                "- Dichotomous and ordinal outcomes will run an ordered logistic regression at Stage 2.", "Stage 2 Model", JOptionPane.INFORMATION_MESSAGE);
+                + "\n" + "Multilevel models allow for additional estimation at Stage 2 using random intercept mixed effects model in place of the standard single level model, similar to Stage 1."
+                + "\n" + "- Continuous outcomes will run a linear regression at Stage 2." + "\n"
+                + "- Dichotomous and ordinal outcomes will run an ordered logistic regression at Stage 2.", "Stage 2 Model", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_stageTwoDescriptionActionPerformed
 
     private void hiddenBigIconLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hiddenBigIconLabelMouseClicked
@@ -3866,9 +3864,8 @@ public class mixregGUI extends javax.swing.JFrame {
         stageTwoOutcome.setSelectedIndex(2);
 
         buttonGroup1.clearSelection();
-        
-        //addStageTwoTabTwo.setEnabled(false);
 
+        //addStageTwoTabTwo.setEnabled(false);
         levelTwoPanel.removeAll();
         levelTwoPanel.revalidate();
         levelTwoPanel.repaint();
@@ -4274,7 +4271,7 @@ public class mixregGUI extends javax.swing.JFrame {
                         scaleChecked = false;
                         suppressIntCheckBox.setEnabled(false);
                         suppressIntCheckBox.setSelected(false);
-                        
+
                     }
 
                 }
@@ -4288,7 +4285,7 @@ public class mixregGUI extends javax.swing.JFrame {
                     if (selected) {
                         scaleChecked = true;
                         if (randomChecked == true) {
-                            if(!suppressed){
+                            if (!suppressed) {
                                 stageTwoGridBoxes.get(row).get(3).setEnabled(true);
                                 stageTwoGridBoxes.get(row).get(3).setSelected(false);
                             }
@@ -4296,7 +4293,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
                     } else {
                         scaleChecked = false;
-                        if(!suppressed){
+                        if (!suppressed) {
                             stageTwoGridBoxes.get(row).get(3).setEnabled(false);
                             stageTwoGridBoxes.get(row).get(3).setSelected(false);
                         }
@@ -4314,7 +4311,7 @@ public class mixregGUI extends javax.swing.JFrame {
                         randomChecked = true;
 
                         if (scaleChecked == true) {
-                            if(!suppressed){
+                            if (!suppressed) {
                                 stageTwoGridBoxes.get(row).get(3).setEnabled(true);
                                 stageTwoGridBoxes.get(row).get(3).setSelected(false);
                             }
@@ -4322,7 +4319,7 @@ public class mixregGUI extends javax.swing.JFrame {
 
                     } else {
                         randomChecked = false;
-                        if(!suppressed){
+                        if (!suppressed) {
                             stageTwoGridBoxes.get(row).get(3).setEnabled(false);
                             stageTwoGridBoxes.get(row).get(3).setSelected(false);
                         }
@@ -4330,22 +4327,20 @@ public class mixregGUI extends javax.swing.JFrame {
                     }
                 }
             });
-            
-        stageTwoGridBoxes.get(j).get(3).addActionListener(new ActionListener() {
+
+            stageTwoGridBoxes.get(j).get(3).addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
                     AbstractButton abstractButton = (AbstractButton) e.getSource();
                     boolean selected = abstractButton.getModel().isSelected();
-                    
+
                     randomChecked = false;
                     scaleChecked = false;
 
-                   suppressIntCheckBox.setEnabled(true);
-                    
-                    
+                    suppressIntCheckBox.setEnabled(true);
+
                 }
             });
-            
 
         }
 
