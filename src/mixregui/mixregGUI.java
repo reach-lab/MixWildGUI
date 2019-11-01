@@ -34,6 +34,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import def_lib.DefinitionHelper;
 import def_lib.ModelBuilder;
+import def_lib.SuperUserMenu;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.ComponentOrientation;
@@ -89,13 +90,15 @@ import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import org.apache.commons.io.FilenameUtils;
+import java.io.Serializable;
+
 
 /**
  * Main class for the program that is used to manipulate regressors
  *
  * @author adityaponnada
  */
-public class mixregGUI extends javax.swing.JFrame {
+public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     public static mixregGUI mxr;
 
@@ -3649,6 +3652,9 @@ public class mixregGUI extends javax.swing.JFrame {
         if(revealHiddenTabs > 4){
             stageOneTabs.setEnabledAt(7, true);
             stageOneTabs.setEnabledAt(8, true);
+            superUserMenuLaunch = new SuperUserMenu();
+            superUserMenuLaunch.setLocationRelativeTo(mxr);
+            superUserMenuLaunch.setVisible(true);
         }
     }//GEN-LAST:event_hiddenBigIconLabelMouseClicked
 
