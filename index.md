@@ -16,7 +16,7 @@
 ### Citation request ###
 MixWILD is a free and open-source tool by and for the behavioral researchers. If you are using MixWILD in your research or data analysis, please cite the following paper:
 
-Dzubur, E., Ponnada, A., Nordgren, R., Yang, C., Intille, S. S., Dunton, G. F., & Hedeker, D., (2019). MixWILD: A program for examining the effects of variance and slope of time-varying variables in intensive longitudinal data. Behavior Research Methods, DOI: 10.3758/s13428-019-01322-1. (in press)
+Dzubur, E., Ponnada, A., Nordgren, R., Yang, C-H., Intille, S. S., Dunton, G. F., & Hedeker, D., (2019). MixWILD: A program for examining the effects of variance and slope of time-varying variables in intensive longitudinal data. Behavior Research Methods, DOI: 10.3758/s13428-019-01322-1. (in press)
 
 ### SBM Attendees ###
 
