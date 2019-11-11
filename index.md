@@ -58,10 +58,11 @@ You may post an issue in Github to request access if you do not have a compatibl
 
 *Institute:* National Heart, Lung, and Blood Institute (NHLBI)
 
-*Project:* 5R01HL121330-05
+*Project:* 5R01HL121330-05 and 1R01CA240713-01
 
-*Title:* Novel Statistical Models for EMA Studies of Physical Activity
+*Title:* Novel Statistical Models for Intensive Longitudinal Analysis of Cancer Control Behaviors
 
 *Principal Investigator(s):* Hedeker, Donald; Dunton, Genevieve Fridlund
 
 [Additional details...](https://projectreporter.nih.gov/project_info_details.cfm?aid=9268804&icde=0)
+[Updated grant details...](https://projectreporter.nih.gov/project_info_details.cfm?aid=9803376&icde=47317498)
