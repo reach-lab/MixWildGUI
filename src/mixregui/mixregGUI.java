@@ -91,7 +91,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import org.apache.commons.io.FilenameUtils;
 import java.io.Serializable;
-
+import org.apache.commons.io.FileUtils;
 
 /**
  * Main class for the program that is used to manipulate regressors
@@ -600,7 +600,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageOneTabs.setEnabledAt(5,false);
         stageOneTabs.setEnabledAt(6,false);
         stageOneTabs.setEnabledAt(7,false);
-        stageOneTabs.setEnabledAt(8,false);
 
         //updateMixRegGUI();
         //this.setResizable(false);
@@ -785,6 +784,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         jTextField2 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jPanel15 = new javax.swing.JPanel();
+        userGuideDownload = new javax.swing.JButton();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        exampleDataDownload = new javax.swing.JButton();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -1210,7 +1214,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     .addComponent(seedHelpButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                    .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
                     .addComponent(newModel_resetButton)
                     .addComponent(newModelSubmit))
                 .addGap(613, 613, 613))
@@ -1611,7 +1615,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1056, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1077, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1810,7 +1814,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     .addComponent(printedFileName))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(659, Short.MAX_VALUE))
+                .addContainerGap(694, Short.MAX_VALUE))
         );
 
         stageOneTabs.addTab("View Data", jPanel6);
@@ -1885,20 +1889,67 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     .addComponent(jLabel30)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3))
-                .addContainerGap(1087, Short.MAX_VALUE))
+                .addContainerGap(1127, Short.MAX_VALUE))
         );
 
         stageOneTabs.addTab("Postestimation", jPanel14);
+
+        userGuideDownload.setText("Download");
+        userGuideDownload.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userGuideDownloadActionPerformed(evt);
+            }
+        });
+
+        jLabel31.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel31.setText("Supplement Resources");
+
+        jLabel32.setText("MixWild User Guide");
+
+        jLabel33.setText("MixWILD Example Dataset");
+
+        exampleDataDownload.setText("Download");
+        exampleDataDownload.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exampleDataDownloadActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
         jPanel15Layout.setHorizontalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1203, Short.MAX_VALUE)
+            .addGroup(jPanel15Layout.createSequentialGroup()
+                .addGap(73, 73, 73)
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel15Layout.createSequentialGroup()
+                        .addComponent(jLabel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(147, 147, 147))
+                    .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPanel15Layout.createSequentialGroup()
+                            .addComponent(jLabel33)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(exampleDataDownload))
+                        .addGroup(jPanel15Layout.createSequentialGroup()
+                            .addComponent(jLabel32)
+                            .addGap(79, 79, 79)
+                            .addComponent(userGuideDownload))))
+                .addGap(868, 868, 868))
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1302, Short.MAX_VALUE)
+            .addGroup(jPanel15Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jLabel31, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel32)
+                    .addComponent(userGuideDownload))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel33)
+                    .addComponent(exampleDataDownload))
+                .addGap(1196, 1196, 1196))
         );
 
         stageOneTabs.addTab("Help", jPanel15);
@@ -3658,6 +3709,62 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         }
     }//GEN-LAST:event_hiddenBigIconLabelMouseClicked
 
+    private void userGuideDownloadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userGuideDownloadActionPerformed
+ 
+        // user open filechooser and select save path
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setSelectedFile(new File("MixWild_User_Guide.pdf"));
+        int option = fileChooser.showSaveDialog(this);
+        if(option == JFileChooser.APPROVE_OPTION){
+            File dest = fileChooser.getSelectedFile();
+            
+            // copy file from resources to user selected save path
+            InputStream stream = null;
+            try {
+                URL inputUrl = getClass().getResource("/resources/UserGuide.pdf");
+                FileUtils.copyURLToFile(inputUrl, dest);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally {
+                    if (stream != null) {
+                        try {
+                            stream.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }                 
+    }//GEN-LAST:event_userGuideDownloadActionPerformed
+
+    private void exampleDataDownloadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exampleDataDownloadActionPerformed
+        
+        // user open filechooser and select save path
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setSelectedFile(new File("Mixwild_example_data.csv"));
+        int option = fileChooser.showSaveDialog(this);
+        if(option == JFileChooser.APPROVE_OPTION){
+            File dest = fileChooser.getSelectedFile();
+            
+            // copy file from resources to user selected save path
+            InputStream stream = null;
+            try {
+                URL inputUrl = getClass().getResource("/resources/ExampleData.csv");
+                FileUtils.copyURLToFile(inputUrl, dest);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally {
+                    if (stream != null) {
+                        try {
+                            stream.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }       
+    }//GEN-LAST:event_exampleDataDownloadActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -3718,6 +3825,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     public static javax.swing.JTable dataTable;
     private javax.swing.JRadioButton dichotomousRadio;
     private javax.swing.JTextArea equationArea;
+    private javax.swing.JButton exampleDataDownload;
     private javax.swing.JButton fileBrowseButton;
     private javax.swing.JTextField filePath;
     private javax.swing.Box.Filler filler1;
@@ -3756,6 +3864,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -3862,6 +3973,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JCheckBox suppressIntCheckBox;
     private javax.swing.JTextField titleField;
     private javax.swing.JLabel titleViewLabel;
+    private javax.swing.JButton userGuideDownload;
     // End of variables declaration//GEN-END:variables
 
     public void isSubmitClicked() {
