@@ -1,7 +1,12 @@
+
+![png](MixWILDLogoResized)
+
 # MixWild #
 
 ### Please submit your email prior to downloading the application so we can notify you of major software updates ###
 {% include formspree.html %}
+
+
 
 ### Download MixWild for Mac or PC ###
 [macOS](https://github.com/reach-lab/MixWildGUI/releases/download/v1.2/MixWILD.app.zip)
@@ -65,4 +70,5 @@ You may post an issue in Github to request access if you do not have a compatibl
 *Principal Investigator(s):* Hedeker, Donald; Dunton, Genevieve Fridlund
 
 [Additional details...](https://projectreporter.nih.gov/project_info_details.cfm?aid=9268804&icde=0)
+
 [Updated grant details...](https://projectreporter.nih.gov/project_info_details.cfm?aid=9803376&icde=47317498)
