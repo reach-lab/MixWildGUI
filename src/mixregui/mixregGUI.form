@@ -116,7 +116,11 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="305" pref="305" max="-2" attributes="0"/>
                           <Component id="jLabel29" max="32767" attributes="0"/>
-                          <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="progressSaveButton" min="-2" pref="90" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="progressLoadButton" min="-2" pref="90" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="newModel_resetButton" min="-2" pref="90" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                           <Component id="newModelSubmit" min="-2" pref="90" max="-2" attributes="0"/>
@@ -351,8 +355,12 @@
                           </Group>
                           <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel29" pref="153" max="32767" attributes="0"/>
-                              <Component id="newModel_resetButton" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel29" pref="176" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="newModel_resetButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="progressLoadButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="progressSaveButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <Component id="newModelSubmit" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="613" max="-2" attributes="0"/>
@@ -685,6 +693,22 @@
                 <Component class="javax.swing.JLabel" name="hiddenBigIconLabel">
                   <Events>
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="hiddenBigIconLabelMouseClicked"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="progressLoadButton">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Load"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="progressLoadButtonActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="progressSaveButton">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Save"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="progressSaveButtonActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>

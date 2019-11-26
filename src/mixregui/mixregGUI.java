@@ -28,6 +28,7 @@ package mixregui;
 
 import com.opencsv.CSVReader;
 import def_lib.DefinitionHelper;
+import def_lib.ProgressObject;
 import java.awt.Desktop;
 import java.net.URL;
 import javax.swing.DefaultComboBoxModel;
@@ -53,6 +54,7 @@ import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
@@ -60,6 +62,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -91,6 +95,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import org.apache.commons.io.FilenameUtils;
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 import org.apache.commons.io.FileUtils;
 
 /**
@@ -565,6 +571,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         } else {
             hiddenBigIconLabel.setIcon(bigIcon);
         }
+
+        progressLoadButton.setVisible(turnOn);
+        progressSaveButton.setVisible(turnOn);
     }
 
     /**
@@ -592,14 +601,13 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         setFirstTabStatus(false);
 
         // hide tabs
-
-        stageOneTabs.setEnabledAt(1,false);
-        stageOneTabs.setEnabledAt(2,false);
-        stageOneTabs.setEnabledAt(3,false);
-        stageOneTabs.setEnabledAt(4,false);
-        stageOneTabs.setEnabledAt(5,false);
-        stageOneTabs.setEnabledAt(6,false);
-        stageOneTabs.setEnabledAt(7,false);
+        stageOneTabs.setEnabledAt(1, false);
+        stageOneTabs.setEnabledAt(2, false);
+        stageOneTabs.setEnabledAt(3, false);
+        stageOneTabs.setEnabledAt(4, false);
+        stageOneTabs.setEnabledAt(5, false);
+        stageOneTabs.setEnabledAt(6, false);
+        stageOneTabs.setEnabledAt(7, false);
 
         //updateMixRegGUI();
         //this.setResizable(false);
@@ -682,6 +690,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         countRadio = new javax.swing.JRadioButton();
         stageTwoDescription = new javax.swing.JButton();
         hiddenBigIconLabel = new javax.swing.JLabel();
+        progressLoadButton = new javax.swing.JButton();
+        progressSaveButton = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         resetButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -1017,6 +1027,20 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
         });
 
+        progressLoadButton.setText("Load");
+        progressLoadButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                progressLoadButtonActionPerformed(evt);
+            }
+        });
+
+        progressSaveButton.setText("Save");
+        progressSaveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                progressSaveButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
@@ -1024,7 +1048,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
                 .addGap(305, 305, 305)
                 .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(150, 150, 150)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(progressSaveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(progressLoadButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(newModel_resetButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(newModelSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1214,8 +1242,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     .addComponent(seedHelpButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
-                    .addComponent(newModel_resetButton)
+                    .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
+                    .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(newModel_resetButton)
+                        .addComponent(progressLoadButton)
+                        .addComponent(progressSaveButton))
                     .addComponent(newModelSubmit))
                 .addGap(613, 613, 613))
         );
@@ -2423,7 +2454,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             // do nothing
         }
-        
+
         stageOneTabs.setEnabledAt(3, true);
         stageOneTabs.setEnabledAt(4, true);
         stageOneTabs.setEnabledAt(5, true);
@@ -2981,13 +3012,13 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             stageOneTabs.setSelectedIndex(2);
             System.out.println("outcome not none!!!!");
         }
-        
+
         try {
             produceStageOneOutput();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         if (outcomeNone == true) {
             stageOneTabs.setEnabledAt(3, true);
             stageOneTabs.setEnabledAt(5, true);
@@ -3421,19 +3452,17 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
 
             stageOneTabs.setEnabledAt(1, true);
-            if (outcomeNone == false){
+            if (outcomeNone == false) {
                 stageOneTabs.setEnabledAt(2, true);
             }
 
-            
-            stageOneTabs.setEnabledAt(1,true);
-            stageOneTabs.setEnabledAt(2,true);
-            stageOneTabs.setEnabledAt(3,true);
-            stageOneTabs.setEnabledAt(4,true);
-            stageOneTabs.setEnabledAt(5,true);
-            stageOneTabs.setEnabledAt(6,true);
+            stageOneTabs.setEnabledAt(1, true);
+            stageOneTabs.setEnabledAt(2, true);
+            stageOneTabs.setEnabledAt(3, true);
+            stageOneTabs.setEnabledAt(4, true);
+            stageOneTabs.setEnabledAt(5, true);
+            stageOneTabs.setEnabledAt(6, true);
             //stageOneTabs.setEnabledAt(7,true);
-
 
         } else {
 
@@ -3594,6 +3623,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             //randomScaleCheckBox.setEnabled(true);
             //randomScaleCheckBox.setSelected(true);
             // newModelMissingValueCode.selectAll();
+            progressSaveButton.setEnabled(true);
+            progressLoadButton.setEnabled(true);
 
             stageOneTabs.setEnabledAt(6, true);
 
@@ -3607,7 +3638,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
-            
+
         } else {
             System.out.println("File access cancelled by user.");
         }
@@ -3700,7 +3731,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private void hiddenBigIconLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hiddenBigIconLabelMouseClicked
         // TODO add your handling code here:
         revealHiddenTabs++;
-        if(revealHiddenTabs > 4){
+        if (revealHiddenTabs > 4) {
             stageOneTabs.setEnabledAt(7, true);
             stageOneTabs.setEnabledAt(8, true);
             superUserMenuLaunch = new SuperUserMenu();
@@ -3710,60 +3741,210 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_hiddenBigIconLabelMouseClicked
 
     private void userGuideDownloadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userGuideDownloadActionPerformed
- 
+
         // user open filechooser and select save path
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setSelectedFile(new File("MixWild_User_Guide.pdf"));
         int option = fileChooser.showSaveDialog(this);
-        if(option == JFileChooser.APPROVE_OPTION){
+        if (option == JFileChooser.APPROVE_OPTION) {
             File dest = fileChooser.getSelectedFile();
-            
+
             // copy file from resources to user selected save path
             InputStream stream = null;
             try {
                 URL inputUrl = getClass().getResource("/resources/UserGuide.pdf");
                 FileUtils.copyURLToFile(inputUrl, dest);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } finally {
-                    if (stream != null) {
-                        try {
-                            stream.close();
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (stream != null) {
+                    try {
+                        stream.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
                 }
-            }                 
+            }
+        }
     }//GEN-LAST:event_userGuideDownloadActionPerformed
 
     private void exampleDataDownloadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exampleDataDownloadActionPerformed
-        
+
         // user open filechooser and select save path
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setSelectedFile(new File("Mixwild_example_data.csv"));
-        int option = fileChooser.showSaveDialog(this);
-        if(option == JFileChooser.APPROVE_OPTION){
-            File dest = fileChooser.getSelectedFile();
-            
+        JFileChooser filechooser_sample = new JFileChooser();
+        filechooser_sample.setSelectedFile(new File("Mixwild_example_data.csv"));
+        int option = filechooser_sample.showSaveDialog(this);
+        if (option == JFileChooser.APPROVE_OPTION) {
+            File dest = filechooser_sample.getSelectedFile();
+
             // copy file from resources to user selected save path
             InputStream stream = null;
             try {
                 URL inputUrl = getClass().getResource("/resources/ExampleData.csv");
                 FileUtils.copyURLToFile(inputUrl, dest);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } finally {
-                    if (stream != null) {
-                        try {
-                            stream.close();
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
+            } catch (IOException e) {
+            } finally {
+                if (stream != null) {
+                    try {
+                        stream.close();
+                    } catch (IOException e) {
                     }
                 }
-            }       
+            }
+        }
     }//GEN-LAST:event_exampleDataDownloadActionPerformed
+
+    private void progressLoadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_progressLoadButtonActionPerformed
+        HashMap<String, ProgressObject> hmap_progress = null;
+
+        JFileChooser fileChooser_load = new JFileChooser();
+        fileChooser_load.setSelectedFile(new File("progress.ser"));
+        int option = fileChooser_load.showSaveDialog(this);
+        if (option == JFileChooser.APPROVE_OPTION) {
+            File load_filename = fileChooser_load.getSelectedFile();
+            try {
+                FileInputStream fis = new FileInputStream(load_filename);
+                ObjectInputStream ois = new ObjectInputStream(fis);
+                hmap_progress = (HashMap) ois.readObject();
+                ois.close();
+                fis.close();
+            } catch (ClassNotFoundException c) {
+                System.out.println("Class not found");
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        //System.out.print(hmap_progress.get("titleField").getString());
+        loadConfigurationTab(hmap_progress);
+    }//GEN-LAST:event_progressLoadButtonActionPerformed
+
+    private void progressSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_progressSaveButtonActionPerformed
+        HashMap<String, ProgressObject> hmap_progress = new HashMap<>();
+        hmap_progress = createProgressHashMap();
+ 
+        // user open filechooser and select save path
+        JFileChooser fileChooser_save = new JFileChooser();
+        fileChooser_save.setSelectedFile(new File("progress.ser"));
+        int option = fileChooser_save.showSaveDialog(this);
+        if (option == JFileChooser.APPROVE_OPTION) {
+            File save_filename = fileChooser_save.getSelectedFile();
+
+            try {
+                FileOutputStream fos = new FileOutputStream(save_filename);
+                ObjectOutputStream oos = new ObjectOutputStream(fos);
+                oos.writeObject(hmap_progress);
+                oos.close();
+                fos.close();
+                System.out.printf("Progress is saved in progress.ser");
+            } catch (IOException ioe) {
+            }
+        }
+    }//GEN-LAST:event_progressSaveButtonActionPerformed
+
+    private void loadConfigurationTab(HashMap<String, ProgressObject> hmap_progress){
+        //System.out.print(hmap_progress);
+        // reload title
+        titleField.setText(hmap_progress.get("titleField").getString());
+        // reload missing value
+        if (hmap_progress.get("missingvaluePresent").getBoolean()){
+            missingValuePresent.setSelected(true);
+            newModelMissingValueCode.setText(hmap_progress.get("newModelMissingValueCode").getString());
+        } else if(hmap_progress.get("missingvalueAbsent").getBoolean()){
+            missingValueAbsent.setSelected(true);
+        }
+        // reload stage 1 outcome
+        if (hmap_progress.get("stageOneContinuousRadio").getBoolean()){
+            stageOneContinuousRadio.setSelected(true);
+        } else if (hmap_progress.get("stageOneDichotomousRadio").getBoolean()){
+            stageOneDichotomousRadio.setSelected(true);
+        } else if (hmap_progress.get("stageOneOrdinalRadio").getBoolean()){
+            stageOneOrdinalRadio.setSelected(true);
+        }
+        // reload RLERatio
+        if (hmap_progress.get("oneRLERadio").getBoolean()){
+            oneRLERadio.setSelected(true);
+        } else if (hmap_progress.get("moreThanOneRLERadio").getBoolean()){
+            moreThanOneRLERadio.setSelected(true);
+        }
+        // 
+        if (hmap_progress.get("randomScaleSelectionYes").getBoolean()){
+            randomScaleSelectionYes.setSelected(true);
+        } else if (hmap_progress.get("randomScaleSelectionNo").getBoolean()){
+            randomScaleSelectionNo.setSelected(true);
+        }
+        // 
+        if (hmap_progress.get("includeStageTwoYes").getBoolean()){
+            includeStageTwoYes.setSelected(true);
+        } else if (hmap_progress.get("includeStageTwoNo").getBoolean()){
+            includeStageTwoNo.setSelected(true);
+        }     
+        // 
+        if (hmap_progress.get("stageTwoSingleLevel").getBoolean()){
+            stageTwoSingleLevel.setSelected(true);
+        } else if (hmap_progress.get("stageTwoMultiLevel").getBoolean()){
+            stageTwoMultiLevel.setSelected(true);
+        }  
+        //
+        if (hmap_progress.get("continuousRadio").getBoolean()){
+            continuousRadio.setSelected(true);
+        } else if (hmap_progress.get("dichotomousRadio").getBoolean()){
+            dichotomousRadio.setSelected(true);
+        } else if (hmap_progress.get("countRadio").getBoolean()){
+            countRadio.setSelected(true);
+        } else if (hmap_progress.get("multinomialRadio").getBoolean()){
+            multinomialRadio.setSelected(true);
+        }  
+        
+        seedTextBox.setText(hmap_progress.get("seedTextBox").getString());
+    }
+    
+    public HashMap<String,ProgressObject> createProgressHashMap(){
+        HashMap<String,ProgressObject> hashmap=new HashMap<>();
+        ProgressObject po1 = new ProgressObject("titleField",0,titleField.getText(),true);
+        ProgressObject po2 = new ProgressObject("missingvaluePresent",0,"", missingValuePresent.isSelected());
+        ProgressObject po3 = new ProgressObject("missingvalueAbsent",0,"", missingValueAbsent.isSelected());
+        ProgressObject po4 = new ProgressObject("newModelMissingValueCode",0,newModelMissingValueCode.getText(),true);
+        ProgressObject po5 = new ProgressObject("stageOneContinuousRadio",0,"",stageOneContinuousRadio.isSelected());
+        ProgressObject po6 = new ProgressObject("stageOneDichotomousRadio",0,"",stageOneDichotomousRadio.isSelected());
+        ProgressObject po7 = new ProgressObject("stageOneOrdinalRadio",0,"",stageOneOrdinalRadio.isSelected());
+        ProgressObject po8 = new ProgressObject("oneRLERadio",0,"",oneRLERadio.isSelected());
+        ProgressObject po9 = new ProgressObject("moreThanOneRLERadio",0,"",moreThanOneRLERadio.isSelected());
+        ProgressObject po10 = new ProgressObject("randomScaleSelectionYes",0,"",randomScaleSelectionYes.isSelected());
+        ProgressObject po11 = new ProgressObject("randomScaleSelectionNo",0,"",randomScaleSelectionNo.isSelected());
+        ProgressObject po12 = new ProgressObject("includeStageTwoYes",0,"",includeStageTwoYes.isSelected());
+        ProgressObject po13 = new ProgressObject("includeStageTwoNo",0,"",includeStageTwoNo.isSelected());
+        ProgressObject po14 = new ProgressObject("stageTwoSingleLevel",0,"",stageTwoSingleLevel.isSelected());
+        ProgressObject po15 = new ProgressObject("stageTwoMultiLevel",0,"",stageTwoMultiLevel.isSelected());
+        ProgressObject po16 = new ProgressObject("continuousRadio",0,"",continuousRadio.isSelected());
+        ProgressObject po17 = new ProgressObject("dichotomousRadio",0,"",dichotomousRadio.isSelected());
+        ProgressObject po18 = new ProgressObject("countRadio",0,"",countRadio.isSelected());
+        ProgressObject po19 = new ProgressObject("multinomialRadio",0,"",multinomialRadio.isSelected());
+        ProgressObject po20 = new ProgressObject("seedTextBox",0,seedTextBox.getText(),true);
+        hashmap.put(po1.getKey(), po1);
+        hashmap.put(po2.getKey(), po2);
+        hashmap.put(po3.getKey(), po3);
+        hashmap.put(po4.getKey(), po4);
+        hashmap.put(po5.getKey(), po5);
+        hashmap.put(po6.getKey(), po6);
+        hashmap.put(po7.getKey(), po7);
+        hashmap.put(po8.getKey(), po8);
+        hashmap.put(po9.getKey(), po9);
+        hashmap.put(po10.getKey(), po10);
+        hashmap.put(po11.getKey(), po11);
+        hashmap.put(po12.getKey(), po12);
+        hashmap.put(po13.getKey(), po13);
+        hashmap.put(po14.getKey(), po14);
+        hashmap.put(po15.getKey(), po15);
+        hashmap.put(po16.getKey(), po16);
+        hashmap.put(po17.getKey(), po17);
+        hashmap.put(po18.getKey(), po18);
+        hashmap.put(po19.getKey(), po19);
+        hashmap.put(po20.getKey(), po20);
+        return hashmap;
+    }
 
     /**
      * @param args the command line arguments
@@ -3936,6 +4117,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JButton outcomeCatButton;
     private javax.swing.JPanel parentPanel;
     public static javax.swing.JLabel printedFileName;
+    private javax.swing.JButton progressLoadButton;
+    private javax.swing.JButton progressSaveButton;
     public static javax.swing.JLabel randomLocationEffectsLabel;
     private javax.swing.ButtonGroup randomScaleSelectionGroup;
     private javax.swing.JRadioButton randomScaleSelectionNo;
