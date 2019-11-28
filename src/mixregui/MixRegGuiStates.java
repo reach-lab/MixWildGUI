@@ -44,7 +44,13 @@ public class MixRegGuiStates {
     public boolean countRadio;
     public boolean multinomialRadio;
     public String seedTextBox;
+    public boolean isSubmittedNewModalConfig;
 
+    // gui states of Stage One & Two
+    public boolean isSubmittedStageOne;
+    public boolean isSubmittedStageTwo;
+    
+    
     // init default
     MixRegGuiStates() {
     }
@@ -72,6 +78,7 @@ public class MixRegGuiStates {
         this.countRadio = mxr.getCountRadio();
         this.multinomialRadio = mxr.getMultinomialRadio();
         this.seedTextBox = mxr.getSeedTextBox();
+        this.isSubmittedNewModalConfig = mxr.isSubmittedNewModalConfig;
     }
 
     public void writeAllStates(mixregGUI mxr) {
@@ -141,7 +148,7 @@ public class MixRegGuiStates {
         countRadio = hmapStates.get("countRadio").getBoolean();
         multinomialRadio = hmapStates.get("multinomialRadio").getBoolean();
         seedTextBox = hmapStates.get("seedTextBox").getString();
-
+        isSubmittedNewModalConfig = hmapStates.get("isSubmittedNewModalConfig").getBoolean();
     }
 
     public HashMap<String, StateObject> createStatesHashMap() {
@@ -167,6 +174,7 @@ public class MixRegGuiStates {
         StateObject po18 = new StateObject("countRadio", 0, "", countRadio);
         StateObject po19 = new StateObject("multinomialRadio", 0, "", multinomialRadio);
         StateObject po20 = new StateObject("seedTextBox", 0, seedTextBox, true);
+        StateObject po21 = new StateObject("isSubmittedNewModalConfig", 0, "", isSubmittedNewModalConfig);
         hashmap.put(po0.getKey(), po0);
         hashmap.put(po1.getKey(), po1);
         hashmap.put(po2.getKey(), po2);
@@ -188,6 +196,7 @@ public class MixRegGuiStates {
         hashmap.put(po18.getKey(), po18);
         hashmap.put(po19.getKey(), po19);
         hashmap.put(po20.getKey(), po20);
+        hashmap.put(po21.getKey(), po21);
         return hashmap;
     }
 

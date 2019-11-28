@@ -123,6 +123,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     static int iconPositionY;
     String missingValue = "0";
     static int revealHiddenTabs;
+    boolean isSubmittedNewModalConfig;
+    boolean isSubmittedStageOne;
+    boolean isSubmittedStageTwo;
 
     public static DefinitionHelper defFile;
     public static ModelBuilder modelBuilder;
@@ -645,8 +648,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             hiddenBigIconLabel.setIcon(bigIcon);
         }
 
-        guiStatesLoadButton.setVisible(turnOn);
-        guiStatesSaveButton.setVisible(turnOn);
+        guiStatesLoadButtonModalConfig.setVisible(turnOn);
+        guiStatesSaveButtonModalConfig.setVisible(turnOn);
     }
 
     /**
@@ -765,8 +768,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         countRadio = new javax.swing.JRadioButton();
         stageTwoDescription = new javax.swing.JButton();
         hiddenBigIconLabel = new javax.swing.JLabel();
-        guiStatesLoadButton = new javax.swing.JButton();
-        guiStatesSaveButton = new javax.swing.JButton();
+        guiStatesLoadButtonModalConfig = new javax.swing.JButton();
+        guiStatesSaveButtonModalConfig = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         resetButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -806,6 +809,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         startStageTwo = new javax.swing.JButton();
+        guiStatesSaveButtonStageOne = new javax.swing.JButton();
+        guiStatesLoadButtonStageOne = new javax.swing.JButton();
         jPanel12 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -831,6 +836,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         outcomeCatButton = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         outCategoryDisplay = new javax.swing.JTextPane();
+        guiStatesSaveButtonStageTwo = new javax.swing.JButton();
+        guiStatesLoadButtonStageTwo = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -1113,17 +1120,17 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
         });
 
-        guiStatesLoadButton.setText("Load");
-        guiStatesLoadButton.addActionListener(new java.awt.event.ActionListener() {
+        guiStatesLoadButtonModalConfig.setText("Load");
+        guiStatesLoadButtonModalConfig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                guiStatesLoadButtonActionPerformed(evt);
+                guiStatesLoadButtonModalConfigActionPerformed(evt);
             }
         });
 
-        guiStatesSaveButton.setText("Save");
-        guiStatesSaveButton.addActionListener(new java.awt.event.ActionListener() {
+        guiStatesSaveButtonModalConfig.setText("Save");
+        guiStatesSaveButtonModalConfig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                guiStatesSaveButtonActionPerformed(evt);
+                guiStatesSaveButtonModalConfigActionPerformed(evt);
             }
         });
 
@@ -1135,9 +1142,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 .addGap(305, 305, 305)
                 .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(guiStatesSaveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(guiStatesSaveButtonModalConfig, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(guiStatesLoadButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(guiStatesLoadButtonModalConfig, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(newModel_resetButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
@@ -1331,8 +1338,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
                     .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(newModel_resetButton)
-                        .addComponent(guiStatesLoadButton)
-                        .addComponent(guiStatesSaveButton))
+                        .addComponent(guiStatesLoadButtonModalConfig)
+                        .addComponent(guiStatesSaveButtonModalConfig))
                     .addComponent(newModelSubmit))
                 .addGap(613, 613, 613))
         );
@@ -1575,6 +1582,25 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         });
         jPanel1.add(startStageTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 560, 140, 40));
 
+        guiStatesSaveButtonStageOne.setText("Save");
+        guiStatesSaveButtonStageOne.setMaximumSize(new java.awt.Dimension(99, 25));
+        guiStatesSaveButtonStageOne.setMinimumSize(new java.awt.Dimension(99, 25));
+        guiStatesSaveButtonStageOne.setPreferredSize(new java.awt.Dimension(99, 25));
+        guiStatesSaveButtonStageOne.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guiStatesSaveButtonStageOneActionPerformed(evt);
+            }
+        });
+        jPanel1.add(guiStatesSaveButtonStageOne, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 560, 135, 40));
+
+        guiStatesLoadButtonStageOne.setText("Load");
+        guiStatesLoadButtonStageOne.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guiStatesLoadButtonStageOneActionPerformed(evt);
+            }
+        });
+        jPanel1.add(guiStatesLoadButtonStageOne, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 560, 135, 40));
+
         stageOneTabs.addTab("Stage 1 Configuration", jPanel1);
 
         jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1649,7 +1675,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 suppressIntCheckBoxActionPerformed(evt);
             }
         });
-        jPanel12.add(suppressIntCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 520, 240, -1));
+        jPanel12.add(suppressIntCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 520, 210, -1));
 
         stageTwoOutcome.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         stageTwoOutcome.addItemListener(new java.awt.event.ItemListener() {
@@ -1710,6 +1736,22 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         );
 
         jPanel12.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 240, 250));
+
+        guiStatesSaveButtonStageTwo.setText("Save");
+        guiStatesSaveButtonStageTwo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guiStatesSaveButtonStageTwoActionPerformed(evt);
+            }
+        });
+        jPanel12.add(guiStatesSaveButtonStageTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 510, 100, 40));
+
+        guiStatesLoadButtonStageTwo.setText("Load");
+        guiStatesLoadButtonStageTwo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guiStatesLoadButtonStageTwoActionPerformed(evt);
+            }
+        });
+        jPanel12.add(guiStatesLoadButtonStageTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 510, 100, 40));
 
         stageOneTabs.addTab("Stage 2 Configuration", jPanel12);
 
@@ -3229,7 +3271,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_seedHelpButtonActionPerformed
 
     private void newModelSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModelSubmitActionPerformed
-
+        isSubmittedNewModalConfig = true;
         // System.getProperty("os.name");
         //        String osName = System.getProperty("os.name");
         //        System.out.println("YOUR OPERATING SYSTEM IS: " + osName);
@@ -3238,322 +3280,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         //        } else {
         //            System.out.println("NO THE OS IS NOT WINDOWS");
         //        }
-        System.out.println("Model submitted" + " called");
+        updateGuiView_trigger_NewModelSubmit();
 
-        if (validateFields() == true) {
-            System.out.print("condition is true");
-            if (oneRLERadio.isSelected() == true) {
-                RLE = 1;
-            } else if (moreThanOneRLERadio.isSelected() == true) {
-                RLE = 2;
-            }
-
-            defFile = new DefinitionHelper(RLE, !isOutcomeContinous());
-            // modelBuilder = new ModelBuilder(defFile);
-            System.out.println("RLE: " + String.valueOf(RLE));
-
-            defFile.modelSelector(RLE, isOutcomeContinous());
-
-            if (missingValuePresent.isSelected()) {
-
-                System.out.println("NEW MODEL | MISSING VALUE = " + newModelMissingValueCode.getText());
-
-                try {
-                    System.out.println("NEW MODEL | MISSING VALUE = " + newModelMissingValueCode.getText());
-                    defFile.setAdvancedMissingValue(String.valueOf(newModelMissingValueCode.getText()));
-
-                    System.out.println("From defHelper | Missing Value: " + defFile.getAdvancedMissingValue());
-                } catch (Exception ex) {
-                    Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
-                }
-
-            } else if (missingValueAbsent.isSelected()) {
-                try {
-                    defFile.setAdvancedMissingValue(String.valueOf(missingValue));
-                    System.out.println("From defHelper | Missing Value: " + defFile.getAdvancedMissingValue());
-                } catch (Exception ex) {
-                    Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
-                }
-                //do nothing
-            }
-
-            try {
-                //convert csv to .dat file ...
-                //defFile.
-                defFile.csvToDatConverter(file);
-            } catch (IOException ex) {
-                Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
-            }
-
-            System.out.println("MODEL SELECTOR: " + String.valueOf(defFile.getSelectedModel()));
-
-            if (filePath.getText().toString().equals("")) {
-                JOptionPane.showMessageDialog(null, "Please upload a .csv file to start your analysis", "Caution!", JOptionPane.INFORMATION_MESSAGE);
-            } else {
-
-                try {
-
-                    // Read file contents
-                    Scanner inputStream = new Scanner(file);
-
-                    // Read variable names from row 1
-                    String variableNames = inputStream.next();
-                    variableArray = variableNames.split(",");
-                    System.out.println("Variables are: " + Arrays.toString(variableArray));
-                    // save all variables in an array
-                    String[] varTemp = getVariableNames();
-                    defFile.setDataFilename(extractDatFilePath());
-                    defFile.setDataVariableCount(String.valueOf(variableArray.length));
-                    System.out.println("From defHelper | Variable count: " + defFile.getDataVariableCount());
-                } catch (FileNotFoundException ex) {
-                    Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                } catch (Exception ex) {
-                    Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                }
-
-                // Read random location effects from new Model
-                //RLE = (Integer) randomLocationEffects.getValue();
-                NoneVar = isOutcomeNone();
-                outComeBoolean = isOutcomeContinous();
-                System.out.println("NoneVar: " + String.valueOf(NoneVar));
-                System.out.println(String.valueOf(isOutcomeContinous()));
-                System.out.println("IsOutcomeNone: " + String.valueOf(isOutcomeNone()));
-                // set Values in def helper
-                defFile.setModelTitle(getTitle());
-                System.out.println("From defHelper | Title: " + defFile.getModelTitle());
-                //defFile.setModelSubtitle(getSubTitle());
-                System.out.println("From defHelper | Subtitle: " + defFile.getModelSubtitle());
-
-                //Check if the randome scale is checked or not
-                if (randomScaleSelectionYes.isSelected()) {
-                    isRandomScale = true;
-                } else if (randomScaleSelectionNo.isSelected()) {
-                    isRandomScale = false;
-                } else {
-                    // randomScaleCheckBox
-                }
-
-                defFile.setModelSubtitle("Created with MixWILD GUI");
-                System.out.println("From defHelper | Subtitle: " + defFile.getModelSubtitle());
-
-                //set advanced options defaults and assign values to defition library
-                try {
-                    defFile.setModelFixedInt(String.valueOf(0));
-                    System.out.println("From defHelper | Mean SubModel Checked?: " + defFile.getModelFixedInt());
-                    //tryCount = 1;
-                } catch (Exception ex) {
-                    //catchCount = 1;
-                    Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                }
-                try {
-                    defFile.setModelRandomInt(String.valueOf(0));
-                    defFile.setModelBetweenInt(String.valueOf(0));
-                    System.out.println("From defHelper | BS SubModel Checked?: " + defFile.getModelRandomInt());
-                    System.out.println("From defHelper | BS SubModel Checked?: " + defFile.getModelBetweenInt());
-                } catch (Exception ex) {
-                    Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                }
-                try {
-                    defFile.setModelScaleInt(String.valueOf(0));
-                    defFile.setModelWithinInt(String.valueOf(0));
-                    System.out.println("From defHelper | WS SubModel Checked?: " + defFile.getModelScaleInt());
-                    System.out.println("From defHelper | WS SubModel Checked?: " + defFile.getModelWithinInt());
-                    //tryCount = 1;
-                } catch (Exception ex) {
-                    //catchCount = 1;
-                    Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                }
-                try {
-                    defFile.setAdvancedAdaptiveQuad(String.valueOf(1));
-                    System.out.println("From defHelper | Adaptive Quadriture Checked?: " + defFile.getAdvancedAdaptiveQuad());
-                    //tryCount = 1;
-                } catch (Exception ex) {
-                    //catchCount = 1;
-                    Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                }
-                try {
-                    defFile.setAdvancedConvergence(String.valueOf(0.00001));
-                    System.out.println("From defHelper | Convergence: " + defFile.getAdvancedConvergence());
-                    //tryCount = 1;
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                    Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-                    //catchCount = 1;
-                }
-                try {
-                    defFile.setAdvancedQuadPoints(String.valueOf(11));
-                    System.out.println("From defHelper | Quadriture Points: " + defFile.getAdvancedQuadPoints());
-                    //tryCount = 1;
-                } catch (Exception ex) {
-                    //catchCount = 1;
-                    Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                }
-                try {
-                    defFile.setAdvancedMaxIteration(String.valueOf(200));
-                    System.out.println("From defHelper | Maximum Iteraions: " + defFile.getAdvancedMaxIteration());
-                    //tryCount = 1;
-                } catch (Exception ex) {
-                    //catchCount = 1;
-                    Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                }
-                try {
-                    defFile.setAdvancedRidge(String.valueOf(0.15));
-                    System.out.println("From defHelper | Ridge: " + defFile.getAdvancedRidge());
-                    //tryCount = 1;
-                } catch (Exception ex) {
-                    //catchCount = 1;
-                    Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                }
-                try {
-                    defFile.setAdvancedCutoffLower("0");
-                    System.out.println("CUT OFF: " + defFile.getAdvancedCutoffLower());
-                } catch (Exception ex) {
-                    Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                }
-                try {
-                    defFile.setAdvancedDiscardSubjects("0");
-                    System.out.println("DISCARD SUBJECTS: " + defFile.getAdvancedDiscardSubjects());
-
-                } catch (Exception ex) {
-                    Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                }
-                try {
-                    defFile.setAdvancedCenterScale(String.valueOf(0));
-                    System.out.println("From defHelper | Scale Regressor: " + defFile.getAdvancedCenterScale());
-                } catch (Exception ex) {
-                    Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                }
-                try {
-                    defFile.setAdvancedResampleCount("500");
-                    System.out.println("From defHelper | Resample count: " + defFile.getAdvancedResampleCount());
-                } catch (Exception ex) {
-                    Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                }
-
-                try {
-                    defFile.setSeedForStageTwo(seedTextBox.getText());
-                    System.out.println("From defHelper | SEED: " + defFile.getSeedForStageTwo());
-                } catch (Exception ex) {
-                    Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                }
-
-                defFile.setOutputPrefix(extractDatFileName() + "_Output");
-                System.out.println("From defHelper | Output file name: " + defFile.getOutputPrefix());
-
-                if (randomScaleSelectionYes.isSelected()) {
-                    try {
-                        defFile.setAdvancedRandomScaleNotIncluded("0");
-                        System.out.println("IS RANDOM SCALE INCLUDED: " + defFile.getAdvancedRandomScaleNotIncluded());
-                    } catch (Exception ex) {
-                        Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                        JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                    }
-
-                } else {
-
-                    try {
-                        defFile.setAdvancedRandomScaleNotIncluded("1");
-                        System.out.println("IS RANDOM SCALE INCLUDED: " + defFile.getAdvancedRandomScaleNotIncluded());
-                    } catch (Exception ex) {
-                        Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                        JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                    }
-
-                }
-
-                if (isOutcomeNone()) {
-                    try {
-                        defFile.setAdvancedDropSecondStage("1");
-                        System.out.println("DROP SECOND STAGE?: " + defFile.getAdvancedDropSecondStage());
-                    } catch (Exception ex) {
-                        Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                        JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                    }
-
-                } else {
-
-                    try {
-                        defFile.setAdvancedDropSecondStage("0");
-                        System.out.println("DROP SECOND STAGE?: " + defFile.getAdvancedDropSecondStage());
-                    } catch (Exception ex) {
-                        Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                        JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                    }
-
-                }
-
-                //set conditions here:
-                if (newModelMissingValueCode.getText().equals("0") || newModelMissingValueCode.getText().equals("00") || newModelMissingValueCode.getText().equals("000")) {
-                    //show message alert here:
-                    JOptionPane.showMessageDialog(null, "Invalid missing value code, 0 implies there are no missing values. Please use some other value. E.g., -999", "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                } else {
-                    // TODO: fix this stuff xyz
-                    isSubmitClicked();
-                    setVisible(true);
-                    randomLocationEffectsLabel.setText("Random location effects: " + randomLocationEffects());
-                    stageTwoOutcomePrintLabel.setText("Stage 2 outcome: " + outComeTypeString());
-                    //Update ID, stage one and stage two variable comboboxes
-                    updateMixRegGUI();
-                    updateComboBoxes();
-                    stageOneTabs.setSelectedIndex(1);
-                    newModelSubmit.setEnabled(false);
-                    newModelSubmit.setVisible(false);
-                    fileBrowseButton.setEnabled(false);
-                    fileBrowseButton.setVisible(false);
-                    filePath.setEnabled(false);
-                    titleField.setEnabled(false);
-                    oneRLERadio.setEnabled(false);
-                    moreThanOneRLERadio.setEnabled(false);
-                    //randomScaleCheckBox.setEnabled(false);
-                    randomScaleSelectionYes.setEnabled(false);
-                    randomScaleSelectionNo.setEnabled(false);
-                    continuousRadio.setEnabled(false);
-                    dichotomousRadio.setEnabled(false);
-                    includeStageTwoNo.setEnabled(false);
-                    includeStageTwoYes.setEnabled(false);
-                    //noneRadio.setEnabled(false);
-                    missingValuePresent.setEnabled(false);
-                    missingValueAbsent.setEnabled(false);
-                    newModelMissingValueCode.setEnabled(false);
-                    seedTextBox.setEnabled(false);
-                    seedHelpButton.setVisible(false);
-
-                }
-
-            }
-
-            if (outcomeNone == false) {
-                stageOneTabs.setEnabledAt(2, true);
-            }
-
-            stageOneTabs.setEnabledAt(1, true);
-            stageOneTabs.setEnabledAt(2, true);
-            stageOneTabs.setEnabledAt(3, true);
-            stageOneTabs.setEnabledAt(4, true);
-            stageOneTabs.setEnabledAt(5, true);
-            stageOneTabs.setEnabledAt(6, true);
-            //stageOneTabs.setEnabledAt(7,true);
-
-        } else {
-
-            System.out.println("VALIDATION OF FIELDS: " + String.valueOf(false));
-
-        }
     }//GEN-LAST:event_newModelSubmitActionPerformed
 
     private void newModel_resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModel_resetButtonActionPerformed
@@ -3692,7 +3420,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         // TODO add your handling code here:
         String seedVal = generateSeed();
         seedTextBox.setText(seedVal);
-        
+
         MXRStates = new MixRegGuiStates(this);
         updateGuiView(MXRStates);
     }//GEN-LAST:event_includeStageTwoYesActionPerformed
@@ -3771,18 +3499,18 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         }
     }//GEN-LAST:event_exampleDataDownloadActionPerformed
 
-    private void guiStatesLoadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guiStatesLoadButtonActionPerformed
+    private void guiStatesLoadButtonModalConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guiStatesLoadButtonModalConfigActionPerformed
 
         MXRStates = new MixRegGuiStates();
         MXRStates.readAllStates(this);
         updateGuiView(MXRStates);
-    }//GEN-LAST:event_guiStatesLoadButtonActionPerformed
+    }//GEN-LAST:event_guiStatesLoadButtonModalConfigActionPerformed
 
-    private void guiStatesSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guiStatesSaveButtonActionPerformed
+    private void guiStatesSaveButtonModalConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guiStatesSaveButtonModalConfigActionPerformed
 
         MXRStates = new MixRegGuiStates(this);
         MXRStates.writeAllStates(this);
-    }//GEN-LAST:event_guiStatesSaveButtonActionPerformed
+    }//GEN-LAST:event_guiStatesSaveButtonModalConfigActionPerformed
 
     private void seedTextBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seedTextBoxActionPerformed
         // TODO add your handling code here:
@@ -3792,26 +3520,62 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         // TODO add your handling code here:
     }//GEN-LAST:event_randomScaleSelectionNoActionPerformed
 
+    private void guiStatesSaveButtonStageOneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guiStatesSaveButtonStageOneActionPerformed
+        // TODO add your handling code here:
+        MXRStates = new MixRegGuiStates(this);
+        MXRStates.writeAllStates(this);
+    }//GEN-LAST:event_guiStatesSaveButtonStageOneActionPerformed
+
+    private void guiStatesLoadButtonStageOneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guiStatesLoadButtonStageOneActionPerformed
+        // TODO add your handling code here:
+        MXRStates = new MixRegGuiStates();
+        MXRStates.readAllStates(this);
+        updateGuiView(MXRStates);
+    }//GEN-LAST:event_guiStatesLoadButtonStageOneActionPerformed
+
+    private void guiStatesLoadButtonStageTwoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guiStatesLoadButtonStageTwoActionPerformed
+        // TODO add your handling code here:
+        MXRStates = new MixRegGuiStates();
+        MXRStates.readAllStates(this);
+        updateGuiView(MXRStates);
+    }//GEN-LAST:event_guiStatesLoadButtonStageTwoActionPerformed
+
+    private void guiStatesSaveButtonStageTwoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guiStatesSaveButtonStageTwoActionPerformed
+        // TODO add your handling code here:
+        MXRStates = new MixRegGuiStates(this);
+        MXRStates.writeAllStates(this);
+    }//GEN-LAST:event_guiStatesSaveButtonStageTwoActionPerformed
+
     // **********************update********************
     private void updateGuiView(MixRegGuiStates mxrStates) {
-        // ***Trigger***
-        // Trigger zero. Data file path exists or not
+        // this method is to update Gui View with Gui state data saved in MixRegGuiStates
+        // Three different kinds of methods are defined:
+        //     1. verify: examine necessary verification 
+        //     2. all basic states: update all basic states that may or may not trigger other state change        
+        //     3. trigger: update states that are triggered by method Two (e.g. visible and enabled states)       
+
+        // Verify: Data file path exists or not
         boolean FilepathValid;
-        FilepathValid = updateGuiView_trigger_FilePath(mxrStates);
+        FilepathValid = updateGuiView_verify_FilePath(mxrStates);
 
         if (FilepathValid) {
-            // Update GUI States 1. Model Configuration Tab
+            // Update basic GUI States: Model Configuration Tab
             updateGuiView_TabOneStates(mxrStates);
             // Trigger 1. Dataset Contain missing values or not
-            updateGuiView_trigger_MissingValue(mxrStates);
+            updateGuiView_trigger_MissingValue();
             // Trigger 2. Include Stage 2 or not
-            updateGuiView_trigger_IncludeStageTwo(mxrStates);
-
+            updateGuiView_trigger_IncludeStageTwo();
+            // Trigger 3. New model submitted or not
+            if (mxrStates.isSubmittedNewModalConfig == true){
+                updateGuiView_trigger_NewModelSubmit();
+            }
+        } else {
+            return;
         }
 
     }
 
-    private boolean updateGuiView_trigger_FilePath(MixRegGuiStates mxrStates) {
+    private boolean updateGuiView_verify_FilePath(MixRegGuiStates mxrStates) {
         dataFileNameRef = mxrStates.filepath;
         filePath.setText(mxrStates.filepath);
         file = new File(mxrStates.filepath);
@@ -3831,8 +3595,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             newModel_resetButton.setEnabled(true);
             randomScaleSelectionYes.setEnabled(true);
             randomScaleSelectionNo.setEnabled(true);
-            guiStatesSaveButton.setEnabled(true);
-            guiStatesLoadButton.setEnabled(true);
+            guiStatesSaveButtonModalConfig.setEnabled(true);
+            guiStatesLoadButtonModalConfig.setEnabled(true);
             stageOneTabs.setEnabledAt(6, true);
 
             System.out.println(file.getAbsolutePath());
@@ -3903,14 +3667,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         seedTextBox.setText(mxrStates.seedTextBox);
     }
 
-    private void updateGuiView_trigger_MissingValue(MixRegGuiStates mxrStates) {
+    private void updateGuiView_trigger_MissingValue() {
         if (missingValueAbsent.isSelected()) {
             newModelMissingValueCode.setEnabled(false);
             newModelMissingValueCode.setText("");
         }
     }
 
-    private void updateGuiView_trigger_IncludeStageTwo(MixRegGuiStates mxrStates) {
+    private void updateGuiView_trigger_IncludeStageTwo() {
         if (includeStageTwoNo.isSelected()) {
             setSeedLabel.setVisible(false);
             seedTextBox.setVisible(false);
@@ -4008,8 +3772,12 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JButton fileBrowseButton;
     private javax.swing.JTextField filePath;
     private javax.swing.Box.Filler filler1;
-    private javax.swing.JButton guiStatesLoadButton;
-    private javax.swing.JButton guiStatesSaveButton;
+    private javax.swing.JButton guiStatesLoadButtonModalConfig;
+    private javax.swing.JButton guiStatesLoadButtonStageOne;
+    private javax.swing.JButton guiStatesLoadButtonStageTwo;
+    private javax.swing.JButton guiStatesSaveButtonModalConfig;
+    private javax.swing.JButton guiStatesSaveButtonStageOne;
+    private javax.swing.JButton guiStatesSaveButtonStageTwo;
     private javax.swing.JLabel hiddenBigIconLabel;
     private javax.swing.ButtonGroup includeStageTwoGroup;
     private javax.swing.JLabel includeStageTwoLabel;
@@ -6496,5 +6264,325 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             System.out.println("File access cancelled by user.");
             System.out.println(file.getAbsolutePath());
         }
+    }
+
+    private void updateGuiView_trigger_NewModelSubmit() {
+        System.out.println("Model submitted" + " called");
+
+        if (validateFields() == true) {
+            System.out.print("condition is true");
+            if (oneRLERadio.isSelected() == true) {
+                RLE = 1;
+            } else if (moreThanOneRLERadio.isSelected() == true) {
+                RLE = 2;
+            }
+
+            defFile = new DefinitionHelper(RLE, !isOutcomeContinous());
+            // modelBuilder = new ModelBuilder(defFile);
+            System.out.println("RLE: " + String.valueOf(RLE));
+
+            defFile.modelSelector(RLE, isOutcomeContinous());
+
+            if (missingValuePresent.isSelected()) {
+
+                System.out.println("NEW MODEL | MISSING VALUE = " + newModelMissingValueCode.getText());
+
+                try {
+                    System.out.println("NEW MODEL | MISSING VALUE = " + newModelMissingValueCode.getText());
+                    defFile.setAdvancedMissingValue(String.valueOf(newModelMissingValueCode.getText()));
+
+                    System.out.println("From defHelper | Missing Value: " + defFile.getAdvancedMissingValue());
+                } catch (Exception ex) {
+                    Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+                }
+
+            } else if (missingValueAbsent.isSelected()) {
+                try {
+                    defFile.setAdvancedMissingValue(String.valueOf(missingValue));
+                    System.out.println("From defHelper | Missing Value: " + defFile.getAdvancedMissingValue());
+                } catch (Exception ex) {
+                    Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+                }
+                //do nothing
+            }
+
+            try {
+                //convert csv to .dat file ...
+                //defFile.
+                defFile.csvToDatConverter(file);
+            } catch (IOException ex) {
+                Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+            System.out.println("MODEL SELECTOR: " + String.valueOf(defFile.getSelectedModel()));
+
+            if (filePath.getText().toString().equals("")) {
+                JOptionPane.showMessageDialog(null, "Please upload a .csv file to start your analysis", "Caution!", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+
+                try {
+
+                    // Read file contents
+                    Scanner inputStream = new Scanner(file);
+
+                    // Read variable names from row 1
+                    String variableNames = inputStream.next();
+                    variableArray = variableNames.split(",");
+                    System.out.println("Variables are: " + Arrays.toString(variableArray));
+                    // save all variables in an array
+                    String[] varTemp = getVariableNames();
+                    defFile.setDataFilename(extractDatFilePath());
+                    defFile.setDataVariableCount(String.valueOf(variableArray.length));
+                    System.out.println("From defHelper | Variable count: " + defFile.getDataVariableCount());
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+                } catch (Exception ex) {
+                    Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+                }
+
+                // Read random location effects from new Model
+                //RLE = (Integer) randomLocationEffects.getValue();
+                NoneVar = isOutcomeNone();
+                outComeBoolean = isOutcomeContinous();
+                System.out.println("NoneVar: " + String.valueOf(NoneVar));
+                System.out.println(String.valueOf(isOutcomeContinous()));
+                System.out.println("IsOutcomeNone: " + String.valueOf(isOutcomeNone()));
+                // set Values in def helper
+                defFile.setModelTitle(getTitle());
+                System.out.println("From defHelper | Title: " + defFile.getModelTitle());
+                //defFile.setModelSubtitle(getSubTitle());
+                System.out.println("From defHelper | Subtitle: " + defFile.getModelSubtitle());
+
+                //Check if the randome scale is checked or not
+                if (randomScaleSelectionYes.isSelected()) {
+                    isRandomScale = true;
+                } else if (randomScaleSelectionNo.isSelected()) {
+                    isRandomScale = false;
+                } else {
+                    // randomScaleCheckBox
+                }
+
+                defFile.setModelSubtitle("Created with MixWILD GUI");
+                System.out.println("From defHelper | Subtitle: " + defFile.getModelSubtitle());
+
+                //set advanced options defaults and assign values to defition library
+                try {
+                    defFile.setModelFixedInt(String.valueOf(0));
+                    System.out.println("From defHelper | Mean SubModel Checked?: " + defFile.getModelFixedInt());
+                    //tryCount = 1;
+                } catch (Exception ex) {
+                    //catchCount = 1;
+                    Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                }
+                try {
+                    defFile.setModelRandomInt(String.valueOf(0));
+                    defFile.setModelBetweenInt(String.valueOf(0));
+                    System.out.println("From defHelper | BS SubModel Checked?: " + defFile.getModelRandomInt());
+                    System.out.println("From defHelper | BS SubModel Checked?: " + defFile.getModelBetweenInt());
+                } catch (Exception ex) {
+                    Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                }
+                try {
+                    defFile.setModelScaleInt(String.valueOf(0));
+                    defFile.setModelWithinInt(String.valueOf(0));
+                    System.out.println("From defHelper | WS SubModel Checked?: " + defFile.getModelScaleInt());
+                    System.out.println("From defHelper | WS SubModel Checked?: " + defFile.getModelWithinInt());
+                    //tryCount = 1;
+                } catch (Exception ex) {
+                    //catchCount = 1;
+                    Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                }
+                try {
+                    defFile.setAdvancedAdaptiveQuad(String.valueOf(1));
+                    System.out.println("From defHelper | Adaptive Quadriture Checked?: " + defFile.getAdvancedAdaptiveQuad());
+                    //tryCount = 1;
+                } catch (Exception ex) {
+                    //catchCount = 1;
+                    Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                }
+                try {
+                    defFile.setAdvancedConvergence(String.valueOf(0.00001));
+                    System.out.println("From defHelper | Convergence: " + defFile.getAdvancedConvergence());
+                    //tryCount = 1;
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                    Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+                    //catchCount = 1;
+                }
+                try {
+                    defFile.setAdvancedQuadPoints(String.valueOf(11));
+                    System.out.println("From defHelper | Quadriture Points: " + defFile.getAdvancedQuadPoints());
+                    //tryCount = 1;
+                } catch (Exception ex) {
+                    //catchCount = 1;
+                    Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                }
+                try {
+                    defFile.setAdvancedMaxIteration(String.valueOf(200));
+                    System.out.println("From defHelper | Maximum Iteraions: " + defFile.getAdvancedMaxIteration());
+                    //tryCount = 1;
+                } catch (Exception ex) {
+                    //catchCount = 1;
+                    Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                }
+                try {
+                    defFile.setAdvancedRidge(String.valueOf(0.15));
+                    System.out.println("From defHelper | Ridge: " + defFile.getAdvancedRidge());
+                    //tryCount = 1;
+                } catch (Exception ex) {
+                    //catchCount = 1;
+                    Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                }
+                try {
+                    defFile.setAdvancedCutoffLower("0");
+                    System.out.println("CUT OFF: " + defFile.getAdvancedCutoffLower());
+                } catch (Exception ex) {
+                    Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                }
+                try {
+                    defFile.setAdvancedDiscardSubjects("0");
+                    System.out.println("DISCARD SUBJECTS: " + defFile.getAdvancedDiscardSubjects());
+
+                } catch (Exception ex) {
+                    Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                }
+                try {
+                    defFile.setAdvancedCenterScale(String.valueOf(0));
+                    System.out.println("From defHelper | Scale Regressor: " + defFile.getAdvancedCenterScale());
+                } catch (Exception ex) {
+                    Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                }
+                try {
+                    defFile.setAdvancedResampleCount("500");
+                    System.out.println("From defHelper | Resample count: " + defFile.getAdvancedResampleCount());
+                } catch (Exception ex) {
+                    Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                }
+
+                try {
+                    defFile.setSeedForStageTwo(seedTextBox.getText());
+                    System.out.println("From defHelper | SEED: " + defFile.getSeedForStageTwo());
+                } catch (Exception ex) {
+                    Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                }
+
+                defFile.setOutputPrefix(extractDatFileName() + "_Output");
+                System.out.println("From defHelper | Output file name: " + defFile.getOutputPrefix());
+
+                if (randomScaleSelectionYes.isSelected()) {
+                    try {
+                        defFile.setAdvancedRandomScaleNotIncluded("0");
+                        System.out.println("IS RANDOM SCALE INCLUDED: " + defFile.getAdvancedRandomScaleNotIncluded());
+                    } catch (Exception ex) {
+                        Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+                        JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                    }
+
+                } else {
+
+                    try {
+                        defFile.setAdvancedRandomScaleNotIncluded("1");
+                        System.out.println("IS RANDOM SCALE INCLUDED: " + defFile.getAdvancedRandomScaleNotIncluded());
+                    } catch (Exception ex) {
+                        Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+                        JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                    }
+
+                }
+
+                if (isOutcomeNone()) {
+                    try {
+                        defFile.setAdvancedDropSecondStage("1");
+                        System.out.println("DROP SECOND STAGE?: " + defFile.getAdvancedDropSecondStage());
+                    } catch (Exception ex) {
+                        Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+                        JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                    }
+
+                } else {
+
+                    try {
+                        defFile.setAdvancedDropSecondStage("0");
+                        System.out.println("DROP SECOND STAGE?: " + defFile.getAdvancedDropSecondStage());
+                    } catch (Exception ex) {
+                        Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+                        JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                    }
+
+                }
+
+                //set conditions here:
+                if (newModelMissingValueCode.getText().equals("0") || newModelMissingValueCode.getText().equals("00") || newModelMissingValueCode.getText().equals("000")) {
+                    //show message alert here:
+                    JOptionPane.showMessageDialog(null, "Invalid missing value code, 0 implies there are no missing values. Please use some other value. E.g., -999", "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                } else {
+                    // TODO: fix this stuff xyz
+                    isSubmitClicked();
+                    setVisible(true);
+                    randomLocationEffectsLabel.setText("Random location effects: " + randomLocationEffects());
+                    stageTwoOutcomePrintLabel.setText("Stage 2 outcome: " + outComeTypeString());
+                    //Update ID, stage one and stage two variable comboboxes
+                    updateMixRegGUI();
+                    updateComboBoxes();
+                    stageOneTabs.setSelectedIndex(1);
+                    newModelSubmit.setEnabled(false);
+                    newModelSubmit.setVisible(false);
+                    fileBrowseButton.setEnabled(false);
+                    fileBrowseButton.setVisible(false);
+                    filePath.setEnabled(false);
+                    titleField.setEnabled(false);
+                    oneRLERadio.setEnabled(false);
+                    moreThanOneRLERadio.setEnabled(false);
+                    //randomScaleCheckBox.setEnabled(false);
+                    randomScaleSelectionYes.setEnabled(false);
+                    randomScaleSelectionNo.setEnabled(false);
+                    continuousRadio.setEnabled(false);
+                    dichotomousRadio.setEnabled(false);
+                    includeStageTwoNo.setEnabled(false);
+                    includeStageTwoYes.setEnabled(false);
+                    //noneRadio.setEnabled(false);
+                    missingValuePresent.setEnabled(false);
+                    missingValueAbsent.setEnabled(false);
+                    newModelMissingValueCode.setEnabled(false);
+                    seedTextBox.setEnabled(false);
+                    seedHelpButton.setVisible(false);
+                    stageOneContinuousRadio.setVisible(false);
+                    stageTwoSingleLevel.setVisible(false);
+                }
+
+            }
+
+            if (outcomeNone == false) {
+                stageOneTabs.setEnabledAt(2, true);
+            }
+
+            stageOneTabs.setEnabledAt(1, true);
+            stageOneTabs.setEnabledAt(2, true);
+            stageOneTabs.setEnabledAt(3, true);
+            stageOneTabs.setEnabledAt(4, true);
+            stageOneTabs.setEnabledAt(5, true);
+            stageOneTabs.setEnabledAt(6, true);
+            //stageOneTabs.setEnabledAt(7,true);
+
+        } else {
+
+            System.out.println("VALIDATION OF FIELDS: " + String.valueOf(false));
+
+        } //To change body of generated methods, choose Tools | Templates.
     }
 }

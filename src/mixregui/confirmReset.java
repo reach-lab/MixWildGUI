@@ -118,7 +118,7 @@ public class confirmReset extends javax.swing.JDialog {
     
                 
                 // Stage One Reset
-                String[] variableNamesList = null;
+                stageOneRegs.variableNamesList = null;
                 stageOneRegs.levelOneList = null;
                 stageOneRegs.levelTwoList = null;
                 stageOneRegs.isSubmitClicked = false;
