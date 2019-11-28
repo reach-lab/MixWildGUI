@@ -117,9 +117,9 @@
                           <EmptySpace min="305" pref="305" max="-2" attributes="0"/>
                           <Component id="jLabel29" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="progressSaveButton" min="-2" pref="90" max="-2" attributes="0"/>
+                          <Component id="guiStatesSaveButton" min="-2" pref="90" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="progressLoadButton" min="-2" pref="90" max="-2" attributes="0"/>
+                          <Component id="guiStatesLoadButton" min="-2" pref="90" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="newModel_resetButton" min="-2" pref="90" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
@@ -358,8 +358,8 @@
                               <Component id="jLabel29" pref="176" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="newModel_resetButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="progressLoadButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="progressSaveButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="guiStatesLoadButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="guiStatesSaveButton" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="newModelSubmit" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -513,6 +513,9 @@
                   </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="seedTextBox">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="seedTextBoxActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="setSeedLabel">
                   <Properties>
@@ -609,6 +612,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="No"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="randomScaleSelectionNoActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="includeStageTwoLabel">
                   <Properties>
@@ -695,20 +701,20 @@
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="hiddenBigIconLabelMouseClicked"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="progressLoadButton">
+                <Component class="javax.swing.JButton" name="guiStatesLoadButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Load"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="progressLoadButtonActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="guiStatesLoadButtonActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="progressSaveButton">
+                <Component class="javax.swing.JButton" name="guiStatesSaveButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Save"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="progressSaveButtonActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="guiStatesSaveButtonActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>

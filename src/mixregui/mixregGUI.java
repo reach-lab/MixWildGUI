@@ -28,7 +28,7 @@ package mixregui;
 
 import com.opencsv.CSVReader;
 import def_lib.DefinitionHelper;
-import def_lib.ProgressObject;
+import def_lib.StateObject;
 import java.awt.Desktop;
 import java.net.URL;
 import javax.swing.DefaultComboBoxModel;
@@ -109,7 +109,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     public static mixregGUI mxr;
 
     // Declarations from old java
-    File file;
+    public File file;
 
     static String[] variableArray;
 
@@ -127,6 +127,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     public static DefinitionHelper defFile;
     public static ModelBuilder modelBuilder;
+
+    public MixRegGuiStates MXRStates;
 
     public int getRLE() {
         return RLE;
@@ -146,11 +148,83 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     //get title from the text box
     public String getTitle() {
+        return titleField.getText();
+    }
 
-        String titleString = titleField.getText().toString();
+    public boolean getMissingValuePresent() {
+        return missingValuePresent.isSelected();
+    }
 
-        return titleString;
+    public boolean getMissingValueAbsent() {
+        return missingValueAbsent.isSelected();
+    }
 
+    public String getNewModelMissingValueCode() {
+        return newModelMissingValueCode.getText();
+    }
+
+    public boolean getStageOneContinuousRadio() {
+        return stageOneContinuousRadio.isSelected();
+    }
+
+    public boolean getStageOneDichotomousRadio() {
+        return stageOneDichotomousRadio.isSelected();
+    }
+
+    public boolean getStageOneOrdinalRadio() {
+        return stageOneOrdinalRadio.isSelected();
+    }
+
+    public boolean getOneRLERadio() {
+        return oneRLERadio.isSelected();
+    }
+
+    public boolean getMoreThanOneRLERadio() {
+        return moreThanOneRLERadio.isSelected();
+    }
+
+    public boolean getRandomScaleSelectionYes() {
+        return randomScaleSelectionYes.isSelected();
+    }
+
+    public boolean getRandomScaleSelectionNo() {
+        return randomScaleSelectionNo.isSelected();
+    }
+
+    public boolean getIncludeStageTwoYes() {
+        return includeStageTwoYes.isSelected();
+    }
+
+    public boolean getIncludeStageTwoNo() {
+        return includeStageTwoNo.isSelected();
+    }
+
+    public boolean getStageTwoSingleLevel() {
+        return stageTwoSingleLevel.isSelected();
+    }
+
+    public boolean getStageTwoMultiLevel() {
+        return stageTwoMultiLevel.isSelected();
+    }
+
+    public boolean getContinuousRadio() {
+        return continuousRadio.isSelected();
+    }
+
+    public boolean getDichotomousRadio() {
+        return dichotomousRadio.isSelected();
+    }
+
+    public boolean getCountRadio() {
+        return countRadio.isSelected();
+    }
+
+    public boolean getMultinomialRadio() {
+        return multinomialRadio.isSelected();
+    }
+
+    public String getSeedTextBox() {
+        return seedTextBox.getText();
     }
 
 //check if the outcome type is selected as continuos or dichotomous
@@ -572,8 +646,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             hiddenBigIconLabel.setIcon(bigIcon);
         }
 
-        progressLoadButton.setVisible(turnOn);
-        progressSaveButton.setVisible(turnOn);
+        guiStatesLoadButton.setVisible(turnOn);
+        guiStatesSaveButton.setVisible(turnOn);
     }
 
     /**
@@ -581,6 +655,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
      */
     public mixregGUI() {
         initComponents();
+        MXRStates = new MixRegGuiStates();
+
         icon = new ImageIcon(getClass().getResource("/resources/MixWildLogoTiny.png"));
         bigIcon = new ImageIcon(getClass().getResource("/resources/MixWILDLogoResized.PNG"));
 
@@ -690,8 +766,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         countRadio = new javax.swing.JRadioButton();
         stageTwoDescription = new javax.swing.JButton();
         hiddenBigIconLabel = new javax.swing.JLabel();
-        progressLoadButton = new javax.swing.JButton();
-        progressSaveButton = new javax.swing.JButton();
+        guiStatesLoadButton = new javax.swing.JButton();
+        guiStatesSaveButton = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         resetButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -924,6 +1000,12 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
         });
 
+        seedTextBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                seedTextBoxActionPerformed(evt);
+            }
+        });
+
         setSeedLabel.setText("(Optional) Set a seed for Stage 2 resampling:");
 
         jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/MixWildLogoTiny.png"))); // NOI18N
@@ -974,6 +1056,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         randomScaleSelectionGroup.add(randomScaleSelectionNo);
         randomScaleSelectionNo.setText("No");
+        randomScaleSelectionNo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                randomScaleSelectionNoActionPerformed(evt);
+            }
+        });
 
         includeStageTwoLabel.setText("Include Stage 2 model:");
 
@@ -1027,17 +1114,17 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
         });
 
-        progressLoadButton.setText("Load");
-        progressLoadButton.addActionListener(new java.awt.event.ActionListener() {
+        guiStatesLoadButton.setText("Load");
+        guiStatesLoadButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                progressLoadButtonActionPerformed(evt);
+                guiStatesLoadButtonActionPerformed(evt);
             }
         });
 
-        progressSaveButton.setText("Save");
-        progressSaveButton.addActionListener(new java.awt.event.ActionListener() {
+        guiStatesSaveButton.setText("Save");
+        guiStatesSaveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                progressSaveButtonActionPerformed(evt);
+                guiStatesSaveButtonActionPerformed(evt);
             }
         });
 
@@ -1049,9 +1136,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 .addGap(305, 305, 305)
                 .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(progressSaveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(guiStatesSaveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(progressLoadButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(guiStatesLoadButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(newModel_resetButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
@@ -1245,8 +1332,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
                     .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(newModel_resetButton)
-                        .addComponent(progressLoadButton)
-                        .addComponent(progressSaveButton))
+                        .addComponent(guiStatesLoadButton)
+                        .addComponent(guiStatesSaveButton))
                     .addComponent(newModelSubmit))
                 .addGap(613, 613, 613))
         );
@@ -3451,7 +3538,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             }
 
-            stageOneTabs.setEnabledAt(1, true);
             if (outcomeNone == false) {
                 stageOneTabs.setEnabledAt(2, true);
             }
@@ -3530,10 +3616,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     private void missingValueAbsentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_missingValueAbsentActionPerformed
         // TODO add your handling code here:
-        if (missingValueAbsent.isSelected()) {
-            newModelMissingValueCode.setEnabled(false);
-            newModelMissingValueCode.setText("");
-        }
+        MXRStates = new MixRegGuiStates(this);
+        updateGuiView(MXRStates);
     }//GEN-LAST:event_missingValueAbsentActionPerformed
 
     private void dichotomousRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dichotomousRadioActionPerformed
@@ -3580,68 +3664,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_filePathActionPerformed
 
     private void fileBrowseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileBrowseButtonActionPerformed
-        //JFileChooser fileChooser = new JFileChooser();
-        //fileChooser.showOpenDialog(null);
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("Data files", "csv");
-        fileChooser.setFileFilter(filter);
-        int returnVal = fileChooser.showOpenDialog(this);
-        if (returnVal == JFileChooser.APPROVE_OPTION) {
-            // File file = fileChooser.getSelectedFile();
-            // What to do with the file, e.g. display it in a TextArea
-            //textarea.read( new FileReader( file.getAbsolutePath() ), null );
-            //Select file from the file object
-            file = fileChooser.getSelectedFile();
-            //get file path to display on the text box
-            String fileName = file.getAbsolutePath();
-            dataFileNameRef = fileName;
-            filePath.setText(fileName);
-            // 10/22 reveal components in Model Congifuration
-            setFirstTabStatus(true);
-
-            //enable other buttons here:
-            titleField.setEnabled(true);
-            //subtitleField.setEnabled(true);
-            //randomLocationEffects.setEnabled(true);
-            oneRLERadio.setEnabled(true);
-            moreThanOneRLERadio.setEnabled(true);
-            continuousRadio.setEnabled(true);
-            dichotomousRadio.setEnabled(true);
-            // randomLocationEffects.setEnabled(true);
-            newModelSubmit.setEnabled(true);
-            // newModelMissingValues.setEnabled(true);
-            missingValuePresent.setEnabled(true);
-            missingValueAbsent.setEnabled(true);
-            // newModelMissingValueCode.setEnabled(true);
-            includeStageTwoNo.setEnabled(true);
-            includeStageTwoYes.setEnabled(true);
-            includeStageTwoYes.setSelected(true);
-            //noneRadio.setEnabled(true);
-            newModel_resetButton.setEnabled(true);
-            randomScaleSelectionYes.setEnabled(true);
-            randomScaleSelectionNo.setEnabled(true);
-            randomScaleSelectionYes.setSelected(true);
-            //randomScaleCheckBox.setEnabled(true);
-            //randomScaleCheckBox.setSelected(true);
-            // newModelMissingValueCode.selectAll();
-            progressSaveButton.setEnabled(true);
-            progressLoadButton.setEnabled(true);
-
-            stageOneTabs.setEnabledAt(6, true);
-
-            System.out.println(file.getAbsolutePath());
-
-            try {
-                getDataFromCSV();
-                printFileName();
-                System.out.println("NEW MODEL DATA READ");
-            } catch (IOException ex) {
-                Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-            }
-
-        } else {
-            System.out.println("File access cancelled by user.");
-        }
+        importDataSet();
+        MXRStates = new MixRegGuiStates(this);
+        updateGuiView(MXRStates);
     }//GEN-LAST:event_fileBrowseButtonActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -3660,41 +3685,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     private void includeStageTwoNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_includeStageTwoNoActionPerformed
         // TODO add your handling code here:
-        if (includeStageTwoNo.isSelected()) {
-            //Do nothing
-            setSeedLabel.setVisible(false);
-            seedTextBox.setVisible(false);
-            seedHelpButton.setVisible(false);
-            seedTextBox.setText("0");
-
-            stageTwoSingleLevel.setVisible(false);
-            stageTwoMultiLevel.setVisible(false);
-            continuousRadio.setVisible(false);
-            dichotomousRadio.setVisible(false);
-            countRadio.setVisible(false);
-            multinomialRadio.setVisible(false);
-            stageTwoModelTypeLabel.setVisible(false);
-            stageTwoOutcomeTypeLabel.setVisible(false);
-            stageTwoModelGiantLabel.setVisible(false);
-
-        } else {
-            setSeedLabel.setVisible(true);
-            seedTextBox.setVisible(true);
-            seedHelpButton.setVisible(true);
-            String seedVal = generateSeed();
-            seedTextBox.setText(seedVal);
-
-            stageTwoSingleLevel.setVisible(true);
-            stageTwoMultiLevel.setVisible(true);
-            continuousRadio.setVisible(true);
-            dichotomousRadio.setVisible(true);
-            countRadio.setVisible(true);
-            multinomialRadio.setVisible(true);
-            stageTwoModelTypeLabel.setVisible(true);
-            stageTwoOutcomeTypeLabel.setVisible(true);
-            stageTwoModelGiantLabel.setVisible(true);
-
-        }
+        MXRStates = new MixRegGuiStates(this);
+        updateGuiView(MXRStates);
     }//GEN-LAST:event_includeStageTwoNoActionPerformed
 
     private void includeStageTwoYesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_includeStageTwoYesActionPerformed
@@ -3794,156 +3786,150 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         }
     }//GEN-LAST:event_exampleDataDownloadActionPerformed
 
-    private void progressLoadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_progressLoadButtonActionPerformed
-        HashMap<String, ProgressObject> hmap_progress = null;
+    private void guiStatesLoadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guiStatesLoadButtonActionPerformed
 
-        JFileChooser fileChooser_load = new JFileChooser();
-        fileChooser_load.setSelectedFile(new File("progress.ser"));
-        int option = fileChooser_load.showSaveDialog(this);
-        if (option == JFileChooser.APPROVE_OPTION) {
-            File load_filename = fileChooser_load.getSelectedFile();
-            try {
-                FileInputStream fis = new FileInputStream(load_filename);
-                ObjectInputStream ois = new ObjectInputStream(fis);
-                hmap_progress = (HashMap) ois.readObject();
-                ois.close();
-                fis.close();
-            } catch (ClassNotFoundException c) {
-                System.out.println("Class not found");
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
-                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        
-        //System.out.print(hmap_progress.get("titleField").getString());
-        loadConfigurationTab(hmap_progress);
-    }//GEN-LAST:event_progressLoadButtonActionPerformed
+        MXRStates = new MixRegGuiStates();
+        MXRStates.readAllStates(this);
+        updateGuiView(MXRStates);
+    }//GEN-LAST:event_guiStatesLoadButtonActionPerformed
 
-    private void progressSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_progressSaveButtonActionPerformed
-        HashMap<String, ProgressObject> hmap_progress = new HashMap<>();
-        hmap_progress = createProgressHashMap();
- 
-        // user open filechooser and select save path
-        JFileChooser fileChooser_save = new JFileChooser();
-        fileChooser_save.setSelectedFile(new File("progress.ser"));
-        int option = fileChooser_save.showSaveDialog(this);
-        if (option == JFileChooser.APPROVE_OPTION) {
-            File save_filename = fileChooser_save.getSelectedFile();
+    private void guiStatesSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guiStatesSaveButtonActionPerformed
 
-            try {
-                FileOutputStream fos = new FileOutputStream(save_filename);
-                ObjectOutputStream oos = new ObjectOutputStream(fos);
-                oos.writeObject(hmap_progress);
-                oos.close();
-                fos.close();
-                System.out.printf("Progress is saved in progress.ser");
-            } catch (IOException ioe) {
-            }
-        }
-    }//GEN-LAST:event_progressSaveButtonActionPerformed
+        MXRStates = new MixRegGuiStates(this);
+        MXRStates.writeAllStates(this);
+    }//GEN-LAST:event_guiStatesSaveButtonActionPerformed
 
-    private void loadConfigurationTab(HashMap<String, ProgressObject> hmap_progress){
-        //System.out.print(hmap_progress);
-        // reload title
-        titleField.setText(hmap_progress.get("titleField").getString());
-        // reload missing value
-        if (hmap_progress.get("missingvaluePresent").getBoolean()){
+    private void seedTextBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seedTextBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_seedTextBoxActionPerformed
+
+    private void randomScaleSelectionNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_randomScaleSelectionNoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_randomScaleSelectionNoActionPerformed
+
+    private void updateGuiView(MixRegGuiStates mxrStates) {
+        // ***Update GUI States***
+        // Update GUI States 1. Model Configuration Tab
+        dataFileNameRef = mxrStates.filepath;
+        filePath.setText(mxrStates.filepath);
+        titleField.setText(mxrStates.title);
+
+        if (mxrStates.missingValuePresent) {
             missingValuePresent.setSelected(true);
-            newModelMissingValueCode.setText(hmap_progress.get("newModelMissingValueCode").getString());
-        } else if(hmap_progress.get("missingvalueAbsent").getBoolean()){
+            newModelMissingValueCode.setText(mxrStates.newModelMissingValueCode);
+        } else if (mxrStates.missingValueAbsent) {
             missingValueAbsent.setSelected(true);
         }
-        // reload stage 1 outcome
-        if (hmap_progress.get("stageOneContinuousRadio").getBoolean()){
+
+        if (mxrStates.stageOneContinuousRadio) {
             stageOneContinuousRadio.setSelected(true);
-        } else if (hmap_progress.get("stageOneDichotomousRadio").getBoolean()){
+        } else if (mxrStates.stageOneDichotomousRadio) {
             stageOneDichotomousRadio.setSelected(true);
-        } else if (hmap_progress.get("stageOneOrdinalRadio").getBoolean()){
+        } else if (mxrStates.stageOneOrdinalRadio) {
             stageOneOrdinalRadio.setSelected(true);
         }
-        // reload RLERatio
-        if (hmap_progress.get("oneRLERadio").getBoolean()){
+
+        if (mxrStates.oneRLERadio) {
             oneRLERadio.setSelected(true);
-        } else if (hmap_progress.get("moreThanOneRLERadio").getBoolean()){
+        } else if (mxrStates.moreThanOneRLERadio) {
             moreThanOneRLERadio.setSelected(true);
         }
-        // 
-        if (hmap_progress.get("randomScaleSelectionYes").getBoolean()){
+
+        if (mxrStates.randomScaleSelectionYes) {
             randomScaleSelectionYes.setSelected(true);
-        } else if (hmap_progress.get("randomScaleSelectionNo").getBoolean()){
+        } else if (mxrStates.randomScaleSelectionNo) {
             randomScaleSelectionNo.setSelected(true);
         }
-        // 
-        if (hmap_progress.get("includeStageTwoYes").getBoolean()){
+
+        if (mxrStates.includeStageTwoYes) {
             includeStageTwoYes.setSelected(true);
-        } else if (hmap_progress.get("includeStageTwoNo").getBoolean()){
+        } else if (mxrStates.includeStageTwoNo) {
             includeStageTwoNo.setSelected(true);
-        }     
-        // 
-        if (hmap_progress.get("stageTwoSingleLevel").getBoolean()){
+        }
+
+        if (mxrStates.stageTwoSingleLevel) {
             stageTwoSingleLevel.setSelected(true);
-        } else if (hmap_progress.get("stageTwoMultiLevel").getBoolean()){
+        } else if (mxrStates.stageTwoMultiLevel) {
             stageTwoMultiLevel.setSelected(true);
-        }  
-        //
-        if (hmap_progress.get("continuousRadio").getBoolean()){
+        }
+
+        if (mxrStates.continuousRadio) {
             continuousRadio.setSelected(true);
-        } else if (hmap_progress.get("dichotomousRadio").getBoolean()){
+        } else if (mxrStates.dichotomousRadio) {
             dichotomousRadio.setSelected(true);
-        } else if (hmap_progress.get("countRadio").getBoolean()){
+        } else if (mxrStates.countRadio) {
             countRadio.setSelected(true);
-        } else if (hmap_progress.get("multinomialRadio").getBoolean()){
+        } else if (mxrStates.multinomialRadio) {
             multinomialRadio.setSelected(true);
-        }  
-        
-        seedTextBox.setText(hmap_progress.get("seedTextBox").getString());
-    }
-    
-    public HashMap<String,ProgressObject> createProgressHashMap(){
-        HashMap<String,ProgressObject> hashmap=new HashMap<>();
-        ProgressObject po1 = new ProgressObject("titleField",0,titleField.getText(),true);
-        ProgressObject po2 = new ProgressObject("missingvaluePresent",0,"", missingValuePresent.isSelected());
-        ProgressObject po3 = new ProgressObject("missingvalueAbsent",0,"", missingValueAbsent.isSelected());
-        ProgressObject po4 = new ProgressObject("newModelMissingValueCode",0,newModelMissingValueCode.getText(),true);
-        ProgressObject po5 = new ProgressObject("stageOneContinuousRadio",0,"",stageOneContinuousRadio.isSelected());
-        ProgressObject po6 = new ProgressObject("stageOneDichotomousRadio",0,"",stageOneDichotomousRadio.isSelected());
-        ProgressObject po7 = new ProgressObject("stageOneOrdinalRadio",0,"",stageOneOrdinalRadio.isSelected());
-        ProgressObject po8 = new ProgressObject("oneRLERadio",0,"",oneRLERadio.isSelected());
-        ProgressObject po9 = new ProgressObject("moreThanOneRLERadio",0,"",moreThanOneRLERadio.isSelected());
-        ProgressObject po10 = new ProgressObject("randomScaleSelectionYes",0,"",randomScaleSelectionYes.isSelected());
-        ProgressObject po11 = new ProgressObject("randomScaleSelectionNo",0,"",randomScaleSelectionNo.isSelected());
-        ProgressObject po12 = new ProgressObject("includeStageTwoYes",0,"",includeStageTwoYes.isSelected());
-        ProgressObject po13 = new ProgressObject("includeStageTwoNo",0,"",includeStageTwoNo.isSelected());
-        ProgressObject po14 = new ProgressObject("stageTwoSingleLevel",0,"",stageTwoSingleLevel.isSelected());
-        ProgressObject po15 = new ProgressObject("stageTwoMultiLevel",0,"",stageTwoMultiLevel.isSelected());
-        ProgressObject po16 = new ProgressObject("continuousRadio",0,"",continuousRadio.isSelected());
-        ProgressObject po17 = new ProgressObject("dichotomousRadio",0,"",dichotomousRadio.isSelected());
-        ProgressObject po18 = new ProgressObject("countRadio",0,"",countRadio.isSelected());
-        ProgressObject po19 = new ProgressObject("multinomialRadio",0,"",multinomialRadio.isSelected());
-        ProgressObject po20 = new ProgressObject("seedTextBox",0,seedTextBox.getText(),true);
-        hashmap.put(po1.getKey(), po1);
-        hashmap.put(po2.getKey(), po2);
-        hashmap.put(po3.getKey(), po3);
-        hashmap.put(po4.getKey(), po4);
-        hashmap.put(po5.getKey(), po5);
-        hashmap.put(po6.getKey(), po6);
-        hashmap.put(po7.getKey(), po7);
-        hashmap.put(po8.getKey(), po8);
-        hashmap.put(po9.getKey(), po9);
-        hashmap.put(po10.getKey(), po10);
-        hashmap.put(po11.getKey(), po11);
-        hashmap.put(po12.getKey(), po12);
-        hashmap.put(po13.getKey(), po13);
-        hashmap.put(po14.getKey(), po14);
-        hashmap.put(po15.getKey(), po15);
-        hashmap.put(po16.getKey(), po16);
-        hashmap.put(po17.getKey(), po17);
-        hashmap.put(po18.getKey(), po18);
-        hashmap.put(po19.getKey(), po19);
-        hashmap.put(po20.getKey(), po20);
-        return hashmap;
+        }
+
+        seedTextBox.setText(mxrStates.seedTextBox);
+
+        // ***LOGIC***
+        // LOGIC zero. Data file path exists or not
+        File tmpFile = new File(filePath.getText());
+        if (tmpFile.exists()) {
+            setFirstTabStatus(true);
+            titleField.setEnabled(true);
+            oneRLERadio.setEnabled(true);
+            moreThanOneRLERadio.setEnabled(true);
+            continuousRadio.setEnabled(true);
+            dichotomousRadio.setEnabled(true);
+            newModelSubmit.setEnabled(true);
+            missingValuePresent.setEnabled(true);
+            missingValueAbsent.setEnabled(true);
+            includeStageTwoNo.setEnabled(true);
+            includeStageTwoYes.setEnabled(true);
+            newModel_resetButton.setEnabled(true);
+            randomScaleSelectionYes.setEnabled(true);
+            randomScaleSelectionNo.setEnabled(true);
+            guiStatesSaveButton.setEnabled(true);
+            guiStatesLoadButton.setEnabled(true);
+            stageOneTabs.setEnabledAt(6, true);
+
+            System.out.println(file.getAbsolutePath());
+        } else {
+            setFirstTabStatus(false);
+            JOptionPane.showMessageDialog(null, "Please put previous dataset under this path:" + "\r\n" + filePath.getText(), "Error: Wrong File Path", JOptionPane.INFORMATION_MESSAGE, icon);
+            return;
+        }
+        // LOGIC 1. Dataset Contain missing values or not
+        if (missingValueAbsent.isSelected()) {
+            newModelMissingValueCode.setEnabled(false);
+            newModelMissingValueCode.setText("");
+        }
+
+        // LOGIC 2. Include Stage 2 or not
+        if (includeStageTwoNo.isSelected()) {
+            setSeedLabel.setVisible(false);
+            seedTextBox.setVisible(false);
+            seedHelpButton.setVisible(false);
+            seedTextBox.setText("0");
+            stageTwoSingleLevel.setVisible(false);
+            stageTwoMultiLevel.setVisible(false);
+            continuousRadio.setVisible(false);
+            dichotomousRadio.setVisible(false);
+            countRadio.setVisible(false);
+            multinomialRadio.setVisible(false);
+            stageTwoModelTypeLabel.setVisible(false);
+            stageTwoOutcomeTypeLabel.setVisible(false);
+            stageTwoModelGiantLabel.setVisible(false);
+        } else {
+            setSeedLabel.setVisible(true);
+            seedTextBox.setVisible(true);
+            seedHelpButton.setVisible(true);
+            String seedVal = generateSeed();
+            seedTextBox.setText(seedVal);
+            stageTwoSingleLevel.setVisible(true);
+            stageTwoMultiLevel.setVisible(true);
+            continuousRadio.setVisible(true);
+            dichotomousRadio.setVisible(true);
+            countRadio.setVisible(true);
+            multinomialRadio.setVisible(true);
+            stageTwoModelTypeLabel.setVisible(true);
+            stageTwoOutcomeTypeLabel.setVisible(true);
+            stageTwoModelGiantLabel.setVisible(true);
+        }
     }
 
     /**
@@ -4010,6 +3996,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JButton fileBrowseButton;
     private javax.swing.JTextField filePath;
     private javax.swing.Box.Filler filler1;
+    private javax.swing.JButton guiStatesLoadButton;
+    private javax.swing.JButton guiStatesSaveButton;
     private javax.swing.JLabel hiddenBigIconLabel;
     private javax.swing.ButtonGroup includeStageTwoGroup;
     private javax.swing.JLabel includeStageTwoLabel;
@@ -4117,8 +4105,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JButton outcomeCatButton;
     private javax.swing.JPanel parentPanel;
     public static javax.swing.JLabel printedFileName;
-    private javax.swing.JButton progressLoadButton;
-    private javax.swing.JButton progressSaveButton;
     public static javax.swing.JLabel randomLocationEffectsLabel;
     private javax.swing.ButtonGroup randomScaleSelectionGroup;
     private javax.swing.JRadioButton randomScaleSelectionNo;
@@ -6468,4 +6454,34 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         return outcomeCats;
     }
 
+    public void importDataSet() {
+        //JFileChooser fileChooser = new JFileChooser();
+        //fileChooser.showOpenDialog(null);
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Data files", "csv");
+        fileChooser.setFileFilter(filter);
+        int returnVal = fileChooser.showOpenDialog(this);
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            // File file = fileChooser.getSelectedFile();
+            // What to do with the file, e.g. display it in a TextArea
+            //textarea.read( new FileReader( file.getAbsolutePath() ), null );
+            //Select file from the file object
+            file = fileChooser.getSelectedFile();
+            //get file path to display on the text box
+            String fileName = file.getAbsolutePath();
+            dataFileNameRef = fileName;
+            filePath.setText(fileName);
+
+            try {
+                getDataFromCSV();
+                printFileName();
+                System.out.println("NEW MODEL DATA READ");
+            } catch (IOException ex) {
+                Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+            }
+
+        } else {
+            System.out.println("File access cancelled by user.");
+        }
+    }
 }

@@ -10,13 +10,13 @@ import java.io.Serializable;
  *
  * @author jixin
  */
-public class ProgressObject implements Serializable{
+public class StateObject implements Serializable{
         private String key;
         private int value_int;
         private String value_str;
         private boolean value_bool;
 
-        public ProgressObject(String key, int value_int, String value_str, boolean value_bool){
+        public StateObject(String key, int value_int, String value_str, boolean value_bool){
             this.key = key;
             this.value_int = value_int;
             this.value_str = value_str;

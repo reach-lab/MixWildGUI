@@ -98,7 +98,7 @@ public class confirmReset extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 mixregGUI.mxr.dispose();
-                
+            
                 //Reset UI
                 mixregGUI.variableArray = null;
                 mixregGUI.mxr = null;
