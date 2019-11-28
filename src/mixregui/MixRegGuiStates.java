@@ -5,7 +5,6 @@
  */
 package mixregui;
 
-import def_lib.StateObject;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -80,7 +79,7 @@ public class MixRegGuiStates {
 
         // user open filechooser and select save path
         JFileChooser fileChooser_save = new JFileChooser();
-        fileChooser_save.setSelectedFile(new File("GuiStates.ser"));
+        fileChooser_save.setSelectedFile(new File("configuration.ser"));
         int option = fileChooser_save.showSaveDialog(mxr);
         if (option == JFileChooser.APPROVE_OPTION) {
             File save_filename = fileChooser_save.getSelectedFile();
@@ -91,7 +90,7 @@ public class MixRegGuiStates {
                 oos.writeObject(hmapStates);
                 oos.close();
                 fos.close();
-                System.out.printf("Gui states are saved in GuiStates.ser");
+                System.out.printf("Gui states are saved in configuration.ser");
             } catch (IOException ioe) {
             }
         }
@@ -101,7 +100,7 @@ public class MixRegGuiStates {
         HashMap<String, StateObject> hmapStates = null;
 
         JFileChooser fileChooser_load = new JFileChooser();
-        fileChooser_load.setSelectedFile(new File("GuiStates.ser"));
+        fileChooser_load.setSelectedFile(new File("configuration.ser"));
         int option = fileChooser_load.showOpenDialog(mxr);
         if (option == JFileChooser.APPROVE_OPTION) {
             File load_filename = fileChooser_load.getSelectedFile();

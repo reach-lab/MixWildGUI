@@ -28,7 +28,6 @@ package mixregui;
 
 import com.opencsv.CSVReader;
 import def_lib.DefinitionHelper;
-import def_lib.StateObject;
 import java.awt.Desktop;
 import java.net.URL;
 import javax.swing.DefaultComboBoxModel;
@@ -3691,25 +3690,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     private void includeStageTwoYesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_includeStageTwoYesActionPerformed
         // TODO add your handling code here:
-        if (includeStageTwoNo.isSelected()) {
-            //Do nothing
-        } else {
-            setSeedLabel.setVisible(true);
-            seedTextBox.setVisible(true);
-            seedHelpButton.setVisible(true);
-            String seedVal = generateSeed();
-            seedTextBox.setText(seedVal);
-
-            stageTwoSingleLevel.setVisible(true);
-            stageTwoMultiLevel.setVisible(true);
-            continuousRadio.setVisible(true);
-            dichotomousRadio.setVisible(true);
-            countRadio.setVisible(true);
-            multinomialRadio.setVisible(true);
-            stageTwoModelTypeLabel.setVisible(true);
-            stageTwoOutcomeTypeLabel.setVisible(true);
-            stageTwoModelGiantLabel.setVisible(true);
-        }
+        String seedVal = generateSeed();
+        seedTextBox.setText(seedVal);
+        
+        MXRStates = new MixRegGuiStates(this);
+        updateGuiView(MXRStates);
     }//GEN-LAST:event_includeStageTwoYesActionPerformed
 
     private void stageTwoDescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoDescriptionActionPerformed
@@ -3807,11 +3792,63 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         // TODO add your handling code here:
     }//GEN-LAST:event_randomScaleSelectionNoActionPerformed
 
+    // **********************update********************
     private void updateGuiView(MixRegGuiStates mxrStates) {
-        // ***Update GUI States***
-        // Update GUI States 1. Model Configuration Tab
+        // ***Trigger***
+        // Trigger zero. Data file path exists or not
+        boolean FilepathValid;
+        FilepathValid = updateGuiView_trigger_FilePath(mxrStates);
+
+        if (FilepathValid) {
+            // Update GUI States 1. Model Configuration Tab
+            updateGuiView_TabOneStates(mxrStates);
+            // Trigger 1. Dataset Contain missing values or not
+            updateGuiView_trigger_MissingValue(mxrStates);
+            // Trigger 2. Include Stage 2 or not
+            updateGuiView_trigger_IncludeStageTwo(mxrStates);
+
+        }
+
+    }
+
+    private boolean updateGuiView_trigger_FilePath(MixRegGuiStates mxrStates) {
         dataFileNameRef = mxrStates.filepath;
         filePath.setText(mxrStates.filepath);
+        file = new File(mxrStates.filepath);
+
+        if (file.exists()) {
+            setFirstTabStatus(true);
+            titleField.setEnabled(true);
+            oneRLERadio.setEnabled(true);
+            moreThanOneRLERadio.setEnabled(true);
+            continuousRadio.setEnabled(true);
+            dichotomousRadio.setEnabled(true);
+            newModelSubmit.setEnabled(true);
+            missingValuePresent.setEnabled(true);
+            missingValueAbsent.setEnabled(true);
+            includeStageTwoNo.setEnabled(true);
+            includeStageTwoYes.setEnabled(true);
+            newModel_resetButton.setEnabled(true);
+            randomScaleSelectionYes.setEnabled(true);
+            randomScaleSelectionNo.setEnabled(true);
+            guiStatesSaveButton.setEnabled(true);
+            guiStatesLoadButton.setEnabled(true);
+            stageOneTabs.setEnabledAt(6, true);
+
+            System.out.println(file.getAbsolutePath());
+
+            return true;
+        } else {
+            setFirstTabStatus(false);
+            stageOneTabs.setEnabledAt(6, false);
+            JOptionPane.showMessageDialog(null, "To load the configuration, please place the originial dataset using this path:"
+                    + "\r\n" + filePath.getText() + "\r\n\r\n" + "OR" + "\r\n\r\n" + "To start a new analysis, please choose a new dataset",
+                    "Error: Wrong File Path", JOptionPane.INFORMATION_MESSAGE, icon);
+            return false;
+        }
+    }
+
+    private void updateGuiView_TabOneStates(MixRegGuiStates mxrStates) {
         titleField.setText(mxrStates.title);
 
         if (mxrStates.missingValuePresent) {
@@ -3864,42 +3901,16 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         }
 
         seedTextBox.setText(mxrStates.seedTextBox);
+    }
 
-        // ***LOGIC***
-        // LOGIC zero. Data file path exists or not
-        File tmpFile = new File(filePath.getText());
-        if (tmpFile.exists()) {
-            setFirstTabStatus(true);
-            titleField.setEnabled(true);
-            oneRLERadio.setEnabled(true);
-            moreThanOneRLERadio.setEnabled(true);
-            continuousRadio.setEnabled(true);
-            dichotomousRadio.setEnabled(true);
-            newModelSubmit.setEnabled(true);
-            missingValuePresent.setEnabled(true);
-            missingValueAbsent.setEnabled(true);
-            includeStageTwoNo.setEnabled(true);
-            includeStageTwoYes.setEnabled(true);
-            newModel_resetButton.setEnabled(true);
-            randomScaleSelectionYes.setEnabled(true);
-            randomScaleSelectionNo.setEnabled(true);
-            guiStatesSaveButton.setEnabled(true);
-            guiStatesLoadButton.setEnabled(true);
-            stageOneTabs.setEnabledAt(6, true);
-
-            System.out.println(file.getAbsolutePath());
-        } else {
-            setFirstTabStatus(false);
-            JOptionPane.showMessageDialog(null, "Please put previous dataset under this path:" + "\r\n" + filePath.getText(), "Error: Wrong File Path", JOptionPane.INFORMATION_MESSAGE, icon);
-            return;
-        }
-        // LOGIC 1. Dataset Contain missing values or not
+    private void updateGuiView_trigger_MissingValue(MixRegGuiStates mxrStates) {
         if (missingValueAbsent.isSelected()) {
             newModelMissingValueCode.setEnabled(false);
             newModelMissingValueCode.setText("");
         }
+    }
 
-        // LOGIC 2. Include Stage 2 or not
+    private void updateGuiView_trigger_IncludeStageTwo(MixRegGuiStates mxrStates) {
         if (includeStageTwoNo.isSelected()) {
             setSeedLabel.setVisible(false);
             seedTextBox.setVisible(false);
@@ -3918,8 +3929,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             setSeedLabel.setVisible(true);
             seedTextBox.setVisible(true);
             seedHelpButton.setVisible(true);
-            String seedVal = generateSeed();
-            seedTextBox.setText(seedVal);
+//            String seedVal = generateSeed();
+//            seedTextBox.setText(seedVal);
             stageTwoSingleLevel.setVisible(true);
             stageTwoMultiLevel.setVisible(true);
             continuousRadio.setVisible(true);
@@ -3931,6 +3942,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             stageTwoModelGiantLabel.setVisible(true);
         }
     }
+    // **********************update********************
 
     /**
      * @param args the command line arguments
@@ -6482,6 +6494,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         } else {
             System.out.println("File access cancelled by user.");
+            System.out.println(file.getAbsolutePath());
         }
     }
 }
