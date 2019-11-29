@@ -15,6 +15,7 @@ import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 
 /**
@@ -22,6 +23,7 @@ import javax.swing.JFileChooser;
  * @author jixin
  */
 public class MixRegGuiStates {
+
     // gui states of New Model Configuration Tab
     public String filepath;
     public String title;
@@ -44,13 +46,21 @@ public class MixRegGuiStates {
     public boolean countRadio;
     public boolean multinomialRadio;
     public String seedTextBox;
-    public boolean isSubmittedNewModalConfig;
+    public boolean isNewModalConfigSubmitted;
 
     // gui states of Stage One & Two
-    public boolean isSubmittedStageOne;
-    public boolean isSubmittedStageTwo;
-    
-    
+    public boolean isStageOneSubmitted;
+    public boolean isStageTwoSubmitted;
+    public int IDpos;
+    public int stageOnePos;
+    public int stageTwoPos;
+    public int stageOneClicked;
+    public boolean addStageOneCHecked;
+    public DefaultListModel<String> varList;
+    public DefaultListModel<String> levelOneList;
+    public DefaultListModel<String> levelTwoList;
+    public boolean isStageOneRegSubmitClicked;
+
     // init default
     MixRegGuiStates() {
     }
@@ -78,7 +88,17 @@ public class MixRegGuiStates {
         this.countRadio = mxr.getCountRadio();
         this.multinomialRadio = mxr.getMultinomialRadio();
         this.seedTextBox = mxr.getSeedTextBox();
-        this.isSubmittedNewModalConfig = mxr.isSubmittedNewModalConfig;
+        this.isNewModalConfigSubmitted = mxr.isNewModalConfigSubmitted;
+        this.IDpos = mixregGUI.IDpos;
+        this.stageOnePos = mixregGUI.stageOnePos;
+        this.stageTwoPos = mixregGUI.stageTwoPos;
+        this.stageOneClicked = mxr.stageOneClicked;
+        this.varList = stageOneRegs.varList;
+        this.levelOneList = stageOneRegs.levelOneList;
+        this.levelTwoList = stageOneRegs.levelTwoList;
+        this.addStageOneCHecked = mxr.addStageOneCHecked;
+        this.isStageOneRegSubmitClicked = stageOneRegs.isSubmitClicked;
+
     }
 
     public void writeAllStates(mixregGUI mxr) {
@@ -148,7 +168,17 @@ public class MixRegGuiStates {
         countRadio = hmapStates.get("countRadio").getBoolean();
         multinomialRadio = hmapStates.get("multinomialRadio").getBoolean();
         seedTextBox = hmapStates.get("seedTextBox").getString();
-        isSubmittedNewModalConfig = hmapStates.get("isSubmittedNewModalConfig").getBoolean();
+        isNewModalConfigSubmitted = hmapStates.get("isNewModalConfigSubmitted").getBoolean();
+        IDpos = hmapStates.get("IDpos").getInt();
+        stageOnePos = hmapStates.get("stageOnePos").getInt();
+        stageTwoPos = hmapStates.get("stageTwoPos").getInt();
+        stageOneClicked = hmapStates.get("stageOneClicked").getInt();
+        addStageOneCHecked = hmapStates.get("addStageOneCHecked").getBoolean();
+        varList = hmapStates.get("varList").getStringList();
+        levelOneList = hmapStates.get("levelOneList").getStringList();
+        levelTwoList = hmapStates.get("levelTwoList").getStringList();
+        isStageOneRegSubmitClicked = hmapStates.get("isStageOneRegSubmitClicked").getBoolean();
+        
     }
 
     public HashMap<String, StateObject> createStatesHashMap() {
@@ -174,7 +204,17 @@ public class MixRegGuiStates {
         StateObject po18 = new StateObject("countRadio", 0, "", countRadio);
         StateObject po19 = new StateObject("multinomialRadio", 0, "", multinomialRadio);
         StateObject po20 = new StateObject("seedTextBox", 0, seedTextBox, true);
-        StateObject po21 = new StateObject("isSubmittedNewModalConfig", 0, "", isSubmittedNewModalConfig);
+        StateObject po21 = new StateObject("isNewModalConfigSubmitted", 0, "", isNewModalConfigSubmitted);
+        StateObject po22 = new StateObject("IDpos", IDpos, "", true);
+        StateObject po23 = new StateObject("stageOnePos", stageOnePos, "", true);
+        StateObject po24 = new StateObject("stageTwoPos", stageTwoPos, "", true);
+        StateObject po25 = new StateObject("varList", 0, "", true, varList);
+        StateObject po26 = new StateObject("levelOneList", 0, "", true, levelOneList);
+        StateObject po27 = new StateObject("levelTwoList", 0, "", true, levelTwoList);
+        StateObject po28 = new StateObject("addStageOneCHecked", 0, "", addStageOneCHecked);
+        StateObject po29 = new StateObject("stageOneClicked", stageOneClicked, "", true);
+        StateObject po30 = new StateObject("isStageOneRegSubmitClicked", 0, "", isStageOneRegSubmitClicked);
+
         hashmap.put(po0.getKey(), po0);
         hashmap.put(po1.getKey(), po1);
         hashmap.put(po2.getKey(), po2);
@@ -197,6 +237,15 @@ public class MixRegGuiStates {
         hashmap.put(po19.getKey(), po19);
         hashmap.put(po20.getKey(), po20);
         hashmap.put(po21.getKey(), po21);
+        hashmap.put(po22.getKey(), po22);
+        hashmap.put(po23.getKey(), po23);
+        hashmap.put(po24.getKey(), po24);
+        hashmap.put(po25.getKey(), po25);
+        hashmap.put(po26.getKey(), po26);
+        hashmap.put(po27.getKey(), po27);
+        hashmap.put(po28.getKey(), po28);
+        hashmap.put(po29.getKey(), po29);
+        hashmap.put(po30.getKey(), po30);
         return hashmap;
     }
 

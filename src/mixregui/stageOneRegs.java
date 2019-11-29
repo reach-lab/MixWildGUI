@@ -38,18 +38,18 @@ import javax.swing.JOptionPane;
 
 /**
  * Use this to add or remove stage 1 regressors into the model
+ *
  * @author adityaponnada
  */
 public class stageOneRegs extends javax.swing.JFrame {
 
     // declare required jFrame
     // NewModel newModel2;
-
     stageTwoRegs stageTwo;
 
     static String[] variableNamesList;
 
-    public DefaultListModel<String> varList;
+    public static DefaultListModel<String> varList;
 
     static DefaultListModel<String> levelOneList;
 
@@ -99,7 +99,7 @@ public class stageOneRegs extends javax.swing.JFrame {
         AllVariablesList.setToolTipText("List of all available variables detected in data");
         jLabel1.setToolTipText("List of all available variables detected in data");
         StageOneLevelOneList.setToolTipText("Variables that vary within-individuals, including time");
-        jLabel2.setToolTipText("Variables that vary within-individuals, including time"); 
+        jLabel2.setToolTipText("Variables that vary within-individuals, including time");
         StageOneLevelTwoList.setToolTipText("Variables consistent within individuals, such as demographics");
         jLabel3.setToolTipText("Variables consistent within individuals, such as demographics");
 
@@ -234,7 +234,6 @@ public class stageOneRegs extends javax.swing.JFrame {
 
         //get the instance of the mixReg model declared
         //mixregStageOne = mxr;
-
         //update regressors on stage one regressors window
         // mixregStageOne.updateRegressors(getSelectedLevelOneVars(), getSelectedLevelTwoVars());
         //mixregStageOne.updateLevelOneRegGrid(levelOneList);
@@ -464,4 +463,15 @@ public class stageOneRegs extends javax.swing.JFrame {
 
     }
 
+    public javax.swing.JList<String> getAllVariablesList() {
+        return AllVariablesList;
+    }
+
+    public javax.swing.JList<String> getStageOneLevelOneList() {
+        return StageOneLevelOneList;
+    }
+
+    public javax.swing.JList<String> getStageOneLevelTwoList() {
+        return StageOneLevelTwoList;
+    }
 }
