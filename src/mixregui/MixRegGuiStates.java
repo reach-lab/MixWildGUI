@@ -12,10 +12,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
 
 /**
@@ -48,7 +50,7 @@ public class MixRegGuiStates {
     public String seedTextBox;
     public boolean isNewModalConfigSubmitted;
 
-    // gui states of Stage One & Two
+    // gui states of Stage One
     public boolean isStageOneSubmitted;
     public boolean isStageTwoSubmitted;
     public int IDpos;
@@ -60,13 +62,43 @@ public class MixRegGuiStates {
     public DefaultListModel<String> levelOneList;
     public DefaultListModel<String> levelTwoList;
     public boolean isStageOneRegSubmitClicked;
+    public ArrayList<ArrayList<JCheckBox>> levelOneBoxes;
+    public ArrayList<ArrayList<JCheckBox>> disaggVarianceBoxes;
+    public ArrayList<ArrayList<JCheckBox>> levelTwoBoxes;
+
+    // advanced options
+    public boolean meanSubmodelCheckBox;
+    public boolean BSVarianceCheckBox;
+    public boolean WSVarianceCheckBox;
+    public boolean centerRegressorsCheckBox;
+    public boolean discardSubjectsCheckBox;
+    public boolean resampleCheckBox;
+    public boolean adaptiveQuadritureCheckBox;
+    public boolean run32BitCheckBox;
+    public String convergenceCriteria;
+    public int quadriturePoints;
+    public int maximumIterations;
+    public double ridgeSpinner;
+    public int resampleSpinner;
+
+    // Association
+    public boolean NoAssociationRadio;
+    public boolean LinearAssociationRadio;
+    public boolean QuadraticAssociationRadio;
+
+    // gui states of Stage Two
+    public DefaultListModel<String> stageTwoListModel;
+    public DefaultListModel<String> stageTwoLevelTwo;
+    public boolean isStageTwoSubmitClicked;
+    public ArrayList<ArrayList<JCheckBox>> stageTwoGridBoxes;
+    public boolean suppressIntCheckBox;
 
     // init default
     MixRegGuiStates() {
     }
 
     // init a snapshot of mixregGui states
-    MixRegGuiStates(mixregGUI mxr) {
+    MixRegGuiStates(mixregGUI mxr, advancedOptions ao) {
         this.filepath = mxr.file.getAbsolutePath();
         this.title = mxr.getTitle();
         this.missingValuePresent = mxr.getMissingValuePresent();
@@ -98,7 +130,32 @@ public class MixRegGuiStates {
         this.levelTwoList = stageOneRegs.levelTwoList;
         this.addStageOneCHecked = mxr.addStageOneCHecked;
         this.isStageOneRegSubmitClicked = stageOneRegs.isSubmitClicked;
-
+        this.levelOneBoxes = mxr.levelOneBoxes;
+        this.disaggVarianceBoxes = mxr.disaggVarianceBoxes;
+        this.levelTwoBoxes = mxr.levelTwoBoxes;
+        this.meanSubmodelCheckBox = ao.isMeanSubmodelCheckBoxChecked();
+        this.BSVarianceCheckBox = ao.isBSVarianceCheckBoxChecked();
+        this.WSVarianceCheckBox = ao.isWSVarianceCheckBoxChecked();
+        this.centerRegressorsCheckBox = ao.isCenterRegressorsCheckBoxChecked();
+        this.discardSubjectsCheckBox = ao.isDiscardSubjectsCheckBoxChecked();
+        this.resampleCheckBox = ao.isResampleCheckBoxChecked();
+        this.adaptiveQuadritureCheckBox = ao.isAdaptiveQuadritureCheckBoxChecked();
+        this.run32BitCheckBox = ao.isRun32BitChecked();
+        this.convergenceCriteria = ao.getConvergenceCriteria();
+        this.quadriturePoints = ao.getQuadriturePoints();
+        this.maximumIterations = ao.getMaximumIterations();
+        this.ridgeSpinner = ao.getRidge();
+        this.resampleSpinner = ao.getResampleSpinner();
+        this.NoAssociationRadio = mxr.getNoAssociationRadio();
+        this.LinearAssociationRadio = mxr.getLinearAssociationRadio();
+        this.QuadraticAssociationRadio = mxr.getQuadraticAssociationRadio();
+        this.isStageOneSubmitted = mxr.isStageOneSubmitted;
+        this.isStageTwoSubmitted = mxr.isStageTwoSubmitted;
+        this.stageTwoListModel = stageTwoRegs.stageTwoListModel;
+        this.stageTwoLevelTwo = stageTwoRegs.stageTwoLevelTwo;
+        this.isStageTwoSubmitClicked = stageTwoRegs.isStageTwoSubmitClicked;
+        this.stageTwoGridBoxes = mxr.stageTwoGridBoxes;
+        this.suppressIntCheckBox = mxr.getSuppressIntCheckBox();
     }
 
     public void writeAllStates(mixregGUI mxr) {
@@ -178,42 +235,95 @@ public class MixRegGuiStates {
         levelOneList = hmapStates.get("levelOneList").getStringList();
         levelTwoList = hmapStates.get("levelTwoList").getStringList();
         isStageOneRegSubmitClicked = hmapStates.get("isStageOneRegSubmitClicked").getBoolean();
-        
+        levelOneBoxes = hmapStates.get("levelOneBoxes").getBox();
+        disaggVarianceBoxes = hmapStates.get("disaggVarianceBoxes").getBox();
+        levelTwoBoxes = hmapStates.get("levelTwoBoxes").getBox();
+
+        meanSubmodelCheckBox = hmapStates.get("meanSubmodelCheckBox").getBoolean();
+        BSVarianceCheckBox = hmapStates.get("BSVarianceCheckBox").getBoolean();
+        WSVarianceCheckBox = hmapStates.get("WSVarianceCheckBox").getBoolean();
+        centerRegressorsCheckBox = hmapStates.get("centerRegressorsCheckBox").getBoolean();
+        discardSubjectsCheckBox = hmapStates.get("discardSubjectsCheckBox").getBoolean();
+        resampleCheckBox = hmapStates.get("resampleCheckBox").getBoolean();
+        adaptiveQuadritureCheckBox = hmapStates.get("adaptiveQuadritureCheckBox").getBoolean();
+        run32BitCheckBox = hmapStates.get("run32BitCheckBox").getBoolean();
+        convergenceCriteria = hmapStates.get("convergenceCriteria").getString();
+        quadriturePoints = hmapStates.get("quadriturePoints").getInt();
+        maximumIterations = hmapStates.get("maximumIterations").getInt();
+        ridgeSpinner = hmapStates.get("ridgeSpinner").getDouble();
+        resampleSpinner = hmapStates.get("resampleSpinner").getInt();
+        NoAssociationRadio = hmapStates.get("NoAssociationRadio").getBoolean();
+        LinearAssociationRadio = hmapStates.get("LinearAssociationRadio").getBoolean();
+        QuadraticAssociationRadio = hmapStates.get("QuadraticAssociationRadio").getBoolean();
+        isStageOneSubmitted = hmapStates.get("isStageOneSubmitted").getBoolean();
+        isStageTwoSubmitted = hmapStates.get("isStageTwoSubmitted").getBoolean();
+
+        stageTwoListModel = hmapStates.get("stageTwoListModel").getStringList();
+        stageTwoLevelTwo = hmapStates.get("stageTwoLevelTwo").getStringList();
+        isStageTwoSubmitClicked = hmapStates.get("isStageTwoSubmitClicked").getBoolean();
+        stageTwoGridBoxes = hmapStates.get("stageTwoGridBoxes").getBox();
+        suppressIntCheckBox = hmapStates.get("suppressIntCheckBox").getBoolean();
     }
 
     public HashMap<String, StateObject> createStatesHashMap() {
         HashMap<String, StateObject> hashmap = new HashMap<>();
-        StateObject po0 = new StateObject("filepath", 0, filepath, true);
-        StateObject po1 = new StateObject("titleField", 0, title, true);
-        StateObject po2 = new StateObject("missingValuePresent", 0, "", missingValuePresent);
-        StateObject po3 = new StateObject("missingValueAbsent", 0, "", missingValueAbsent);
-        StateObject po4 = new StateObject("newModelMissingValueCode", 0, newModelMissingValueCode, true);
-        StateObject po5 = new StateObject("stageOneContinuousRadio", 0, "", stageOneContinuousRadio);
-        StateObject po6 = new StateObject("stageOneDichotomousRadio", 0, "", stageOneDichotomousRadio);
-        StateObject po7 = new StateObject("stageOneOrdinalRadio", 0, "", stageOneOrdinalRadio);
-        StateObject po8 = new StateObject("oneRLERadio", 0, "", oneRLERadio);
-        StateObject po9 = new StateObject("moreThanOneRLERadio", 0, "", moreThanOneRLERadio);
-        StateObject po10 = new StateObject("randomScaleSelectionYes", 0, "", randomScaleSelectionYes);
-        StateObject po11 = new StateObject("randomScaleSelectionNo", 0, "", randomScaleSelectionNo);
-        StateObject po12 = new StateObject("includeStageTwoYes", 0, "", includeStageTwoYes);
-        StateObject po13 = new StateObject("includeStageTwoNo", 0, "", includeStageTwoNo);
-        StateObject po14 = new StateObject("stageTwoSingleLevel", 0, "", stageTwoSingleLevel);
-        StateObject po15 = new StateObject("stageTwoMultiLevel", 0, "", stageTwoMultiLevel);
-        StateObject po16 = new StateObject("continuousRadio", 0, "", continuousRadio);
-        StateObject po17 = new StateObject("dichotomousRadio", 0, "", dichotomousRadio);
-        StateObject po18 = new StateObject("countRadio", 0, "", countRadio);
-        StateObject po19 = new StateObject("multinomialRadio", 0, "", multinomialRadio);
-        StateObject po20 = new StateObject("seedTextBox", 0, seedTextBox, true);
-        StateObject po21 = new StateObject("isNewModalConfigSubmitted", 0, "", isNewModalConfigSubmitted);
-        StateObject po22 = new StateObject("IDpos", IDpos, "", true);
-        StateObject po23 = new StateObject("stageOnePos", stageOnePos, "", true);
-        StateObject po24 = new StateObject("stageTwoPos", stageTwoPos, "", true);
-        StateObject po25 = new StateObject("varList", 0, "", true, varList);
-        StateObject po26 = new StateObject("levelOneList", 0, "", true, levelOneList);
-        StateObject po27 = new StateObject("levelTwoList", 0, "", true, levelTwoList);
-        StateObject po28 = new StateObject("addStageOneCHecked", 0, "", addStageOneCHecked);
-        StateObject po29 = new StateObject("stageOneClicked", stageOneClicked, "", true);
-        StateObject po30 = new StateObject("isStageOneRegSubmitClicked", 0, "", isStageOneRegSubmitClicked);
+        StateObject po0 = new StateObject("filepath", filepath);
+        StateObject po1 = new StateObject("titleField", title);
+        StateObject po2 = new StateObject("missingValuePresent", missingValuePresent);
+        StateObject po3 = new StateObject("missingValueAbsent", missingValueAbsent);
+        StateObject po4 = new StateObject("newModelMissingValueCode", newModelMissingValueCode);
+        StateObject po5 = new StateObject("stageOneContinuousRadio", stageOneContinuousRadio);
+        StateObject po6 = new StateObject("stageOneDichotomousRadio", stageOneDichotomousRadio);
+        StateObject po7 = new StateObject("stageOneOrdinalRadio", stageOneOrdinalRadio);
+        StateObject po8 = new StateObject("oneRLERadio", oneRLERadio);
+        StateObject po9 = new StateObject("moreThanOneRLERadio", moreThanOneRLERadio);
+        StateObject po10 = new StateObject("randomScaleSelectionYes", randomScaleSelectionYes);
+        StateObject po11 = new StateObject("randomScaleSelectionNo", randomScaleSelectionNo);
+        StateObject po12 = new StateObject("includeStageTwoYes", includeStageTwoYes);
+        StateObject po13 = new StateObject("includeStageTwoNo", includeStageTwoNo);
+        StateObject po14 = new StateObject("stageTwoSingleLevel", stageTwoSingleLevel);
+        StateObject po15 = new StateObject("stageTwoMultiLevel", stageTwoMultiLevel);
+        StateObject po16 = new StateObject("continuousRadio", continuousRadio);
+        StateObject po17 = new StateObject("dichotomousRadio", dichotomousRadio);
+        StateObject po18 = new StateObject("countRadio", countRadio);
+        StateObject po19 = new StateObject("multinomialRadio", multinomialRadio);
+        StateObject po20 = new StateObject("seedTextBox", seedTextBox);
+        StateObject po21 = new StateObject("isNewModalConfigSubmitted", isNewModalConfigSubmitted);
+        StateObject po22 = new StateObject("IDpos", IDpos);
+        StateObject po23 = new StateObject("stageOnePos", stageOnePos);
+        StateObject po24 = new StateObject("stageTwoPos", stageTwoPos);
+        StateObject po25 = new StateObject("varList", varList);
+        StateObject po26 = new StateObject("levelOneList", levelOneList);
+        StateObject po27 = new StateObject("levelTwoList", levelTwoList);
+        StateObject po28 = new StateObject("addStageOneCHecked", addStageOneCHecked);
+        StateObject po29 = new StateObject("stageOneClicked", stageOneClicked);
+        StateObject po30 = new StateObject("isStageOneRegSubmitClicked", isStageOneRegSubmitClicked);
+        StateObject po31 = new StateObject("levelOneBoxes", levelOneBoxes);
+        StateObject po32 = new StateObject("disaggVarianceBoxes", disaggVarianceBoxes);
+        StateObject po33 = new StateObject("levelTwoBoxes", levelTwoBoxes);
+        StateObject po34 = new StateObject("meanSubmodelCheckBox", meanSubmodelCheckBox);
+        StateObject po35 = new StateObject("BSVarianceCheckBox", BSVarianceCheckBox);
+        StateObject po36 = new StateObject("WSVarianceCheckBox", WSVarianceCheckBox);
+        StateObject po37 = new StateObject("centerRegressorsCheckBox", centerRegressorsCheckBox);
+        StateObject po38 = new StateObject("discardSubjectsCheckBox", discardSubjectsCheckBox);
+        StateObject po39 = new StateObject("resampleCheckBox", resampleCheckBox);
+        StateObject po40 = new StateObject("adaptiveQuadritureCheckBox", adaptiveQuadritureCheckBox);
+        StateObject po41 = new StateObject("run32BitCheckBox", run32BitCheckBox);
+        StateObject po42 = new StateObject("convergenceCriteria", convergenceCriteria);
+        StateObject po43 = new StateObject("quadriturePoints", quadriturePoints);
+        StateObject po44 = new StateObject("maximumIterations", maximumIterations);
+        StateObject po45 = new StateObject("ridgeSpinner", ridgeSpinner);
+        StateObject po46 = new StateObject("resampleSpinner", resampleSpinner);
+        StateObject po47 = new StateObject("NoAssociationRadio", NoAssociationRadio);
+        StateObject po48 = new StateObject("LinearAssociationRadio", LinearAssociationRadio);
+        StateObject po49 = new StateObject("QuadraticAssociationRadio", QuadraticAssociationRadio);
+        StateObject po50 = new StateObject("isStageOneSubmitted", isStageOneSubmitted);
+        StateObject po51 = new StateObject("isStageTwoSubmitted", isStageTwoSubmitted);
+        StateObject po52 = new StateObject("stageTwoListModel", stageTwoListModel);
+        StateObject po53 = new StateObject("stageTwoLevelTwo", stageTwoLevelTwo);
+        StateObject po54 = new StateObject("isStageTwoSubmitClicked", isStageTwoSubmitClicked);
+        StateObject po55 = new StateObject("stageTwoGridBoxes", stageTwoGridBoxes);
+        StateObject po56 = new StateObject("suppressIntCheckBox", suppressIntCheckBox);
 
         hashmap.put(po0.getKey(), po0);
         hashmap.put(po1.getKey(), po1);
@@ -246,6 +356,33 @@ public class MixRegGuiStates {
         hashmap.put(po28.getKey(), po28);
         hashmap.put(po29.getKey(), po29);
         hashmap.put(po30.getKey(), po30);
+        hashmap.put(po31.getKey(), po31);
+        hashmap.put(po32.getKey(), po32);
+        hashmap.put(po33.getKey(), po33);
+        hashmap.put(po34.getKey(), po34);
+        hashmap.put(po35.getKey(), po35);
+        hashmap.put(po36.getKey(), po36);
+        hashmap.put(po37.getKey(), po37);
+        hashmap.put(po38.getKey(), po38);
+        hashmap.put(po39.getKey(), po39);
+        hashmap.put(po40.getKey(), po40);
+        hashmap.put(po41.getKey(), po41);
+        hashmap.put(po42.getKey(), po42);
+        hashmap.put(po43.getKey(), po43);
+        hashmap.put(po44.getKey(), po44);
+        hashmap.put(po45.getKey(), po45);
+        hashmap.put(po46.getKey(), po46);
+        hashmap.put(po47.getKey(), po47);
+        hashmap.put(po48.getKey(), po48);
+        hashmap.put(po49.getKey(), po49);
+        hashmap.put(po50.getKey(), po50);
+        hashmap.put(po51.getKey(), po51);
+        hashmap.put(po52.getKey(), po52);
+        hashmap.put(po53.getKey(), po53);
+        hashmap.put(po54.getKey(), po54);
+        hashmap.put(po55.getKey(), po55);
+        hashmap.put(po56.getKey(), po56);
+        
         return hashmap;
     }
 

@@ -35,9 +35,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-
 /**
  * All the advanced functions to support the model
+ *
  * @author adityaponnada
  */
 public class advancedOptions extends javax.swing.JFrame {
@@ -53,7 +53,7 @@ public class advancedOptions extends javax.swing.JFrame {
         initComponents();
         this.setResizable(false);
         run32BitCheckBox.setVisible(osWindows);
-        
+
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
 
@@ -204,6 +204,11 @@ public class advancedOptions extends javax.swing.JFrame {
         convergenceCriteria.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         convergenceCriteria.setText("0.00001");
         convergenceCriteria.setToolTipText("Convergence requirement for the maximum correction (change to aid in convergence)");
+        convergenceCriteria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                convergenceCriteriaActionPerformed(evt);
+            }
+        });
         jPanel1.add(convergenceCriteria, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 110, 90, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 21, 260, 230));
@@ -259,6 +264,11 @@ public class advancedOptions extends javax.swing.JFrame {
         jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 230, -1));
 
         discardSubjectsCheckBox.setToolTipText("Discard all the subjects with no variance");
+        discardSubjectsCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                discardSubjectsCheckBoxActionPerformed(evt);
+            }
+        });
         jPanel2.add(discardSubjectsCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, -1, -1));
         jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 142, 240, 0));
         jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 280, 10));
@@ -326,6 +336,367 @@ public class advancedOptions extends javax.swing.JFrame {
     }//GEN-LAST:event_adaptiveQuadritureCheckBoxActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        update_trigger_AdvancedOptionsSubmit();
+
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void centerRegressorsCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_centerRegressorsCheckBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_centerRegressorsCheckBoxActionPerformed
+
+    private void advancedOptions_resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_advancedOptions_resetButtonActionPerformed
+        // TODO add your handling code here:
+
+        meanSubmodelCheckBox.setSelected(false);
+        BSVarianceCheckBox.setSelected(false);
+        WSVarianceCheckBox.setSelected(false);
+
+        convergenceCriteria.setText("0.00001");
+        quadriturePoints.setValue(11);
+
+        adaptiveQuadritureCheckBox.setSelected(false);
+        centerRegressorsCheckBox.setSelected(false);
+
+        maximumIterations.setValue(200);
+        // missingValuesCheckBox.setSelected(false);
+        //standardizedCoeff.setSelected(false);
+        ridgeSpinner.setValue(0.15);
+        resampleSpinner.setValue(500);
+
+    }//GEN-LAST:event_advancedOptions_resetButtonActionPerformed
+
+    private void advancedOptionsCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_advancedOptionsCancelActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_advancedOptionsCancelActionPerformed
+
+    private void resampleCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resampleCheckBoxActionPerformed
+        // TODO add your handling code here:
+
+        update_trigger_resampleCheckBox();
+    }//GEN-LAST:event_resampleCheckBoxActionPerformed
+
+
+    private void run32BitCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_run32BitCheckBoxActionPerformed
+        // TODO add your handling code here:
+        update_trigger_run32BitCheckBox();
+    }//GEN-LAST:event_run32BitCheckBoxActionPerformed
+
+    private void discardSubjectsCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_discardSubjectsCheckBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_discardSubjectsCheckBoxActionPerformed
+
+    private void convergenceCriteriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_convergenceCriteriaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_convergenceCriteriaActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(advancedOptions.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(advancedOptions.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(advancedOptions.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(advancedOptions.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new advancedOptions().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox BSVarianceCheckBox;
+    private javax.swing.JCheckBox WSVarianceCheckBox;
+    private javax.swing.JCheckBox adaptiveQuadritureCheckBox;
+    private javax.swing.JButton advancedOptionsCancel;
+    private javax.swing.JButton advancedOptions_resetButton;
+    private javax.swing.JCheckBox centerRegressorsCheckBox;
+    private javax.swing.JTextField convergenceCriteria;
+    private javax.swing.JCheckBox discardSubjectsCheckBox;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSpinner maximumIterations;
+    private javax.swing.JCheckBox meanSubmodelCheckBox;
+    private javax.swing.JSpinner quadriturePoints;
+    private javax.swing.JCheckBox resampleCheckBox;
+    private javax.swing.JSpinner resampleSpinner;
+    private javax.swing.JSpinner ridgeSpinner;
+    private javax.swing.JCheckBox run32BitCheckBox;
+    // End of variables declaration//GEN-END:variables
+
+//check if mean sub model is checked in advanced options    
+    public int isMeanSubModelChecked() {
+
+        int checked = 0;
+
+        if (meanSubmodelCheckBox.isSelected() == true) {
+            checked = 0;
+        } else {
+            checked = 1;
+        }
+
+        return checked;
+    }
+
+// check if BS variance is checked
+    public int isBSVarianceChecked() {
+
+        int checked = 0;
+
+        if (BSVarianceCheckBox.isSelected() == true) {
+            checked = 0;
+        } else {
+            checked = 1;
+        }
+
+        return checked;
+    }
+
+// check if BS variance is checked
+    public int isWSVarianceChecked() {
+
+        int checked = 0;
+
+        if (WSVarianceCheckBox.isSelected() == true) {
+            checked = 0;
+        } else {
+            checked = 1;
+        }
+
+        return checked;
+    }
+
+// get the convergence criteria
+    public String getConvergenceCriteria() {
+
+        return convergenceCriteria.getText();
+
+    }
+
+    public void setConvergenceCriteria(String value_string) {
+        convergenceCriteria.setText(value_string);
+    }
+
+// get Quadriture points
+    public int getQuadriturePoints() {
+
+        return (int) quadriturePoints.getValue();
+    }
+
+    public void setQuadriturePoints(int value_int) {
+        quadriturePoints.setValue(value_int);
+    }
+
+// check if adaptive quadriture is checked
+    public int isAdaptiveQuadritureChecked() {
+        int checked = 0;
+
+        if (adaptiveQuadritureCheckBox.isSelected() == true) {
+            checked = 1;
+        } else {
+
+            checked = 0;
+        }
+
+        return checked;
+    }
+
+// get the convergence criteria
+    public Integer getMaximumIterations() {
+
+        return (Integer) maximumIterations.getValue();
+
+    }
+
+    public void setMaximumIterations(int value_int) {
+
+        maximumIterations.setValue(value_int);
+
+    }
+
+// get the ridge value
+    public Double getRidge() {
+
+        return (Double) ridgeSpinner.getValue();
+
+    }
+
+    public void setRidgeSpinner(double value_double) {
+        ridgeSpinner.setValue(value_double);
+    }
+
+    public int isCenterRegressorChecked() {
+        int value = 0;
+
+        if (centerRegressorsCheckBox.isSelected()) {
+            value = 1;
+        } else {
+            value = 0;
+        }
+
+        return value;
+    }
+
+//    public int isResamplingChecked() {
+//
+//        int checked = 0;
+//
+//        if (resampleCheckBox.isSelected() == true) {
+//            checked = 1;
+//        } else {
+//            checked = 0;
+//        }
+//
+//        return checked;
+//    }
+    public String getResamplingRate() {
+
+        return String.valueOf(resampleSpinner.getValue());
+
+    }
+
+    public String getDiscardSubjectsCheck() {
+
+        String check = "0";
+
+        if (discardSubjectsCheckBox.isSelected()) {
+
+            check = "1";
+        } else {
+            check = "0";
+
+        }
+
+        return check;
+    }
+
+    public boolean isRun32BitChecked() {
+
+        boolean run32 = false;
+
+        if (run32BitCheckBox.isSelected()) {
+
+            run32 = true;
+
+        } else {
+
+            run32 = false;
+
+        }
+
+        return run32;
+    }
+
+    public void setRun32BitCheckBox(boolean turnon) {
+        run32BitCheckBox.setSelected(turnon);
+    }
+
+    public boolean isMeanSubmodelCheckBoxChecked() {
+        return meanSubmodelCheckBox.isSelected();
+    }
+
+    public void setMeanSubmodelCheckBox(boolean turnon) {
+        meanSubmodelCheckBox.setSelected(turnon);
+    }
+
+    boolean isBSVarianceCheckBoxChecked() {
+        return BSVarianceCheckBox.isSelected();
+    }
+
+    public void setBSVarianceCheckBox(boolean turnon) {
+        BSVarianceCheckBox.setSelected(turnon);
+    }
+
+    boolean isWSVarianceCheckBoxChecked() {
+        return WSVarianceCheckBox.isSelected();
+    }
+
+    public void setWSVarianceCheckBox(boolean turnon) {
+        WSVarianceCheckBox.setSelected(turnon);
+    }
+
+    boolean isCenterRegressorsCheckBoxChecked() {
+        return centerRegressorsCheckBox.isSelected();
+    }
+
+    public void setCenterRegressorsCheckBox(boolean turnon) {
+        centerRegressorsCheckBox.setSelected(turnon);
+    }
+
+    boolean isDiscardSubjectsCheckBoxChecked() {
+        return discardSubjectsCheckBox.isSelected();
+    }
+
+    public void setDiscardSubjectsCheckBox(boolean turnon) {
+        discardSubjectsCheckBox.setSelected(turnon);
+    }
+
+    boolean isResampleCheckBoxChecked() {
+        return resampleCheckBox.isSelected();
+    }
+
+    public void setResampleCheckBox(boolean turnon) {
+        resampleCheckBox.setSelected(turnon);
+    }
+
+    boolean isAdaptiveQuadritureCheckBoxChecked() {
+        return adaptiveQuadritureCheckBox.isSelected();
+    }
+
+    public void setAdaptiveQuadritureCheckBox(boolean turnon) {
+        adaptiveQuadritureCheckBox.setSelected(turnon);
+    }
+
+    int getResampleSpinner() {
+        return (int) resampleSpinner.getValue();
+    }
+
+    public void setResampleSpinner(int value_int) {
+        resampleSpinner.setValue(value_int);
+    }
+
+    public void update_trigger_AdvancedOptionsSubmit() {
         // TODO add your handling code here:
         //defFile3 = mixregGUI.defFile;
         int tryCount = 0;
@@ -459,275 +830,20 @@ public class advancedOptions extends javax.swing.JFrame {
             //do nothing
             this.dispose();
         }
-
-
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void centerRegressorsCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_centerRegressorsCheckBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_centerRegressorsCheckBoxActionPerformed
-
-    private void advancedOptions_resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_advancedOptions_resetButtonActionPerformed
-        // TODO add your handling code here:
-
-        meanSubmodelCheckBox.setSelected(false);
-        BSVarianceCheckBox.setSelected(false);
-        WSVarianceCheckBox.setSelected(false);
-
-        convergenceCriteria.setText("0.00001");
-        quadriturePoints.setValue(11);
-
-        adaptiveQuadritureCheckBox.setSelected(false);
-        centerRegressorsCheckBox.setSelected(false);
-
-        maximumIterations.setValue(200);
-        // missingValuesCheckBox.setSelected(false);
-        //standardizedCoeff.setSelected(false);
-        ridgeSpinner.setValue(0.15);
-        resampleSpinner.setValue(500);
-
-    }//GEN-LAST:event_advancedOptions_resetButtonActionPerformed
-
-    private void advancedOptionsCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_advancedOptionsCancelActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_advancedOptionsCancelActionPerformed
-
-    private void resampleCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resampleCheckBoxActionPerformed
-        // TODO add your handling code here:
-
+    }
+    public void update_trigger_resampleCheckBox() {
         if (resampleCheckBox.isSelected()) {
             mixregGUI.defFile.win32 = Boolean.TRUE;
         } else {
             mixregGUI.defFile.win32 = Boolean.FALSE;
         }
-    }//GEN-LAST:event_resampleCheckBoxActionPerformed
+    }
 
-    private void run32BitCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_run32BitCheckBoxActionPerformed
-        // TODO add your handling code here:
+    public void update_trigger_run32BitCheckBox() {
         if (run32BitCheckBox.isSelected()) {
             resampleSpinner.setEnabled(true);
         } else {
             resampleSpinner.setEnabled(false);
         }
-    }//GEN-LAST:event_run32BitCheckBoxActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(advancedOptions.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(advancedOptions.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(advancedOptions.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(advancedOptions.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new advancedOptions().setVisible(true);
-            }
-        });
     }
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBox BSVarianceCheckBox;
-    private javax.swing.JCheckBox WSVarianceCheckBox;
-    private javax.swing.JCheckBox adaptiveQuadritureCheckBox;
-    private javax.swing.JButton advancedOptionsCancel;
-    private javax.swing.JButton advancedOptions_resetButton;
-    private javax.swing.JCheckBox centerRegressorsCheckBox;
-    private javax.swing.JTextField convergenceCriteria;
-    private javax.swing.JCheckBox discardSubjectsCheckBox;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSpinner maximumIterations;
-    private javax.swing.JCheckBox meanSubmodelCheckBox;
-    private javax.swing.JSpinner quadriturePoints;
-    private javax.swing.JCheckBox resampleCheckBox;
-    private javax.swing.JSpinner resampleSpinner;
-    private javax.swing.JSpinner ridgeSpinner;
-    private javax.swing.JCheckBox run32BitCheckBox;
-    // End of variables declaration//GEN-END:variables
-
-//check if mean sub model is checked in advanced options    
-    public int isMeanSubModelChecked() {
-
-        int checked = 0;
-
-        if (meanSubmodelCheckBox.isSelected() == true) {
-            checked = 0;
-        } else {
-            checked = 1;
-        }
-
-        return checked;
-    }
-
-// check if BS variance is checked
-    public int isBSVarianceChecked() {
-
-        int checked = 0;
-
-        if (BSVarianceCheckBox.isSelected() == true) {
-            checked = 0;
-        } else {
-            checked = 1;
-        }
-
-        return checked;
-    }
-
-// check if BS variance is checked
-    public int isWSVarianceChecked() {
-
-        int checked = 0;
-
-        if (WSVarianceCheckBox.isSelected() == true) {
-            checked = 0;
-        } else {
-            checked = 1;
-        }
-
-        return checked;
-    }
-
-// get the convergence criteria
-    public String getConvergenceCriteria() {
-
-        return convergenceCriteria.getText();
-
-    }
-
-// get Quadriture points
-    public Double getQuadriturePoints() {
-
-        return (Double) quadriturePoints.getValue();
-    }
-
-// check if adaptive quadriture is checked
-    public int isAdaptiveQuadritureChecked() {
-        int checked = 0;
-
-        if (adaptiveQuadritureCheckBox.isSelected() == true) {
-            checked = 1;
-        } else {
-
-            checked = 0;
-        }
-
-        return checked;
-    }
-
-// get the convergence criteria
-    public Integer getMaximumIterations() {
-
-        return (Integer) maximumIterations.getValue();
-
-    }
-
-// get the ridge value
-    public Double getRidge() {
-
-        return (Double) ridgeSpinner.getValue();
-
-    }
-
-    public int isCenterRegressorChecked() {
-        int value = 0;
-
-        if (centerRegressorsCheckBox.isSelected()) {
-            value = 1;
-        } else {
-            value = 0;
-        }
-
-        return value;
-    }
-
-//    public int isResamplingChecked() {
-//
-//        int checked = 0;
-//
-//        if (resampleCheckBox.isSelected() == true) {
-//            checked = 1;
-//        } else {
-//            checked = 0;
-//        }
-//
-//        return checked;
-//    }
-    public String getResamplingRate() {
-
-        return String.valueOf(resampleSpinner.getValue());
-
-    }
-
-    public String getDiscardSubjectsCheck() {
-
-        String check = "0";
-
-        if (discardSubjectsCheckBox.isSelected()) {
-
-            check = "1";
-        } else {
-            check = "0";
-
-        }
-
-        return check;
-    }
-    
-    public boolean isRun32BitChecked(){
-    
-        boolean run32 = false;
-        
-        if (run32BitCheckBox.isSelected()){
-            
-            run32 = true;
-        
-        } else {
-        
-            run32 = false;
-        
-        }
-
-        return run32;
-    }
-    
 }

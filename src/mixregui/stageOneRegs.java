@@ -474,4 +474,8 @@ public class stageOneRegs extends javax.swing.JFrame {
     public javax.swing.JList<String> getStageOneLevelTwoList() {
         return StageOneLevelTwoList;
     }
+    
+    public void getEnabledStageOneSubmitButton(boolean turnon){
+        stageOneSubmitButton.setEnabled(turnon);
+    }
 }
