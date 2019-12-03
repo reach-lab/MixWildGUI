@@ -92,6 +92,8 @@ public class MixRegGuiStates {
     public boolean isStageTwoSubmitClicked;
     public ArrayList<ArrayList<JCheckBox>> stageTwoGridBoxes;
     public boolean suppressIntCheckBox;
+    
+    public ArrayList<String> levelTwoSelected;
 
     // init default
     MixRegGuiStates() {
@@ -156,6 +158,7 @@ public class MixRegGuiStates {
         this.isStageTwoSubmitClicked = stageTwoRegs.isStageTwoSubmitClicked;
         this.stageTwoGridBoxes = mxr.stageTwoGridBoxes;
         this.suppressIntCheckBox = mxr.getSuppressIntCheckBox();
+        this.levelTwoSelected = mxr.levelTwoSelected;
     }
 
     public void writeAllStates(mixregGUI mxr) {
@@ -263,6 +266,7 @@ public class MixRegGuiStates {
         isStageTwoSubmitClicked = hmapStates.get("isStageTwoSubmitClicked").getBoolean();
         stageTwoGridBoxes = hmapStates.get("stageTwoGridBoxes").getBox();
         suppressIntCheckBox = hmapStates.get("suppressIntCheckBox").getBoolean();
+        levelTwoSelected = hmapStates.get("levelTwoSelected").getStringArrayList();
     }
 
     public HashMap<String, StateObject> createStatesHashMap() {
@@ -324,6 +328,7 @@ public class MixRegGuiStates {
         StateObject po54 = new StateObject("isStageTwoSubmitClicked", isStageTwoSubmitClicked);
         StateObject po55 = new StateObject("stageTwoGridBoxes", stageTwoGridBoxes);
         StateObject po56 = new StateObject("suppressIntCheckBox", suppressIntCheckBox);
+        StateObject po57 = new StateObject("levelTwoSelected", levelTwoSelected,0);
 
         hashmap.put(po0.getKey(), po0);
         hashmap.put(po1.getKey(), po1);
@@ -382,6 +387,7 @@ public class MixRegGuiStates {
         hashmap.put(po54.getKey(), po54);
         hashmap.put(po55.getKey(), po55);
         hashmap.put(po56.getKey(), po56);
+        hashmap.put(po57.getKey(), po57);
         
         return hashmap;
     }

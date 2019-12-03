@@ -21,7 +21,7 @@ public class StateObject implements Serializable{
         private boolean value_bool;
         private DefaultListModel<String> value_stringlist;
         private ArrayList<ArrayList<JCheckBox>> reg_boxes;
-        
+        private ArrayList<String> value_stringArraylist;
         
         
         public StateObject(String key, int value_int){
@@ -44,11 +44,16 @@ public class StateObject implements Serializable{
             this.value_bool = value_bool;
         }
         
+        public StateObject(String key, ArrayList<String> value_stringArraylist, int value){
+            this.key = key;
+            this.value_stringArraylist = value_stringArraylist;
+        }
         
         public StateObject(String key, DefaultListModel<String> value_stringlist){
             this.key = key;
             this.value_stringlist = value_stringlist;
         }
+        
         
         public StateObject(String key, ArrayList<ArrayList<JCheckBox>> reg_boxes){
             this.key = key;
@@ -73,6 +78,9 @@ public class StateObject implements Serializable{
         }
         public ArrayList<ArrayList<JCheckBox>> getBox(){
             return reg_boxes;
+        }
+        public ArrayList<String> getStringArrayList(){
+            return value_stringArraylist;
         }
         public String getKey() {
             return key;

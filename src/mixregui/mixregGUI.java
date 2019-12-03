@@ -2945,6 +2945,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         QuadraticAssociationRadio.setSelected(mxrStates.QuadraticAssociationRadio);
 
         isStageOneSubmitted = mxrStates.isStageOneSubmitted;
+        levelTwoSelected = mxrStates.levelTwoSelected;
         if (isStageOneSubmitted == true) {
             update_trigger_StartStageTwo();
         }
