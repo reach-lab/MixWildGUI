@@ -48,6 +48,7 @@ import java.util.logging.Logger;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
+import mixregui.SystemLogger;
 import org.apache.commons.io.FilenameUtils;
 
 /**
@@ -99,6 +100,7 @@ public class ModelBuilder {
                 regressorsOne += meanArrayOne[i].toUpperCase() + KEY_IJ + KEY_PLUS;
             }
         } catch (NullPointerException npe) {
+            SystemLogger.LOGGER.log(Level.SEVERE, npe.toString(), npe);
 
         }
         try {
@@ -106,6 +108,7 @@ public class ModelBuilder {
                 regressorsOne += meanArrayTwo[i].toUpperCase() + KEY_I + KEY_PLUS;
             }
         } catch (NullPointerException npe) {
+            SystemLogger.LOGGER.log(Level.SEVERE, npe.toString(), npe);
 
         }
 
@@ -227,7 +230,10 @@ public class ModelBuilder {
 
     public static DefinitionHelper accessFolderArchive(File mwaFile) throws IOException, ClassNotFoundException {
         String folderPath = FilenameUtils.getFullPath(mwaFile.getAbsolutePath());
-        String dirName = Long.toString(Instant.now().getEpochSecond());
+//        String dirName = Long.toString(Instant.now().getEpochSecond());
+        SimpleDateFormat formatter= new SimpleDateFormat("yyyyMMddHHmm");
+        Date date = new Date(System.currentTimeMillis());
+        String dirName = formatter.format(date);
         String outputPath = folderPath + "MIXWILD" + dirName + "/";
         byte[] buffer = new byte[1024];
 

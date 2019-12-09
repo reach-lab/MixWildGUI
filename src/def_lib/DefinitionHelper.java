@@ -23,9 +23,7 @@ MixWild, a program to model subject-level slope and variance on continuous or or
 	Donald Hedeker, PhD
 	University of Chicago
 	DHedeker@health.bsd.uchicago.edu
-*/
-
-
+ */
 package def_lib;
 
 import java.awt.BorderLayout;
@@ -78,7 +76,9 @@ import java.io.Serializable;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.SwingWorker;
+import mixregui.SystemLogger;
 import mixregui.mixregGUI;
+import static mixregui.mixregGUI.logger;
 import org.apache.commons.io.FilenameUtils;
 
 /**
@@ -147,7 +147,7 @@ public class DefinitionHelper implements Serializable {
     private String dataFilename;
     private String outputPrefix;
     private String utcDirPath;
-   
+
     /**
      * Stage 1 Advanced Options
      */
@@ -268,16 +268,16 @@ public class DefinitionHelper implements Serializable {
     public boolean isStageTwoBinary() {
         return stageTwoBinary;
     }
-    
+
     public void setUtcDirPath(File csvFileLocation) throws IOException {
-        String utcDirPath = ModelBuilder.buildFolder(csvFileLocation); 
+        String utcDirPath = ModelBuilder.buildFolder(csvFileLocation);
         this.utcDirPath = utcDirPath;
     }
-    
+
     public void setUtcDirPath(String folderAbsolutePath) {
         this.utcDirPath = folderAbsolutePath;
     }
-    
+
     public String getUtcDirPath() {
         return utcDirPath;
     }
@@ -289,16 +289,16 @@ public class DefinitionHelper implements Serializable {
         String filePath = FilenameUtils.getFullPath(fileName);
         // TODO: Deprecate
         //String filePath = fileName.substring(0, fileName.lastIndexOf(File.separator)) + "/"; //subset the string.
-        
+
         try (CSVReader reader = new CSVReader(new FileReader(fileName))) {
-            setUtcDirPath(csvFileToConvert);
+            setUtcDirPath(csvFileToConvert);           
             List<String[]> csvRows = reader.readAll();
             reader.close();
             System.out.println(Arrays.toString(csvRows.get(0)) + " to be removed");
             csvRows.remove(0); // TODO: make sure this isn't removing data
             System.out.println("New:" + Arrays.toString(csvRows.get(0)));
 
-            CSVWriter writer = new CSVWriter(new FileWriter(filePath + utcDirPath + baseName.replace(" ","_") + ".dat"), ' ', CSVWriter.NO_QUOTE_CHARACTER,
+            CSVWriter writer = new CSVWriter(new FileWriter(filePath + utcDirPath + baseName.replace(" ", "_") + ".dat"), ' ', CSVWriter.NO_QUOTE_CHARACTER,
                     CSVWriter.NO_ESCAPE_CHARACTER, CSVWriter.RFC4180_LINE_END);
             writer.writeAll(csvRows);
             writer.close();
@@ -367,16 +367,19 @@ public class DefinitionHelper implements Serializable {
         try {
             field = Integer.parseInt(countVariable);
         } catch (Exception ex) {
+            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString(), ex);
             throw new Exception("Unassigned count variable for one or more options or regressors");
+
         }
         try {
             labels = fieldLabelLine.length;
         } catch (Exception ex) {
+            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString(), ex);
             throw new Exception("Unassigned field or label series for one or more sets of options or regressors");
         }
         return field == labels;
     }
-    
+
     private void exportValidatorStageOne() throws Exception {
         if (!validateFieldLabels(getModelMeanCount(), getFieldModelMeanRegressors())) {
             throw new Exception("Fatal model error: number of MEAN regressors does not equal MEAN fields");
@@ -1373,6 +1376,7 @@ public class DefinitionHelper implements Serializable {
                     throw new Exception("Invalid " + validationMessage + " in .dat file specified, line " + lineMessage);
                 }
             } catch (NumberFormatException nfe) {
+                SystemLogger.LOGGER.log(Level.SEVERE, nfe.toString(), nfe);
                 throw new Exception("Invalid character for " + validationMessage + " in .dat file specified, line " + lineMessage);
             }
         } else {
@@ -1607,6 +1611,7 @@ public class DefinitionHelper implements Serializable {
                 throw new Exception("Invalid convergence criteria in .dat file specified, line 5");
             }
         } catch (NumberFormatException nfe) {
+            SystemLogger.LOGGER.log(Level.SEVERE, nfe.toString(), nfe);
             throw new Exception("Invalid character for convergence criteria in .dat file specified, line 5");
         }
     }
@@ -1662,6 +1667,7 @@ public class DefinitionHelper implements Serializable {
                     this.advancedMissingValue = advancedMissingValue;
                 }
             } catch (NumberFormatException nfe) {
+                SystemLogger.LOGGER.log(Level.SEVERE, nfe.toString(), nfe);
                 throw new Exception("Invalid character for missing value in .dat file specified, line 5");
             }
         } else {
@@ -1672,6 +1678,7 @@ public class DefinitionHelper implements Serializable {
                     throw new Exception("Invalid missing value (double) in .dat file specified, line 5");
                 }
             } catch (NumberFormatException nfe) {
+                SystemLogger.LOGGER.log(Level.SEVERE, nfe.toString(), nfe);
                 throw new Exception("Invalid character for missing value in .dat file specified, line 5");
             }
 
@@ -1703,6 +1710,7 @@ public class DefinitionHelper implements Serializable {
                 throw new Exception("Invalid initial ridge value in .dat file specified, line 5");
             }
         } catch (NumberFormatException nfe) {
+            SystemLogger.LOGGER.log(Level.SEVERE, nfe.toString(), nfe);
             throw new Exception("Invalid character for initial ridge value in .dat file specified, line 5");
         }
     }
@@ -2286,8 +2294,6 @@ public class DefinitionHelper implements Serializable {
             this.stageTwoFirstIntLabels = stageTwoFirstIntLabels;
         }
     }
-    
-    
 
     public void writeDefFileToFolder() {
 
@@ -2311,6 +2317,7 @@ public class DefinitionHelper implements Serializable {
             try {
                 myPane.setText(String.join(newline, debugStageOneDefinitonList()).replace("[", "").replace("]", ""));
             } catch (Exception e) {
+                SystemLogger.LOGGER.log(Level.SEVERE, e.toString(), e);
                 myPane.setText(String.join(newline, debugStageOneDefinitonList()).replace("[", "").replace("]", ""));
             }
 
@@ -2324,7 +2331,10 @@ public class DefinitionHelper implements Serializable {
 
             proceedButton.addActionListener(new ActionListener() {
 
+                @Override
                 public void actionPerformed(ActionEvent e) {
+
+                    SystemLogger.LOGGER.log(Level.INFO, "Proceed");
 
                     try {
                         // modelSelector();
@@ -2335,6 +2345,7 @@ public class DefinitionHelper implements Serializable {
                         progressStatus.execute();
                     } catch (Exception ex) {
                         Logger.getLogger(DefinitionHelper.class.getName()).log(Level.SEVERE, null, ex);
+                        SystemLogger.LOGGER.log(Level.SEVERE, ex.toString(), ex);
                     }
 
                     myFrame.dispose();
@@ -2345,10 +2356,14 @@ public class DefinitionHelper implements Serializable {
             saveDefFile.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
+
+                    SystemLogger.LOGGER.log(Level.INFO, "Save Definition File");
+
                     try {
                         saveDefFileLocally();
                     } catch (IOException ex) {
                         Logger.getLogger(DefinitionHelper.class.getName()).log(Level.SEVERE, null, ex);
+                        SystemLogger.LOGGER.log(Level.SEVERE, ex.toString(), ex);
                     }
                 }
 
@@ -2444,6 +2459,7 @@ public class DefinitionHelper implements Serializable {
                         progressStatus.execute();
                     } catch (Exception ex) {
                         Logger.getLogger(DefinitionHelper.class.getName()).log(Level.SEVERE, null, ex);
+                        SystemLogger.LOGGER.log(Level.SEVERE, ex.toString(), ex);
                     }
 
                     myFrame.dispose();
@@ -2458,6 +2474,7 @@ public class DefinitionHelper implements Serializable {
                         saveDefFileLocally();
                     } catch (IOException ex) {
                         Logger.getLogger(DefinitionHelper.class.getName()).log(Level.SEVERE, null, ex);
+                        SystemLogger.LOGGER.log(Level.SEVERE, ex.toString(), ex);
                     }
                 }
 
@@ -2525,6 +2542,7 @@ public class DefinitionHelper implements Serializable {
                 JOptionPane.showMessageDialog(myFrame, "The .def file was Saved Successfully!",
                         "Success!", JOptionPane.INFORMATION_MESSAGE);
             } catch (IOException e) {
+                SystemLogger.LOGGER.log(Level.SEVERE, e.toString(), e);
                 JOptionPane.showMessageDialog(myFrame, "The .def file could not be Saved!",
                         "Error!", JOptionPane.INFORMATION_MESSAGE);
             }
@@ -2562,20 +2580,22 @@ public class DefinitionHelper implements Serializable {
                     line = reader.readLine();
                 }
             } catch (FileNotFoundException fnfe1) {
+                SystemLogger.LOGGER.log(Level.SEVERE, fnfe1.toString(), fnfe1);
                 System.out.println("File not found Exception");
             } catch (IOException e1) {
+                SystemLogger.LOGGER.log(Level.SEVERE, e1.toString(), e1);
                 System.out.println("IO Exception");
             }
 
             try {
                 Process p;
                 if (getOSName().contains("windows")) {
-                    p = Runtime.getRuntime().exec("cmd /c dir && cd " + "\"" + defFilePath + "\""  + " && del /f " + "\"" + defFileName + "\"" );
+                    p = Runtime.getRuntime().exec("cmd /c dir && cd " + "\"" + defFilePath + "\"" + " && del /f " + "\"" + defFileName + "\"");
                 } else {
                     ProcessBuilder pb = new ProcessBuilder(
                             "bash",
                             "-c",
-                            "rm " + "\"" + defFilePath  + defFileName + "\"" );
+                            "rm " + "\"" + defFilePath + defFileName + "\"");
                     pb.redirectErrorStream(true);
                     p = pb.start();
                 }
@@ -2589,12 +2609,14 @@ public class DefinitionHelper implements Serializable {
             } catch (FileNotFoundException fnfe1) {
                 System.out.println("File not found Exception 2");
             } catch (IOException e1) {
+                SystemLogger.LOGGER.log(Level.SEVERE, e1.toString(), e1);
                 System.out.println("IO Exception 2 ");
             }
 
             JOptionPane.showMessageDialog(null, defFilePath);
 
         } catch (Exception ex) {
+            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString(), ex);
             ex.printStackTrace();
             //JOptionPane.showMessageDialog(null, ex.getMessage() + "Failed");
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
@@ -2686,6 +2708,7 @@ public class DefinitionHelper implements Serializable {
 
                         }
                     } catch (IOException ioe) {
+                        SystemLogger.LOGGER.log(Level.SEVERE, ioe.toString(), ioe);
                         ioe.printStackTrace();
                     }
                 }
@@ -2708,7 +2731,7 @@ public class DefinitionHelper implements Serializable {
                 terminalVal = exitVal;
                 Process p2;
                 if (getOSName().contains("windows")) {
-                    p2 = Runtime.getRuntime().exec("cmd /c dir && cd " + "\"" + defFilePath + "\"" + " && del /f " + "\"" + defFileName + "\"" ); //delete the file when everything works great.
+                    p2 = Runtime.getRuntime().exec("cmd /c dir && cd " + "\"" + defFilePath + "\"" + " && del /f " + "\"" + defFileName + "\""); //delete the file when everything works great.
                 } else {
                     ProcessBuilder pb = new ProcessBuilder(
                             "bash",
@@ -2728,13 +2751,13 @@ public class DefinitionHelper implements Serializable {
                 JOptionPane.showMessageDialog(null, "Failed to build model. Please revisit your regressors and try again. For more information, checkout help docs.", "Execution failed!", JOptionPane.INFORMATION_MESSAGE);
                 Process p2;
                 if (getOSName().contains("windows")) {
-                    p2 = Runtime.getRuntime().exec("cmd /c dir && cd " + "\"" + defFilePath + "\"" + " && del /f " + "\"" + defFileName + "\"" );
+                    p2 = Runtime.getRuntime().exec("cmd /c dir && cd " + "\"" + defFilePath + "\"" + " && del /f " + "\"" + defFileName + "\"");
 
                 } else {
                     ProcessBuilder pb = new ProcessBuilder(
                             "bash",
                             "-c",
-                            "rm " + "\"" + defFilePath + defFileName + "\"" );
+                            "rm " + "\"" + defFilePath + defFileName + "\"");
                     pb.redirectErrorStream(true);
                     p2 = pb.start();
 
@@ -2938,6 +2961,7 @@ public class DefinitionHelper implements Serializable {
                 } catch (InterruptedException ex) {
                     System.out.println("WAIT FAILED!");
                     Logger.getLogger(DefinitionHelper.class.getName()).log(Level.SEVERE, null, ex);
+                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString(), ex);
                 }
             }
 
@@ -3055,15 +3079,15 @@ public class DefinitionHelper implements Serializable {
             this.advancedDiscardSubjects = advancedDiscardSubjects;
         }
     }
-    
-    public void setSeedForStageTwo(String seed)throws Exception {
+
+    public void setSeedForStageTwo(String seed) throws Exception {
         if (setValidator("Decision to add seed for stage 2", "5", seed, 0, 65535, MIX_INTEGER)) {
             this.seedForStageTwo = seed;
         }
-        
+
     }
-    
-    public String getSeedForStageTwo(){
+
+    public String getSeedForStageTwo() {
         return seedForStageTwo;
     }
 

@@ -94,13 +94,15 @@ public class MixRegGuiStates {
     public boolean suppressIntCheckBox;
     
     public ArrayList<String> levelTwoSelected;
+    
+    public String sessionFolderName;
 
     // init default
     MixRegGuiStates() {
     }
 
     // init a snapshot of mixregGui states
-    MixRegGuiStates(mixregGUI mxr, advancedOptions ao) {
+    MixRegGuiStates(mixregGUI mxr, advancedOptions ao) throws NullPointerException {
         this.filepath = mxr.file.getAbsolutePath();
         this.title = mxr.getTitle();
         this.missingValuePresent = mxr.getMissingValuePresent();
@@ -159,6 +161,7 @@ public class MixRegGuiStates {
         this.stageTwoGridBoxes = mxr.stageTwoGridBoxes;
         this.suppressIntCheckBox = mxr.getSuppressIntCheckBox();
         this.levelTwoSelected = mxr.levelTwoSelected;
+        this.sessionFolderName = mxr.sessionFolderName;
     }
 
     public void writeAllStates(mixregGUI mxr) {
@@ -183,7 +186,7 @@ public class MixRegGuiStates {
         }
     }
 
-    public void readAllStates(mixregGUI mxr) {
+    public void readAllStates(mixregGUI mxr) throws NullPointerException {
         HashMap<String, StateObject> hmapStates = null;
 
         JFileChooser fileChooser_load = new JFileChooser();
@@ -267,6 +270,9 @@ public class MixRegGuiStates {
         stageTwoGridBoxes = hmapStates.get("stageTwoGridBoxes").getBox();
         suppressIntCheckBox = hmapStates.get("suppressIntCheckBox").getBoolean();
         levelTwoSelected = hmapStates.get("levelTwoSelected").getStringArrayList();
+        
+        sessionFolderName = hmapStates.get("sessionFolderName").getString();
+                
     }
 
     public HashMap<String, StateObject> createStatesHashMap() {
@@ -329,6 +335,7 @@ public class MixRegGuiStates {
         StateObject po55 = new StateObject("stageTwoGridBoxes", stageTwoGridBoxes);
         StateObject po56 = new StateObject("suppressIntCheckBox", suppressIntCheckBox);
         StateObject po57 = new StateObject("levelTwoSelected", levelTwoSelected,0);
+        StateObject po58 = new StateObject("sessionFolderName", sessionFolderName);
 
         hashmap.put(po0.getKey(), po0);
         hashmap.put(po1.getKey(), po1);
@@ -388,7 +395,7 @@ public class MixRegGuiStates {
         hashmap.put(po55.getKey(), po55);
         hashmap.put(po56.getKey(), po56);
         hashmap.put(po57.getKey(), po57);
-        
+        hashmap.put(po58.getKey(), po58);        
         return hashmap;
     }
 
