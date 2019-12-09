@@ -102,7 +102,7 @@ public class MixRegGuiStates {
     }
 
     // init a snapshot of mixregGui states
-    MixRegGuiStates(mixregGUI mxr, advancedOptions ao) throws NullPointerException {
+    MixRegGuiStates(mixregGUI mxr, advancedOptions ao) {
         this.filepath = mxr.file.getAbsolutePath();
         this.title = mxr.getTitle();
         this.missingValuePresent = mxr.getMissingValuePresent();
