@@ -61,6 +61,9 @@ public class MixRegGuiStates {
     public DefaultListModel<String> varList;
     public DefaultListModel<String> levelOneList;
     public DefaultListModel<String> levelTwoList;
+    public String varListString;
+    public String levelOneListString;
+    public String levelTwoListString;
     public boolean isStageOneRegSubmitClicked;
     public ArrayList<ArrayList<JCheckBox>> levelOneBoxes;
     public ArrayList<ArrayList<JCheckBox>> disaggVarianceBoxes;
@@ -88,14 +91,15 @@ public class MixRegGuiStates {
 
     // gui states of Stage Two
     public DefaultListModel<String> stageTwoListModel;
-    public String stageTwoListModelString;
     public DefaultListModel<String> stageTwoLevelTwo;
+    public String stageTwoListModelString;
+    public String stageTwoLevelTwoString;
     public boolean isStageTwoSubmitClicked;
     public ArrayList<ArrayList<JCheckBox>> stageTwoGridBoxes;
     public boolean suppressIntCheckBox;
-    
+
     public ArrayList<String> levelTwoSelected;
-    
+
     public String sessionFolderName;
 
     // init default
@@ -131,9 +135,14 @@ public class MixRegGuiStates {
         this.stageOnePos = mixregGUI.stageOnePos;
         this.stageTwoPos = mixregGUI.stageTwoPos;
         this.stageOneClicked = mxr.stageOneClicked;
-        this.varList = stageOneRegs.varList;
-        this.levelOneList = stageOneRegs.levelOneList;
-        this.levelTwoList = stageOneRegs.levelTwoList;
+
+//        this.varList = stageOneRegs.varList;
+//        this.levelOneList = stageOneRegs.levelOneList;
+//        this.levelTwoList = stageOneRegs.levelTwoList;
+        this.varListString = saveDefaultListModel(stageOneRegs.varList);
+        this.levelOneListString = saveDefaultListModel(stageOneRegs.levelOneList);
+        this.levelTwoListString = saveDefaultListModel(stageOneRegs.levelTwoList);
+
         this.addStageOneCHecked = mxr.addStageOneCHecked;
         this.isStageOneRegSubmitClicked = stageOneRegs.isSubmitClicked;
         this.levelOneBoxes = mxr.levelOneBoxes;
@@ -157,10 +166,10 @@ public class MixRegGuiStates {
         this.QuadraticAssociationRadio = mxr.getQuadraticAssociationRadio();
         this.isStageOneSubmitted = mxr.isStageOneSubmitted;
         this.isStageTwoSubmitted = mxr.isStageTwoSubmitted;
-        
+//        this.stageTwoListModel = stageTwoRegs.stageTwoListModel;        
         this.stageTwoListModelString = saveDefaultListModel(stageTwoRegs.stageTwoListModel);
-//        this.stageTwoListModel = stageTwoRegs.stageTwoListModel;
-        this.stageTwoLevelTwo = stageTwoRegs.stageTwoLevelTwo;
+//        this.stageTwoLevelTwo = stageTwoRegs.stageTwoLevelTwo;
+        this.stageTwoLevelTwoString = saveDefaultListModel(stageTwoRegs.stageTwoLevelTwo);
         this.isStageTwoSubmitClicked = stageTwoRegs.isStageTwoSubmitClicked;
         this.stageTwoGridBoxes = mxr.stageTwoGridBoxes;
         this.suppressIntCheckBox = mxr.getSuppressIntCheckBox();
@@ -241,9 +250,16 @@ public class MixRegGuiStates {
         stageTwoPos = hmapStates.get("stageTwoPos").getInt();
         stageOneClicked = hmapStates.get("stageOneClicked").getInt();
         addStageOneCHecked = hmapStates.get("addStageOneCHecked").getBoolean();
-        varList = hmapStates.get("varList").getStringList();
-        levelOneList = hmapStates.get("levelOneList").getStringList();
-        levelTwoList = hmapStates.get("levelTwoList").getStringList();
+//        varList = hmapStates.get("varList").getStringList();
+//        levelOneList = hmapStates.get("levelOneList").getStringList();
+//        levelTwoList = hmapStates.get("levelTwoList").getStringList();
+        varListString = hmapStates.get("varList").getString();
+        varList = loadDefaultListModel(varListString);
+        levelOneListString = hmapStates.get("levelOneList").getString();
+        levelOneList = loadDefaultListModel(levelOneListString);
+        levelTwoListString = hmapStates.get("levelTwoList").getString();
+        levelTwoList = loadDefaultListModel(levelTwoListString);
+
         isStageOneRegSubmitClicked = hmapStates.get("isStageOneRegSubmitClicked").getBoolean();
         levelOneBoxes = hmapStates.get("levelOneBoxes").getBox();
         disaggVarianceBoxes = hmapStates.get("disaggVarianceBoxes").getBox();
@@ -271,14 +287,18 @@ public class MixRegGuiStates {
 //        stageTwoListModel = hmapStates.get("stageTwoListModel").getStringList();
         stageTwoListModelString = hmapStates.get("stageTwoListModel").getString();
         stageTwoListModel = loadDefaultListModel(stageTwoListModelString);
-        stageTwoLevelTwo = hmapStates.get("stageTwoLevelTwo").getStringList();
+
+//        stageTwoLevelTwo = hmapStates.get("stageTwoLevelTwo").getStringList();
+        stageTwoLevelTwoString = hmapStates.get("stageTwoLevelTwo").getString();
+        stageTwoLevelTwo = loadDefaultListModel(stageTwoLevelTwoString);
+
         isStageTwoSubmitClicked = hmapStates.get("isStageTwoSubmitClicked").getBoolean();
         stageTwoGridBoxes = hmapStates.get("stageTwoGridBoxes").getBox();
         suppressIntCheckBox = hmapStates.get("suppressIntCheckBox").getBoolean();
         levelTwoSelected = hmapStates.get("levelTwoSelected").getStringArrayList();
-        
+
         sessionFolderName = hmapStates.get("sessionFolderName").getString();
-                
+
     }
 
     public HashMap<String, StateObject> createStatesHashMap() {
@@ -308,9 +328,9 @@ public class MixRegGuiStates {
         StateObject po22 = new StateObject("IDpos", IDpos);
         StateObject po23 = new StateObject("stageOnePos", stageOnePos);
         StateObject po24 = new StateObject("stageTwoPos", stageTwoPos);
-        StateObject po25 = new StateObject("varList", varList);
-        StateObject po26 = new StateObject("levelOneList", levelOneList);
-        StateObject po27 = new StateObject("levelTwoList", levelTwoList);
+        StateObject po25 = new StateObject("varList", varListString);
+        StateObject po26 = new StateObject("levelOneList", levelOneListString);
+        StateObject po27 = new StateObject("levelTwoList", levelTwoListString);
         StateObject po28 = new StateObject("addStageOneCHecked", addStageOneCHecked);
         StateObject po29 = new StateObject("stageOneClicked", stageOneClicked);
         StateObject po30 = new StateObject("isStageOneRegSubmitClicked", isStageOneRegSubmitClicked);
@@ -335,13 +355,12 @@ public class MixRegGuiStates {
         StateObject po49 = new StateObject("QuadraticAssociationRadio", QuadraticAssociationRadio);
         StateObject po50 = new StateObject("isStageOneSubmitted", isStageOneSubmitted);
         StateObject po51 = new StateObject("isStageTwoSubmitted", isStageTwoSubmitted);
-//        StateObject po52 = new StateObject("stageTwoListModel", stageTwoListModel);stageTwoListModelString
         StateObject po52 = new StateObject("stageTwoListModel", stageTwoListModelString);
-        StateObject po53 = new StateObject("stageTwoLevelTwo", stageTwoLevelTwo);
+        StateObject po53 = new StateObject("stageTwoLevelTwo", stageTwoLevelTwoString);
         StateObject po54 = new StateObject("isStageTwoSubmitClicked", isStageTwoSubmitClicked);
         StateObject po55 = new StateObject("stageTwoGridBoxes", stageTwoGridBoxes);
         StateObject po56 = new StateObject("suppressIntCheckBox", suppressIntCheckBox);
-        StateObject po57 = new StateObject("levelTwoSelected", levelTwoSelected,0);
+        StateObject po57 = new StateObject("levelTwoSelected", levelTwoSelected, 0);
         StateObject po58 = new StateObject("sessionFolderName", sessionFolderName);
 
         hashmap.put(po0.getKey(), po0);
@@ -402,35 +421,35 @@ public class MixRegGuiStates {
         hashmap.put(po55.getKey(), po55);
         hashmap.put(po56.getKey(), po56);
         hashmap.put(po57.getKey(), po57);
-        hashmap.put(po58.getKey(), po58);        
+        hashmap.put(po58.getKey(), po58);
         return hashmap;
     }
 
-    
-    private String saveDefaultListModel(DefaultListModel<String> list){
+    private String saveDefaultListModel(DefaultListModel<String> list) {
         String oneString = "";
-        
-        if (list != null){
-            System.out.print(list.getSize());
+
+        if (list != null) {
             for (int i = 0; i < list.getSize(); i++) {
                 String item = list.elementAt(i);
-                if (i == list.getSize() -1){
+                if (i == list.getSize() - 1) {
                     oneString = oneString + item;
                 } else {
-                oneString = oneString + item + ",";
+                    oneString = oneString + item + ",";
                 }
             }
         }
         return oneString;
     }
-    
-    private DefaultListModel<String> loadDefaultListModel(String savedString){
+
+    private DefaultListModel<String> loadDefaultListModel(String savedString) {
         DefaultListModel<String> result = new DefaultListModel<>();
-        
+
         String[] arr = savedString.split(",");
-        
-        for(String item:arr){result.addElement(item);}
-        
+
+        for (String item : arr) {
+            result.addElement(item);
+        }
+
         return result;
     }
 //    public boolean getMissingValuePresent() {
