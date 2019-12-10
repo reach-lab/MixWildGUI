@@ -2942,13 +2942,12 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         if (stageOneRegs.isSubmitClicked == true) {
             stage_1_regs.getEnabledStageOneSubmitButton(true);
             //update boxes
-//            mixregGUI.mxr.updateLevelTwoGrid_version2(stageOneRegs.levelTwoList);
-//            mixregGUI.mxr.updateLevelOneGrid_version2(stageOneRegs.levelOneList);
-            levelOneBoxes = mxrStates.levelOneBoxes;
-            disaggVarianceBoxes = mxrStates.disaggVarianceBoxes;
-            levelTwoBoxes = mxrStates.levelTwoBoxes;
+
+//            levelOneBoxes = mxrStates.levelOneBoxes;
+//            disaggVarianceBoxes = mxrStates.disaggVarianceBoxes;
+//            levelTwoBoxes = mxrStates.levelTwoBoxes;
             update_StageOneLevelOneBoxes(stageOneRegs.levelOneList);
-            update_StageOneLevelTwoBoxes(stageOneRegs.levelTwoList);
+            update_StageOneLevelTwoBoxes(stageOneRegs.levelTwoList, mxrStates.StageOneLevelTwoBoxesSelection);
 
         }
 
@@ -6546,6 +6545,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }
 
     private void update_StageOneLevelOneBoxes(DefaultListModel<String> defaultListModel) {
+
         levelOneSelected = new ArrayList<String>();
 
         JScrollPane scrollpanel = new JScrollPane(levelOneGrid);
@@ -6576,11 +6576,16 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         //constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.weightx = 1;
 
+        levelOneBoxes = new ArrayList<>();
+        disaggVarianceBoxes = new ArrayList<>();
+
         for (int j = 0; j < regSize; j++) {
             constraints.gridx = 0;
             constraints.anchor = GridBagConstraints.LINE_END;
             levelOneSelected.add(defaultListModel.getElementAt(j));
             levelOneGrid.add(new JLabel(levelOneSelected.get(j)), constraints);
+
+            levelOneBoxes.add(j, new ArrayList<JCheckBox>());
 
             for (int k = 0; k < 3; k++) {
                 int row = j;
@@ -6588,7 +6593,27 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
                 constraints.gridx++;
                 constraints.anchor = GridBagConstraints.CENTER;
+                levelOneBoxes.get(j).add(k, new JCheckBox());
+
                 levelOneGrid.add(levelOneBoxes.get(j).get(k), constraints);
+                levelOneBoxes.get(j).get(k).addActionListener(actionListener);
+                levelOneBoxes.get(j).get(k).addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                        AbstractButton abstractButton = (AbstractButton) e.getSource();
+                        boolean selected = abstractButton.getModel().isSelected();
+                        if (selected) {
+                            System.out.println("Checkbox selected");
+                            disaggVarianceBoxes.get(row).get(column).setEnabled(true);
+                            disaggVarianceBoxes.get(row).get(column).setSelected(false);
+                            System.out.println(disaggVarianceBoxes.size());
+                        } else {
+                            disaggVarianceBoxes.get(row).get(column).setEnabled(false);
+                            disaggVarianceBoxes.get(row).get(column).setSelected(false);
+                        }
+
+                    }
+                });
 
             }
 
@@ -6597,12 +6622,15 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             constraints.anchor = GridBagConstraints.LINE_END;
 
             levelOneGrid.add(new JLabel("Disaggregate?"), constraints);
+            disaggVarianceBoxes.add(j, new ArrayList<JCheckBox>());
 
             for (int k = 0; k < 3; k++) {
                 constraints.gridx++;
                 constraints.anchor = GridBagConstraints.CENTER;
 
+                disaggVarianceBoxes.get(j).add(k, new JCheckBox());
                 levelOneGrid.add(disaggVarianceBoxes.get(j).get(k), constraints);
+                disaggVarianceBoxes.get(j).get(k).setEnabled(false);
 
             }
 
@@ -6625,9 +6653,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     }
 
-    private void update_StageOneLevelTwoBoxes(DefaultListModel<String> defaultListModel) {
+    private void update_StageOneLevelTwoBoxes(DefaultListModel<String> defaultListModel, boolean[][] StageOneLevelTwoBoxesSelection) {
 
+        //levelTwoGrid.setVisible(true);
         JScrollPane scrollpanel = new JScrollPane(levelTwoGrid);
+        levelTwoSelected = new ArrayList<String>();
 
         int regSize = defaultListModel.getSize();
         levelTwoRegSize = regSize;
@@ -6655,15 +6685,29 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         //constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.weightx = 1;
 
+        levelTwoBoxes = new ArrayList<ArrayList<JCheckBox>>();
+        //disaggVarianceBoxes = new ArrayList<ArrayList<JCheckBox>>();
+
         for (int j = 0; j < regSize; j++) {
             constraints.gridx = 0;
             constraints.anchor = GridBagConstraints.LINE_END;
-            levelTwoGrid.add(new JLabel(defaultListModel.getElementAt(j)), constraints);
+            levelTwoSelected.add(defaultListModel.getElementAt(j));
+            levelTwoGrid.add(new JLabel(levelTwoSelected.get(j)), constraints);
+            //levelTwoGrid.add(new JLabel(defaultListModel.getElementAt(j)), constraints);
+
+            levelTwoBoxes.add(j, new ArrayList<JCheckBox>());
 
             for (int k = 0; k < 3; k++) {
 
                 constraints.gridx++;
                 constraints.anchor = GridBagConstraints.CENTER;
+                levelTwoBoxes.get(j).add(k, new JCheckBox());
+                                // hoho
+                if (StageOneLevelTwoBoxesSelection[j][k] == true){                
+                    levelTwoBoxes.get(j).get(k).setSelected(true);
+//                    System.out.print("********"+j+k+"********");
+                }
+
                 levelTwoGrid.add(levelTwoBoxes.get(j).get(k), constraints);
             }
 
@@ -7027,7 +7071,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageTwoRegs.isStageTwoSubmitClicked = mxrStates.isStageTwoSubmitClicked;
         if (stageTwoRegs.isStageTwoSubmitClicked == true) {
             stage_2_regs.setEnabledStageTwoSubmitButton(true);
-            stageTwoGridBoxes = mxrStates.stageTwoGridBoxes;
+//            stageTwoGridBoxes = mxrStates.stageTwoGridBoxes;
             update_StageTwoLevelTwoBoxes(stageTwoRegs.stageTwoLevelTwo);
             suppressIntCheckBox.setSelected(mxrStates.suppressIntCheckBox);
             update_trigger_suppressIntCheckBox();
@@ -7043,6 +7087,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }
 
     private void update_StageTwoLevelTwoBoxes(DefaultListModel<String> defaultListModel) {
+        
         JScrollPane scrollpanel = new JScrollPane(stageTwoRegsGrid);
         stageTwoSelected_tab2 = new ArrayList<String>();
 
@@ -7071,12 +7116,18 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         separatorConstraint.insets = new Insets(0, 0, 0, 0);
         constraints.weightx = 1;
 
+        stageTwoGridBoxes = new ArrayList<ArrayList<JCheckBox>>();
+        //disaggVarianceBoxes = new ArrayList<ArrayList<JCheckBox>>();
+
         for (int j = 0; j < regSize; j++) {
             int row = j;
             constraints.gridx = 1;
             constraints.anchor = GridBagConstraints.FIRST_LINE_START;
             stageTwoSelected_tab2.add(defaultListModel.getElementAt(j));
             stageTwoRegsGrid.add(new JLabel(stageTwoSelected_tab2.get(j)), constraints);
+
+            //stageTwoGrid.add(new JLabel(defaultListModel.getElementAt(j)), constraints);
+            stageTwoGridBoxes.add(j, new ArrayList<JCheckBox>());
 
             for (int k = 0; k < 4; k++) {
 
@@ -7089,6 +7140,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 }
 
                 constraints.anchor = GridBagConstraints.CENTER;
+                stageTwoGridBoxes.get(j).add(k, new JCheckBox());
 
                 stageTwoRegsGrid.add(stageTwoGridBoxes.get(j).get(k), constraints);
             }
@@ -7104,6 +7156,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 //            stageTwoGridBoxes.get(row).get(1).setEnabled(false);
 //            stageTwoGridBoxes.get(row).get(2).setEnabled(false);
 //            stageTwoGridBoxes.get(row).get(3).setEnabled(false);
+
             stageTwoGridBoxes.get(j).get(0).addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
