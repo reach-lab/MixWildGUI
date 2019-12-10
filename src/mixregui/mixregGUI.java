@@ -2739,6 +2739,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         // TODO add your handling code here:
         MXRStates = new MixRegGuiStates();
         MXRStates.readAllStates(this);
+//        System.out.print(MXRStates.filepath);
         updateGuiView(MXRStates);
         jButton4.setEnabled(false);
         jButton4.setVisible(false);

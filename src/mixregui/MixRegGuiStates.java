@@ -88,6 +88,7 @@ public class MixRegGuiStates {
 
     // gui states of Stage Two
     public DefaultListModel<String> stageTwoListModel;
+    public String stageTwoListModelString;
     public DefaultListModel<String> stageTwoLevelTwo;
     public boolean isStageTwoSubmitClicked;
     public ArrayList<ArrayList<JCheckBox>> stageTwoGridBoxes;
@@ -103,6 +104,7 @@ public class MixRegGuiStates {
 
     // init a snapshot of mixregGui states
     MixRegGuiStates(mixregGUI mxr, advancedOptions ao) {
+//        System.out.print(mxr.file.getAbsolutePath());
         this.filepath = mxr.file.getAbsolutePath();
         this.title = mxr.getTitle();
         this.missingValuePresent = mxr.getMissingValuePresent();
@@ -155,7 +157,9 @@ public class MixRegGuiStates {
         this.QuadraticAssociationRadio = mxr.getQuadraticAssociationRadio();
         this.isStageOneSubmitted = mxr.isStageOneSubmitted;
         this.isStageTwoSubmitted = mxr.isStageTwoSubmitted;
-        this.stageTwoListModel = stageTwoRegs.stageTwoListModel;
+        
+        this.stageTwoListModelString = saveDefaultListModel(stageTwoRegs.stageTwoListModel);
+//        this.stageTwoListModel = stageTwoRegs.stageTwoListModel;
         this.stageTwoLevelTwo = stageTwoRegs.stageTwoLevelTwo;
         this.isStageTwoSubmitClicked = stageTwoRegs.isStageTwoSubmitClicked;
         this.stageTwoGridBoxes = mxr.stageTwoGridBoxes;
@@ -264,7 +268,9 @@ public class MixRegGuiStates {
         isStageOneSubmitted = hmapStates.get("isStageOneSubmitted").getBoolean();
         isStageTwoSubmitted = hmapStates.get("isStageTwoSubmitted").getBoolean();
 
-        stageTwoListModel = hmapStates.get("stageTwoListModel").getStringList();
+//        stageTwoListModel = hmapStates.get("stageTwoListModel").getStringList();
+        stageTwoListModelString = hmapStates.get("stageTwoListModel").getString();
+        stageTwoListModel = loadDefaultListModel(stageTwoListModelString);
         stageTwoLevelTwo = hmapStates.get("stageTwoLevelTwo").getStringList();
         isStageTwoSubmitClicked = hmapStates.get("isStageTwoSubmitClicked").getBoolean();
         stageTwoGridBoxes = hmapStates.get("stageTwoGridBoxes").getBox();
@@ -329,7 +335,8 @@ public class MixRegGuiStates {
         StateObject po49 = new StateObject("QuadraticAssociationRadio", QuadraticAssociationRadio);
         StateObject po50 = new StateObject("isStageOneSubmitted", isStageOneSubmitted);
         StateObject po51 = new StateObject("isStageTwoSubmitted", isStageTwoSubmitted);
-        StateObject po52 = new StateObject("stageTwoListModel", stageTwoListModel);
+//        StateObject po52 = new StateObject("stageTwoListModel", stageTwoListModel);stageTwoListModelString
+        StateObject po52 = new StateObject("stageTwoListModel", stageTwoListModelString);
         StateObject po53 = new StateObject("stageTwoLevelTwo", stageTwoLevelTwo);
         StateObject po54 = new StateObject("isStageTwoSubmitClicked", isStageTwoSubmitClicked);
         StateObject po55 = new StateObject("stageTwoGridBoxes", stageTwoGridBoxes);
@@ -399,6 +406,33 @@ public class MixRegGuiStates {
         return hashmap;
     }
 
+    
+    private String saveDefaultListModel(DefaultListModel<String> list){
+        String oneString = "";
+        
+        if (list != null){
+            System.out.print(list.getSize());
+            for (int i = 0; i < list.getSize(); i++) {
+                String item = list.elementAt(i);
+                if (i == list.getSize() -1){
+                    oneString = oneString + item;
+                } else {
+                oneString = oneString + item + ",";
+                }
+            }
+        }
+        return oneString;
+    }
+    
+    private DefaultListModel<String> loadDefaultListModel(String savedString){
+        DefaultListModel<String> result = new DefaultListModel<>();
+        
+        String[] arr = savedString.split(",");
+        
+        for(String item:arr){result.addElement(item);}
+        
+        return result;
+    }
 //    public boolean getMissingValuePresent() {
 //        return missingvaluePresent;
 //    }
