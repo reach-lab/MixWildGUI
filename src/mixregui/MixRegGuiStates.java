@@ -65,8 +65,8 @@ public class MixRegGuiStates {
     public String levelOneListString;
     public String levelTwoListString;
     public boolean isStageOneRegSubmitClicked;
-//    public ArrayList<ArrayList<JCheckBox>> levelOneBoxes;
-//    public ArrayList<ArrayList<JCheckBox>> disaggVarianceBoxes;
+    public boolean[][] StageOneLevelOneBoxesSelection;
+    public boolean[][] disaggVarianceBoxesSelection;
     public boolean[][] StageOneLevelTwoBoxesSelection;
 
     // advanced options
@@ -95,7 +95,7 @@ public class MixRegGuiStates {
     public String stageTwoListModelString;
     public String stageTwoLevelTwoString;
     public boolean isStageTwoSubmitClicked;
-    public ArrayList<ArrayList<JCheckBox>> stageTwoGridBoxes;
+    public boolean[][] stageTwoGridBoxesSelection;
     public boolean suppressIntCheckBox;
 
     public ArrayList<String> levelTwoSelected;
@@ -136,23 +136,16 @@ public class MixRegGuiStates {
         this.stageTwoPos = mixregGUI.stageTwoPos;
         this.stageOneClicked = mxr.stageOneClicked;
 
-//        this.varList = stageOneRegs.varList;
-//        this.levelOneList = stageOneRegs.levelOneList;
-//        this.levelTwoList = stageOneRegs.levelTwoList;
         this.varListString = saveDefaultListModel(stageOneRegs.varList);
         this.levelOneListString = saveDefaultListModel(stageOneRegs.levelOneList);
         this.levelTwoListString = saveDefaultListModel(stageOneRegs.levelTwoList);
 
         this.addStageOneCHecked = mxr.addStageOneCHecked;
         this.isStageOneRegSubmitClicked = stageOneRegs.isSubmitClicked;
-//        this.levelOneBoxes = mxr.levelOneBoxes;
-//        this.disaggVarianceBoxes = mxr.disaggVarianceBoxes;
-//        this.levelTwoBoxes = mxr.levelTwoBoxes;
-        
+
+        this.StageOneLevelOneBoxesSelection = getSelectionBoxes(mxr.levelOneBoxes);
+        this.disaggVarianceBoxesSelection = getSelectionBoxes(mxr.disaggVarianceBoxes);
         this.StageOneLevelTwoBoxesSelection = getSelectionBoxes(mxr.levelTwoBoxes);
-
-
-
 
         this.meanSubmodelCheckBox = ao.isMeanSubmodelCheckBoxChecked();
         this.BSVarianceCheckBox = ao.isBSVarianceCheckBoxChecked();
@@ -172,12 +165,11 @@ public class MixRegGuiStates {
         this.QuadraticAssociationRadio = mxr.getQuadraticAssociationRadio();
         this.isStageOneSubmitted = mxr.isStageOneSubmitted;
         this.isStageTwoSubmitted = mxr.isStageTwoSubmitted;
-//        this.stageTwoListModel = stageTwoRegs.stageTwoListModel;        
+
         this.stageTwoListModelString = saveDefaultListModel(stageTwoRegs.stageTwoListModel);
-//        this.stageTwoLevelTwo = stageTwoRegs.stageTwoLevelTwo;
         this.stageTwoLevelTwoString = saveDefaultListModel(stageTwoRegs.stageTwoLevelTwo);
         this.isStageTwoSubmitClicked = stageTwoRegs.isStageTwoSubmitClicked;
-        this.stageTwoGridBoxes = mxr.stageTwoGridBoxes;
+        this.stageTwoGridBoxesSelection = getSelectionBoxes(mxr.stageTwoGridBoxes);
         this.suppressIntCheckBox = mxr.getSuppressIntCheckBox();
         this.levelTwoSelected = mxr.levelTwoSelected;
         this.sessionFolderName = mxr.sessionFolderName;
@@ -268,6 +260,8 @@ public class MixRegGuiStates {
 //        levelOneBoxes = hmapStates.get("levelOneBoxes").getBox();
 //        disaggVarianceBoxes = hmapStates.get("disaggVarianceBoxes").getBox();
 //        levelTwoBoxes = hmapStates.get("levelTwoBoxes").getBox();
+        StageOneLevelOneBoxesSelection = hmapStates.get("StageOneLevelOneBoxesSelection").getBox();
+        disaggVarianceBoxesSelection = hmapStates.get("disaggVarianceBoxesSelection").getBox();
         StageOneLevelTwoBoxesSelection = hmapStates.get("StageOneLevelTwoBoxesSelection").getBox();
 
         meanSubmodelCheckBox = hmapStates.get("meanSubmodelCheckBox").getBoolean();
@@ -298,7 +292,8 @@ public class MixRegGuiStates {
         stageTwoLevelTwo = loadDefaultListModel(stageTwoLevelTwoString);
 
         isStageTwoSubmitClicked = hmapStates.get("isStageTwoSubmitClicked").getBoolean();
-//        stageTwoGridBoxes = hmapStates.get("stageTwoGridBoxes").getBox();
+        stageTwoGridBoxesSelection = hmapStates.get("stageTwoGridBoxesSelection").getBox();
+
         suppressIntCheckBox = hmapStates.get("suppressIntCheckBox").getBoolean();
         levelTwoSelected = hmapStates.get("levelTwoSelected").getStringArrayList();
 
@@ -339,8 +334,8 @@ public class MixRegGuiStates {
         StateObject po28 = new StateObject("addStageOneCHecked", addStageOneCHecked);
         StateObject po29 = new StateObject("stageOneClicked", stageOneClicked);
         StateObject po30 = new StateObject("isStageOneRegSubmitClicked", isStageOneRegSubmitClicked);
-//        StateObject po31 = new StateObject("levelOneBoxes", levelOneBoxes);
-//        StateObject po32 = new StateObject("disaggVarianceBoxes", disaggVarianceBoxes);
+        StateObject po31 = new StateObject("StageOneLevelOneBoxesSelection", StageOneLevelOneBoxesSelection);
+        StateObject po32 = new StateObject("disaggVarianceBoxesSelection", disaggVarianceBoxesSelection);
         StateObject po33 = new StateObject("StageOneLevelTwoBoxesSelection", StageOneLevelTwoBoxesSelection);
         StateObject po34 = new StateObject("meanSubmodelCheckBox", meanSubmodelCheckBox);
         StateObject po35 = new StateObject("BSVarianceCheckBox", BSVarianceCheckBox);
@@ -363,7 +358,7 @@ public class MixRegGuiStates {
         StateObject po52 = new StateObject("stageTwoListModel", stageTwoListModelString);
         StateObject po53 = new StateObject("stageTwoLevelTwo", stageTwoLevelTwoString);
         StateObject po54 = new StateObject("isStageTwoSubmitClicked", isStageTwoSubmitClicked);
-//        StateObject po55 = new StateObject("stageTwoGridBoxes", stageTwoGridBoxes);
+        StateObject po55 = new StateObject("stageTwoGridBoxesSelection", stageTwoGridBoxesSelection);
         StateObject po56 = new StateObject("suppressIntCheckBox", suppressIntCheckBox);
         StateObject po57 = new StateObject("levelTwoSelected", levelTwoSelected, 0);
         StateObject po58 = new StateObject("sessionFolderName", sessionFolderName);
@@ -399,8 +394,8 @@ public class MixRegGuiStates {
         hashmap.put(po28.getKey(), po28);
         hashmap.put(po29.getKey(), po29);
         hashmap.put(po30.getKey(), po30);
-//        hashmap.put(po31.getKey(), po31);
-//        hashmap.put(po32.getKey(), po32);
+        hashmap.put(po31.getKey(), po31);
+        hashmap.put(po32.getKey(), po32);
         hashmap.put(po33.getKey(), po33);
         hashmap.put(po34.getKey(), po34);
         hashmap.put(po35.getKey(), po35);
@@ -423,7 +418,7 @@ public class MixRegGuiStates {
         hashmap.put(po52.getKey(), po52);
         hashmap.put(po53.getKey(), po53);
         hashmap.put(po54.getKey(), po54);
-//        hashmap.put(po55.getKey(), po55);
+        hashmap.put(po55.getKey(), po55);
         hashmap.put(po56.getKey(), po56);
         hashmap.put(po57.getKey(), po57);
         hashmap.put(po58.getKey(), po58);
@@ -473,21 +468,24 @@ public class MixRegGuiStates {
 //        this.title = title;
 //    }
 
-    private boolean[][] getSelectionBoxes(ArrayList<ArrayList<JCheckBox>> levelTwoBoxes) {
-        if (levelTwoBoxes == null){
+    private boolean[][] getSelectionBoxes(ArrayList<ArrayList<JCheckBox>> Boxes) {
+
+        if (Boxes == null) {
             return null;
         } else {
-            int rows = levelTwoBoxes.size();
-            System.out.print("**********rows"+rows);
-            int cols = levelTwoBoxes.get(0).size();
-            System.out.print("**********cols"+cols);
-            boolean[][] result = new boolean[rows][cols];
+            int rows = Boxes.size();
+            boolean[][] result = null;
+            if (rows != 0) {
+                int cols = Boxes.get(0).size();
+                result = new boolean[rows][cols];
 
-            for (int i = 0; i < rows; i++){
-                for (int j = 0; j < cols; j++){
-                    result[i][j] = levelTwoBoxes.get(i).get(j).isSelected();
+                for (int i = 0; i < rows; i++) {
+                    for (int j = 0; j < cols; j++) {
+                        result[i][j] = Boxes.get(i).get(j).isSelected();
+                    }
                 }
-
+            } else {
+                return null;
             }
             return result;
         }
