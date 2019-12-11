@@ -2971,7 +2971,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         advancedOptions_view.setResampleSpinner(mxrStates.resampleSpinner);
         advancedOptions_view.update_trigger_AdvancedOptionsSubmit();
         advancedOptions_view.update_trigger_resampleCheckBox();
-        advancedOptions_view.update_trigger_run32BitCheckBox();
+//        advancedOptions_view.update_trigger_run32BitCheckBox();
         NoAssociationRadio.setSelected(mxrStates.NoAssociationRadio);
         LinearAssociationRadio.setSelected(mxrStates.LinearAssociationRadio);
         QuadraticAssociationRadio.setSelected(mxrStates.QuadraticAssociationRadio);
