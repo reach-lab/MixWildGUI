@@ -2946,9 +2946,13 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 //            levelOneBoxes = mxrStates.levelOneBoxes;
 //            disaggVarianceBoxes = mxrStates.disaggVarianceBoxes;
 //            levelTwoBoxes = mxrStates.levelTwoBoxes;
-            update_StageOneLevelOneBoxes(stageOneRegs.levelOneList, mxrStates.StageOneLevelOneBoxesSelection, mxrStates.disaggVarianceBoxesSelection);
-            update_StageOneLevelTwoBoxes(stageOneRegs.levelTwoList, mxrStates.StageOneLevelTwoBoxesSelection);
 
+            if (mxrStates.levelOneList.getSize() > 0) {
+                update_StageOneLevelOneBoxes(stageOneRegs.levelOneList, mxrStates.StageOneLevelOneBoxesSelection, mxrStates.disaggVarianceBoxesSelection);
+            }
+            if (mxrStates.levelTwoList.getSize() > 0) {
+                update_StageOneLevelTwoBoxes(stageOneRegs.levelTwoList, mxrStates.StageOneLevelTwoBoxesSelection);
+            }
         }
 
         //update advanced options
@@ -7150,7 +7154,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
                 constraints.anchor = GridBagConstraints.CENTER;
                 stageTwoGridBoxes.get(j).add(k, new JCheckBox());
-                if (stageTwoGridBoxesSelection[j][k]==true){
+                if (stageTwoGridBoxesSelection[j][k] == true) {
                     stageTwoGridBoxes.get(j).get(k).setSelected(true);
                 }
                 stageTwoRegsGrid.add(stageTwoGridBoxes.get(j).get(k), constraints);

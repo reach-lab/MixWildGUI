@@ -444,12 +444,13 @@ public class MixRegGuiStates {
     private DefaultListModel<String> loadDefaultListModel(String savedString) {
         DefaultListModel<String> result = new DefaultListModel<>();
 
-        String[] arr = savedString.split(",");
+        if (savedString.length() > 0) {
+            String[] arr = savedString.split(",");
 
-        for (String item : arr) {
-            result.addElement(item);
+            for (String item : arr) {
+                result.addElement(item);
+            }
         }
-
         return result;
     }
 //    public boolean getMissingValuePresent() {
