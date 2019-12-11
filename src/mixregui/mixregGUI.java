@@ -110,7 +110,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     public static DefinitionHelper defFile;
     public static ModelBuilder modelBuilder;
 
-    public MixRegGuiStates MXRStates;
+    public static MixRegGuiStates MXRStates;
 
     public static SystemLogger logger;
     public String sessionFolderName;
@@ -2682,6 +2682,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         MXRStates = new MixRegGuiStates();
         MXRStates.readAllStates(this);
+//        confirmReset.resetUI();
         updateGuiView(MXRStates);
     }//GEN-LAST:event_guiStatesLoadButtonModalConfigActionPerformed
 
@@ -2758,7 +2759,16 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         FilepathValid = updateGuiView_verify_FilePath(mxrStates);
 
         if (FilepathValid) {
-
+            // update Data View tab
+            try {
+                getDataFromCSV();
+                printFileName();
+                System.out.println("NEW MODEL DATA READ");
+            } catch (IOException ex) {
+                Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString(), ex);
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+            }
             // Update basic GUI States: Model Configuration Tab
             updateGuiView_TabOneStates(mxrStates);
             // Trigger 1. Dataset Contain missing values or not
@@ -2946,7 +2956,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 //            levelOneBoxes = mxrStates.levelOneBoxes;
 //            disaggVarianceBoxes = mxrStates.disaggVarianceBoxes;
 //            levelTwoBoxes = mxrStates.levelTwoBoxes;
-
             if (mxrStates.levelOneList.getSize() > 0) {
                 update_StageOneLevelOneBoxes(stageOneRegs.levelOneList, mxrStates.StageOneLevelOneBoxesSelection, mxrStates.disaggVarianceBoxesSelection);
             }
