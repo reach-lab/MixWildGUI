@@ -2760,15 +2760,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         if (FilepathValid) {
             // update Data View tab
-            try {
-                getDataFromCSV();
-                printFileName();
-                System.out.println("NEW MODEL DATA READ");
-            } catch (IOException ex) {
-                Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString(), ex);
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-            }
+            updateGuiView_trigger_dataview();
+
             // Update basic GUI States: Model Configuration Tab
             updateGuiView_TabOneStates(mxrStates);
             // Trigger 1. Dataset Contain missing values or not
@@ -7335,5 +7328,17 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         }
 
+    }
+
+    private void updateGuiView_trigger_dataview() {
+        try {
+            getDataFromCSV();
+            printFileName();
+            System.out.println("NEW MODEL DATA READ");
+        } catch (IOException ex) {
+            Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString(), ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+        }
     }
 }
