@@ -291,7 +291,7 @@ public class DefinitionHelper implements Serializable {
         //String filePath = fileName.substring(0, fileName.lastIndexOf(File.separator)) + "/"; //subset the string.
 
         try (CSVReader reader = new CSVReader(new FileReader(fileName))) {
-            setUtcDirPath(csvFileToConvert);           
+            setUtcDirPath(csvFileToConvert);
             List<String[]> csvRows = reader.readAll();
             reader.close();
             System.out.println(Arrays.toString(csvRows.get(0)) + " to be removed");
@@ -2624,19 +2624,36 @@ public class DefinitionHelper implements Serializable {
 
     }
 
+    public static void modelingProgressLogging(String line) {
+
+        BufferedWriter writer;
+        try {
+            writer = new BufferedWriter(new FileWriter(SystemLogger.logPath + "modelingProgress.txt", true));
+            writer.write(line);
+            writer.close();
+        } catch (IOException ex) {
+            Logger.getLogger(DefinitionHelper.class.getName()).log(Level.SEVERE, null, ex);
+            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString(), ex);
+        }
+
+    }
+
     public void runMixRegModels() {
 
         //@Eldin: This is the part where it may be throwing exceptions. Why do you have "/" at the end?
         String filePath = newDefFile.getAbsolutePath();
         System.out.println("THE DEF FILE IS: " + filePath);
+        modelingProgressLogging("THE DEF FILE IS: " + filePath);
         defFilePath = filePath.substring(0, filePath.lastIndexOf(File.separator)) + "/";
         System.out.println("THE DEF FILE PATH IS: " + defFilePath);
+        modelingProgressLogging("HE DEF FILE PATH IS: " + defFilePath);
         selectedModel = getSelectedModel();
         String absoluteJavaPath = System.getProperty("user.dir");
 
         String defFileName = executableModel(selectedModel);
 
         progressWindow = new JFrame("Please wait ...");
+        modelingProgressLogging("Please wait ...");
 
         FlowLayout defFileFlow = new FlowLayout();
         progressWindow.setLayout(defFileFlow);
@@ -2654,6 +2671,7 @@ public class DefinitionHelper implements Serializable {
 
         progressPane.setFont(new Font("Monospaced", 0, 12));
         progressPane.setText("Please wait while we crunch some numbers .." + "\n");
+        modelingProgressLogging("Please wait while we crunch some numbers .." + "\n");
         JScrollPane scroller = new JScrollPane(progressPane, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 
         progressWindow.add(scroller);
@@ -2705,7 +2723,7 @@ public class DefinitionHelper implements Serializable {
                             System.out.println("MIXWILD:" + line);
                             updateProgressPane("MIXWILD:" + line + "\n");
                             //progressPane.append();
-
+                            modelingProgressLogging("MIXWILD:" + line + "\n");
                         }
                     } catch (IOException ioe) {
                         SystemLogger.LOGGER.log(Level.SEVERE, ioe.toString(), ioe);
@@ -2725,6 +2743,9 @@ public class DefinitionHelper implements Serializable {
             int exitVal = p.waitFor();
             System.out.println("ExitValue: " + exitVal); // Non-zero is an error
             updateProgressPane("MIXWILD::Exit Value: " + String.valueOf(exitVal) + "\n"); //should append all the text after a new line to the text area
+            modelingProgressLogging("ExitValue: " + exitVal);
+            modelingProgressLogging("MIXWILD::Exit Value: " + String.valueOf(exitVal) + "\n");
+
             if (exitVal == 0) {
                 //send the out to StageTwoOutPu from here
                 // FileReader reader = new FileReader(absoluteJavaPath + ".out file name");
@@ -2749,6 +2770,7 @@ public class DefinitionHelper implements Serializable {
                 // FileReader reader = new FileReader(absoluteJavaPath + ".out file name");
             } else {
                 JOptionPane.showMessageDialog(null, "Failed to build model. Please revisit your regressors and try again. For more information, checkout help docs.", "Execution failed!", JOptionPane.INFORMATION_MESSAGE);
+                modelingProgressLogging("Failed to build model. Please revisit your regressors and try again. For more information, checkout help docs.");
                 Process p2;
                 if (getOSName().contains("windows")) {
                     p2 = Runtime.getRuntime().exec("cmd /c dir && cd " + "\"" + defFilePath + "\"" + " && del /f " + "\"" + defFileName + "\"");
@@ -2770,6 +2792,7 @@ public class DefinitionHelper implements Serializable {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Failed");
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString(), ex);
         }
     }
 

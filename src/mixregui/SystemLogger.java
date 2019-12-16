@@ -26,13 +26,17 @@ public class SystemLogger {
     static MyFormatter formatter;
     public static String logPath;
 
+    static int getLine() {
+        return Thread.currentThread().getStackTrace()[2].getLineNumber();
+    }
+
     public SystemLogger() {
         formatter = new MyFormatter();
-        
+
         try {
             System.out.print(logPath);
 //            fileHandler = new FileHandler("/Users/jixin/Documents/logger.log");
-            fileHandler = new FileHandler(logPath);
+            fileHandler = new FileHandler(logPath + "logger.log");
 
         } catch (IOException e) {
             LOGGER.log(Level.SEVERE, "SystemLogger init error");
@@ -55,6 +59,7 @@ class MyFormatter extends Formatter {
         builder.append(df.format(new Date(record.getMillis()))).append(" - ");
         builder.append("[").append(record.getSourceClassName()).append(".");
         builder.append(record.getSourceMethodName()).append("] - ");
+//        builder.append(record.getSourceMethodName()).append(Thread.currentThread().getStackTrace()[2].getLineNumber()).append("] - ");
         builder.append("[").append(record.getLevel()).append("] - ");
         builder.append(formatMessage(record));
         builder.append("\n");
@@ -68,4 +73,5 @@ class MyFormatter extends Formatter {
     public String getTail(Handler h) {
         return super.getTail(h);
     }
+    
 }

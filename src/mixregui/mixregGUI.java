@@ -5639,13 +5639,13 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     sessionFolderName = defFile.getUtcDirPath();
 
                     // create logger after session folder created
-                    SystemLogger.logPath = FilenameUtils.getFullPath(dataFileNameRef) + sessionFolderName + "logger.log";
+                    SystemLogger.logPath = FilenameUtils.getFullPath(dataFileNameRef) + sessionFolderName;
                     logger = new SystemLogger();
 
                 } else {
                     defFile.setUtcDirPath(sessionFolderName);
 
-                    SystemLogger.logPath = FilenameUtils.getFullPath(dataFileNameRef) + sessionFolderName + "logger.log";
+                    SystemLogger.logPath = FilenameUtils.getFullPath(dataFileNameRef) + sessionFolderName;
                     logger = new SystemLogger();
                 }
 

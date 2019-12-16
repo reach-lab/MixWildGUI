@@ -213,10 +213,14 @@ public class MixRegGuiStates {
                 fis.close();
             } catch (ClassNotFoundException c) {
                 System.out.println("Class not found");
+                SystemLogger.LOGGER.log(Level.SEVERE,c.toString());
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+                int ln = SystemLogger.getLine();
+                SystemLogger.LOGGER.log(Level.SEVERE,"{0}"+ex.toString(),ln);
             } catch (IOException ex) {
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+                SystemLogger.LOGGER.log(Level.SEVERE,ex.toString());
             }
         }
 
