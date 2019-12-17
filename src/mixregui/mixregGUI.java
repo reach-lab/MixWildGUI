@@ -2657,16 +2657,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         }
     }//GEN-LAST:event_exampleDataDownloadActionPerformed
 
-    private void guiStatesLoadButtonModalConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guiStatesLoadButtonModalConfigActionPerformed
-        if (sessionFolderName != null) {
-            SystemLogger.LOGGER.log(Level.INFO, "Loading GUI states");
-        }
-
-        MXRStates = new MixRegGuiStates();
-        MXRStates.readAllStates(this);
-        updateGuiView(MXRStates);
-    }//GEN-LAST:event_guiStatesLoadButtonModalConfigActionPerformed
-
     private void guiStatesSaveButtonModalConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guiStatesSaveButtonModalConfigActionPerformed
         if (sessionFolderName != null) {
             SystemLogger.LOGGER.log(Level.INFO, "Saving GUI states");
@@ -2713,6 +2703,16 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         jButton4.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void guiStatesLoadButtonModalConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guiStatesLoadButtonModalConfigActionPerformed
+        if (sessionFolderName != null) {
+            SystemLogger.LOGGER.log(Level.INFO, "Loading GUI states");
+        }
+
+        MXRStates = new MixRegGuiStates();
+        MXRStates.readAllStates(this);
+        updateGuiView(MXRStates);
+    }//GEN-LAST:event_guiStatesLoadButtonModalConfigActionPerformed
+
     // **********************update********************
     private void updateGuiView(MixRegGuiStates mxrStates) {
         // this method is to update Gui View with Gui state data saved in MixRegGuiStates
@@ -2748,6 +2748,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             update_StageOneStates(mxrStates);
             update_StageTwoStates(mxrStates);
         }
+
+        guiStatesLoadButtonModalConfig.setVisible(false);
 
     }
 
