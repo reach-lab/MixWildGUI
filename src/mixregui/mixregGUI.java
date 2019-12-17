@@ -566,7 +566,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
         } catch (Exception eoe) {
             System.out.println("No Random Scale Option Set");
-            SystemLogger.LOGGER.log(Level.SEVERE, eoe.toString()+ "{0}", SystemLogger.getLineNum());
+            SystemLogger.LOGGER.log(Level.SEVERE, eoe.toString() + "{0}", SystemLogger.getLineNum());
         }
     }
 
@@ -794,7 +794,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         jLabel6 = new javax.swing.JLabel();
         startStageTwo = new javax.swing.JButton();
         guiStatesSaveButtonStageOne = new javax.swing.JButton();
-        guiStatesLoadButtonStageOne = new javax.swing.JButton();
         jPanel12 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -821,7 +820,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         jScrollPane5 = new javax.swing.JScrollPane();
         outCategoryDisplay = new javax.swing.JTextPane();
         guiStatesSaveButtonStageTwo = new javax.swing.JButton();
-        guiStatesLoadButtonStageTwo = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -1104,21 +1102,21 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
         });
 
-        guiStatesLoadButtonModalConfig.setText("Load");
+        guiStatesLoadButtonModalConfig.setText("Load Model");
         guiStatesLoadButtonModalConfig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 guiStatesLoadButtonModalConfigActionPerformed(evt);
             }
         });
 
-        guiStatesSaveButtonModalConfig.setText("Save");
+        guiStatesSaveButtonModalConfig.setText("Save Model");
         guiStatesSaveButtonModalConfig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 guiStatesSaveButtonModalConfigActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Load");
+        jButton4.setText("Load Model");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -1133,9 +1131,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 .addGap(305, 305, 305)
                 .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(guiStatesSaveButtonModalConfig, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(guiStatesSaveButtonModalConfig, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(guiStatesLoadButtonModalConfig, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(guiStatesLoadButtonModalConfig, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(newModel_resetButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
@@ -1223,7 +1221,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                                         .addGap(0, 0, 0)
                                         .addComponent(fileBrowseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel13Layout.createSequentialGroup()
                                         .addComponent(jLabel16)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1396,7 +1394,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         );
         levelOnePanelLayout.setVerticalGroup(
             levelOnePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(levelOneGrid, javax.swing.GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE)
+            .addComponent(levelOneGrid, javax.swing.GroupLayout.DEFAULT_SIZE, 427, Short.MAX_VALUE)
         );
 
         levelOneGrid.getAccessibleContext().setAccessibleName("Level-1");
@@ -1418,7 +1416,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         levelTwoPanelLayout.setVerticalGroup(
             levelTwoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(levelTwoPanelLayout.createSequentialGroup()
-                .addComponent(levelTwoGrid, javax.swing.GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE)
+                .addComponent(levelTwoGrid, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1582,7 +1580,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         });
         jPanel1.add(startStageTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 560, 140, 40));
 
-        guiStatesSaveButtonStageOne.setText("Save");
+        guiStatesSaveButtonStageOne.setText("Save Model");
         guiStatesSaveButtonStageOne.setMaximumSize(new java.awt.Dimension(99, 25));
         guiStatesSaveButtonStageOne.setMinimumSize(new java.awt.Dimension(99, 25));
         guiStatesSaveButtonStageOne.setPreferredSize(new java.awt.Dimension(99, 25));
@@ -1591,15 +1589,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 guiStatesSaveButtonStageOneActionPerformed(evt);
             }
         });
-        jPanel1.add(guiStatesSaveButtonStageOne, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 560, 135, 40));
-
-        guiStatesLoadButtonStageOne.setText("Load");
-        guiStatesLoadButtonStageOne.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                guiStatesLoadButtonStageOneActionPerformed(evt);
-            }
-        });
-        jPanel1.add(guiStatesLoadButtonStageOne, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 560, 135, 40));
+        jPanel1.add(guiStatesSaveButtonStageOne, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 560, 135, 40));
 
         stageOneTabs.addTab("Stage 1 Configuration", jPanel1);
 
@@ -1653,7 +1643,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             stageTwoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(stageTwoPanelLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(stageTwoRegsGrid, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
+                .addComponent(stageTwoRegsGrid, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1675,7 +1665,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 suppressIntCheckBoxActionPerformed(evt);
             }
         });
-        jPanel12.add(suppressIntCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 520, 210, -1));
+        jPanel12.add(suppressIntCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 520, 210, -1));
 
         stageTwoOutcome.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         stageTwoOutcome.addItemListener(new java.awt.event.ItemListener() {
@@ -1736,27 +1726,19 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addComponent(outcomeCatButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         jPanel12.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 240, 250));
 
-        guiStatesSaveButtonStageTwo.setText("Save");
+        guiStatesSaveButtonStageTwo.setText("Save Model");
         guiStatesSaveButtonStageTwo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 guiStatesSaveButtonStageTwoActionPerformed(evt);
             }
         });
-        jPanel12.add(guiStatesSaveButtonStageTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 510, 100, 40));
-
-        guiStatesLoadButtonStageTwo.setText("Load");
-        guiStatesLoadButtonStageTwo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                guiStatesLoadButtonStageTwoActionPerformed(evt);
-            }
-        });
-        jPanel12.add(guiStatesLoadButtonStageTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 510, 100, 40));
+        jPanel12.add(guiStatesSaveButtonStageTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 510, 150, 40));
 
         stageOneTabs.addTab("Stage 2 Configuration", jPanel12);
 
@@ -1779,7 +1761,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1077, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1079, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1937,7 +1919,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addComponent(jLabel23)
-                .addContainerGap(445, Short.MAX_VALUE))
+                .addContainerGap(461, Short.MAX_VALUE))
         );
 
         jPanel2.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1210, 660));
@@ -2053,7 +2035,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     .addComponent(jLabel30)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3))
-                .addContainerGap(1127, Short.MAX_VALUE))
+                .addContainerGap(1136, Short.MAX_VALUE))
         );
 
         stageOneTabs.addTab("Postestimation", jPanel14);
@@ -2132,7 +2114,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             saveStageTwoOutput();
         } catch (IOException ex) {
             Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
         }
     }//GEN-LAST:event_saveStage2OutButtonActionPerformed
 
@@ -2227,19 +2209,19 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
 
         } catch (FileNotFoundException e) {
-            SystemLogger.LOGGER.log(Level.SEVERE, e.toString()+ "{0}", SystemLogger.getLineNum());
+            SystemLogger.LOGGER.log(Level.SEVERE, e.toString() + "{0}", SystemLogger.getLineNum());
             e.printStackTrace();
             Logger.getLogger(getName()).log(Level.SEVERE, null, e);
             JOptionPane.showMessageDialog(null, e.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         } catch (IOException e) {
-            SystemLogger.LOGGER.log(Level.SEVERE, e.toString()+ "{0}", SystemLogger.getLineNum());
+            SystemLogger.LOGGER.log(Level.SEVERE, e.toString() + "{0}", SystemLogger.getLineNum());
             e.printStackTrace();
         } finally {
             if (br != null) {
                 try {
                     br.close();
                 } catch (IOException e) {
-                    SystemLogger.LOGGER.log(Level.SEVERE, e.toString()+ "{0}", SystemLogger.getLineNum());
+                    SystemLogger.LOGGER.log(Level.SEVERE, e.toString() + "{0}", SystemLogger.getLineNum());
                     e.printStackTrace();
                 }
             }
@@ -2632,14 +2614,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 URL inputUrl = getClass().getResource("/resources/UserGuide.pdf");
                 FileUtils.copyURLToFile(inputUrl, dest);
             } catch (IOException e) {
-                SystemLogger.LOGGER.log(Level.SEVERE, e.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, e.toString() + "{0}", SystemLogger.getLineNum());
                 e.printStackTrace();
             } finally {
                 if (stream != null) {
                     try {
                         stream.close();
                     } catch (Exception e) {
-                        SystemLogger.LOGGER.log(Level.SEVERE, e.toString()+ "{0}", SystemLogger.getLineNum());
+                        SystemLogger.LOGGER.log(Level.SEVERE, e.toString() + "{0}", SystemLogger.getLineNum());
                         e.printStackTrace();
                     }
                 }
@@ -2662,13 +2644,13 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 URL inputUrl = getClass().getResource("/resources/ExampleData.csv");
                 FileUtils.copyURLToFile(inputUrl, dest);
             } catch (IOException e) {
-                SystemLogger.LOGGER.log(Level.SEVERE, e.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, e.toString() + "{0}", SystemLogger.getLineNum());
             } finally {
                 if (stream != null) {
                     try {
                         stream.close();
                     } catch (IOException e) {
-                        SystemLogger.LOGGER.log(Level.SEVERE, e.toString()+ "{0}", SystemLogger.getLineNum());
+                        SystemLogger.LOGGER.log(Level.SEVERE, e.toString() + "{0}", SystemLogger.getLineNum());
                     }
                 }
             }
@@ -2682,7 +2664,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         MXRStates = new MixRegGuiStates();
         MXRStates.readAllStates(this);
-//        confirmReset.resetUI();
         updateGuiView(MXRStates);
     }//GEN-LAST:event_guiStatesLoadButtonModalConfigActionPerformed
 
@@ -2707,20 +2688,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         MXRStates = new MixRegGuiStates(this, advancedOptions_view);
         MXRStates.writeAllStates(this);
     }//GEN-LAST:event_guiStatesSaveButtonStageOneActionPerformed
-
-    private void guiStatesLoadButtonStageOneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guiStatesLoadButtonStageOneActionPerformed
-        SystemLogger.LOGGER.log(Level.INFO, "Loading GUI states");
-        MXRStates = new MixRegGuiStates();
-        MXRStates.readAllStates(this);
-        updateGuiView(MXRStates);
-    }//GEN-LAST:event_guiStatesLoadButtonStageOneActionPerformed
-
-    private void guiStatesLoadButtonStageTwoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guiStatesLoadButtonStageTwoActionPerformed
-        SystemLogger.LOGGER.log(Level.INFO, "Loading GUI states");
-        MXRStates = new MixRegGuiStates();
-        MXRStates.readAllStates(this);
-        updateGuiView(MXRStates);
-    }//GEN-LAST:event_guiStatesLoadButtonStageTwoActionPerformed
 
     private void guiStatesSaveButtonStageTwoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guiStatesSaveButtonStageTwoActionPerformed
         SystemLogger.LOGGER.log(Level.INFO, "Saving GUI states");
@@ -3060,8 +3027,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JTextField filePath;
     private javax.swing.Box.Filler filler1;
     private javax.swing.JButton guiStatesLoadButtonModalConfig;
-    private javax.swing.JButton guiStatesLoadButtonStageOne;
-    private javax.swing.JButton guiStatesLoadButtonStageTwo;
     private javax.swing.JButton guiStatesSaveButtonModalConfig;
     private javax.swing.JButton guiStatesSaveButtonStageOne;
     private javax.swing.JButton guiStatesSaveButtonStageTwo;
@@ -3260,7 +3225,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         try {
             Desktop.getDesktop().browse(new URL(urlString).toURI());
         } catch (Exception e) {
-            SystemLogger.LOGGER.log(Level.SEVERE, e.toString()+ "{0}", SystemLogger.getLineNum());
+            SystemLogger.LOGGER.log(Level.SEVERE, e.toString() + "{0}", SystemLogger.getLineNum());
             e.printStackTrace();
         }
     }
@@ -5263,7 +5228,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 JOptionPane.showMessageDialog(this, "Stage 2 output was Saved Successfully!",
                         "Success!", JOptionPane.INFORMATION_MESSAGE);
             } catch (IOException e) {
-                SystemLogger.LOGGER.log(Level.SEVERE, e.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, e.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(this, "Stage 2 output could not be Saved!",
                         "Error!", JOptionPane.INFORMATION_MESSAGE);
             }
@@ -5286,7 +5251,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 JOptionPane.showMessageDialog(this, "Stage 1 output was Saved Successfully!",
                         "Success!", JOptionPane.INFORMATION_MESSAGE);
             } catch (IOException e) {
-                SystemLogger.LOGGER.log(Level.SEVERE, e.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, e.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(this, "Stage 1 output could not be Saved!",
                         "Error!", JOptionPane.INFORMATION_MESSAGE);
             }
@@ -5312,10 +5277,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     line = reader.readLine();
                 }
             } catch (FileNotFoundException fnfe1) {
-                SystemLogger.LOGGER.log(Level.SEVERE, fnfe1.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, fnfe1.toString() + "{0}", SystemLogger.getLineNum());
                 System.out.println("File not found Exception");
             } catch (IOException e1) {
-                SystemLogger.LOGGER.log(Level.SEVERE, e1.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, e1.toString() + "{0}", SystemLogger.getLineNum());
                 System.out.println("IO Exception");
             }
 
@@ -5329,17 +5294,17 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     line = reader.readLine();
                 }
             } catch (FileNotFoundException fnfe1) {
-                SystemLogger.LOGGER.log(Level.SEVERE, fnfe1.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, fnfe1.toString() + "{0}", SystemLogger.getLineNum());
                 System.out.println("File not found Exception 2");
             } catch (IOException e1) {
-                SystemLogger.LOGGER.log(Level.SEVERE, e1.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, e1.toString() + "{0}", SystemLogger.getLineNum());
                 System.out.println("IO Exception 2 ");
             }
 
             JOptionPane.showMessageDialog(null, defFilePath);
 
         } catch (Exception ex) {
-            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Failed");
         }
@@ -5443,14 +5408,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             Logger.getLogger(getName()).log(Level.SEVERE, null, e);
             JOptionPane.showMessageDialog(null, e.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         } catch (IOException e) {
-            SystemLogger.LOGGER.log(Level.SEVERE, e.toString()+ "{0}", SystemLogger.getLineNum());
+            SystemLogger.LOGGER.log(Level.SEVERE, e.toString() + "{0}", SystemLogger.getLineNum());
             e.printStackTrace();
         } finally {
             if (br != null) {
                 try {
                     br.close();
                 } catch (IOException e) {
-                    SystemLogger.LOGGER.log(Level.SEVERE, e.toString()+ "{0}", SystemLogger.getLineNum());
+                    SystemLogger.LOGGER.log(Level.SEVERE, e.toString() + "{0}", SystemLogger.getLineNum());
                     e.printStackTrace();
                 }
             }
@@ -5524,18 +5489,19 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             // System.out.println("Number of unique categories: " + String.valueOf(UniqueList.size()));
         } catch (FileNotFoundException e) {
+            SystemLogger.LOGGER.log(Level.SEVERE, e.toString() + "{0}", SystemLogger.getLineNum());
             e.printStackTrace();
             Logger.getLogger(getName()).log(Level.SEVERE, null, e);
             JOptionPane.showMessageDialog(null, e.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         } catch (IOException e) {
-            SystemLogger.LOGGER.log(Level.SEVERE, e.toString()+ "{0}", SystemLogger.getLineNum());
+            SystemLogger.LOGGER.log(Level.SEVERE, e.toString() + "{0}", SystemLogger.getLineNum());
             e.printStackTrace();
         } finally {
             if (br != null) {
                 try {
                     br.close();
                 } catch (IOException e) {
-                    SystemLogger.LOGGER.log(Level.SEVERE, e.toString()+ "{0}", SystemLogger.getLineNum());
+                    SystemLogger.LOGGER.log(Level.SEVERE, e.toString() + "{0}", SystemLogger.getLineNum());
                     e.printStackTrace();
                 }
             }
@@ -5575,7 +5541,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 System.out.println("NEW MODEL DATA READ");
             } catch (IOException ex) {
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
@@ -5584,7 +5550,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             try {
                 System.out.println(file.getAbsolutePath());
             } catch (NullPointerException ex) {
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
             }
         }
     }
@@ -5676,10 +5642,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     System.out.println("From defHelper | Variable count: " + defFile.getDataVariableCount());
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 } catch (Exception ex) {
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 }
 
                 // Read random location effects from new Model
@@ -5715,7 +5681,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
                 } catch (Exception ex) {
                     //catchCount = 1;
-                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                     Logger.getLogger(advancedOptions.class
                             .getName()).log(Level.SEVERE, null, ex);
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
@@ -5727,7 +5693,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     System.out.println("From defHelper | BS SubModel Checked?: " + defFile.getModelBetweenInt());
 
                 } catch (Exception ex) {
-                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                     Logger.getLogger(advancedOptions.class
                             .getName()).log(Level.SEVERE, null, ex);
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
@@ -5741,7 +5707,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
                 } catch (Exception ex) {
                     //catchCount = 1;
-                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                     Logger.getLogger(advancedOptions.class
                             .getName()).log(Level.SEVERE, null, ex);
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
@@ -5753,7 +5719,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
                 } catch (Exception ex) {
                     //catchCount = 1;
-                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                     Logger.getLogger(advancedOptions.class
                             .getName()).log(Level.SEVERE, null, ex);
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
@@ -5766,7 +5732,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                     Logger.getLogger(advancedOptions.class
                             .getName()).log(Level.SEVERE, null, ex);
-                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                     //catchCount = 1;
                 }
                 try {
@@ -5776,7 +5742,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
                 } catch (Exception ex) {
                     //catchCount = 1;
-                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                     Logger.getLogger(advancedOptions.class
                             .getName()).log(Level.SEVERE, null, ex);
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
@@ -5788,7 +5754,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
                 } catch (Exception ex) {
                     //catchCount = 1;
-                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                     Logger.getLogger(advancedOptions.class
                             .getName()).log(Level.SEVERE, null, ex);
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
@@ -5800,7 +5766,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
                 } catch (Exception ex) {
                     //catchCount = 1;
-                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                     Logger.getLogger(advancedOptions.class
                             .getName()).log(Level.SEVERE, null, ex);
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
@@ -5809,7 +5775,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     defFile.setAdvancedCutoffLower("0");
                     System.out.println("CUT OFF: " + defFile.getAdvancedCutoffLower());
                 } catch (Exception ex) {
-                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
@@ -5818,7 +5784,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     System.out.println("DISCARD SUBJECTS: " + defFile.getAdvancedDiscardSubjects());
 
                 } catch (Exception ex) {
-                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                     Logger.getLogger(advancedOptions.class
                             .getName()).log(Level.SEVERE, null, ex);
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
@@ -5828,7 +5794,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     System.out.println("From defHelper | Scale Regressor: " + defFile.getAdvancedCenterScale());
 
                 } catch (Exception ex) {
-                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                     Logger.getLogger(advancedOptions.class
                             .getName()).log(Level.SEVERE, null, ex);
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
@@ -5838,7 +5804,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     System.out.println("From defHelper | Resample count: " + defFile.getAdvancedResampleCount());
 
                 } catch (Exception ex) {
-                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                     Logger.getLogger(advancedOptions.class
                             .getName()).log(Level.SEVERE, null, ex);
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
@@ -5848,7 +5814,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     defFile.setSeedForStageTwo(seedTextBox.getText());
                     System.out.println("From defHelper | SEED: " + defFile.getSeedForStageTwo());
                 } catch (Exception ex) {
-                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
@@ -5861,7 +5827,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                         defFile.setAdvancedRandomScaleNotIncluded("0");
                         System.out.println("IS RANDOM SCALE INCLUDED: " + defFile.getAdvancedRandomScaleNotIncluded());
                     } catch (Exception ex) {
-                        SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                        SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                         Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                         JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                     }
@@ -5872,7 +5838,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                         defFile.setAdvancedRandomScaleNotIncluded("1");
                         System.out.println("IS RANDOM SCALE INCLUDED: " + defFile.getAdvancedRandomScaleNotIncluded());
                     } catch (Exception ex) {
-                        SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                        SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                         Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                         JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                     }
@@ -5884,7 +5850,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                         defFile.setAdvancedDropSecondStage("1");
                         System.out.println("DROP SECOND STAGE?: " + defFile.getAdvancedDropSecondStage());
                     } catch (Exception ex) {
-                        SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                        SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                         Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                         JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                     }
@@ -5895,7 +5861,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                         defFile.setAdvancedDropSecondStage("0");
                         System.out.println("DROP SECOND STAGE?: " + defFile.getAdvancedDropSecondStage());
                     } catch (Exception ex) {
-                        SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                        SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                         Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                         JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                     }
@@ -5988,7 +5954,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
 
@@ -5999,7 +5965,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
 
@@ -6016,7 +5982,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
@@ -6028,7 +5994,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
@@ -6040,7 +6006,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
@@ -6052,7 +6018,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
@@ -6064,7 +6030,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
@@ -6076,7 +6042,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
@@ -6090,7 +6056,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 } catch (Exception ex) {
                     catchCount = 1;
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
 
@@ -6101,7 +6067,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 } catch (Exception ex) {
                     catchCount = 1;
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
 
@@ -6112,7 +6078,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 } catch (Exception ex) {
                     catchCount = 1;
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
 
@@ -6129,7 +6095,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
@@ -6143,7 +6109,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
@@ -6157,7 +6123,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
@@ -6169,7 +6135,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
@@ -6181,7 +6147,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
@@ -6193,7 +6159,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
@@ -6203,7 +6169,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
@@ -6213,7 +6179,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
@@ -6222,7 +6188,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 System.out.println("From defHelper | #Stage One WS + Disagg. Regressors: " + defFile.getFieldDecompWSRegressors().length);
             } catch (Exception ex) {
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
@@ -6231,7 +6197,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 System.out.println("From defHelper | Model Decomp + Mean Labels: " + Arrays.toString(defFile.getLabelDecompMeanRegressors()));
             } catch (Exception ex) {
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
@@ -6240,7 +6206,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 System.out.println("From defHelper | Model Decomp + BS Labels: " + Arrays.toString(defFile.getLabelDecompBSRegressors()));
             } catch (Exception ex) {
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
@@ -6249,7 +6215,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 System.out.println("From defHelper | Model Decomp + WS Labels: " + Arrays.toString(defFile.getLabelDecompWSRegressors()));
             } catch (Exception ex) {
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
@@ -6266,7 +6232,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
@@ -6279,7 +6245,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
@@ -6292,7 +6258,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
@@ -6305,7 +6271,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
@@ -6317,7 +6283,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
@@ -6329,7 +6295,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
@@ -6342,7 +6308,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 } catch (Exception ex) {
                     catchCount = 1;
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
 
@@ -6353,7 +6319,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 } catch (Exception ex) {
                     catchCount = 1;
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
             }
@@ -6368,7 +6334,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
@@ -6382,7 +6348,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
@@ -6396,7 +6362,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
@@ -6408,7 +6374,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
@@ -6419,7 +6385,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
@@ -6430,7 +6396,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
@@ -6440,7 +6406,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
@@ -6451,7 +6417,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
             try {
@@ -6459,7 +6425,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 System.out.println("From defHelper | #Stage One WS(Scale) + Disagg. Regressors: " + defFile.getFieldDecompScaleRegressors().length);
             } catch (Exception ex) {
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
             try {
@@ -6467,7 +6433,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 System.out.println("From defHelper | Model Decomp + Mean Labels: " + Arrays.toString(defFile.getLabelDecompMeanRegressors()));
             } catch (Exception ex) {
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
             try {
@@ -6475,7 +6441,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 System.out.println("From defHelper | Model Decomp + LocRan Labels: " + Arrays.toString(defFile.getLabelDecompLocRanRegressors()));
             } catch (Exception ex) {
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
             try {
@@ -6483,7 +6449,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 System.out.println("From defHelper | Model Decomp + Scale Labels: " + Arrays.toString(defFile.getLabelDecompScaleRegressors()));
             } catch (Exception ex) {
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
         }
@@ -6504,7 +6470,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 } catch (Exception ex) {
                     defCatch = 1;
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                     System.out.println("From defHelper | Stage 1 def file failed!");
                 }
@@ -6529,7 +6495,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             produceStageOneOutput();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
         }
 
         if (outcomeNone == true) {
@@ -6798,7 +6764,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
 
@@ -6808,7 +6774,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
 
@@ -6824,7 +6790,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 } catch (Exception ex) {
                     catchCount = 1;
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
 
@@ -6835,7 +6801,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 } catch (Exception ex) {
                     catchCount = 1;
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
 
@@ -6846,7 +6812,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 } catch (Exception ex) {
                     catchCount = 1;
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
 
@@ -6863,7 +6829,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 } catch (Exception ex) {
                     catchCount = 1;
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
 
@@ -6874,7 +6840,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 } catch (Exception ex) {
                     catchCount = 1;
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
             }
@@ -6886,7 +6852,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
 
@@ -6896,7 +6862,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
 
@@ -6906,7 +6872,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
 
@@ -6918,7 +6884,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
@@ -6930,7 +6896,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
 
@@ -6940,7 +6906,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
 
@@ -6950,7 +6916,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
 
@@ -6962,7 +6928,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
@@ -6972,7 +6938,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
         }
@@ -6983,7 +6949,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
 
@@ -6993,7 +6959,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
 
@@ -7003,7 +6969,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
         if (outComeType == false) {
@@ -7013,7 +6979,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
@@ -7023,7 +6989,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
@@ -7052,7 +7018,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             } catch (Exception ex) {
                 defCatch = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 System.out.println("From defHelper | Stage 1 def file failed!");
             }
@@ -7291,7 +7257,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 defFile.setStageTwoIntOfInteraction("-1");
             } catch (Exception ex) {
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
             }
 
             for (int p = 0; p < stageTwoRegSize; p++) {
@@ -7304,7 +7270,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 defFile.setStageTwoFirstIntLabels(new String[0]);
             } catch (Exception ex) {
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
             }
 
         } else {
@@ -7314,7 +7280,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 defFile.setStageTwoIntOfInteraction("0");
             } catch (Exception ex) {
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
             }
 
             for (int p = 0; p < stageTwoRegSize; p++) {
@@ -7337,7 +7303,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             System.out.println("NEW MODEL DATA READ");
         } catch (IOException ex) {
             Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
     }

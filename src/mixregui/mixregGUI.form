@@ -117,9 +117,9 @@
                           <EmptySpace min="305" pref="305" max="-2" attributes="0"/>
                           <Component id="jLabel29" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="guiStatesSaveButtonModalConfig" min="-2" pref="90" max="-2" attributes="0"/>
+                          <Component id="guiStatesSaveButtonModalConfig" min="-2" pref="100" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="guiStatesLoadButtonModalConfig" min="-2" pref="90" max="-2" attributes="0"/>
+                          <Component id="guiStatesLoadButtonModalConfig" min="-2" pref="100" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="newModel_resetButton" min="-2" pref="90" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
@@ -220,7 +220,7 @@
                                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                                   <Component id="fileBrowseButton" min="-2" pref="90" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="jButton4" min="-2" pref="90" max="-2" attributes="0"/>
+                                                  <Component id="jButton4" min="-2" pref="100" max="-2" attributes="0"/>
                                               </Group>
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
@@ -708,7 +708,7 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="guiStatesLoadButtonModalConfig">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Load"/>
+                    <Property name="text" type="java.lang.String" value="Load Model"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="guiStatesLoadButtonModalConfigActionPerformed"/>
@@ -716,7 +716,7 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="guiStatesSaveButtonModalConfig">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Save"/>
+                    <Property name="text" type="java.lang.String" value="Save Model"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="guiStatesSaveButtonModalConfigActionPerformed"/>
@@ -724,7 +724,7 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton4">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Load"/>
+                    <Property name="text" type="java.lang.String" value="Load Model"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
@@ -888,7 +888,7 @@
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="levelOneGrid" alignment="0" pref="424" max="32767" attributes="0"/>
+                          <Component id="levelOneGrid" alignment="0" pref="427" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
@@ -943,7 +943,7 @@
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="levelTwoGrid" pref="418" max="32767" attributes="0"/>
+                              <Component id="levelTwoGrid" pref="415" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -1272,7 +1272,7 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="guiStatesSaveButtonStageOne">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Save"/>
+                    <Property name="text" type="java.lang.String" value="Save Model"/>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[99, 25]"/>
                     </Property>
@@ -1288,20 +1288,7 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="610" y="560" width="135" height="40"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
-                <Component class="javax.swing.JButton" name="guiStatesLoadButtonStageOne">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Load"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="guiStatesLoadButtonStageOneActionPerformed"/>
-                  </Events>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="750" y="560" width="135" height="40"/>
+                      <AbsoluteConstraints x="780" y="560" width="135" height="40"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -1440,7 +1427,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                              <Component id="stageTwoRegsGrid" pref="342" max="32767" attributes="0"/>
+                              <Component id="stageTwoRegsGrid" pref="339" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -1480,7 +1467,7 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="490" y="520" width="210" height="-1"/>
+                      <AbsoluteConstraints x="340" y="520" width="210" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -1624,7 +1611,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="outcomeCatButton" min="-2" pref="40" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane5" pref="194" max="32767" attributes="0"/>
+                              <Component id="jScrollPane5" pref="189" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -1654,27 +1641,14 @@
                 </Container>
                 <Component class="javax.swing.JButton" name="guiStatesSaveButtonStageTwo">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Save"/>
+                    <Property name="text" type="java.lang.String" value="Save Model"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="guiStatesSaveButtonStageTwoActionPerformed"/>
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="260" y="510" width="100" height="40"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
-                <Component class="javax.swing.JButton" name="guiStatesLoadButtonStageTwo">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Load"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="guiStatesLoadButtonStageTwoActionPerformed"/>
-                  </Events>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="370" y="510" width="100" height="40"/>
+                      <AbsoluteConstraints x="580" y="510" width="150" height="40"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -1750,7 +1724,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane2" pref="1077" max="32767" attributes="0"/>
+                              <Component id="jScrollPane2" pref="1079" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -1980,7 +1954,7 @@
                               <Component id="jScrollPane8" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                               <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="445" max="32767" attributes="0"/>
+                              <EmptySpace pref="461" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2184,7 +2158,7 @@
                               <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="1127" max="32767" attributes="0"/>
+                          <EmptySpace pref="1136" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
