@@ -367,14 +367,14 @@ public class DefinitionHelper implements Serializable {
         try {
             field = Integer.parseInt(countVariable);
         } catch (Exception ex) {
-            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString(), ex);
+            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
             throw new Exception("Unassigned count variable for one or more options or regressors");
 
         }
         try {
             labels = fieldLabelLine.length;
         } catch (Exception ex) {
-            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString(), ex);
+            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
             throw new Exception("Unassigned field or label series for one or more sets of options or regressors");
         }
         return field == labels;
@@ -1376,7 +1376,7 @@ public class DefinitionHelper implements Serializable {
                     throw new Exception("Invalid " + validationMessage + " in .dat file specified, line " + lineMessage);
                 }
             } catch (NumberFormatException nfe) {
-                SystemLogger.LOGGER.log(Level.SEVERE, nfe.toString(), nfe);
+                SystemLogger.LOGGER.log(Level.SEVERE, nfe.toString()+ "{0}", SystemLogger.getLineNum());
                 throw new Exception("Invalid character for " + validationMessage + " in .dat file specified, line " + lineMessage);
             }
         } else {
@@ -1611,7 +1611,7 @@ public class DefinitionHelper implements Serializable {
                 throw new Exception("Invalid convergence criteria in .dat file specified, line 5");
             }
         } catch (NumberFormatException nfe) {
-            SystemLogger.LOGGER.log(Level.SEVERE, nfe.toString(), nfe);
+            SystemLogger.LOGGER.log(Level.SEVERE, nfe.toString()+ "{0}", SystemLogger.getLineNum());
             throw new Exception("Invalid character for convergence criteria in .dat file specified, line 5");
         }
     }
@@ -1667,7 +1667,7 @@ public class DefinitionHelper implements Serializable {
                     this.advancedMissingValue = advancedMissingValue;
                 }
             } catch (NumberFormatException nfe) {
-                SystemLogger.LOGGER.log(Level.SEVERE, nfe.toString(), nfe);
+                SystemLogger.LOGGER.log(Level.SEVERE, nfe.toString()+ "{0}", SystemLogger.getLineNum());
                 throw new Exception("Invalid character for missing value in .dat file specified, line 5");
             }
         } else {
@@ -1678,7 +1678,7 @@ public class DefinitionHelper implements Serializable {
                     throw new Exception("Invalid missing value (double) in .dat file specified, line 5");
                 }
             } catch (NumberFormatException nfe) {
-                SystemLogger.LOGGER.log(Level.SEVERE, nfe.toString(), nfe);
+                SystemLogger.LOGGER.log(Level.SEVERE, nfe.toString()+ "{0}", SystemLogger.getLineNum());
                 throw new Exception("Invalid character for missing value in .dat file specified, line 5");
             }
 
@@ -1710,7 +1710,7 @@ public class DefinitionHelper implements Serializable {
                 throw new Exception("Invalid initial ridge value in .dat file specified, line 5");
             }
         } catch (NumberFormatException nfe) {
-            SystemLogger.LOGGER.log(Level.SEVERE, nfe.toString(), nfe);
+            SystemLogger.LOGGER.log(Level.SEVERE, nfe.toString()+ "{0}", SystemLogger.getLineNum());
             throw new Exception("Invalid character for initial ridge value in .dat file specified, line 5");
         }
     }
@@ -2317,7 +2317,7 @@ public class DefinitionHelper implements Serializable {
             try {
                 myPane.setText(String.join(newline, debugStageOneDefinitonList()).replace("[", "").replace("]", ""));
             } catch (Exception e) {
-                SystemLogger.LOGGER.log(Level.SEVERE, e.toString(), e);
+                SystemLogger.LOGGER.log(Level.SEVERE, e.toString()+ "{0}", SystemLogger.getLineNum());
                 myPane.setText(String.join(newline, debugStageOneDefinitonList()).replace("[", "").replace("]", ""));
             }
 
@@ -2345,7 +2345,7 @@ public class DefinitionHelper implements Serializable {
                         progressStatus.execute();
                     } catch (Exception ex) {
                         Logger.getLogger(DefinitionHelper.class.getName()).log(Level.SEVERE, null, ex);
-                        SystemLogger.LOGGER.log(Level.SEVERE, ex.toString(), ex);
+                        SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
                     }
 
                     myFrame.dispose();
@@ -2363,7 +2363,7 @@ public class DefinitionHelper implements Serializable {
                         saveDefFileLocally();
                     } catch (IOException ex) {
                         Logger.getLogger(DefinitionHelper.class.getName()).log(Level.SEVERE, null, ex);
-                        SystemLogger.LOGGER.log(Level.SEVERE, ex.toString(), ex);
+                        SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
                     }
                 }
 
@@ -2408,6 +2408,7 @@ public class DefinitionHelper implements Serializable {
             //System.out.println("PATH-NAME: " + defFilePath);
             /////w.close();
         } catch (Exception exception) {
+            SystemLogger.LOGGER.log(Level.SEVERE,exception.toString());
             exception.printStackTrace();
         }
 
@@ -2435,6 +2436,7 @@ public class DefinitionHelper implements Serializable {
             try {
                 myPane.setText(String.join(newline, debugStageOneOnlyDefinitonList()).replace("[", "").replace("]", ""));
             } catch (Exception e) {
+                SystemLogger.LOGGER.log(Level.SEVERE,e.toString());
                 myPane.setText(String.join(newline, debugStageOneOnlyDefinitonList()).replace("[", "").replace("]", ""));
             }
 
@@ -2459,7 +2461,7 @@ public class DefinitionHelper implements Serializable {
                         progressStatus.execute();
                     } catch (Exception ex) {
                         Logger.getLogger(DefinitionHelper.class.getName()).log(Level.SEVERE, null, ex);
-                        SystemLogger.LOGGER.log(Level.SEVERE, ex.toString(), ex);
+                        SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
                     }
 
                     myFrame.dispose();
@@ -2474,7 +2476,7 @@ public class DefinitionHelper implements Serializable {
                         saveDefFileLocally();
                     } catch (IOException ex) {
                         Logger.getLogger(DefinitionHelper.class.getName()).log(Level.SEVERE, null, ex);
-                        SystemLogger.LOGGER.log(Level.SEVERE, ex.toString(), ex);
+                        SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
                     }
                 }
 
@@ -2519,6 +2521,7 @@ public class DefinitionHelper implements Serializable {
             //System.out.println("PATH-NAME: " + defFilePath);
             /////w.close();
         } catch (Exception exception) {
+            SystemLogger.LOGGER.log(Level.SEVERE,exception.toString());
             exception.printStackTrace();
         }
 
@@ -2542,7 +2545,7 @@ public class DefinitionHelper implements Serializable {
                 JOptionPane.showMessageDialog(myFrame, "The .def file was Saved Successfully!",
                         "Success!", JOptionPane.INFORMATION_MESSAGE);
             } catch (IOException e) {
-                SystemLogger.LOGGER.log(Level.SEVERE, e.toString(), e);
+                SystemLogger.LOGGER.log(Level.SEVERE, e.toString()+ "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(myFrame, "The .def file could not be Saved!",
                         "Error!", JOptionPane.INFORMATION_MESSAGE);
             }
@@ -2580,10 +2583,10 @@ public class DefinitionHelper implements Serializable {
                     line = reader.readLine();
                 }
             } catch (FileNotFoundException fnfe1) {
-                SystemLogger.LOGGER.log(Level.SEVERE, fnfe1.toString(), fnfe1);
+                SystemLogger.LOGGER.log(Level.SEVERE, fnfe1.toString()+ "{0}", SystemLogger.getLineNum());
                 System.out.println("File not found Exception");
             } catch (IOException e1) {
-                SystemLogger.LOGGER.log(Level.SEVERE, e1.toString(), e1);
+                SystemLogger.LOGGER.log(Level.SEVERE, e1.toString()+ "{0}", SystemLogger.getLineNum());
                 System.out.println("IO Exception");
             }
 
@@ -2608,15 +2611,16 @@ public class DefinitionHelper implements Serializable {
                 }
             } catch (FileNotFoundException fnfe1) {
                 System.out.println("File not found Exception 2");
+                SystemLogger.LOGGER.log(Level.SEVERE,fnfe1.toString());
             } catch (IOException e1) {
-                SystemLogger.LOGGER.log(Level.SEVERE, e1.toString(), e1);
+                SystemLogger.LOGGER.log(Level.SEVERE, e1.toString()+ "{0}", SystemLogger.getLineNum());
                 System.out.println("IO Exception 2 ");
             }
 
             JOptionPane.showMessageDialog(null, defFilePath);
 
         } catch (Exception ex) {
-            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString(), ex);
+            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
             ex.printStackTrace();
             //JOptionPane.showMessageDialog(null, ex.getMessage() + "Failed");
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
@@ -2633,7 +2637,7 @@ public class DefinitionHelper implements Serializable {
             writer.close();
         } catch (IOException ex) {
             Logger.getLogger(DefinitionHelper.class.getName()).log(Level.SEVERE, null, ex);
-            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString(), ex);
+            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
         }
 
     }
@@ -2726,7 +2730,7 @@ public class DefinitionHelper implements Serializable {
                             modelingProgressLogging("MIXWILD:" + line + "\n");
                         }
                     } catch (IOException ioe) {
-                        SystemLogger.LOGGER.log(Level.SEVERE, ioe.toString(), ioe);
+                        SystemLogger.LOGGER.log(Level.SEVERE, ioe.toString()+ "{0}", SystemLogger.getLineNum());
                         ioe.printStackTrace();
                     }
                 }
@@ -2792,7 +2796,7 @@ public class DefinitionHelper implements Serializable {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Failed");
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
-            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString(), ex);
+            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
         }
     }
 
@@ -2984,7 +2988,7 @@ public class DefinitionHelper implements Serializable {
                 } catch (InterruptedException ex) {
                     System.out.println("WAIT FAILED!");
                     Logger.getLogger(DefinitionHelper.class.getName()).log(Level.SEVERE, null, ex);
-                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString(), ex);
+                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
                 }
             }
 
@@ -3069,6 +3073,7 @@ public class DefinitionHelper implements Serializable {
         try {
             this.advancedCutoffLower = String.format("%.5f", Double.parseDouble(advancedCutoffLower));
         } catch (NumberFormatException nfe) {
+            SystemLogger.LOGGER.log(Level.SEVERE,nfe.toString());
             throw new Exception("Invalid character for lower cutoff in .dat file specified, line 5");
         }
     }

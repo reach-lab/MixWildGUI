@@ -100,7 +100,7 @@ public class ModelBuilder {
                 regressorsOne += meanArrayOne[i].toUpperCase() + KEY_IJ + KEY_PLUS;
             }
         } catch (NullPointerException npe) {
-            SystemLogger.LOGGER.log(Level.SEVERE, npe.toString(), npe);
+            SystemLogger.LOGGER.log(Level.SEVERE, npe.toString()+ "{0}", SystemLogger.getLineNum());
 
         }
         try {
@@ -108,7 +108,7 @@ public class ModelBuilder {
                 regressorsOne += meanArrayTwo[i].toUpperCase() + KEY_I + KEY_PLUS;
             }
         } catch (NullPointerException npe) {
-            SystemLogger.LOGGER.log(Level.SEVERE, npe.toString(), npe);
+            SystemLogger.LOGGER.log(Level.SEVERE, npe.toString()+ "{0}", SystemLogger.getLineNum());
 
         }
 

@@ -26,11 +26,9 @@ public class SystemLogger {
     static MyFormatter formatter;
     public static String logPath;
 
-    static int getLine() {
-        return Thread.currentThread().getStackTrace()[2].getLineNumber();
-    }
 
     public SystemLogger() {
+        LOGGER.setUseParentHandlers(false);
         formatter = new MyFormatter();
 
         try {
@@ -46,6 +44,33 @@ public class SystemLogger {
         LOGGER.addHandler(fileHandler);
 
     }
+    
+    public static String getLineNum() {
+        StringBuilder builder = new StringBuilder(1000);
+        String fullClassName;
+        String className;
+        String methodName;
+        int lineNumber;
+        
+        for (int lvl = 2; lvl < 50; lvl++){
+            try {
+            fullClassName = Thread.currentThread().getStackTrace()[lvl].getClassName();
+            className = fullClassName.substring(fullClassName.lastIndexOf(".") + 1);
+            methodName = Thread.currentThread().getStackTrace()[lvl].getMethodName();
+            lineNumber = Thread.currentThread().getStackTrace()[lvl].getLineNumber();
+            
+            builder.append("\n                                       at ");
+            builder.append("[").append(className).append(".");
+            builder.append(methodName).append("():");
+            builder.append(lineNumber).append("]");
+
+            
+            } catch (ArrayIndexOutOfBoundsException ex){
+                
+            }
+        }
+        return builder.toString();
+    }
 
 }
 
@@ -57,10 +82,10 @@ class MyFormatter extends Formatter {
     public String format(LogRecord record) {
         StringBuilder builder = new StringBuilder(1000);
         builder.append(df.format(new Date(record.getMillis()))).append(" - ");
-        builder.append("[").append(record.getSourceClassName()).append(".");
-        builder.append(record.getSourceMethodName()).append("] - ");
-//        builder.append(record.getSourceMethodName()).append(Thread.currentThread().getStackTrace()[2].getLineNumber()).append("] - ");
         builder.append("[").append(record.getLevel()).append("] - ");
+//        builder.append("[").append(record.getSourceClassName()).append(".");
+//        builder.append(record.getSourceMethodName()).append("] - ");
+//        builder.append(record.getSourceMethodName()).append(Thread.currentThread().getStackTrace()[2].getLineNumber()).append("] - ");
         builder.append(formatMessage(record));
         builder.append("\n");
         return builder.toString();
@@ -73,5 +98,5 @@ class MyFormatter extends Formatter {
     public String getTail(Handler h) {
         return super.getTail(h);
     }
-    
+
 }

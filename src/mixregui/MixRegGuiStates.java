@@ -193,6 +193,8 @@ public class MixRegGuiStates {
                 fos.close();
                 System.out.printf("Gui states are saved in configuration.ser");
             } catch (IOException ioe) {
+                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ioe);
+                SystemLogger.LOGGER.log(Level.SEVERE, ioe.toString() + "{0}", SystemLogger.getLineNum());
             }
         }
     }
@@ -213,14 +215,13 @@ public class MixRegGuiStates {
                 fis.close();
             } catch (ClassNotFoundException c) {
                 System.out.println("Class not found");
-                SystemLogger.LOGGER.log(Level.SEVERE,c.toString());
+                SystemLogger.LOGGER.log(Level.SEVERE, c.toString() + "{0}", SystemLogger.getLineNum());
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                int ln = SystemLogger.getLine();
-                SystemLogger.LOGGER.log(Level.SEVERE,"{0}"+ex.toString(),ln);
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
             } catch (IOException ex) {
                 Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE,ex.toString());
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
             }
         }
 
