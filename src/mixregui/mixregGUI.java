@@ -2728,7 +2728,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         if (FilepathValid) {
             // update Data View tab
             updateGuiView_trigger_dataview();
-
             // Update basic GUI States: Model Configuration Tab
             updateGuiView_TabOneStates(mxrStates);
             // Trigger 1. Dataset Contain missing values or not
@@ -2749,6 +2748,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             update_StageTwoStates(mxrStates);
         }
 
+        //hide load button temprarily
         guiStatesLoadButtonModalConfig.setVisible(false);
 
     }
@@ -6574,6 +6574,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
                 if (StageOneLevelOneBoxesSelection[j][k] == true) {
                     levelOneBoxes.get(j).get(k).setSelected(true);
+//                    disaggVarianceBoxes.get(j).get(k).setEnabled(true);
                 }
                 levelOneGrid.add(levelOneBoxes.get(j).get(k), constraints);
 
@@ -6616,6 +6617,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 levelOneGrid.add(disaggVarianceBoxes.get(j).get(k), constraints);
                 disaggVarianceBoxes.get(j).get(k).setEnabled(false);
 
+                if (levelOneBoxes.get(j).get(k).isSelected() == true) {
+                    disaggVarianceBoxes.get(j).get(k).setEnabled(true);
+                }
+
             }
 
             constraints.gridy++;
@@ -6629,10 +6634,13 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         }
 
         levelOnePanel.removeAll();
+
         levelOnePanel.revalidate();
+
         levelOnePanel.repaint();
 
         levelOnePanel.add(scrollpanel);
+
         revalidate();
 
     }
@@ -7270,8 +7278,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             try {
                 defFile.setStageTwoFirstIntFields(new String[0]);
                 defFile.setStageTwoFirstIntLabels(new String[0]);
+
             } catch (Exception ex) {
-                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(mixregGUI.class
+                        .getName()).log(Level.SEVERE, null, ex);
                 SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
             }
 
