@@ -9,9 +9,9 @@
 
 
 ### Download MixWild for Mac or PC ###
-[macOS](https://github.com/reach-lab/MixWildGUI/releases/download/v1.2/MixWILD.app.zip)
+[macOS](https://github.com/reach-lab/MixWildGUI/releases/download/v1.2/MixWILD.app.zip) (current version: 1.2)
 
-[Windows](https://github.com/reach-lab/MixWildGUI/releases/download/v1.2/MixWILD-v1.2.exe)
+[Windows](https://github.com/reach-lab/MixWildGUI/releases/download/1.3-beta/MixWILD-1.3-beta.exe) (current version: 1.3-beta)
 
 ### Manuscript Supplement ###
 [MixWild User Guide](/MixWild_User_Guide.pdf)
