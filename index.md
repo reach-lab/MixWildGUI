@@ -23,7 +23,7 @@ MixWILD is a free and open-source tool by and for the behavioral researchers. If
 
 Dzubur, E., Ponnada, A., Nordgren, R. et al. MixWILD: A program for examining the effects of variance and slope of time-varying variables in intensive longitudinal data. Behav Res (2020) doi:10.3758/s13428-019-01322-1
 
-Open access available by clicking here [https://link.springer.com/article/10.3758/s13428-019-01322-1?wt_mc=Internal.Event.1.SEM.ArticleAuthorOnlineFirst&utm_source=ArticleAuthorContributingOnlineFirst&utm_medium=email&utm_content=AA_en_06082018&ArticleAuthorContributingOnlineFirst_20200103#citeas] here. 
+Open access available by clicking [https://link.springer.com/article/10.3758/s13428-019-01322-1?wt_mc=Internal.Event.1.SEM.ArticleAuthorOnlineFirst&utm_source=ArticleAuthorContributingOnlineFirst&utm_medium=email&utm_content=AA_en_06082018&ArticleAuthorContributingOnlineFirst_20200103#citeas] (here). 
 
 ### SBM Attendees ###
 
