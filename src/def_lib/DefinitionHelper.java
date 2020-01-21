@@ -23,9 +23,7 @@ MixWild, a program to model subject-level slope and variance on continuous or or
 	Donald Hedeker, PhD
 	University of Chicago
 	DHedeker@health.bsd.uchicago.edu
-*/
-
-
+ */
 package def_lib;
 
 import java.awt.BorderLayout;
@@ -78,7 +76,9 @@ import java.io.Serializable;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.SwingWorker;
+import mixregui.SystemLogger;
 import mixregui.mixregGUI;
+import static mixregui.mixregGUI.logger;
 import org.apache.commons.io.FilenameUtils;
 
 /**
@@ -147,7 +147,7 @@ public class DefinitionHelper implements Serializable {
     private String dataFilename;
     private String outputPrefix;
     private String utcDirPath;
-   
+
     /**
      * Stage 1 Advanced Options
      */
@@ -268,16 +268,16 @@ public class DefinitionHelper implements Serializable {
     public boolean isStageTwoBinary() {
         return stageTwoBinary;
     }
-    
+
     public void setUtcDirPath(File csvFileLocation) throws IOException {
-        String utcDirPath = ModelBuilder.buildFolder(csvFileLocation); 
+        String utcDirPath = ModelBuilder.buildFolder(csvFileLocation);
         this.utcDirPath = utcDirPath;
     }
-    
+
     public void setUtcDirPath(String folderAbsolutePath) {
         this.utcDirPath = folderAbsolutePath;
     }
-    
+
     public String getUtcDirPath() {
         return utcDirPath;
     }
@@ -289,7 +289,7 @@ public class DefinitionHelper implements Serializable {
         String filePath = FilenameUtils.getFullPath(fileName);
         // TODO: Deprecate
         //String filePath = fileName.substring(0, fileName.lastIndexOf(File.separator)) + "/"; //subset the string.
-        
+
         try (CSVReader reader = new CSVReader(new FileReader(fileName))) {
             setUtcDirPath(csvFileToConvert);
             List<String[]> csvRows = reader.readAll();
@@ -298,7 +298,7 @@ public class DefinitionHelper implements Serializable {
             csvRows.remove(0); // TODO: make sure this isn't removing data
             System.out.println("New:" + Arrays.toString(csvRows.get(0)));
 
-            CSVWriter writer = new CSVWriter(new FileWriter(filePath + utcDirPath + baseName.replace(" ","_") + ".dat"), ' ', CSVWriter.NO_QUOTE_CHARACTER,
+            CSVWriter writer = new CSVWriter(new FileWriter(filePath + utcDirPath + baseName.replace(" ", "_") + ".dat"), ' ', CSVWriter.NO_QUOTE_CHARACTER,
                     CSVWriter.NO_ESCAPE_CHARACTER, CSVWriter.RFC4180_LINE_END);
             writer.writeAll(csvRows);
             writer.close();
@@ -367,16 +367,19 @@ public class DefinitionHelper implements Serializable {
         try {
             field = Integer.parseInt(countVariable);
         } catch (Exception ex) {
+            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
             throw new Exception("Unassigned count variable for one or more options or regressors");
+
         }
         try {
             labels = fieldLabelLine.length;
         } catch (Exception ex) {
+            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
             throw new Exception("Unassigned field or label series for one or more sets of options or regressors");
         }
         return field == labels;
     }
-    
+
     private void exportValidatorStageOne() throws Exception {
         if (!validateFieldLabels(getModelMeanCount(), getFieldModelMeanRegressors())) {
             throw new Exception("Fatal model error: number of MEAN regressors does not equal MEAN fields");
@@ -1373,6 +1376,7 @@ public class DefinitionHelper implements Serializable {
                     throw new Exception("Invalid " + validationMessage + " in .dat file specified, line " + lineMessage);
                 }
             } catch (NumberFormatException nfe) {
+                SystemLogger.LOGGER.log(Level.SEVERE, nfe.toString()+ "{0}", SystemLogger.getLineNum());
                 throw new Exception("Invalid character for " + validationMessage + " in .dat file specified, line " + lineMessage);
             }
         } else {
@@ -1607,6 +1611,7 @@ public class DefinitionHelper implements Serializable {
                 throw new Exception("Invalid convergence criteria in .dat file specified, line 5");
             }
         } catch (NumberFormatException nfe) {
+            SystemLogger.LOGGER.log(Level.SEVERE, nfe.toString()+ "{0}", SystemLogger.getLineNum());
             throw new Exception("Invalid character for convergence criteria in .dat file specified, line 5");
         }
     }
@@ -1662,6 +1667,7 @@ public class DefinitionHelper implements Serializable {
                     this.advancedMissingValue = advancedMissingValue;
                 }
             } catch (NumberFormatException nfe) {
+                SystemLogger.LOGGER.log(Level.SEVERE, nfe.toString()+ "{0}", SystemLogger.getLineNum());
                 throw new Exception("Invalid character for missing value in .dat file specified, line 5");
             }
         } else {
@@ -1672,6 +1678,7 @@ public class DefinitionHelper implements Serializable {
                     throw new Exception("Invalid missing value (double) in .dat file specified, line 5");
                 }
             } catch (NumberFormatException nfe) {
+                SystemLogger.LOGGER.log(Level.SEVERE, nfe.toString()+ "{0}", SystemLogger.getLineNum());
                 throw new Exception("Invalid character for missing value in .dat file specified, line 5");
             }
 
@@ -1703,6 +1710,7 @@ public class DefinitionHelper implements Serializable {
                 throw new Exception("Invalid initial ridge value in .dat file specified, line 5");
             }
         } catch (NumberFormatException nfe) {
+            SystemLogger.LOGGER.log(Level.SEVERE, nfe.toString()+ "{0}", SystemLogger.getLineNum());
             throw new Exception("Invalid character for initial ridge value in .dat file specified, line 5");
         }
     }
@@ -2286,8 +2294,6 @@ public class DefinitionHelper implements Serializable {
             this.stageTwoFirstIntLabels = stageTwoFirstIntLabels;
         }
     }
-    
-    
 
     public void writeDefFileToFolder() {
 
@@ -2311,6 +2317,7 @@ public class DefinitionHelper implements Serializable {
             try {
                 myPane.setText(String.join(newline, debugStageOneDefinitonList()).replace("[", "").replace("]", ""));
             } catch (Exception e) {
+                SystemLogger.LOGGER.log(Level.SEVERE, e.toString()+ "{0}", SystemLogger.getLineNum());
                 myPane.setText(String.join(newline, debugStageOneDefinitonList()).replace("[", "").replace("]", ""));
             }
 
@@ -2324,7 +2331,10 @@ public class DefinitionHelper implements Serializable {
 
             proceedButton.addActionListener(new ActionListener() {
 
+                @Override
                 public void actionPerformed(ActionEvent e) {
+
+                    SystemLogger.LOGGER.log(Level.INFO, "Proceed");
 
                     try {
                         // modelSelector();
@@ -2335,6 +2345,7 @@ public class DefinitionHelper implements Serializable {
                         progressStatus.execute();
                     } catch (Exception ex) {
                         Logger.getLogger(DefinitionHelper.class.getName()).log(Level.SEVERE, null, ex);
+                        SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
                     }
 
                     myFrame.dispose();
@@ -2345,10 +2356,14 @@ public class DefinitionHelper implements Serializable {
             saveDefFile.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
+
+                    SystemLogger.LOGGER.log(Level.INFO, "Save Definition File");
+
                     try {
                         saveDefFileLocally();
                     } catch (IOException ex) {
                         Logger.getLogger(DefinitionHelper.class.getName()).log(Level.SEVERE, null, ex);
+                        SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
                     }
                 }
 
@@ -2393,6 +2408,7 @@ public class DefinitionHelper implements Serializable {
             //System.out.println("PATH-NAME: " + defFilePath);
             /////w.close();
         } catch (Exception exception) {
+            SystemLogger.LOGGER.log(Level.SEVERE,exception.toString());
             exception.printStackTrace();
         }
 
@@ -2420,6 +2436,7 @@ public class DefinitionHelper implements Serializable {
             try {
                 myPane.setText(String.join(newline, debugStageOneOnlyDefinitonList()).replace("[", "").replace("]", ""));
             } catch (Exception e) {
+                SystemLogger.LOGGER.log(Level.SEVERE,e.toString());
                 myPane.setText(String.join(newline, debugStageOneOnlyDefinitonList()).replace("[", "").replace("]", ""));
             }
 
@@ -2444,6 +2461,7 @@ public class DefinitionHelper implements Serializable {
                         progressStatus.execute();
                     } catch (Exception ex) {
                         Logger.getLogger(DefinitionHelper.class.getName()).log(Level.SEVERE, null, ex);
+                        SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
                     }
 
                     myFrame.dispose();
@@ -2458,6 +2476,7 @@ public class DefinitionHelper implements Serializable {
                         saveDefFileLocally();
                     } catch (IOException ex) {
                         Logger.getLogger(DefinitionHelper.class.getName()).log(Level.SEVERE, null, ex);
+                        SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
                     }
                 }
 
@@ -2502,6 +2521,7 @@ public class DefinitionHelper implements Serializable {
             //System.out.println("PATH-NAME: " + defFilePath);
             /////w.close();
         } catch (Exception exception) {
+            SystemLogger.LOGGER.log(Level.SEVERE,exception.toString());
             exception.printStackTrace();
         }
 
@@ -2525,6 +2545,7 @@ public class DefinitionHelper implements Serializable {
                 JOptionPane.showMessageDialog(myFrame, "The .def file was Saved Successfully!",
                         "Success!", JOptionPane.INFORMATION_MESSAGE);
             } catch (IOException e) {
+                SystemLogger.LOGGER.log(Level.SEVERE, e.toString()+ "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(myFrame, "The .def file could not be Saved!",
                         "Error!", JOptionPane.INFORMATION_MESSAGE);
             }
@@ -2562,20 +2583,22 @@ public class DefinitionHelper implements Serializable {
                     line = reader.readLine();
                 }
             } catch (FileNotFoundException fnfe1) {
+                SystemLogger.LOGGER.log(Level.SEVERE, fnfe1.toString()+ "{0}", SystemLogger.getLineNum());
                 System.out.println("File not found Exception");
             } catch (IOException e1) {
+                SystemLogger.LOGGER.log(Level.SEVERE, e1.toString()+ "{0}", SystemLogger.getLineNum());
                 System.out.println("IO Exception");
             }
 
             try {
                 Process p;
                 if (getOSName().contains("windows")) {
-                    p = Runtime.getRuntime().exec("cmd /c dir && cd " + "\"" + defFilePath + "\""  + " && del /f " + "\"" + defFileName + "\"" );
+                    p = Runtime.getRuntime().exec("cmd /c dir && cd " + "\"" + defFilePath + "\"" + " && del /f " + "\"" + defFileName + "\"");
                 } else {
                     ProcessBuilder pb = new ProcessBuilder(
                             "bash",
                             "-c",
-                            "rm " + "\"" + defFilePath  + defFileName + "\"" );
+                            "rm " + "\"" + defFilePath + defFileName + "\"");
                     pb.redirectErrorStream(true);
                     p = pb.start();
                 }
@@ -2588,16 +2611,33 @@ public class DefinitionHelper implements Serializable {
                 }
             } catch (FileNotFoundException fnfe1) {
                 System.out.println("File not found Exception 2");
+                SystemLogger.LOGGER.log(Level.SEVERE,fnfe1.toString());
             } catch (IOException e1) {
+                SystemLogger.LOGGER.log(Level.SEVERE, e1.toString()+ "{0}", SystemLogger.getLineNum());
                 System.out.println("IO Exception 2 ");
             }
 
             JOptionPane.showMessageDialog(null, defFilePath);
 
         } catch (Exception ex) {
+            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
             ex.printStackTrace();
             //JOptionPane.showMessageDialog(null, ex.getMessage() + "Failed");
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+    }
+
+    public static void modelingProgressLogging(String line) {
+
+        BufferedWriter writer;
+        try {
+            writer = new BufferedWriter(new FileWriter(SystemLogger.logPath + "modelingProgress.txt", true));
+            writer.write(line);
+            writer.close();
+        } catch (IOException ex) {
+            Logger.getLogger(DefinitionHelper.class.getName()).log(Level.SEVERE, null, ex);
+            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
         }
 
     }
@@ -2607,14 +2647,17 @@ public class DefinitionHelper implements Serializable {
         //@Eldin: This is the part where it may be throwing exceptions. Why do you have "/" at the end?
         String filePath = newDefFile.getAbsolutePath();
         System.out.println("THE DEF FILE IS: " + filePath);
+        modelingProgressLogging("THE DEF FILE IS: " + filePath);
         defFilePath = filePath.substring(0, filePath.lastIndexOf(File.separator)) + "/";
         System.out.println("THE DEF FILE PATH IS: " + defFilePath);
+        modelingProgressLogging("HE DEF FILE PATH IS: " + defFilePath);
         selectedModel = getSelectedModel();
         String absoluteJavaPath = System.getProperty("user.dir");
 
         String defFileName = executableModel(selectedModel);
 
         progressWindow = new JFrame("Please wait ...");
+        modelingProgressLogging("Please wait ...");
 
         FlowLayout defFileFlow = new FlowLayout();
         progressWindow.setLayout(defFileFlow);
@@ -2632,6 +2675,7 @@ public class DefinitionHelper implements Serializable {
 
         progressPane.setFont(new Font("Monospaced", 0, 12));
         progressPane.setText("Please wait while we crunch some numbers .." + "\n");
+        modelingProgressLogging("Please wait while we crunch some numbers .." + "\n");
         JScrollPane scroller = new JScrollPane(progressPane, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 
         progressWindow.add(scroller);
@@ -2683,9 +2727,10 @@ public class DefinitionHelper implements Serializable {
                             System.out.println("MIXWILD:" + line);
                             updateProgressPane("MIXWILD:" + line + "\n");
                             //progressPane.append();
-
+                            modelingProgressLogging("MIXWILD:" + line + "\n");
                         }
                     } catch (IOException ioe) {
+                        SystemLogger.LOGGER.log(Level.SEVERE, ioe.toString()+ "{0}", SystemLogger.getLineNum());
                         ioe.printStackTrace();
                     }
                 }
@@ -2702,13 +2747,16 @@ public class DefinitionHelper implements Serializable {
             int exitVal = p.waitFor();
             System.out.println("ExitValue: " + exitVal); // Non-zero is an error
             updateProgressPane("MIXWILD::Exit Value: " + String.valueOf(exitVal) + "\n"); //should append all the text after a new line to the text area
+            modelingProgressLogging("ExitValue: " + exitVal);
+            modelingProgressLogging("MIXWILD::Exit Value: " + String.valueOf(exitVal) + "\n");
+
             if (exitVal == 0) {
                 //send the out to StageTwoOutPu from here
                 // FileReader reader = new FileReader(absoluteJavaPath + ".out file name");
                 terminalVal = exitVal;
                 Process p2;
                 if (getOSName().contains("windows")) {
-                    p2 = Runtime.getRuntime().exec("cmd /c dir && cd " + "\"" + defFilePath + "\"" + " && del /f " + "\"" + defFileName + "\"" ); //delete the file when everything works great.
+                    p2 = Runtime.getRuntime().exec("cmd /c dir && cd " + "\"" + defFilePath + "\"" + " && del /f " + "\"" + defFileName + "\""); //delete the file when everything works great.
                 } else {
                     ProcessBuilder pb = new ProcessBuilder(
                             "bash",
@@ -2726,15 +2774,16 @@ public class DefinitionHelper implements Serializable {
                 // FileReader reader = new FileReader(absoluteJavaPath + ".out file name");
             } else {
                 JOptionPane.showMessageDialog(null, "Failed to build model. Please revisit your regressors and try again. For more information, checkout help docs.", "Execution failed!", JOptionPane.INFORMATION_MESSAGE);
+                modelingProgressLogging("Failed to build model. Please revisit your regressors and try again. For more information, checkout help docs.");
                 Process p2;
                 if (getOSName().contains("windows")) {
-                    p2 = Runtime.getRuntime().exec("cmd /c dir && cd " + "\"" + defFilePath + "\"" + " && del /f " + "\"" + defFileName + "\"" );
+                    p2 = Runtime.getRuntime().exec("cmd /c dir && cd " + "\"" + defFilePath + "\"" + " && del /f " + "\"" + defFileName + "\"");
 
                 } else {
                     ProcessBuilder pb = new ProcessBuilder(
                             "bash",
                             "-c",
-                            "rm " + "\"" + defFilePath + defFileName + "\"" );
+                            "rm " + "\"" + defFilePath + defFileName + "\"");
                     pb.redirectErrorStream(true);
                     p2 = pb.start();
 
@@ -2747,6 +2796,7 @@ public class DefinitionHelper implements Serializable {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "Failed");
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
         }
     }
 
@@ -2938,6 +2988,7 @@ public class DefinitionHelper implements Serializable {
                 } catch (InterruptedException ex) {
                     System.out.println("WAIT FAILED!");
                     Logger.getLogger(DefinitionHelper.class.getName()).log(Level.SEVERE, null, ex);
+                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
                 }
             }
 
@@ -3022,6 +3073,7 @@ public class DefinitionHelper implements Serializable {
         try {
             this.advancedCutoffLower = String.format("%.5f", Double.parseDouble(advancedCutoffLower));
         } catch (NumberFormatException nfe) {
+            SystemLogger.LOGGER.log(Level.SEVERE,nfe.toString());
             throw new Exception("Invalid character for lower cutoff in .dat file specified, line 5");
         }
     }
@@ -3055,15 +3107,15 @@ public class DefinitionHelper implements Serializable {
             this.advancedDiscardSubjects = advancedDiscardSubjects;
         }
     }
-    
-    public void setSeedForStageTwo(String seed)throws Exception {
+
+    public void setSeedForStageTwo(String seed) throws Exception {
         if (setValidator("Decision to add seed for stage 2", "5", seed, 0, 65535, MIX_INTEGER)) {
             this.seedForStageTwo = seed;
         }
-        
+
     }
-    
-    public String getSeedForStageTwo(){
+
+    public String getSeedForStageTwo() {
         return seedForStageTwo;
     }
 

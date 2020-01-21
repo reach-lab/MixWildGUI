@@ -13,7 +13,7 @@ import static mixregui.mixregGUI.mxr;
  * @author eldin
  */
 public class confirmReset extends javax.swing.JDialog {
-    
+
     /**
      * Creates new form confirmReset
      */
@@ -97,8 +97,9 @@ public class confirmReset extends javax.swing.JDialog {
         // TODO add your handling code here:
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                mixregGUI.mxr.dispose();
                 
+                mixregGUI.mxr.dispose();
+
                 //Reset UI
                 mixregGUI.variableArray = null;
                 mixregGUI.mxr = null;
@@ -109,25 +110,24 @@ public class confirmReset extends javax.swing.JDialog {
                 mixregGUI.dataFileNameRef = null;
                 mixregGUI.defFile = null;
                 mixregGUI.modelBuilder = null;
-                
+
                 mixregGUI.IDpos = 0;
                 mixregGUI.stageOnePos = 0;
                 mixregGUI.stageTwoPos = 0;
-                
+
                 mixregGUI.outPutStageTwo = null;
-    
-                
+
                 // Stage One Reset
-                String[] variableNamesList = null;
+                stageOneRegs.variableNamesList = null;
                 stageOneRegs.levelOneList = null;
                 stageOneRegs.levelTwoList = null;
                 stageOneRegs.isSubmitClicked = false;
-                
+
                 // Stage Two Reset
                 stageTwoRegs.stageTwoListModel = null;
                 stageTwoRegs.stageTwoLevelTwo = null;
                 stageTwoRegs.isStageTwoSubmitClicked = false;
-                
+
                 mixregGUI.mxr = new mixregGUI();
                 mixregGUI.mxr.setVisible(true);
             }
@@ -188,4 +188,40 @@ public class confirmReset extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
+
+    public static void resetUI() {
+        mixregGUI.mxr.dispose();
+
+        //Reset UI
+        mixregGUI.variableArray = null;
+        mixregGUI.mxr = null;
+        mixregGUI.RLE = 0;
+        mixregGUI.NoneVar = false;
+        mixregGUI.outComeBoolean = false;
+        mixregGUI.isRandomScale = false;
+        mixregGUI.dataFileNameRef = null;
+        mixregGUI.defFile = null;
+        mixregGUI.modelBuilder = null;
+
+        mixregGUI.IDpos = 0;
+        mixregGUI.stageOnePos = 0;
+        mixregGUI.stageTwoPos = 0;
+
+        mixregGUI.outPutStageTwo = null;
+
+        // Stage One Reset
+        stageOneRegs.variableNamesList = null;
+        stageOneRegs.levelOneList = null;
+        stageOneRegs.levelTwoList = null;
+        stageOneRegs.isSubmitClicked = false;
+
+        // Stage Two Reset
+        stageTwoRegs.stageTwoListModel = null;
+        stageTwoRegs.stageTwoLevelTwo = null;
+        stageTwoRegs.isStageTwoSubmitClicked = false;
+
+        mixregGUI.mxr = new mixregGUI();
+        mixregGUI.mxr.setVisible(true);
+    }
+
 }
