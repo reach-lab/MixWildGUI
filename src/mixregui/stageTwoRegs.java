@@ -340,5 +340,17 @@ public class stageTwoRegs extends javax.swing.JFrame {
         StageTwoAllVariables.setModel(stageTwoListModel);
 
     }
+    
+    public javax.swing.JList<String> getStageTwoAllVariables(){
+        return StageTwoAllVariables;
+    }
+    
+    public javax.swing.JList<String> getStageTwoLevelTwoVariables(){
+        return StageTwoLevelTwoVariables;
+    }
+    
+    public void setEnabledStageTwoSubmitButton(boolean turnon){
+        stageTwoSubmitButton.setEnabled(turnon);
+    }
 
 }
