@@ -7,7 +7,7 @@ MixWILD (Also Mixed-effects modeling with Intensive Longitudinal Data) is a desk
 ### Citation request
 If you have used MixWILD in your data analaysis, please cite the following:
 
-Dzubur, E., Ponnada, A., Nordgren, R., Yang, C-H., Intille, S. S., Dunton, G. F., & Hedeker, D., (2019). MixWILD: A program for examining the effects of variance and slope of time-varying variables in intensive longitudinal data. Behavior Research Methods, DOI: 10.3758/s13428-019-01322-1. (in press)
+Dzubur, E., Ponnada, A., Nordgren, R. et al. MixWILD: A program for examining the effects of variance and slope of time-varying variables in intensive longitudinal data. Behav Res (2020) doi:10.3758/s13428-019-01322-1
 
 ## Want to learn more and get in touch? ##
 
