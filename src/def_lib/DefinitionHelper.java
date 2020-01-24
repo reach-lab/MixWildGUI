@@ -1450,14 +1450,18 @@ public class DefinitionHelper implements Serializable {
     // print file name path
     //done
     public String getDataFilename() {
-        return dataFilename.replace(" ", "_");
+        return dataFilename;
+        // Eldin: what purpose you want to replace space with underscore here
+//        return dataFilename.replace(" ", "_");
     }
 
     // read fileName
     //done
     public void setDataFilename(String dataFilename) throws Exception {
         if (dataFilename.endsWith(".dat") || dataFilename.endsWith(".csv")) {
-            this.dataFilename = dataFilename.replace(" ", "_");
+            this.dataFilename = dataFilename;
+            // Eldin: what purpose you want to replace space with underscore here
+//            this.dataFilename = dataFilename.replace(" ", "_");
         } else {
             throw new Exception("Filename is not a valid .dat or .csv file, line 3");
         }
@@ -2381,7 +2385,7 @@ public class DefinitionHelper implements Serializable {
             //File newDefFile = new File("MIXREGLS_MIXREG_KEY");
             String dataFileSample = new File(this.getDataFilename()).getAbsolutePath();
             String newDefFilePrefix = dataFileSample.substring(0, dataFileSample.lastIndexOf(File.separator)) + "/";
-
+           
             if (selectedModel == DefinitionHelper.MIXREGLS_MIXREG_KEY) {
                 newDefFile = new File(newDefFilePrefix + "MIXREGLS_RANDOM_MIXREG");
             } else if (selectedModel == DefinitionHelper.MIXREGLS_MIXOR_KEY) {
@@ -2494,7 +2498,7 @@ public class DefinitionHelper implements Serializable {
             //File newDefFile = new File("MIXREGLS_MIXREG_KEY");
             String dataFileSample = new File(this.getDataFilename()).getAbsolutePath();
             String newDefFilePrefix = dataFileSample.substring(0, dataFileSample.lastIndexOf(File.separator)) + "/";
-
+            
             if (selectedModel == DefinitionHelper.MIXREGLS_MIXREG_KEY) {
                 newDefFile = new File(newDefFilePrefix + "MIXREGLS_RANDOM_MIXREG");
             } else if (selectedModel == DefinitionHelper.MIXREGLS_MIXOR_KEY) {
@@ -2521,7 +2525,7 @@ public class DefinitionHelper implements Serializable {
             //System.out.println("PATH-NAME: " + defFilePath);
             /////w.close();
         } catch (Exception exception) {
-            SystemLogger.LOGGER.log(Level.SEVERE,exception.toString());
+            SystemLogger.LOGGER.log(Level.SEVERE, exception.toString()+ "{0}", SystemLogger.getLineNum());
             exception.printStackTrace();
         }
 
@@ -2704,8 +2708,17 @@ public class DefinitionHelper implements Serializable {
             Process p;
             String macOSCommand = "\"" + defFilePath + defFileName + "\"";
             if (getOSName().contains("windows")) {
-                p = Runtime.getRuntime().exec("cmd /c dir && cd " + "\"" + defFilePath + "\"" + " && dir && "
+                System.out.print("$$$$$$$$$$$$$: " + defFilePath);
+                // the file path is not in the C drive
+                if (!"C".equals(defFilePath.split(":")[0])){
+                    p = Runtime.getRuntime().exec("cmd /c dir && cd /d" + "\"" + defFilePath + "\"" + " && dir && "
                         + defFileName);
+                } else{
+                    p = Runtime.getRuntime().exec("cmd /c dir && cd " + "\"" + defFilePath + "\"" + " && dir && "
+                        + defFileName);
+                }
+
+
             } else {
                 ProcessBuilder pb = new ProcessBuilder(
                         "bash",
@@ -2721,7 +2734,9 @@ public class DefinitionHelper implements Serializable {
                     System.out.println("Inside the thread for: " + macOSCommand);
                     try {
                         InputStreamReader isr = new InputStreamReader(p.getInputStream());
+                        // InputStreamReader esr = new InputStreamReader(p.getErrorStream());
                         BufferedReader br = new BufferedReader(isr);
+                        // BufferedReader ebr = new BufferedReader(esr);
                         String line = null;  // UI magic should run in here @adityapona
                         while ((line = br.readLine()) != null) {
                             System.out.println("MIXWILD:" + line);
