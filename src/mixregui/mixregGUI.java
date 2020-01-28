@@ -1753,6 +1753,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         jPanel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         stageOneOutput.setColumns(20);
+        stageOneOutput.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
         stageOneOutput.setRows(5);
         jScrollPane2.setViewportView(stageOneOutput);
 
@@ -1767,10 +1768,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 558, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jButton8.setText("Save Results As ...");
@@ -1820,6 +1821,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         jPanel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         stageTwoOutput.setColumns(20);
+        stageTwoOutput.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
         stageTwoOutput.setRows(5);
         jScrollPane1.setViewportView(stageTwoOutput);
 
