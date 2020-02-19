@@ -2314,7 +2314,7 @@ public class DefinitionHelper implements Serializable {
             myPane = new JEditorPane();
             myPane.setSize(500, 500);
             myPane.setContentType("text/plain");
-            myPane.setFont(new Font("Monospaced", 0, 12));
+            myPane.setFont(new Font("Courier New", 0, 12));
             myPane.setLayout(new BorderLayout(500, 500));
             myPane.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
             String newline = System.getProperty("line.separator");
