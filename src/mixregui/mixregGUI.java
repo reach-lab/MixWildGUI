@@ -7311,7 +7311,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
 
             for (int p = 0; p < stageTwoLevelTwoRegSize; p++) {
-
+                stageTwoLevelOneGridBoxes.get(p).get(3).setSelected(false);
+                stageTwoLevelOneGridBoxes.get(p).get(3).setEnabled(false);
                 stageTwoLevelTwoGridBoxes.get(p).get(3).setSelected(false);
                 stageTwoLevelTwoGridBoxes.get(p).get(3).setEnabled(false);
             }
@@ -7338,8 +7339,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             for (int p = 0; p < stageTwoLevelTwoRegSize; p++) {
 
                 if (stageTwoLevelTwoGridBoxes.get(p).get(1).isSelected() && stageTwoLevelTwoGridBoxes.get(p).get(2).isSelected()) {
-//                    stageTwoLevelTwoGridBoxes.get(p).get(3).setSelected(false);
                     stageTwoLevelTwoGridBoxes.get(p).get(3).setEnabled(true);
+                }
+                
+                if (stageTwoLevelOneGridBoxes.get(p).get(1).isSelected() && stageTwoLevelOneGridBoxes.get(p).get(2).isSelected()) {
+                    stageTwoLevelOneGridBoxes.get(p).get(3).setEnabled(true);
                 }
 
             }

@@ -169,7 +169,7 @@ public class MixRegGuiStates {
         this.stageTwoListModelString = saveDefaultListModel(stageTwoRegs.stageTwoListModel);
         this.stageTwoLevelTwoString = saveDefaultListModel(stageTwoRegs.stageTwoLevelTwo);
         this.isStageTwoSubmitClicked = stageTwoRegs.isStageTwoSubmitClicked;
-        this.stageTwoGridBoxesSelection = getSelectionBoxes(mxr.stageTwoGridBoxes);
+        this.stageTwoGridBoxesSelection = getSelectionBoxes(mxr.stageTwoLevelTwoGridBoxes);
         this.suppressIntCheckBox = mxr.getSuppressIntCheckBox();
         this.levelTwoSelected = mxr.levelTwoSelected;
         this.sessionFolderName = mxr.sessionFolderName;
