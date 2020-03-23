@@ -28,7 +28,11 @@ package def_lib;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
+import mixregui.SystemLogger;
+import org.apache.commons.io.FilenameUtils;
 
 /**
  * ****
@@ -47,6 +51,11 @@ public class MixLibrary implements Serializable {
     /**
      * MIXWILD V2.0 Keys
      */
+    /**
+     * Private Class Keys
+     */
+    private static final boolean MIX_INTEGER = Boolean.TRUE;
+    private static final boolean MIX_STRING = Boolean.FALSE;
     
     /**
      * Stage One Outcome Keys
@@ -137,7 +146,7 @@ public class MixLibrary implements Serializable {
     private String sharedModelSubtitle; // LINE 2
     private String sharedDataFilename; // LINE 3
     private String sharedOutputPrefix; // LINE 4
-    private String[] sharedAdvancedOptions; // LINE 5
+    private String[] sharedAdvancedOptions; // LINE 5  -  SEE LINE 190 FOR DETAILS
     
     private String[] sharedIdAndStageOneOutcomeFields; // LINE 7 for MIXOR, LINE 6 for MIXREG
     
@@ -172,7 +181,7 @@ public class MixLibrary implements Serializable {
      * MixWILD V2.0 Stage Two Parameters
      * Append at LINE 20 for MIXREG and LINE 22 for MIXOR
      */
-    private String[] stageTwoRegressorCounts; 
+    private String[] stageTwoRegressorCounts; //  SEE LINE 220 FOR DETAILS
     private String stageTwoOutcomeField;
     
     private String[] stageTwoFixedFields; // FIXEX
@@ -227,85 +236,379 @@ public class MixLibrary implements Serializable {
     private String advancedStageTwoMultilevel; // MULTI2ND
     private String advancedMultipleDataFiles; // SEPFILE
     
-    
-    private String[] advancedVariableBuild() {
+    /**
+     * MixWILD V2.0 MIXREG Stage 2 Advanced Parameters
+     */
+    private String advancedStageTwoFixedRegressorCount;         // COUNT OF FIXEX
+    private String advancedStageTwoThetaRegressorCount;         // COUNT OF INTERACTION WITH LOCATION 
+    private String advancedStageTwoOmegaRegressorCount;         // COUNT OF INTERACTION WITH SCALE 
+    private String advancedStageTwoInteractionRegressorCount;   // COUNT OF INTERACTION WITH LOC*SCA
+
+    /**
+     * Builds the advanced variable arrays for Stage 1 and Stage 2, 
+     * as noted above.
+     * 
+     * @param stageToBuild 1 OR 2
+     * @return array of advanced variable fields to pass to writer
+     */
+    private String[] advancedVariableBuild(int stageToBuild) {
         List<String> advancedVariable = new ArrayList();
-        if (stageOneOutcome == STAGE_ONE_OUTCOME_MIXREG) { 
-            advancedVariable.add(getAdvancedVariableCount());
-            advancedVariable.add(getAdvancedMeanRegressorCount());
-            advancedVariable.add(getAdvancedRandomRegressorCount());
-            advancedVariable.add(getAdvancedScaleRegressorCount());
-            
-            advancedVariable.add(getAdvancedMeanIntercept()); 
-            advancedVariable.add(getAdvancedRandomIntercept()); 
-            advancedVariable.add(getAdvancedScaleIntercept()); 
+        if(stageToBuild == 1){
+            if (stageOneOutcome == STAGE_ONE_OUTCOME_MIXREG) { 
+                advancedVariable.add(getAdvancedVariableCount());
+                advancedVariable.add(getAdvancedMeanRegressorCount());
+                advancedVariable.add(getAdvancedRandomRegressorCount());
+                advancedVariable.add(getAdvancedScaleRegressorCount());
 
-            advancedVariable.add(getAdvancedDecomposeMeanRegressorCount());  
-            advancedVariable.add(getAdvancedDecomposeRandomRegressorCount());  
-            advancedVariable.add(getAdvancedDecomposeScaleRegressorCount());  
+                advancedVariable.add(getAdvancedMeanIntercept()); 
+                advancedVariable.add(getAdvancedRandomIntercept()); 
+                advancedVariable.add(getAdvancedScaleIntercept()); 
 
-            advancedVariable.add(getAdvancedConvergenceCriteria());  
-            advancedVariable.add(getAdvancedQuadPoints());  
-            advancedVariable.add(getAdvancedAdaptiveQuad()); 
-            advancedVariable.add(getAdvancedMaxIterations()); 
-            advancedVariable.add(getAdvancedMissingValueCode()); 
-            advancedVariable.add(getAdvancedCenterScaleVariables()); 
-            
-            advancedVariable.add(getAdvancedRandomScaleAssociation()); 
-            advancedVariable.add(getAdvancedInitialRidge()); 
-            advancedVariable.add(getAdvancedDiscardNoVariance()); 
-            advancedVariable.add(getAdvancedUseMLS()); 
-            advancedVariable.add(getAdvancedCovarianceMatrix()); 
-            advancedVariable.add(getAdvancedResampleCount()); 
-            advancedVariable.add(getAdvancedRandomScaleCutoff()); 
-            advancedVariable.add(getAdvancedUseRandomScale()); 
-            advancedVariable.add(getAdvancedResamplingSeed()); 
+                advancedVariable.add(getAdvancedDecomposeMeanRegressorCount());  
+                advancedVariable.add(getAdvancedDecomposeRandomRegressorCount());  
+                advancedVariable.add(getAdvancedDecomposeScaleRegressorCount());  
 
-            advancedVariable.add(getAdvancedUseStageTwo()); 
-            advancedVariable.add(getAdvancedStageTwoMultilevel()); 
-            advancedVariable.add(getAdvancedMultipleDataFiles()); 
+                advancedVariable.add(getAdvancedConvergenceCriteria());  
+                advancedVariable.add(getAdvancedQuadPoints());  
+                advancedVariable.add(getAdvancedAdaptiveQuad()); 
+                advancedVariable.add(getAdvancedMaxIterations()); 
+                advancedVariable.add(getAdvancedMissingValueCode()); 
+                advancedVariable.add(getAdvancedCenterScaleVariables()); 
+
+                advancedVariable.add(getAdvancedRandomScaleAssociation()); 
+                advancedVariable.add(getAdvancedInitialRidge()); 
+                advancedVariable.add(getAdvancedDiscardNoVariance()); 
+                advancedVariable.add(getAdvancedUseMLS()); 
+                advancedVariable.add(getAdvancedCovarianceMatrix()); 
+                advancedVariable.add(getAdvancedResampleCount()); 
+                advancedVariable.add(getAdvancedRandomScaleCutoff()); 
+                advancedVariable.add(getAdvancedUseRandomScale()); 
+                advancedVariable.add(getAdvancedResamplingSeed()); 
+
+                advancedVariable.add(getAdvancedUseStageTwo()); 
+                advancedVariable.add(getAdvancedStageTwoMultilevel()); 
+                advancedVariable.add(getAdvancedMultipleDataFiles()); 
+            }
+
+            if (stageOneOutcome == STAGE_ONE_OUTCOME_MIXOR) {
+                advancedVariable.add(getAdvancedVariableCount());
+                advancedVariable.add(getAdvancedStageOneOutcomeValueCount()); 
+
+                advancedVariable.add(getAdvancedMeanRegressorCount());
+                advancedVariable.add(getAdvancedRandomRegressorCount());
+                advancedVariable.add(getAdvancedScaleRegressorCount());
+                advancedVariable.add(getAdvancedDecomposeMeanRegressorCount());  
+                advancedVariable.add(getAdvancedDecomposeRandomRegressorCount());  
+                advancedVariable.add(getAdvancedDecomposeScaleRegressorCount());  
+
+                advancedVariable.add(getAdvancedRandomIntercept()); 
+
+                advancedVariable.add(getAdvancedConvergenceCriteria());  
+                advancedVariable.add(getAdvancedQuadPoints());  
+                advancedVariable.add(getAdvancedAdaptiveQuad()); 
+                advancedVariable.add(getAdvancedMaxIterations()); 
+                advancedVariable.add(getAdvancedMissingValueCode()); 
+
+                advancedVariable.add(getAdvancedInitialRidge()); 
+                advancedVariable.add(getAdvancedLogisticProbitRegression()); 
+                advancedVariable.add(getAdvancedUseRandomScale()); 
+
+                advancedVariable.add(getAdvancedResamplingSeed()); 
+                advancedVariable.add(getAdvancedUseStageTwo()); 
+                advancedVariable.add(getAdvancedStageTwoMultilevel()); 
+                advancedVariable.add(getAdvancedResampleCount());
+                advancedVariable.add(getAdvancedMultipleDataFiles()); 
+                advancedVariable.add(getAdvancedUseMLS());
+                advancedVariable.add(getAdvancedRandomScaleAssociation()); 
+            }
         }
         
-        if (stageOneOutcome == STAGE_ONE_OUTCOME_MIXOR) {
-            advancedVariable.add(getAdvancedVariableCount());
-            advancedVariable.add(getAdvancedStageOneOutcomeValueCount()); 
-            
-            advancedVariable.add(getAdvancedMeanRegressorCount());
-            advancedVariable.add(getAdvancedRandomRegressorCount());
-            advancedVariable.add(getAdvancedScaleRegressorCount());
-            advancedVariable.add(getAdvancedDecomposeMeanRegressorCount());  
-            advancedVariable.add(getAdvancedDecomposeRandomRegressorCount());  
-            advancedVariable.add(getAdvancedDecomposeScaleRegressorCount());  
-            
-            advancedVariable.add(getAdvancedRandomIntercept()); 
-            
-            advancedVariable.add(getAdvancedConvergenceCriteria());  
-            advancedVariable.add(getAdvancedQuadPoints());  
-            advancedVariable.add(getAdvancedAdaptiveQuad()); 
-            advancedVariable.add(getAdvancedMaxIterations()); 
-            advancedVariable.add(getAdvancedMissingValueCode()); 
-            
-            advancedVariable.add(getAdvancedInitialRidge()); 
-            advancedVariable.add(getAdvancedLogisticProbitRegression()); 
-            advancedVariable.add(getAdvancedUseRandomScale()); 
-            
-            advancedVariable.add(getAdvancedResamplingSeed()); 
-            advancedVariable.add(getAdvancedUseStageTwo()); 
-            advancedVariable.add(getAdvancedStageTwoMultilevel()); 
-            advancedVariable.add(getAdvancedResampleCount());
-            advancedVariable.add(getAdvancedMultipleDataFiles()); 
-            advancedVariable.add(getAdvancedUseMLS());
-            advancedVariable.add(getAdvancedRandomScaleAssociation()); 
+        if(stageToBuild == 2){
+            advancedVariable.add(getAdvancedStageTwoFixedRegressorCount());
+            advancedVariable.add(getAdvancedStageTwoThetaRegressorCount());
+            advancedVariable.add(getAdvancedStageTwoOmegaRegressorCount());
+            advancedVariable.add(getAdvancedStageTwoInteractionRegressorCount());
         }
-        
+
         String[] returnVars = new String[advancedVariable.size()];
         int iter = 0;
         for (String iterate : advancedVariable) {
             returnVars[iter] = iterate;
             iter++;
         };
-        return(returnVars);
+        return returnVars;
     }
+    
+    /**
+     *  Creates the definition file list
+     *  See comments for line numbers referencing MIXOR/MIXREG
+     * 
+     * @return a List object to be written as the def file
+     * @throws Exception error message showing why the definition is invalid
+     */
+    public List<String> buildStageOneDefinitonList() throws Exception { 
+        List<String> newDefinitionFile = new ArrayList();
+        
+        newDefinitionFile.add(getSharedModelTitle()); // LINE 1
+        newDefinitionFile.add(getSharedModelSubtitle()); // LINE 2
+        newDefinitionFile.add("\"" + FilenameUtils.getName(getSharedDataFilename()) + "\""); // LINE 3
+        newDefinitionFile.add(getSharedOutputPrefix()); // LINE 4
+        newDefinitionFile.add(Arrays.toString(getSharedAdvancedOptions()).replaceAll(",", " ")); // LINE 5
+        
+        if(getStageOneOutcome() == STAGE_ONE_OUTCOME_MIXOR){
+            newDefinitionFile.add(Arrays.toString(getMixorModelCovarianceThresholdParameters()).replaceAll(",", " ")); // LINE 6/-
+        }
+        
+        newDefinitionFile.add(Arrays.toString(getSharedIdAndStageOneOutcomeFields()).replaceAll(",", " ")); // LINE 7/6
+        
+        newDefinitionFile.add(Arrays.toString(getSharedModelMeanRegressorFields()).replaceAll(",", " ")); // LINE 8/7
+        newDefinitionFile.add(Arrays.toString(getSharedModelRandomRegressorFields()).replaceAll(",", " ")); // LINE 9/8
+        newDefinitionFile.add(Arrays.toString(getSharedModelScaleRegressorFields()).replaceAll(",", " ")); // LINE 10/9
+        
+        newDefinitionFile.add(Arrays.toString(getSharedModelDecomposeMeanRegressorFields()).replaceAll(",", " ")); // LINE 11/10
+        newDefinitionFile.add(Arrays.toString(getSharedModelDecomposeRandomRegressorFields()).replaceAll(",", " ")); // LINE 12/11
+        newDefinitionFile.add(Arrays.toString(getSharedModelDecomposeScaleRegressorFields()).replaceAll(",", " ")); // LINE 13/12
+        
+        if(getStageOneOutcome() == STAGE_ONE_OUTCOME_MIXOR){
+            newDefinitionFile.add(Arrays.toString(getMixorModelStageOneOutcomeLevels()).replaceAll(",", " ")); // LINE 14/-
+        }
+        
+        newDefinitionFile.add(getSharedModelStageOneOutcomeLabel()); // LINE 15/13
+        
+        newDefinitionFile.add(Arrays.toString(getSharedModelMeanRegressorLabels()).replaceAll(",", " ")); // LINE 16/14
+        newDefinitionFile.add(Arrays.toString(getSharedModelRandomRegressorLabels()).replaceAll(",", " ")); // LINE 17/15
+        newDefinitionFile.add(Arrays.toString(getSharedModelScaleRegressorLabels()).replaceAll(",", " ")); // LINE 18/16
+        
+        newDefinitionFile.add(Arrays.toString(getSharedModelDecomposeMeanRegressorLabels()).replaceAll(",", " ")); // LINE 19/17
+        newDefinitionFile.add(Arrays.toString(getSharedModelDecomposeRandomRegressorLabels()).replaceAll(",", " ")); // LINE 20/18
+        newDefinitionFile.add(Arrays.toString(getSharedModelDecomposeScaleRegressorLabels()).replaceAll(",", " ")); // LINE 21/19
+
+        /**
+         * Appending Stage 2 (Optional)
+         */
+        if(stageTwoModelType != STAGE_TWO_MODEL_TYPE_NONE){
+            newDefinitionFile.add(Arrays.toString(getStageTwoRegressorCounts()).replaceAll(",", " "));
+            newDefinitionFile.add(getStageTwoOutcomeField());
+            
+            newDefinitionFile.add(Arrays.toString(getStageTwoFixedFields()).replaceAll(",", " "));
+            newDefinitionFile.add(Arrays.toString(getStageTwoThetaFields()).replaceAll(",", " "));
+            newDefinitionFile.add(Arrays.toString(getStageTwoOmegaFields()).replaceAll(",", " "));
+            newDefinitionFile.add(Arrays.toString(getStageTwoInteractionFields()).replaceAll(",", " "));
+            
+            newDefinitionFile.add(getStageTwoOutcomeLabel());
+            
+            newDefinitionFile.add(Arrays.toString(getStageTwoFixedLabels()).replaceAll(",", " "));
+            newDefinitionFile.add(Arrays.toString(getStageTwoThetaLabels()).replaceAll(",", " "));
+            newDefinitionFile.add(Arrays.toString(getStageTwoOmegaLabels()).replaceAll(",", " "));
+            newDefinitionFile.add(Arrays.toString(getStageTwoInteractionLabels()).replaceAll(",", " "));
+        } 
+      
+        exportValidator();
+        return newDefinitionFile;
+    }
+    
+    /**
+     *  Validates that the field/label counts are equivalent to the number of fields or labels.
+     * @param countVariable the field or label count variable
+     * @param fieldLabelLine the actual field or label array
+     * @return boolean, does the field/label count equal the number of elements in the array
+     * @throws Exception 
+     */
+    private boolean validateFieldLabels(String countVariable, String[] fieldLabelLine) throws Exception {
+        int field = -1;
+        int labels = 0;
+        try {
+            field = Integer.parseInt(countVariable);
+        } catch (Exception ex) {
+            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+            throw new Exception("Unassigned count variable for one or more options or regressors");
+
+        }
+        try {
+            labels = fieldLabelLine.length;
+        } catch (Exception ex) {
+            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+            throw new Exception("Unassigned field or label series for one or more sets of options or regressors");
+        }
+        return field == labels;
+    }
+    
+    /**
+     * Checks to see if random location scale interactions in stage two are included
+     * @return a boolean
+     * @throws Exception if the interaction value is not an integer 
+     */
+    private boolean isAdvancedStageTwoInteractionIncluded() throws Exception {
+        int stageTwoInteractionInteger;
+        try {
+            stageTwoInteractionInteger = Integer.parseInt(getAdvancedStageTwoInteractionRegressorCount());
+        } catch(NumberFormatException nfe){
+            SystemLogger.LOGGER.log(Level.SEVERE, nfe.toString()+ "{0}", SystemLogger.getLineNum());
+            throw new Exception("Improperly assigned series for Stage Two interaction count");
+        }
+        return stageTwoInteractionInteger != -1;
+    }
+    
+    /**
+     * Validates all fields in the definition file
+     * @throws Exception if one or more fields are not accurate
+     */
+    private void exportValidator() throws Exception {
+        /**
+         *  Validating Stage 1 General Variables
+         */
+        if (!validateFieldLabels(getAdvancedMeanRegressorCount(), getSharedModelMeanRegressorFields())) {
+            throw new Exception("Fatal model error: number of MEAN regressors does not equal MEAN fields");
+        }
+        if (!validateFieldLabels(getAdvancedMeanRegressorCount(), getSharedModelMeanRegressorLabels())) {
+            throw new Exception("Fatal model error: number of MEAN regressors does not equal MEAN labels");
+        }
+        
+        if (!validateFieldLabels(getAdvancedRandomRegressorCount(), getSharedModelRandomRegressorFields())) {
+            throw new Exception("Fatal model error: number of RANDOM regressors does not equal RANDOM fields");
+        }
+        if (!validateFieldLabels(getAdvancedRandomRegressorCount(), getSharedModelRandomRegressorLabels())) {
+            throw new Exception("Fatal model error: number of RANDOM regressors does not equal RANDOM labels");
+        }
+        
+        if (!validateFieldLabels(getAdvancedScaleRegressorCount(), getSharedModelScaleRegressorFields())) {
+            throw new Exception("Fatal model error: number of SCALE regressors does not equal SCALE fields");
+        }
+        if (!validateFieldLabels(getAdvancedScaleRegressorCount(), getSharedModelScaleRegressorLabels())) {
+            throw new Exception("Fatal model error: number of SCALE regressors does not equal SCALE labels");
+        }
+        
+        /**
+         *  Validating Stage 1 Decomposition Variables
+         */
+        if (!validateFieldLabels(getAdvancedDecomposeMeanRegressorCount(), getSharedModelDecomposeMeanRegressorFields())) {
+            throw new Exception("Fatal variance decomposition error: number of MEAN regressors does not equal MEAN fields");
+        }
+        if (!validateFieldLabels(getAdvancedDecomposeMeanRegressorCount(), getSharedModelDecomposeMeanRegressorLabels())) {
+            throw new Exception("Fatal variance decomposition error: number of MEAN regressors does not equal MEAN labels");
+        }
+        
+        if (!validateFieldLabels(getAdvancedDecomposeRandomRegressorCount(), getSharedModelDecomposeRandomRegressorFields())) {
+            throw new Exception("Fatal variance decomposition error: number of RANDOM regressors does not equal RANDOM fields");
+        }
+        if (!validateFieldLabels(getAdvancedDecomposeRandomRegressorCount(), getSharedModelDecomposeRandomRegressorLabels())) {
+            throw new Exception("Fatal variance decomposition error: number of RANDOM regressors does not equal RANDOM labels");
+        }
+        
+        if (!validateFieldLabels(getAdvancedDecomposeScaleRegressorCount(), getSharedModelDecomposeScaleRegressorFields())) {
+            throw new Exception("Fatal variance decomposition error: number of SCALE regressors does not equal SCALE fields");
+        }
+        if (!validateFieldLabels(getAdvancedDecomposeScaleRegressorCount(), getSharedModelDecomposeScaleRegressorLabels())) {
+            throw new Exception("Fatal variance decomposition error: number of SCALE regressors does not equal SCALE labels");
+        }
+        
+        /**
+         * Validating Stage 2 (Optional)
+         */
+        if(stageTwoModelType != STAGE_TWO_MODEL_TYPE_NONE){
+            if (!validateFieldLabels(getAdvancedStageTwoFixedRegressorCount(), getStageTwoFixedFields())) {
+                throw new Exception("Fatal stage two error: number of FIXED regressors does not equal FIXED fields");
+            }        
+            if (!validateFieldLabels(getAdvancedStageTwoFixedRegressorCount(), getStageTwoFixedLabels())) {
+                throw new Exception("Fatal stage two error: number of FIXED regressors does not equal FIXED labels");
+            }   
+            
+            if (!validateFieldLabels(getAdvancedStageTwoThetaRegressorCount(), getStageTwoThetaFields())) {
+                throw new Exception("Fatal stage two error: number of THETA regressors does not equal THETA fields");
+            }        
+            if (!validateFieldLabels(getAdvancedStageTwoThetaRegressorCount(), getStageTwoThetaLabels())) {
+                throw new Exception("Fatal stage two error: number of THETA regressors does not equal THETA labels");
+            }   
+            
+            if (!validateFieldLabels(getAdvancedStageTwoOmegaRegressorCount(), getStageTwoOmegaFields())) {
+                throw new Exception("Fatal stage two error: number of OMEGA regressors does not equal OMEGA fields");
+            }        
+            if (!validateFieldLabels(getAdvancedStageTwoOmegaRegressorCount(), getStageTwoOmegaLabels())) {
+                throw new Exception("Fatal stage two error: number of OMEGA regressors does not equal OMEGA labels");
+            }
+            
+            /**
+             *  Additional step here because the Interaction field can be -1.
+             */
+            if (!isAdvancedStageTwoInteractionIncluded() && !validateFieldLabels("0", getStageTwoInteractionFields())) {
+                throw new Exception("Fatal stage two error: number of INTERACTION regressors does not equal INTERACTION fields");
+            }        
+            if (!isAdvancedStageTwoInteractionIncluded() && !validateFieldLabels("0", getStageTwoInteractionLabels())) {
+                throw new Exception("Fatal stage two error: number of INTERACTION regressors does not equal INTERACTION labels");
+            }
+            
+            if (isAdvancedStageTwoInteractionIncluded() && !validateFieldLabels(getAdvancedStageTwoInteractionRegressorCount(), getStageTwoInteractionFields())) {
+                throw new Exception("Fatal stage two error: number of INTERACTION regressors does not equal INTERACTION fields");
+            }        
+            if (isAdvancedStageTwoInteractionIncluded() && !validateFieldLabels(getAdvancedStageTwoInteractionRegressorCount(), getStageTwoInteractionLabels())) {
+                throw new Exception("Fatal stage two error: number of INTERACTION regressors does not equal INTERACTION labels");
+            }
+        }
+    }
+    
+    /**
+     * validates setters in library
+     * @param validationMessage line name to throw in Exception message
+     * @param lineMessage line number to throw in Exception message
+     * @param validationString String variable that will be tested as Integer
+     * @param minValue minimum value expressed as integer
+     * @param maxValue maximum value expressed as integer
+     * @param isInteger is validationString an integer (TRUE) or a string
+     * (FALSE)
+     * @return only returns true, otherwise throws Exception
+     * @throws Exception inherited exception
+     */
+    private boolean setValidator(String validationMessage, String lineMessage,
+            String validationString, int minValue, int maxValue, boolean isInteger) throws Exception {
+        if (isInteger) {
+            try {
+                if (Integer.parseInt(validationString) >= minValue && Integer.parseInt(validationString) <= maxValue) {
+                    return Boolean.TRUE;
+                } else {
+                    throw new Exception("Invalid " + validationMessage + " in .dat file specified, line " + lineMessage);
+                }
+            } catch (NumberFormatException nfe) {
+                SystemLogger.LOGGER.log(Level.SEVERE, nfe.toString()+ "{0}", SystemLogger.getLineNum());
+                throw new Exception("Invalid character for " + validationMessage + " in .dat file specified, line " + lineMessage);
+            }
+        } else {
+            if (validationString.length() >= minValue && validationString.length() <= maxValue) {
+                return Boolean.TRUE;
+            } else {
+                throw new Exception("Invalid string for " + validationMessage + " in .dat file specified, line " + lineMessage);
+            }
+        }
+    }
+
+    /**
+     * inherits parameters of setValidator, loops until all true, otherwise
+     * throws Exception
+     *
+     * @param validationMessage
+     * @param lineMessage
+     * @param validationString String array to test
+     * @param minValue
+     * @param maxValue #param isInteger
+     * @return returns true
+     * @throws Exception inherited Exception from setValidator
+     */
+    private boolean loopSetValidator(String validationMessage, String lineMessage,
+            String[] validationString, int minValue, int maxValue, boolean isInteger) throws Exception {
+        int loopCounter = 0;
+        for (String testString : validationString) {
+            if (!setValidator(validationMessage, lineMessage, testString, minValue, maxValue, isInteger)) {
+                return Boolean.FALSE;
+            } else {
+                loopCounter++;
+            }
+        }
+        if (validationString.length == loopCounter) {
+            return Boolean.TRUE;
+        } else {
+            throw new Exception("Inconsistent spacing on line " + lineMessage + " for " + validationMessage);
+        }
+    }
+
 
     public int getStageOneOutcome() {
         return stageOneOutcome;
@@ -352,7 +655,11 @@ public class MixLibrary implements Serializable {
     }
 
     public void setSharedModelTitle(String sharedModelTitle) {
-        this.sharedModelTitle = sharedModelTitle;
+        if (sharedModelTitle.length() > 72) {
+            this.sharedModelTitle = sharedModelTitle.substring(0, 71);
+        } else {
+            this.sharedModelTitle = sharedModelTitle;
+        }
     }
 
     public String getSharedModelSubtitle() {
@@ -360,15 +667,23 @@ public class MixLibrary implements Serializable {
     }
 
     public void setSharedModelSubtitle(String sharedModelSubtitle) {
-        this.sharedModelSubtitle = sharedModelSubtitle;
+        if (sharedModelSubtitle.length() > 72) {
+            this.sharedModelSubtitle = sharedModelSubtitle.substring(0, 71);
+        } else {
+            this.sharedModelSubtitle = sharedModelSubtitle;
+        }
     }
 
     public String getSharedDataFilename() {
         return sharedDataFilename;
     }
 
-    public void setSharedDataFilename(String sharedDataFilename) {
-        this.sharedDataFilename = sharedDataFilename;
+    public void setSharedDataFilename(String sharedDataFilename) throws Exception {
+        if (sharedDataFilename.endsWith(".dat") || sharedDataFilename.endsWith(".csv")) {
+            this.sharedDataFilename = sharedDataFilename.replace(" ", "_");
+        } else {
+            throw new Exception("Data file name is not a valid .dat or .csv file");
+        }
     }
 
     public String getSharedOutputPrefix() {
@@ -376,15 +691,23 @@ public class MixLibrary implements Serializable {
     }
 
     public void setSharedOutputPrefix(String sharedOutputPrefix) {
-        this.sharedOutputPrefix = sharedOutputPrefix;
+        if (sharedOutputPrefix.length() > 72) {
+            this.sharedOutputPrefix = sharedOutputPrefix.substring(0, 200).replace(" ", "_");
+        } else {
+            this.sharedOutputPrefix = sharedOutputPrefix.replace(" ", "_");;
+        }
+        this.sharedOutputPrefix = sharedOutputPrefix.replace(" ", "_");;
     }
 
     public String[] getSharedAdvancedOptions() {
+        if(sharedAdvancedOptions == null){
+            setSharedAdvancedOptions();
+        }
         return sharedAdvancedOptions;
     }
 
     public void setSharedAdvancedOptions() {
-        this.sharedAdvancedOptions = advancedVariableBuild(); // = sharedAdvancedOptions;
+        this.sharedAdvancedOptions = advancedVariableBuild(1); // = sharedAdvancedOptions;
     }
 
     public String[] getSharedIdAndStageOneOutcomeFields() {
@@ -500,11 +823,15 @@ public class MixLibrary implements Serializable {
     }
 
     public String[] getMixorModelCovarianceThresholdParameters() {
+        if(mixorModelCovarianceThresholdParameters == null){
+            setMixorModelCovarianceThresholdParameters();
+        }
         return mixorModelCovarianceThresholdParameters;
     }
 
-    public void setMixorModelCovarianceThresholdParameters(String[] mixorModelCovarianceThresholdParameters) {
-        this.mixorModelCovarianceThresholdParameters = mixorModelCovarianceThresholdParameters;
+    public void setMixorModelCovarianceThresholdParameters() {
+        this.mixorModelCovarianceThresholdParameters = 
+                new String[]{getMixorModelCovarianceParameter(),getMixorModelThresholdParameter()};
     }
 
     public String[] getMixorModelStageOneOutcomeLevels() {
@@ -516,11 +843,14 @@ public class MixLibrary implements Serializable {
     }
 
     public String[] getStageTwoRegressorCounts() {
+        if(stageTwoRegressorCounts == null){
+            setStageTwoRegressorCounts();
+        }
         return stageTwoRegressorCounts;
     }
 
-    public void setStageTwoRegressorCounts(String[] stageTwoRegressorCounts) {
-        this.stageTwoRegressorCounts = stageTwoRegressorCounts;
+    public void setStageTwoRegressorCounts() {
+        this.stageTwoRegressorCounts = advancedVariableBuild(2);
     }
 
     public String getStageTwoOutcomeField() {
@@ -607,8 +937,10 @@ public class MixLibrary implements Serializable {
         return advancedVariableCount;
     }
 
-    public void setAdvancedVariableCount(String advancedVariableCount) {
-        this.advancedVariableCount = advancedVariableCount;
+    public void setAdvancedVariableCount(String advancedVariableCount) throws Exception {
+        if (setValidator("number of variables", "5", advancedVariableCount, 2, 255, MIX_INTEGER)) {
+            this.advancedVariableCount = advancedVariableCount;
+        }
     }
 
     public String getAdvancedMeanRegressorCount() {
@@ -841,6 +1173,54 @@ public class MixLibrary implements Serializable {
 
     public void setAdvancedMultipleDataFiles(String advancedMultipleDataFiles) {
         this.advancedMultipleDataFiles = advancedMultipleDataFiles;
+    }
+
+    public String getAdvancedStageTwoFixedRegressorCount() {
+        return advancedStageTwoFixedRegressorCount;
+    }
+
+    public void setAdvancedStageTwoFixedRegressorCount(String advancedStageTwoFixedRegressorCount) {
+        this.advancedStageTwoFixedRegressorCount = advancedStageTwoFixedRegressorCount;
+    }
+
+    public String getAdvancedStageTwoThetaRegressorCount() {
+        return advancedStageTwoThetaRegressorCount;
+    }
+
+    public void setAdvancedStageTwoThetaRegressorCount(String advancedStageTwoThetaRegressorCount) {
+        this.advancedStageTwoThetaRegressorCount = advancedStageTwoThetaRegressorCount;
+    }
+
+    public String getAdvancedStageTwoOmegaRegressorCount() {
+        return advancedStageTwoOmegaRegressorCount;
+    }
+
+    public void setAdvancedStageTwoOmegaRegressorCount(String advancedStageTwoOmegaRegressorCount) {
+        this.advancedStageTwoOmegaRegressorCount = advancedStageTwoOmegaRegressorCount;
+    }
+
+    public String getAdvancedStageTwoInteractionRegressorCount() {
+        return advancedStageTwoInteractionRegressorCount;
+    }
+
+    public void setAdvancedStageTwoInteractionRegressorCount(String advancedStageTwoInteractionRegressorCount) {
+        this.advancedStageTwoInteractionRegressorCount = advancedStageTwoInteractionRegressorCount;
+    }
+
+    public String getMixorModelCovarianceParameter() {
+        return mixorModelCovarianceParameter;
+    }
+
+    public void setMixorModelCovarianceParameter(String mixorModelCovarianceParameter) {
+        this.mixorModelCovarianceParameter = mixorModelCovarianceParameter;
+    }
+
+    public String getMixorModelThresholdParameter() {
+        return mixorModelThresholdParameter;
+    }
+
+    public void setMixorModelThresholdParameter(String mixorModelThresholdParameter) {
+        this.mixorModelThresholdParameter = mixorModelThresholdParameter;
     }
     
     
