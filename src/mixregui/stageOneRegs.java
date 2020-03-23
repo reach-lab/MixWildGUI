@@ -46,17 +46,11 @@ public class stageOneRegs extends javax.swing.JFrame {
     // declare required jFrame
     // NewModel newModel2;
     stageTwoRegs stageTwo;
-
     static String[] variableNamesList;
-
     public static DefaultListModel<String> varList;
-
     static DefaultListModel<String> levelOneList;
-
     static DefaultListModel<String> levelTwoList;
-
     public static boolean isSubmitClicked = false;
-
     final ImageIcon icon;
 
     /**
@@ -237,9 +231,9 @@ public class stageOneRegs extends javax.swing.JFrame {
         //update regressors on stage one regressors window
         // mixregStageOne.updateRegressors(getSelectedLevelOneVars(), getSelectedLevelTwoVars());
         //mixregStageOne.updateLevelOneRegGrid(levelOneList);
-        mixregGUI.mxr.updateLevelTwoGrid_version2(levelTwoList);
-        mixregGUI.mxr.updateLevelOneGrid_version2(levelOneList);
-
+        mixregGUI.mxr.updateStageOneLevelOneGrid(levelOneList);
+        mixregGUI.mxr.updateStageOneLevelTwoGrid(levelTwoList);
+        
         this.dispose();
     }//GEN-LAST:event_stageOneSubmitButtonActionPerformed
 

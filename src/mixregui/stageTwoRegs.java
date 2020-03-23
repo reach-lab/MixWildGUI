@@ -37,20 +37,17 @@ import static mixregui.stageOneRegs.variableNamesList;
 
 /**
  * Use this class to add stage two regressors in the model
+ *
  * @author adityaponnada
  */
 public class stageTwoRegs extends javax.swing.JFrame {
 
     //setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     stageOneRegs stageOne;
-    //NewModel newModel2;
-    //mixregGUI mixregGUIStageTwo;
-
     static DefaultListModel<String> stageTwoListModel;
+    static DefaultListModel<String> stageTwoLevelOne;
     static DefaultListModel<String> stageTwoLevelTwo;
-
     static boolean isStageTwoSubmitClicked = false;
-
     final ImageIcon icon;
 
     /**
@@ -69,17 +66,19 @@ public class stageTwoRegs extends javax.swing.JFrame {
 
         if (!isStageTwoSubmitClicked) {
             stageTwoListModel = new DefaultListModel<String>();
+            stageTwoLevelOne = new DefaultListModel<String>();
             stageTwoLevelTwo = new DefaultListModel<String>();
 
         } else {
             StageTwoAllVariables.setModel(stageTwoListModel);
+            StageTwoLevelOneVariables.setModel(stageTwoLevelOne);
             StageTwoLevelTwoVariables.setModel(stageTwoLevelTwo);
 
         }
-        
+
         StageTwoAllVariables.setToolTipText("List of all available variables");
         jLabel1.setToolTipText("List of all available variables");
-        jLabel2.setToolTipText("Variables consistent within individuals, such as demographics"); 
+        jLabel2.setToolTipText("Variables consistent within individuals, such as demographics");
         StageTwoLevelTwoVariables.setToolTipText("Variables consistent within individuals, such as demographics");
 
         stageTwoSubmitButton.setEnabled(false);
@@ -98,8 +97,8 @@ public class stageTwoRegs extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        stageTwoAddButton = new javax.swing.JButton();
-        stageTwoRemoveButton = new javax.swing.JButton();
+        stageTwoLevelTwoAddButton = new javax.swing.JButton();
+        stageTwoLevelTwoRemoveButton = new javax.swing.JButton();
         stageTwoResetButton = new javax.swing.JButton();
         stageTwoSubmitButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -109,32 +108,39 @@ public class stageTwoRegs extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         stageTwoCancel = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        StageTwoLevelOneVariables = new javax.swing.JList<>();
+        jLabel4 = new javax.swing.JLabel();
+        stageTwoLevelOneAddButton = new javax.swing.JButton();
+        stageTwoLevelOneRemoveButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Add Stage 2 regressors");
+        setMinimumSize(new java.awt.Dimension(600, 510));
+        setPreferredSize(new java.awt.Dimension(600, 540));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Variables");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
         jLabel2.setText("Level 2 (Time Invariant)");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 230, -1, -1));
 
-        stageTwoAddButton.setText("Add");
-        stageTwoAddButton.addActionListener(new java.awt.event.ActionListener() {
+        stageTwoLevelTwoAddButton.setText("Add");
+        stageTwoLevelTwoAddButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                stageTwoAddButtonActionPerformed(evt);
+                stageTwoLevelTwoAddButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(stageTwoAddButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(226, 85, 89, -1));
+        getContentPane().add(stageTwoLevelTwoAddButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, 89, -1));
 
-        stageTwoRemoveButton.setText("Remove");
-        stageTwoRemoveButton.addActionListener(new java.awt.event.ActionListener() {
+        stageTwoLevelTwoRemoveButton.setText("Remove");
+        stageTwoLevelTwoRemoveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                stageTwoRemoveButtonActionPerformed(evt);
+                stageTwoLevelTwoRemoveButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(stageTwoRemoveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(226, 120, 89, -1));
+        getContentPane().add(stageTwoLevelTwoRemoveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, 89, -1));
 
         stageTwoResetButton.setText("Reset");
         stageTwoResetButton.addActionListener(new java.awt.event.ActionListener() {
@@ -158,7 +164,7 @@ public class stageTwoRegs extends javax.swing.JFrame {
 
         jScrollPane2.setViewportView(StageTwoLevelTwoVariables);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(342, 55, 162, 177));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 257, 220, 170));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/MixWildLogoTiny.png"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 460, -1, 36));
@@ -177,7 +183,30 @@ public class stageTwoRegs extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(272, 155, 41, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 350, 41, -1));
+
+        jScrollPane3.setViewportView(StageTwoLevelOneVariables);
+
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 220, 160));
+
+        jLabel4.setText("Level 1 (Time Variant)");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, -1, -1));
+
+        stageTwoLevelOneAddButton.setText("Add");
+        stageTwoLevelOneAddButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stageTwoLevelOneAddButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(stageTwoLevelOneAddButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 89, -1));
+
+        stageTwoLevelOneRemoveButton.setText("Remove");
+        stageTwoLevelOneRemoveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stageTwoLevelOneRemoveButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(stageTwoLevelOneRemoveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 89, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -189,14 +218,16 @@ public class stageTwoRegs extends javax.swing.JFrame {
 
         //mixregGUIStageTwo = newModel2.getMixReg();
         // mixregGUIStageTwo.updateStageTwoGrid_version2(stageTwoLevelTwo);
-
         //mixregGUIStageTwo.setSele
-        mixregGUI.mxr.updateStageTwoGrid_tab2(stageTwoLevelTwo);
+        System.out.println("coolman1: " + stageTwoLevelOne);
+        System.out.println("coolman2: " + stageTwoLevelTwo);
 
+        mixregGUI.mxr.updateStageTwoLevelTwoGrid(stageTwoLevelTwo);
+        mixregGUI.mxr.updateStageTwoLevelOneGrid(stageTwoLevelOne);
         this.dispose();
     }//GEN-LAST:event_stageTwoSubmitButtonActionPerformed
 
-    private void stageTwoAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoAddButtonActionPerformed
+    private void stageTwoLevelTwoAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoLevelTwoAddButtonActionPerformed
 
         //Add items to the model and then copy it to the UI list
         if (!StageTwoAllVariables.isSelectionEmpty()) {
@@ -216,9 +247,9 @@ public class stageTwoRegs extends javax.swing.JFrame {
         }
 
 
-    }//GEN-LAST:event_stageTwoAddButtonActionPerformed
+    }//GEN-LAST:event_stageTwoLevelTwoAddButtonActionPerformed
 
-    private void stageTwoRemoveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoRemoveButtonActionPerformed
+    private void stageTwoLevelTwoRemoveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoLevelTwoRemoveButtonActionPerformed
 
         //Remove an item from the model
         if (!StageTwoLevelTwoVariables.isSelectionEmpty()) {
@@ -237,7 +268,7 @@ public class stageTwoRegs extends javax.swing.JFrame {
 
         }
 
-    }//GEN-LAST:event_stageTwoRemoveButtonActionPerformed
+    }//GEN-LAST:event_stageTwoLevelTwoRemoveButtonActionPerformed
 
     private void stageTwoResetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoResetButtonActionPerformed
         stageTwoLevelTwo.clear();
@@ -250,9 +281,44 @@ public class stageTwoRegs extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         JOptionPane.showMessageDialog(null, "Please select additional covariates to include in the stage-two model. "
-                + System.lineSeparator()+
-                "Note: If you wish to re-run the second stage model without running stage 1, you will only be able to remove regressors");
+                + System.lineSeparator()
+                + "Note: If you wish to re-run the second stage model without running stage 1, you will only be able to remove regressors");
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void stageTwoLevelOneAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoLevelOneAddButtonActionPerformed
+        //Add items to the model and then copy it to the UI list
+        if (!StageTwoAllVariables.isSelectionEmpty()) {
+
+            stageTwoLevelOne.addElement(StageTwoAllVariables.getSelectedValue());
+            StageTwoLevelOneVariables.setModel(stageTwoLevelOne);
+            stageTwoListModel.remove(StageTwoAllVariables.getSelectedIndex());
+
+            stageTwoSubmitButton.setEnabled(true);
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a variable for stage two.", "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+        }
+    }//GEN-LAST:event_stageTwoLevelOneAddButtonActionPerformed
+
+    private void stageTwoLevelOneRemoveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoLevelOneRemoveButtonActionPerformed
+
+        //Remove an item from the model
+        if (!StageTwoLevelOneVariables.isSelectionEmpty()) {
+            stageTwoSubmitButton.setEnabled(true);
+
+            if (!stageTwoListModel.contains(StageTwoLevelOneVariables.getSelectedValue())) {
+
+                stageTwoListModel.addElement(StageTwoLevelOneVariables.getSelectedValue());
+
+            }
+
+            stageTwoLevelOne.remove(StageTwoLevelOneVariables.getSelectedIndex());
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a variable from stage two.", "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+
+        }
+    }//GEN-LAST:event_stageTwoLevelOneRemoveButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -291,16 +357,21 @@ public class stageTwoRegs extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JList<String> StageTwoAllVariables;
+    private javax.swing.JList<String> StageTwoLevelOneVariables;
     private javax.swing.JList<String> StageTwoLevelTwoVariables;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JButton stageTwoAddButton;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JButton stageTwoCancel;
-    private javax.swing.JButton stageTwoRemoveButton;
+    private javax.swing.JButton stageTwoLevelOneAddButton;
+    private javax.swing.JButton stageTwoLevelOneRemoveButton;
+    private javax.swing.JButton stageTwoLevelTwoAddButton;
+    private javax.swing.JButton stageTwoLevelTwoRemoveButton;
     private javax.swing.JButton stageTwoResetButton;
     private javax.swing.JButton stageTwoSubmitButton;
     // End of variables declaration//GEN-END:variables
@@ -340,16 +411,16 @@ public class stageTwoRegs extends javax.swing.JFrame {
         StageTwoAllVariables.setModel(stageTwoListModel);
 
     }
-    
-    public javax.swing.JList<String> getStageTwoAllVariables(){
+
+    public javax.swing.JList<String> getStageTwoAllVariables() {
         return StageTwoAllVariables;
     }
-    
-    public javax.swing.JList<String> getStageTwoLevelTwoVariables(){
+
+    public javax.swing.JList<String> getStageTwoLevelTwoVariables() {
         return StageTwoLevelTwoVariables;
     }
-    
-    public void setEnabledStageTwoSubmitButton(boolean turnon){
+
+    public void setEnabledStageTwoSubmitButton(boolean turnon) {
         stageTwoSubmitButton.setEnabled(turnon);
     }
 
