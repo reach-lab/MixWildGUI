@@ -32,6 +32,7 @@ import java.net.URL;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import def_lib.DefinitionHelper;
+import def_lib.MixLibrary;
 import def_lib.ModelBuilder;
 import def_lib.SuperUserMenu;
 import java.awt.BorderLayout;
@@ -107,7 +108,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     boolean isStageOneSubmitted;
     boolean isStageTwoSubmitted;
 
-    public static DefinitionHelper defFile;
+//    public static DefinitionHelper defFile;
+    public static MixLibrary defFile;
     public static ModelBuilder modelBuilder;
 
     public static MixRegGuiStates MXRStates;
@@ -192,12 +194,12 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         return stageTwoMultiLevel.isSelected();
     }
 
-    public boolean getContinuousRadio() {
-        return continuousRadio.isSelected();
+    public boolean getStageTwoContinuousRadio() {
+        return stageTwoContinuousRadio.isSelected();
     }
 
-    public boolean getDichotomousRadio() {
-        return dichotomousRadio.isSelected();
+    public boolean getStageTwoDichotomousRadio() {
+        return stageTwoDichotomousRadio.isSelected();
     }
 
     public boolean getCountRadio() {
@@ -217,11 +219,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         boolean selection = true;
 
-        if (continuousRadio.isSelected() == true) {
+        if (stageTwoContinuousRadio.isSelected() == true) {
 
             selection = true;
             System.out.println("Outcome selected at Newmodel: " + String.valueOf(selection));
-        } else if (dichotomousRadio.isSelected() == true) {
+        } else if (stageTwoDichotomousRadio.isSelected() == true) {
 
             selection = false;
             System.out.println("Outcome selected at Newmodel: " + String.valueOf(selection));
@@ -256,7 +258,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         return outComeBoolean;
     }
 
-    public DefinitionHelper getDefFile() {
+    public MixLibrary getDefFile() {
 
         return defFile;
     }
@@ -342,10 +344,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         String outcomeTypeText = "";
 
-        if (continuousRadio.isSelected()) {
+        if (stageTwoContinuousRadio.isSelected()) {
 
             outcomeTypeText = "Continuous";
-        } else if (dichotomousRadio.isSelected()) {
+        } else if (stageTwoDichotomousRadio.isSelected()) {
 
             outcomeTypeText = "Dichotomous";
         } else if (includeStageTwoNo.isSelected()) {
@@ -563,7 +565,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         }
 
         try {
-            if (defFile.getAdvancedRandomScaleNotIncluded() == "1") {
+            if (defFile.getAdvancedUseRandomScale() == "1") {
                 NoAssociationRadio.setEnabled(false);
                 LinearAssociationRadio.setEnabled(false);
                 QuadraticAssociationRadio.setEnabled(false);
@@ -609,8 +611,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageTwoMultiLevel.setVisible(turnOn);
 
         stageTwoOutcomeTypeLabel.setVisible(turnOn);
-        continuousRadio.setVisible(turnOn);
-        dichotomousRadio.setVisible(turnOn);
+        stageTwoContinuousRadio.setVisible(turnOn);
+        stageTwoDichotomousRadio.setVisible(turnOn);
         countRadio.setVisible(turnOn);
         multinomialRadio.setVisible(turnOn);
 
@@ -727,8 +729,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         moreThanOneRLERadio = new javax.swing.JRadioButton();
         randomScaleViewLabel = new javax.swing.JLabel();
         stageTwoOutcomeTypeLabel = new javax.swing.JLabel();
-        continuousRadio = new javax.swing.JRadioButton();
-        dichotomousRadio = new javax.swing.JRadioButton();
+        stageTwoContinuousRadio = new javax.swing.JRadioButton();
+        stageTwoDichotomousRadio = new javax.swing.JRadioButton();
         missingValueAbsent = new javax.swing.JRadioButton();
         missingValuePresent = new javax.swing.JRadioButton();
         missingViewLabel = new javax.swing.JLabel();
@@ -956,19 +958,19 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         stageTwoOutcomeTypeLabel.setText("Stage 2 outcome:");
 
-        buttonGroup3.add(continuousRadio);
-        continuousRadio.setText("Continuous");
-        continuousRadio.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup3.add(stageTwoContinuousRadio);
+        stageTwoContinuousRadio.setText("Continuous");
+        stageTwoContinuousRadio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                continuousRadioActionPerformed(evt);
+                stageTwoContinuousRadioActionPerformed(evt);
             }
         });
 
-        buttonGroup3.add(dichotomousRadio);
-        dichotomousRadio.setText("Dichotomous/Ordinal");
-        dichotomousRadio.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup3.add(stageTwoDichotomousRadio);
+        stageTwoDichotomousRadio.setText("Dichotomous/Ordinal");
+        stageTwoDichotomousRadio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dichotomousRadioActionPerformed(evt);
+                stageTwoDichotomousRadioActionPerformed(evt);
             }
         });
 
@@ -1050,9 +1052,19 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         stageOneOutcomeGroup.add(stageOneDichotomousRadio);
         stageOneDichotomousRadio.setText("Dichotomous");
+        stageOneDichotomousRadio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stageOneDichotomousRadioActionPerformed(evt);
+            }
+        });
 
         stageOneOutcomeGroup.add(stageOneOrdinalRadio);
         stageOneOrdinalRadio.setText("Ordinal");
+        stageOneOrdinalRadio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stageOneOrdinalRadioActionPerformed(evt);
+            }
+        });
 
         randomScaleSelectionGroup.add(randomScaleSelectionYes);
         randomScaleSelectionYes.setText("Yes");
@@ -1090,6 +1102,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         stageTwoLevelGroup.add(stageTwoMultiLevel);
         stageTwoMultiLevel.setText("Multilevel");
+        stageTwoMultiLevel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stageTwoMultiLevelActionPerformed(evt);
+            }
+        });
 
         buttonGroup3.add(multinomialRadio);
         multinomialRadio.setText("Multinomial");
@@ -1187,9 +1204,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                                     .addGroup(jPanel13Layout.createSequentialGroup()
                                         .addComponent(stageTwoOutcomeTypeLabel)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(continuousRadio, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(stageTwoContinuousRadio, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(dichotomousRadio)
+                                        .addComponent(stageTwoDichotomousRadio)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(countRadio)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1327,8 +1344,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                             .addComponent(stageTwoMultiLevel))
                         .addGap(4, 4, 4)
                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(dichotomousRadio)
-                            .addComponent(continuousRadio)
+                            .addComponent(stageTwoDichotomousRadio)
+                            .addComponent(stageTwoContinuousRadio)
                             .addComponent(multinomialRadio)
                             .addComponent(stageTwoOutcomeTypeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(countRadio)))
@@ -2197,7 +2214,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             for (int x = 0; x < ColumnsCustom.size(); x++) {
                 if (UniqueList.contains(ColumnsCustom.get(x))) {
                     //do nothing
-                } else if (ColumnsCustom.get(x).equals(defFile.getAdvancedMissingValue()) && !ColumnsCustom.get(x).equals("0")) { //compare if the category is a missing value, then don't consider it as a category
+                } else if (ColumnsCustom.get(x).equals(defFile.getAdvancedMissingValueCode()) && !ColumnsCustom.get(x).equals("0")) { //compare if the category is a missing value, then don't consider it as a category
                     //do nothing
 
                 } else {
@@ -2530,7 +2547,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         updateGuiView(MXRStates);
     }//GEN-LAST:event_missingValueAbsentActionPerformed
 
-    private void dichotomousRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dichotomousRadioActionPerformed
+    private void stageTwoDichotomousRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoDichotomousRadioActionPerformed
         // TODO add your handling code here:
         /*if (includeStageTwoNo.isSelected()){
             //Do nothing
@@ -2541,9 +2558,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             String seedVal = generateSeed();
             seedTextBox.setText(seedVal);
         }*/
-    }//GEN-LAST:event_dichotomousRadioActionPerformed
+    }//GEN-LAST:event_stageTwoDichotomousRadioActionPerformed
 
-    private void continuousRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuousRadioActionPerformed
+    private void stageTwoContinuousRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoContinuousRadioActionPerformed
         // TODO add your handling code here:
         /*if (includeStageTwoNo.isSelected()){
             //Do nothing
@@ -2555,7 +2572,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             String seedVal = generateSeed();
             seedTextBox.setText(seedVal);
         }*/
-    }//GEN-LAST:event_continuousRadioActionPerformed
+    }//GEN-LAST:event_stageTwoContinuousRadioActionPerformed
 
     private void moreThanOneRLERadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moreThanOneRLERadioActionPerformed
         // TODO add your handling code here:
@@ -2746,6 +2763,18 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         updateGuiView(MXRStates);
     }//GEN-LAST:event_guiStatesLoadButtonModalConfigActionPerformed
 
+    private void stageOneDichotomousRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneDichotomousRadioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stageOneDichotomousRadioActionPerformed
+
+    private void stageOneOrdinalRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneOrdinalRadioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stageOneOrdinalRadioActionPerformed
+
+    private void stageTwoMultiLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoMultiLevelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stageTwoMultiLevelActionPerformed
+
     // **********************update********************
     private void updateGuiView(MixRegGuiStates mxrStates) {
         // this method is to update Gui View with Gui state data saved in MixRegGuiStates
@@ -2796,8 +2825,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             titleField.setEnabled(true);
             oneRLERadio.setEnabled(true);
             moreThanOneRLERadio.setEnabled(true);
-            continuousRadio.setEnabled(true);
-            dichotomousRadio.setEnabled(true);
+            stageTwoContinuousRadio.setEnabled(true);
+            stageTwoDichotomousRadio.setEnabled(true);
             newModelSubmit.setEnabled(true);
             missingValuePresent.setEnabled(true);
             missingValueAbsent.setEnabled(true);
@@ -2867,9 +2896,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         }
 
         if (mxrStates.continuousRadio) {
-            continuousRadio.setSelected(true);
+            stageTwoContinuousRadio.setSelected(true);
         } else if (mxrStates.dichotomousRadio) {
-            dichotomousRadio.setSelected(true);
+            stageTwoDichotomousRadio.setSelected(true);
         } else if (mxrStates.countRadio) {
             countRadio.setSelected(true);
         } else if (mxrStates.multinomialRadio) {
@@ -2894,8 +2923,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             seedTextBox.setText("0");
             stageTwoSingleLevel.setVisible(false);
             stageTwoMultiLevel.setVisible(false);
-            continuousRadio.setVisible(false);
-            dichotomousRadio.setVisible(false);
+            stageTwoContinuousRadio.setVisible(false);
+            stageTwoDichotomousRadio.setVisible(false);
             countRadio.setVisible(false);
             multinomialRadio.setVisible(false);
             stageTwoModelTypeLabel.setVisible(false);
@@ -2909,8 +2938,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 //            seedTextBox.setText(seedVal);
             stageTwoSingleLevel.setVisible(true);
             stageTwoMultiLevel.setVisible(true);
-            continuousRadio.setVisible(true);
-            dichotomousRadio.setVisible(true);
+            stageTwoContinuousRadio.setVisible(true);
+            stageTwoDichotomousRadio.setVisible(true);
             countRadio.setVisible(true);
             multinomialRadio.setVisible(true);
             stageTwoModelTypeLabel.setVisible(true);
@@ -3051,11 +3080,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.ButtonGroup buttonGroup4;
-    private javax.swing.JRadioButton continuousRadio;
     private javax.swing.JRadioButton countRadio;
     private javax.swing.JLabel dataFileLabel;
     public static javax.swing.JTable dataTable;
-    private javax.swing.JRadioButton dichotomousRadio;
     private javax.swing.JTextArea equationArea;
     private javax.swing.JButton exampleDataDownload;
     private javax.swing.JButton fileBrowseButton;
@@ -3195,7 +3222,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel stageOneOutcomeViewLabel;
     public static javax.swing.JTextArea stageOneOutput;
     private javax.swing.JTabbedPane stageOneTabs;
+    private javax.swing.JRadioButton stageTwoContinuousRadio;
     private javax.swing.JButton stageTwoDescription;
+    private javax.swing.JRadioButton stageTwoDichotomousRadio;
     private javax.swing.ButtonGroup stageTwoLevelGroup;
     private javax.swing.JPanel stageTwoLevelOnePanel;
     private javax.swing.JPanel stageTwoLevelTwoPanel;
@@ -4865,6 +4894,18 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     }
 
+    public int getStageOneOutcome(){
+        int stageOneOutcome = 1;
+        
+        if (getStageOneContinuousRadio()){
+            stageOneOutcome = 1;
+        } else if (getStageOneDichotomousRadio() || getStageOneOrdinalRadio()){
+            stageOneOutcome = 2;
+        }
+        
+        return stageOneOutcome;
+    }
+    
     public String getStageTwoOutcomePosition() {
         String position;
         int pos;
@@ -5436,7 +5477,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             for (int x = 0; x < ColumnsCustom.size(); x++) {
                 if (UniqueList.contains(ColumnsCustom.get(x))) {
                     //do nothing
-                } else if (ColumnsCustom.get(x).equals(defFile.getAdvancedMissingValue()) && !ColumnsCustom.get(x).equals("0")) { //compare if the category is a missing value, then don't consider it as a category
+                } else if (ColumnsCustom.get(x).equals(defFile.getAdvancedMissingValueCode()) && !ColumnsCustom.get(x).equals("0")) { //compare if the category is a missing value, then don't consider it as a category
                     //do nothing
 
                 } else {
@@ -5496,7 +5537,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             for (int x = 0; x < ColumnsCustom.size(); x++) {
                 if (UniqueList.contains(ColumnsCustom.get(x))) {
                     //do nothing
-                } else if (ColumnsCustom.get(x).equals(defFile.getAdvancedMissingValue()) && !ColumnsCustom.get(x).equals("0")) { //compare if the category is a missing value, then don't consider it as a category
+                } else if (ColumnsCustom.get(x).equals(defFile.getAdvancedMissingValueCode()) && !ColumnsCustom.get(x).equals("0")) { //compare if the category is a missing value, then don't consider it as a category
                     //do nothing
 
                 } else {
@@ -5603,16 +5644,26 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         if (validateFields() == true) {
             System.out.print("condition is true");
             if (oneRLERadio.isSelected() == true) {
-                RLE = 1;
-            } else if (moreThanOneRLERadio.isSelected() == true) {
                 RLE = 2;
+            } else if (moreThanOneRLERadio.isSelected() == true) {
+                RLE = 3;
             }
 
-            defFile = new DefinitionHelper(RLE, !isOutcomeContinous());
-            // modelBuilder = new ModelBuilder(defFile);
+
+//            defFile = new DefinitionHelper(RLE, !isOutcomeContinous());
+//            modelBuilder = new ModelBuilder(defFile);
+            // Include stage 2 or not
+            if (getIncludeStageTwoYes() == true){
+                defFile = new MixLibrary(getStageOneOutcome(), RLE, getRandomScaleSelection(), getStageTwoModelType(), getStageTwoOutcomeType());
+            }
+            if (getIncludeStageTwoNo() == true){
+                defFile = new MixLibrary(getStageOneOutcome(), RLE, getRandomScaleSelection());
+            }
+            
+            
             System.out.println("RLE: " + String.valueOf(RLE));
 
-            defFile.modelSelector(RLE, isOutcomeContinous());
+//            defFile.modelSelector(RLE, isOutcomeContinous());
 
             if (missingValuePresent.isSelected()) {
 
@@ -5620,9 +5671,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
                 try {
                     System.out.println("NEW MODEL | MISSING VALUE = " + newModelMissingValueCode.getText());
-                    defFile.setAdvancedMissingValue(String.valueOf(newModelMissingValueCode.getText()));
+                    defFile.setAdvancedMissingValueCode(String.valueOf(newModelMissingValueCode.getText()));
 
-                    System.out.println("From defHelper | Missing Value: " + defFile.getAdvancedMissingValue());
+                    System.out.println("From defHelper | Missing Value: " + defFile.getAdvancedMissingValueCode());
                 } catch (Exception ex) {
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
@@ -5630,8 +5681,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             } else if (missingValueAbsent.isSelected()) {
                 try {
-                    defFile.setAdvancedMissingValue(String.valueOf(missingValue));
-                    System.out.println("From defHelper | Missing Value: " + defFile.getAdvancedMissingValue());
+                    defFile.setAdvancedMissingValueCode(String.valueOf(missingValue));
+                    System.out.println("From defHelper | Missing Value: " + defFile.getAdvancedMissingValueCode());
                 } catch (Exception ex) {
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
@@ -5662,7 +5713,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
             }
 
-            System.out.println("MODEL SELECTOR: " + String.valueOf(defFile.getSelectedModel()));
+//            System.out.println("MODEL SELECTOR: " + String.valueOf(defFile.getSelectedModel()));
 
             if (filePath.getText().toString().equals("")) {
                 JOptionPane.showMessageDialog(null, "Please upload a .csv file to start your analysis", "Caution!", JOptionPane.INFORMATION_MESSAGE);
@@ -5679,9 +5730,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     System.out.println("Variables are: " + Arrays.toString(variableArray));
                     // save all variables in an array
                     String[] varTemp = getVariableNames();
-                    defFile.setDataFilename(extractDatFilePath());
-                    defFile.setDataVariableCount(String.valueOf(variableArray.length));
-                    System.out.println("From defHelper | Variable count: " + defFile.getDataVariableCount());
+                    defFile.setSharedDataFilename(extractDatFilePath());
+//                    defFile.setDataVariableCount(String.valueOf(variableArray.length));
+//                    System.out.println("From defHelper | Variable count: " + defFile.getDataVariableCount());
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                     SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
@@ -5698,10 +5749,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 System.out.println(String.valueOf(isOutcomeContinous()));
                 System.out.println("IsOutcomeNone: " + String.valueOf(isOutcomeNone()));
                 // set Values in def helper
-                defFile.setModelTitle(getTitle());
-                System.out.println("From defHelper | Title: " + defFile.getModelTitle());
+                defFile.setSharedModelTitle(getTitle());
+                System.out.println("From defHelper | Title: " + defFile.getSharedModelTitle());
                 //defFile.setModelSubtitle(getSubTitle());
-                System.out.println("From defHelper | Subtitle: " + defFile.getModelSubtitle());
+                System.out.println("From defHelper | Subtitle: " + defFile.getSharedModelSubtitle());
 
                 //Check if the randome scale is checked or not
                 if (randomScaleSelectionYes.isSelected()) {
@@ -5712,13 +5763,13 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     // randomScaleCheckBox
                 }
 
-                defFile.setModelSubtitle("Created with MixWILD GUI");
-                System.out.println("From defHelper | Subtitle: " + defFile.getModelSubtitle());
+                defFile.setSharedModelSubtitle("Created with MixWILD GUI");
+                System.out.println("From defHelper | Subtitle: " + defFile.getSharedModelSubtitle());
 
                 //set advanced options defaults and assign values to defition library
                 try {
-                    defFile.setModelFixedInt(String.valueOf(0));
-                    System.out.println("From defHelper | Mean SubModel Checked?: " + defFile.getModelFixedInt());
+                    defFile.setAdvancedMeanIntercept(String.valueOf(0));
+                    System.out.println("From defHelper | Mean SubModel Checked?: " + defFile.getAdvancedMeanIntercept());
                     //tryCount = 1;
 
                 } catch (Exception ex) {
@@ -5729,10 +5780,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
                 try {
-                    defFile.setModelRandomInt(String.valueOf(0));
-                    defFile.setModelBetweenInt(String.valueOf(0));
-                    System.out.println("From defHelper | BS SubModel Checked?: " + defFile.getModelRandomInt());
-                    System.out.println("From defHelper | BS SubModel Checked?: " + defFile.getModelBetweenInt());
+                    defFile.setAdvancedRandomIntercept(String.valueOf(0));
+//                    defFile.setModelBetweenInt(String.valueOf(0));
+                    System.out.println("From defHelper | BS SubModel Checked?: " + defFile.getAdvancedRandomIntercept());
+//                    System.out.println("From defHelper | BS SubModel Checked?: " + defFile.getModelBetweenInt());
 
                 } catch (Exception ex) {
                     SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
@@ -5741,10 +5792,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
                 try {
-                    defFile.setModelScaleInt(String.valueOf(0));
-                    defFile.setModelWithinInt(String.valueOf(0));
-                    System.out.println("From defHelper | WS SubModel Checked?: " + defFile.getModelScaleInt());
-                    System.out.println("From defHelper | WS SubModel Checked?: " + defFile.getModelWithinInt());
+                    defFile.setAdvancedScaleIntercept(String.valueOf(0));
+//                    defFile.setModelWithinInt(String.valueOf(0));
+                    System.out.println("From defHelper | WS SubModel Checked?: " + defFile.getAdvancedScaleIntercept());
+//                    System.out.println("From defHelper | WS SubModel Checked?: " + defFile.getModelWithinInt());
                     //tryCount = 1;
 
                 } catch (Exception ex) {
@@ -5767,8 +5818,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
                 try {
-                    defFile.setAdvancedConvergence(String.valueOf(0.00001));
-                    System.out.println("From defHelper | Convergence: " + defFile.getAdvancedConvergence());
+                    defFile.setAdvancedConvergenceCriteria(String.valueOf(0.00001));
+                    System.out.println("From defHelper | Convergence: " + defFile.getAdvancedConvergenceCriteria());
                     //tryCount = 1;
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
@@ -5790,8 +5841,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
                 try {
-                    defFile.setAdvancedMaxIteration(String.valueOf(200));
-                    System.out.println("From defHelper | Maximum Iteraions: " + defFile.getAdvancedMaxIteration());
+                    defFile.setAdvancedMaxIterations(String.valueOf(200));
+                    System.out.println("From defHelper | Maximum Iteraions: " + defFile.getAdvancedMaxIterations());
                     //tryCount = 1;
 
                 } catch (Exception ex) {
@@ -5802,8 +5853,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
                 try {
-                    defFile.setAdvancedRidge(String.valueOf(0.15));
-                    System.out.println("From defHelper | Ridge: " + defFile.getAdvancedRidge());
+                    defFile.setAdvancedInitialRidge(String.valueOf(0.15));
+                    System.out.println("From defHelper | Ridge: " + defFile.getAdvancedInitialRidge());
                     //tryCount = 1;
 
                 } catch (Exception ex) {
@@ -5814,16 +5865,16 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
                 try {
-                    defFile.setAdvancedCutoffLower("0");
-                    System.out.println("CUT OFF: " + defFile.getAdvancedCutoffLower());
+                    defFile.setAdvancedRandomScaleCutoff("0");
+                    System.out.println("CUT OFF: " + defFile.getAdvancedRandomScaleCutoff());
                 } catch (Exception ex) {
                     SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
                 try {
-                    defFile.setAdvancedDiscardSubjects("0");
-                    System.out.println("DISCARD SUBJECTS: " + defFile.getAdvancedDiscardSubjects());
+                    defFile.setAdvancedDiscardNoVariance("0");
+                    System.out.println("DISCARD SUBJECTS: " + defFile.getAdvancedDiscardNoVariance());
 
                 } catch (Exception ex) {
                     SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
@@ -5832,8 +5883,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
                 try {
-                    defFile.setAdvancedCenterScale(String.valueOf(0));
-                    System.out.println("From defHelper | Scale Regressor: " + defFile.getAdvancedCenterScale());
+                    defFile.setAdvancedCenterScaleVariables(String.valueOf(0));
+                    System.out.println("From defHelper | Scale Regressor: " + defFile.getAdvancedCenterScaleVariables());
 
                 } catch (Exception ex) {
                     SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
@@ -5853,21 +5904,21 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 }
 
                 try {
-                    defFile.setSeedForStageTwo(seedTextBox.getText());
-                    System.out.println("From defHelper | SEED: " + defFile.getSeedForStageTwo());
+                    defFile.setAdvancedResamplingSeed(seedTextBox.getText());
+                    System.out.println("From defHelper | SEED: " + defFile.getAdvancedResamplingSeed());
                 } catch (Exception ex) {
                     SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
 
-                defFile.setOutputPrefix(extractDatFileName() + "_Output");
-                System.out.println("From defHelper | Output file name: " + defFile.getOutputPrefix());
+                defFile.setSharedOutputPrefix(extractDatFileName() + "_Output");
+                System.out.println("From defHelper | Output file name: " + defFile.getSharedOutputPrefix());
 
                 if (randomScaleSelectionYes.isSelected()) {
                     try {
-                        defFile.setAdvancedRandomScaleNotIncluded("0");
-                        System.out.println("IS RANDOM SCALE INCLUDED: " + defFile.getAdvancedRandomScaleNotIncluded());
+                        defFile.setAdvancedUseRandomScale("0");
+                        System.out.println("IS RANDOM SCALE INCLUDED: " + defFile.getAdvancedUseRandomScale());
                     } catch (Exception ex) {
                         SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                         Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -5877,8 +5928,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 } else {
 
                     try {
-                        defFile.setAdvancedRandomScaleNotIncluded("1");
-                        System.out.println("IS RANDOM SCALE INCLUDED: " + defFile.getAdvancedRandomScaleNotIncluded());
+                        defFile.setAdvancedUseRandomScale("1");
+                        System.out.println("IS RANDOM SCALE INCLUDED: " + defFile.getAdvancedUseRandomScale());
                     } catch (Exception ex) {
                         SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                         Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -5889,8 +5940,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
                 if (isOutcomeNone()) {
                     try {
-                        defFile.setAdvancedDropSecondStage("1");
-                        System.out.println("DROP SECOND STAGE?: " + defFile.getAdvancedDropSecondStage());
+                        defFile.setAdvancedUseStageTwo("1");
+                        System.out.println("DROP SECOND STAGE?: " + defFile.getAdvancedUseStageTwo());
                     } catch (Exception ex) {
                         SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                         Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -5900,8 +5951,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 } else {
 
                     try {
-                        defFile.setAdvancedDropSecondStage("0");
-                        System.out.println("DROP SECOND STAGE?: " + defFile.getAdvancedDropSecondStage());
+                        defFile.setAdvancedUseStageTwo("0");
+                        System.out.println("DROP SECOND STAGE?: " + defFile.getAdvancedUseStageTwo());
                     } catch (Exception ex) {
                         SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                         Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -5935,8 +5986,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     //randomScaleCheckBox.setEnabled(false);
                     randomScaleSelectionYes.setEnabled(false);
                     randomScaleSelectionNo.setEnabled(false);
-                    continuousRadio.setEnabled(false);
-                    dichotomousRadio.setEnabled(false);
+                    stageTwoContinuousRadio.setEnabled(false);
+                    stageTwoDichotomousRadio.setEnabled(false);
                     includeStageTwoNo.setEnabled(false);
                     includeStageTwoYes.setEnabled(false);
                     //noneRadio.setEnabled(false);
@@ -5991,8 +6042,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         try {
             tryCount = 1;
-            defFile.setIdOutcome(idOutcome);
-            System.out.println("From defHelper | ID and Outcome indices: " + Arrays.toString(defFile.getIdOutcome()));
+            defFile.setSharedIdAndStageOneOutcomeFields(idOutcome);
+            System.out.println("From defHelper | ID and Outcome indices: " + Arrays.toString(defFile.getSharedIdAndStageOneOutcomeFields()));
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6002,8 +6053,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         try {
             tryCount = 1;
-            defFile.setLabelModelOutcome(getOutcomeLabel());
-            System.out.println("From defHelper | Outcome variable Stage One LABEL: " + defFile.getLabelModelOutcome());
+            defFile.setSharedModelStageOneOutcomeLabel(getOutcomeLabel());
+            System.out.println("From defHelper | Outcome variable Stage One LABEL: " + defFile.getSharedModelStageOneOutcomeLabel());
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6018,9 +6069,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 tryCount = 1;
                 int MeanCount = countLevelOneBeta() + countLevelTwoBeta() - countLevelOneDicompMean(); //check this ======================
                 // count total mean regressors in level one and level two
-                defFile.setModelMeanCount(String.valueOf(MeanCount));
+                defFile.setAdvancedMeanRegressorCount(String.valueOf(MeanCount));
                 System.out.println("From mixRegGUI | Stage 1 Model Mean Count: " + String.valueOf(MeanCount));
-                System.out.println("From defHelper | Stage 1 Model Mean Count: " + defFile.getModelMeanCount().toString());
+                System.out.println("From defHelper | Stage 1 Model Mean Count: " + defFile.getAdvancedMeanRegressorCount().toString());
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6031,8 +6082,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             try {
                 tryCount = 1;
                 int betweenCount = countLevelOneAlpha() + countLevelTwoAlpha() - countLevelOneDicompBS();
-                defFile.setModelBetweenCount(String.valueOf(betweenCount));
-                System.out.println("From defHelper | Model Between Count: " + defFile.getModelBetweenCount().toString());
+                defFile.setAdvancedRandomRegressorCount(String.valueOf(betweenCount));
+                System.out.println("From defHelper | Model Between Count: " + defFile.getAdvancedRandomRegressorCount ().toString());
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6043,8 +6094,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             try {
                 tryCount = 1;
                 int withinCount = countLevelOneTau() + countLevelTwoTau() - countLevelOneDicompWS();
-                defFile.setModelWithinCount(String.valueOf(withinCount));
-                System.out.println("From defHelper | Model Within Count: " + defFile.getModelWithinCount());
+                defFile.setAdvancedScaleRegressorCount(String.valueOf(withinCount));
+                System.out.println("From defHelper | Model Within Count: " + defFile.getAdvancedScaleRegressorCount ());
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6055,8 +6106,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             //Number of disaggregate means
             try {
                 tryCount = 1;
-                defFile.setDecompMeanCount(String.valueOf(countLevelOneDicompMean()));
-                System.out.println("From defHelper | Stage 1 Decomp Model Mean Count: " + defFile.getDecompMeanCount().toString());
+                defFile.setAdvancedDecomposeMeanRegressorCount(String.valueOf(countLevelOneDicompMean()));
+                System.out.println("From defHelper | Stage 1 Decomp Model Mean Count: " + defFile.getAdvancedDecomposeMeanRegressorCount().toString());
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6067,8 +6118,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             //Number of disaggregate BS Variance
             try {
                 tryCount = 1;
-                defFile.setDecompBSCount(String.valueOf(countLevelOneDicompBS()));
-                System.out.println("From defHelper | Stage 1 BS Variance Disagg. Regressor Count: " + defFile.getDecompBSCount().toString());
+                defFile.setAdvancedDecomposeRandomRegressorCount(String.valueOf(countLevelOneDicompBS()));
+                System.out.println("From defHelper | Stage 1 BS Variance Disagg. Regressor Count: " + defFile.getAdvancedDecomposeRandomRegressorCount().toString());
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6079,8 +6130,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             //Number of disaggregate WS Variance
             try {
                 tryCount = 1;
-                defFile.setDecompWSCount(String.valueOf(countLevelOneDicompWS()));
-                System.out.println("From defHelper | Stage 1 WS Variance Disagg Regressor Count: " + defFile.getDecompWSCount().toString());
+                defFile.setAdvancedDecomposeScaleRegressorCount(String.valueOf(countLevelOneDicompWS()));
+                System.out.println("From defHelper | Stage 1 WS Variance Disagg Regressor Count: " + defFile.getAdvancedDecomposeScaleRegressorCount().toString());
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6093,8 +6144,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             if (NoAssociationRadio.isSelected()) {
 
                 try {
-                    defFile.setAdvancedEffectMeanWS(String.valueOf(0));
-                    System.out.println("From defHelper | Stage 1 Advanced effects of mean on WS variance (No Association): " + defFile.getAdvancedEffectMeanWS());
+                    defFile.setAdvancedRandomScaleAssociation(String.valueOf(0));
+                    System.out.println("From defHelper | Stage 1 Advanced effects of mean on WS variance (No Association): " + defFile.getAdvancedRandomScaleAssociation());
                 } catch (Exception ex) {
                     catchCount = 1;
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6104,8 +6155,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             } else if (LinearAssociationRadio.isSelected()) {
                 try {
-                    defFile.setAdvancedEffectMeanWS(String.valueOf(1));
-                    System.out.println("From defHelper | Stage 1 Advanced effects of mean on WS variance (Linear Association): " + defFile.getAdvancedEffectMeanWS());
+                    defFile.setAdvancedRandomScaleAssociation(String.valueOf(1));
+                    System.out.println("From defHelper | Stage 1 Advanced effects of mean on WS variance (Linear Association): " + defFile.getAdvancedRandomScaleAssociation());
                 } catch (Exception ex) {
                     catchCount = 1;
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6115,8 +6166,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             } else if (QuadraticAssociationRadio.isSelected()) {
                 try {
-                    defFile.setAdvancedEffectMeanWS(String.valueOf(2));
-                    System.out.println("From defHelper | Stage 1 Advanced effects of mean on WS variance (Quadratic Association): " + defFile.getAdvancedEffectMeanWS());
+                    defFile.setAdvancedRandomScaleAssociation(String.valueOf(2));
+                    System.out.println("From defHelper | Stage 1 Advanced effects of mean on WS variance (Quadratic Association): " + defFile.getAdvancedRandomScaleAssociation());
                 } catch (Exception ex) {
                     catchCount = 1;
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6128,12 +6179,12 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             // get selected regressor labels and read them into defFile
             try {
-                defFile.setLabelModelMeanRegressors(ModelMeansLabelsArray());
-                System.out.println("From defHelper | Stage 1 MEAN REGRESSOR LABELS): " + Arrays.toString(defFile.getLabelModelMeanRegressors()));
-                defFile.setLabelModelMeanRegressorsLevelOne(getModelMeanLabelsLevelOne());
-                System.out.println("From defHelper | LEVEL 1 MEAN REGRESSOR LABELS): " + Arrays.toString(defFile.getLabelModelMeanRegressorsLevelOne()));
-                defFile.setLabelModelMeanRegressorsLevelTwo(getModelMeanLabelsLevelTwo());
-                System.out.println("From defHelper | LEVEL 2 MEAN REGRESSOR LABELS): " + Arrays.toString(defFile.getLabelModelMeanRegressorsLevelTwo()));
+                defFile.setSharedModelMeanRegressorLabels(ModelMeansLabelsArray());
+//                System.out.println("From defHelper | Stage 1 MEAN REGRESSOR LABELS): " + Arrays.toString(defFile.getSharedModelMeanRegressorLabels()));
+//                defFile.setSharedModelMeanRegressorLabelsLevelOne(getModelMeanLabelsLevelOne());
+//                System.out.println("From defHelper | LEVEL 1 MEAN REGRESSOR LABELS): " + Arrays.toString(defFile.getSharedModelMeanRegressorLabelsLevelOne()));
+//                defFile.setSharedModelMeanRegressorLabelsLevelTwo(getModelMeanLabelsLevelTwo());
+//                System.out.println("From defHelper | LEVEL 2 MEAN REGRESSOR LABELS): " + Arrays.toString(defFile.getSharedModelMeanRegressorLabelsLevelTwo()));
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6142,12 +6193,12 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
 
             try {
-                defFile.setLabelModelBSRegressors(ModelBSLabelsArray());
-                System.out.println("From defHelper | Stage 1 BS REGRESSOR LABELS): " + Arrays.toString(defFile.getLabelModelBSRegressors()));
-                defFile.setLabelModelBSRegressorsLevelOne(getModelBSLabelsLevelOne());
-                System.out.println("From defHelper | LEVEL 1 BS REGRESSOR LABELS): " + Arrays.toString(defFile.getLabelModelBSRegressorsLevelOne()));
-                defFile.setLabelModelBSRegressorsLevelTwo(getModelBSLabelsLevelTwo());
-                System.out.println("From defHelper | LEVEL 2 BS REGRESSOR LABELS): " + Arrays.toString(defFile.getLabelModelBSRegressorsLevelTwo()));
+                defFile.setSharedModelRandomRegressorLabels(ModelBSLabelsArray());
+//                System.out.println("From defHelper | Stage 1 BS REGRESSOR LABELS): " + Arrays.toString(defFile.getSharedModelRandomRegressorLabels()));
+//                defFile.setSharedModelRandomRegressorLabelsLevelOne(getModelBSLabelsLevelOne());
+//                System.out.println("From defHelper | LEVEL 1 BS REGRESSOR LABELS): " + Arrays.toString(defFile.getLabelModelBSRegressorsLevelOne()));
+//                defFile.setSharedModelRandomRegressorLabelsLevelTwo(getModelBSLabelsLevelTwo());
+//                System.out.println("From defHelper | LEVEL 2 BS REGRESSOR LABELS): " + Arrays.toString(defFile.getLabelModelBSRegressorsLevelTwo()));
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6156,8 +6207,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
 
             try {
-                defFile.setLabelModelWSRegressors(ModelWSLabelsArray());
-                System.out.println("From defHelper | Stage 1 WS REGRESSOR LABELS): " + Arrays.toString(defFile.getLabelModelWSRegressors()));
+                defFile.setSharedModelScaleRegressorLabels(ModelWSLabelsArray());
+                System.out.println("From defHelper | Stage 1 WS REGRESSOR LABELS): " + Arrays.toString(defFile.getSharedModelScaleRegressorLabels()));
                 defFile.setLabelModelWSRegressorsLevelOne(getModelWSLabelsLevelOne());
                 System.out.println("From defHelper | LEVEL 1 WS REGRESSOR LABELS): " + Arrays.toString(defFile.getLabelModelWSRegressorsLevelOne()));
                 defFile.setLabelModelWSRegressorsLevelTwo(getModelWSLabelsLevelTwo());
@@ -6171,9 +6222,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             // Reads the variable names of variables that have been selected as mean regressors
             try {
-                defFile.setFieldModelMeanRegressors(fieldModelMeanArray());
-                System.out.println("From defHelper | #Stage One Mean Regressors: " + defFile.getFieldModelMeanRegressors().length);
-                System.out.println("From defHelper | Stage One Mean Regressors Selected: " + Arrays.toString(defFile.getFieldModelMeanRegressors()));
+                defFile.setSharedModelMeanRegressorFields(fieldModelMeanArray());
+                System.out.println("From defHelper | #Stage One Mean Regressors: " + defFile.getSharedModelMeanRegressorFields().length);
+                System.out.println("From defHelper | Stage One Mean Regressors Selected: " + Arrays.toString(defFile.getSharedModelMeanRegressorFields()));
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6183,9 +6234,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             // Reads the variable names of variables that have been selected as BS Variances
             try {
-                defFile.setFieldModelBSRegressors(fieldModelBSArray());
-                System.out.println("From defHelper | #Stage One BS Regressors: " + defFile.getFieldModelBSRegressors().length);
-                System.out.println("From defHelper | Stage One BS Var. Regressors Selected: " + Arrays.toString(defFile.getFieldModelBSRegressors()));
+                defFile.setSharedModelRandomRegressorFields(fieldModelBSArray());
+                System.out.println("From defHelper | #Stage One BS Regressors: " + defFile.getSharedModelRandomRegressorFields().length);
+                System.out.println("From defHelper | Stage One BS Var. Regressors Selected: " + Arrays.toString(defFile.getSharedModelRandomRegressorFields()));
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6195,9 +6246,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             // Reads the variable names of variables that have been selected as WS Variances
             try {
-                defFile.setFieldModelWSRegressors(fieldModelWSArray());
-                System.out.println("From defHelper | #Stage One WS Regressors: " + defFile.getFieldModelWSRegressors().length);
-                System.out.println("From defHelper | Stage One WS Var. Regressors Selected: " + Arrays.toString(defFile.getFieldModelWSRegressors()));
+                defFile.setSharedModelScaleRegressorFields(fieldModelWSArray());
+                System.out.println("From defHelper | #Stage One WS Regressors: " + defFile.getSharedModelScaleRegressorFields().length);
+                System.out.println("From defHelper | Stage One WS Var. Regressors Selected: " + Arrays.toString(defFile.getSharedModelScaleRegressorFields()));
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6206,8 +6257,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
 
             try {
-                defFile.setFieldDecompMeanRegressors(getMeanDecompFieldRegressorLabels_levelOne());
-                System.out.println("From defHelper | #Stage One Mean + Disagg. Regressors: " + defFile.getFieldDecompMeanRegressors().length);
+                defFile.setSharedModelDecomposeMeanRegressorFields(getMeanDecompFieldRegressorLabels_levelOne());
+                System.out.println("From defHelper | #Stage One Mean + Disagg. Regressors: " + defFile.getSharedModelDecomposeMeanRegressorFields().length);
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6216,8 +6267,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
 
             try {
-                defFile.setFieldDecompBSRegressors(getBSDecompFieldRegressorLabels_levelOne());
-                System.out.println("From defHelper | #Stage One BS + Disagg. Regressors: " + defFile.getFieldDecompBSRegressors().length);
+                defFile.setSharedModelDecomposeRandomRegressorFields(getBSDecompFieldRegressorLabels_levelOne());
+                System.out.println("From defHelper | #Stage One BS + Disagg. Regressors: " + defFile.getSharedModelDecomposeRandomRegressorFields().length);
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6226,8 +6277,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
 
             try {
-                defFile.setFieldDecompWSRegressors(getWSDecompFieldRegressorLabels_levelOne());
-                System.out.println("From defHelper | #Stage One WS + Disagg. Regressors: " + defFile.getFieldDecompWSRegressors().length);
+                defFile.setSharedModelDecomposeScaleRegressorFields(getWSDecompFieldRegressorLabels_levelOne());
+                System.out.println("From defHelper | #Stage One WS + Disagg. Regressors: " + defFile.getSharedModelDecomposeScaleRegressorFields().length);
             } catch (Exception ex) {
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                 SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
@@ -6235,8 +6286,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
 
             try {
-                defFile.setLabelDecompMeanRegressors(getDecompMeanLabelsLevelOne());
-                System.out.println("From defHelper | Model Decomp + Mean Labels: " + Arrays.toString(defFile.getLabelDecompMeanRegressors()));
+                defFile.setSharedModelDecomposeMeanRegressorLabels(getDecompMeanLabelsLevelOne());
+                System.out.println("From defHelper | Model Decomp + Mean Labels: " + Arrays.toString(defFile.getSharedModelDecomposeMeanRegressorLabels()));
             } catch (Exception ex) {
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                 SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
@@ -6244,8 +6295,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
 
             try {
-                defFile.setLabelDecompBSRegressors(getDecompBSLabelsLevelOne());
-                System.out.println("From defHelper | Model Decomp + BS Labels: " + Arrays.toString(defFile.getLabelDecompBSRegressors()));
+                defFile.setSharedModelDecomposeRandomRegressorLabels(getDecompBSLabelsLevelOne());
+                System.out.println("From defHelper | Model Decomp + BS Labels: " + Arrays.toString(defFile.getSharedModelDecomposeRandomRegressorLabels()));
             } catch (Exception ex) {
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                 SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
@@ -6253,8 +6304,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
 
             try {
-                defFile.setLabelDecompWSRegressors(getDecompWSLabelsLevelOne());
-                System.out.println("From defHelper | Model Decomp + WS Labels: " + Arrays.toString(defFile.getLabelDecompWSRegressors()));
+                defFile.setSharedModelDecomposeScaleRegressorLabels(getDecompWSLabelsLevelOne());
+                System.out.println("From defHelper | Model Decomp + WS Labels: " + Arrays.toString(defFile.getSharedModelDecomposeScaleRegressorLabels()));
             } catch (Exception ex) {
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                 SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
@@ -6269,8 +6320,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 int MeanCount = countLevelOneBeta() + countLevelTwoBeta() - countLevelOneDicompMean();
 
                 // count total mean regressors in level one and level two
-                defFile.setModelMeanCount(String.valueOf(MeanCount));
-                System.out.println("From defHelper | Stage 1 Model Mean Count: " + defFile.getModelMeanCount().toString());
+                defFile.setAdvancedMeanRegressorCount(String.valueOf(MeanCount));
+                System.out.println("From defHelper | Stage 1 Model Mean Count: " + defFile.getAdvancedMeanRegressorCount().toString());
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6281,8 +6332,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             try {
                 int LocRanCount = countLevelOneAlpha() + countLevelTwoAlpha() - countLevelOneDicompBS();
                 // count total random location regressors in level one and level two
-                defFile.setModelLocRanCount(String.valueOf(LocRanCount));
-                System.out.println("From defHelper | Stage 1 Model Loc Ran Count: " + defFile.getModelLocRanCount().toString());
+                defFile.setAdvancedRandomRegressorCount(String.valueOf(LocRanCount));
+                System.out.println("From defHelper | Stage 1 Model Loc Ran Count: " + defFile.getAdvancedRandomRegressorCount().toString());
                 tryCount = 1;
             } catch (Exception ex) {
                 catchCount = 1;
@@ -6295,8 +6346,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 tryCount = 1;
                 int ScaleCount = countLevelOneTau() + countLevelTwoTau() - countLevelOneDicompWS();
                 // count total scale regressors in level one and level two
-                defFile.setModelScaleCount(String.valueOf(ScaleCount));
-                System.out.println("From defHelper | Stage 1 Model Scale Count: " + defFile.getModelScaleCount().toString());
+                defFile.setAdvancedScaleRegressorCount(String.valueOf(ScaleCount));
+                System.out.println("From defHelper | Stage 1 Model Scale Count: " + defFile.getAdvancedScaleRegressorCount ().toString());
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6308,8 +6359,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 tryCount = 1;
 
                 //Disagg means count
-                defFile.setDecompMeanCount(String.valueOf(countLevelOneDicompMean()));
-                System.out.println("From defHelper | Stage 1 Decomp Model Mean Count: " + defFile.getDecompMeanCount().toString());
+                defFile.setAdvancedDecomposeMeanRegressorCount(String.valueOf(countLevelOneDicompMean()));
+                System.out.println("From defHelper | Stage 1 Decomp Model Mean Count: " + defFile.getAdvancedDecomposeMeanRegressorCount().toString());
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6320,8 +6371,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             try {
                 tryCount = 1;
                 //Disagg Random Location count
-                defFile.setDecompLocRanCount(String.valueOf(countLevelOneDicompBS()));
-                System.out.println("From defHelper | Stage 1 Decomp Model Loc Random Count: " + defFile.getDecompLocRanCount().toString());
+                defFile.setAdvancedDecomposeRandomRegressorCount(String.valueOf(countLevelOneDicompBS()));
+                System.out.println("From defHelper | Stage 1 Decomp Model Loc Random Count: " + defFile.getAdvancedDecomposeRandomRegressorCount().toString());
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6332,8 +6383,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             try {
                 tryCount = 1;
                 //Disagg scale count
-                defFile.setDecompScaleCount(String.valueOf(countLevelOneDicompWS()));
-                System.out.println("From defHelper | Stage 1 Decomp Scale Count: " + defFile.getDecompScaleCount().toString());
+                defFile.setAdvancedDecomposeScaleRegressorCount(String.valueOf(countLevelOneDicompWS()));
+                System.out.println("From defHelper | Stage 1 Decomp Scale Count: " + defFile.getAdvancedDecomposeScaleRegressorCount().toString());
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6345,8 +6396,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             if (NoAssociationRadio.isSelected()) {
 
                 try {
-                    defFile.setAdvancedEffectMeanWS(String.valueOf(1));
-                    System.out.println("From defHelper | Stage 1 Association of random location & scale?: " + defFile.getAdvancedEffectMeanWS());
+                    defFile.setAdvancedRandomScaleAssociation(String.valueOf(1));
+                    System.out.println("From defHelper | Stage 1 Association of random location & scale?: " + defFile.getAdvancedRandomScaleAssociation());
                 } catch (Exception ex) {
                     catchCount = 1;
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6356,8 +6407,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             } else if (LinearAssociationRadio.isSelected()) {
                 try {
-                    defFile.setAdvancedEffectMeanWS(String.valueOf(0));
-                    System.out.println("From defHelper | Stage 1 Association of random location & scale?: " + defFile.getAdvancedEffectMeanWS());
+                    defFile.setAdvancedRandomScaleAssociation(String.valueOf(0));
+                    System.out.println("From defHelper | Stage 1 Association of random location & scale?: " + defFile.getAdvancedRandomScaleAssociation());
                 } catch (Exception ex) {
                     catchCount = 1;
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6367,12 +6418,12 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
 
             try {
-                defFile.setLabelModelMeanRegressors(ModelMeansLabelsArray());
-                System.out.println("From defHelper | Stage 1 MEAN REGRESSOR LABELS): " + Arrays.toString(defFile.getLabelModelMeanRegressors()));
-                defFile.setLabelModelMeanRegressorsLevelOne(getModelMeanLabelsLevelOne());
-                System.out.println("From defHelper | LEVEL 1 MEAN REGRESSOR LABELS): " + Arrays.toString(defFile.getLabelModelMeanRegressorsLevelOne()));
-                defFile.setLabelModelMeanRegressorsLevelTwo(getModelMeanLabelsLevelTwo());
-                System.out.println("From defHelper | LEVEL 2 MEAN REGRESSOR LABELS): " + Arrays.toString(defFile.getLabelModelMeanRegressorsLevelTwo()));
+                defFile.setSharedModelMeanRegressorLabels(ModelMeansLabelsArray());
+                System.out.println("From defHelper | Stage 1 MEAN REGRESSOR LABELS): " + Arrays.toString(defFile.getSharedModelMeanRegressorLabels()));
+//                defFile.setSharedModelMeanRegressorLabelsLevelOne(getModelMeanLabelsLevelOne());
+//                System.out.println("From defHelper | LEVEL 1 MEAN REGRESSOR LABELS): " + Arrays.toString(defFile.getSharedModelMeanRegressorLabelsLevelOne()));
+//                defFile.setSharedModelMeanRegressorLabelsLevelTwo(getModelMeanLabelsLevelTwo());
+//                System.out.println("From defHelper | LEVEL 2 MEAN REGRESSOR LABELS): " + Arrays.toString(defFile.getSharedModelMeanRegressorLabelsLevelTwo()));
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6381,8 +6432,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
 
             try {
-                defFile.setLabelModelLocRanRegressors(ModelBSLabelsArray());
-                System.out.println("From defHelper | Stage 1 LocRan REGRESSOR LABELS): " + Arrays.toString(defFile.getLabelModelLocRanRegressors()));
+                defFile.setSharedModelRandomRegressorLabels(ModelBSLabelsArray());
+                System.out.println("From defHelper | Stage 1 LocRan REGRESSOR LABELS): " + Arrays.toString(defFile.getSharedModelRandomRegressorLabels()));
                 defFile.setLabelModelLocRanRegressorsLevelOne(getModelBSLabelsLevelOne());
                 System.out.println("From defHelper | LEVEL 1 LocRan REGRESSOR LABELS): " + Arrays.toString(defFile.getLabelModelLocRanRegressorsLevelOne()));
                 defFile.setLabelModelLocRanRegressorsLevelTwo(getModelBSLabelsLevelTwo());
@@ -6395,8 +6446,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
 
             try {
-                defFile.setLabelModelScaleRegressors(ModelWSLabelsArray());
-                System.out.println("From defHelper | Stage 1 Scale REGRESSOR LABELS): " + Arrays.toString(defFile.getLabelModelScaleRegressors()));
+                defFile.setSharedModelScaleRegressorLabels(ModelWSLabelsArray());
+                System.out.println("From defHelper | Stage 1 Scale REGRESSOR LABELS): " + Arrays.toString(defFile.getSharedModelScaleRegressorLabels()));
                 defFile.setLabelModelScaleRegressorsLevelOne(getModelWSLabelsLevelOne());
                 System.out.println("From defHelper | LEVEL 1 Scale REGRESSOR LABELS): " + Arrays.toString(defFile.getLabelModelScaleRegressorsLevelOne()));
                 defFile.setLabelModelScaleRegressorsLevelTwo(getModelWSLabelsLevelTwo());
@@ -6411,8 +6462,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             // count field labels
             try {
                 // get variable names from selected mean regressors
-                defFile.setFieldModelMeanRegressors(fieldModelMeanArray());
-                System.out.println("From defHelper | #Stage One Mean Regressors: " + defFile.getFieldModelMeanRegressors().length); //check this ===============
+                defFile.setSharedModelMeanRegressorFields(fieldModelMeanArray());
+                System.out.println("From defHelper | #Stage One Mean Regressors: " + defFile.getSharedModelMeanRegressorFields().length); //check this ===============
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6422,8 +6473,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             try {
                 // get variable names from selected random location regressors
-                defFile.setFieldModelLocRanRegressors(fieldModelBSArray());
-                System.out.println("From defHelper | #Stage One BS(RanLoc) Regressors: " + defFile.getFieldModelLocRanRegressors().length);
+                defFile.setSharedModelRandomRegressorFields(fieldModelBSArray());
+                System.out.println("From defHelper | #Stage One BS(RanLoc) Regressors: " + defFile.getSharedModelRandomRegressorFields().length);
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6433,8 +6484,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             try {
                 // get variable names from selected scale regressors
-                defFile.setFieldModelScaleRegressors(fieldModelWSArray());
-                System.out.println("From defHelper | #Stage One WS(Scale) Regressors: " + defFile.getFieldModelScaleRegressors().length);
+                defFile.setSharedModelScaleRegressorFields(fieldModelWSArray());
+                System.out.println("From defHelper | #Stage One WS(Scale) Regressors: " + defFile.getSharedModelScaleRegressorFields().length);
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6443,8 +6494,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
 
             try {
-                defFile.setFieldDecompMeanRegressors(getMeanDecompFieldRegressorLabels_levelOne());
-                System.out.println("From defHelper | #Stage One Mean + Disagg. Regressors: " + defFile.getFieldDecompMeanRegressors().length);
+                defFile.setSharedModelDecomposeMeanRegressorFields(getMeanDecompFieldRegressorLabels_levelOne());
+                System.out.println("From defHelper | #Stage One Mean + Disagg. Regressors: " + defFile.getSharedModelDecomposeMeanRegressorFields().length);
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6453,9 +6504,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
 
             try {
-                defFile.setFieldDecompLocRanRegressors(getBSDecompFieldRegressorLabels_levelOne());
-                //defFile.setFieldDecompLocRanRegressors(fieldModelBSArray());
-                System.out.println("From defHelper | #Stage One BS(RanLoc) + Disagg. Regressors: " + defFile.getFieldDecompLocRanRegressors().length);
+                defFile.setSharedModelDecomposeRandomRegressorFields(getBSDecompFieldRegressorLabels_levelOne());
+                //defFile.setSharedModelDecomposeRandomRegressorFields(fieldModelBSArray());
+                System.out.println("From defHelper | #Stage One BS(RanLoc) + Disagg. Regressors: " + defFile.getSharedModelDecomposeRandomRegressorFields().length);
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6463,32 +6514,32 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
             try {
-                defFile.setFieldDecompScaleRegressors(getWSDecompFieldRegressorLabels_levelOne());
-                System.out.println("From defHelper | #Stage One WS(Scale) + Disagg. Regressors: " + defFile.getFieldDecompScaleRegressors().length);
+                defFile.setSharedModelDecomposeScaleRegressorFields(getWSDecompFieldRegressorLabels_levelOne());
+                System.out.println("From defHelper | #Stage One WS(Scale) + Disagg. Regressors: " + defFile.getSharedModelDecomposeScaleRegressorFields().length);
             } catch (Exception ex) {
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                 SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
             try {
-                defFile.setLabelDecompMeanRegressors(getDecompMeanLabelsLevelOne());
-                System.out.println("From defHelper | Model Decomp + Mean Labels: " + Arrays.toString(defFile.getLabelDecompMeanRegressors()));
+                defFile.setSharedModelDecomposeMeanRegressorLabels(getDecompMeanLabelsLevelOne());
+                System.out.println("From defHelper | Model Decomp + Mean Labels: " + Arrays.toString(defFile.getSharedModelDecomposeMeanRegressorLabels()));
             } catch (Exception ex) {
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                 SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
             try {
-                defFile.setLabelDecompLocRanRegressors(getDecompBSLabelsLevelOne());
-                System.out.println("From defHelper | Model Decomp + LocRan Labels: " + Arrays.toString(defFile.getLabelDecompLocRanRegressors()));
+                defFile.setSharedModelDecomposeRandomRegressorLabels(getDecompBSLabelsLevelOne());
+                System.out.println("From defHelper | Model Decomp + LocRan Labels: " + Arrays.toString(defFile.getSharedModelDecomposeRandomRegressorLabels()));
             } catch (Exception ex) {
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                 SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
             try {
-                defFile.setLabelDecompScaleRegressors(getDecompWSLabelsLevelOne());
-                System.out.println("From defHelper | Model Decomp + Scale Labels: " + Arrays.toString(defFile.getLabelDecompScaleRegressors()));
+                defFile.setSharedModelDecomposeScaleRegressorLabels(getDecompWSLabelsLevelOne());
+                System.out.println("From defHelper | Model Decomp + Scale Labels: " + Arrays.toString(defFile.getSharedModelDecomposeScaleRegressorLabels()));
             } catch (Exception ex) {
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                 SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
@@ -6784,7 +6835,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     private void update_trigger_runTabTwoStageOneTwo() {
         // TODO add your handling code here:
-        // tryCount counts the number of successful definitionhelper function calls
+        // tryCount counts the number of successful DefinitionHelper function calls
         //catchCount counts number of exceptions in reading values to derHelper.
         //Prevents UI from moving forward in case of an exception
         int tryCount = 0;
@@ -6835,8 +6886,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             if (NoAssociationRadio.isSelected()) {
 
                 try {
-                    defFile.setAdvancedEffectMeanWS(String.valueOf(0));
-                    System.out.println("From defHelper | Stage 1 Advanced effects of mean on WS variance (No Association): " + defFile.getAdvancedEffectMeanWS());
+                    defFile.setAdvancedRandomScaleAssociation(String.valueOf(0));
+                    System.out.println("From defHelper | Stage 1 Advanced effects of mean on WS variance (No Association): " + defFile.getAdvancedRandomScaleAssociation());
                 } catch (Exception ex) {
                     catchCount = 1;
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6846,8 +6897,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             } else if (LinearAssociationRadio.isSelected()) {
                 try {
-                    defFile.setAdvancedEffectMeanWS(String.valueOf(1));
-                    System.out.println("From defHelper | Stage 1 Advanced effects of mean on WS variance (Linear Association): " + defFile.getAdvancedEffectMeanWS());
+                    defFile.setAdvancedRandomScaleAssociation(String.valueOf(1));
+                    System.out.println("From defHelper | Stage 1 Advanced effects of mean on WS variance (Linear Association): " + defFile.getAdvancedRandomScaleAssociation());
                 } catch (Exception ex) {
                     catchCount = 1;
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6857,8 +6908,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             } else if (QuadraticAssociationRadio.isSelected()) {
                 try {
-                    defFile.setAdvancedEffectMeanWS(String.valueOf(2));
-                    System.out.println("From defHelper | Stage 1 Advanced effects of mean on WS variance (Quadratic Association): " + defFile.getAdvancedEffectMeanWS());
+                    defFile.setAdvancedRandomScaleAssociation(String.valueOf(2));
+                    System.out.println("From defHelper | Stage 1 Advanced effects of mean on WS variance (Quadratic Association): " + defFile.getAdvancedRandomScaleAssociation());
                 } catch (Exception ex) {
                     catchCount = 1;
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6874,8 +6925,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             if (NoAssociationRadio.isSelected()) {
 
                 try {
-                    defFile.setAdvancedEffectMeanWS(String.valueOf(1));
-                    System.out.println("From defHelper | Stage 1 Association of random location & scale?: " + defFile.getAdvancedEffectMeanWS());
+                    defFile.setAdvancedRandomScaleAssociation(String.valueOf(1));
+                    System.out.println("From defHelper | Stage 1 Association of random location & scale?: " + defFile.getAdvancedRandomScaleAssociation());
                 } catch (Exception ex) {
                     catchCount = 1;
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6885,8 +6936,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             } else if (LinearAssociationRadio.isSelected()) {
                 try {
-                    defFile.setAdvancedEffectMeanWS(String.valueOf(0));
-                    System.out.println("From defHelper | Stage 1 Association of random location & scale?: " + defFile.getAdvancedEffectMeanWS());
+                    defFile.setAdvancedRandomScaleAssociation(String.valueOf(0));
+                    System.out.println("From defHelper | Stage 1 Association of random location & scale?: " + defFile.getAdvancedRandomScaleAssociation());
                 } catch (Exception ex) {
                     catchCount = 1;
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6897,8 +6948,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         }
 
         try {
-            defFile.setStageTwoFixedCount(String.valueOf(countStageTwoBeta()));
-            System.out.println("From defHelper | STAGE TWO FIXED COUNT: " + defFile.getStageTwoFixedCount().toString());
+            defFile.setAdvancedStageTwoFixedRegressorCount(String.valueOf(countStageTwoBeta()));
+            System.out.println("From defHelper | STAGE TWO FIXED COUNT: " + defFile.getAdvancedStageTwoFixedRegressorCount());
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6907,8 +6958,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         }
 
         try {
-            defFile.setStageTwoLocRanInteractions(String.valueOf(countStageTwoAlpha()));
-            System.out.println("From defHelper | STAGE TWO LOC. RANDOM COUNT: " + defFile.getStageTwoLocRanInteractions().toString());
+            defFile.setAdvancedStageTwoThetaRegressorCount(String.valueOf(countStageTwoAlpha()));
+            System.out.println("From defHelper | STAGE TWO LOC. RANDOM COUNT: " + defFile.getAdvancedStageTwoThetaRegressorCount().toString());
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6917,8 +6968,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         }
 
         try {
-            defFile.setStageTwoScaleInteractions(String.valueOf(countStageTwoTau()));
-            System.out.println("From defHelper | STAGE TWO SCALE COUNT: " + defFile.getStageTwoScaleInteractions().toString());
+            defFile.setAdvancedStageTwoOmegaRegressorCount (String.valueOf(countStageTwoTau()));
+            System.out.println("From defHelper | STAGE TWO SCALE COUNT: " + defFile.getAdvancedStageTwoOmegaRegressorCount().toString());
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6929,8 +6980,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         if (suppressed == false) {
 
             try {
-                defFile.setStageTwoIntOfInteraction(String.valueOf(countStageTwoInteractions()));
-                System.out.println("From defHelper | STAGE TWO INTERACTIONS COUNT: " + defFile.getStageTwoIntOfInteraction().toString());
+                defFile.setAdvancedStageTwoInteractionRegressorCount (String.valueOf(countStageTwoInteractions()));
+                System.out.println("From defHelper | STAGE TWO INTERACTIONS COUNT: " + defFile.getAdvancedStageTwoInteractionRegressorCount().toString());
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6951,8 +7002,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         }
 
         try {
-            defFile.setStageTwoLocRanIntFields(getRanLocFieldRegressors_StageTwo());
-            System.out.println("From defHelper | STAGE TWO  LOC RAN REGRESSOR Positions: " + Arrays.toString(defFile.getStageTwoLocRanIntFields()));
+            defFile.setStageTwoThetaFields(getRanLocFieldRegressors_StageTwo());
+            System.out.println("From defHelper | STAGE TWO  LOC RAN REGRESSOR Positions: " + Arrays.toString(defFile.getStageTwoThetaFields()));
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6961,8 +7012,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         }
 
         try {
-            defFile.setStageTwoScaleIntFields(getScaleFieldRegressors_StageTwo());
-            System.out.println("From defHelper | STAGE TWO  SCALE REGRESSOR Positions: " + Arrays.toString(defFile.getStageTwoScaleIntFields()));
+            defFile.setStageTwoOmegaFields(getScaleFieldRegressors_StageTwo());
+            System.out.println("From defHelper | STAGE TWO  SCALE REGRESSOR Positions: " + Arrays.toString(defFile.getStageTwoOmegaFields()));
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6973,8 +7024,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         if (suppressed == false) {
 
             try {
-                defFile.setStageTwoFirstIntFields(getInteractionFieldRegressors_StageTwo());
-                System.out.println("From defHelper | STAGE TWO  INTERACTIONS REGRESSOR Positions: " + Arrays.toString(defFile.getStageTwoFirstIntFields()));
+                defFile.setStageTwoInteractionFields(getInteractionFieldRegressors_StageTwo());
+                System.out.println("From defHelper | STAGE TWO  INTERACTIONS REGRESSOR Positions: " + Arrays.toString(defFile.getStageTwoInteractionFields()));
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6983,8 +7034,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
 
             try {
-                defFile.setStageTwoFirstIntLabels(getModelInteractionLabelsStageTwo());
-                System.out.println("From defHelper | STAGE TWO  INTERACTIONS REGRESSORS: " + Arrays.toString(defFile.getStageTwoFirstIntLabels()));
+                defFile.setStageTwoInteractionLabels(getModelInteractionLabelsStageTwo());
+                System.out.println("From defHelper | STAGE TWO  INTERACTIONS REGRESSORS: " + Arrays.toString(defFile.getStageTwoInteractionLabels()));
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -7004,8 +7055,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         }
 
         try {
-            defFile.setStageTwoLocRanIntLabels(getModelLocRanLabelsStageTwo());
-            System.out.println("From defHelper | STAGE TWO  LOC RAN REGRESSORS: " + Arrays.toString(defFile.getStageTwoLocRanIntLabels()));
+            defFile.setStageTwoThetaLabels(getModelLocRanLabelsStageTwo());
+            System.out.println("From defHelper | STAGE TWO  LOC RAN REGRESSORS: " + Arrays.toString(defFile.getStageTwoThetaLabels()));
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -7014,39 +7065,39 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         }
 
         try {
-            defFile.setStageTwoScaleIntLabels(getModelScaleLabelsStageTwo());
-            System.out.println("From defHelper | STAGE TWO  SCALE REGRESSORS: " + Arrays.toString(defFile.getStageTwoScaleIntLabels()));
+            defFile.setStageTwoOmegaLabels(getModelScaleLabelsStageTwo());
+            System.out.println("From defHelper | STAGE TWO  SCALE REGRESSORS: " + Arrays.toString(defFile.getStageTwoOmegaLabels()));
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
             SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
-        if (outComeType == false) {
-            try {
-                defFile.setStageTwoOutcomeCatCount(String.valueOf(getStagetwoOutcomeCats()));
-                System.out.println("From defHelper | STAGE TWO OUTCOME CATEGORY NUMBERS: " + defFile.getStageTwoOutcomeCatCount());
-            } catch (Exception ex) {
-                catchCount = 1;
-                Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-            }
-
-            try {
-                defFile.setStageTwoOutcomeCatLabel(getStageTwoOutcomeValues());
-                System.out.println("From defHelper | STAGE TWO OUTCOME CATEGORY VALUES: " + Arrays.toString(defFile.getStageTwoOutcomeCatLabel()));
-            } catch (Exception ex) {
-                catchCount = 1;
-                Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-            }
-
-        } else {
-
-            // do nothing ...
-        }
+//        if (outComeType == false) {
+//            try {
+//                defFile.setStageTwoOutcomeCatCount(String.valueOf(getStagetwoOutcomeCats()));
+//                System.out.println("From defHelper | STAGE TWO OUTCOME CATEGORY NUMBERS: " + defFile.getStageTwoOutcomeCatCount());
+//            } catch (Exception ex) {
+//                catchCount = 1;
+//                Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+//                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
+//                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+//            }
+//
+//            try {
+//                defFile.setStageTwoOutcomeCatLabel(getStageTwoOutcomeValues());
+//                System.out.println("From defHelper | STAGE TWO OUTCOME CATEGORY VALUES: " + Arrays.toString(defFile.getStageTwoOutcomeCatLabel()));
+//            } catch (Exception ex) {
+//                catchCount = 1;
+//                Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+//                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
+//                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+//            }
+//
+//        } else {
+//
+//            // do nothing ...
+//        }
 
         if (catchCount == 0) {
             int defTry = 0;
@@ -7058,7 +7109,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 defFileOutput = defFile.buildStageOneDefinitonList();
                 System.out.println("From defHelper | Stage 1 def file created successfully!");
                 //modelBuilder(defFile);
-                modelBuilder = new ModelBuilder(defFile);
+//                modelBuilder = new ModelBuilder(defFile);
                 //                modelEquationTextArea.setText(modelBuilder.meanEquation());
                 //                testEq.setText(modelBuilder.meanEquation());
                 equationArea.setText(modelBuilder.meanEquation());
@@ -7304,7 +7355,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             suppressed = true;
 
             try {
-                defFile.setStageTwoIntOfInteraction("-1");
+                defFile.setAdvancedStageTwoInteractionRegressorCount ("-1");
             } catch (Exception ex) {
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                 SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
@@ -7317,8 +7368,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 stageTwoLevelTwoGridBoxes.get(p).get(3).setEnabled(false);
             }
             try {
-                defFile.setStageTwoFirstIntFields(new String[0]);
-                defFile.setStageTwoFirstIntLabels(new String[0]);
+                defFile.setStageTwoInteractionFields(new String[0]);
+                defFile.setStageTwoInteractionLabels(new String[0]);
 
             } catch (Exception ex) {
                 Logger.getLogger(mixregGUI.class
@@ -7330,7 +7381,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             suppressed = false;
 
             try {
-                defFile.setStageTwoIntOfInteraction("0");
+                defFile.setAdvancedStageTwoInteractionRegressorCount("0");
             } catch (Exception ex) {
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                 SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
@@ -7546,4 +7597,41 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 //        revalidate();
 //        repaint();
     }
+
+    public int getRandomScaleSelection() {
+        int randomScaleSelection = 0;
+        
+        if (getRandomScaleSelectionYes() == true) {
+            randomScaleSelection = 1;
+        } else {randomScaleSelection = 0;}
+        
+        return randomScaleSelection;
+    }
+    
+    public int getStageTwoModelType(){
+        int stageTwoModelType = 0;
+        
+        if (getStageTwoSingleLevel() == true) {
+            stageTwoModelType = 1;
+        } else if (getStageTwoMultiLevel() == true){
+            stageTwoModelType = 2;
+        }
+        
+        return stageTwoModelType;
+
+    }
+    
+    public int getStageTwoOutcomeType(){
+        int stageTwoOutcomeType = 0;
+        
+        if (getStageTwoContinuousRadio() == true) {
+            stageTwoOutcomeType = 1;
+        } else if (getStageTwoDichotomousRadio() == true){
+            stageTwoOutcomeType = 2;
+        }
+        
+        return stageTwoOutcomeType;
+
+    }
 }
+

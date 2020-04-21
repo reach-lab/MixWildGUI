@@ -170,9 +170,9 @@
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Component id="stageTwoOutcomeTypeLabel" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="continuousRadio" min="-2" pref="110" max="-2" attributes="0"/>
+                                                  <Component id="stageTwoContinuousRadio" min="-2" pref="110" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="dichotomousRadio" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="stageTwoDichotomousRadio" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
                                                   <Component id="countRadio" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
@@ -347,8 +347,8 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="dichotomousRadio" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="continuousRadio" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="stageTwoDichotomousRadio" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="stageTwoContinuousRadio" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="multinomialRadio" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="stageTwoOutcomeTypeLabel" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                                       <Component id="countRadio" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -464,7 +464,7 @@
                     <Property name="text" type="java.lang.String" value="Stage 2 outcome:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JRadioButton" name="continuousRadio">
+                <Component class="javax.swing.JRadioButton" name="stageTwoContinuousRadio">
                   <Properties>
                     <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                       <ComponentRef name="buttonGroup3"/>
@@ -472,10 +472,10 @@
                     <Property name="text" type="java.lang.String" value="Continuous"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="continuousRadioActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stageTwoContinuousRadioActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JRadioButton" name="dichotomousRadio">
+                <Component class="javax.swing.JRadioButton" name="stageTwoDichotomousRadio">
                   <Properties>
                     <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                       <ComponentRef name="buttonGroup3"/>
@@ -483,7 +483,7 @@
                     <Property name="text" type="java.lang.String" value="Dichotomous/Ordinal"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dichotomousRadioActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stageTwoDichotomousRadioActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JRadioButton" name="missingValueAbsent">
@@ -600,6 +600,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Dichotomous"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stageOneDichotomousRadioActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JRadioButton" name="stageOneOrdinalRadio">
                   <Properties>
@@ -608,6 +611,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Ordinal"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stageOneOrdinalRadioActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JRadioButton" name="randomScaleSelectionYes">
                   <Properties>
@@ -675,6 +681,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Multilevel"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stageTwoMultiLevelActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JRadioButton" name="multinomialRadio">
                   <Properties>

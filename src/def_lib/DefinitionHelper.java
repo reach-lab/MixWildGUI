@@ -1118,7 +1118,7 @@ public class DefinitionHelper implements Serializable {
                     advancedVars.add(getAdvancedMaxIteration());
                     advancedVars.add(getAdvancedMissingValue());
                     advancedVars.add(getAdvancedCenterScale());
-                    advancedVars.add(getAdvancedEffectMeanWS());
+                    advancedVars.add(getAdvancedRandomScaleAssociation());
                     advancedVars.add(getAdvancedRidge());
                     advancedVars.add(getAdvancedResampleCount());
                     advancedVars.add(getAdvancedCutoffLower());
@@ -1144,7 +1144,7 @@ public class DefinitionHelper implements Serializable {
                     advancedVars.add(getAdvancedMaxIteration());
                     advancedVars.add(getAdvancedMissingValue());
                     advancedVars.add(getAdvancedCenterScale());
-                    advancedVars.add(getAdvancedEffectMeanWS());
+                    advancedVars.add(getAdvancedRandomScaleAssociation());
                     advancedVars.add(getAdvancedRidge());
                     advancedVars.add(getAdvancedResampleCount());
                     advancedVars.add(getAdvancedCutoffLower());
@@ -1170,7 +1170,7 @@ public class DefinitionHelper implements Serializable {
                     advancedVars.add(getAdvancedMaxIteration());
                     advancedVars.add(getAdvancedMissingValue());
                     advancedVars.add(getAdvancedCenterScale());
-                    advancedVars.add(getAdvancedEffectMeanWS());
+                    advancedVars.add(getAdvancedRandomScaleAssociation());
                     advancedVars.add(getAdvancedRidge());
                     advancedVars.add(getAdvancedResampleCount());
                     advancedVars.add(getAdvancedCutoffLower());
@@ -1196,7 +1196,7 @@ public class DefinitionHelper implements Serializable {
                     advancedVars.add(getAdvancedMaxIteration());
                     advancedVars.add(getAdvancedMissingValue());
                     advancedVars.add(getAdvancedCenterScale());
-                    advancedVars.add(getAdvancedEffectMeanWS());
+                    advancedVars.add(getAdvancedRandomScaleAssociation());
                     advancedVars.add(getAdvancedRidge());
                     advancedVars.add(getAdvancedResampleCount());
                     advancedVars.add(getAdvancedCutoffLower());
@@ -1270,7 +1270,7 @@ public class DefinitionHelper implements Serializable {
                     setModelWithinInt(advancedVars[6]);
                     setDecompBSCount(advancedVars[8]);
                     setDecompWSCount(advancedVars[9]);
-                    setAdvancedEffectMeanWS(advancedVars[16]);
+                    setAdvancedRandomScaleAssociation(advancedVars[16]);
                     setAdvancedRidge(advancedVars[17]);
                     setAdvancedResampleCount(advancedVars[18]);
                     setAdvancedCutoffLower(advancedVars[19]);
@@ -1286,7 +1286,7 @@ public class DefinitionHelper implements Serializable {
                     setModelWithinInt(advancedVars[6]);
                     setDecompBSCount(advancedVars[8]);
                     setDecompWSCount(advancedVars[9]);
-                    setAdvancedEffectMeanWS(advancedVars[16]);
+                    setAdvancedRandomScaleAssociation(advancedVars[16]);
                     setAdvancedRidge(advancedVars[17]);
                     setAdvancedResampleCount(advancedVars[18]);
                     setAdvancedCutoffLower(advancedVars[19]);
@@ -1302,7 +1302,7 @@ public class DefinitionHelper implements Serializable {
                     setModelScaleInt(advancedVars[6]);
                     setDecompLocRanCount(advancedVars[8]);
                     setDecompScaleCount(advancedVars[9]);
-                    setAdvancedEffectMeanWS(advancedVars[16]);
+                    setAdvancedRandomScaleAssociation(advancedVars[16]);
                     setAdvancedRidge(advancedVars[17]);
                     setAdvancedResampleCount(advancedVars[18]);
                     setAdvancedCutoffLower(advancedVars[19]);
@@ -1318,7 +1318,7 @@ public class DefinitionHelper implements Serializable {
                     setModelScaleInt(advancedVars[6]);
                     setDecompLocRanCount(advancedVars[8]);
                     setDecompScaleCount(advancedVars[9]);
-                    setAdvancedEffectMeanWS(advancedVars[16]);
+                    setAdvancedRandomScaleAssociation(advancedVars[16]);
                     setAdvancedRidge(advancedVars[17]);
                     setAdvancedResampleCount(advancedVars[18]);
                     setAdvancedCutoffLower(advancedVars[19]);
@@ -1791,13 +1791,13 @@ public class DefinitionHelper implements Serializable {
         }
     }
 
-    public String getAdvancedEffectMeanWS() {
+    public String getAdvancedRandomScaleAssociation() {
         return advancedEffectMeanWS;
     }
 
     // to do?
     // tested?
-    public void setAdvancedEffectMeanWS(String advancedEffectMeanWS) throws Exception {
+    public void setAdvancedRandomScaleAssociation(String advancedEffectMeanWS) throws Exception {
         if (randomLocationEffects > 1) {
             if (setValidator("association of random location & scale", "5", advancedEffectMeanWS, 0, 1, MIX_INTEGER)) {
                 this.advancedEffectMeanWS = advancedEffectMeanWS;
@@ -3235,46 +3235,46 @@ public class DefinitionHelper implements Serializable {
     }
 
     public void readStageOneOutputfile() throws FileNotFoundException, IOException {
-        mixregGUI.stageOneOutput.setText("");
-        String fileName = mixregGUI.defFile.getDataFilename();
-        String outputFilePath = FilenameUtils.removeExtension(fileName) + "_Output_1.out";
-        File file = new File(outputFilePath);
-        BufferedReader br = null;
-        String line = "";
-
-        br = new BufferedReader(new FileReader(file));
-        while ((line = br.readLine()) != null) {
-            //System.out.println(line);
-            mixregGUI.stageOneOutput.append(line + "\n");
-
-        }
-
-        br.close();
+//        mixregGUI.stageOneOutput.setText("");
+//        String fileName = mixregGUI.defFile.getDataFilename();
+//        String outputFilePath = FilenameUtils.removeExtension(fileName) + "_Output_1.out";
+//        File file = new File(outputFilePath);
+//        BufferedReader br = null;
+//        String line = "";
+//
+//        br = new BufferedReader(new FileReader(file));
+//        while ((line = br.readLine()) != null) {
+//            //System.out.println(line);
+//            mixregGUI.stageOneOutput.append(line + "\n");
+//
+//        }
+//
+//        br.close();
 
     }
 
     public void readStageTwoOutputfile() throws FileNotFoundException, IOException {
 
-        mixregGUI.stageTwoOutput.setText("");
-        if (mixregGUI.defFile.getAdvancedDropSecondStage().equals("1")) {
-
-            //do nothing
-        } else {
-            String fileName = mixregGUI.defFile.getDataFilename();
-            String outputFilePath = FilenameUtils.removeExtension(fileName) + "_Output_2.out";
-            File file = new File(outputFilePath);
-            BufferedReader br = null;
-            String line = "";
-
-            br = new BufferedReader(new FileReader(file));
-            while ((line = br.readLine()) != null) {
-                //System.out.println(line);
-                mixregGUI.stageTwoOutput.append(line + "\n");
-            }
-
-            br.close();
-
-        }
+//        mixregGUI.stageTwoOutput.setText("");
+//        if (mixregGUI.defFile.getAdvancedDropSecondStage().equals("1")) {
+//
+//            //do nothing
+//        } else {
+//            String fileName = mixregGUI.defFile.getDataFilename();
+//            String outputFilePath = FilenameUtils.removeExtension(fileName) + "_Output_2.out";
+//            File file = new File(outputFilePath);
+//            BufferedReader br = null;
+//            String line = "";
+//
+//            br = new BufferedReader(new FileReader(file));
+//            while ((line = br.readLine()) != null) {
+//                //System.out.println(line);
+//                mixregGUI.stageTwoOutput.append(line + "\n");
+//            }
+//
+//            br.close();
+//
+//        }
 
     }
 
