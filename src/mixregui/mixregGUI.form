@@ -608,6 +608,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Yes"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="randomScaleSelectionYesActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JRadioButton" name="randomScaleSelectionNo">
                   <Properties>
@@ -659,6 +662,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Single level"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stageTwoSingleLevelActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JRadioButton" name="stageTwoMultiLevel">
                   <Properties>
@@ -678,6 +684,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Multinomial"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="multinomialRadioActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="stageOneOutcomeHelpButton">
                   <Properties>
@@ -694,6 +703,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Count"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="countRadioActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="stageTwoDescription">
                   <Properties>

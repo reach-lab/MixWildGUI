@@ -1079,6 +1079,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         randomScaleSelectionGroup.add(randomScaleSelectionYes);
         randomScaleSelectionYes.setText("Yes");
+        randomScaleSelectionYes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                randomScaleSelectionYesActionPerformed(evt);
+            }
+        });
 
         randomScaleSelectionGroup.add(randomScaleSelectionNo);
         randomScaleSelectionNo.setText("No");
@@ -1110,6 +1115,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         stageTwoLevelGroup.add(stageTwoSingleLevel);
         stageTwoSingleLevel.setText("Single level");
+        stageTwoSingleLevel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stageTwoSingleLevelActionPerformed(evt);
+            }
+        });
 
         stageTwoLevelGroup.add(stageTwoMultiLevel);
         stageTwoMultiLevel.setText("Multilevel");
@@ -1121,6 +1131,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         buttonGroup3.add(multinomialRadio);
         multinomialRadio.setText("Multinomial");
+        multinomialRadio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                multinomialRadioActionPerformed(evt);
+            }
+        });
 
         stageOneOutcomeHelpButton.setText("?");
         stageOneOutcomeHelpButton.addActionListener(new java.awt.event.ActionListener() {
@@ -1131,6 +1146,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         buttonGroup3.add(countRadio);
         countRadio.setText("Count");
+        countRadio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                countRadioActionPerformed(evt);
+            }
+        });
 
         stageTwoDescription.setText("?");
         stageTwoDescription.addActionListener(new java.awt.event.ActionListener() {
@@ -2589,7 +2609,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_stageOneOutcomeHelpButtonActionPerformed
 
     private void stageTwoMultiLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoMultiLevelActionPerformed
-        // TODO add your handling code here:
+        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
+        updateGuiView(MXRStates);
     }//GEN-LAST:event_stageTwoMultiLevelActionPerformed
 
     private void includeStageTwoNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_includeStageTwoNoActionPerformed
@@ -2610,7 +2631,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_includeStageTwoYesActionPerformed
 
     private void randomScaleSelectionNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_randomScaleSelectionNoActionPerformed
-        // TODO add your handling code here:
+        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
+        updateGuiView(MXRStates);
     }//GEN-LAST:event_randomScaleSelectionNoActionPerformed
 
     private void stageOneOrdinalRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneOrdinalRadioActionPerformed
@@ -2622,7 +2644,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_stageOneDichotomousRadioActionPerformed
 
     private void stageOneContinuousRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneContinuousRadioActionPerformed
-        // TODO add your handling code here:
+        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
+        updateGuiView(MXRStates);
     }//GEN-LAST:event_stageOneContinuousRadioActionPerformed
 
     private void seedHelpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seedHelpButtonActionPerformed
@@ -2704,11 +2727,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     private void missingValuePresentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_missingValuePresentActionPerformed
         // TODO add your handling code here:
-        if (missingValuePresent.isSelected()) {
-            newModelMissingValueCode.setEnabled(true);
-            newModelMissingValueCode.setText("-999");
-            newModelMissingValueCode.selectAll();
-        }
+
+        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
+        updateGuiView(MXRStates);
     }//GEN-LAST:event_missingValuePresentActionPerformed
 
     private void missingValueAbsentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_missingValueAbsentActionPerformed
@@ -2718,7 +2739,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_missingValueAbsentActionPerformed
 
     private void stageTwoDichotomousRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoDichotomousRadioActionPerformed
-        // TODO add your handling code here:
+        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
+        updateGuiView(MXRStates);
         /*if (includeStageTwoNo.isSelected()){
             //Do nothing
         } else {
@@ -2731,7 +2753,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_stageTwoDichotomousRadioActionPerformed
 
     private void stageTwoContinuousRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoContinuousRadioActionPerformed
-        // TODO add your handling code here:
+        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
+        updateGuiView(MXRStates);
         /*if (includeStageTwoNo.isSelected()){
             //Do nothing
 
@@ -2745,11 +2768,13 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_stageTwoContinuousRadioActionPerformed
 
     private void moreThanOneRLERadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moreThanOneRLERadioActionPerformed
-        // TODO add your handling code here:
+        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
+        updateGuiView(MXRStates);
     }//GEN-LAST:event_moreThanOneRLERadioActionPerformed
 
     private void oneRLERadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oneRLERadioActionPerformed
-        // TODO add your handling code here:
+        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
+        updateGuiView(MXRStates);
     }//GEN-LAST:event_oneRLERadioActionPerformed
 
     private void titleFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_titleFieldActionPerformed
@@ -2803,6 +2828,26 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         updateGuiView(MXRStates);
     }//GEN-LAST:event_updateStage2ConfigButtonActionPerformed
 
+    private void randomScaleSelectionYesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_randomScaleSelectionYesActionPerformed
+        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
+        updateGuiView(MXRStates);
+    }//GEN-LAST:event_randomScaleSelectionYesActionPerformed
+
+    private void stageTwoSingleLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoSingleLevelActionPerformed
+        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
+        updateGuiView(MXRStates);
+    }//GEN-LAST:event_stageTwoSingleLevelActionPerformed
+
+    private void countRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_countRadioActionPerformed
+        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
+        updateGuiView(MXRStates);
+    }//GEN-LAST:event_countRadioActionPerformed
+
+    private void multinomialRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_multinomialRadioActionPerformed
+        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
+        updateGuiView(MXRStates);
+    }//GEN-LAST:event_multinomialRadioActionPerformed
+
     // **********************update********************
     private void updateGuiView(MixRegGuiStates mxrStates) {
         // this method is to update Gui View with Gui state data saved in MixRegGuiStates
@@ -2816,17 +2861,27 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         FilepathValid = updateGuiView_verify_FilePath(mxrStates);
 
         if (FilepathValid) {
+            // update browse triggered fields
+            updateGuiView_trigger_browse(true);
+            // update missing value trigger fields
+            if (mxrStates.missingValuePresent) {
+                missingValuePresent.setSelected(true);
+                newModelMissingValueCode.setText(mxrStates.newModelMissingValueCode);
+            } else if (mxrStates.missingValueAbsent) {
+                missingValueAbsent.setSelected(true);
+            }
+            updateGuiView_trigger_missingvaluefield();
             // update Data View tab
             updateGuiView_trigger_dataview();
             // Update basic GUI States: Model Configuration Tab
             updateGuiView_TabOneStates(mxrStates);
-            // Trigger 1. Dataset Contain missing values or not
-            updateGuiView_trigger_MissingValue();
-            // Trigger 2. Include Stage 2 or not
+            // Trigger: stage 1 config completed
+            updateGuiView_trigger_stageOneConfig();
+            // Trigger: Include Stage 2 or not
             updateGuiView_trigger_IncludeStageTwo();
-            // Triger 3. Click to modify stage 2 config or not
+            // Triger: Click to modify stage 2 config or not
             updateGuiVIew_trigger_updateStage2Config();
-            // Trigger 4. New model submitted or not
+            // Trigger: New model submitted or not
             isNewModalConfigSubmitted = mxrStates.isNewModalConfigSubmitted;
             if (isNewModalConfigSubmitted == true) {
                 updateGuiView_trigger_NewModelSubmit();
@@ -2853,27 +2908,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         file = new File(mxrStates.filepath);
 
         if (file.exists()) {
-            setFirstTabStatus(true);
-            titleField.setEnabled(true);
-            oneRLERadio.setEnabled(true);
-            moreThanOneRLERadio.setEnabled(true);
-            stageTwoContinuousRadio.setEnabled(true);
-            stageTwoDichotomousRadio.setEnabled(true);
-            newModelSubmit.setEnabled(true);
-            missingValuePresent.setEnabled(true);
-            missingValueAbsent.setEnabled(true);
-            includeStageTwoNo.setEnabled(true);
-            includeStageTwoYes.setEnabled(true);
-            newModel_resetButton.setEnabled(true);
-            randomScaleSelectionYes.setEnabled(true);
-            randomScaleSelectionNo.setEnabled(true);
-            guiStatesSaveButtonModalConfig.setEnabled(true);
-            guiStatesLoadButtonModalConfig.setEnabled(true);
-//            stageOneTabs.setEnabledAt(6, true);
-            updateStage2ConfigButton.setVisible(false);
-
-            System.out.println(file.getAbsolutePath());
-
+//            setFirstTabStatus(true);
             return true;
         } else {
             setFirstTabStatus(false);
@@ -2888,13 +2923,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private void updateGuiView_TabOneStates(MixRegGuiStates mxrStates) {
         titleField.setText(mxrStates.title);
         sessionFolderName = mxrStates.sessionFolderName;
-
-        if (mxrStates.missingValuePresent) {
-            missingValuePresent.setSelected(true);
-            newModelMissingValueCode.setText(mxrStates.newModelMissingValueCode);
-        } else if (mxrStates.missingValueAbsent) {
-            missingValueAbsent.setSelected(true);
-        }
 
         if (mxrStates.stageOneContinuousRadio) {
             stageOneContinuousRadio.setSelected(true);
@@ -2963,7 +2991,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             stageTwoModelTypeLabel.setVisible(false);
             stageTwoOutcomeTypeLabel.setVisible(false);
             stageTwoModelGiantLabel.setVisible(false);
-        } else {
+
+            newModelSubmit.setVisible(true);
+
+//            updateStage2ConfigButton.setVisible(true);
+        } else if (includeStageTwoYes.isSelected()) {
             setSeedLabel.setVisible(true);
             seedTextBox.setVisible(true);
             seedHelpButton.setVisible(true);
@@ -2974,12 +3006,21 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             stageTwoSingleLevel.setEnabled(true);
             stageTwoMultiLevel.setVisible(true);
             stageTwoContinuousRadio.setVisible(true);
+            stageTwoContinuousRadio.setEnabled(true);
             stageTwoDichotomousRadio.setVisible(true);
+            stageTwoDichotomousRadio.setEnabled(true);
             countRadio.setVisible(true);
             multinomialRadio.setVisible(true);
             stageTwoModelTypeLabel.setVisible(true);
             stageTwoOutcomeTypeLabel.setVisible(true);
             stageTwoModelGiantLabel.setVisible(true);
+            if ((stageTwoLevelGroup.getSelection() != null) && (buttonGroup3.getSelection() != null)) {
+                newModelSubmit.setVisible(true);
+            } else {
+                newModelSubmit.setVisible(false);
+            }
+
+//            updateStage2ConfigButton.setVisible(true);
         }
     }
 
@@ -7180,7 +7221,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             stageOneTabs.insertTab("Stage 1 Results", null, jPanel3, null, stage1ResultTabIdx);
         }
 
-
     }
 
     private void update_StageTwoStates(MixRegGuiStates mxrStates) {
@@ -7738,6 +7778,86 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         // remove tabs
         if (checkTabExistinJTabbedPane(stageOneTabs, "Stage 2 Configuration") && (isOutcomeNone() == true)) {
             stageOneTabs.remove(jPanel12);
+        }
+    }
+
+    private void updateGuiView_trigger_browse(boolean turnOn) {
+        titleViewLabel.setVisible(turnOn);
+        titleField.setVisible(turnOn);
+
+        missingViewLabel.setVisible(turnOn);
+        missingValueAbsent.setVisible(turnOn);
+        missingValuePresent.setVisible(turnOn);
+
+        if (turnOn) {
+            hiddenBigIconLabel.setIcon(null);
+        }
+
+        jLabel29.setVisible(turnOn);
+        guiStatesSaveButtonModalConfig.setVisible(turnOn);
+        newModel_resetButton.setVisible(turnOn);
+    }
+
+    private void updateGuiView_trigger_missingvaluefield() {
+
+        if (missingValuePresent.isSelected()) {
+            missingCodeViewLabel.setVisible(true);
+            newModelMissingValueCode.setVisible(true);
+            newModelMissingValueCode.setText("-999");
+            newModelMissingValueCode.selectAll();
+
+            stageOneOutcomeViewLabel.setVisible(true);
+            stageOneContinuousRadio.setVisible(true);
+            stageOneDichotomousRadio.setVisible(true);
+            stageOneOrdinalRadio.setVisible(true);
+            stageOneOutcomeHelpButton.setVisible(true);
+
+            rleViewLabel.setVisible(true);
+            oneRLERadio.setVisible(true);
+            moreThanOneRLERadio.setVisible(true);
+
+            randomScaleViewLabel.setVisible(true);
+            randomScaleSelectionYes.setVisible(true);
+            randomScaleSelectionNo.setVisible(true);
+
+            jSeparator16.setVisible(true);
+            jSeparator8.setVisible(true);
+
+            stageOneModelGiantLabel.setVisible(true);
+        } else if (missingValueAbsent.isSelected()) {
+            missingCodeViewLabel.setVisible(false);
+            newModelMissingValueCode.setVisible(false);
+            newModelMissingValueCode.setText("");
+
+            stageOneOutcomeViewLabel.setVisible(true);
+            stageOneContinuousRadio.setVisible(true);
+            stageOneDichotomousRadio.setVisible(true);
+            stageOneOrdinalRadio.setVisible(true);
+            stageOneOutcomeHelpButton.setVisible(true);
+
+            rleViewLabel.setVisible(true);
+            oneRLERadio.setVisible(true);
+            moreThanOneRLERadio.setVisible(true);
+
+            randomScaleViewLabel.setVisible(true);
+            randomScaleSelectionYes.setVisible(true);
+            randomScaleSelectionNo.setVisible(true);
+
+            jSeparator16.setVisible(true);
+            jSeparator8.setVisible(true);
+
+            stageOneModelGiantLabel.setVisible(true);
+        }
+
+    }
+
+    private void updateGuiView_trigger_stageOneConfig() {
+        if ((stageOneOutcomeGroup.getSelection() != null) && (buttonGroup2.getSelection() != null) && (randomScaleSelectionGroup.getSelection() != null)) {
+            includeStageTwoLabel.setVisible(true);
+            includeStageTwoYes.setVisible(true);
+            includeStageTwoNo.setVisible(true);
+            stageTwoDescription.setVisible(true);
+            stageTwoModelGiantLabel.setVisible(true);
         }
     }
 }
