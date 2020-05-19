@@ -78,6 +78,7 @@ import javax.swing.table.DefaultTableModel;
 import org.apache.commons.io.FilenameUtils;
 import java.io.Serializable;
 import javax.swing.JTabbedPane;
+import javax.swing.JTextArea;
 import org.apache.commons.io.FileUtils;
 
 /**
@@ -581,9 +582,15 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }
 
     private void setFirstTabStatus(boolean turnOn) {
+        dataFileLabel.setVisible(turnOn);
+        filePath.setVisible(turnOn);
+        fileBrowseButton.setVisible(turnOn);
+        datasetInstructionTextArea.setVisible(turnOn);
+
         titleViewLabel.setVisible(turnOn);
         titleField.setVisible(turnOn);
 
+        DatasetLabel.setVisible(turnOn);
         missingViewLabel.setVisible(turnOn);
         missingValueAbsent.setVisible(turnOn);
         missingValuePresent.setVisible(turnOn);
@@ -633,7 +640,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         jSeparator16.setVisible(turnOn);
         jSeparator8.setVisible(turnOn);
-        jLabel29.setVisible(turnOn);
 
         if (turnOn) {
             hiddenBigIconLabel.setIcon(null);
@@ -660,6 +666,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         icon = new ImageIcon(getClass().getResource("/resources/MixWildLogoTiny.png"));
         bigIcon = new ImageIcon(getClass().getResource("/resources/MixWILDLogoResized.PNG"));
+
+        Scanner fileReaderScan = new Scanner(getClass().getResourceAsStream("/resources/DatasetCheck.txt"));
+        while (fileReaderScan.hasNextLine()) {
+            datasetInstructionTextArea.append(fileReaderScan.nextLine() + "\n");
+        }
 
         stageOneContinuousRadio.setSelected(true);
         stageOneDichotomousRadio.setEnabled(false);
@@ -728,8 +739,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         parentPanel = new javax.swing.JPanel();
         stageOneTabs = new javax.swing.JTabbedPane();
         jPanel13 = new javax.swing.JPanel();
-        jLabel16 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
         fileBrowseButton = new javax.swing.JButton();
         filePath = new javax.swing.JTextField();
         dataFileLabel = new javax.swing.JLabel();
@@ -750,7 +759,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         newModelMissingValueCode = new javax.swing.JTextField();
         seedTextBox = new javax.swing.JTextField();
         setSeedLabel = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
         newModel_resetButton = new javax.swing.JButton();
         newModelSubmit = new javax.swing.JButton();
         seedHelpButton = new javax.swing.JButton();
@@ -778,6 +786,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         guiStatesSaveButtonModalConfig = new javax.swing.JButton();
         loadModelByBrowseButton = new javax.swing.JButton();
         updateStage2ConfigButton = new javax.swing.JButton();
+        dataInstruction = new javax.swing.JScrollPane();
+        datasetInstructionTextArea = new javax.swing.JTextArea();
+        jTextField3 = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        DatasetLabel = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         resetButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -916,16 +929,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         jPanel13.setPreferredSize(new java.awt.Dimension(1297, 1032));
 
-        jLabel16.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
-        jLabel16.setText("Is your dataset Mix{WILD} friendly?");
-
-        jButton2.setText("Check here...");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
         fileBrowseButton.setText("Browse");
         fileBrowseButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1026,8 +1029,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         setSeedLabel.setText("(Optional) Set a seed for Stage 2 resampling:");
 
-        jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/MixWildLogoTiny.png"))); // NOI18N
-
         newModel_resetButton.setText("Reset");
         newModel_resetButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1049,8 +1050,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
         });
 
+        stageOneModelGiantLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         stageOneModelGiantLabel.setText("Stage 1 Model");
 
+        stageTwoModelGiantLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         stageTwoModelGiantLabel.setText("Stage 2 Model");
 
         stageOneOutcomeViewLabel.setText("Stage 1 outcome:");
@@ -1181,7 +1184,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
         });
 
-        loadModelByBrowseButton.setText("Load Model");
+        loadModelByBrowseButton.setText("Previous Model");
         loadModelByBrowseButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loadModelByBrowseButtonActionPerformed(evt);
@@ -1195,143 +1198,195 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
         });
 
+        dataInstruction.setBorder(null);
+
+        datasetInstructionTextArea.setEditable(false);
+        datasetInstructionTextArea.setBackground(new java.awt.Color(222, 222, 222));
+        datasetInstructionTextArea.setColumns(20);
+        datasetInstructionTextArea.setLineWrap(true);
+        datasetInstructionTextArea.setRows(5);
+        datasetInstructionTextArea.setAutoscrolls(false);
+        datasetInstructionTextArea.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        datasetInstructionTextArea.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        datasetInstructionTextArea.setEnabled(false);
+        datasetInstructionTextArea.setFocusable(false);
+        datasetInstructionTextArea.setHighlighter(null);
+        datasetInstructionTextArea.setOpaque(false);
+        datasetInstructionTextArea.setRequestFocusEnabled(false);
+        datasetInstructionTextArea.setSelectedTextColor(new java.awt.Color(51, 0, 51));
+        datasetInstructionTextArea.setVerifyInputWhenFocusTarget(false);
+        dataInstruction.setViewportView(datasetInstructionTextArea);
+
+        jTextField3.setEditable(false);
+        jTextField3.setText("Start with a new dataset or previous model");
+        jTextField3.setToolTipText("");
+        jTextField3.setBorder(null);
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("New Dataset");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        DatasetLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        DatasetLabel.setText("Dataset");
+
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
-                .addGap(136, 136, 136)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(stageTwoModelGiantLabel)
-                    .addComponent(hiddenBigIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 905, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addGap(184, 184, 184)
                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(stageOneModelGiantLabel)
-                            .addComponent(jLabel29))
-                        .addGap(28, 28, 28)
+                            .addComponent(stageTwoModelGiantLabel)
+                            .addComponent(DatasetLabel)))
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(hiddenBigIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addComponent(guiStatesSaveButtonModalConfig, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(guiStatesLoadButtonModalConfig, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(newModel_resetButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(newModelSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(updateStage2ConfigButton))
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addComponent(stageOneOutcomeViewLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(stageOneContinuousRadio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(stageOneDichotomousRadio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(stageOneOrdinalRadio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(stageOneOutcomeHelpButton))
+                    .addComponent(jSeparator16, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addComponent(rleViewLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(oneRLERadio, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(moreThanOneRLERadio))
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addComponent(randomScaleViewLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(randomScaleSelectionYes)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(randomScaleSelectionNo))
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addComponent(stageTwoModelTypeLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(stageTwoSingleLevel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(stageTwoMultiLevel))
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addComponent(stageTwoOutcomeTypeLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(stageTwoContinuousRadio, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(stageTwoDichotomousRadio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(countRadio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(multinomialRadio))
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addComponent(setSeedLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(seedTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(seedHelpButton))
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addComponent(includeStageTwoLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(includeStageTwoYes)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(includeStageTwoNo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(stageTwoDescription))
+                    .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel13Layout.createSequentialGroup()
                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel13Layout.createSequentialGroup()
+                                    .addComponent(titleViewLabel)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(titleField))
+                                .addComponent(missingViewLabel, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(missingCodeViewLabel))
+                        .addGap(32, 32, 32)
+                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(newModelMissingValueCode, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel13Layout.createSequentialGroup()
-                                .addComponent(guiStatesSaveButtonModalConfig, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(guiStatesLoadButtonModalConfig, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(newModel_resetButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(missingValuePresent, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(10, 10, 10)
-                                .addComponent(newModelSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(updateStage2ConfigButton))
-                            .addGroup(jPanel13Layout.createSequentialGroup()
-                                .addComponent(stageOneOutcomeViewLabel)
-                                .addGap(18, 18, 18)
-                                .addComponent(stageOneContinuousRadio)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(stageOneDichotomousRadio)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(stageOneOrdinalRadio)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(stageOneOutcomeHelpButton))
-                            .addComponent(jSeparator16, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel13Layout.createSequentialGroup()
-                                .addComponent(rleViewLabel)
-                                .addGap(18, 18, 18)
-                                .addComponent(oneRLERadio, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(moreThanOneRLERadio))
-                            .addGroup(jPanel13Layout.createSequentialGroup()
-                                .addComponent(randomScaleViewLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(randomScaleSelectionYes)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(randomScaleSelectionNo))
-                            .addGroup(jPanel13Layout.createSequentialGroup()
-                                .addComponent(dataFileLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(filePath, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(fileBrowseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(loadModelByBrowseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel13Layout.createSequentialGroup()
-                                .addComponent(jLabel16)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(missingCodeViewLabel)
-                            .addGroup(jPanel13Layout.createSequentialGroup()
-                                .addComponent(stageTwoModelTypeLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(stageTwoSingleLevel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(stageTwoMultiLevel))
-                            .addGroup(jPanel13Layout.createSequentialGroup()
-                                .addComponent(stageTwoOutcomeTypeLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(stageTwoContinuousRadio, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(stageTwoDichotomousRadio)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(countRadio)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(multinomialRadio))
-                            .addGroup(jPanel13Layout.createSequentialGroup()
-                                .addComponent(setSeedLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(seedTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(seedHelpButton))
-                            .addGroup(jPanel13Layout.createSequentialGroup()
-                                .addComponent(includeStageTwoLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(includeStageTwoYes)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(includeStageTwoNo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(stageTwoDescription))
-                            .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel13Layout.createSequentialGroup()
-                                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel13Layout.createSequentialGroup()
-                                        .addComponent(titleViewLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(titleField))
-                                    .addComponent(missingViewLabel))
-                                .addGap(49, 49, 49)
-                                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(newModelMissingValueCode, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel13Layout.createSequentialGroup()
-                                        .addComponent(missingValuePresent, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(10, 10, 10)
-                                        .addComponent(missingValueAbsent)))))))
-                .addContainerGap(178, Short.MAX_VALUE))
+                                .addComponent(missingValueAbsent))))
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addComponent(dataFileLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(filePath, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(fileBrowseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(loadModelByBrowseButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(dataInstruction, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(237, Short.MAX_VALUE))
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
-                .addGap(23, 23, 23)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(hiddenBigIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dataInstruction, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2)
+                        .addGap(18, 18, 18)
+                        .addComponent(loadModelByBrowseButton)))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dataFileLabel)
                     .addComponent(filePath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fileBrowseButton)
-                    .addComponent(loadModelByBrowseButton))
+                    .addComponent(fileBrowseButton))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(titleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(titleViewLabel)
-                    .addComponent(titleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(DatasetLabel))
+                .addGap(15, 15, 15)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(missingViewLabel)
                     .addComponent(missingValuePresent, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(missingValueAbsent, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(missingCodeViewLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(newModelMissingValueCode, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(hiddenBigIconLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator16, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator16, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(stageOneOutcomeViewLabel)
@@ -1365,37 +1420,36 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     .addComponent(includeStageTwoNo)
                     .addComponent(stageTwoDescription))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(stageTwoModelTypeLabel)
-                    .addComponent(stageTwoSingleLevel)
-                    .addComponent(stageTwoMultiLevel))
-                .addGap(3, 3, 3)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(stageTwoModelGiantLabel)
-                    .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(stageTwoDichotomousRadio)
-                        .addComponent(stageTwoContinuousRadio)
-                        .addComponent(multinomialRadio)
-                        .addComponent(stageTwoOutcomeTypeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(countRadio)))
-                .addGap(3, 3, 3)
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(stageTwoModelTypeLabel)
+                            .addComponent(stageTwoSingleLevel)
+                            .addComponent(stageTwoMultiLevel))
+                        .addGap(3, 3, 3)
+                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(stageTwoDichotomousRadio)
+                            .addComponent(stageTwoContinuousRadio)
+                            .addComponent(multinomialRadio)
+                            .addComponent(stageTwoOutcomeTypeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(countRadio))
+                        .addGap(3, 3, 3))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
+                        .addComponent(stageTwoModelGiantLabel)
+                        .addGap(34, 34, 34)))
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(setSeedLabel)
                     .addComponent(seedTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(seedHelpButton))
-                .addGap(18, 18, 18)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel13Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(newModel_resetButton)
-                                .addComponent(guiStatesLoadButtonModalConfig)
-                                .addComponent(guiStatesSaveButtonModalConfig))
-                            .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(newModelSubmit)
-                                .addComponent(updateStage2ConfigButton)))))
+                    .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(newModel_resetButton)
+                        .addComponent(guiStatesLoadButtonModalConfig)
+                        .addComponent(guiStatesSaveButtonModalConfig))
+                    .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(newModelSubmit)
+                        .addComponent(updateStage2ConfigButton)))
                 .addGap(613, 613, 613))
         );
 
@@ -2565,8 +2619,46 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         // TODO add your handling code here:
     }//GEN-LAST:event_stageTwoOutcomeActionPerformed
 
-    private void loadModelByBrowseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadModelByBrowseButtonActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
+        jTextField3.setVisible(false);
+        jButton2.setVisible(false);
+        loadModelByBrowseButton.setVisible(false);
+
+        dataFileLabel.setVisible(true);
+        filePath.setVisible(true);
+        fileBrowseButton.setVisible(true);
+        datasetInstructionTextArea.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void updateStage2ConfigButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateStage2ConfigButtonActionPerformed
+        isUpdateStage2ConfigClicked = true;
+
+        includeStageTwoYes.setEnabled(true);
+        includeStageTwoNo.setEnabled(true);
+
+        isNewModalConfigSubmitted = false;
+        newModelSubmit.setVisible(true);
+        newModelSubmit.setEnabled(true);
+        updateStage2ConfigButton.setVisible(false);
+
+        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
+        updateGuiView(MXRStates);
+    }//GEN-LAST:event_updateStage2ConfigButtonActionPerformed
+
+    private void loadModelByBrowseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadModelByBrowseButtonActionPerformed
+        jTextField3.setVisible(false);
+        jButton2.setVisible(false);
+        loadModelByBrowseButton.setVisible(false);
+        dataFileLabel.setVisible(true);
+        filePath.setVisible(true);
+        fileBrowseButton.setVisible(true);
+//        datasetInstruction.setVisible(true);
+
         MXRStates = new MixRegGuiStates();
         MXRStates.readAllStates(this);
         //        System.out.print(MXRStates.filepath);
@@ -2582,6 +2674,16 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         MXRStates = new MixRegGuiStates(this, advancedOptions_view);
         MXRStates.writeAllStates(this);
     }//GEN-LAST:event_guiStatesSaveButtonModalConfigActionPerformed
+
+    private void guiStatesLoadButtonModalConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guiStatesLoadButtonModalConfigActionPerformed
+        if (sessionFolderName != null) {
+            SystemLogger.LOGGER.log(Level.INFO, "Loading GUI states");
+        }
+
+        MXRStates = new MixRegGuiStates();
+        MXRStates.readAllStates(this);
+        updateGuiView(MXRStates);
+    }//GEN-LAST:event_guiStatesLoadButtonModalConfigActionPerformed
 
     private void hiddenBigIconLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hiddenBigIconLabelMouseClicked
         // TODO add your handling code here:
@@ -2603,6 +2705,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 + "- Dichotomous and ordinal outcomes will run an ordered logistic regression at Stage 2.", "Stage 2 Model", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_stageTwoDescriptionActionPerformed
 
+    private void countRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_countRadioActionPerformed
+        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
+        updateGuiView(MXRStates);
+    }//GEN-LAST:event_countRadioActionPerformed
+
     private void stageOneOutcomeHelpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneOutcomeHelpButtonActionPerformed
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(null, "(To be implemented in MixWILD 2.0) Currently, you are restricted to continuous Stage 1 outcomes."
@@ -2610,10 +2717,20 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 + "Note that random scale is not available for dichotomous outcomes.", "Stage 1 Outcome Type", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_stageOneOutcomeHelpButtonActionPerformed
 
+    private void multinomialRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_multinomialRadioActionPerformed
+        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
+        updateGuiView(MXRStates);
+    }//GEN-LAST:event_multinomialRadioActionPerformed
+
     private void stageTwoMultiLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoMultiLevelActionPerformed
         MXRStates = new MixRegGuiStates(this, advancedOptions_view);
         updateGuiView(MXRStates);
     }//GEN-LAST:event_stageTwoMultiLevelActionPerformed
+
+    private void stageTwoSingleLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoSingleLevelActionPerformed
+        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
+        updateGuiView(MXRStates);
+    }//GEN-LAST:event_stageTwoSingleLevelActionPerformed
 
     private void includeStageTwoNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_includeStageTwoNoActionPerformed
         // TODO add your handling code here:
@@ -2636,6 +2753,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         MXRStates = new MixRegGuiStates(this, advancedOptions_view);
         updateGuiView(MXRStates);
     }//GEN-LAST:event_randomScaleSelectionNoActionPerformed
+
+    private void randomScaleSelectionYesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_randomScaleSelectionYesActionPerformed
+        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
+        updateGuiView(MXRStates);
+    }//GEN-LAST:event_randomScaleSelectionYesActionPerformed
 
     private void stageOneOrdinalRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneOrdinalRadioActionPerformed
         // TODO add your handling code here:
@@ -2670,7 +2792,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         updateGuiView_trigger_NewModelSubmit();
         SystemLogger.LOGGER.log(Level.INFO, "Submit new model");
-
     }//GEN-LAST:event_newModelSubmitActionPerformed
 
     private void newModel_resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModel_resetButtonActionPerformed
@@ -2797,58 +2918,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         loadModelByBrowseButton.setEnabled(false);
         loadModelByBrowseButton.setVisible(false);
     }//GEN-LAST:event_fileBrowseButtonActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        InstructionsGUI instructions = new InstructionsGUI();
-        instructions.setLocationRelativeTo(mxr);
-        instructions.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void guiStatesLoadButtonModalConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guiStatesLoadButtonModalConfigActionPerformed
-        if (sessionFolderName != null) {
-            SystemLogger.LOGGER.log(Level.INFO, "Loading GUI states");
-        }
-
-        MXRStates = new MixRegGuiStates();
-        MXRStates.readAllStates(this);
-        updateGuiView(MXRStates);
-    }//GEN-LAST:event_guiStatesLoadButtonModalConfigActionPerformed
-
-    private void updateStage2ConfigButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateStage2ConfigButtonActionPerformed
-        isUpdateStage2ConfigClicked = true;
-
-        includeStageTwoYes.setEnabled(true);
-        includeStageTwoNo.setEnabled(true);
-
-        isNewModalConfigSubmitted = false;
-        newModelSubmit.setVisible(true);
-        newModelSubmit.setEnabled(true);
-        updateStage2ConfigButton.setVisible(false);
-
-        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
-        updateGuiView(MXRStates);
-    }//GEN-LAST:event_updateStage2ConfigButtonActionPerformed
-
-    private void randomScaleSelectionYesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_randomScaleSelectionYesActionPerformed
-        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
-        updateGuiView(MXRStates);
-    }//GEN-LAST:event_randomScaleSelectionYesActionPerformed
-
-    private void stageTwoSingleLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoSingleLevelActionPerformed
-        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
-        updateGuiView(MXRStates);
-    }//GEN-LAST:event_stageTwoSingleLevelActionPerformed
-
-    private void countRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_countRadioActionPerformed
-        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
-        updateGuiView(MXRStates);
-    }//GEN-LAST:event_countRadioActionPerformed
-
-    private void multinomialRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_multinomialRadioActionPerformed
-        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
-        updateGuiView(MXRStates);
-    }//GEN-LAST:event_multinomialRadioActionPerformed
 
     // **********************update********************
     private void updateGuiView(MixRegGuiStates mxrStates) {
@@ -3144,6 +3213,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel DatasetLabel;
     private javax.swing.JComboBox<String> IDvariableCombo;
     private javax.swing.JRadioButton LinearAssociationRadio;
     private javax.swing.JRadioButton NoAssociationRadio;
@@ -3160,7 +3230,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.JRadioButton countRadio;
     private javax.swing.JLabel dataFileLabel;
+    private javax.swing.JScrollPane dataInstruction;
     public static javax.swing.JTable dataTable;
+    private javax.swing.JTextArea datasetInstructionTextArea;
     private javax.swing.JTextArea equationArea;
     private javax.swing.JButton exampleDataDownload;
     private javax.swing.JButton fileBrowseButton;
@@ -3188,7 +3260,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
@@ -3202,7 +3273,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
@@ -3254,6 +3324,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     private javax.swing.JLabel level1_BSVar;
     private javax.swing.JLabel level1_MeanReg;
     private javax.swing.JLabel level1_WSVar;
@@ -7795,6 +7866,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         titleViewLabel.setVisible(turnOn);
         titleField.setVisible(turnOn);
 
+        DatasetLabel.setVisible(turnOn);
         missingViewLabel.setVisible(turnOn);
         missingValueAbsent.setVisible(turnOn);
         missingValuePresent.setVisible(turnOn);
@@ -7803,7 +7875,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             hiddenBigIconLabel.setIcon(null);
         }
 
-        jLabel29.setVisible(turnOn);
         guiStatesSaveButtonModalConfig.setVisible(turnOn);
         newModel_resetButton.setVisible(turnOn);
     }
