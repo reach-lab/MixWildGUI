@@ -388,7 +388,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             System.out.println("FIELD VALIDATE: " + "Missing value missing");
         }
 
-        if (newModelMissingValueCode.isEnabled() && newModelMissingValueCode.getText().trim().length() == 0) {
+        if (missingValuePresent.isSelected() && newModelMissingValueCode.getText().trim().length() == 0) {
             allFieldsEntered = false;
             JOptionPane.showMessageDialog(null, "Please don't leave the missing code value as blank", "Missing information!", JOptionPane.INFORMATION_MESSAGE, icon);
             System.out.println("FIELD VALIDATE: " + "Missing value blank");
@@ -537,12 +537,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageTwoLevelTwoPanel.setLayout(new BorderLayout());
 
         System.out.println("Right before");
-        if (outcomeNone == true) {
+        if (isOutcomeNone() == true) {
             System.out.println("In isOutcomeNone MixReg");
             startStageTwo.setText("Run Stage 1");
             System.out.println(startStageTwo.getText());
             //stageOneTabs.set
 //            stageOneTabs.setEnabledAt(2, false);
+        } else if (isOutcomeNone() == false) {
+            startStageTwo.setText("Configure Stage 2");
         }
         System.out.println("Right after");
 
@@ -5717,11 +5719,17 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private void updateGuiView_trigger_NewModelSubmit() {
         System.out.println("Model submitted" + " called");
 
-        updateGuiView_trigger_NewModelSubmit_TabChange();
-
         if (validateFields() == true) {
             System.out.print("condition is true");
+            updateGuiView_trigger_NewModelSubmit_TabChange();
             updateStage2ConfigButton.setVisible(true);
+
+            if (isOutcomeNone() == true) {
+                startStageTwo.setText("Run Stage 1");
+            } else if (isOutcomeNone() == false) {
+                startStageTwo.setText("Configure Stage 2");
+            }
+
             if (oneRLERadio.isSelected() == true) {
                 RLE = 2;
             } else if (moreThanOneRLERadio.isSelected() == true) {
@@ -7770,7 +7778,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         }
 
         int stage2TabIdx = stageOneTabs.indexOfTab("Stage 1 Configuration");
-
         if (!checkTabExistinJTabbedPane(stageOneTabs, "Stage 2 Configuration") && (isOutcomeNone() == false)) {
             stageOneTabs.insertTab("Stage 2 Configuration", null, jPanel12, null, stage2TabIdx + 1);
         }
@@ -7778,6 +7785,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         // remove tabs
         if (checkTabExistinJTabbedPane(stageOneTabs, "Stage 2 Configuration") && (isOutcomeNone() == true)) {
             stageOneTabs.remove(jPanel12);
+        }
+        if (checkTabExistinJTabbedPane(stageOneTabs, "Stage 2 Results") && (isOutcomeNone() == true)) {
+            stageOneTabs.remove(jPanel4);
         }
     }
 
