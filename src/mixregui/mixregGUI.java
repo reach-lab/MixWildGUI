@@ -788,8 +788,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         updateStage2ConfigButton = new javax.swing.JButton();
         dataInstruction = new javax.swing.JScrollPane();
         datasetInstructionTextArea = new javax.swing.JTextArea();
-        jTextField3 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        startWithTextField = new javax.swing.JTextField();
+        newDataSetButton = new javax.swing.JButton();
         DatasetLabel = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         resetButton = new javax.swing.JButton();
@@ -1217,20 +1217,20 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         datasetInstructionTextArea.setVerifyInputWhenFocusTarget(false);
         dataInstruction.setViewportView(datasetInstructionTextArea);
 
-        jTextField3.setEditable(false);
-        jTextField3.setText("Start with a new dataset or previous model");
-        jTextField3.setToolTipText("");
-        jTextField3.setBorder(null);
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        startWithTextField.setEditable(false);
+        startWithTextField.setText("Start with a new dataset or previous model");
+        startWithTextField.setToolTipText("");
+        startWithTextField.setBorder(null);
+        startWithTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                startWithTextFieldActionPerformed(evt);
             }
         });
 
-        jButton2.setText("New Dataset");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        newDataSetButton.setText("New Dataset");
+        newDataSetButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                newDataSetButtonActionPerformed(evt);
             }
         });
 
@@ -1342,10 +1342,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                         .addComponent(fileBrowseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel13Layout.createSequentialGroup()
                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(startWithTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(loadModelByBrowseButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(newDataSetButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(dataInstruction, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(237, Short.MAX_VALUE))
@@ -1361,9 +1361,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                             .addComponent(dataInstruction, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel13Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(startWithTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)
+                        .addComponent(newDataSetButton)
                         .addGap(18, 18, 18)
                         .addComponent(loadModelByBrowseButton)))
                 .addGap(18, 18, 18)
@@ -2619,21 +2619,21 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         // TODO add your handling code here:
     }//GEN-LAST:event_stageTwoOutcomeActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void newDataSetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newDataSetButtonActionPerformed
 
-        jTextField3.setVisible(false);
-        jButton2.setVisible(false);
+        startWithTextField.setVisible(false);
+        newDataSetButton.setVisible(false);
         loadModelByBrowseButton.setVisible(false);
 
         dataFileLabel.setVisible(true);
         filePath.setVisible(true);
         fileBrowseButton.setVisible(true);
         datasetInstructionTextArea.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_newDataSetButtonActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void startWithTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startWithTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_startWithTextFieldActionPerformed
 
     private void updateStage2ConfigButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateStage2ConfigButtonActionPerformed
         isUpdateStage2ConfigClicked = true;
@@ -2651,17 +2651,17 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_updateStage2ConfigButtonActionPerformed
 
     private void loadModelByBrowseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadModelByBrowseButtonActionPerformed
-        jTextField3.setVisible(false);
-        jButton2.setVisible(false);
+        // choose saved progress file
+        MXRStates = new MixRegGuiStates();
+        MXRStates.readAllStates(this);
+        // hide and show fields
+        startWithTextField.setVisible(false);
+        newDataSetButton.setVisible(false);
         loadModelByBrowseButton.setVisible(false);
         dataFileLabel.setVisible(true);
         filePath.setVisible(true);
         fileBrowseButton.setVisible(true);
-//        datasetInstruction.setVisible(true);
-
-        MXRStates = new MixRegGuiStates();
-        MXRStates.readAllStates(this);
-        //        System.out.print(MXRStates.filepath);
+        // update view with saved states
         updateGuiView(MXRStates);
         loadModelByBrowseButton.setEnabled(false);
         loadModelByBrowseButton.setVisible(false);
@@ -3248,7 +3248,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JRadioButton includeStageTwoNo;
     private javax.swing.JRadioButton includeStageTwoYes;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton8;
     private javax.swing.JEditorPane jEditorPane1;
@@ -3324,7 +3323,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JLabel level1_BSVar;
     private javax.swing.JLabel level1_MeanReg;
     private javax.swing.JLabel level1_WSVar;
@@ -3340,6 +3338,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel missingViewLabel;
     private javax.swing.JRadioButton moreThanOneRLERadio;
     private javax.swing.JRadioButton multinomialRadio;
+    private javax.swing.JButton newDataSetButton;
     private javax.swing.JTextField newModelMissingValueCode;
     private javax.swing.JButton newModelSubmit;
     private javax.swing.JButton newModel_resetButton;
@@ -3388,6 +3387,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JPanel stageTwoRegsGridLvl2;
     private javax.swing.JRadioButton stageTwoSingleLevel;
     private javax.swing.JButton startStageTwo;
+    private javax.swing.JTextField startWithTextField;
     private javax.swing.JCheckBox suppressIntCheckBox;
     private javax.swing.JTextField titleField;
     private javax.swing.JLabel titleViewLabel;
@@ -7865,6 +7865,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private void updateGuiView_trigger_browse(boolean turnOn) {
         titleViewLabel.setVisible(turnOn);
         titleField.setVisible(turnOn);
+        datasetInstructionTextArea.setVisible(turnOn);
 
         DatasetLabel.setVisible(turnOn);
         missingViewLabel.setVisible(turnOn);
