@@ -5794,6 +5794,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             System.out.print("condition is true");
             updateGuiView_trigger_NewModelSubmit_TabChange();
             updateStage2ConfigButton.setVisible(true);
+            guiStatesSaveButtonModalConfig.setVisible(true);
+            guiStatesSaveButtonStageOne.setVisible(true);
+            guiStatesSaveButtonStageTwo.setVisible(true);
 
             if (isOutcomeNone() == true) {
                 startStageTwo.setText("Run Stage 1");
@@ -7826,6 +7829,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         randomScaleSelectionYes.setEnabled(turnOn);
         randomScaleSelectionNo.setEnabled(turnOn);
 
+        guiStatesSaveButtonModalConfig.setVisible(turnOn);
+        guiStatesSaveButtonStageOne.setVisible(turnOn);
+        guiStatesSaveButtonStageTwo.setVisible(turnOn);
     }
 
     private boolean checkTabExistinJTabbedPane(JTabbedPane tabPane, String view_Model) {
