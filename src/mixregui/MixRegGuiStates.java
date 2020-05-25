@@ -125,8 +125,8 @@ public class MixRegGuiStates {
         this.includeStageTwoNo = mxr.getIncludeStageTwoNo();
         this.stageTwoSingleLevel = mxr.getStageTwoSingleLevel();
         this.stageTwoMultiLevel = mxr.getStageTwoMultiLevel();
-        this.continuousRadio = mxr.getContinuousRadio();
-        this.dichotomousRadio = mxr.getDichotomousRadio();
+        this.continuousRadio = mxr.getStageTwoContinuousRadio();
+        this.dichotomousRadio = mxr.getStageTwoDichotomousRadio();
         this.countRadio = mxr.getCountRadio();
         this.multinomialRadio = mxr.getMultinomialRadio();
         this.seedTextBox = mxr.getSeedTextBox();

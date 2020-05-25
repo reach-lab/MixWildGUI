@@ -26,6 +26,12 @@ MixWild, a program to model subject-level slope and variance on continuous or or
  */
 package def_lib;
 
+import com.opencsv.CSVReader;
+import com.opencsv.CSVWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -98,10 +104,17 @@ public class MixLibrary implements Serializable {
     
     private int stageOneOutcome;
     private int stageOneRandomLocationEffects;
-    private boolean stageOneRandomScale;
+    private int stageOneRandomScale;
     private int stageTwoModelType;
     private int stageTwoOutcomeType;
    
+    
+    //auxiliary fields
+    private String utcDirPath;
+    public Boolean win32;
+    
+
+    
     
     /**
      * MixWILD V2.0 Initialization of DefinitionHelper without Stage Two
@@ -111,7 +124,7 @@ public class MixLibrary implements Serializable {
      * @param stageOneRandomScale STAGE_ONE_SCALE_NO or STAGE_ONE_SCALE_YES
      */
     public MixLibrary(int stageOneOutcome, int stageOneRandomLocationEffects, 
-            boolean stageOneRandomScale) {
+            int stageOneRandomScale) {
         this.stageOneOutcome = stageOneOutcome;
         this.stageOneRandomLocationEffects = stageOneRandomLocationEffects;
         this.stageOneRandomScale = stageOneRandomScale;
@@ -130,7 +143,7 @@ public class MixLibrary implements Serializable {
      * @param stageTwoOutcomeType  STAGE_TWO_OUTCOME_NORMAL or STAGE_TWO_OUTCOME_ORDINAL or STAGE_TWO_OUTCOME_COUNT or STAGE_TWO_OUTCOME_NOMINAL
      */
     public MixLibrary(int stageOneOutcome, int stageOneRandomLocationEffects, 
-            boolean stageOneRandomScale, int stageTwoModelType, int stageTwoOutcomeType) {
+            int stageOneRandomScale, int stageTwoModelType, int stageTwoOutcomeType) {
         this.stageOneOutcome = stageOneOutcome;
         this.stageOneRandomLocationEffects = stageOneRandomLocationEffects;
         this.stageOneRandomScale = stageOneRandomScale;
@@ -243,7 +256,20 @@ public class MixLibrary implements Serializable {
     private String advancedStageTwoThetaRegressorCount;         // COUNT OF INTERACTION WITH LOCATION 
     private String advancedStageTwoOmegaRegressorCount;         // COUNT OF INTERACTION WITH SCALE 
     private String advancedStageTwoInteractionRegressorCount;   // COUNT OF INTERACTION WITH LOC*SCA
-
+    
+    /**
+     * Stage 1 GUI Serializable Specifications
+     */
+    private String[] labelModelMeanRegressorsLevelOne;
+    private String[] labelModelLocRanRegressorsLevelOne;
+    private String[] labelModelScaleRegressorsLevelOne;
+    private String[] labelModelBSRegressorsLevelOne;
+    private String[] labelModelWSRegressorsLevelOne;
+    private String[] labelModelMeanRegressorsLevelTwo;
+    private String[] labelModelLocRanRegressorsLevelTwo;
+    private String[] labelModelScaleRegressorsLevelTwo;
+    private String[] labelModelBSRegressorsLevelTwo;
+    private String[] labelModelWSRegressorsLevelTwo;
     /**
      * Builds the advanced variable arrays for Stage 1 and Stage 2, 
      * as noted above.
@@ -627,10 +653,15 @@ public class MixLibrary implements Serializable {
     }
 
     public boolean isStageOneRandomScale() {
-        return stageOneRandomScale;
+        if (stageOneRandomScale == 1){
+            return true;
+        } else if (stageOneRandomScale == 0){
+            return false;
+        }
+        return false;
     }
 
-    public void setStageOneRandomScale(boolean stageOneRandomScale) {
+    public void setStageOneRandomScale(int stageOneRandomScale) {
         this.stageOneRandomScale = stageOneRandomScale;
     }
 
@@ -1223,9 +1254,128 @@ public class MixLibrary implements Serializable {
         this.mixorModelThresholdParameter = mixorModelThresholdParameter;
     }
     
+        //auxiliary functions
+    public void setUtcDirPath(File csvFileLocation) throws IOException {
+        String utcDirPath = ModelBuilder.buildFolder(csvFileLocation);
+        this.utcDirPath = utcDirPath;
+    }
     
+    public void setUtcDirPath(String folderAbsolutePath) {
+        this.utcDirPath = folderAbsolutePath;
+    }
     
-    
-    
+    public String getUtcDirPath() {
+        return utcDirPath;
+    }
+        
+    public void csvToDatConverter(File csvFileToConvert) throws IOException {
+        String fileName = csvFileToConvert.getAbsolutePath();
+        String fileNameShort = FilenameUtils.removeExtension(fileName);
+        String baseName = FilenameUtils.getBaseName(fileName);
+        String filePath = FilenameUtils.getFullPath(fileName);
+        // TODO: Deprecate
+        //String filePath = fileName.substring(0, fileName.lastIndexOf(File.separator)) + "/"; //subset the string.
 
+        try (CSVReader reader = new CSVReader(new FileReader(fileName))) {
+            setUtcDirPath(csvFileToConvert);
+            List<String[]> csvRows = reader.readAll();
+            reader.close();
+            System.out.println(Arrays.toString(csvRows.get(0)) + " to be removed");
+            csvRows.remove(0); // TODO: make sure this isn't removing data
+            System.out.println("New:" + Arrays.toString(csvRows.get(0)));
+
+            CSVWriter writer = new CSVWriter(new FileWriter(filePath + utcDirPath + baseName.replace(" ", "_") + ".dat"), ' ', CSVWriter.NO_QUOTE_CHARACTER,
+                    CSVWriter.NO_ESCAPE_CHARACTER, CSVWriter.RFC4180_LINE_END);
+            writer.writeAll(csvRows);
+            writer.close();
+        }
+    }
+
+    public String[] getLabelModelMeanRegressorsLevelOne() {
+        return labelModelMeanRegressorsLevelOne;
+    }
+
+    public void setLabelModelMeanRegressorsLevelOne(String[] labelModelMeanRegressorsLevelOne) {
+        this.labelModelMeanRegressorsLevelOne = labelModelMeanRegressorsLevelOne;
+    }
+
+    public String[] getLabelModelLocRanRegressorsLevelOne() {
+        return labelModelLocRanRegressorsLevelOne;
+    }
+
+    public void setLabelModelLocRanRegressorsLevelOne(String[] labelModelLocRanRegressorsLevelOne) {
+        this.labelModelLocRanRegressorsLevelOne = labelModelLocRanRegressorsLevelOne;
+    }
+
+    public String[] getLabelModelScaleRegressorsLevelOne() {
+        return labelModelScaleRegressorsLevelOne;
+    }
+
+    public void setLabelModelScaleRegressorsLevelOne(String[] labelModelScaleRegressorsLevelOne) {
+        this.labelModelScaleRegressorsLevelOne = labelModelScaleRegressorsLevelOne;
+    }
+
+    public String[] getLabelModelBSRegressorsLevelOne() {
+        return labelModelBSRegressorsLevelOne;
+    }
+
+    public void setLabelModelBSRegressorsLevelOne(String[] labelModelBSRegressorsLevelOne) {
+        this.labelModelBSRegressorsLevelOne = labelModelBSRegressorsLevelOne;
+    }
+
+    public String[] getLabelModelWSRegressorsLevelOne() {
+        return labelModelWSRegressorsLevelOne;
+    }
+
+    public void setLabelModelWSRegressorsLevelOne(String[] labelModelWSRegressorsLevelOne) {
+        this.labelModelWSRegressorsLevelOne = labelModelWSRegressorsLevelOne;
+    }
+
+    public String[] getLabelModelMeanRegressorsLevelTwo() {
+        return labelModelMeanRegressorsLevelTwo;
+    }
+
+    public void setLabelModelMeanRegressorsLevelTwo(String[] labelModelMeanRegressorsLevelTwo) {
+        this.labelModelMeanRegressorsLevelTwo = labelModelMeanRegressorsLevelTwo;
+    }
+
+    public String[] getLabelModelLocRanRegressorsLevelTwo() {
+        return labelModelLocRanRegressorsLevelTwo;
+    }
+
+    public void setLabelModelLocRanRegressorsLevelTwo(String[] labelModelLocRanRegressorsLevelTwo) {
+        this.labelModelLocRanRegressorsLevelTwo = labelModelLocRanRegressorsLevelTwo;
+    }
+
+    public String[] getLabelModelScaleRegressorsLevelTwo() {
+        return labelModelScaleRegressorsLevelTwo;
+    }
+
+    public void setLabelModelScaleRegressorsLevelTwo(String[] labelModelScaleRegressorsLevelTwo) {
+        this.labelModelScaleRegressorsLevelTwo = labelModelScaleRegressorsLevelTwo;
+    }
+
+    public String[] getLabelModelBSRegressorsLevelTwo() {
+        return labelModelBSRegressorsLevelTwo;
+    }
+
+    public void setLabelModelBSRegressorsLevelTwo(String[] labelModelBSRegressorsLevelTwo) {
+        this.labelModelBSRegressorsLevelTwo = labelModelBSRegressorsLevelTwo;
+    }
+
+    public String[] getLabelModelWSRegressorsLevelTwo() {
+        return labelModelWSRegressorsLevelTwo;
+    }
+
+    public void setLabelModelWSRegressorsLevelTwo(String[] labelModelWSRegressorsLevelTwo) {
+        this.labelModelWSRegressorsLevelTwo = labelModelWSRegressorsLevelTwo;
+    }
+    
+    public void writeStageOneOnlyDefFileToFolder() {}
+    
+    public void writeDefFileToFolder() {}
+
+    CharSequence[] debugStageOneDefinitonList() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

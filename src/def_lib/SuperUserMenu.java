@@ -451,17 +451,17 @@ public class SuperUserMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_csvToDatActionPerformed
 
     private void PrintMeanModelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrintMeanModelActionPerformed
-        ModelBuilder newMeanModel = new ModelBuilder(defFile);
-        JOptionPane.showMessageDialog(null, newMeanModel.meanEquation());
+//        ModelBuilder newMeanModel = new ModelBuilder(defFile);
+//        JOptionPane.showMessageDialog(null, newMeanModel.meanEquation());
     }//GEN-LAST:event_PrintMeanModelActionPerformed
 
     private void runMacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_runMacActionPerformed
-        try {
-            ModelBuilder.archiveFolder(defFile, "/Users/Eldin/Desktop/Don Test/LS_OR/WILD/");
-        }
-        catch(IOException ioe){
-            ioe.printStackTrace();
-        }
+//        try {
+//            ModelBuilder.archiveFolder(defFile, "/Users/Eldin/Desktop/Don Test/LS_OR/WILD/");
+//        }
+//        catch(IOException ioe){
+//            ioe.printStackTrace();
+//        }
         /*
         try {
             ModelBuilder.saveWildDefinitionFile("/Users/Eldin/Desktop/Don Test/LS_OR/WILD/test1.mwd", defFile);
@@ -495,13 +495,13 @@ public class SuperUserMenu extends javax.swing.JFrame {
         
         File file = fileChooser.getSelectedFile();
 
-        try {
-            defFile = ModelBuilder.accessFolderArchive(file);
-        } catch (IOException ex) {
-            Logger.getLogger(SuperUserMenu.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(SuperUserMenu.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try {
+//            defFile = ModelBuilder.accessFolderArchive(file);
+//        } catch (IOException ex) {
+//            Logger.getLogger(SuperUserMenu.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (ClassNotFoundException ex) {
+//            Logger.getLogger(SuperUserMenu.class.getName()).log(Level.SEVERE, null, ex);
+//        }
         
          
     }//GEN-LAST:event_runMacActionPerformed

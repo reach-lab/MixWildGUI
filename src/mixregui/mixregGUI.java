@@ -32,6 +32,7 @@ import java.net.URL;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import def_lib.DefinitionHelper;
+import def_lib.MixLibrary;
 import def_lib.ModelBuilder;
 import def_lib.SuperUserMenu;
 import java.awt.BorderLayout;
@@ -76,6 +77,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import org.apache.commons.io.FilenameUtils;
 import java.io.Serializable;
+import javax.swing.JTabbedPane;
+import javax.swing.JTextArea;
 import org.apache.commons.io.FileUtils;
 
 /**
@@ -104,10 +107,12 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     String missingValue = "0";
     static int revealHiddenTabs;
     boolean isNewModalConfigSubmitted;
+    boolean isUpdateStage2ConfigClicked;
     boolean isStageOneSubmitted;
     boolean isStageTwoSubmitted;
 
-    public static DefinitionHelper defFile;
+//    public static DefinitionHelper defFile;
+    public static MixLibrary defFile;
     public static ModelBuilder modelBuilder;
 
     public static MixRegGuiStates MXRStates;
@@ -192,12 +197,12 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         return stageTwoMultiLevel.isSelected();
     }
 
-    public boolean getContinuousRadio() {
-        return continuousRadio.isSelected();
+    public boolean getStageTwoContinuousRadio() {
+        return stageTwoContinuousRadio.isSelected();
     }
 
-    public boolean getDichotomousRadio() {
-        return dichotomousRadio.isSelected();
+    public boolean getStageTwoDichotomousRadio() {
+        return stageTwoDichotomousRadio.isSelected();
     }
 
     public boolean getCountRadio() {
@@ -217,11 +222,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         boolean selection = true;
 
-        if (continuousRadio.isSelected() == true) {
+        if (stageTwoContinuousRadio.isSelected() == true) {
 
             selection = true;
             System.out.println("Outcome selected at Newmodel: " + String.valueOf(selection));
-        } else if (dichotomousRadio.isSelected() == true) {
+        } else if (stageTwoDichotomousRadio.isSelected() == true) {
 
             selection = false;
             System.out.println("Outcome selected at Newmodel: " + String.valueOf(selection));
@@ -256,7 +261,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         return outComeBoolean;
     }
 
-    public DefinitionHelper getDefFile() {
+    public MixLibrary getDefFile() {
 
         return defFile;
     }
@@ -342,10 +347,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         String outcomeTypeText = "";
 
-        if (continuousRadio.isSelected()) {
+        if (stageTwoContinuousRadio.isSelected()) {
 
             outcomeTypeText = "Continuous";
-        } else if (dichotomousRadio.isSelected()) {
+        } else if (stageTwoDichotomousRadio.isSelected()) {
 
             outcomeTypeText = "Dichotomous";
         } else if (includeStageTwoNo.isSelected()) {
@@ -384,7 +389,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             System.out.println("FIELD VALIDATE: " + "Missing value missing");
         }
 
-        if (newModelMissingValueCode.isEnabled() && newModelMissingValueCode.getText().trim().length() == 0) {
+        if (missingValuePresent.isSelected() && newModelMissingValueCode.getText().trim().length() == 0) {
             allFieldsEntered = false;
             JOptionPane.showMessageDialog(null, "Please don't leave the missing code value as blank", "Missing information!", JOptionPane.INFORMATION_MESSAGE, icon);
             System.out.println("FIELD VALIDATE: " + "Missing value blank");
@@ -501,7 +506,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         i = getRLE();
         System.out.println(String.valueOf(i));
 
-        stageOneTabs.setEnabledAt(2, false);
+//        stageOneTabs.setEnabledAt(2, false);
         suppressIntCheckBox.setVisible(true);
         suppressIntCheckBox.setSelected(false);
         suppressIntCheckBox.setEnabled(true);
@@ -533,12 +538,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageTwoLevelTwoPanel.setLayout(new BorderLayout());
 
         System.out.println("Right before");
-        if (outcomeNone == true) {
+        if (isOutcomeNone() == true) {
             System.out.println("In isOutcomeNone MixReg");
             startStageTwo.setText("Run Stage 1");
             System.out.println(startStageTwo.getText());
             //stageOneTabs.set
-            stageOneTabs.setEnabledAt(2, false);
+//            stageOneTabs.setEnabledAt(2, false);
+        } else if (isOutcomeNone() == false) {
+            startStageTwo.setText("Configure Stage 2");
         }
         System.out.println("Right after");
 
@@ -563,7 +570,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         }
 
         try {
-            if (defFile.getAdvancedRandomScaleNotIncluded() == "1") {
+            if (defFile.getAdvancedUseRandomScale() == "1") {
                 NoAssociationRadio.setEnabled(false);
                 LinearAssociationRadio.setEnabled(false);
                 QuadraticAssociationRadio.setEnabled(false);
@@ -575,9 +582,15 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }
 
     private void setFirstTabStatus(boolean turnOn) {
+        dataFileLabel.setVisible(turnOn);
+        filePath.setVisible(turnOn);
+        fileBrowseButton.setVisible(turnOn);
+        datasetInstructionTextArea.setVisible(turnOn);
+
         titleViewLabel.setVisible(turnOn);
         titleField.setVisible(turnOn);
 
+        DatasetLabel.setVisible(turnOn);
         missingViewLabel.setVisible(turnOn);
         missingValueAbsent.setVisible(turnOn);
         missingValuePresent.setVisible(turnOn);
@@ -609,8 +622,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageTwoMultiLevel.setVisible(turnOn);
 
         stageTwoOutcomeTypeLabel.setVisible(turnOn);
-        continuousRadio.setVisible(turnOn);
-        dichotomousRadio.setVisible(turnOn);
+        stageTwoContinuousRadio.setVisible(turnOn);
+        stageTwoDichotomousRadio.setVisible(turnOn);
         countRadio.setVisible(turnOn);
         multinomialRadio.setVisible(turnOn);
 
@@ -620,13 +633,13 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         newModel_resetButton.setVisible(turnOn);
         newModelSubmit.setVisible(turnOn);
+        updateStage2ConfigButton.setVisible(turnOn);
 
         stageOneModelGiantLabel.setVisible(turnOn);
         stageTwoModelGiantLabel.setVisible(turnOn);
 
         jSeparator16.setVisible(turnOn);
         jSeparator8.setVisible(turnOn);
-        jLabel29.setVisible(turnOn);
 
         if (turnOn) {
             hiddenBigIconLabel.setIcon(null);
@@ -654,6 +667,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         icon = new ImageIcon(getClass().getResource("/resources/MixWildLogoTiny.png"));
         bigIcon = new ImageIcon(getClass().getResource("/resources/MixWILDLogoResized.PNG"));
 
+        Scanner fileReaderScan = new Scanner(getClass().getResourceAsStream("/resources/DatasetCheck.txt"));
+        while (fileReaderScan.hasNextLine()) {
+            datasetInstructionTextArea.append(fileReaderScan.nextLine() + "\n");
+        }
+
         stageOneContinuousRadio.setSelected(true);
         stageOneDichotomousRadio.setEnabled(false);
         stageOneOrdinalRadio.setEnabled(false);
@@ -671,13 +689,20 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         setFirstTabStatus(false);
 
         // hide tabs
-        stageOneTabs.setEnabledAt(1, false);
-        stageOneTabs.setEnabledAt(2, false);
-        stageOneTabs.setEnabledAt(3, false);
-        stageOneTabs.setEnabledAt(4, false);
-        stageOneTabs.setEnabledAt(5, false);
-        stageOneTabs.setEnabledAt(6, false);
-        stageOneTabs.setEnabledAt(7, false);
+//        stageOneTabs.setEnabledAt(1, false);
+//        stageOneTabs.setEnabledAt(2, false);
+//        stageOneTabs.setEnabledAt(3, false);
+//        stageOneTabs.setEnabledAt(4, false);
+//        stageOneTabs.setEnabledAt(5, false);
+//        stageOneTabs.setEnabledAt(6, false);
+//        stageOneTabs.setEnabledAt(7, false);
+        stageOneTabs.remove(jPanel1);
+        stageOneTabs.remove(jPanel12);
+        stageOneTabs.remove(jPanel3);
+        stageOneTabs.remove(jPanel4);
+        stageOneTabs.remove(jPanel2);
+        stageOneTabs.remove(jPanel6);
+        stageOneTabs.remove(jPanel14);
 
         //updateMixRegGUI();
         //this.setResizable(false);
@@ -714,8 +739,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         parentPanel = new javax.swing.JPanel();
         stageOneTabs = new javax.swing.JTabbedPane();
         jPanel13 = new javax.swing.JPanel();
-        jLabel16 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
         fileBrowseButton = new javax.swing.JButton();
         filePath = new javax.swing.JTextField();
         dataFileLabel = new javax.swing.JLabel();
@@ -727,8 +750,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         moreThanOneRLERadio = new javax.swing.JRadioButton();
         randomScaleViewLabel = new javax.swing.JLabel();
         stageTwoOutcomeTypeLabel = new javax.swing.JLabel();
-        continuousRadio = new javax.swing.JRadioButton();
-        dichotomousRadio = new javax.swing.JRadioButton();
+        stageTwoContinuousRadio = new javax.swing.JRadioButton();
+        stageTwoDichotomousRadio = new javax.swing.JRadioButton();
         missingValueAbsent = new javax.swing.JRadioButton();
         missingValuePresent = new javax.swing.JRadioButton();
         missingViewLabel = new javax.swing.JLabel();
@@ -736,7 +759,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         newModelMissingValueCode = new javax.swing.JTextField();
         seedTextBox = new javax.swing.JTextField();
         setSeedLabel = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
         newModel_resetButton = new javax.swing.JButton();
         newModelSubmit = new javax.swing.JButton();
         seedHelpButton = new javax.swing.JButton();
@@ -762,7 +784,13 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         hiddenBigIconLabel = new javax.swing.JLabel();
         guiStatesLoadButtonModalConfig = new javax.swing.JButton();
         guiStatesSaveButtonModalConfig = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        loadModelByBrowseButton = new javax.swing.JButton();
+        updateStage2ConfigButton = new javax.swing.JButton();
+        dataInstruction = new javax.swing.JScrollPane();
+        datasetInstructionTextArea = new javax.swing.JTextArea();
+        startWithTextField = new javax.swing.JTextField();
+        newDataSetButton = new javax.swing.JButton();
+        DatasetLabel = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         resetButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -901,16 +929,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         jPanel13.setPreferredSize(new java.awt.Dimension(1297, 1032));
 
-        jLabel16.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
-        jLabel16.setText("Is your dataset Mix{WILD} friendly?");
-
-        jButton2.setText("Check here...");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
         fileBrowseButton.setText("Browse");
         fileBrowseButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -926,7 +944,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         dataFileLabel.setText("Data File: ");
 
-        titleViewLabel.setText("Title:");
+        titleViewLabel.setText("Title (optional):");
 
         titleField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -956,19 +974,19 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         stageTwoOutcomeTypeLabel.setText("Stage 2 outcome:");
 
-        buttonGroup3.add(continuousRadio);
-        continuousRadio.setText("Continuous");
-        continuousRadio.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup3.add(stageTwoContinuousRadio);
+        stageTwoContinuousRadio.setText("Continuous");
+        stageTwoContinuousRadio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                continuousRadioActionPerformed(evt);
+                stageTwoContinuousRadioActionPerformed(evt);
             }
         });
 
-        buttonGroup3.add(dichotomousRadio);
-        dichotomousRadio.setText("Dichotomous/Ordinal");
-        dichotomousRadio.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup3.add(stageTwoDichotomousRadio);
+        stageTwoDichotomousRadio.setText("Dichotomous/Ordinal");
+        stageTwoDichotomousRadio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dichotomousRadioActionPerformed(evt);
+                stageTwoDichotomousRadioActionPerformed(evt);
             }
         });
 
@@ -1011,8 +1029,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         setSeedLabel.setText("(Optional) Set a seed for Stage 2 resampling:");
 
-        jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/MixWildLogoTiny.png"))); // NOI18N
-
         newModel_resetButton.setText("Reset");
         newModel_resetButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1034,8 +1050,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
         });
 
+        stageOneModelGiantLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         stageOneModelGiantLabel.setText("Stage 1 Model");
 
+        stageTwoModelGiantLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         stageTwoModelGiantLabel.setText("Stage 2 Model");
 
         stageOneOutcomeViewLabel.setText("Stage 1 outcome:");
@@ -1050,12 +1068,27 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         stageOneOutcomeGroup.add(stageOneDichotomousRadio);
         stageOneDichotomousRadio.setText("Dichotomous");
+        stageOneDichotomousRadio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stageOneDichotomousRadioActionPerformed(evt);
+            }
+        });
 
         stageOneOutcomeGroup.add(stageOneOrdinalRadio);
         stageOneOrdinalRadio.setText("Ordinal");
+        stageOneOrdinalRadio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stageOneOrdinalRadioActionPerformed(evt);
+            }
+        });
 
         randomScaleSelectionGroup.add(randomScaleSelectionYes);
         randomScaleSelectionYes.setText("Yes");
+        randomScaleSelectionYes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                randomScaleSelectionYesActionPerformed(evt);
+            }
+        });
 
         randomScaleSelectionGroup.add(randomScaleSelectionNo);
         randomScaleSelectionNo.setText("No");
@@ -1087,12 +1120,27 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         stageTwoLevelGroup.add(stageTwoSingleLevel);
         stageTwoSingleLevel.setText("Single level");
+        stageTwoSingleLevel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stageTwoSingleLevelActionPerformed(evt);
+            }
+        });
 
         stageTwoLevelGroup.add(stageTwoMultiLevel);
         stageTwoMultiLevel.setText("Multilevel");
+        stageTwoMultiLevel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stageTwoMultiLevelActionPerformed(evt);
+            }
+        });
 
         buttonGroup3.add(multinomialRadio);
         multinomialRadio.setText("Multinomial");
+        multinomialRadio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                multinomialRadioActionPerformed(evt);
+            }
+        });
 
         stageOneOutcomeHelpButton.setText("?");
         stageOneOutcomeHelpButton.addActionListener(new java.awt.event.ActionListener() {
@@ -1103,6 +1151,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         buttonGroup3.add(countRadio);
         countRadio.setText("Count");
+        countRadio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                countRadioActionPerformed(evt);
+            }
+        });
 
         stageTwoDescription.setText("?");
         stageTwoDescription.addActionListener(new java.awt.event.ActionListener() {
@@ -1131,161 +1184,209 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
         });
 
-        jButton4.setText("Load Model");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        loadModelByBrowseButton.setText("Previous Model");
+        loadModelByBrowseButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                loadModelByBrowseButtonActionPerformed(evt);
             }
         });
+
+        updateStage2ConfigButton.setText("Update Stage 2");
+        updateStage2ConfigButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateStage2ConfigButtonActionPerformed(evt);
+            }
+        });
+
+        dataInstruction.setBorder(null);
+
+        datasetInstructionTextArea.setEditable(false);
+        datasetInstructionTextArea.setBackground(new java.awt.Color(222, 222, 222));
+        datasetInstructionTextArea.setColumns(20);
+        datasetInstructionTextArea.setLineWrap(true);
+        datasetInstructionTextArea.setRows(5);
+        datasetInstructionTextArea.setAutoscrolls(false);
+        datasetInstructionTextArea.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        datasetInstructionTextArea.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        datasetInstructionTextArea.setEnabled(false);
+        datasetInstructionTextArea.setFocusable(false);
+        datasetInstructionTextArea.setHighlighter(null);
+        datasetInstructionTextArea.setOpaque(false);
+        datasetInstructionTextArea.setRequestFocusEnabled(false);
+        datasetInstructionTextArea.setSelectedTextColor(new java.awt.Color(51, 0, 51));
+        datasetInstructionTextArea.setVerifyInputWhenFocusTarget(false);
+        dataInstruction.setViewportView(datasetInstructionTextArea);
+
+        startWithTextField.setEditable(false);
+        startWithTextField.setText("Start with a new dataset or previous model");
+        startWithTextField.setToolTipText("");
+        startWithTextField.setBorder(null);
+        startWithTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                startWithTextFieldActionPerformed(evt);
+            }
+        });
+
+        newDataSetButton.setText("New Dataset");
+        newDataSetButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newDataSetButtonActionPerformed(evt);
+            }
+        });
+
+        DatasetLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        DatasetLabel.setText("Dataset");
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
-                .addGap(305, 305, 305)
-                .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(guiStatesSaveButtonModalConfig, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(guiStatesLoadButtonModalConfig, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(newModel_resetButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(newModelSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(411, 411, 411))
             .addGroup(jPanel13Layout.createSequentialGroup()
-                .addGap(136, 136, 136)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel13Layout.createSequentialGroup()
-                        .addComponent(stageTwoModelGiantLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(184, 184, 184)
                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel13Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel13Layout.createSequentialGroup()
-                                        .addComponent(includeStageTwoLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(includeStageTwoYes)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(includeStageTwoNo)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(stageTwoDescription))
-                                    .addGroup(jPanel13Layout.createSequentialGroup()
-                                        .addComponent(stageTwoModelTypeLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(stageTwoSingleLevel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(stageTwoMultiLevel))
-                                    .addGroup(jPanel13Layout.createSequentialGroup()
-                                        .addComponent(setSeedLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(seedTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(seedHelpButton))
-                                    .addGroup(jPanel13Layout.createSequentialGroup()
-                                        .addComponent(stageTwoOutcomeTypeLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(continuousRadio, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(dichotomousRadio)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(countRadio)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(multinomialRadio))))
-                            .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(317, 317, 317))
+                            .addComponent(stageOneModelGiantLabel)
+                            .addComponent(stageTwoModelGiantLabel)
+                            .addComponent(DatasetLabel)))
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(hiddenBigIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addComponent(guiStatesSaveButtonModalConfig, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(guiStatesLoadButtonModalConfig, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(newModel_resetButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(newModelSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(updateStage2ConfigButton))
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addComponent(stageOneOutcomeViewLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(stageOneContinuousRadio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(stageOneDichotomousRadio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(stageOneOrdinalRadio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(stageOneOutcomeHelpButton))
+                    .addComponent(jSeparator16, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addComponent(rleViewLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(oneRLERadio, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(moreThanOneRLERadio))
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addComponent(randomScaleViewLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(randomScaleSelectionYes)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(randomScaleSelectionNo))
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addComponent(stageTwoModelTypeLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(stageTwoSingleLevel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(stageTwoMultiLevel))
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addComponent(stageTwoOutcomeTypeLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(stageTwoContinuousRadio, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(stageTwoDichotomousRadio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(countRadio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(multinomialRadio))
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addComponent(setSeedLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(seedTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(seedHelpButton))
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addComponent(includeStageTwoLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(includeStageTwoYes)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(includeStageTwoNo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(stageTwoDescription))
+                    .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel13Layout.createSequentialGroup()
                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(hiddenBigIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 905, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel13Layout.createSequentialGroup()
+                                    .addComponent(titleViewLabel)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(titleField))
+                                .addComponent(missingViewLabel, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(missingCodeViewLabel))
+                        .addGap(32, 32, 32)
+                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(newModelMissingValueCode, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel13Layout.createSequentialGroup()
-                                .addComponent(stageOneModelGiantLabel)
-                                .addGap(110, 110, 110)
-                                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel13Layout.createSequentialGroup()
-                                        .addComponent(stageOneOutcomeViewLabel)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(stageOneContinuousRadio)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(stageOneDichotomousRadio)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(stageOneOrdinalRadio)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(stageOneOutcomeHelpButton))
-                                    .addComponent(jSeparator16, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel13Layout.createSequentialGroup()
-                                        .addComponent(rleViewLabel)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(oneRLERadio, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(moreThanOneRLERadio))
-                                    .addGroup(jPanel13Layout.createSequentialGroup()
-                                        .addComponent(randomScaleViewLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(randomScaleSelectionYes)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(randomScaleSelectionNo))
-                                    .addGroup(jPanel13Layout.createSequentialGroup()
-                                        .addComponent(titleViewLabel)
-                                        .addGap(38, 38, 38)
-                                        .addComponent(titleField, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel13Layout.createSequentialGroup()
-                                        .addComponent(dataFileLabel)
-                                        .addGap(7, 7, 7)
-                                        .addComponent(filePath, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, 0)
-                                        .addComponent(fileBrowseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel13Layout.createSequentialGroup()
-                                        .addComponent(jLabel16)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel13Layout.createSequentialGroup()
-                                        .addComponent(missingViewLabel)
-                                        .addGap(49, 49, 49)
-                                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(newModelMissingValueCode, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(jPanel13Layout.createSequentialGroup()
-                                                .addComponent(missingValuePresent, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(10, 10, 10)
-                                                .addComponent(missingValueAbsent))))
-                                    .addComponent(missingCodeViewLabel))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(missingValuePresent, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(missingValueAbsent))))
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addComponent(dataFileLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(filePath, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(fileBrowseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(startWithTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(loadModelByBrowseButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(newDataSetButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(dataInstruction, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(237, Short.MAX_VALUE))
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
-                .addGap(18, 18, 18)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel13Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(dataFileLabel))
+                        .addContainerGap()
+                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(hiddenBigIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dataInstruction, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(startWithTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(newDataSetButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(loadModelByBrowseButton)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dataFileLabel)
                     .addComponent(filePath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(fileBrowseButton)
-                        .addComponent(jButton4)))
+                    .addComponent(fileBrowseButton))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(titleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(titleViewLabel)
-                    .addComponent(titleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(DatasetLabel))
+                .addGap(15, 15, 15)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(missingViewLabel)
                     .addComponent(missingValuePresent, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(missingValueAbsent, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(missingCodeViewLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(newModelMissingValueCode, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(hiddenBigIconLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator16, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator16, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(stageOneOutcomeViewLabel)
@@ -1310,44 +1411,45 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(randomScaleSelectionYes)
                         .addComponent(randomScaleSelectionNo)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(includeStageTwoLabel)
                     .addComponent(includeStageTwoYes)
                     .addComponent(includeStageTwoNo)
                     .addComponent(stageTwoDescription))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel13Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(stageTwoModelTypeLabel)
                             .addComponent(stageTwoSingleLevel)
                             .addComponent(stageTwoMultiLevel))
-                        .addGap(4, 4, 4)
+                        .addGap(3, 3, 3)
                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(dichotomousRadio)
-                            .addComponent(continuousRadio)
+                            .addComponent(stageTwoDichotomousRadio)
+                            .addComponent(stageTwoContinuousRadio)
                             .addComponent(multinomialRadio)
                             .addComponent(stageTwoOutcomeTypeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(countRadio)))
-                    .addGroup(jPanel13Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(stageTwoModelGiantLabel)))
-                .addGap(7, 7, 7)
+                            .addComponent(countRadio))
+                        .addGap(3, 3, 3))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
+                        .addComponent(stageTwoModelGiantLabel)
+                        .addGap(34, 34, 34)))
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(setSeedLabel)
                     .addComponent(seedTextBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(seedHelpButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(newModel_resetButton)
                         .addComponent(guiStatesLoadButtonModalConfig)
                         .addComponent(guiStatesSaveButtonModalConfig))
-                    .addComponent(newModelSubmit))
+                    .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(newModelSubmit)
+                        .addComponent(updateStage2ConfigButton)))
                 .addGap(613, 613, 613))
         );
 
@@ -2128,7 +2230,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel33)
                     .addComponent(exampleDataDownload))
-                .addGap(1196, 1196, 1196))
+                .addGap(1496, 1496, 1496))
         );
 
         stageOneTabs.addTab("Help", jPanel15);
@@ -2197,7 +2299,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             for (int x = 0; x < ColumnsCustom.size(); x++) {
                 if (UniqueList.contains(ColumnsCustom.get(x))) {
                     //do nothing
-                } else if (ColumnsCustom.get(x).equals(defFile.getAdvancedMissingValue()) && !ColumnsCustom.get(x).equals("0")) { //compare if the category is a missing value, then don't consider it as a category
+                } else if (ColumnsCustom.get(x).equals(defFile.getAdvancedMissingValueCode()) && !ColumnsCustom.get(x).equals("0")) { //compare if the category is a missing value, then don't consider it as a category
                     //do nothing
 
                 } else {
@@ -2439,199 +2541,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     }//GEN-LAST:event_resetButtonActionPerformed
 
-    private void stageOneContinuousRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneContinuousRadioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_stageOneContinuousRadioActionPerformed
-
-    private void seedHelpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seedHelpButtonActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "A seed is a number used to initialize a random number generator. Different seeds produce different sequences of random numbers."
-                + "\n" + "In the context of two-stage models, a seed is helpful for replicating models with identical results.", "What is a seed?", JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_seedHelpButtonActionPerformed
-
-    private void newModelSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModelSubmitActionPerformed
-
-        isNewModalConfigSubmitted = true;
-        // System.getProperty("os.name");
-        //        String osName = System.getProperty("os.name");
-        //        System.out.println("YOUR OPERATING SYSTEM IS: " + osName);
-        //        if (osName.contains("Windows")){
-        //            System.out.println("YES THE OS IS WINDOWS");
-        //        } else {
-        //            System.out.println("NO THE OS IS NOT WINDOWS");
-        //        }
-        updateGuiView_trigger_NewModelSubmit();
-        SystemLogger.LOGGER.log(Level.INFO, "Submit new model");
-
-    }//GEN-LAST:event_newModelSubmitActionPerformed
-
-    private void newModel_resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModel_resetButtonActionPerformed
-        if (sessionFolderName != null) {
-            SystemLogger.LOGGER.log(Level.INFO, "Reset MixWild");
-        }
-        confirmReset resetBox = new confirmReset(mxr, false);
-        resetBox.setLocationRelativeTo(mxr);
-        resetBox.setVisible(true);
-
-        /*
-        filePath.setText("");
-        titleField.setText("");
-        titleField.setEnabled(false);
-        buttonGroup2.clearSelection();
-        buttonGroup3.clearSelection();
-        buttonGroup4.clearSelection();
-        randomScaleCheckBox.setSelected(false);
-        newModelMissingValueCode.setText("");
-        seedTextBox.setText("");
-
-        variableArray = null;
-        isRandomScale = false;
-        dataFileNameRef = null;
-        missingValue = "0";
-        defFile = null;
-        modelBuilder = null;
-
-        outPutStageTwo = null;
-
-        resetButtonActionPerformed(evt);
-        jButton1ActionPerformed(evt);
-         */
-        //updateMixRegGUI();
-    }//GEN-LAST:event_newModel_resetButtonActionPerformed
-
-    private void newModelMissingValueCodeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_newModelMissingValueCodeKeyTyped
-        // TODO add your handling code here:
-
-        char vchar = evt.getKeyChar();
-        //        if (!((Character.isDigit(vchar)) || (vchar == KeyEvent.VK_BACKSPACE) || (vchar == KeyEvent.VK_DELETE) || (vchar == KeyEvent.VK_MINUS))) {
-        //            evt.consume();
-        //        }
-        if (!((Character.isDigit(vchar)) || (vchar == KeyEvent.VK_BACK_SPACE) || (vchar == KeyEvent.VK_DELETE) || (vchar == KeyEvent.VK_MINUS) || (vchar == '.'))) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_newModelMissingValueCodeKeyTyped
-
-    private void newModelMissingValueCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModelMissingValueCodeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_newModelMissingValueCodeActionPerformed
-
-    private void missingValuePresentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_missingValuePresentActionPerformed
-        // TODO add your handling code here:
-        if (missingValuePresent.isSelected()) {
-            newModelMissingValueCode.setEnabled(true);
-            newModelMissingValueCode.setText("-999");
-            newModelMissingValueCode.selectAll();
-        }
-    }//GEN-LAST:event_missingValuePresentActionPerformed
-
-    private void missingValueAbsentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_missingValueAbsentActionPerformed
-        // TODO add your handling code here:
-        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
-        updateGuiView(MXRStates);
-    }//GEN-LAST:event_missingValueAbsentActionPerformed
-
-    private void dichotomousRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dichotomousRadioActionPerformed
-        // TODO add your handling code here:
-        /*if (includeStageTwoNo.isSelected()){
-            //Do nothing
-        } else {
-            setSeedLabel.setVisible(true);
-            seedTextBox.setVisible(true);
-            seedHelpButton.setVisible(true);
-            String seedVal = generateSeed();
-            seedTextBox.setText(seedVal);
-        }*/
-    }//GEN-LAST:event_dichotomousRadioActionPerformed
-
-    private void continuousRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuousRadioActionPerformed
-        // TODO add your handling code here:
-        /*if (includeStageTwoNo.isSelected()){
-            //Do nothing
-
-        } else {
-            setSeedLabel.setVisible(true);
-            seedTextBox.setVisible(true);
-            seedHelpButton.setVisible(true);
-            String seedVal = generateSeed();
-            seedTextBox.setText(seedVal);
-        }*/
-    }//GEN-LAST:event_continuousRadioActionPerformed
-
-    private void moreThanOneRLERadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moreThanOneRLERadioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_moreThanOneRLERadioActionPerformed
-
-    private void oneRLERadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oneRLERadioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_oneRLERadioActionPerformed
-
-    private void titleFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_titleFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_titleFieldActionPerformed
-
-    private void filePathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filePathActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_filePathActionPerformed
-
-    private void fileBrowseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileBrowseButtonActionPerformed
-
-        importDataSet();
-        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
-        updateGuiView(MXRStates);
-
-        jButton4.setEnabled(false);
-        jButton4.setVisible(false);
-    }//GEN-LAST:event_fileBrowseButtonActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        InstructionsGUI instructions = new InstructionsGUI();
-        instructions.setLocationRelativeTo(mxr);
-        instructions.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void stageOneOutcomeHelpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneOutcomeHelpButtonActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "(To be implemented in MixWILD 2.0) Currently, you are restricted to continuous Stage 1 outcomes."
-                + "\n" + "Dichotomous and ordinal outcomes will run ordered logistic regressions at Stage 1." + "\n"
-                + "Note that random scale is not available for dichotomous outcomes.", "Stage 1 Outcome Type", JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_stageOneOutcomeHelpButtonActionPerformed
-
-    private void includeStageTwoNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_includeStageTwoNoActionPerformed
-        // TODO add your handling code here:
-        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
-        updateGuiView(MXRStates);
-    }//GEN-LAST:event_includeStageTwoNoActionPerformed
-
-    private void includeStageTwoYesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_includeStageTwoYesActionPerformed
-        // TODO add your handling code here:
-        String seedVal = generateSeed();
-        seedTextBox.setText(seedVal);
-
-        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
-        updateGuiView(MXRStates);
-    }//GEN-LAST:event_includeStageTwoYesActionPerformed
-
-    private void stageTwoDescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoDescriptionActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "(To be implemented in MixWILD 2.0) Currently, you are restricted to single level models and continuous and dichotomous/ordinal Stage 2 outcomes."
-                + "\n" + "Multilevel models allow for additional estimation at Stage 2 using random intercept mixed effects model in place of the standard single level model, similar to Stage 1."
-                + "\n" + "- Continuous outcomes will run a linear regression at Stage 2." + "\n"
-                + "- Dichotomous and ordinal outcomes will run an ordered logistic regression at Stage 2.", "Stage 2 Model", JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_stageTwoDescriptionActionPerformed
-
-    private void hiddenBigIconLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hiddenBigIconLabelMouseClicked
-        // TODO add your handling code here:
-        revealHiddenTabs++;
-        if (revealHiddenTabs > 4) {
-            stageOneTabs.setEnabledAt(7, true);
-            stageOneTabs.setEnabledAt(8, true);
-            superUserMenuLaunch = new SuperUserMenu();
-            superUserMenuLaunch.setLocationRelativeTo(mxr);
-            superUserMenuLaunch.setVisible(true);
-        }
-    }//GEN-LAST:event_hiddenBigIconLabelMouseClicked
-
     private void userGuideDownloadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userGuideDownloadActionPerformed
 
         // user open filechooser and select save path
@@ -2690,22 +2599,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         }
     }//GEN-LAST:event_exampleDataDownloadActionPerformed
 
-    private void guiStatesSaveButtonModalConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guiStatesSaveButtonModalConfigActionPerformed
-        if (sessionFolderName != null) {
-            SystemLogger.LOGGER.log(Level.INFO, "Saving GUI states");
-        }
-        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
-        MXRStates.writeAllStates(this);
-    }//GEN-LAST:event_guiStatesSaveButtonModalConfigActionPerformed
-
-    private void seedTextBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seedTextBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_seedTextBoxActionPerformed
-
-    private void randomScaleSelectionNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_randomScaleSelectionNoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_randomScaleSelectionNoActionPerformed
-
     private void guiStatesSaveButtonStageOneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guiStatesSaveButtonStageOneActionPerformed
         SystemLogger.LOGGER.log(Level.INFO, "Saving GUI states");
         MXRStates = new MixRegGuiStates(this, advancedOptions_view);
@@ -2726,15 +2619,61 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         // TODO add your handling code here:
     }//GEN-LAST:event_stageTwoOutcomeActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void newDataSetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newDataSetButtonActionPerformed
+
+        startWithTextField.setVisible(false);
+        newDataSetButton.setVisible(false);
+        loadModelByBrowseButton.setVisible(false);
+
+        dataFileLabel.setVisible(true);
+        filePath.setVisible(true);
+        fileBrowseButton.setVisible(true);
+        datasetInstructionTextArea.setVisible(true);
+    }//GEN-LAST:event_newDataSetButtonActionPerformed
+
+    private void startWithTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startWithTextFieldActionPerformed
         // TODO add your handling code here:
+    }//GEN-LAST:event_startWithTextFieldActionPerformed
+
+    private void updateStage2ConfigButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateStage2ConfigButtonActionPerformed
+        isUpdateStage2ConfigClicked = true;
+
+        includeStageTwoYes.setEnabled(true);
+        includeStageTwoNo.setEnabled(true);
+
+        isNewModalConfigSubmitted = false;
+        newModelSubmit.setVisible(true);
+        newModelSubmit.setEnabled(true);
+        updateStage2ConfigButton.setVisible(false);
+
+        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
+        updateGuiView(MXRStates);
+    }//GEN-LAST:event_updateStage2ConfigButtonActionPerformed
+
+    private void loadModelByBrowseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadModelByBrowseButtonActionPerformed
+        // choose saved progress file
         MXRStates = new MixRegGuiStates();
         MXRStates.readAllStates(this);
-//        System.out.print(MXRStates.filepath);
+        // hide and show fields
+        startWithTextField.setVisible(false);
+        newDataSetButton.setVisible(false);
+        loadModelByBrowseButton.setVisible(false);
+        dataFileLabel.setVisible(true);
+        filePath.setVisible(true);
+        fileBrowseButton.setVisible(true);
+        // update view with saved states
         updateGuiView(MXRStates);
-        jButton4.setEnabled(false);
-        jButton4.setVisible(false);
-    }//GEN-LAST:event_jButton4ActionPerformed
+        loadModelByBrowseButton.setEnabled(false);
+        loadModelByBrowseButton.setVisible(false);
+    }//GEN-LAST:event_loadModelByBrowseButtonActionPerformed
+
+    private void guiStatesSaveButtonModalConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guiStatesSaveButtonModalConfigActionPerformed
+        if (sessionFolderName != null) {
+            SystemLogger.LOGGER.log(Level.INFO, "Saving GUI states");
+        }
+        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
+        MXRStates.writeAllStates(this);
+    }//GEN-LAST:event_guiStatesSaveButtonModalConfigActionPerformed
 
     private void guiStatesLoadButtonModalConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guiStatesLoadButtonModalConfigActionPerformed
         if (sessionFolderName != null) {
@@ -2745,6 +2684,240 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         MXRStates.readAllStates(this);
         updateGuiView(MXRStates);
     }//GEN-LAST:event_guiStatesLoadButtonModalConfigActionPerformed
+
+    private void hiddenBigIconLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hiddenBigIconLabelMouseClicked
+        // TODO add your handling code here:
+        revealHiddenTabs++;
+        if (revealHiddenTabs > 4) {
+            stageOneTabs.setEnabledAt(7, true);
+            stageOneTabs.setEnabledAt(8, true);
+            superUserMenuLaunch = new SuperUserMenu();
+            superUserMenuLaunch.setLocationRelativeTo(mxr);
+            superUserMenuLaunch.setVisible(true);
+        }
+    }//GEN-LAST:event_hiddenBigIconLabelMouseClicked
+
+    private void stageTwoDescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoDescriptionActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "(To be implemented in MixWILD 2.0) Currently, you are restricted to single level models and continuous and dichotomous/ordinal Stage 2 outcomes."
+                + "\n" + "Multilevel models allow for additional estimation at Stage 2 using random intercept mixed effects model in place of the standard single level model, similar to Stage 1."
+                + "\n" + "- Continuous outcomes will run a linear regression at Stage 2." + "\n"
+                + "- Dichotomous and ordinal outcomes will run an ordered logistic regression at Stage 2.", "Stage 2 Model", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_stageTwoDescriptionActionPerformed
+
+    private void countRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_countRadioActionPerformed
+        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
+        updateGuiView(MXRStates);
+    }//GEN-LAST:event_countRadioActionPerformed
+
+    private void stageOneOutcomeHelpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneOutcomeHelpButtonActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "(To be implemented in MixWILD 2.0) Currently, you are restricted to continuous Stage 1 outcomes."
+                + "\n" + "Dichotomous and ordinal outcomes will run ordered logistic regressions at Stage 1." + "\n"
+                + "Note that random scale is not available for dichotomous outcomes.", "Stage 1 Outcome Type", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_stageOneOutcomeHelpButtonActionPerformed
+
+    private void multinomialRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_multinomialRadioActionPerformed
+        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
+        updateGuiView(MXRStates);
+    }//GEN-LAST:event_multinomialRadioActionPerformed
+
+    private void stageTwoMultiLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoMultiLevelActionPerformed
+        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
+        updateGuiView(MXRStates);
+    }//GEN-LAST:event_stageTwoMultiLevelActionPerformed
+
+    private void stageTwoSingleLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoSingleLevelActionPerformed
+        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
+        updateGuiView(MXRStates);
+    }//GEN-LAST:event_stageTwoSingleLevelActionPerformed
+
+    private void includeStageTwoNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_includeStageTwoNoActionPerformed
+        // TODO add your handling code here:
+        this.includeStageTwoNo.setSelected(true);
+        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
+        updateGuiView(MXRStates);
+    }//GEN-LAST:event_includeStageTwoNoActionPerformed
+
+    private void includeStageTwoYesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_includeStageTwoYesActionPerformed
+        // TODO add your handling code here:
+        this.includeStageTwoYes.setSelected(true);
+        String seedVal = generateSeed();
+        seedTextBox.setText(seedVal);
+
+        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
+        updateGuiView(MXRStates);
+    }//GEN-LAST:event_includeStageTwoYesActionPerformed
+
+    private void randomScaleSelectionNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_randomScaleSelectionNoActionPerformed
+        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
+        updateGuiView(MXRStates);
+    }//GEN-LAST:event_randomScaleSelectionNoActionPerformed
+
+    private void randomScaleSelectionYesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_randomScaleSelectionYesActionPerformed
+        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
+        updateGuiView(MXRStates);
+    }//GEN-LAST:event_randomScaleSelectionYesActionPerformed
+
+    private void stageOneOrdinalRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneOrdinalRadioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stageOneOrdinalRadioActionPerformed
+
+    private void stageOneDichotomousRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneDichotomousRadioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stageOneDichotomousRadioActionPerformed
+
+    private void stageOneContinuousRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneContinuousRadioActionPerformed
+        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
+        updateGuiView(MXRStates);
+    }//GEN-LAST:event_stageOneContinuousRadioActionPerformed
+
+    private void seedHelpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seedHelpButtonActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "A seed is a number used to initialize a random number generator. Different seeds produce different sequences of random numbers."
+                + "\n" + "In the context of two-stage models, a seed is helpful for replicating models with identical results.", "What is a seed?", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_seedHelpButtonActionPerformed
+
+    private void newModelSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModelSubmitActionPerformed
+
+        isNewModalConfigSubmitted = true;
+        // System.getProperty("os.name");
+        //        String osName = System.getProperty("os.name");
+        //        System.out.println("YOUR OPERATING SYSTEM IS: " + osName);
+        //        if (osName.contains("Windows")){
+        //            System.out.println("YES THE OS IS WINDOWS");
+        //        } else {
+        //            System.out.println("NO THE OS IS NOT WINDOWS");
+        //        }
+
+        updateGuiView_trigger_NewModelSubmit();
+        SystemLogger.LOGGER.log(Level.INFO, "Submit new model");
+    }//GEN-LAST:event_newModelSubmitActionPerformed
+
+    private void newModel_resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModel_resetButtonActionPerformed
+        if (sessionFolderName != null) {
+            SystemLogger.LOGGER.log(Level.INFO, "Reset MixWild");
+        }
+        confirmReset resetBox = new confirmReset(mxr, false);
+        resetBox.setLocationRelativeTo(mxr);
+        resetBox.setVisible(true);
+
+        /*
+        filePath.setText("");
+        titleField.setText("");
+        titleField.setEnabled(false);
+        buttonGroup2.clearSelection();
+        buttonGroup3.clearSelection();
+        buttonGroup4.clearSelection();
+        randomScaleCheckBox.setSelected(false);
+        newModelMissingValueCode.setText("");
+        seedTextBox.setText("");
+
+        variableArray = null;
+        isRandomScale = false;
+        dataFileNameRef = null;
+        missingValue = "0";
+        defFile = null;
+        modelBuilder = null;
+
+        outPutStageTwo = null;
+
+        resetButtonActionPerformed(evt);
+        jButton1ActionPerformed(evt);
+         */
+        //updateMixRegGUI();
+    }//GEN-LAST:event_newModel_resetButtonActionPerformed
+
+    private void seedTextBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seedTextBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_seedTextBoxActionPerformed
+
+    private void newModelMissingValueCodeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_newModelMissingValueCodeKeyTyped
+        // TODO add your handling code here:
+
+        char vchar = evt.getKeyChar();
+        //        if (!((Character.isDigit(vchar)) || (vchar == KeyEvent.VK_BACKSPACE) || (vchar == KeyEvent.VK_DELETE) || (vchar == KeyEvent.VK_MINUS))) {
+        //            evt.consume();
+        //        }
+        if (!((Character.isDigit(vchar)) || (vchar == KeyEvent.VK_BACK_SPACE) || (vchar == KeyEvent.VK_DELETE) || (vchar == KeyEvent.VK_MINUS) || (vchar == '.'))) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_newModelMissingValueCodeKeyTyped
+
+    private void newModelMissingValueCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModelMissingValueCodeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_newModelMissingValueCodeActionPerformed
+
+    private void missingValuePresentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_missingValuePresentActionPerformed
+        // TODO add your handling code here:
+
+        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
+        updateGuiView(MXRStates);
+    }//GEN-LAST:event_missingValuePresentActionPerformed
+
+    private void missingValueAbsentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_missingValueAbsentActionPerformed
+        // TODO add your handling code here:
+        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
+        updateGuiView(MXRStates);
+    }//GEN-LAST:event_missingValueAbsentActionPerformed
+
+    private void stageTwoDichotomousRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoDichotomousRadioActionPerformed
+        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
+        updateGuiView(MXRStates);
+        /*if (includeStageTwoNo.isSelected()){
+            //Do nothing
+        } else {
+            setSeedLabel.setVisible(true);
+            seedTextBox.setVisible(true);
+            seedHelpButton.setVisible(true);
+            String seedVal = generateSeed();
+            seedTextBox.setText(seedVal);
+        }*/
+    }//GEN-LAST:event_stageTwoDichotomousRadioActionPerformed
+
+    private void stageTwoContinuousRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoContinuousRadioActionPerformed
+        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
+        updateGuiView(MXRStates);
+        /*if (includeStageTwoNo.isSelected()){
+            //Do nothing
+
+        } else {
+            setSeedLabel.setVisible(true);
+            seedTextBox.setVisible(true);
+            seedHelpButton.setVisible(true);
+            String seedVal = generateSeed();
+            seedTextBox.setText(seedVal);
+        }*/
+    }//GEN-LAST:event_stageTwoContinuousRadioActionPerformed
+
+    private void moreThanOneRLERadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moreThanOneRLERadioActionPerformed
+        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
+        updateGuiView(MXRStates);
+    }//GEN-LAST:event_moreThanOneRLERadioActionPerformed
+
+    private void oneRLERadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oneRLERadioActionPerformed
+        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
+        updateGuiView(MXRStates);
+    }//GEN-LAST:event_oneRLERadioActionPerformed
+
+    private void titleFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_titleFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_titleFieldActionPerformed
+
+    private void filePathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filePathActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_filePathActionPerformed
+
+    private void fileBrowseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileBrowseButtonActionPerformed
+
+        importDataSet();
+        stageOneTabs.insertTab("View Data", null, jPanel6, null, 1);
+        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
+        updateGuiView(MXRStates);
+
+        loadModelByBrowseButton.setEnabled(false);
+        loadModelByBrowseButton.setVisible(false);
+    }//GEN-LAST:event_fileBrowseButtonActionPerformed
 
     // **********************update********************
     private void updateGuiView(MixRegGuiStates mxrStates) {
@@ -2759,15 +2932,27 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         FilepathValid = updateGuiView_verify_FilePath(mxrStates);
 
         if (FilepathValid) {
+            // update browse triggered fields
+            updateGuiView_trigger_browse(true);
+            // update missing value trigger fields
+            if (mxrStates.missingValuePresent) {
+                missingValuePresent.setSelected(true);
+                newModelMissingValueCode.setText(mxrStates.newModelMissingValueCode);
+            } else if (mxrStates.missingValueAbsent) {
+                missingValueAbsent.setSelected(true);
+            }
+            updateGuiView_trigger_missingvaluefield();
             // update Data View tab
             updateGuiView_trigger_dataview();
             // Update basic GUI States: Model Configuration Tab
             updateGuiView_TabOneStates(mxrStates);
-            // Trigger 1. Dataset Contain missing values or not
-            updateGuiView_trigger_MissingValue();
-            // Trigger 2. Include Stage 2 or not
+            // Trigger: stage 1 config completed
+            updateGuiView_trigger_stageOneConfig();
+            // Trigger: Include Stage 2 or not
             updateGuiView_trigger_IncludeStageTwo();
-            // Trigger 3. New model submitted or not
+            // Triger: Click to modify stage 2 config or not
+            updateGuiVIew_trigger_updateStage2Config();
+            // Trigger: New model submitted or not
             isNewModalConfigSubmitted = mxrStates.isNewModalConfigSubmitted;
             if (isNewModalConfigSubmitted == true) {
                 updateGuiView_trigger_NewModelSubmit();
@@ -2777,7 +2962,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         }
 
         if (isNewModalConfigSubmitted == true) {
-            update_StageOneStates(mxrStates);
+            if (!isUpdateStage2ConfigClicked) {
+                update_StageOneStates(mxrStates);
+            }
             update_StageTwoStates(mxrStates);
         }
 
@@ -2792,30 +2979,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         file = new File(mxrStates.filepath);
 
         if (file.exists()) {
-            setFirstTabStatus(true);
-            titleField.setEnabled(true);
-            oneRLERadio.setEnabled(true);
-            moreThanOneRLERadio.setEnabled(true);
-            continuousRadio.setEnabled(true);
-            dichotomousRadio.setEnabled(true);
-            newModelSubmit.setEnabled(true);
-            missingValuePresent.setEnabled(true);
-            missingValueAbsent.setEnabled(true);
-            includeStageTwoNo.setEnabled(true);
-            includeStageTwoYes.setEnabled(true);
-            newModel_resetButton.setEnabled(true);
-            randomScaleSelectionYes.setEnabled(true);
-            randomScaleSelectionNo.setEnabled(true);
-            guiStatesSaveButtonModalConfig.setEnabled(true);
-            guiStatesLoadButtonModalConfig.setEnabled(true);
-            stageOneTabs.setEnabledAt(6, true);
-
-            System.out.println(file.getAbsolutePath());
-
+//            setFirstTabStatus(true);
             return true;
         } else {
             setFirstTabStatus(false);
-            stageOneTabs.setEnabledAt(6, false);
+//            stageOneTabs.setEnabledAt(6, false);
             JOptionPane.showMessageDialog(null, "To load the configuration, please place the originial dataset using this path:"
                     + "\r\n" + filePath.getText() + "\r\n\r\n" + "OR" + "\r\n\r\n" + "To start a new analysis, please choose a new dataset",
                     "Error: Wrong File Path", JOptionPane.INFORMATION_MESSAGE, icon);
@@ -2826,13 +2994,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private void updateGuiView_TabOneStates(MixRegGuiStates mxrStates) {
         titleField.setText(mxrStates.title);
         sessionFolderName = mxrStates.sessionFolderName;
-
-        if (mxrStates.missingValuePresent) {
-            missingValuePresent.setSelected(true);
-            newModelMissingValueCode.setText(mxrStates.newModelMissingValueCode);
-        } else if (mxrStates.missingValueAbsent) {
-            missingValueAbsent.setSelected(true);
-        }
 
         if (mxrStates.stageOneContinuousRadio) {
             stageOneContinuousRadio.setSelected(true);
@@ -2867,9 +3028,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         }
 
         if (mxrStates.continuousRadio) {
-            continuousRadio.setSelected(true);
+            stageTwoContinuousRadio.setSelected(true);
         } else if (mxrStates.dichotomousRadio) {
-            dichotomousRadio.setSelected(true);
+            stageTwoDichotomousRadio.setSelected(true);
         } else if (mxrStates.countRadio) {
             countRadio.setSelected(true);
         } else if (mxrStates.multinomialRadio) {
@@ -2894,28 +3055,43 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             seedTextBox.setText("0");
             stageTwoSingleLevel.setVisible(false);
             stageTwoMultiLevel.setVisible(false);
-            continuousRadio.setVisible(false);
-            dichotomousRadio.setVisible(false);
+            stageTwoContinuousRadio.setVisible(false);
+            stageTwoDichotomousRadio.setVisible(false);
             countRadio.setVisible(false);
             multinomialRadio.setVisible(false);
             stageTwoModelTypeLabel.setVisible(false);
             stageTwoOutcomeTypeLabel.setVisible(false);
             stageTwoModelGiantLabel.setVisible(false);
-        } else {
+
+            newModelSubmit.setVisible(true);
+
+//            updateStage2ConfigButton.setVisible(true);
+        } else if (includeStageTwoYes.isSelected()) {
             setSeedLabel.setVisible(true);
             seedTextBox.setVisible(true);
             seedHelpButton.setVisible(true);
 //            String seedVal = generateSeed();
 //            seedTextBox.setText(seedVal);
+            seedTextBox.setEnabled(true);
             stageTwoSingleLevel.setVisible(true);
+            stageTwoSingleLevel.setEnabled(true);
             stageTwoMultiLevel.setVisible(true);
-            continuousRadio.setVisible(true);
-            dichotomousRadio.setVisible(true);
+            stageTwoContinuousRadio.setVisible(true);
+            stageTwoContinuousRadio.setEnabled(true);
+            stageTwoDichotomousRadio.setVisible(true);
+            stageTwoDichotomousRadio.setEnabled(true);
             countRadio.setVisible(true);
             multinomialRadio.setVisible(true);
             stageTwoModelTypeLabel.setVisible(true);
             stageTwoOutcomeTypeLabel.setVisible(true);
             stageTwoModelGiantLabel.setVisible(true);
+            if ((stageTwoLevelGroup.getSelection() != null) && (buttonGroup3.getSelection() != null)) {
+                newModelSubmit.setVisible(true);
+            } else {
+                newModelSubmit.setVisible(false);
+            }
+
+//            updateStage2ConfigButton.setVisible(true);
         }
     }
 
@@ -3037,6 +3213,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel DatasetLabel;
     private javax.swing.JComboBox<String> IDvariableCombo;
     private javax.swing.JRadioButton LinearAssociationRadio;
     private javax.swing.JRadioButton NoAssociationRadio;
@@ -3051,11 +3228,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.ButtonGroup buttonGroup4;
-    private javax.swing.JRadioButton continuousRadio;
     private javax.swing.JRadioButton countRadio;
     private javax.swing.JLabel dataFileLabel;
+    private javax.swing.JScrollPane dataInstruction;
     public static javax.swing.JTable dataTable;
-    private javax.swing.JRadioButton dichotomousRadio;
+    private javax.swing.JTextArea datasetInstructionTextArea;
     private javax.swing.JTextArea equationArea;
     private javax.swing.JButton exampleDataDownload;
     private javax.swing.JButton fileBrowseButton;
@@ -3071,9 +3248,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JRadioButton includeStageTwoNo;
     private javax.swing.JRadioButton includeStageTwoYes;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton8;
     private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JFrame jFrame1;
@@ -3084,7 +3259,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
@@ -3098,7 +3272,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
@@ -3158,12 +3331,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel level2_WSVar;
     private javax.swing.JPanel levelOneGrid;
     private javax.swing.JPanel levelTwoGrid;
+    private javax.swing.JButton loadModelByBrowseButton;
     private javax.swing.JLabel missingCodeViewLabel;
     private javax.swing.JRadioButton missingValueAbsent;
     private javax.swing.JRadioButton missingValuePresent;
     private javax.swing.JLabel missingViewLabel;
     private javax.swing.JRadioButton moreThanOneRLERadio;
     private javax.swing.JRadioButton multinomialRadio;
+    private javax.swing.JButton newDataSetButton;
     private javax.swing.JTextField newModelMissingValueCode;
     private javax.swing.JButton newModelSubmit;
     private javax.swing.JButton newModel_resetButton;
@@ -3195,7 +3370,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel stageOneOutcomeViewLabel;
     public static javax.swing.JTextArea stageOneOutput;
     private javax.swing.JTabbedPane stageOneTabs;
+    private javax.swing.JRadioButton stageTwoContinuousRadio;
     private javax.swing.JButton stageTwoDescription;
+    private javax.swing.JRadioButton stageTwoDichotomousRadio;
     private javax.swing.ButtonGroup stageTwoLevelGroup;
     private javax.swing.JPanel stageTwoLevelOnePanel;
     private javax.swing.JPanel stageTwoLevelTwoPanel;
@@ -3210,9 +3387,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JPanel stageTwoRegsGridLvl2;
     private javax.swing.JRadioButton stageTwoSingleLevel;
     private javax.swing.JButton startStageTwo;
+    private javax.swing.JTextField startWithTextField;
     private javax.swing.JCheckBox suppressIntCheckBox;
     private javax.swing.JTextField titleField;
     private javax.swing.JLabel titleViewLabel;
+    private javax.swing.JButton updateStage2ConfigButton;
     private javax.swing.JButton userGuideDownload;
     // End of variables declaration//GEN-END:variables
 
@@ -3730,7 +3909,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
 //        revalidate();
 //        repaint();
-
     }
 
     public int countLevelOneBeta() {
@@ -4865,6 +5043,18 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     }
 
+    public int getStageOneOutcome() {
+        int stageOneOutcome = 1;
+
+        if (getStageOneContinuousRadio()) {
+            stageOneOutcome = 1;
+        } else if (getStageOneDichotomousRadio() || getStageOneOrdinalRadio()) {
+            stageOneOutcome = 2;
+        }
+
+        return stageOneOutcome;
+    }
+
     public String getStageTwoOutcomePosition() {
         String position;
         int pos;
@@ -5436,7 +5626,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             for (int x = 0; x < ColumnsCustom.size(); x++) {
                 if (UniqueList.contains(ColumnsCustom.get(x))) {
                     //do nothing
-                } else if (ColumnsCustom.get(x).equals(defFile.getAdvancedMissingValue()) && !ColumnsCustom.get(x).equals("0")) { //compare if the category is a missing value, then don't consider it as a category
+                } else if (ColumnsCustom.get(x).equals(defFile.getAdvancedMissingValueCode()) && !ColumnsCustom.get(x).equals("0")) { //compare if the category is a missing value, then don't consider it as a category
                     //do nothing
 
                 } else {
@@ -5496,7 +5686,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             for (int x = 0; x < ColumnsCustom.size(); x++) {
                 if (UniqueList.contains(ColumnsCustom.get(x))) {
                     //do nothing
-                } else if (ColumnsCustom.get(x).equals(defFile.getAdvancedMissingValue()) && !ColumnsCustom.get(x).equals("0")) { //compare if the category is a missing value, then don't consider it as a category
+                } else if (ColumnsCustom.get(x).equals(defFile.getAdvancedMissingValueCode()) && !ColumnsCustom.get(x).equals("0")) { //compare if the category is a missing value, then don't consider it as a category
                     //do nothing
 
                 } else {
@@ -5602,27 +5792,48 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         if (validateFields() == true) {
             System.out.print("condition is true");
-            if (oneRLERadio.isSelected() == true) {
-                RLE = 1;
-            } else if (moreThanOneRLERadio.isSelected() == true) {
-                RLE = 2;
+            updateGuiView_trigger_NewModelSubmit_TabChange();
+            updateStage2ConfigButton.setVisible(true);
+            guiStatesSaveButtonModalConfig.setVisible(true);
+            guiStatesSaveButtonStageOne.setVisible(true);
+            guiStatesSaveButtonStageTwo.setVisible(true);
+
+            if (isOutcomeNone() == true) {
+                startStageTwo.setText("Run Stage 1");
+            } else if (isOutcomeNone() == false) {
+                startStageTwo.setText("Configure Stage 2");
             }
 
-            defFile = new DefinitionHelper(RLE, !isOutcomeContinous());
-            // modelBuilder = new ModelBuilder(defFile);
+            if (oneRLERadio.isSelected() == true) {
+                RLE = 2;
+            } else if (moreThanOneRLERadio.isSelected() == true) {
+                RLE = 3;
+            } else {
+                isNewModalConfigSubmitted = false;
+            }
+
+//            defFile = new DefinitionHelper(RLE, !isOutcomeContinous());
+//            modelBuilder = new ModelBuilder(defFile);
+            // Include stage 2 or not
+            if (getIncludeStageTwoYes() == true) {
+                defFile = new MixLibrary(getStageOneOutcome(), RLE, getRandomScaleSelection(), getStageTwoModelType(), getStageTwoOutcomeType());
+            }
+            if (getIncludeStageTwoNo() == true) {
+                defFile = new MixLibrary(getStageOneOutcome(), RLE, getRandomScaleSelection());
+            }
+
             System.out.println("RLE: " + String.valueOf(RLE));
 
-            defFile.modelSelector(RLE, isOutcomeContinous());
-
+//            defFile.modelSelector(RLE, isOutcomeContinous());
             if (missingValuePresent.isSelected()) {
 
                 System.out.println("NEW MODEL | MISSING VALUE = " + newModelMissingValueCode.getText());
 
                 try {
                     System.out.println("NEW MODEL | MISSING VALUE = " + newModelMissingValueCode.getText());
-                    defFile.setAdvancedMissingValue(String.valueOf(newModelMissingValueCode.getText()));
+                    defFile.setAdvancedMissingValueCode(String.valueOf(newModelMissingValueCode.getText()));
 
-                    System.out.println("From defHelper | Missing Value: " + defFile.getAdvancedMissingValue());
+                    System.out.println("From defHelper | Missing Value: " + defFile.getAdvancedMissingValueCode());
                 } catch (Exception ex) {
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
@@ -5630,8 +5841,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             } else if (missingValueAbsent.isSelected()) {
                 try {
-                    defFile.setAdvancedMissingValue(String.valueOf(missingValue));
-                    System.out.println("From defHelper | Missing Value: " + defFile.getAdvancedMissingValue());
+                    defFile.setAdvancedMissingValueCode(String.valueOf(missingValue));
+                    System.out.println("From defHelper | Missing Value: " + defFile.getAdvancedMissingValueCode());
                 } catch (Exception ex) {
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
@@ -5662,8 +5873,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
             }
 
-            System.out.println("MODEL SELECTOR: " + String.valueOf(defFile.getSelectedModel()));
-
+//            System.out.println("MODEL SELECTOR: " + String.valueOf(defFile.getSelectedModel()));
             if (filePath.getText().toString().equals("")) {
                 JOptionPane.showMessageDialog(null, "Please upload a .csv file to start your analysis", "Caution!", JOptionPane.INFORMATION_MESSAGE);
             } else {
@@ -5679,9 +5889,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     System.out.println("Variables are: " + Arrays.toString(variableArray));
                     // save all variables in an array
                     String[] varTemp = getVariableNames();
-                    defFile.setDataFilename(extractDatFilePath());
-                    defFile.setDataVariableCount(String.valueOf(variableArray.length));
-                    System.out.println("From defHelper | Variable count: " + defFile.getDataVariableCount());
+                    defFile.setSharedDataFilename(extractDatFilePath());
+//                    defFile.setDataVariableCount(String.valueOf(variableArray.length));
+//                    System.out.println("From defHelper | Variable count: " + defFile.getDataVariableCount());
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                     SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
@@ -5698,10 +5908,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 System.out.println(String.valueOf(isOutcomeContinous()));
                 System.out.println("IsOutcomeNone: " + String.valueOf(isOutcomeNone()));
                 // set Values in def helper
-                defFile.setModelTitle(getTitle());
-                System.out.println("From defHelper | Title: " + defFile.getModelTitle());
+                defFile.setSharedModelTitle(getTitle());
+                System.out.println("From defHelper | Title: " + defFile.getSharedModelTitle());
                 //defFile.setModelSubtitle(getSubTitle());
-                System.out.println("From defHelper | Subtitle: " + defFile.getModelSubtitle());
+                System.out.println("From defHelper | Subtitle: " + defFile.getSharedModelSubtitle());
 
                 //Check if the randome scale is checked or not
                 if (randomScaleSelectionYes.isSelected()) {
@@ -5712,13 +5922,13 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     // randomScaleCheckBox
                 }
 
-                defFile.setModelSubtitle("Created with MixWILD GUI");
-                System.out.println("From defHelper | Subtitle: " + defFile.getModelSubtitle());
+                defFile.setSharedModelSubtitle("Created with MixWILD GUI");
+                System.out.println("From defHelper | Subtitle: " + defFile.getSharedModelSubtitle());
 
                 //set advanced options defaults and assign values to defition library
                 try {
-                    defFile.setModelFixedInt(String.valueOf(0));
-                    System.out.println("From defHelper | Mean SubModel Checked?: " + defFile.getModelFixedInt());
+                    defFile.setAdvancedMeanIntercept(String.valueOf(0));
+                    System.out.println("From defHelper | Mean SubModel Checked?: " + defFile.getAdvancedMeanIntercept());
                     //tryCount = 1;
 
                 } catch (Exception ex) {
@@ -5729,10 +5939,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
                 try {
-                    defFile.setModelRandomInt(String.valueOf(0));
-                    defFile.setModelBetweenInt(String.valueOf(0));
-                    System.out.println("From defHelper | BS SubModel Checked?: " + defFile.getModelRandomInt());
-                    System.out.println("From defHelper | BS SubModel Checked?: " + defFile.getModelBetweenInt());
+                    defFile.setAdvancedRandomIntercept(String.valueOf(0));
+//                    defFile.setModelBetweenInt(String.valueOf(0));
+                    System.out.println("From defHelper | BS SubModel Checked?: " + defFile.getAdvancedRandomIntercept());
+//                    System.out.println("From defHelper | BS SubModel Checked?: " + defFile.getModelBetweenInt());
 
                 } catch (Exception ex) {
                     SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
@@ -5741,10 +5951,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
                 try {
-                    defFile.setModelScaleInt(String.valueOf(0));
-                    defFile.setModelWithinInt(String.valueOf(0));
-                    System.out.println("From defHelper | WS SubModel Checked?: " + defFile.getModelScaleInt());
-                    System.out.println("From defHelper | WS SubModel Checked?: " + defFile.getModelWithinInt());
+                    defFile.setAdvancedScaleIntercept(String.valueOf(0));
+//                    defFile.setModelWithinInt(String.valueOf(0));
+                    System.out.println("From defHelper | WS SubModel Checked?: " + defFile.getAdvancedScaleIntercept());
+//                    System.out.println("From defHelper | WS SubModel Checked?: " + defFile.getModelWithinInt());
                     //tryCount = 1;
 
                 } catch (Exception ex) {
@@ -5767,8 +5977,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
                 try {
-                    defFile.setAdvancedConvergence(String.valueOf(0.00001));
-                    System.out.println("From defHelper | Convergence: " + defFile.getAdvancedConvergence());
+                    defFile.setAdvancedConvergenceCriteria(String.valueOf(0.00001));
+                    System.out.println("From defHelper | Convergence: " + defFile.getAdvancedConvergenceCriteria());
                     //tryCount = 1;
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
@@ -5790,8 +6000,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
                 try {
-                    defFile.setAdvancedMaxIteration(String.valueOf(200));
-                    System.out.println("From defHelper | Maximum Iteraions: " + defFile.getAdvancedMaxIteration());
+                    defFile.setAdvancedMaxIterations(String.valueOf(200));
+                    System.out.println("From defHelper | Maximum Iteraions: " + defFile.getAdvancedMaxIterations());
                     //tryCount = 1;
 
                 } catch (Exception ex) {
@@ -5802,8 +6012,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
                 try {
-                    defFile.setAdvancedRidge(String.valueOf(0.15));
-                    System.out.println("From defHelper | Ridge: " + defFile.getAdvancedRidge());
+                    defFile.setAdvancedInitialRidge(String.valueOf(0.15));
+                    System.out.println("From defHelper | Ridge: " + defFile.getAdvancedInitialRidge());
                     //tryCount = 1;
 
                 } catch (Exception ex) {
@@ -5814,16 +6024,16 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
                 try {
-                    defFile.setAdvancedCutoffLower("0");
-                    System.out.println("CUT OFF: " + defFile.getAdvancedCutoffLower());
+                    defFile.setAdvancedRandomScaleCutoff("0");
+                    System.out.println("CUT OFF: " + defFile.getAdvancedRandomScaleCutoff());
                 } catch (Exception ex) {
                     SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
                 try {
-                    defFile.setAdvancedDiscardSubjects("0");
-                    System.out.println("DISCARD SUBJECTS: " + defFile.getAdvancedDiscardSubjects());
+                    defFile.setAdvancedDiscardNoVariance("0");
+                    System.out.println("DISCARD SUBJECTS: " + defFile.getAdvancedDiscardNoVariance());
 
                 } catch (Exception ex) {
                     SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
@@ -5832,8 +6042,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
                 try {
-                    defFile.setAdvancedCenterScale(String.valueOf(0));
-                    System.out.println("From defHelper | Scale Regressor: " + defFile.getAdvancedCenterScale());
+                    defFile.setAdvancedCenterScaleVariables(String.valueOf(0));
+                    System.out.println("From defHelper | Scale Regressor: " + defFile.getAdvancedCenterScaleVariables());
 
                 } catch (Exception ex) {
                     SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
@@ -5853,21 +6063,21 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 }
 
                 try {
-                    defFile.setSeedForStageTwo(seedTextBox.getText());
-                    System.out.println("From defHelper | SEED: " + defFile.getSeedForStageTwo());
+                    defFile.setAdvancedResamplingSeed(seedTextBox.getText());
+                    System.out.println("From defHelper | SEED: " + defFile.getAdvancedResamplingSeed());
                 } catch (Exception ex) {
                     SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
 
-                defFile.setOutputPrefix(extractDatFileName() + "_Output");
-                System.out.println("From defHelper | Output file name: " + defFile.getOutputPrefix());
+                defFile.setSharedOutputPrefix(extractDatFileName() + "_Output");
+                System.out.println("From defHelper | Output file name: " + defFile.getSharedOutputPrefix());
 
                 if (randomScaleSelectionYes.isSelected()) {
                     try {
-                        defFile.setAdvancedRandomScaleNotIncluded("0");
-                        System.out.println("IS RANDOM SCALE INCLUDED: " + defFile.getAdvancedRandomScaleNotIncluded());
+                        defFile.setAdvancedUseRandomScale("0");
+                        System.out.println("IS RANDOM SCALE INCLUDED: " + defFile.getAdvancedUseRandomScale());
                     } catch (Exception ex) {
                         SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                         Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -5877,8 +6087,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 } else {
 
                     try {
-                        defFile.setAdvancedRandomScaleNotIncluded("1");
-                        System.out.println("IS RANDOM SCALE INCLUDED: " + defFile.getAdvancedRandomScaleNotIncluded());
+                        defFile.setAdvancedUseRandomScale("1");
+                        System.out.println("IS RANDOM SCALE INCLUDED: " + defFile.getAdvancedUseRandomScale());
                     } catch (Exception ex) {
                         SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                         Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -5889,8 +6099,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
                 if (isOutcomeNone()) {
                     try {
-                        defFile.setAdvancedDropSecondStage("1");
-                        System.out.println("DROP SECOND STAGE?: " + defFile.getAdvancedDropSecondStage());
+                        defFile.setAdvancedUseStageTwo("1");
+                        System.out.println("DROP SECOND STAGE?: " + defFile.getAdvancedUseStageTwo());
                     } catch (Exception ex) {
                         SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                         Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -5900,8 +6110,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 } else {
 
                     try {
-                        defFile.setAdvancedDropSecondStage("0");
-                        System.out.println("DROP SECOND STAGE?: " + defFile.getAdvancedDropSecondStage());
+                        defFile.setAdvancedUseStageTwo("0");
+                        System.out.println("DROP SECOND STAGE?: " + defFile.getAdvancedUseStageTwo());
                     } catch (Exception ex) {
                         SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                         Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -5916,13 +6126,18 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     JOptionPane.showMessageDialog(null, "Invalid missing value code, 0 implies there are no missing values. Please use some other value. E.g., -999", "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 } else {
                     // TODO: fix this stuff xyz
-                    isSubmitClicked();
+
                     setVisible(true);
                     randomLocationEffectsLabel.setText("Random location effects: " + randomLocationEffects());
                     stageTwoOutcomePrintLabel.setText("Stage 2 outcome: " + outComeTypeString());
-                    //Update ID, stage one and stage two variable comboboxes
-                    updateMixRegGUI();
-                    updateComboBoxes();
+
+                    if (!isUpdateStage2ConfigClicked) {
+                        isSubmitClicked();
+                        //Update ID, stage one and stage two variable comboboxes
+                        updateMixRegGUI();
+                        updateComboBoxes();
+
+                    }
                     stageOneTabs.setSelectedIndex(1);
                     newModelSubmit.setEnabled(false);
                     newModelSubmit.setVisible(false);
@@ -5935,8 +6150,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     //randomScaleCheckBox.setEnabled(false);
                     randomScaleSelectionYes.setEnabled(false);
                     randomScaleSelectionNo.setEnabled(false);
-                    continuousRadio.setEnabled(false);
-                    dichotomousRadio.setEnabled(false);
+                    stageTwoContinuousRadio.setEnabled(false);
+                    stageTwoDichotomousRadio.setEnabled(false);
                     includeStageTwoNo.setEnabled(false);
                     includeStageTwoYes.setEnabled(false);
                     //noneRadio.setEnabled(false);
@@ -5950,19 +6165,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 }
 
             }
-
-            if (outcomeNone == false) {
-                stageOneTabs.setEnabledAt(2, true);
-            }
-
-            stageOneTabs.setEnabledAt(1, true);
-            stageOneTabs.setEnabledAt(2, true);
-            stageOneTabs.setEnabledAt(3, true);
-            stageOneTabs.setEnabledAt(4, true);
-            stageOneTabs.setEnabledAt(5, true);
-            stageOneTabs.setEnabledAt(6, true);
-            //stageOneTabs.setEnabledAt(7,true);
-
         } else {
 
             System.out.println("VALIDATION OF FIELDS: " + String.valueOf(false));
@@ -5991,8 +6193,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         try {
             tryCount = 1;
-            defFile.setIdOutcome(idOutcome);
-            System.out.println("From defHelper | ID and Outcome indices: " + Arrays.toString(defFile.getIdOutcome()));
+            defFile.setSharedIdAndStageOneOutcomeFields(idOutcome);
+            System.out.println("From defHelper | ID and Outcome indices: " + Arrays.toString(defFile.getSharedIdAndStageOneOutcomeFields()));
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6002,8 +6204,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         try {
             tryCount = 1;
-            defFile.setLabelModelOutcome(getOutcomeLabel());
-            System.out.println("From defHelper | Outcome variable Stage One LABEL: " + defFile.getLabelModelOutcome());
+            defFile.setSharedModelStageOneOutcomeLabel(getOutcomeLabel());
+            System.out.println("From defHelper | Outcome variable Stage One LABEL: " + defFile.getSharedModelStageOneOutcomeLabel());
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6018,9 +6220,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 tryCount = 1;
                 int MeanCount = countLevelOneBeta() + countLevelTwoBeta() - countLevelOneDicompMean(); //check this ======================
                 // count total mean regressors in level one and level two
-                defFile.setModelMeanCount(String.valueOf(MeanCount));
+                defFile.setAdvancedMeanRegressorCount(String.valueOf(MeanCount));
                 System.out.println("From mixRegGUI | Stage 1 Model Mean Count: " + String.valueOf(MeanCount));
-                System.out.println("From defHelper | Stage 1 Model Mean Count: " + defFile.getModelMeanCount().toString());
+                System.out.println("From defHelper | Stage 1 Model Mean Count: " + defFile.getAdvancedMeanRegressorCount().toString());
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6031,8 +6233,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             try {
                 tryCount = 1;
                 int betweenCount = countLevelOneAlpha() + countLevelTwoAlpha() - countLevelOneDicompBS();
-                defFile.setModelBetweenCount(String.valueOf(betweenCount));
-                System.out.println("From defHelper | Model Between Count: " + defFile.getModelBetweenCount().toString());
+                defFile.setAdvancedRandomRegressorCount(String.valueOf(betweenCount));
+                System.out.println("From defHelper | Model Between Count: " + defFile.getAdvancedRandomRegressorCount().toString());
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6043,8 +6245,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             try {
                 tryCount = 1;
                 int withinCount = countLevelOneTau() + countLevelTwoTau() - countLevelOneDicompWS();
-                defFile.setModelWithinCount(String.valueOf(withinCount));
-                System.out.println("From defHelper | Model Within Count: " + defFile.getModelWithinCount());
+                defFile.setAdvancedScaleRegressorCount(String.valueOf(withinCount));
+                System.out.println("From defHelper | Model Within Count: " + defFile.getAdvancedScaleRegressorCount());
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6055,8 +6257,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             //Number of disaggregate means
             try {
                 tryCount = 1;
-                defFile.setDecompMeanCount(String.valueOf(countLevelOneDicompMean()));
-                System.out.println("From defHelper | Stage 1 Decomp Model Mean Count: " + defFile.getDecompMeanCount().toString());
+                defFile.setAdvancedDecomposeMeanRegressorCount(String.valueOf(countLevelOneDicompMean()));
+                System.out.println("From defHelper | Stage 1 Decomp Model Mean Count: " + defFile.getAdvancedDecomposeMeanRegressorCount().toString());
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6067,8 +6269,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             //Number of disaggregate BS Variance
             try {
                 tryCount = 1;
-                defFile.setDecompBSCount(String.valueOf(countLevelOneDicompBS()));
-                System.out.println("From defHelper | Stage 1 BS Variance Disagg. Regressor Count: " + defFile.getDecompBSCount().toString());
+                defFile.setAdvancedDecomposeRandomRegressorCount(String.valueOf(countLevelOneDicompBS()));
+                System.out.println("From defHelper | Stage 1 BS Variance Disagg. Regressor Count: " + defFile.getAdvancedDecomposeRandomRegressorCount().toString());
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6079,8 +6281,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             //Number of disaggregate WS Variance
             try {
                 tryCount = 1;
-                defFile.setDecompWSCount(String.valueOf(countLevelOneDicompWS()));
-                System.out.println("From defHelper | Stage 1 WS Variance Disagg Regressor Count: " + defFile.getDecompWSCount().toString());
+                defFile.setAdvancedDecomposeScaleRegressorCount(String.valueOf(countLevelOneDicompWS()));
+                System.out.println("From defHelper | Stage 1 WS Variance Disagg Regressor Count: " + defFile.getAdvancedDecomposeScaleRegressorCount().toString());
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6093,8 +6295,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             if (NoAssociationRadio.isSelected()) {
 
                 try {
-                    defFile.setAdvancedEffectMeanWS(String.valueOf(0));
-                    System.out.println("From defHelper | Stage 1 Advanced effects of mean on WS variance (No Association): " + defFile.getAdvancedEffectMeanWS());
+                    defFile.setAdvancedRandomScaleAssociation(String.valueOf(0));
+                    System.out.println("From defHelper | Stage 1 Advanced effects of mean on WS variance (No Association): " + defFile.getAdvancedRandomScaleAssociation());
                 } catch (Exception ex) {
                     catchCount = 1;
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6104,8 +6306,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             } else if (LinearAssociationRadio.isSelected()) {
                 try {
-                    defFile.setAdvancedEffectMeanWS(String.valueOf(1));
-                    System.out.println("From defHelper | Stage 1 Advanced effects of mean on WS variance (Linear Association): " + defFile.getAdvancedEffectMeanWS());
+                    defFile.setAdvancedRandomScaleAssociation(String.valueOf(1));
+                    System.out.println("From defHelper | Stage 1 Advanced effects of mean on WS variance (Linear Association): " + defFile.getAdvancedRandomScaleAssociation());
                 } catch (Exception ex) {
                     catchCount = 1;
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6115,8 +6317,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             } else if (QuadraticAssociationRadio.isSelected()) {
                 try {
-                    defFile.setAdvancedEffectMeanWS(String.valueOf(2));
-                    System.out.println("From defHelper | Stage 1 Advanced effects of mean on WS variance (Quadratic Association): " + defFile.getAdvancedEffectMeanWS());
+                    defFile.setAdvancedRandomScaleAssociation(String.valueOf(2));
+                    System.out.println("From defHelper | Stage 1 Advanced effects of mean on WS variance (Quadratic Association): " + defFile.getAdvancedRandomScaleAssociation());
                 } catch (Exception ex) {
                     catchCount = 1;
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6128,12 +6330,12 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             // get selected regressor labels and read them into defFile
             try {
-                defFile.setLabelModelMeanRegressors(ModelMeansLabelsArray());
-                System.out.println("From defHelper | Stage 1 MEAN REGRESSOR LABELS): " + Arrays.toString(defFile.getLabelModelMeanRegressors()));
-                defFile.setLabelModelMeanRegressorsLevelOne(getModelMeanLabelsLevelOne());
-                System.out.println("From defHelper | LEVEL 1 MEAN REGRESSOR LABELS): " + Arrays.toString(defFile.getLabelModelMeanRegressorsLevelOne()));
-                defFile.setLabelModelMeanRegressorsLevelTwo(getModelMeanLabelsLevelTwo());
-                System.out.println("From defHelper | LEVEL 2 MEAN REGRESSOR LABELS): " + Arrays.toString(defFile.getLabelModelMeanRegressorsLevelTwo()));
+                defFile.setSharedModelMeanRegressorLabels(ModelMeansLabelsArray());
+//                System.out.println("From defHelper | Stage 1 MEAN REGRESSOR LABELS): " + Arrays.toString(defFile.getSharedModelMeanRegressorLabels()));
+//                defFile.setSharedModelMeanRegressorLabelsLevelOne(getModelMeanLabelsLevelOne());
+//                System.out.println("From defHelper | LEVEL 1 MEAN REGRESSOR LABELS): " + Arrays.toString(defFile.getSharedModelMeanRegressorLabelsLevelOne()));
+//                defFile.setSharedModelMeanRegressorLabelsLevelTwo(getModelMeanLabelsLevelTwo());
+//                System.out.println("From defHelper | LEVEL 2 MEAN REGRESSOR LABELS): " + Arrays.toString(defFile.getSharedModelMeanRegressorLabelsLevelTwo()));
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6142,12 +6344,12 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
 
             try {
-                defFile.setLabelModelBSRegressors(ModelBSLabelsArray());
-                System.out.println("From defHelper | Stage 1 BS REGRESSOR LABELS): " + Arrays.toString(defFile.getLabelModelBSRegressors()));
-                defFile.setLabelModelBSRegressorsLevelOne(getModelBSLabelsLevelOne());
-                System.out.println("From defHelper | LEVEL 1 BS REGRESSOR LABELS): " + Arrays.toString(defFile.getLabelModelBSRegressorsLevelOne()));
-                defFile.setLabelModelBSRegressorsLevelTwo(getModelBSLabelsLevelTwo());
-                System.out.println("From defHelper | LEVEL 2 BS REGRESSOR LABELS): " + Arrays.toString(defFile.getLabelModelBSRegressorsLevelTwo()));
+                defFile.setSharedModelRandomRegressorLabels(ModelBSLabelsArray());
+//                System.out.println("From defHelper | Stage 1 BS REGRESSOR LABELS): " + Arrays.toString(defFile.getSharedModelRandomRegressorLabels()));
+//                defFile.setSharedModelRandomRegressorLabelsLevelOne(getModelBSLabelsLevelOne());
+//                System.out.println("From defHelper | LEVEL 1 BS REGRESSOR LABELS): " + Arrays.toString(defFile.getLabelModelBSRegressorsLevelOne()));
+//                defFile.setSharedModelRandomRegressorLabelsLevelTwo(getModelBSLabelsLevelTwo());
+//                System.out.println("From defHelper | LEVEL 2 BS REGRESSOR LABELS): " + Arrays.toString(defFile.getLabelModelBSRegressorsLevelTwo()));
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6156,8 +6358,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
 
             try {
-                defFile.setLabelModelWSRegressors(ModelWSLabelsArray());
-                System.out.println("From defHelper | Stage 1 WS REGRESSOR LABELS): " + Arrays.toString(defFile.getLabelModelWSRegressors()));
+                defFile.setSharedModelScaleRegressorLabels(ModelWSLabelsArray());
+                System.out.println("From defHelper | Stage 1 WS REGRESSOR LABELS): " + Arrays.toString(defFile.getSharedModelScaleRegressorLabels()));
                 defFile.setLabelModelWSRegressorsLevelOne(getModelWSLabelsLevelOne());
                 System.out.println("From defHelper | LEVEL 1 WS REGRESSOR LABELS): " + Arrays.toString(defFile.getLabelModelWSRegressorsLevelOne()));
                 defFile.setLabelModelWSRegressorsLevelTwo(getModelWSLabelsLevelTwo());
@@ -6171,9 +6373,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             // Reads the variable names of variables that have been selected as mean regressors
             try {
-                defFile.setFieldModelMeanRegressors(fieldModelMeanArray());
-                System.out.println("From defHelper | #Stage One Mean Regressors: " + defFile.getFieldModelMeanRegressors().length);
-                System.out.println("From defHelper | Stage One Mean Regressors Selected: " + Arrays.toString(defFile.getFieldModelMeanRegressors()));
+                defFile.setSharedModelMeanRegressorFields(fieldModelMeanArray());
+                System.out.println("From defHelper | #Stage One Mean Regressors: " + defFile.getSharedModelMeanRegressorFields().length);
+                System.out.println("From defHelper | Stage One Mean Regressors Selected: " + Arrays.toString(defFile.getSharedModelMeanRegressorFields()));
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6183,9 +6385,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             // Reads the variable names of variables that have been selected as BS Variances
             try {
-                defFile.setFieldModelBSRegressors(fieldModelBSArray());
-                System.out.println("From defHelper | #Stage One BS Regressors: " + defFile.getFieldModelBSRegressors().length);
-                System.out.println("From defHelper | Stage One BS Var. Regressors Selected: " + Arrays.toString(defFile.getFieldModelBSRegressors()));
+                defFile.setSharedModelRandomRegressorFields(fieldModelBSArray());
+                System.out.println("From defHelper | #Stage One BS Regressors: " + defFile.getSharedModelRandomRegressorFields().length);
+                System.out.println("From defHelper | Stage One BS Var. Regressors Selected: " + Arrays.toString(defFile.getSharedModelRandomRegressorFields()));
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6195,9 +6397,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             // Reads the variable names of variables that have been selected as WS Variances
             try {
-                defFile.setFieldModelWSRegressors(fieldModelWSArray());
-                System.out.println("From defHelper | #Stage One WS Regressors: " + defFile.getFieldModelWSRegressors().length);
-                System.out.println("From defHelper | Stage One WS Var. Regressors Selected: " + Arrays.toString(defFile.getFieldModelWSRegressors()));
+                defFile.setSharedModelScaleRegressorFields(fieldModelWSArray());
+                System.out.println("From defHelper | #Stage One WS Regressors: " + defFile.getSharedModelScaleRegressorFields().length);
+                System.out.println("From defHelper | Stage One WS Var. Regressors Selected: " + Arrays.toString(defFile.getSharedModelScaleRegressorFields()));
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6206,8 +6408,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
 
             try {
-                defFile.setFieldDecompMeanRegressors(getMeanDecompFieldRegressorLabels_levelOne());
-                System.out.println("From defHelper | #Stage One Mean + Disagg. Regressors: " + defFile.getFieldDecompMeanRegressors().length);
+                defFile.setSharedModelDecomposeMeanRegressorFields(getMeanDecompFieldRegressorLabels_levelOne());
+                System.out.println("From defHelper | #Stage One Mean + Disagg. Regressors: " + defFile.getSharedModelDecomposeMeanRegressorFields().length);
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6216,8 +6418,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
 
             try {
-                defFile.setFieldDecompBSRegressors(getBSDecompFieldRegressorLabels_levelOne());
-                System.out.println("From defHelper | #Stage One BS + Disagg. Regressors: " + defFile.getFieldDecompBSRegressors().length);
+                defFile.setSharedModelDecomposeRandomRegressorFields(getBSDecompFieldRegressorLabels_levelOne());
+                System.out.println("From defHelper | #Stage One BS + Disagg. Regressors: " + defFile.getSharedModelDecomposeRandomRegressorFields().length);
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6226,8 +6428,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
 
             try {
-                defFile.setFieldDecompWSRegressors(getWSDecompFieldRegressorLabels_levelOne());
-                System.out.println("From defHelper | #Stage One WS + Disagg. Regressors: " + defFile.getFieldDecompWSRegressors().length);
+                defFile.setSharedModelDecomposeScaleRegressorFields(getWSDecompFieldRegressorLabels_levelOne());
+                System.out.println("From defHelper | #Stage One WS + Disagg. Regressors: " + defFile.getSharedModelDecomposeScaleRegressorFields().length);
             } catch (Exception ex) {
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                 SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
@@ -6235,8 +6437,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
 
             try {
-                defFile.setLabelDecompMeanRegressors(getDecompMeanLabelsLevelOne());
-                System.out.println("From defHelper | Model Decomp + Mean Labels: " + Arrays.toString(defFile.getLabelDecompMeanRegressors()));
+                defFile.setSharedModelDecomposeMeanRegressorLabels(getDecompMeanLabelsLevelOne());
+                System.out.println("From defHelper | Model Decomp + Mean Labels: " + Arrays.toString(defFile.getSharedModelDecomposeMeanRegressorLabels()));
             } catch (Exception ex) {
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                 SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
@@ -6244,8 +6446,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
 
             try {
-                defFile.setLabelDecompBSRegressors(getDecompBSLabelsLevelOne());
-                System.out.println("From defHelper | Model Decomp + BS Labels: " + Arrays.toString(defFile.getLabelDecompBSRegressors()));
+                defFile.setSharedModelDecomposeRandomRegressorLabels(getDecompBSLabelsLevelOne());
+                System.out.println("From defHelper | Model Decomp + BS Labels: " + Arrays.toString(defFile.getSharedModelDecomposeRandomRegressorLabels()));
             } catch (Exception ex) {
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                 SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
@@ -6253,8 +6455,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
 
             try {
-                defFile.setLabelDecompWSRegressors(getDecompWSLabelsLevelOne());
-                System.out.println("From defHelper | Model Decomp + WS Labels: " + Arrays.toString(defFile.getLabelDecompWSRegressors()));
+                defFile.setSharedModelDecomposeScaleRegressorLabels(getDecompWSLabelsLevelOne());
+                System.out.println("From defHelper | Model Decomp + WS Labels: " + Arrays.toString(defFile.getSharedModelDecomposeScaleRegressorLabels()));
             } catch (Exception ex) {
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                 SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
@@ -6269,8 +6471,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 int MeanCount = countLevelOneBeta() + countLevelTwoBeta() - countLevelOneDicompMean();
 
                 // count total mean regressors in level one and level two
-                defFile.setModelMeanCount(String.valueOf(MeanCount));
-                System.out.println("From defHelper | Stage 1 Model Mean Count: " + defFile.getModelMeanCount().toString());
+                defFile.setAdvancedMeanRegressorCount(String.valueOf(MeanCount));
+                System.out.println("From defHelper | Stage 1 Model Mean Count: " + defFile.getAdvancedMeanRegressorCount().toString());
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6281,8 +6483,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             try {
                 int LocRanCount = countLevelOneAlpha() + countLevelTwoAlpha() - countLevelOneDicompBS();
                 // count total random location regressors in level one and level two
-                defFile.setModelLocRanCount(String.valueOf(LocRanCount));
-                System.out.println("From defHelper | Stage 1 Model Loc Ran Count: " + defFile.getModelLocRanCount().toString());
+                defFile.setAdvancedRandomRegressorCount(String.valueOf(LocRanCount));
+                System.out.println("From defHelper | Stage 1 Model Loc Ran Count: " + defFile.getAdvancedRandomRegressorCount().toString());
                 tryCount = 1;
             } catch (Exception ex) {
                 catchCount = 1;
@@ -6295,8 +6497,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 tryCount = 1;
                 int ScaleCount = countLevelOneTau() + countLevelTwoTau() - countLevelOneDicompWS();
                 // count total scale regressors in level one and level two
-                defFile.setModelScaleCount(String.valueOf(ScaleCount));
-                System.out.println("From defHelper | Stage 1 Model Scale Count: " + defFile.getModelScaleCount().toString());
+                defFile.setAdvancedScaleRegressorCount(String.valueOf(ScaleCount));
+                System.out.println("From defHelper | Stage 1 Model Scale Count: " + defFile.getAdvancedScaleRegressorCount().toString());
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6308,8 +6510,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 tryCount = 1;
 
                 //Disagg means count
-                defFile.setDecompMeanCount(String.valueOf(countLevelOneDicompMean()));
-                System.out.println("From defHelper | Stage 1 Decomp Model Mean Count: " + defFile.getDecompMeanCount().toString());
+                defFile.setAdvancedDecomposeMeanRegressorCount(String.valueOf(countLevelOneDicompMean()));
+                System.out.println("From defHelper | Stage 1 Decomp Model Mean Count: " + defFile.getAdvancedDecomposeMeanRegressorCount().toString());
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6320,8 +6522,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             try {
                 tryCount = 1;
                 //Disagg Random Location count
-                defFile.setDecompLocRanCount(String.valueOf(countLevelOneDicompBS()));
-                System.out.println("From defHelper | Stage 1 Decomp Model Loc Random Count: " + defFile.getDecompLocRanCount().toString());
+                defFile.setAdvancedDecomposeRandomRegressorCount(String.valueOf(countLevelOneDicompBS()));
+                System.out.println("From defHelper | Stage 1 Decomp Model Loc Random Count: " + defFile.getAdvancedDecomposeRandomRegressorCount().toString());
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6332,8 +6534,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             try {
                 tryCount = 1;
                 //Disagg scale count
-                defFile.setDecompScaleCount(String.valueOf(countLevelOneDicompWS()));
-                System.out.println("From defHelper | Stage 1 Decomp Scale Count: " + defFile.getDecompScaleCount().toString());
+                defFile.setAdvancedDecomposeScaleRegressorCount(String.valueOf(countLevelOneDicompWS()));
+                System.out.println("From defHelper | Stage 1 Decomp Scale Count: " + defFile.getAdvancedDecomposeScaleRegressorCount().toString());
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6345,8 +6547,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             if (NoAssociationRadio.isSelected()) {
 
                 try {
-                    defFile.setAdvancedEffectMeanWS(String.valueOf(1));
-                    System.out.println("From defHelper | Stage 1 Association of random location & scale?: " + defFile.getAdvancedEffectMeanWS());
+                    defFile.setAdvancedRandomScaleAssociation(String.valueOf(1));
+                    System.out.println("From defHelper | Stage 1 Association of random location & scale?: " + defFile.getAdvancedRandomScaleAssociation());
                 } catch (Exception ex) {
                     catchCount = 1;
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6356,8 +6558,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             } else if (LinearAssociationRadio.isSelected()) {
                 try {
-                    defFile.setAdvancedEffectMeanWS(String.valueOf(0));
-                    System.out.println("From defHelper | Stage 1 Association of random location & scale?: " + defFile.getAdvancedEffectMeanWS());
+                    defFile.setAdvancedRandomScaleAssociation(String.valueOf(0));
+                    System.out.println("From defHelper | Stage 1 Association of random location & scale?: " + defFile.getAdvancedRandomScaleAssociation());
                 } catch (Exception ex) {
                     catchCount = 1;
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6367,12 +6569,12 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
 
             try {
-                defFile.setLabelModelMeanRegressors(ModelMeansLabelsArray());
-                System.out.println("From defHelper | Stage 1 MEAN REGRESSOR LABELS): " + Arrays.toString(defFile.getLabelModelMeanRegressors()));
-                defFile.setLabelModelMeanRegressorsLevelOne(getModelMeanLabelsLevelOne());
-                System.out.println("From defHelper | LEVEL 1 MEAN REGRESSOR LABELS): " + Arrays.toString(defFile.getLabelModelMeanRegressorsLevelOne()));
-                defFile.setLabelModelMeanRegressorsLevelTwo(getModelMeanLabelsLevelTwo());
-                System.out.println("From defHelper | LEVEL 2 MEAN REGRESSOR LABELS): " + Arrays.toString(defFile.getLabelModelMeanRegressorsLevelTwo()));
+                defFile.setSharedModelMeanRegressorLabels(ModelMeansLabelsArray());
+                System.out.println("From defHelper | Stage 1 MEAN REGRESSOR LABELS): " + Arrays.toString(defFile.getSharedModelMeanRegressorLabels()));
+//                defFile.setSharedModelMeanRegressorLabelsLevelOne(getModelMeanLabelsLevelOne());
+//                System.out.println("From defHelper | LEVEL 1 MEAN REGRESSOR LABELS): " + Arrays.toString(defFile.getSharedModelMeanRegressorLabelsLevelOne()));
+//                defFile.setSharedModelMeanRegressorLabelsLevelTwo(getModelMeanLabelsLevelTwo());
+//                System.out.println("From defHelper | LEVEL 2 MEAN REGRESSOR LABELS): " + Arrays.toString(defFile.getSharedModelMeanRegressorLabelsLevelTwo()));
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6381,8 +6583,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
 
             try {
-                defFile.setLabelModelLocRanRegressors(ModelBSLabelsArray());
-                System.out.println("From defHelper | Stage 1 LocRan REGRESSOR LABELS): " + Arrays.toString(defFile.getLabelModelLocRanRegressors()));
+                defFile.setSharedModelRandomRegressorLabels(ModelBSLabelsArray());
+                System.out.println("From defHelper | Stage 1 LocRan REGRESSOR LABELS): " + Arrays.toString(defFile.getSharedModelRandomRegressorLabels()));
                 defFile.setLabelModelLocRanRegressorsLevelOne(getModelBSLabelsLevelOne());
                 System.out.println("From defHelper | LEVEL 1 LocRan REGRESSOR LABELS): " + Arrays.toString(defFile.getLabelModelLocRanRegressorsLevelOne()));
                 defFile.setLabelModelLocRanRegressorsLevelTwo(getModelBSLabelsLevelTwo());
@@ -6395,8 +6597,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
 
             try {
-                defFile.setLabelModelScaleRegressors(ModelWSLabelsArray());
-                System.out.println("From defHelper | Stage 1 Scale REGRESSOR LABELS): " + Arrays.toString(defFile.getLabelModelScaleRegressors()));
+                defFile.setSharedModelScaleRegressorLabels(ModelWSLabelsArray());
+                System.out.println("From defHelper | Stage 1 Scale REGRESSOR LABELS): " + Arrays.toString(defFile.getSharedModelScaleRegressorLabels()));
                 defFile.setLabelModelScaleRegressorsLevelOne(getModelWSLabelsLevelOne());
                 System.out.println("From defHelper | LEVEL 1 Scale REGRESSOR LABELS): " + Arrays.toString(defFile.getLabelModelScaleRegressorsLevelOne()));
                 defFile.setLabelModelScaleRegressorsLevelTwo(getModelWSLabelsLevelTwo());
@@ -6411,8 +6613,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             // count field labels
             try {
                 // get variable names from selected mean regressors
-                defFile.setFieldModelMeanRegressors(fieldModelMeanArray());
-                System.out.println("From defHelper | #Stage One Mean Regressors: " + defFile.getFieldModelMeanRegressors().length); //check this ===============
+                defFile.setSharedModelMeanRegressorFields(fieldModelMeanArray());
+                System.out.println("From defHelper | #Stage One Mean Regressors: " + defFile.getSharedModelMeanRegressorFields().length); //check this ===============
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6422,8 +6624,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             try {
                 // get variable names from selected random location regressors
-                defFile.setFieldModelLocRanRegressors(fieldModelBSArray());
-                System.out.println("From defHelper | #Stage One BS(RanLoc) Regressors: " + defFile.getFieldModelLocRanRegressors().length);
+                defFile.setSharedModelRandomRegressorFields(fieldModelBSArray());
+                System.out.println("From defHelper | #Stage One BS(RanLoc) Regressors: " + defFile.getSharedModelRandomRegressorFields().length);
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6433,8 +6635,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             try {
                 // get variable names from selected scale regressors
-                defFile.setFieldModelScaleRegressors(fieldModelWSArray());
-                System.out.println("From defHelper | #Stage One WS(Scale) Regressors: " + defFile.getFieldModelScaleRegressors().length);
+                defFile.setSharedModelScaleRegressorFields(fieldModelWSArray());
+                System.out.println("From defHelper | #Stage One WS(Scale) Regressors: " + defFile.getSharedModelScaleRegressorFields().length);
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6443,8 +6645,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
 
             try {
-                defFile.setFieldDecompMeanRegressors(getMeanDecompFieldRegressorLabels_levelOne());
-                System.out.println("From defHelper | #Stage One Mean + Disagg. Regressors: " + defFile.getFieldDecompMeanRegressors().length);
+                defFile.setSharedModelDecomposeMeanRegressorFields(getMeanDecompFieldRegressorLabels_levelOne());
+                System.out.println("From defHelper | #Stage One Mean + Disagg. Regressors: " + defFile.getSharedModelDecomposeMeanRegressorFields().length);
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6453,9 +6655,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
 
             try {
-                defFile.setFieldDecompLocRanRegressors(getBSDecompFieldRegressorLabels_levelOne());
-                //defFile.setFieldDecompLocRanRegressors(fieldModelBSArray());
-                System.out.println("From defHelper | #Stage One BS(RanLoc) + Disagg. Regressors: " + defFile.getFieldDecompLocRanRegressors().length);
+                defFile.setSharedModelDecomposeRandomRegressorFields(getBSDecompFieldRegressorLabels_levelOne());
+                //defFile.setSharedModelDecomposeRandomRegressorFields(fieldModelBSArray());
+                System.out.println("From defHelper | #Stage One BS(RanLoc) + Disagg. Regressors: " + defFile.getSharedModelDecomposeRandomRegressorFields().length);
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6463,32 +6665,32 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
             try {
-                defFile.setFieldDecompScaleRegressors(getWSDecompFieldRegressorLabels_levelOne());
-                System.out.println("From defHelper | #Stage One WS(Scale) + Disagg. Regressors: " + defFile.getFieldDecompScaleRegressors().length);
+                defFile.setSharedModelDecomposeScaleRegressorFields(getWSDecompFieldRegressorLabels_levelOne());
+                System.out.println("From defHelper | #Stage One WS(Scale) + Disagg. Regressors: " + defFile.getSharedModelDecomposeScaleRegressorFields().length);
             } catch (Exception ex) {
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                 SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
             try {
-                defFile.setLabelDecompMeanRegressors(getDecompMeanLabelsLevelOne());
-                System.out.println("From defHelper | Model Decomp + Mean Labels: " + Arrays.toString(defFile.getLabelDecompMeanRegressors()));
+                defFile.setSharedModelDecomposeMeanRegressorLabels(getDecompMeanLabelsLevelOne());
+                System.out.println("From defHelper | Model Decomp + Mean Labels: " + Arrays.toString(defFile.getSharedModelDecomposeMeanRegressorLabels()));
             } catch (Exception ex) {
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                 SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
             try {
-                defFile.setLabelDecompLocRanRegressors(getDecompBSLabelsLevelOne());
-                System.out.println("From defHelper | Model Decomp + LocRan Labels: " + Arrays.toString(defFile.getLabelDecompLocRanRegressors()));
+                defFile.setSharedModelDecomposeRandomRegressorLabels(getDecompBSLabelsLevelOne());
+                System.out.println("From defHelper | Model Decomp + LocRan Labels: " + Arrays.toString(defFile.getSharedModelDecomposeRandomRegressorLabels()));
             } catch (Exception ex) {
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                 SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
             try {
-                defFile.setLabelDecompScaleRegressors(getDecompWSLabelsLevelOne());
-                System.out.println("From defHelper | Model Decomp + Scale Labels: " + Arrays.toString(defFile.getLabelDecompScaleRegressors()));
+                defFile.setSharedModelDecomposeScaleRegressorLabels(getDecompWSLabelsLevelOne());
+                System.out.println("From defHelper | Model Decomp + Scale Labels: " + Arrays.toString(defFile.getSharedModelDecomposeScaleRegressorLabels()));
             } catch (Exception ex) {
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                 SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
@@ -6498,6 +6700,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         if (outcomeNone == true) {
 
+            if (!checkTabExistinJTabbedPane(stageOneTabs, "View Model")) {
+                int viewModelTabIdx = stageOneTabs.indexOfTab("View Data");
+                stageOneTabs.insertTab("View Model", null, jPanel2, null, viewModelTabIdx);
+            }
+            if (!checkTabExistinJTabbedPane(stageOneTabs, "Stage 1 Results")) {
+                int stage1ResultTabIdx = stageOneTabs.indexOfTab("View Model");
+                stageOneTabs.insertTab("Stage 1 Results", null, jPanel3, null, stage1ResultTabIdx);
+            }
             if (catchCount == 0) {
                 int defTry = 0;
                 int defCatch = 0;
@@ -6519,7 +6729,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
                 if (defCatch == 0) {
                     stageOneTabs.setSelectedIndex(3);
-                    stageOneTabs.setEnabledAt(5, false);
+//                    stageOneTabs.setEnabledAt(5, false);
                 }
 
             } else {
@@ -6540,11 +6750,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
         }
 
-        if (outcomeNone == true) {
-            stageOneTabs.setEnabledAt(2, false);
-            stageOneTabs.setEnabledAt(4, false);
-        }
-
+//        if (outcomeNone == true) {
+//            stageOneTabs.setEnabledAt(2, false);
+//            stageOneTabs.setEnabledAt(4, false);
+//        }
     }
 
     private void update_trigger_StageOneRegConfig() {
@@ -6784,7 +6993,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     private void update_trigger_runTabTwoStageOneTwo() {
         // TODO add your handling code here:
-        // tryCount counts the number of successful definitionhelper function calls
+        // tryCount counts the number of successful DefinitionHelper function calls
         //catchCount counts number of exceptions in reading values to derHelper.
         //Prevents UI from moving forward in case of an exception
         int tryCount = 0;
@@ -6835,8 +7044,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             if (NoAssociationRadio.isSelected()) {
 
                 try {
-                    defFile.setAdvancedEffectMeanWS(String.valueOf(0));
-                    System.out.println("From defHelper | Stage 1 Advanced effects of mean on WS variance (No Association): " + defFile.getAdvancedEffectMeanWS());
+                    defFile.setAdvancedRandomScaleAssociation(String.valueOf(0));
+                    System.out.println("From defHelper | Stage 1 Advanced effects of mean on WS variance (No Association): " + defFile.getAdvancedRandomScaleAssociation());
                 } catch (Exception ex) {
                     catchCount = 1;
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6846,8 +7055,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             } else if (LinearAssociationRadio.isSelected()) {
                 try {
-                    defFile.setAdvancedEffectMeanWS(String.valueOf(1));
-                    System.out.println("From defHelper | Stage 1 Advanced effects of mean on WS variance (Linear Association): " + defFile.getAdvancedEffectMeanWS());
+                    defFile.setAdvancedRandomScaleAssociation(String.valueOf(1));
+                    System.out.println("From defHelper | Stage 1 Advanced effects of mean on WS variance (Linear Association): " + defFile.getAdvancedRandomScaleAssociation());
                 } catch (Exception ex) {
                     catchCount = 1;
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6857,8 +7066,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             } else if (QuadraticAssociationRadio.isSelected()) {
                 try {
-                    defFile.setAdvancedEffectMeanWS(String.valueOf(2));
-                    System.out.println("From defHelper | Stage 1 Advanced effects of mean on WS variance (Quadratic Association): " + defFile.getAdvancedEffectMeanWS());
+                    defFile.setAdvancedRandomScaleAssociation(String.valueOf(2));
+                    System.out.println("From defHelper | Stage 1 Advanced effects of mean on WS variance (Quadratic Association): " + defFile.getAdvancedRandomScaleAssociation());
                 } catch (Exception ex) {
                     catchCount = 1;
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6874,8 +7083,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             if (NoAssociationRadio.isSelected()) {
 
                 try {
-                    defFile.setAdvancedEffectMeanWS(String.valueOf(1));
-                    System.out.println("From defHelper | Stage 1 Association of random location & scale?: " + defFile.getAdvancedEffectMeanWS());
+                    defFile.setAdvancedRandomScaleAssociation(String.valueOf(1));
+                    System.out.println("From defHelper | Stage 1 Association of random location & scale?: " + defFile.getAdvancedRandomScaleAssociation());
                 } catch (Exception ex) {
                     catchCount = 1;
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6885,8 +7094,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             } else if (LinearAssociationRadio.isSelected()) {
                 try {
-                    defFile.setAdvancedEffectMeanWS(String.valueOf(0));
-                    System.out.println("From defHelper | Stage 1 Association of random location & scale?: " + defFile.getAdvancedEffectMeanWS());
+                    defFile.setAdvancedRandomScaleAssociation(String.valueOf(0));
+                    System.out.println("From defHelper | Stage 1 Association of random location & scale?: " + defFile.getAdvancedRandomScaleAssociation());
                 } catch (Exception ex) {
                     catchCount = 1;
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6897,8 +7106,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         }
 
         try {
-            defFile.setStageTwoFixedCount(String.valueOf(countStageTwoBeta()));
-            System.out.println("From defHelper | STAGE TWO FIXED COUNT: " + defFile.getStageTwoFixedCount().toString());
+            defFile.setAdvancedStageTwoFixedRegressorCount(String.valueOf(countStageTwoBeta()));
+            System.out.println("From defHelper | STAGE TWO FIXED COUNT: " + defFile.getAdvancedStageTwoFixedRegressorCount());
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6907,8 +7116,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         }
 
         try {
-            defFile.setStageTwoLocRanInteractions(String.valueOf(countStageTwoAlpha()));
-            System.out.println("From defHelper | STAGE TWO LOC. RANDOM COUNT: " + defFile.getStageTwoLocRanInteractions().toString());
+            defFile.setAdvancedStageTwoThetaRegressorCount(String.valueOf(countStageTwoAlpha()));
+            System.out.println("From defHelper | STAGE TWO LOC. RANDOM COUNT: " + defFile.getAdvancedStageTwoThetaRegressorCount().toString());
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6917,8 +7126,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         }
 
         try {
-            defFile.setStageTwoScaleInteractions(String.valueOf(countStageTwoTau()));
-            System.out.println("From defHelper | STAGE TWO SCALE COUNT: " + defFile.getStageTwoScaleInteractions().toString());
+            defFile.setAdvancedStageTwoOmegaRegressorCount(String.valueOf(countStageTwoTau()));
+            System.out.println("From defHelper | STAGE TWO SCALE COUNT: " + defFile.getAdvancedStageTwoOmegaRegressorCount().toString());
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6929,8 +7138,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         if (suppressed == false) {
 
             try {
-                defFile.setStageTwoIntOfInteraction(String.valueOf(countStageTwoInteractions()));
-                System.out.println("From defHelper | STAGE TWO INTERACTIONS COUNT: " + defFile.getStageTwoIntOfInteraction().toString());
+                defFile.setAdvancedStageTwoInteractionRegressorCount(String.valueOf(countStageTwoInteractions()));
+                System.out.println("From defHelper | STAGE TWO INTERACTIONS COUNT: " + defFile.getAdvancedStageTwoInteractionRegressorCount().toString());
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6951,8 +7160,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         }
 
         try {
-            defFile.setStageTwoLocRanIntFields(getRanLocFieldRegressors_StageTwo());
-            System.out.println("From defHelper | STAGE TWO  LOC RAN REGRESSOR Positions: " + Arrays.toString(defFile.getStageTwoLocRanIntFields()));
+            defFile.setStageTwoThetaFields(getRanLocFieldRegressors_StageTwo());
+            System.out.println("From defHelper | STAGE TWO  LOC RAN REGRESSOR Positions: " + Arrays.toString(defFile.getStageTwoThetaFields()));
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6961,8 +7170,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         }
 
         try {
-            defFile.setStageTwoScaleIntFields(getScaleFieldRegressors_StageTwo());
-            System.out.println("From defHelper | STAGE TWO  SCALE REGRESSOR Positions: " + Arrays.toString(defFile.getStageTwoScaleIntFields()));
+            defFile.setStageTwoOmegaFields(getScaleFieldRegressors_StageTwo());
+            System.out.println("From defHelper | STAGE TWO  SCALE REGRESSOR Positions: " + Arrays.toString(defFile.getStageTwoOmegaFields()));
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6973,8 +7182,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         if (suppressed == false) {
 
             try {
-                defFile.setStageTwoFirstIntFields(getInteractionFieldRegressors_StageTwo());
-                System.out.println("From defHelper | STAGE TWO  INTERACTIONS REGRESSOR Positions: " + Arrays.toString(defFile.getStageTwoFirstIntFields()));
+                defFile.setStageTwoInteractionFields(getInteractionFieldRegressors_StageTwo());
+                System.out.println("From defHelper | STAGE TWO  INTERACTIONS REGRESSOR Positions: " + Arrays.toString(defFile.getStageTwoInteractionFields()));
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -6983,8 +7192,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
 
             try {
-                defFile.setStageTwoFirstIntLabels(getModelInteractionLabelsStageTwo());
-                System.out.println("From defHelper | STAGE TWO  INTERACTIONS REGRESSORS: " + Arrays.toString(defFile.getStageTwoFirstIntLabels()));
+                defFile.setStageTwoInteractionLabels(getModelInteractionLabelsStageTwo());
+                System.out.println("From defHelper | STAGE TWO  INTERACTIONS REGRESSORS: " + Arrays.toString(defFile.getStageTwoInteractionLabels()));
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -7004,8 +7213,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         }
 
         try {
-            defFile.setStageTwoLocRanIntLabels(getModelLocRanLabelsStageTwo());
-            System.out.println("From defHelper | STAGE TWO  LOC RAN REGRESSORS: " + Arrays.toString(defFile.getStageTwoLocRanIntLabels()));
+            defFile.setStageTwoThetaLabels(getModelLocRanLabelsStageTwo());
+            System.out.println("From defHelper | STAGE TWO  LOC RAN REGRESSORS: " + Arrays.toString(defFile.getStageTwoThetaLabels()));
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -7014,39 +7223,39 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         }
 
         try {
-            defFile.setStageTwoScaleIntLabels(getModelScaleLabelsStageTwo());
-            System.out.println("From defHelper | STAGE TWO  SCALE REGRESSORS: " + Arrays.toString(defFile.getStageTwoScaleIntLabels()));
+            defFile.setStageTwoOmegaLabels(getModelScaleLabelsStageTwo());
+            System.out.println("From defHelper | STAGE TWO  SCALE REGRESSORS: " + Arrays.toString(defFile.getStageTwoOmegaLabels()));
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
             SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
-        if (outComeType == false) {
-            try {
-                defFile.setStageTwoOutcomeCatCount(String.valueOf(getStagetwoOutcomeCats()));
-                System.out.println("From defHelper | STAGE TWO OUTCOME CATEGORY NUMBERS: " + defFile.getStageTwoOutcomeCatCount());
-            } catch (Exception ex) {
-                catchCount = 1;
-                Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-            }
-
-            try {
-                defFile.setStageTwoOutcomeCatLabel(getStageTwoOutcomeValues());
-                System.out.println("From defHelper | STAGE TWO OUTCOME CATEGORY VALUES: " + Arrays.toString(defFile.getStageTwoOutcomeCatLabel()));
-            } catch (Exception ex) {
-                catchCount = 1;
-                Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-            }
-
-        } else {
-
-            // do nothing ...
-        }
+//        if (outComeType == false) {
+//            try {
+//                defFile.setStageTwoOutcomeCatCount(String.valueOf(getStagetwoOutcomeCats()));
+//                System.out.println("From defHelper | STAGE TWO OUTCOME CATEGORY NUMBERS: " + defFile.getStageTwoOutcomeCatCount());
+//            } catch (Exception ex) {
+//                catchCount = 1;
+//                Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+//                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
+//                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+//            }
+//
+//            try {
+//                defFile.setStageTwoOutcomeCatLabel(getStageTwoOutcomeValues());
+//                System.out.println("From defHelper | STAGE TWO OUTCOME CATEGORY VALUES: " + Arrays.toString(defFile.getStageTwoOutcomeCatLabel()));
+//            } catch (Exception ex) {
+//                catchCount = 1;
+//                Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+//                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
+//                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+//            }
+//
+//        } else {
+//
+//            // do nothing ...
+//        }
 
         if (catchCount == 0) {
             int defTry = 0;
@@ -7058,7 +7267,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 defFileOutput = defFile.buildStageOneDefinitonList();
                 System.out.println("From defHelper | Stage 1 def file created successfully!");
                 //modelBuilder(defFile);
-                modelBuilder = new ModelBuilder(defFile);
+//                modelBuilder = new ModelBuilder(defFile);
                 //                modelEquationTextArea.setText(modelBuilder.meanEquation());
                 //                testEq.setText(modelBuilder.meanEquation());
                 equationArea.setText(modelBuilder.meanEquation());
@@ -7081,10 +7290,19 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             // do nothing
         }
+        if (!checkTabExistinJTabbedPane(stageOneTabs, "View Model")) {
+            int viewModelTabIdx = stageOneTabs.indexOfTab("View Data");
+            stageOneTabs.insertTab("View Model", null, jPanel2, null, viewModelTabIdx);
+        }
+        if (!checkTabExistinJTabbedPane(stageOneTabs, "Stage 2 Results")) {
+            int stage2TabIdx = stageOneTabs.indexOfTab("View Model");
+            stageOneTabs.insertTab("Stage 2 Results", null, jPanel4, null, stage2TabIdx);
+        }
+        if (!checkTabExistinJTabbedPane(stageOneTabs, "Stage 1 Results")) {
+            int stage1ResultTabIdx = stageOneTabs.indexOfTab("Stage 2 Results");
+            stageOneTabs.insertTab("Stage 1 Results", null, jPanel3, null, stage1ResultTabIdx);
+        }
 
-        stageOneTabs.setEnabledAt(3, true);
-        stageOneTabs.setEnabledAt(4, true);
-        stageOneTabs.setEnabledAt(5, true);
     }
 
     private void update_StageTwoStates(MixRegGuiStates mxrStates) {
@@ -7304,7 +7522,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             suppressed = true;
 
             try {
-                defFile.setStageTwoIntOfInteraction("-1");
+                defFile.setAdvancedStageTwoInteractionRegressorCount("-1");
             } catch (Exception ex) {
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                 SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
@@ -7317,8 +7535,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 stageTwoLevelTwoGridBoxes.get(p).get(3).setEnabled(false);
             }
             try {
-                defFile.setStageTwoFirstIntFields(new String[0]);
-                defFile.setStageTwoFirstIntLabels(new String[0]);
+                defFile.setStageTwoInteractionFields(new String[0]);
+                defFile.setStageTwoInteractionLabels(new String[0]);
 
             } catch (Exception ex) {
                 Logger.getLogger(mixregGUI.class
@@ -7330,7 +7548,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             suppressed = false;
 
             try {
-                defFile.setStageTwoIntOfInteraction("0");
+                defFile.setAdvancedStageTwoInteractionRegressorCount("0");
             } catch (Exception ex) {
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                 SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
@@ -7341,7 +7559,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 if (stageTwoLevelTwoGridBoxes.get(p).get(1).isSelected() && stageTwoLevelTwoGridBoxes.get(p).get(2).isSelected()) {
                     stageTwoLevelTwoGridBoxes.get(p).get(3).setEnabled(true);
                 }
-                
+
                 if (stageTwoLevelOneGridBoxes.get(p).get(1).isSelected() && stageTwoLevelOneGridBoxes.get(p).get(2).isSelected()) {
                     stageTwoLevelOneGridBoxes.get(p).get(3).setEnabled(true);
                 }
@@ -7545,5 +7763,189 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
 //        revalidate();
 //        repaint();
+    }
+
+    public int getRandomScaleSelection() {
+        int randomScaleSelection = 0;
+
+        if (getRandomScaleSelectionYes() == true) {
+            randomScaleSelection = 1;
+        } else {
+            randomScaleSelection = 0;
+        }
+
+        return randomScaleSelection;
+    }
+
+    public int getStageTwoModelType() {
+        int stageTwoModelType = 0;
+
+        if (getStageTwoSingleLevel() == true) {
+            stageTwoModelType = 1;
+        } else if (getStageTwoMultiLevel() == true) {
+            stageTwoModelType = 2;
+        }
+
+        return stageTwoModelType;
+
+    }
+
+    public int getStageTwoOutcomeType() {
+        int stageTwoOutcomeType = 0;
+
+        if (getStageTwoContinuousRadio() == true) {
+            stageTwoOutcomeType = 1;
+        } else if (getStageTwoDichotomousRadio() == true) {
+            stageTwoOutcomeType = 2;
+        }
+
+        return stageTwoOutcomeType;
+
+    }
+
+    private void updateGuiVIew_trigger_updateStage2Config() {
+        boolean turnOn = true;
+
+        if (isUpdateStage2ConfigClicked == true) {
+            turnOn = false;
+//            if (includeStageTwoYes.isSelected()) {
+//                seedTextBox.setEnabled(true);
+//                seedHelpButton.setEnabled(true);
+//                seedTextBox.setEnabled(true);
+//                stageTwoSingleLevel.setEnabled(true);
+//                stageTwoMultiLevel.setEnabled(true);
+//                stageTwoContinuousRadio.setEnabled(true);
+//                stageTwoDichotomousRadio.setEnabled(true);
+//                countRadio.setEnabled(true);
+//                multinomialRadio.setEnabled(true);}
+        }
+        titleField.setEnabled(turnOn);
+        missingValueAbsent.setEnabled(turnOn);
+        missingValuePresent.setEnabled(turnOn);
+        newModelMissingValueCode.setEnabled(turnOn);
+        stageOneContinuousRadio.setEnabled(turnOn);
+        oneRLERadio.setEnabled(turnOn);
+        moreThanOneRLERadio.setEnabled(turnOn);
+        randomScaleSelectionYes.setEnabled(turnOn);
+        randomScaleSelectionNo.setEnabled(turnOn);
+
+        guiStatesSaveButtonModalConfig.setVisible(turnOn);
+        guiStatesSaveButtonStageOne.setVisible(turnOn);
+        guiStatesSaveButtonStageTwo.setVisible(turnOn);
+    }
+
+    private boolean checkTabExistinJTabbedPane(JTabbedPane tabPane, String view_Model) {
+        int count = tabPane.getTabCount();
+        boolean exist = false;
+        for (int i = 0; i < count; i++) {
+            if (view_Model == tabPane.getTitleAt(i)) {
+                exist = true;
+            }
+        }
+
+        return exist;
+    }
+
+    private void updateGuiView_trigger_NewModelSubmit_TabChange() {
+        // add tabs
+//        stageOneTabs.insertTab("Postestimation", null, jPanel14, null, 1);
+
+        if (!checkTabExistinJTabbedPane(stageOneTabs, "Stage 1 Configuration")) {
+            stageOneTabs.insertTab("Stage 1 Configuration", null, jPanel1, null, 1);
+        }
+
+        int stage2TabIdx = stageOneTabs.indexOfTab("Stage 1 Configuration");
+        if (!checkTabExistinJTabbedPane(stageOneTabs, "Stage 2 Configuration") && (isOutcomeNone() == false)) {
+            stageOneTabs.insertTab("Stage 2 Configuration", null, jPanel12, null, stage2TabIdx + 1);
+        }
+
+        // remove tabs
+        if (checkTabExistinJTabbedPane(stageOneTabs, "Stage 2 Configuration") && (isOutcomeNone() == true)) {
+            stageOneTabs.remove(jPanel12);
+        }
+        if (checkTabExistinJTabbedPane(stageOneTabs, "Stage 2 Results") && (isOutcomeNone() == true)) {
+            stageOneTabs.remove(jPanel4);
+        }
+    }
+
+    private void updateGuiView_trigger_browse(boolean turnOn) {
+        titleViewLabel.setVisible(turnOn);
+        titleField.setVisible(turnOn);
+        datasetInstructionTextArea.setVisible(turnOn);
+
+        DatasetLabel.setVisible(turnOn);
+        missingViewLabel.setVisible(turnOn);
+        missingValueAbsent.setVisible(turnOn);
+        missingValuePresent.setVisible(turnOn);
+
+        if (turnOn) {
+            hiddenBigIconLabel.setIcon(null);
+        }
+
+        guiStatesSaveButtonModalConfig.setVisible(turnOn);
+        newModel_resetButton.setVisible(turnOn);
+    }
+
+    private void updateGuiView_trigger_missingvaluefield() {
+
+        if (missingValuePresent.isSelected()) {
+            missingCodeViewLabel.setVisible(true);
+            newModelMissingValueCode.setVisible(true);
+            newModelMissingValueCode.setText("-999");
+            newModelMissingValueCode.selectAll();
+
+            stageOneOutcomeViewLabel.setVisible(true);
+            stageOneContinuousRadio.setVisible(true);
+            stageOneDichotomousRadio.setVisible(true);
+            stageOneOrdinalRadio.setVisible(true);
+            stageOneOutcomeHelpButton.setVisible(true);
+
+            rleViewLabel.setVisible(true);
+            oneRLERadio.setVisible(true);
+            moreThanOneRLERadio.setVisible(true);
+
+            randomScaleViewLabel.setVisible(true);
+            randomScaleSelectionYes.setVisible(true);
+            randomScaleSelectionNo.setVisible(true);
+
+            jSeparator16.setVisible(true);
+            jSeparator8.setVisible(true);
+
+            stageOneModelGiantLabel.setVisible(true);
+        } else if (missingValueAbsent.isSelected()) {
+            missingCodeViewLabel.setVisible(false);
+            newModelMissingValueCode.setVisible(false);
+            newModelMissingValueCode.setText("");
+
+            stageOneOutcomeViewLabel.setVisible(true);
+            stageOneContinuousRadio.setVisible(true);
+            stageOneDichotomousRadio.setVisible(true);
+            stageOneOrdinalRadio.setVisible(true);
+            stageOneOutcomeHelpButton.setVisible(true);
+
+            rleViewLabel.setVisible(true);
+            oneRLERadio.setVisible(true);
+            moreThanOneRLERadio.setVisible(true);
+
+            randomScaleViewLabel.setVisible(true);
+            randomScaleSelectionYes.setVisible(true);
+            randomScaleSelectionNo.setVisible(true);
+
+            jSeparator16.setVisible(true);
+            jSeparator8.setVisible(true);
+
+            stageOneModelGiantLabel.setVisible(true);
+        }
+
+    }
+
+    private void updateGuiView_trigger_stageOneConfig() {
+        if ((stageOneOutcomeGroup.getSelection() != null) && (buttonGroup2.getSelection() != null) && (randomScaleSelectionGroup.getSelection() != null)) {
+            includeStageTwoLabel.setVisible(true);
+            includeStageTwoYes.setVisible(true);
+            includeStageTwoNo.setVisible(true);
+            stageTwoDescription.setVisible(true);
+            stageTwoModelGiantLabel.setVisible(true);
+        }
     }
 }
