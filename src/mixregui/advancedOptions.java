@@ -704,8 +704,8 @@ public class advancedOptions extends javax.swing.JFrame {
 
         //Assign parameters to definition library
         try {
-            mixregGUI.defFile.setAdvancedConvergence(String.valueOf(convergenceCriteria.getText()));
-            System.out.println("From defHelper | Convergence: " + mixregGUI.defFile.getAdvancedConvergence());
+            mixregGUI.defFile.setAdvancedConvergenceCriteria(String.valueOf(convergenceCriteria.getText()));
+            System.out.println("From defHelper | Convergence: " + mixregGUI.defFile.getAdvancedConvergenceCriteria());
             tryCount = 1;
 
         } catch (Exception ex) {
@@ -715,8 +715,8 @@ public class advancedOptions extends javax.swing.JFrame {
         }
 
         try {
-            mixregGUI.defFile.setAdvancedCutoffLower("0");
-            System.out.println("CUT OFF: " + mixregGUI.defFile.getAdvancedCutoffLower());
+            mixregGUI.defFile.setAdvancedRandomScaleCutoff("0");
+            System.out.println("CUT OFF: " + mixregGUI.defFile.getAdvancedRandomScaleCutoff());
             tryCount = 1;
         } catch (Exception ex) {
             Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -725,8 +725,8 @@ public class advancedOptions extends javax.swing.JFrame {
         }
 
         try {
-            mixregGUI.defFile.setAdvancedDiscardSubjects(getDiscardSubjectsCheck());
-            System.out.println("DISCARD SUBJECTS: " + mixregGUI.defFile.getAdvancedDiscardSubjects());
+            mixregGUI.defFile.setAdvancedDiscardNoVariance(getDiscardSubjectsCheck());
+            System.out.println("DISCARD SUBJECTS: " + mixregGUI.defFile.getAdvancedDiscardNoVariance());
             tryCount = 1;
         } catch (Exception ex) {
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
@@ -746,8 +746,8 @@ public class advancedOptions extends javax.swing.JFrame {
         }
 
         try {
-            mixregGUI.defFile.setAdvancedMaxIteration(String.valueOf(getMaximumIterations()));
-            System.out.println("From defHelper | Maximum Iteraions: " + mixregGUI.defFile.getAdvancedMaxIteration());
+            mixregGUI.defFile.setAdvancedMaxIterations(String.valueOf(getMaximumIterations()));
+            System.out.println("From defHelper | Maximum Iteraions: " + mixregGUI.defFile.getAdvancedMaxIterations());
             tryCount = 1;
         } catch (Exception ex) {
             catchCount = 1;
@@ -756,8 +756,8 @@ public class advancedOptions extends javax.swing.JFrame {
         }
 
         try {
-            mixregGUI.defFile.setModelFixedInt(String.valueOf(isMeanSubModelChecked()));
-            System.out.println("From defHelper | Mean SubModel Checked?: " + mixregGUI.defFile.getModelFixedInt());
+            mixregGUI.defFile.setAdvancedMeanIntercept(String.valueOf(isMeanSubModelChecked()));
+            System.out.println("From defHelper | Mean SubModel Checked?: " + mixregGUI.defFile.getAdvancedMeanIntercept());
             tryCount = 1;
         } catch (Exception ex) {
             catchCount = 1;
@@ -766,10 +766,10 @@ public class advancedOptions extends javax.swing.JFrame {
         }
 
         try {
-            mixregGUI.defFile.setModelRandomInt(String.valueOf(isBSVarianceChecked()));
-            mixregGUI.defFile.setModelBetweenInt(String.valueOf(isBSVarianceChecked()));
-            System.out.println("From defHelper | BS SubModel Checked?: " + mixregGUI.defFile.getModelRandomInt());
-            System.out.println("From defHelper | BS SubModel Checked?: " + mixregGUI.defFile.getModelBetweenInt());
+            mixregGUI.defFile.setAdvancedRandomIntercept(String.valueOf(isBSVarianceChecked()));
+//            mixregGUI.defFile.setModelBetweenInt(String.valueOf(isBSVarianceChecked()));
+            System.out.println("From defHelper | BS SubModel Checked?: " + mixregGUI.defFile.getAdvancedRandomIntercept());
+//            System.out.println("From defHelper | BS SubModel Checked?: " + mixregGUI.defFile.getModelBetweenInt());
             tryCount = 1;
         } catch (Exception ex) {
             catchCount = 1;
@@ -778,10 +778,10 @@ public class advancedOptions extends javax.swing.JFrame {
         }
 
         try {
-            mixregGUI.defFile.setModelScaleInt(String.valueOf(isWSVarianceChecked()));
-            mixregGUI.defFile.setModelWithinInt(String.valueOf(isWSVarianceChecked()));
-            System.out.println("From defHelper | WS SubModel Checked?: " + mixregGUI.defFile.getModelScaleInt());
-            System.out.println("From defHelper | WS SubModel Checked?: " + mixregGUI.defFile.getModelWithinInt());
+            mixregGUI.defFile.setAdvancedScaleIntercept(String.valueOf(isWSVarianceChecked()));
+//            mixregGUI.defFile.setModelWithinInt(String.valueOf(isWSVarianceChecked()));
+            System.out.println("From defHelper | WS SubModel Checked?: " + mixregGUI.defFile.getAdvancedScaleIntercept());
+//            System.out.println("From defHelper | WS SubModel Checked?: " + mixregGUI.defFile.getModelWithinInt());
             tryCount = 1;
         } catch (Exception ex) {
             catchCount = 1;
@@ -800,8 +800,8 @@ public class advancedOptions extends javax.swing.JFrame {
         }
 
         try {
-            mixregGUI.defFile.setAdvancedRidge(String.valueOf(getRidge()));
-            System.out.println("From defHelper | Ridge: " + mixregGUI.defFile.getAdvancedRidge());
+            mixregGUI.defFile.setAdvancedInitialRidge(String.valueOf(getRidge()));
+            System.out.println("From defHelper | Ridge: " + mixregGUI.defFile.getAdvancedInitialRidge());
             tryCount = 1;
         } catch (Exception ex) {
             catchCount = 1;
@@ -810,8 +810,8 @@ public class advancedOptions extends javax.swing.JFrame {
         }
 
         try {
-            mixregGUI.defFile.setAdvancedCenterScale(String.valueOf(isCenterRegressorChecked()));
-            System.out.println("From defHelper | Scale Regressor: " + mixregGUI.defFile.getAdvancedCenterScale());
+            mixregGUI.defFile.setAdvancedCenterScaleVariables(String.valueOf(isCenterRegressorChecked()));
+            System.out.println("From defHelper | Scale Regressor: " + mixregGUI.defFile.getAdvancedCenterScaleVariables());
             tryCount = 1;
         } catch (Exception ex) {
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
