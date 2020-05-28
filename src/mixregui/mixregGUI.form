@@ -136,7 +136,7 @@
                                   <Component id="hiddenBigIconLabel" min="-2" pref="332" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <Component id="guiStatesSaveButtonModalConfig" min="-2" pref="100" max="-2" attributes="0"/>
@@ -222,13 +222,21 @@
                                       </Group>
                                       <Component id="missingCodeViewLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="newModelMissingValueCode" min="-2" pref="77" max="-2" attributes="0"/>
                                       <Group type="102" attributes="0">
-                                          <Component id="missingValuePresent" min="-2" pref="60" max="-2" attributes="0"/>
-                                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                                          <Component id="missingValueAbsent" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="newModelMissingValueCode" min="-2" pref="77" max="-2" attributes="0"/>
+                                              <Group type="102" attributes="0">
+                                                  <Component id="missingValuePresent" min="-2" pref="60" max="-2" attributes="0"/>
+                                                  <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                                                  <Component id="missingValueAbsent" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="goBackButton" min="-2" pref="88" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -251,7 +259,7 @@
                                   <Component id="dataInstruction" min="-2" pref="405" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="237" max="32767" attributes="0"/>
+                          <EmptySpace pref="243" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -286,8 +294,9 @@
                               <Component id="titleField" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="titleViewLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="DatasetLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="goBackButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="missingViewLabel" min="-2" max="-2" attributes="0"/>
                               <Component id="missingValuePresent" min="-2" pref="20" max="-2" attributes="0"/>
@@ -827,6 +836,15 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Dataset"/>
                   </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="goBackButton">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Go Back"/>
+                    <Property name="toolTipText" type="java.lang.String" value=""/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="goBackButtonActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

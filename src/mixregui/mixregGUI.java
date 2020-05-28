@@ -586,6 +586,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         filePath.setVisible(turnOn);
         fileBrowseButton.setVisible(turnOn);
         datasetInstructionTextArea.setVisible(turnOn);
+        goBackButton.setVisible(turnOn);
 
         titleViewLabel.setVisible(turnOn);
         titleField.setVisible(turnOn);
@@ -791,6 +792,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         startWithTextField = new javax.swing.JTextField();
         newDataSetButton = new javax.swing.JButton();
         DatasetLabel = new javax.swing.JLabel();
+        goBackButton = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         resetButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -1237,6 +1239,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         DatasetLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         DatasetLabel.setText("Dataset");
 
+        goBackButton.setText("Go Back");
+        goBackButton.setToolTipText("");
+        goBackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                goBackButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
@@ -1252,7 +1262,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     .addGroup(jPanel13Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(hiddenBigIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel13Layout.createSequentialGroup()
                         .addComponent(guiStatesSaveButtonModalConfig, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1327,13 +1337,18 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                                     .addComponent(titleField))
                                 .addComponent(missingViewLabel, javax.swing.GroupLayout.Alignment.LEADING))
                             .addComponent(missingCodeViewLabel))
-                        .addGap(32, 32, 32)
                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(newModelMissingValueCode, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel13Layout.createSequentialGroup()
-                                .addComponent(missingValuePresent, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(missingValueAbsent))))
+                                .addGap(32, 32, 32)
+                                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(newModelMissingValueCode, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel13Layout.createSequentialGroup()
+                                        .addComponent(missingValuePresent, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(10, 10, 10)
+                                        .addComponent(missingValueAbsent))))
+                            .addGroup(jPanel13Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(goBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel13Layout.createSequentialGroup()
                         .addComponent(dataFileLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1348,7 +1363,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                                 .addComponent(newDataSetButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(dataInstruction, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(237, Short.MAX_VALUE))
+                .addContainerGap(243, Short.MAX_VALUE))
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1375,8 +1390,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(titleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(titleViewLabel)
-                    .addComponent(DatasetLabel))
-                .addGap(15, 15, 15)
+                    .addComponent(DatasetLabel)
+                    .addComponent(goBackButton))
+                .addGap(12, 12, 12)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(missingViewLabel)
                     .addComponent(missingValuePresent, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2625,6 +2641,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         newDataSetButton.setVisible(false);
         loadModelByBrowseButton.setVisible(false);
 
+        goBackButton.setVisible(true);
         dataFileLabel.setVisible(true);
         filePath.setVisible(true);
         fileBrowseButton.setVisible(true);
@@ -2917,7 +2934,20 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         loadModelByBrowseButton.setEnabled(false);
         loadModelByBrowseButton.setVisible(false);
+        goBackButton.setVisible(false);
     }//GEN-LAST:event_fileBrowseButtonActionPerformed
+
+    private void goBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackButtonActionPerformed
+        startWithTextField.setVisible(true);
+        newDataSetButton.setVisible(true);
+        loadModelByBrowseButton.setVisible(true);
+
+        goBackButton.setVisible(false);
+        dataFileLabel.setVisible(false);
+        filePath.setVisible(false);
+        fileBrowseButton.setVisible(false);
+        datasetInstructionTextArea.setVisible(false);
+    }//GEN-LAST:event_goBackButtonActionPerformed
 
     // **********************update********************
     private void updateGuiView(MixRegGuiStates mxrStates) {
@@ -3238,6 +3268,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JButton fileBrowseButton;
     private javax.swing.JTextField filePath;
     private javax.swing.Box.Filler filler1;
+    private javax.swing.JButton goBackButton;
     private javax.swing.JButton guiStatesLoadButtonModalConfig;
     private javax.swing.JButton guiStatesSaveButtonModalConfig;
     private javax.swing.JButton guiStatesSaveButtonStageOne;
