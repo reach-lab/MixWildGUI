@@ -65,7 +65,7 @@ import org.apache.commons.io.FilenameUtils;
 public class SuperUserMenu extends javax.swing.JFrame {
 
     
-    DefinitionHelper defLib;
+    MixLibrary defLib;
     JFileChooser fileChooser = new JFileChooser();
     int selectedModel;
     String defFilePath;
@@ -111,7 +111,7 @@ public class SuperUserMenu extends javax.swing.JFrame {
             }
         });
 
-        MixRegLS_Mixreg.setText("MixRegLS Mixreg");
+        MixRegLS_Mixreg.setText("MixRegLS or MLS");
         MixRegLS_Mixreg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MixRegLS_MixregActionPerformed(evt);
@@ -203,7 +203,7 @@ public class SuperUserMenu extends javax.swing.JFrame {
                                     .addComponent(PrintMeanModel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(viewDefButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(runButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(ResetButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -300,94 +300,70 @@ public class SuperUserMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_runButtonActionPerformed
 
     private void MixRegLS_MixregActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MixRegLS_MixregActionPerformed
-        int selectedModel = DefinitionHelper.MIXREGLS_MIXREG_KEY;
-        defLib = new DefinitionHelper(1,false);
-        runButton.setEnabled(true);
-        MixRegLS_Mixreg.setEnabled(false);
-        MixregLS_Mixor.setEnabled(false);
-        MixRegMLS_Mixreg.setEnabled(false);
-        MixRegMLS_Mixor.setEnabled(false);
-        LoadButton.setEnabled(true);
+//        int selectedModel = MixLibrary.MIXREGLS_MIXREG_KEY;
+//        defLib = new MixLibrary(1,false);
+//        runButton.setEnabled(true);
+//        MixRegLS_Mixreg.setEnabled(false);
+//        MixregLS_Mixor.setEnabled(false);
+//        MixRegMLS_Mixreg.setEnabled(false);
+//        MixRegMLS_Mixor.setEnabled(false);
+//        LoadButton.setEnabled(true);
     }//GEN-LAST:event_MixRegLS_MixregActionPerformed
 
-    private void MixRegMLS_MixorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MixRegMLS_MixorActionPerformed
-        int selectedModel = DefinitionHelper.MIXREGMLS_MIXOR_KEY;
-        defLib = new DefinitionHelper(3,true);
-        runButton.setEnabled(true);
-        MixRegLS_Mixreg.setEnabled(false);
-        MixregLS_Mixor.setEnabled(false);
-        MixRegMLS_Mixreg.setEnabled(false);
-        MixRegMLS_Mixor.setEnabled(false);
-        LoadButton.setEnabled(true);
-        
-    }//GEN-LAST:event_MixRegMLS_MixorActionPerformed
-
     private void MixregLS_MixorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MixregLS_MixorActionPerformed
-        int selectedModel = DefinitionHelper.MIXREGLS_MIXOR_KEY;
-        defLib = new DefinitionHelper(1,true);
-        runButton.setEnabled(true);
-        MixRegLS_Mixreg.setEnabled(false);
-        MixregLS_Mixor.setEnabled(false);
-        MixRegMLS_Mixreg.setEnabled(false);
-        MixRegMLS_Mixor.setEnabled(false);
-        LoadButton.setEnabled(true);
+//        int selectedModel = MixLibrary.MIXREGLS_MIXOR_KEY;
+//        defLib = new MixLibrary(1,true);
+//        runButton.setEnabled(true);
+//        MixRegLS_Mixreg.setEnabled(false);
+//        MixregLS_Mixor.setEnabled(false);
+//        MixRegMLS_Mixreg.setEnabled(false);
+//        MixRegMLS_Mixor.setEnabled(false);
+//        LoadButton.setEnabled(true);
  
     }//GEN-LAST:event_MixregLS_MixorActionPerformed
 
-    private void MixRegMLS_MixregActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MixRegMLS_MixregActionPerformed
-        int selectedModel = DefinitionHelper.MIXREGMLS_MIXREG_KEY;
-        defLib = new DefinitionHelper(3,false);
-        runButton.setEnabled(true);
-        MixRegLS_Mixreg.setEnabled(false);
-        MixregLS_Mixor.setEnabled(false);
-        MixRegMLS_Mixreg.setEnabled(false);
-        MixRegMLS_Mixor.setEnabled(false);
-        LoadButton.setEnabled(true);
-
-    }//GEN-LAST:event_MixRegMLS_MixregActionPerformed
-
     private void LoadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoadButtonActionPerformed
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("Data files","def");
-        
-        fileChooser.setFileFilter(filter);
-        
-        fileOpen();
-        
-        //Select file from the file object
-        File file = fileChooser.getSelectedFile();
-        List<String> varnames = new ArrayList<String>(Arrays.asList(new String[]{"test","test","test"}));
-        try {
-            defLib.readDefinitionFile(file, varnames);
-            JFrame myFrame = new JFrame("JEditorPane Test");
-            myFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            myFrame.setSize(300,200);
-
-            JEditorPane myPane = new JEditorPane();
-            myPane.setContentType("text/plain");
-            myPane.setText(String.join("\n",defLib.buildStageOneDefinitonList()).replace("[", "").replace("]", ""));
-
-            myFrame.setContentPane(myPane);
-            myFrame.setVisible(true); 
-            Document defDoc = myPane.getDocument();
-            int length = defDoc.getLength();
-            File newDefFile = new File("tester");
-            OutputStream os = new BufferedOutputStream(
-              new FileOutputStream(newDefFile + ".def"));
-            Writer w = new OutputStreamWriter(os);
-            myPane.write(w);
-            w.close();
-            //.
-        }
-        catch (FileNotFoundException ex){
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-        catch (IOException ex){
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-        catch (Exception ex){
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-            ex.printStackTrace();
-        }
+//        FileNameExtensionFilter filter = new FileNameExtensionFilter("Data files","def");
+//        
+//        fileChooser.setFileFilter(filter);
+//        
+//        fileOpen();
+//        
+//        //Select file from the file object
+//        File file = fileChooser.getSelectedFile();
+//        List<String> varnames = new ArrayList<String>(Arrays.asList(new String[]{"test","test","test"}));
+//        try {
+//            defLib.readDefinitionFile(file, varnames);
+//            JFrame myFrame = new JFrame("JEditorPane Test");
+//            myFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+//            myFrame.setSize(300,200);
+//
+//            JEditorPane myPane = new JEditorPane();
+//            myPane.setContentType("text/plain");
+//            myPane.setText(String.join("\n",defLib.buildStageOneDefinitonList()).replace("[", "").replace("]", ""));
+//
+//            myFrame.setContentPane(myPane);
+//            myFrame.setVisible(true); 
+//            Document defDoc = myPane.getDocument();
+//            int length = defDoc.getLength();
+//            File newDefFile = new File("tester");
+//            OutputStream os = new BufferedOutputStream(
+//              new FileOutputStream(newDefFile + ".def"));
+//            Writer w = new OutputStreamWriter(os);
+//            myPane.write(w);
+//            w.close();
+//            //.
+//        }
+//        catch (FileNotFoundException ex){
+//            JOptionPane.showMessageDialog(null, ex.getMessage());
+//        }
+//        catch (IOException ex){
+//            JOptionPane.showMessageDialog(null, ex.getMessage());
+//        }
+//        catch (Exception ex){
+//            JOptionPane.showMessageDialog(null, ex.getMessage());
+//            ex.printStackTrace();
+//        }
         
     }//GEN-LAST:event_LoadButtonActionPerformed
 
@@ -410,10 +386,10 @@ public class SuperUserMenu extends javax.swing.JFrame {
             JEditorPane myPane = new JEditorPane();
             myPane.setContentType("text/plain");
             try{
-            myPane.setText(String.join("\n",defLib.debugStageOneDefinitonList()).replace("[", "").replace("]", ""));
+            myPane.setText(String.join("\n",defLib.buildDefinitionList()).replace("[", "").replace("]", ""));
             }
             catch(Exception e){
-            myPane.setText(String.join("\n",defFile.debugStageOneDefinitonList()).replace("[", "").replace("]", ""));
+            myPane.setText(String.join("\n",defFile.buildDefinitionList()).replace("[", "").replace("]", ""));
             }
             myFrame.setContentPane(myPane);
             myFrame.setVisible(true); 
@@ -506,6 +482,29 @@ public class SuperUserMenu extends javax.swing.JFrame {
          
     }//GEN-LAST:event_runMacActionPerformed
 
+    private void MixRegMLS_MixorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MixRegMLS_MixorActionPerformed
+//        int selectedModel = MixLibrary.MIXREGMLS_MIXOR_KEY;
+//        defLib = new MixLibrary(3,true);
+//        runButton.setEnabled(true);
+//        MixRegLS_Mixreg.setEnabled(false);
+//        MixregLS_Mixor.setEnabled(false);
+//        MixRegMLS_Mixreg.setEnabled(false);
+//        MixRegMLS_Mixor.setEnabled(false);
+//        LoadButton.setEnabled(true);
+
+    }//GEN-LAST:event_MixRegMLS_MixorActionPerformed
+
+    private void MixRegMLS_MixregActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MixRegMLS_MixregActionPerformed
+//        int selectedModel = MixLibrary.MIXREGMLS_MIXREG_KEY;
+//        defLib = new MixLibrary(3,false);
+//        runButton.setEnabled(true);
+//        MixRegLS_Mixreg.setEnabled(false);
+//        MixregLS_Mixor.setEnabled(false);
+//        MixRegMLS_Mixreg.setEnabled(false);
+//        MixRegMLS_Mixor.setEnabled(false);
+//        LoadButton.setEnabled(true);
+    }//GEN-LAST:event_MixRegMLS_MixregActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -570,67 +569,68 @@ public class SuperUserMenu extends javax.swing.JFrame {
     }
     
     private String executableModel(int modelSelection){
-        switch(modelSelection){
-            case DefinitionHelper.MIXREGLS_MIXREG_KEY:
-                return "mixregls_random_mixreg.exe";
-            case DefinitionHelper.MIXREGLS_MIXOR_KEY:
-                return "mixregls_random_mixor.exe";
-            case DefinitionHelper.MIXREGMLS_MIXREG_KEY:
-                return "mixregmls_random_mixreg.exe";
-            case DefinitionHelper.MIXREGMLS_MIXOR_KEY:
-                return "mixregmls_random_mixor.exe";
-           
-            default:
-                return "mixregls__random_mixreg.exe";
-        }
+//        switch(modelSelection){
+//            case MixLibrary.MIXREGLS_MIXREG_KEY:
+//                return "mixregls_random_mixreg.exe";
+//            case MixLibrary.MIXREGLS_MIXOR_KEY:
+//                return "mixregls_random_mixor.exe";
+//            case MixLibrary.MIXREGMLS_MIXREG_KEY:
+//                return "mixregmls_random_mixreg.exe";
+//            case MixLibrary.MIXREGMLS_MIXOR_KEY:
+//                return "mixregmls_random_mixor.exe";
+//           
+//            default:
+//                return "mixregls__random_mixreg.exe";
+//        }
+return("");
     }
     
     private void copyExecutable(String absoluteDirectoryPath, int modelSelection) throws FileNotFoundException, IOException{
-        String modelPath;
-        String MIX_RANDOM = "resources/Windows64/mix_random.exe";
-        String FIRST;
-        String REPEAT;
-        switch(modelSelection){
-            case DefinitionHelper.MIXREGLS_MIXREG_KEY:
-                modelPath = "resources/Windows64/mixregls_random_mixreg.exe";
-                REPEAT = "resources/Windows64/repeat_mixreg.exe";
-                FIRST = "resources/Windows64/mixreg.exe";
-                break;
-            case DefinitionHelper.MIXREGLS_MIXOR_KEY:
-                modelPath = "resources/Windows64/mixregls_random_mixor.exe";
-                REPEAT = "resources/Windows64/repeat_mixor.exe";
-                FIRST = "resources/Windows64/mixor.exe";
-                break;
-            case DefinitionHelper.MIXREGMLS_MIXREG_KEY:
-                modelPath = "resources/Windows64/mixregmls_random_mixreg.exe";
-                REPEAT = "resources/Windows64/repeat_mixreg.exe";
-                FIRST = "resources/Windows64/mixreg.exe";
-                break;
-            case DefinitionHelper.MIXREGMLS_MIXOR_KEY:
-                modelPath = "resources/Windows64/mixregmls_random_mixor.exe";
-                REPEAT = "resources/Windows64/repeat_mixor.exe";
-                FIRST = "resources/Windows64/mixor.exe";
-                break;
-            default:
-                modelPath = "resources/Windows64/mixregls_random_mixreg.exe";
-                REPEAT = "resources/Windows64/repeat_mixreg.exe";
-                FIRST = "resources/Windows64/mixreg.exe";
-                break;
-        }
-        String[] exeArray = {modelPath, MIX_RANDOM, FIRST, REPEAT}; 
-        for(String exe: exeArray){
-            InputStream stream = getClass().getClassLoader().getResourceAsStream(exe);
-            OutputStream outputStream = 
-                    new FileOutputStream(new File(absoluteDirectoryPath + FilenameUtils.getName(exe)));
-
-            int read;
-            byte[] bytes = new byte[4096];
-
-            while ((read = stream.read(bytes)) > 0) {
-                outputStream.write(bytes, 0, read);
-            }
-            stream.close();
-            outputStream.close();
-            }   
+//        String modelPath;
+//        String MIX_RANDOM = "resources/Windows64/mix_random.exe";
+//        String FIRST;
+//        String REPEAT;
+//        switch(modelSelection){
+//            case MixLibrary.MIXREGLS_MIXREG_KEY:
+//                modelPath = "resources/Windows64/mixregls_random_mixreg.exe";
+//                REPEAT = "resources/Windows64/repeat_mixreg.exe";
+//                FIRST = "resources/Windows64/mixreg.exe";
+//                break;
+//            case MixLibrary.MIXREGLS_MIXOR_KEY:
+//                modelPath = "resources/Windows64/mixregls_random_mixor.exe";
+//                REPEAT = "resources/Windows64/repeat_mixor.exe";
+//                FIRST = "resources/Windows64/mixor.exe";
+//                break;
+//            case MixLibrary.MIXREGMLS_MIXREG_KEY:
+//                modelPath = "resources/Windows64/mixregmls_random_mixreg.exe";
+//                REPEAT = "resources/Windows64/repeat_mixreg.exe";
+//                FIRST = "resources/Windows64/mixreg.exe";
+//                break;
+//            case MixLibrary.MIXREGMLS_MIXOR_KEY:
+//                modelPath = "resources/Windows64/mixregmls_random_mixor.exe";
+//                REPEAT = "resources/Windows64/repeat_mixor.exe";
+//                FIRST = "resources/Windows64/mixor.exe";
+//                break;
+//            default:
+//                modelPath = "resources/Windows64/mixregls_random_mixreg.exe";
+//                REPEAT = "resources/Windows64/repeat_mixreg.exe";
+//                FIRST = "resources/Windows64/mixreg.exe";
+//                break;
+//        }
+//        String[] exeArray = {modelPath, MIX_RANDOM, FIRST, REPEAT}; 
+//        for(String exe: exeArray){
+//            InputStream stream = getClass().getClassLoader().getResourceAsStream(exe);
+//            OutputStream outputStream = 
+//                    new FileOutputStream(new File(absoluteDirectoryPath + FilenameUtils.getName(exe)));
+//
+//            int read;
+//            byte[] bytes = new byte[4096];
+//
+//            while ((read = stream.read(bytes)) > 0) {
+//                outputStream.write(bytes, 0, read);
+//            }
+//            stream.close();
+//            outputStream.close();
+//            }   
     }
 }
