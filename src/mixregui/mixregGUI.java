@@ -650,6 +650,12 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         guiStatesLoadButtonModalConfig.setVisible(turnOn);
         guiStatesSaveButtonModalConfig.setVisible(turnOn);
+
+        datasetMissingValuesHelpButton.setVisible(turnOn);
+        stageOneRLEHelpButton.setVisible(turnOn);
+        stageOneRSHelpButton.setVisible(turnOn);
+        stageTwoModelTypeHelpButton.setVisible(turnOn);
+        stageTwoOutcomeTypeHelpButton.setVisible(turnOn);
     }
 
     /**
@@ -793,6 +799,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         newDataSetButton = new javax.swing.JButton();
         DatasetLabel = new javax.swing.JLabel();
         goBackButton = new javax.swing.JButton();
+        datasetMissingValuesHelpButton = new javax.swing.JButton();
+        stageOneRLEHelpButton = new javax.swing.JButton();
+        stageOneRSHelpButton = new javax.swing.JButton();
+        stageTwoModelTypeHelpButton = new javax.swing.JButton();
+        stageTwoOutcomeTypeHelpButton = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         resetButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -1247,6 +1258,41 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
         });
 
+        datasetMissingValuesHelpButton.setText("?");
+        datasetMissingValuesHelpButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                datasetMissingValuesHelpButtonActionPerformed(evt);
+            }
+        });
+
+        stageOneRLEHelpButton.setText("?");
+        stageOneRLEHelpButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stageOneRLEHelpButtonActionPerformed(evt);
+            }
+        });
+
+        stageOneRSHelpButton.setText("?");
+        stageOneRSHelpButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stageOneRSHelpButtonActionPerformed(evt);
+            }
+        });
+
+        stageTwoModelTypeHelpButton.setText("?");
+        stageTwoModelTypeHelpButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stageTwoModelTypeHelpButtonActionPerformed(evt);
+            }
+        });
+
+        stageTwoOutcomeTypeHelpButton.setText("?");
+        stageTwoOutcomeTypeHelpButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stageTwoOutcomeTypeHelpButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
@@ -1290,19 +1336,25 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                         .addGap(18, 18, 18)
                         .addComponent(oneRLERadio, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(moreThanOneRLERadio))
+                        .addComponent(moreThanOneRLERadio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(stageOneRLEHelpButton))
                     .addGroup(jPanel13Layout.createSequentialGroup()
                         .addComponent(randomScaleViewLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(randomScaleSelectionYes)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(randomScaleSelectionNo))
+                        .addComponent(randomScaleSelectionNo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(stageOneRSHelpButton))
                     .addGroup(jPanel13Layout.createSequentialGroup()
                         .addComponent(stageTwoModelTypeLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(stageTwoSingleLevel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(stageTwoMultiLevel))
+                        .addComponent(stageTwoMultiLevel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(stageTwoModelTypeHelpButton))
                     .addGroup(jPanel13Layout.createSequentialGroup()
                         .addComponent(stageTwoOutcomeTypeLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1312,7 +1364,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(countRadio)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(multinomialRadio))
+                        .addComponent(multinomialRadio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(stageTwoOutcomeTypeHelpButton))
                     .addGroup(jPanel13Layout.createSequentialGroup()
                         .addComponent(setSeedLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1345,7 +1399,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                                     .addGroup(jPanel13Layout.createSequentialGroup()
                                         .addComponent(missingValuePresent, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(10, 10, 10)
-                                        .addComponent(missingValueAbsent))))
+                                        .addComponent(missingValueAbsent)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(datasetMissingValuesHelpButton))))
                             .addGroup(jPanel13Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(goBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -1392,11 +1448,12 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     .addComponent(titleViewLabel)
                     .addComponent(DatasetLabel)
                     .addComponent(goBackButton))
-                .addGap(12, 12, 12)
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(13, 13, 13)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(missingViewLabel)
                     .addComponent(missingValuePresent, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(missingValueAbsent, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(missingValueAbsent, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(datasetMissingValuesHelpButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(missingCodeViewLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1412,11 +1469,12 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     .addComponent(stageOneOutcomeHelpButton))
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel13Layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
+                        .addGap(8, 8, 8)
                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(rleViewLabel)
                             .addComponent(oneRLERadio)
-                            .addComponent(moreThanOneRLERadio))
+                            .addComponent(moreThanOneRLERadio)
+                            .addComponent(stageOneRLEHelpButton))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1426,7 +1484,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     .addComponent(randomScaleViewLabel)
                     .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(randomScaleSelectionYes)
-                        .addComponent(randomScaleSelectionNo)))
+                        .addComponent(randomScaleSelectionNo)
+                        .addComponent(stageOneRSHelpButton)))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
@@ -1441,14 +1500,16 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(stageTwoModelTypeLabel)
                             .addComponent(stageTwoSingleLevel)
-                            .addComponent(stageTwoMultiLevel))
-                        .addGap(3, 3, 3)
+                            .addComponent(stageTwoMultiLevel)
+                            .addComponent(stageTwoModelTypeHelpButton))
+                        .addGap(2, 2, 2)
                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(stageTwoDichotomousRadio)
                             .addComponent(stageTwoContinuousRadio)
                             .addComponent(multinomialRadio)
                             .addComponent(stageTwoOutcomeTypeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(countRadio))
+                            .addComponent(countRadio)
+                            .addComponent(stageTwoOutcomeTypeHelpButton))
                         .addGap(3, 3, 3))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
                         .addComponent(stageTwoModelGiantLabel)
@@ -2928,7 +2989,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private void fileBrowseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileBrowseButtonActionPerformed
 
         importDataSet();
-        stageOneTabs.insertTab("View Data", null, jPanel6, null, 1);
         MXRStates = new MixRegGuiStates(this, advancedOptions_view);
         updateGuiView(MXRStates);
 
@@ -2948,6 +3008,33 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         fileBrowseButton.setVisible(false);
         datasetInstructionTextArea.setVisible(false);
     }//GEN-LAST:event_goBackButtonActionPerformed
+
+    private void datasetMissingValuesHelpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_datasetMissingValuesHelpButtonActionPerformed
+        JOptionPane.showMessageDialog(null, "Click on missing values if there are any in your dataset."
+                + "\n" + "Specify the missing value code in the box (e.g., '-999').", "Missing Values", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_datasetMissingValuesHelpButtonActionPerformed
+
+    private void stageOneRLEHelpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneRLEHelpButtonActionPerformed
+        JOptionPane.showMessageDialog(null, "Adding slopes can have more than 2 random location effects, but estimation time is increased with each additional random effect.",
+                "Stage 1 Random Location Effect", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_stageOneRLEHelpButtonActionPerformed
+
+    private void stageOneRSHelpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneRSHelpButtonActionPerformed
+        JOptionPane.showMessageDialog(null, "Random scale parameters allow subjects to have individual estimates of the within-subject variance,"
+                + "\n" + "and this is the distinguishing feature of a mixed-eefects locatio nscale model." + "\n"
+                + "For random scale models, a linear or quadratic association is also possible.", "Stage 1 Random Scale", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_stageOneRSHelpButtonActionPerformed
+
+    private void stageTwoModelTypeHelpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoModelTypeHelpButtonActionPerformed
+        JOptionPane.showMessageDialog(null, "Multilevel models allow for additional estimation at stage 2 using random intercept mixed effect model.",
+                "Stage 2 Model Type", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_stageTwoModelTypeHelpButtonActionPerformed
+
+    private void stageTwoOutcomeTypeHelpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoOutcomeTypeHelpButtonActionPerformed
+        JOptionPane.showMessageDialog(null, "This stage 2 outcome can be a subject-level or 2-level outcome,"
+                + "\n" + "and can be of four different outcome types:" + "\n"
+                + "continuous (normal), dichotomous/ordinal, count, or nominal.", "Stage 2 Outcome Type", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_stageTwoOutcomeTypeHelpButtonActionPerformed
 
     // **********************update********************
     private void updateGuiView(MixRegGuiStates mxrStates) {
@@ -3092,6 +3179,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             stageTwoModelTypeLabel.setVisible(false);
             stageTwoOutcomeTypeLabel.setVisible(false);
             stageTwoModelGiantLabel.setVisible(false);
+            stageTwoModelTypeHelpButton.setVisible(false);
+            stageTwoOutcomeTypeHelpButton.setVisible(false);
 
             newModelSubmit.setVisible(true);
 
@@ -3115,6 +3204,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             stageTwoModelTypeLabel.setVisible(true);
             stageTwoOutcomeTypeLabel.setVisible(true);
             stageTwoModelGiantLabel.setVisible(true);
+            stageTwoModelTypeHelpButton.setVisible(true);
+            stageTwoOutcomeTypeHelpButton.setVisible(true);
+            
+            
             if ((stageTwoLevelGroup.getSelection() != null) && (buttonGroup3.getSelection() != null)) {
                 newModelSubmit.setVisible(true);
             } else {
@@ -3263,6 +3356,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JScrollPane dataInstruction;
     public static javax.swing.JTable dataTable;
     private javax.swing.JTextArea datasetInstructionTextArea;
+    private javax.swing.JButton datasetMissingValuesHelpButton;
     private javax.swing.JTextArea equationArea;
     private javax.swing.JButton exampleDataDownload;
     private javax.swing.JButton fileBrowseButton;
@@ -3400,6 +3494,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JButton stageOneOutcomeHelpButton;
     private javax.swing.JLabel stageOneOutcomeViewLabel;
     public static javax.swing.JTextArea stageOneOutput;
+    private javax.swing.JButton stageOneRLEHelpButton;
+    private javax.swing.JButton stageOneRSHelpButton;
     private javax.swing.JTabbedPane stageOneTabs;
     private javax.swing.JRadioButton stageTwoContinuousRadio;
     private javax.swing.JButton stageTwoDescription;
@@ -3408,10 +3504,12 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JPanel stageTwoLevelOnePanel;
     private javax.swing.JPanel stageTwoLevelTwoPanel;
     private javax.swing.JLabel stageTwoModelGiantLabel;
+    private javax.swing.JButton stageTwoModelTypeHelpButton;
     private javax.swing.JLabel stageTwoModelTypeLabel;
     private javax.swing.JRadioButton stageTwoMultiLevel;
     private javax.swing.JComboBox<String> stageTwoOutcome;
     public static javax.swing.JLabel stageTwoOutcomePrintLabel;
+    private javax.swing.JButton stageTwoOutcomeTypeHelpButton;
     private javax.swing.JLabel stageTwoOutcomeTypeLabel;
     public static javax.swing.JTextArea stageTwoOutput;
     private javax.swing.JPanel stageTwoRegsGridLvl1;
@@ -5802,6 +5900,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 getDataFromCSV();
                 printFileName();
                 System.out.println("NEW MODEL DATA READ");
+                stageOneTabs.insertTab("View Data", null, jPanel6, null, 1);
             } catch (IOException ex) {
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                 SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
@@ -7908,6 +8007,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         missingViewLabel.setVisible(turnOn);
         missingValueAbsent.setVisible(turnOn);
         missingValuePresent.setVisible(turnOn);
+        datasetMissingValuesHelpButton.setVisible(turnOn);
 
         if (turnOn) {
             hiddenBigIconLabel.setIcon(null);
@@ -7934,6 +8034,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             rleViewLabel.setVisible(true);
             oneRLERadio.setVisible(true);
             moreThanOneRLERadio.setVisible(true);
+            stageOneRLEHelpButton.setVisible(true);
+            stageOneRSHelpButton.setVisible(true);
 
             randomScaleViewLabel.setVisible(true);
             randomScaleSelectionYes.setVisible(true);
@@ -7957,6 +8059,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             rleViewLabel.setVisible(true);
             oneRLERadio.setVisible(true);
             moreThanOneRLERadio.setVisible(true);
+            stageOneRLEHelpButton.setVisible(true);
+            stageOneRSHelpButton.setVisible(true);
 
             randomScaleViewLabel.setVisible(true);
             randomScaleSelectionYes.setVisible(true);

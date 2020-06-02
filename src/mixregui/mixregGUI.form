@@ -167,6 +167,8 @@
                                   <Component id="oneRLERadio" min="-2" pref="124" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="moreThanOneRLERadio" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="stageOneRLEHelpButton" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="randomScaleViewLabel" min="-2" max="-2" attributes="0"/>
@@ -174,6 +176,8 @@
                                   <Component id="randomScaleSelectionYes" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="randomScaleSelectionNo" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="stageOneRSHelpButton" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="stageTwoModelTypeLabel" min="-2" max="-2" attributes="0"/>
@@ -181,6 +185,8 @@
                                   <Component id="stageTwoSingleLevel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="stageTwoMultiLevel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="stageTwoModelTypeHelpButton" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="stageTwoOutcomeTypeLabel" min="-2" max="-2" attributes="0"/>
@@ -192,6 +198,8 @@
                                   <Component id="countRadio" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="multinomialRadio" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="stageTwoOutcomeTypeHelpButton" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="setSeedLabel" min="-2" max="-2" attributes="0"/>
@@ -227,10 +235,12 @@
                                           <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="newModelMissingValueCode" min="-2" pref="77" max="-2" attributes="0"/>
-                                              <Group type="102" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
                                                   <Component id="missingValuePresent" min="-2" pref="60" max="-2" attributes="0"/>
                                                   <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                                                   <Component id="missingValueAbsent" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="datasetMissingValuesHelpButton" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -296,11 +306,12 @@
                               <Component id="DatasetLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="goBackButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="missingViewLabel" min="-2" max="-2" attributes="0"/>
-                              <Component id="missingValuePresent" min="-2" pref="20" max="-2" attributes="0"/>
-                              <Component id="missingValueAbsent" min="-2" pref="20" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="missingViewLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="missingValuePresent" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                              <Component id="missingValueAbsent" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                              <Component id="datasetMissingValuesHelpButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -319,11 +330,12 @@
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="rleViewLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="oneRLERadio" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="moreThanOneRLERadio" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="stageOneRLEHelpButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               </Group>
@@ -338,6 +350,7 @@
                               <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                                   <Component id="randomScaleSelectionYes" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="randomScaleSelectionNo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="stageOneRSHelpButton" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -356,14 +369,16 @@
                                       <Component id="stageTwoModelTypeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="stageTwoSingleLevel" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="stageTwoMultiLevel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="stageTwoModelTypeHelpButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="stageTwoDichotomousRadio" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="stageTwoContinuousRadio" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="multinomialRadio" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="stageTwoOutcomeTypeLabel" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                                       <Component id="countRadio" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="stageTwoOutcomeTypeHelpButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                               </Group>
@@ -844,6 +859,46 @@
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="goBackButtonActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="datasetMissingValuesHelpButton">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="?"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="datasetMissingValuesHelpButtonActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="stageOneRLEHelpButton">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="?"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stageOneRLEHelpButtonActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="stageOneRSHelpButton">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="?"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stageOneRSHelpButtonActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="stageTwoModelTypeHelpButton">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="?"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stageTwoModelTypeHelpButtonActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="stageTwoOutcomeTypeHelpButton">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="?"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stageTwoOutcomeTypeHelpButtonActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
