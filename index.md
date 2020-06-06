@@ -1,5 +1,5 @@
 
-![png](MixWILDLogoResized.png)
+![png](mixwild_logo-06.png)
 
 # MixWild #
 
