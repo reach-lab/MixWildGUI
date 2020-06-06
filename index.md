@@ -9,6 +9,8 @@ MixWILD (Also Mixed model analysis with Intensive Longitudinal Data) is a deskto
 ### Please submit your email prior to downloading the application so we can notify you of major software updates ###
 {% include formspree.html %}
 
+
+
 ### Download MixWild for Mac or PC ###
 [macOS](https://github.com/reach-lab/MixWildGUI/releases/download/1.3/MixWILD.app.zip) (current version: 1.3)
 
@@ -62,6 +64,12 @@ Download example data here: [Example Dataset MixWILD](/Mixwild_example_data.csv)
 
 *Team:* Aditya Ponnada (Northeastern University), Jixin Li (Northeastern University), Eldin Dzubur (University of Southern Califrnia), Rachel Nordgren (University of Illinois-Chicago)
 
+*Research Groups:* REACH Lab, University of Southern California and mHealth Research Group, Northeastern University
+
 [Additional details...](https://projectreporter.nih.gov/project_info_details.cfm?aid=9268804&icde=0)
 
 [Updated grant details...](https://projectreporter.nih.gov/project_info_details.cfm?aid=9803376&icde=47317498)
+
+#### Logotype credits ####
+[Gentium Book Basic](https://fonts.google.com/specimen/Gentium+Book+Basic) by Victor Gaultney
+[Roboto](https://fonts.google.com/specimen/Roboto) by Christian Robertson
