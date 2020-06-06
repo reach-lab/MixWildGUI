@@ -3,6 +3,9 @@
 
 # MixWild #
 
+### What is this project about? ###
+MixWILD (Also Mixed model analysis with Intensive Longitudinal Data) is a desktop GUI-based application for examining the effects of variance and slope of time-varying variables in intensive longitudinal data, especially the ones collected using ecological momentary assessments.
+
 ### Please submit your email prior to downloading the application so we can notify you of major software updates ###
 {% include formspree.html %}
 
@@ -10,6 +13,11 @@
 [macOS](https://github.com/reach-lab/MixWildGUI/releases/download/1.3/MixWILD.app.zip) (current version: 1.3)
 
 [Windows](https://github.com/reach-lab/MixWildGUI/releases/download/1.3/MixWILD-1.3.exe) (current version: 1.3)
+
+### In the current version ###
+1. Ability to save and reload model configurations
+2. Error and performance logging
+3. Bugfixes
 
 ### Manuscript Supplement ###
 [MixWild User Guide](/MixWild_User_Guide.pdf)
@@ -26,40 +34,20 @@ Open access manuscript available by clicking [here](https://link.springer.com/ar
 ### Video tutorial
 You can access the video tutorial to using MixWILD [here](https://www.youtube.com/watch?v=ZqyCxrMG1R8&feature=emb_logo)
 
-### SBM Attendees ###
+### Reference reading materials ###
 
-Download slides for Part 1 here: [Details and Application of EMA](/SBM_Part_1.pdf)
+Download introductary slides, Part 1 here: [Details and Application of EMA](/SBM_Part_1.pdf)
 <br/>
-Download slides for Part 2 here: [Introduction to MixWILD](https://hedeker-sites.uchicago.edu/sites/hedeker.uchicago.edu/files/uploads/SBM_MixWild.pdf)
+Download introductary slides, Part 2 here: [Introduction to MixWILD](https://hedeker-sites.uchicago.edu/sites/hedeker.uchicago.edu/files/uploads/SBM_MixWild.pdf)
 <br/>
 Download user guide here: [User Guide for MixWILD](https://hedeker-sites.uchicago.edu/sites/hedeker.uchicago.edu/files/uploads/MIXWILD%20Program%20User%20guide%20v040618.pdf)
 <br/>
-Download user guide data here: [Example Dataset MixWILD](/Mixwild_example_data.csv)
-
-
-### What is this project about? ###
-MixWILD (Also Mixed model analysis with Intensive Longitudinal Data) is a desktop GUI based application to easily perform multilevel mixed model analysis of intensive longitudinal data.
-
-### Join the Reach Lab Slack for development discussion: ###
-
-You may post an issue in Github to request access if you do not have a compatible email address.
-
-[Reach Lab mixregmls Channel](https://uscreachlab.slack.com/messages/mixregmls_gui/)
-
-### Running a .exe file ###
-1. Please go to downloads folder of the bitbucket and click on the latest version of MixWILD-X.0.exe
-2. Once downloaded, click "Open", then hit "Run"
-3. For the first time users, it will install the application and then run
-
-### Important instructions ###
-1. If using a Windows PC, please ensure that your Java is up to date.
-2. When creating an issue related to the UI, we encourage you to include screenshots and log files.
-3. When including an issue related to NULL values in the def file, it will be best if you can share the .def file as well as include a screenshot of the model window.
+Download example data here: [Example Dataset MixWILD](/Mixwild_example_data.csv)
 
 ### Q and A ###
-- For questions on UI, contact [Aditya Ponnada](mailto:ponnada.a@husky.neu.edu)
-- For questions on DefHelper classes, contact [Dr. Eldin Dzubur](mailto:dzubur@usc.edu)
-- For questions on Mix Reg programs, contact [Prof. Don Hedeker](mailto:DHedeker@health.bsd.uchicago.edu)
+- For questions on application, contact [Aditya Ponnada](mailto:ponnada.a@husky.neu.edu) and [Jixin Li](mailto:li.jix@husky.neu.edu)
+- For questions on models and interpretation, contact [Dr. Eldin Dzubur](mailto:dzubur@usc.edu) and [rachel Nordgren](mailto:rknordgren@gmail.com)
+- For future collaborations, contact [Prof. Don Hedeker](mailto:DHedeker@health.bsd.uchicago.edu), [Prof. Genevieve Dunton](mailto:dunton@usc.edu), and [Prof. Stephen Intille](S.Intille@northeastern.edu)
 
 ### Project Information ###
 *Agency:* National Institutes of Health (NIH)
@@ -70,7 +58,9 @@ You may post an issue in Github to request access if you do not have a compatibl
 
 *Title:* Novel Statistical Models for Intensive Longitudinal Analysis of Cancer Control Behaviors
 
-*Principal Investigator(s):* Hedeker, Donald; Dunton, Genevieve Fridlund
+*Principal Investigator(s):* Hedeker, Donald (University of Chicago); Dunton, Genevieve Fridlund (University of Southern California); Intille, Stephen (Northeastern University)
+
+*Team:* Aditya Ponnada (Northeastern University), Jixin Li (Northeastern University), Eldin Dzubur (University of Southern Califrnia), Rachel Nordgren (University of Illinois-Chicago)
 
 [Additional details...](https://projectreporter.nih.gov/project_info_details.cfm?aid=9268804&icde=0)
 
