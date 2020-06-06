@@ -11,6 +11,7 @@ MixWILD (Also Mixed model analysis with Intensive Longitudinal Data) is a deskto
 
 
 
+
 ### Download MixWild for Mac or PC ###
 [macOS](https://github.com/reach-lab/MixWildGUI/releases/download/1.3/MixWILD.app.zip) (current version: 1.3)
 
@@ -48,7 +49,7 @@ Download example data here: [Example Dataset MixWILD](/Mixwild_example_data.csv)
 
 ### Q and A ###
 - For questions on application, contact [Aditya Ponnada](mailto:ponnada.a@husky.neu.edu) and [Jixin Li](mailto:li.jix@husky.neu.edu)
-- For questions on models and interpretation, contact [Dr. Eldin Dzubur](mailto:dzubur@usc.edu) and [rachel Nordgren](mailto:rknordgren@gmail.com)
+- For questions on models and interpretation, contact [Dr. Eldin Dzubur](mailto:dzubur@usc.edu) and [Rachel Nordgren](mailto:rknordgren@gmail.com)
 - For future collaborations, contact [Prof. Don Hedeker](mailto:DHedeker@health.bsd.uchicago.edu), [Prof. Genevieve Dunton](mailto:dunton@usc.edu), and [Prof. Stephen Intille](S.Intille@northeastern.edu)
 
 ### Project Information ###
@@ -71,5 +72,5 @@ Download example data here: [Example Dataset MixWILD](/Mixwild_example_data.csv)
 [Updated grant details...](https://projectreporter.nih.gov/project_info_details.cfm?aid=9803376&icde=47317498)
 
 #### Logotype credits ####
-[Gentium Book Basic](https://fonts.google.com/specimen/Gentium+Book+Basic) by Victor Gaultney
+[Gentium Book Basic](https://fonts.google.com/specimen/Gentium+Book+Basic) by Victor Gaultney and 
 [Roboto](https://fonts.google.com/specimen/Roboto) by Christian Robertson
