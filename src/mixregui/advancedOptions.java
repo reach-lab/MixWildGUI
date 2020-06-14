@@ -26,7 +26,7 @@
  */
 package mixregui;
 
-import def_lib.DefinitionHelper;
+import def_lib.MixLibrary;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.logging.Level;
@@ -42,7 +42,7 @@ import javax.swing.JOptionPane;
  */
 public class advancedOptions extends javax.swing.JFrame {
 
-    DefinitionHelper defFile3;
+    MixLibrary defFile3;
     final ImageIcon icon;
     boolean osWindows = System.getProperty("os.name").toLowerCase().contains("windows");
 

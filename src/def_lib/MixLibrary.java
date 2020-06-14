@@ -28,6 +28,15 @@ package def_lib;
 
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
+import java.awt.BorderLayout;
+import java.awt.ComponentOrientation;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -37,6 +46,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JEditorPane;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.SwingWorker;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.text.Document;
 import mixregui.SystemLogger;
 import org.apache.commons.io.FilenameUtils;
 
@@ -72,9 +92,9 @@ public class MixLibrary implements Serializable {
     /**
      * Stage One Random Location Keys
      */
-    public static final int STAGE_ONE_RLE_NONE = 1;
-    public static final int STAGE_ONE_RLE_LOCATION = 2;
-    public static final int STAGE_ONE_RLE_SLOPE = 3;
+    // public static final int STAGE_ONE_RLE_NONE = 1;
+    public static final int STAGE_ONE_RLE_LOCATION = 0;
+    public static final int STAGE_ONE_RLE_SLOPE = 1;
     
     /**
      * Stage One Random Scale Keys
@@ -82,12 +102,6 @@ public class MixLibrary implements Serializable {
     public static final int STAGE_ONE_SCALE_NO = 0;
     public static final int STAGE_ONE_SCALE_YES = 1;
     
-    /**
-     * Stage Two Model Type Keys
-     */
-    public static final int STAGE_TWO_MODEL_TYPE_NONE = 0;
-    public static final int STAGE_TWO_MODEL_TYPE_SINGLE = 1;
-    public static final int STAGE_TWO_MODEL_TYPE_MULTILEVEL = 2;
     
     /**
      * Stage Two Outcome Keys
@@ -97,6 +111,12 @@ public class MixLibrary implements Serializable {
     public static final int STAGE_TWO_OUTCOME_ORDINAL = 2;
     public static final int STAGE_TWO_OUTCOME_COUNT = 3;
     public static final int STAGE_TWO_OUTCOME_NOMINAL = 4;
+    
+    /**
+     * Stage Two Model Type Keys
+     */
+    public static final int STAGE_TWO_MODEL_TYPE_SINGLE = 0;
+    public static final int STAGE_TWO_MODEL_TYPE_MULTILEVEL = 1;
     
     /**
      * MixWILD V2.0 Initialization Parameters
@@ -112,7 +132,12 @@ public class MixLibrary implements Serializable {
     //auxiliary fields
     private String utcDirPath;
     public Boolean win32;
-    
+    private JFrame myFrame;
+    private JEditorPane myPane;
+    private ProgressStatus progressStatus;
+    JFrame progressWindow;
+    private File newDefFile;
+
 
     
     
@@ -128,8 +153,10 @@ public class MixLibrary implements Serializable {
         this.stageOneOutcome = stageOneOutcome;
         this.stageOneRandomLocationEffects = stageOneRandomLocationEffects;
         this.stageOneRandomScale = stageOneRandomScale;
-        this.stageTwoModelType = STAGE_TWO_MODEL_TYPE_NONE;
+        this.stageTwoModelType = STAGE_TWO_MODEL_TYPE_SINGLE;
+        this.setStageTwoModelType(STAGE_TWO_MODEL_TYPE_SINGLE);
         this.stageTwoOutcomeType = STAGE_TWO_OUTCOME_NONE;
+        this.setStageTwoOutcomeType(STAGE_TWO_OUTCOME_NONE);
     }
 
     
@@ -372,8 +399,9 @@ public class MixLibrary implements Serializable {
      * @return a List object to be written as the def file
      * @throws Exception error message showing why the definition is invalid
      */
-    public List<String> buildStageOneDefinitonList() throws Exception { 
+    public List<String> buildDefinitionList() throws Exception { 
         List<String> newDefinitionFile = new ArrayList();
+        
         
         newDefinitionFile.add(getSharedModelTitle()); // LINE 1
         newDefinitionFile.add(getSharedModelSubtitle()); // LINE 2
@@ -412,7 +440,7 @@ public class MixLibrary implements Serializable {
         /**
          * Appending Stage 2 (Optional)
          */
-        if(stageTwoModelType != STAGE_TWO_MODEL_TYPE_NONE){
+        if(stageTwoModelType != STAGE_TWO_OUTCOME_NONE){
             newDefinitionFile.add(Arrays.toString(getStageTwoRegressorCounts()).replaceAll(",", " "));
             newDefinitionFile.add(getStageTwoOutcomeField());
             
@@ -531,7 +559,7 @@ public class MixLibrary implements Serializable {
         /**
          * Validating Stage 2 (Optional)
          */
-        if(stageTwoModelType != STAGE_TWO_MODEL_TYPE_NONE){
+        if(stageTwoModelType != STAGE_TWO_OUTCOME_NONE){
             if (!validateFieldLabels(getAdvancedStageTwoFixedRegressorCount(), getStageTwoFixedFields())) {
                 throw new Exception("Fatal stage two error: number of FIXED regressors does not equal FIXED fields");
             }        
@@ -1135,6 +1163,9 @@ public class MixLibrary implements Serializable {
     }
 
     public String getAdvancedUseMLS() {
+        if(advancedUseMLS == null){
+            advancedUseMLS = Integer.toString(stageOneRandomLocationEffects);
+        }
         return advancedUseMLS;
     }
 
@@ -1143,6 +1174,9 @@ public class MixLibrary implements Serializable {
     }
 
     public String getAdvancedCovarianceMatrix() {
+        if(advancedCovarianceMatrix == null){
+           advancedCovarianceMatrix = "0";
+        }
         return advancedCovarianceMatrix;
     }
 
@@ -1191,6 +1225,9 @@ public class MixLibrary implements Serializable {
     }
 
     public String getAdvancedStageTwoMultilevel() {
+        if(advancedStageTwoMultilevel == null){
+            advancedStageTwoMultilevel = "0";
+        }
         return advancedStageTwoMultilevel;
     }
 
@@ -1199,6 +1236,9 @@ public class MixLibrary implements Serializable {
     }
 
     public String getAdvancedMultipleDataFiles() {
+        if(advancedMultipleDataFiles == null){
+            advancedMultipleDataFiles = "0";
+        }
         return advancedMultipleDataFiles;
     }
 
@@ -1371,11 +1411,265 @@ public class MixLibrary implements Serializable {
         this.labelModelWSRegressorsLevelTwo = labelModelWSRegressorsLevelTwo;
     }
     
-    public void writeStageOneOnlyDefFileToFolder() {}
+    /**
+     * Ancillary classes
+     */
     
-    public void writeDefFileToFolder() {}
+    class ProgressStatus extends SwingWorker<Void, Void> {
 
-    CharSequence[] debugStageOneDefinitonList() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        @Override
+        protected Void doInBackground() throws Exception {
+
+            //wait for the execution here
+            // TODO THIS //runMixRegModels();
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+
+        @Override
+        public void done() {
+            progressWindow.dispose();
+            System.out.println("THE PROCESS IS COMPLETE");
+
+        }
+
     }
+    
+    public void writeStageOneOnlyDefFileToFolder() {
+
+        try {
+            myFrame = new JFrame("Definition File Preview");
+
+            FlowLayout defFileFlow = new FlowLayout();
+
+            myFrame.setLayout(defFileFlow);
+            defFileFlow.setAlignment(FlowLayout.TRAILING);
+            myFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            myFrame.setSize(510, 700);
+            myFrame.setResizable(false);
+            myPane = new JEditorPane();
+            myPane.setSize(500, 500);
+            myPane.setContentType("text/plain");
+            myPane.setFont(new Font("Monospaced", 0, 12));
+            myPane.setLayout(new BorderLayout(500, 500));
+            myPane.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+            String newline = System.getProperty("line.separator");
+            try {
+                myPane.setText(String.join(newline, buildDefinitionList()).replace("[", "").replace("]", ""));
+            } catch (Exception e) {
+                SystemLogger.LOGGER.log(Level.SEVERE,e.toString());
+                //myPane.setText(String.join(newline, buildDefinitionList()()).replace("[", "").replace("]", ""));
+            }
+
+            JButton proceedButton = new JButton("Proceed");
+            JButton saveDefFile = new JButton("Save Def File");
+
+            myFrame.add(myPane);
+            myFrame.add(proceedButton);
+            myFrame.add(saveDefFile);
+            myFrame.setComponentOrientation(ComponentOrientation.UNKNOWN);
+
+            proceedButton.addActionListener(new ActionListener() {
+
+                public void actionPerformed(ActionEvent e) {
+
+                    try {
+                        // modelSelector();
+                        // System.out.println("SELECTED MODEL: " + );
+
+                        //runMixRegModels(); // run the updated functions of executing Don's code
+                        progressStatus = new ProgressStatus();
+                        progressStatus.execute();
+                    } catch (Exception ex) {
+                        Logger.getLogger(DefinitionHelper.class.getName()).log(Level.SEVERE, null, ex);
+                        SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                    }
+
+                    myFrame.dispose();
+                }
+
+            });
+
+            saveDefFile.addActionListener(new ActionListener() {
+
+                public void actionPerformed(ActionEvent e) {
+                    try {
+                        saveDefFileLocally();
+                    } catch (IOException ex) {
+                        Logger.getLogger(DefinitionHelper.class.getName()).log(Level.SEVERE, null, ex);
+                        SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                    }
+                }
+
+            });
+
+            myFrame.setVisible(true);
+            myFrame.setAlwaysOnTop(true);
+
+            Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+            myFrame.setLocation(dim.width / 2 - myFrame.getSize().width / 2, dim.height / 2 - myFrame.getSize().height / 2);
+
+            Document defDoc = myPane.getDocument();
+            int length = defDoc.getLength();
+
+            String dataFileSample = new File(this.getSharedDataFilename()).getAbsolutePath();
+            String newDefFilePrefix = dataFileSample.substring(0, dataFileSample.lastIndexOf(File.separator)) + "/";
+            newDefFile = new File(newDefFilePrefix + "MixWild");
+//            
+//            if (selectedModel == DefinitionHelper.MIXREGLS_MIXREG_KEY) {
+//                newDefFile = new File(newDefFilePrefix + "MIXREGLS_RANDOM_MIXREG");
+//            } else if (selectedModel == DefinitionHelper.MIXREGLS_MIXOR_KEY) {
+//
+//                newDefFile = new File(newDefFilePrefix + "MIXREGLS_RANDOM_MIXOR");
+//            } else if (selectedModel == DefinitionHelper.MIXREGMLS_MIXREG_KEY) {
+//
+//                newDefFile = new File(newDefFilePrefix + "MIXREGMLS_RANDOM_MIXREG");
+//            } else if (selectedModel == DefinitionHelper.MIXREGMLS_MIXOR_KEY) {
+//
+//                newDefFile = new File(newDefFilePrefix + "MIXREGMLS_RANDOM_MIXOR");
+//            }
+
+            FileWriter out = new FileWriter(newDefFile + ".def");
+            out.write(myPane.getText());
+            out.close();
+        } catch (Exception exception) {
+            SystemLogger.LOGGER.log(Level.SEVERE, exception.toString()+ "{0}", SystemLogger.getLineNum());
+            exception.printStackTrace();
+        }
+    }
+    
+    public void saveDefFileLocally() throws IOException {
+        FileFilter filter = new FileNameExtensionFilter("TEXT FILE", "txt");
+
+        JFileChooser saver = new JFileChooser("./");
+        saver.setFileFilter(filter);
+        int returnVal = saver.showSaveDialog(myFrame);
+        File file = saver.getSelectedFile();
+        BufferedWriter writer = null;
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            try {
+                // writer = new BufferedWriter( new FileWriter( file.getName()+".txt"));
+                writer = new BufferedWriter(new FileWriter(file));
+                writer.write(myPane.getText());
+                writer.close();
+                JOptionPane.showMessageDialog(myFrame, "The .def file was Saved Successfully!",
+                        "Success!", JOptionPane.INFORMATION_MESSAGE);
+            } catch (IOException e) {
+                SystemLogger.LOGGER.log(Level.SEVERE, e.toString()+ "{0}", SystemLogger.getLineNum());
+                JOptionPane.showMessageDialog(myFrame, "The .def file could not be Saved!",
+                        "Error!", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+    }
+    
+    public void writeDefFileToFolder() {
+    
+        try{
+            myFrame = new JFrame("Definition File Preview");
+
+            FlowLayout defFileFlow = new FlowLayout();
+
+            myFrame.setLayout(defFileFlow);
+            defFileFlow.setAlignment(FlowLayout.TRAILING);
+            myFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            myFrame.setSize(550, 700);
+            myFrame.setResizable(false);
+            myPane = new JEditorPane();
+            myPane.setSize(500, 500);
+            myPane.setContentType("text/plain");
+            myPane.setFont(new Font("Monospaced", 0, 12));
+            myPane.setLayout(new BorderLayout(500, 500));
+            myPane.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+            String newline = System.getProperty("line.separator");
+            try {
+                myPane.setText(String.join(newline, buildDefinitionList()).replace("[", "").replace("]", ""));
+            } catch (Exception e) {
+                SystemLogger.LOGGER.log(Level.SEVERE, e.toString()+ "{0}", SystemLogger.getLineNum());
+                //myPane.setText(String.join(newline, buildDefinitionList()).replace("[", "").replace("]", ""));
+            }
+
+            JButton proceedButton = new JButton("Proceed");
+            JButton saveDefFile = new JButton("Save Def File");
+
+            myFrame.add(myPane);
+            myFrame.add(proceedButton);
+            myFrame.add(saveDefFile);
+            myFrame.setComponentOrientation(ComponentOrientation.UNKNOWN);
+
+            proceedButton.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+
+                    SystemLogger.LOGGER.log(Level.INFO, "Proceed");
+
+                    try {
+                        // modelSelector();
+                        // System.out.println("SELECTED MODEL: " + );
+
+                        //runMixRegModels(); // run the updated functions of executing Don's code
+                        progressStatus = new ProgressStatus();
+                        progressStatus.execute();
+                    } catch (Exception ex) {
+                        Logger.getLogger(DefinitionHelper.class.getName()).log(Level.SEVERE, null, ex);
+                        SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                    }
+
+                    myFrame.dispose();
+                }
+
+
+            });
+
+            saveDefFile.addActionListener(new ActionListener() {
+
+                public void actionPerformed(ActionEvent e) {
+
+                    SystemLogger.LOGGER.log(Level.INFO, "Save Definition File");
+
+                    try {
+                        saveDefFileLocally();
+                    } catch (IOException ex) {
+                        Logger.getLogger(DefinitionHelper.class.getName()).log(Level.SEVERE, null, ex);
+                        SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                    }
+                }
+
+            });
+
+            myFrame.setVisible(true);
+            myFrame.setAlwaysOnTop(true);
+
+            Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+            myFrame.setLocation(dim.width / 2 - myFrame.getSize().width / 2, dim.height / 2 - myFrame.getSize().height / 2);
+
+            Document defDoc = myPane.getDocument();
+            int length = defDoc.getLength();
+
+            //File newDefFile = new File("MIXREGLS_MIXREG_KEY");
+            String dataFileSample = new File(this.getSharedDataFilename()).getAbsolutePath();
+            String newDefFilePrefix = dataFileSample.substring(0, dataFileSample.lastIndexOf(File.separator)) + "/";
+           
+            newDefFile = new File(newDefFilePrefix+"MixWild");
+//            if (selectedModel == DefinitionHelper.MIXREGLS_MIXREG_KEY) {
+//                newDefFile = new File(newDefFilePrefix + "MIXREGLS_RANDOM_MIXREG");
+//            } else if (selectedModel == DefinitionHelper.MIXREGLS_MIXOR_KEY) {
+//
+//                newDefFile = new File(newDefFilePrefix + "MIXREGLS_RANDOM_MIXOR");
+//            } else if (selectedModel == DefinitionHelper.MIXREGMLS_MIXREG_KEY) {
+//
+//                newDefFile = new File(newDefFilePrefix + "MIXREGMLS_RANDOM_MIXREG");
+//            } else if (selectedModel == DefinitionHelper.MIXREGMLS_MIXOR_KEY) {
+//
+//                newDefFile = new File(newDefFilePrefix + "MIXREGMLS_RANDOM_MIXOR");
+//            }
+
+            FileWriter out = new FileWriter(newDefFile + ".def");
+            out.write(myPane.getText());
+            out.close();
+        } catch (Exception exception) {
+            SystemLogger.LOGGER.log(Level.SEVERE,exception.toString());
+            exception.printStackTrace();
+        }
+    }
+         
 }

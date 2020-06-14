@@ -31,7 +31,6 @@ import java.awt.Desktop;
 import java.net.URL;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
-import def_lib.DefinitionHelper;
 import def_lib.MixLibrary;
 import def_lib.ModelBuilder;
 import def_lib.SuperUserMenu;
@@ -513,7 +512,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         //Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/resources/mixLogo.png"));
         //setIconImage(image);
-        if (i > 1) {
+        if (i > MixLibrary.STAGE_ONE_RLE_SLOPE) {
 
             NoAssociationRadio.setText("Yes");
 
@@ -3698,7 +3697,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             }
 
-            if (i > 1) {
+            if (i > MixLibrary.STAGE_ONE_RLE_SLOPE) {
                 levelTwoBoxes.get(j).get(1).setVisible(false);
 
             } else {
@@ -5490,109 +5489,112 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         }
     }
 
-    public void runMixedModels() {
+    // TODO: Where is this used?
+//    public void runMixedModels() {
+//
+//        String absoluteJavaPath = System.getProperty("user.dir");
+//        String defFileName = executableModel(selectedModel);
+//        try {
+//            try {
+//                copyExecutable(defFilePath, selectedModel); //get the def file path after it is saved
+//                Process p = Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && dir && "
+//                        + defFileName); // does it save it in the same directory //@Eldin: This is where it is copying it twice.
+//                //@Eldin: This is where we may want to keep the terminal open in the background.
+//
+//                p.waitFor();
+//                BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
+//                String line = reader.readLine();
+//                while (line != null) {
+//                    System.out.println(line);
+//                    line = reader.readLine();
+//                }
+//            } catch (FileNotFoundException fnfe1) {
+//                SystemLogger.LOGGER.log(Level.SEVERE, fnfe1.toString() + "{0}", SystemLogger.getLineNum());
+//                System.out.println("File not found Exception");
+//            } catch (IOException e1) {
+//                SystemLogger.LOGGER.log(Level.SEVERE, e1.toString() + "{0}", SystemLogger.getLineNum());
+//                System.out.println("IO Exception");
+//            }
+//
+//            try {
+//                Process p = Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && del /f " + defFileName);
+//                p.waitFor();
+//                BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
+//                String line = reader.readLine();
+//                while (line != null) {
+//                    System.out.println(line);
+//                    line = reader.readLine();
+//                }
+//            } catch (FileNotFoundException fnfe1) {
+//                SystemLogger.LOGGER.log(Level.SEVERE, fnfe1.toString() + "{0}", SystemLogger.getLineNum());
+//                System.out.println("File not found Exception 2");
+//            } catch (IOException e1) {
+//                SystemLogger.LOGGER.log(Level.SEVERE, e1.toString() + "{0}", SystemLogger.getLineNum());
+//                System.out.println("IO Exception 2 ");
+//            }
+//
+//            JOptionPane.showMessageDialog(null, defFilePath);
+//
+//        } catch (Exception ex) {
+//            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
+//            ex.printStackTrace();
+//            JOptionPane.showMessageDialog(null, "Failed");
+//        }
+//
+//    }
 
-        String absoluteJavaPath = System.getProperty("user.dir");
-        String defFileName = executableModel(selectedModel);
-        try {
-            try {
-                copyExecutable(defFilePath, selectedModel); //get the def file path after it is saved
-                Process p = Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && dir && "
-                        + defFileName); // does it save it in the same directory //@Eldin: This is where it is copying it twice.
-                //@Eldin: This is where we may want to keep the terminal open in the background.
+    // TODO: Old, update
+//    private String executableModel(int modelSelection) {
+//        switch (modelSelection) {
+//            case DefinitionHelper.MIXREGLS_MIXREG_KEY:
+//                return "mixregls_mixreg.exe";
+//            case DefinitionHelper.MIXREGLS_MIXOR_KEY:
+//                return "mixregls_mixor.exe";
+//            case DefinitionHelper.MIXREGMLS_MIXREG_KEY:
+//                return "mixregmls_mixreg.exe";
+//            case DefinitionHelper.MIXREGMLS_MIXOR_KEY:
+//                return "mixregmls_mixor.exe";
+//
+//            default:
+//                return "mixregls_mixreg.exe";
+//        }
+//    }
 
-                p.waitFor();
-                BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
-                String line = reader.readLine();
-                while (line != null) {
-                    System.out.println(line);
-                    line = reader.readLine();
-                }
-            } catch (FileNotFoundException fnfe1) {
-                SystemLogger.LOGGER.log(Level.SEVERE, fnfe1.toString() + "{0}", SystemLogger.getLineNum());
-                System.out.println("File not found Exception");
-            } catch (IOException e1) {
-                SystemLogger.LOGGER.log(Level.SEVERE, e1.toString() + "{0}", SystemLogger.getLineNum());
-                System.out.println("IO Exception");
-            }
-
-            try {
-                Process p = Runtime.getRuntime().exec("cmd /c dir && cd " + defFilePath + " && del /f " + defFileName);
-                p.waitFor();
-                BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
-                String line = reader.readLine();
-                while (line != null) {
-                    System.out.println(line);
-                    line = reader.readLine();
-                }
-            } catch (FileNotFoundException fnfe1) {
-                SystemLogger.LOGGER.log(Level.SEVERE, fnfe1.toString() + "{0}", SystemLogger.getLineNum());
-                System.out.println("File not found Exception 2");
-            } catch (IOException e1) {
-                SystemLogger.LOGGER.log(Level.SEVERE, e1.toString() + "{0}", SystemLogger.getLineNum());
-                System.out.println("IO Exception 2 ");
-            }
-
-            JOptionPane.showMessageDialog(null, defFilePath);
-
-        } catch (Exception ex) {
-            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
-            ex.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Failed");
-        }
-
-    }
-
-    private String executableModel(int modelSelection) {
-        switch (modelSelection) {
-            case DefinitionHelper.MIXREGLS_MIXREG_KEY:
-                return "mixregls_mixreg.exe";
-            case DefinitionHelper.MIXREGLS_MIXOR_KEY:
-                return "mixregls_mixor.exe";
-            case DefinitionHelper.MIXREGMLS_MIXREG_KEY:
-                return "mixregmls_mixreg.exe";
-            case DefinitionHelper.MIXREGMLS_MIXOR_KEY:
-                return "mixregmls_mixor.exe";
-
-            default:
-                return "mixregls_mixreg.exe";
-        }
-    }
-
-    private void copyExecutable(String absoluteDirectoryPath, int modelSelection) throws FileNotFoundException, IOException {
-        String modelPath;
-        String executableName = executableModel(modelSelection);
-        switch (modelSelection) {
-            case DefinitionHelper.MIXREGLS_MIXREG_KEY:
-                modelPath = "resources/Windows/mixregls_mixreg.exe";
-                break;
-            case DefinitionHelper.MIXREGLS_MIXOR_KEY:
-                modelPath = "resources/Windows/mixregls_mixor.exe";
-                break;
-            case DefinitionHelper.MIXREGMLS_MIXREG_KEY:
-                modelPath = "resources/Windows/mixregmls_mixreg.exe";
-                break;
-            case DefinitionHelper.MIXREGMLS_MIXOR_KEY:
-                modelPath = "resources/Windows/mixregmls_mixor.exe";
-                break;
-            default:
-                modelPath = "resources/Windows/mixregls_mixreg.exe";
-                break;
-        }
-        InputStream stream = getClass().getClassLoader().getResourceAsStream(modelPath);
-
-        OutputStream outputStream
-                = new FileOutputStream(new File(absoluteDirectoryPath + executableName));
-
-        int read;
-        byte[] bytes = new byte[4096];
-
-        while ((read = stream.read(bytes)) > 0) {
-            outputStream.write(bytes, 0, read);
-        }
-        stream.close();
-        outputStream.close();
-    }
+    // TODO: What is this? Not compatible with macOS
+//    private void copyExecutable(String absoluteDirectoryPath, int modelSelection) throws FileNotFoundException, IOException {
+//        String modelPath;
+//        String executableName = executableModel(modelSelection);
+//        switch (modelSelection) {
+//            case DefinitionHelper.MIXREGLS_MIXREG_KEY:
+//                modelPath = "resources/Windows/mixregls_mixreg.exe";
+//                break;
+//            case DefinitionHelper.MIXREGLS_MIXOR_KEY:
+//                modelPath = "resources/Windows/mixregls_mixor.exe";
+//                break;
+//            case DefinitionHelper.MIXREGMLS_MIXREG_KEY:
+//                modelPath = "resources/Windows/mixregmls_mixreg.exe";
+//                break;
+//            case DefinitionHelper.MIXREGMLS_MIXOR_KEY:
+//                modelPath = "resources/Windows/mixregmls_mixor.exe";
+//                break;
+//            default:
+//                modelPath = "resources/Windows/mixregls_mixreg.exe";
+//                break;
+//        }
+//        InputStream stream = getClass().getClassLoader().getResourceAsStream(modelPath);
+//
+//        OutputStream outputStream
+//                = new FileOutputStream(new File(absoluteDirectoryPath + executableName));
+//
+//        int read;
+//        byte[] bytes = new byte[4096];
+//
+//        while ((read = stream.read(bytes)) > 0) {
+//            outputStream.write(bytes, 0, read);
+//        }
+//        stream.close();
+//        outputStream.close();
+//    }
 
     public void runMixRegLS_mixor() {
 
@@ -5805,9 +5807,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
 
             if (oneRLERadio.isSelected() == true) {
-                RLE = 2;
+                RLE = MixLibrary.STAGE_ONE_RLE_LOCATION;
             } else if (moreThanOneRLERadio.isSelected() == true) {
-                RLE = 3;
+                RLE = MixLibrary.STAGE_ONE_RLE_SLOPE;
             } else {
                 isNewModalConfigSubmitted = false;
             }
@@ -5890,8 +5892,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     // save all variables in an array
                     String[] varTemp = getVariableNames();
                     defFile.setSharedDataFilename(extractDatFilePath());
-//                    defFile.setDataVariableCount(String.valueOf(variableArray.length));
-//                    System.out.println("From defHelper | Variable count: " + defFile.getDataVariableCount());
+                    defFile.setAdvancedVariableCount(String.valueOf(variableArray.length));
+                    System.out.println("From defHelper | Variable count: " + defFile.getAdvancedVariableCount());
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                     SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
@@ -6214,7 +6216,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         }
 
         // i is the number of random location effects selected by the users
-        if (i == 1) {
+        if (i == MixLibrary.STAGE_ONE_RLE_LOCATION) {
 
             try {
                 tryCount = 1;
@@ -6464,7 +6466,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
 
             //******************************************************************
-        } else if (i > 1) {
+        } else if (i > MixLibrary.STAGE_ONE_RLE_SLOPE) {
 
             try {
                 tryCount = 1;
@@ -6962,7 +6964,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             }
 
-            if (i > 1) {
+            if (i > MixLibrary.STAGE_ONE_RLE_SLOPE) {
                 levelTwoBoxes.get(j).get(1).setVisible(false);
 
             } else {
@@ -7039,7 +7041,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         // *********************************************************************
         // i is the number of random location effects selected by the users
-        if (i == 1) {
+        if (i == MixLibrary.STAGE_ONE_RLE_LOCATION) {
 
             if (NoAssociationRadio.isSelected()) {
 
@@ -7077,7 +7079,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             } // field array counting ends
 
-        } else if (i > 1) {
+        } else if (i > MixLibrary.STAGE_ONE_RLE_SLOPE) {
 
             //Check if the effect of mean on WS variances options have been selected
             if (NoAssociationRadio.isSelected()) {
@@ -7264,7 +7266,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 List<String> defFileOutput;
 
                 defFile.writeDefFileToFolder();
-                defFileOutput = defFile.buildStageOneDefinitonList();
+                defFileOutput = defFile.buildDefinitionList();
                 System.out.println("From defHelper | Stage 1 def file created successfully!");
                 //modelBuilder(defFile);
 //                modelBuilder = new ModelBuilder(defFile);
@@ -7766,24 +7768,24 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }
 
     public int getRandomScaleSelection() {
-        int randomScaleSelection = 0;
+        int randomScaleSelection = MixLibrary.STAGE_ONE_SCALE_NO;
 
         if (getRandomScaleSelectionYes() == true) {
-            randomScaleSelection = 1;
+            randomScaleSelection = MixLibrary.STAGE_ONE_SCALE_YES;
         } else {
-            randomScaleSelection = 0;
+            randomScaleSelection = MixLibrary.STAGE_ONE_SCALE_NO;
         }
 
         return randomScaleSelection;
     }
 
     public int getStageTwoModelType() {
-        int stageTwoModelType = 0;
+        int stageTwoModelType = MixLibrary.STAGE_TWO_MODEL_TYPE_SINGLE;
 
         if (getStageTwoSingleLevel() == true) {
-            stageTwoModelType = 1;
+            stageTwoModelType = MixLibrary.STAGE_TWO_MODEL_TYPE_SINGLE;
         } else if (getStageTwoMultiLevel() == true) {
-            stageTwoModelType = 2;
+            stageTwoModelType = MixLibrary.STAGE_TWO_MODEL_TYPE_MULTILEVEL;
         }
 
         return stageTwoModelType;
@@ -7791,12 +7793,12 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }
 
     public int getStageTwoOutcomeType() {
-        int stageTwoOutcomeType = 0;
+        int stageTwoOutcomeType = MixLibrary.STAGE_TWO_OUTCOME_NONE;
 
         if (getStageTwoContinuousRadio() == true) {
-            stageTwoOutcomeType = 1;
+            stageTwoOutcomeType = MixLibrary.STAGE_TWO_OUTCOME_NORMAL;
         } else if (getStageTwoDichotomousRadio() == true) {
-            stageTwoOutcomeType = 2;
+            stageTwoOutcomeType = MixLibrary.STAGE_TWO_OUTCOME_ORDINAL;
         }
 
         return stageTwoOutcomeType;

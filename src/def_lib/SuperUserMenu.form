@@ -121,7 +121,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="MixRegLS_Mixreg">
       <Properties>
-        <Property name="text" type="java.lang.String" value="MixRegLS Mixreg"/>
+        <Property name="text" type="java.lang.String" value="MixRegLS or MLS"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MixRegLS_MixregActionPerformed"/>
