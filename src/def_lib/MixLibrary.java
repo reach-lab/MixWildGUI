@@ -36,11 +36,17 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -53,11 +59,17 @@ import javax.swing.JEditorPane;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.SwingUtilities;
+import javax.swing.text.DefaultCaret;
 import javax.swing.SwingWorker;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.text.Document;
 import mixregui.SystemLogger;
+import mixregui.mixregGUI;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 
 /**
@@ -82,6 +94,9 @@ public class MixLibrary implements Serializable {
      */
     private static final boolean MIX_INTEGER = Boolean.TRUE;
     private static final boolean MIX_STRING = Boolean.FALSE;
+    public int terminalVal;
+    String definitionFilepath;
+    JTextArea progressPane;
     
     /**
      * Stage One Outcome Keys
@@ -405,7 +420,8 @@ public class MixLibrary implements Serializable {
         
         newDefinitionFile.add(getSharedModelTitle()); // LINE 1
         newDefinitionFile.add(getSharedModelSubtitle()); // LINE 2
-        newDefinitionFile.add("\"" + FilenameUtils.getName(getSharedDataFilename()) + "\""); // LINE 3
+        // newDefinitionFile.add("\"" + FilenameUtils.getName(getSharedDataFilename()) + "\""); // LINE 3
+        newDefinitionFile.add(FilenameUtils.getName(getSharedDataFilename())); // LINE 3
         newDefinitionFile.add(getSharedOutputPrefix()); // LINE 4
         newDefinitionFile.add(Arrays.toString(getSharedAdvancedOptions()).replaceAll(",", " ")); // LINE 5
         
@@ -440,7 +456,7 @@ public class MixLibrary implements Serializable {
         /**
          * Appending Stage 2 (Optional)
          */
-        if(stageTwoModelType != STAGE_TWO_OUTCOME_NONE){
+        if(stageTwoOutcomeType != STAGE_TWO_OUTCOME_NONE){
             newDefinitionFile.add(Arrays.toString(getStageTwoRegressorCounts()).replaceAll(",", " "));
             newDefinitionFile.add(getStageTwoOutcomeField());
             
@@ -559,7 +575,7 @@ public class MixLibrary implements Serializable {
         /**
          * Validating Stage 2 (Optional)
          */
-        if(stageTwoModelType != STAGE_TWO_OUTCOME_NONE){
+        if(stageTwoOutcomeType != STAGE_TWO_OUTCOME_NONE){
             if (!validateFieldLabels(getAdvancedStageTwoFixedRegressorCount(), getStageTwoFixedFields())) {
                 throw new Exception("Fatal stage two error: number of FIXED regressors does not equal FIXED fields");
             }        
@@ -1217,6 +1233,9 @@ public class MixLibrary implements Serializable {
     }
 
     public String getAdvancedUseStageTwo() {
+        if(advancedUseStageTwo == null){
+            this.advancedUseStageTwo = Integer.toString(stageTwoOutcomeType);
+        }
         return advancedUseStageTwo;
     }
 
@@ -1421,7 +1440,7 @@ public class MixLibrary implements Serializable {
         protected Void doInBackground() throws Exception {
 
             //wait for the execution here
-            // TODO THIS //runMixRegModels();
+            runMixRegModels();
             throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
 
@@ -1480,7 +1499,7 @@ public class MixLibrary implements Serializable {
                         progressStatus = new ProgressStatus();
                         progressStatus.execute();
                     } catch (Exception ex) {
-                        Logger.getLogger(DefinitionHelper.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(MixLibrary.class.getName()).log(Level.SEVERE, null, ex);
                         SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
                     }
 
@@ -1495,7 +1514,7 @@ public class MixLibrary implements Serializable {
                     try {
                         saveDefFileLocally();
                     } catch (IOException ex) {
-                        Logger.getLogger(DefinitionHelper.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(MixLibrary.class.getName()).log(Level.SEVERE, null, ex);
                         SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
                     }
                 }
@@ -1513,7 +1532,12 @@ public class MixLibrary implements Serializable {
 
             String dataFileSample = new File(this.getSharedDataFilename()).getAbsolutePath();
             String newDefFilePrefix = dataFileSample.substring(0, dataFileSample.lastIndexOf(File.separator)) + "/";
-            newDefFile = new File(newDefFilePrefix + "MixWild");
+            if(getStageOneOutcome() == STAGE_ONE_OUTCOME_MIXOR){
+                newDefFile = new File(newDefFilePrefix + "mixors_random_mixblank");
+            } else {
+                newDefFile = new File(newDefFilePrefix + "lsboth_random_mixblank");
+            }
+            //newDefFile = new File(newDefFilePrefix + "MixWild");
 //            
 //            if (selectedModel == DefinitionHelper.MIXREGLS_MIXREG_KEY) {
 //                newDefFile = new File(newDefFilePrefix + "MIXREGLS_RANDOM_MIXREG");
@@ -1610,7 +1634,7 @@ public class MixLibrary implements Serializable {
                         progressStatus = new ProgressStatus();
                         progressStatus.execute();
                     } catch (Exception ex) {
-                        Logger.getLogger(DefinitionHelper.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(MixLibrary.class.getName()).log(Level.SEVERE, null, ex);
                         SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
                     }
 
@@ -1629,7 +1653,7 @@ public class MixLibrary implements Serializable {
                     try {
                         saveDefFileLocally();
                     } catch (IOException ex) {
-                        Logger.getLogger(DefinitionHelper.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(MixLibrary.class.getName()).log(Level.SEVERE, null, ex);
                         SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
                     }
                 }
@@ -1648,8 +1672,12 @@ public class MixLibrary implements Serializable {
             //File newDefFile = new File("MIXREGLS_MIXREG_KEY");
             String dataFileSample = new File(this.getSharedDataFilename()).getAbsolutePath();
             String newDefFilePrefix = dataFileSample.substring(0, dataFileSample.lastIndexOf(File.separator)) + "/";
-           
-            newDefFile = new File(newDefFilePrefix+"MixWild");
+           // this one is run for stage 2
+            if(getStageOneOutcome() == STAGE_ONE_OUTCOME_MIXOR){
+                newDefFile = new File(newDefFilePrefix + "mixors_random_mixblank");
+            } else {
+                newDefFile = new File(newDefFilePrefix + "lsboth_random_mixblank");
+            }
 //            if (selectedModel == DefinitionHelper.MIXREGLS_MIXREG_KEY) {
 //                newDefFile = new File(newDefFilePrefix + "MIXREGLS_RANDOM_MIXREG");
 //            } else if (selectedModel == DefinitionHelper.MIXREGLS_MIXOR_KEY) {
@@ -1671,5 +1699,352 @@ public class MixLibrary implements Serializable {
             exception.printStackTrace();
         }
     }
+    
+    public static void modelingProgressLogging(String line) {
+
+        BufferedWriter writer;
+        try {
+            writer = new BufferedWriter(new FileWriter(SystemLogger.logPath + "modelingProgress.txt", true));
+            writer.write(line);
+            writer.close();
+        } catch (IOException ex) {
+            Logger.getLogger(MixLibrary.class.getName()).log(Level.SEVERE, null, ex);
+            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+        }
+
+    }
+
+    
+    public void runMixRegModels() {
+
+        //@Eldin: This is the part where it may be throwing exceptions. Why do you have "/" at the end?
+        String filePath = newDefFile.getAbsolutePath();
+        System.out.println("THE DEF FILE IS: " + filePath);
+        modelingProgressLogging("THE DEF FILE IS: " + filePath);
+        definitionFilepath = filePath.substring(0, filePath.lastIndexOf(File.separator)) + "/";
+        System.out.println("THE DEF FILE PATH IS: " + definitionFilepath);
+        modelingProgressLogging("HE DEF FILE PATH IS: " + definitionFilepath);
+        ////// selectedModel = getSelectedModel();
+        String absoluteJavaPath = System.getProperty("user.dir");
+
+        ////// String defFileName = executableModel(selectedModel);
+        boolean isWindows = getOSName().contains("windows");
+        String defFileName;
+        
+        if(stageOneOutcome == STAGE_ONE_OUTCOME_MIXOR){
+            defFileName = "mixors_random_mixblank";
+        } else {
+            defFileName = "lsboth_random_mixblank";
+        }
+        if(isWindows){
+            defFileName = defFileName + ".exe";
+        }
+
+        progressWindow = new JFrame("Please wait ...");
+        modelingProgressLogging("Please wait ...");
+
+        FlowLayout defFileFlow = new FlowLayout();
+        progressWindow.setLayout(defFileFlow);
+        defFileFlow.setAlignment(FlowLayout.TRAILING);
+        progressWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        progressWindow.setSize(630, 680);
+        progressWindow.setResizable(false);
+
+        progressPane = new JTextArea(30, 80);
+        DefaultCaret caret = (DefaultCaret) progressPane.getCaret();
+        caret.setUpdatePolicy(DefaultCaret.OUT_BOTTOM);
+
+        progressPane.setLayout(new BorderLayout(500, 500));
+        progressPane.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+
+        progressPane.setFont(new Font("Monospaced", 0, 12));
+        progressPane.setText("Please wait while we crunch some numbers .." + "\n");
+        modelingProgressLogging("Please wait while we crunch some numbers .." + "\n");
+        JScrollPane scroller = new JScrollPane(progressPane, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+
+        progressWindow.add(scroller);
+        scroller.setBounds(0, 0, 500, 500);
+
+        JButton cancelButton = new JButton("Cancel Analysis");
+        progressWindow.add(cancelButton);
+        progressWindow.setComponentOrientation(ComponentOrientation.UNKNOWN);
+        progressWindow.setVisible(true);
+        //progressWindow.setAlwaysOnTop(true);
+
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        progressWindow.setLocation(dim.width / 2 - progressWindow.getSize().width / 2, dim.height / 2 - progressWindow.getSize().height / 2);
+
+        try {
+
+            //@Eldin: this where we can switch between mixreg binaries
+//                if (getOSName().contains("windows")) {
+//                
+//                
+//                } else if (getOSName().contains("mac")) {
+//                
+//                
+//                }
+            copyExecutable(definitionFilepath);
+            Process p;
+            String macOSCommand = "\"" + definitionFilepath + defFileName + "\"";
+            if (getOSName().contains("windows")) {
+                System.out.print("$$$$$$$$$$$$$: " + definitionFilepath);
+                // the file path is not in the C drive
+                if (!"C".equals(definitionFilepath.split(":")[0])){
+                    p = Runtime.getRuntime().exec("cmd /c dir && cd /d" + "\"" + definitionFilepath + "\"" + " && dir && "
+                        + defFileName);
+                } else{
+                    p = Runtime.getRuntime().exec("cmd /c dir && cd " + "\"" + definitionFilepath + "\"" + " && dir && "
+                        + defFileName);
+                }
+
+
+            } else {
+                ProcessBuilder pb = new ProcessBuilder(
+                        "bash",
+                        "-c",
+                        macOSCommand);
+                pb.directory(new File(definitionFilepath));
+                pb.redirectErrorStream(true);
+                p = pb.start();
+            }
+
+            Thread runCMD = new Thread(new Runnable() {
+                public void run() {
+                    System.out.println("Inside the thread for: " + macOSCommand);
+                    try {
+                        InputStreamReader isr = new InputStreamReader(p.getInputStream());
+                        // InputStreamReader esr = new InputStreamReader(p.getErrorStream());
+                        BufferedReader br = new BufferedReader(isr);
+                        // BufferedReader ebr = new BufferedReader(esr);
+                        String line = null;  // UI magic should run in here @adityapona
+                        while ((line = br.readLine()) != null) {
+                            System.out.println("MIXWILD:" + line);
+                            updateProgressPane("MIXWILD:" + line + "\n");
+                            //progressPane.append();
+                            modelingProgressLogging("MIXWILD:" + line + "\n");
+                        }
+                    } catch (IOException ioe) {
+                        SystemLogger.LOGGER.log(Level.SEVERE, ioe.toString()+ "{0}", SystemLogger.getLineNum());
+                        ioe.printStackTrace();
+                    }
+                }
+            });
+            runCMD.start();
+
+            cancelButton.addActionListener(new ActionListener() {
+
+                public void actionPerformed(ActionEvent e) {
+                    p.destroy();
+                    progressWindow.dispose();
+                }
+            });
+            int exitVal = p.waitFor();
+            System.out.println("ExitValue: " + exitVal); // Non-zero is an error
+            updateProgressPane("MIXWILD::Exit Value: " + String.valueOf(exitVal) + "\n"); //should append all the text after a new line to the text area
+            modelingProgressLogging("ExitValue: " + exitVal);
+            modelingProgressLogging("MIXWILD::Exit Value: " + String.valueOf(exitVal) + "\n");
+
+            if (exitVal == 0) {
+                //send the out to StageTwoOutPu from here
+                // FileReader reader = new FileReader(absoluteJavaPath + ".out file name");
+                terminalVal = exitVal;
+                Process p2;
+                if (getOSName().contains("windows")) {
+                    p2 = Runtime.getRuntime().exec("cmd /c dir && cd " + "\"" + definitionFilepath + "\"" + " && del /f " + "\"" + defFileName + "\""); //delete the file when everything works great.
+                } else {
+                    ProcessBuilder pb = new ProcessBuilder(
+                            "bash",
+                            "-c",
+                            "rm " + "\"" + definitionFilepath + defFileName + "\"");
+                    pb.redirectErrorStream(true);
+                    p2 = pb.start();
+                }
+
+                readStageOneOutputfile();
+                readStageTwoOutputfile();
+
+                progressWindow.dispose(); //should close the window when done after this line
+
+                // FileReader reader = new FileReader(absoluteJavaPath + ".out file name");
+            } else {
+                JOptionPane.showMessageDialog(null, "Failed to build model. Please revisit your regressors and try again. For more information, checkout help docs.", "Execution failed!", JOptionPane.INFORMATION_MESSAGE);
+                modelingProgressLogging("Failed to build model. Please revisit your regressors and try again. For more information, checkout help docs.");
+                Process p2;
+                if (getOSName().contains("windows")) {
+                    p2 = Runtime.getRuntime().exec("cmd /c dir && cd " + "\"" + definitionFilepath + "\"" + " && del /f " + "\"" + defFileName + "\"");
+
+                } else {
+                    ProcessBuilder pb = new ProcessBuilder(
+                            "bash",
+                            "-c",
+                            "rm " + "\"" + definitionFilepath + defFileName + "\"");
+                    pb.redirectErrorStream(true);
+                    p2 = pb.start();
+
+                }
+
+                terminalVal = exitVal;
+                //progressWindow.dispose();
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Failed");
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+        }
+    }
+    
+    public int getExitVal() {
+
+        return terminalVal;
+
+    }
+    
+    public void readStageOneOutputfile() throws FileNotFoundException, IOException {
+        mixregGUI.stageOneOutput.setText("");
+        String fileName = mixregGUI.defFile.getSharedDataFilename();
+        String outputFilePath = FilenameUtils.removeExtension(fileName) + "_Output.out";
+        File file = new File(outputFilePath);
+        BufferedReader br = null;
+        String line = "";
+
+        br = new BufferedReader(new FileReader(file));
+        while ((line = br.readLine()) != null) {
+            //System.out.println(line);
+            mixregGUI.stageOneOutput.append(line + "\n");
+
+        }
+
+        br.close();
+
+    }
+
+    public void readStageTwoOutputfile() throws FileNotFoundException, IOException {
+
+        mixregGUI.stageTwoOutput.setText("");
+        if(mixregGUI.defFile.getAdvancedUseStageTwo().equals("0")) {
+            //do nothing
+        } else {
+            String fileName = mixregGUI.defFile.getSharedDataFilename();
+            String outputFilePath = FilenameUtils.removeExtension(fileName) + "_Output_stage2.out";
+            File file = new File(outputFilePath);
+            BufferedReader br = null;
+            String line = "";
+
+            br = new BufferedReader(new FileReader(file));
+            while ((line = br.readLine()) != null) {
+                //System.out.println(line);
+                mixregGUI.stageTwoOutput.append(line + "\n");
+            }
+
+            br.close();
+
+        }
+
+    }
+    
+    public String getOSName() {
+        String osName = System.getProperty("os.name").toLowerCase();
+        return osName;
+    }
+    
+    private void copyExecutable(String absoluteDirectoryPath) throws FileNotFoundException, IOException {
+        String modelPath;
+        
+        String LSBOTH_PRE = "lsboth_random_mixblank";
+        String MIXORS_PRE = "mixors_random_mixblank";
+        String MIXNO = "mixno";
+        String MIXREG = "mixreg";
+        String MIXORS = "mixors";
+        String MIXPREG = "mixpreg";
+        String STAGETWO_ONLY = "stage2only";
+                
+        if (getOSName().contains("windows")) {
+            if (win32) { 
+                LSBOTH_PRE = "resources/Windows32/" + LSBOTH_PRE + ".exe";
+                MIXORS_PRE = "resources/Windows32/" + MIXORS_PRE + ".exe";
+                MIXNO = "resources/Windows32/" + MIXNO + ".exe";
+                MIXREG = "resources/Windows32/" + MIXREG + ".exe";
+                MIXORS = "resources/Windows32/" + MIXORS + ".exe";
+                MIXPREG = "resources/Windows32/" + MIXPREG + ".exe";
+                STAGETWO_ONLY = "resources/Windows32/" + STAGETWO_ONLY + ".exe";
+            } else {
+                LSBOTH_PRE = "resources/Windows64/" + LSBOTH_PRE + ".exe";
+                MIXORS_PRE = "resources/Windows64/" + MIXORS_PRE + ".exe";
+                MIXNO = "resources/Windows64/" + MIXNO + ".exe";
+                MIXREG = "resources/Windows64/" + MIXREG + ".exe";
+                MIXORS = "resources/Windows64/" + MIXORS + ".exe";
+                MIXPREG = "resources/Windows64/" + MIXPREG + ".exe";
+                STAGETWO_ONLY = "resources/Windows64/" + STAGETWO_ONLY + ".exe";
+            }
+        } else {
+            LSBOTH_PRE = "resources/macOS/" + LSBOTH_PRE;
+            MIXORS_PRE = "resources/macOS/" + MIXORS_PRE;
+            MIXNO = "resources/macOS/" + MIXNO;
+            MIXREG = "resources/macOS/" + MIXREG;
+            MIXORS = "resources/macOS/" + MIXORS;
+            MIXPREG = "resources/macOS/" + MIXPREG;
+            STAGETWO_ONLY = "resources/macOS/" + STAGETWO_ONLY;
+        }
+
+        String exeArray[] = {LSBOTH_PRE,MIXORS_PRE,MIXNO,MIXREG,MIXORS,MIXPREG,STAGETWO_ONLY}; 
+
+        for (String exe : exeArray) {
+            System.out.println("Working on Exes");
+            InputStream stream = getClass().getClassLoader().getResourceAsStream(exe);
+            OutputStream outputStream
+                    = new FileOutputStream(new File(absoluteDirectoryPath + FilenameUtils.getName(exe)));
+
+            int read;
+            byte[] bytes = new byte[4096];
+
+            while ((read = stream.read(bytes)) > 0) {
+                //System.out.println("Working on output stream");
+                outputStream.write(bytes, 0, read);
+            }
+            stream.close();
+            outputStream.close();
+        }
+
+        if (!getOSName().contains("windows")) {
+            String[] commands = {"chmod u+x " + "\"" + definitionFilepath + FilenameUtils.getName(LSBOTH_PRE) + "\"",
+                "chmod u+x " + "\"" + definitionFilepath + FilenameUtils.getName(MIXORS_PRE) + "\"",
+                "chmod u+x " + "\"" + definitionFilepath + FilenameUtils.getName(MIXNO) + "\"",
+                "chmod u+x " + "\"" + definitionFilepath + FilenameUtils.getName(MIXPREG) + "\"",
+                "chmod u+x " + "\"" + definitionFilepath + FilenameUtils.getName(MIXREG) + "\"",
+                "chmod u+x " + "\"" + definitionFilepath + FilenameUtils.getName(MIXORS) + "\"",
+                "chmod u+x " + "\"" + definitionFilepath + FilenameUtils.getName(STAGETWO_ONLY) + "\""};
+            for (String command : commands) {
+                ProcessBuilder pb1 = new ProcessBuilder(
+                        "bash",
+                        "-c",
+                        command);
+                System.out.print(Arrays.toString(pb1.command().toArray()));
+                pb1.redirectErrorStream(true);
+                Process p0 = pb1.start();
+                try {
+                    System.out.println("WAITING FOR SYSTEM RESPONSE");
+                    p0.waitFor();
+                } catch (InterruptedException ex) {
+                    System.out.println("WAIT FAILED!");
+                    Logger.getLogger(DefinitionHelper.class.getName()).log(Level.SEVERE, null, ex);
+                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
+                }
+            }
+
+        }
+        System.out.println("Copying done!");
+    }
          
+    public void updateProgressPane(String input) {
+        SwingUtilities.invokeLater(
+                new Runnable() {
+            @Override
+            public void run() {
+                progressPane.append(input);
+            }
+
+        });
+    }
 }

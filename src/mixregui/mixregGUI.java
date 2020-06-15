@@ -6231,7 +6231,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
                 if (isOutcomeNone()) {
                     try {
-                        defFile.setAdvancedUseStageTwo("1");
+                        // defFile.setAdvancedUseStageTwo("1");
                         System.out.println("DROP SECOND STAGE?: " + defFile.getAdvancedUseStageTwo());
                     } catch (Exception ex) {
                         SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
@@ -6242,7 +6242,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 } else {
 
                     try {
-                        defFile.setAdvancedUseStageTwo("0");
+                        // defFile.setAdvancedUseStageTwo("0");
                         System.out.println("DROP SECOND STAGE?: " + defFile.getAdvancedUseStageTwo());
                     } catch (Exception ex) {
                         SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
@@ -7402,7 +7402,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 //                modelBuilder = new ModelBuilder(defFile);
                 //                modelEquationTextArea.setText(modelBuilder.meanEquation());
                 //                testEq.setText(modelBuilder.meanEquation());
-                equationArea.setText(modelBuilder.meanEquation());
+                // TODO THIS // equationArea.setText(modelBuilder.meanEquation());
 
                 //modelBuilder.saveWildFile(defFile);
                 //                modelBuilder.meanEquation();
