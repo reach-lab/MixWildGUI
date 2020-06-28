@@ -2028,7 +2028,7 @@ public class MixLibrary implements Serializable {
                     p0.waitFor();
                 } catch (InterruptedException ex) {
                     System.out.println("WAIT FAILED!");
-                    Logger.getLogger(DefinitionHelper.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(MixLibrary.class.getName()).log(Level.SEVERE, null, ex);
                     SystemLogger.LOGGER.log(Level.SEVERE, ex.toString()+ "{0}", SystemLogger.getLineNum());
                 }
             }

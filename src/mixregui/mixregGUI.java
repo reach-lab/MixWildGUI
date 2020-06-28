@@ -512,7 +512,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         //Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/resources/mixLogo.png"));
         //setIconImage(image);
-        if (i > MixLibrary.STAGE_ONE_RLE_SLOPE) {
+        if (i == MixLibrary.STAGE_ONE_RLE_SLOPE) {
 
             NoAssociationRadio.setText("Yes");
 
@@ -1418,7 +1418,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                                 .addComponent(newDataSetButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(dataInstruction, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(243, Short.MAX_VALUE))
+                .addContainerGap(180, Short.MAX_VALUE))
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1833,8 +1833,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             .addComponent(stageTwoRegsGridLvl2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        stageTwoRegsGridLvl2.getAccessibleContext().setAccessibleParent(stageTwoRegsGridLvl2);
-
         jPanel12.add(stageTwoLevelTwoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 300, 670, 170));
         stageTwoLevelTwoPanel.getAccessibleContext().setAccessibleName("Level-2 Stage-2");
         stageTwoLevelTwoPanel.getAccessibleContext().setAccessibleDescription("");
@@ -2011,7 +2009,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 .addComponent(jLabel7)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 239, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 232, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -3826,7 +3824,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             }
 
-            if (i > MixLibrary.STAGE_ONE_RLE_SLOPE) {
+            if (i == MixLibrary.STAGE_ONE_RLE_SLOPE) {
                 levelTwoBoxes.get(j).get(1).setVisible(false);
 
             } else {
@@ -6596,7 +6594,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
 
             //******************************************************************
-        } else if (i > MixLibrary.STAGE_ONE_RLE_SLOPE) {
+        } else if (i == MixLibrary.STAGE_ONE_RLE_SLOPE) {
 
             try {
                 tryCount = 1;
@@ -7094,7 +7092,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             }
 
-            if (i > MixLibrary.STAGE_ONE_RLE_SLOPE) {
+            if (i == MixLibrary.STAGE_ONE_RLE_SLOPE) {
                 levelTwoBoxes.get(j).get(1).setVisible(false);
 
             } else {
@@ -7209,7 +7207,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             } // field array counting ends
 
-        } else if (i > MixLibrary.STAGE_ONE_RLE_SLOPE) {
+        } else if (i == MixLibrary.STAGE_ONE_RLE_SLOPE) {
 
             //Check if the effect of mean on WS variances options have been selected
             if (NoAssociationRadio.isSelected()) {
@@ -7721,6 +7719,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         int regSize = defaultListModel.getSize();
         stageTwoLevelOneRegSize = regSize;
+        System.out.println("Eldin says: stage2lvl1 reg size is: " + stageTwoLevelOneRegSize);
 
         stageTwoRegsGridLvl1.removeAll();
 

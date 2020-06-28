@@ -26,6 +26,7 @@
  */
 package mixregui;
 
+import def_lib.MixLibrary;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.DefaultListModel;
@@ -56,6 +57,12 @@ public class stageTwoRegs extends javax.swing.JFrame {
     public stageTwoRegs() {
         initComponents();
         this.setResizable(false);
+        if(mixregGUI.defFile.getStageTwoModelType() == MixLibrary.STAGE_TWO_MODEL_TYPE_SINGLE){
+            jLabel4.setVisible(false);
+            jScrollPane3.setVisible(false);
+            stageTwoLevelOneAddButton.setVisible(false);
+            stageTwoLevelOneRemoveButton.setVisible(false);
+        }
         //create list models
 
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
