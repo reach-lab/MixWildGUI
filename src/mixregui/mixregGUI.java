@@ -994,6 +994,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         dataFileLabel.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         dataFileLabel.setText("CSV file path: ");
+        dataFileLabel.setToolTipText("");
         jPanel13.add(dataFileLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(247, 39, -1, -1));
 
         titleViewLabel.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
@@ -1010,7 +1011,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         rleViewLabel.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         rleViewLabel.setText("Specify random location effects:");
-        rleViewLabel.setToolTipText("Adding slopes can have more than 2 random location effects, but estimation time is increased with each additional random effect.\n");
+        rleViewLabel.setToolTipText("");
         jPanel13.add(rleViewLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(247, 206, -1, -1));
 
         buttonGroup2.add(oneRLERadio);
@@ -1035,12 +1036,12 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         randomScaleViewLabel.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         randomScaleViewLabel.setText("Include estimates of random scale:");
-        randomScaleViewLabel.setToolTipText("<html><p>Random scale parameters allow subjects to have individual estimates of the within-subject variance, </p>\n<p>and this is the distinguishing feature of a mixed-eefects locatio nscale model. </p>\n<p>For random scale models, a linear or quadratic association is also possible.</p>");
+        randomScaleViewLabel.setToolTipText("");
         jPanel13.add(randomScaleViewLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(247, 238, -1, -1));
 
         stageTwoOutcomeTypeLabel.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         stageTwoOutcomeTypeLabel.setText("Stage 2 outcome:");
-        stageTwoOutcomeTypeLabel.setToolTipText("<html><p>Continuous outcomes will run a linear regression at Stage 2. </p>\n<p>Dichotomous and ordinal outcomes will run an ordered logistic regression at Stage 2.</p>");
+        stageTwoOutcomeTypeLabel.setToolTipText("");
         jPanel13.add(stageTwoOutcomeTypeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(247, 363, -1, -1));
 
         buttonGroup3.add(stageTwoContinuousRadio);
@@ -1085,12 +1086,12 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         missingViewLabel.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         missingViewLabel.setText("Does your data contain missing values?");
-        missingViewLabel.setToolTipText("Click on missing values if there are any in your dataset. ");
+        missingViewLabel.setToolTipText("");
         jPanel13.add(missingViewLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(247, 92, -1, -1));
 
         missingCodeViewLabel.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         missingCodeViewLabel.setText("What is your missing data coded as?");
-        missingCodeViewLabel.setToolTipText("Specify the missing value code in the box (e.g., '-999').");
+        missingCodeViewLabel.setToolTipText("");
         jPanel13.add(missingCodeViewLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(247, 117, -1, -1));
 
         newModelMissingValueCode.addActionListener(new java.awt.event.ActionListener() {
@@ -1148,7 +1149,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         stageOneOutcomeViewLabel.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         stageOneOutcomeViewLabel.setText("Stage 1 outcome:");
-        stageOneOutcomeViewLabel.setToolTipText("<html><p>(To be implemented in MixWILD 2.0) Currently, you are restricted to continuous Stage 1 outcomes.</p>\n<p>Dichotomous and ordinal outcomes will run ordered logistic regressions at Stage 1.</p>\n<p>Note that random scale is not available for dichotomous outcomes.</p>\n");
+        stageOneOutcomeViewLabel.setToolTipText("");
         jPanel13.add(stageOneOutcomeViewLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(247, 175, -1, -1));
 
         stageOneOutcomeGroup.add(stageOneContinuousRadio);
@@ -1203,7 +1204,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         includeStageTwoLabel.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         includeStageTwoLabel.setText("Include Stage 2 model:");
-        includeStageTwoLabel.setToolTipText("<html><p>(To be implemented in MixWILD 2.0) Currently, you are restricted to single level models and </p>\n<p>continuous and dichotomous/ordinal Stage 2 outcomes. </p>");
+        includeStageTwoLabel.setToolTipText("");
         jPanel13.add(includeStageTwoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(247, 301, -1, -1));
 
         includeStageTwoGroup.add(includeStageTwoYes);
@@ -1228,7 +1229,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         stageTwoModelTypeLabel.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         stageTwoModelTypeLabel.setText("Stage 2 model type:");
-        stageTwoModelTypeLabel.setToolTipText("<html><p>Multilevel models allow for additional estimation at Stage 2 using random intercept mixed effects model in place of the standard single level model, similar to Stage 1.</p>");
+        stageTwoModelTypeLabel.setToolTipText("");
         jPanel13.add(stageTwoModelTypeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(247, 332, -1, -1));
 
         stageTwoLevelGroup.add(stageTwoSingleLevel);
@@ -1335,111 +1336,66 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         jPanel13.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(216, 276, 718, 11));
 
         datasetHelpButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon4 - Copy.png"))); // NOI18N
-        datasetHelpButton.setToolTipText("");
+        datasetHelpButton.setToolTipText("<html><pre>Is your dataset MixWILD friendly?\n    1) You should always use a .csv file.\n    2) You should ensure that missing values are not blanks.\n    3) Missing value codes should be numeric only.</p>\n    4) Make sure your missing value code is the same as your dataset.\n    5) Please ensure that the data is sorted by IDs.\n    6) The first row in the .csv file should be column names.<pre>");
         datasetHelpButton.setMaximumSize(new java.awt.Dimension(16, 16));
         datasetHelpButton.setMinimumSize(new java.awt.Dimension(16, 16));
         datasetHelpButton.setPreferredSize(new java.awt.Dimension(16, 16));
-        datasetHelpButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                datasetHelpButtonMouseClicked(evt);
-            }
-        });
         jPanel13.add(datasetHelpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, -1, -1));
 
         seedHelpButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon4 - Copy.png"))); // NOI18N
-        seedHelpButton.setToolTipText("");
+        seedHelpButton.setToolTipText("<html><pre>A seed is a number used to initialize a random number generator. Different seeds produce \ndifferent sequences of random numbers.In the context of two-stage models, a seed is helpful for\nreplicating models with identical results.<pre>");
         seedHelpButton.setMaximumSize(new java.awt.Dimension(16, 16));
         seedHelpButton.setMinimumSize(new java.awt.Dimension(16, 16));
         seedHelpButton.setPreferredSize(new java.awt.Dimension(16, 16));
-        seedHelpButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seedHelpButtonMouseClicked(evt);
-            }
-        });
         jPanel13.add(seedHelpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 393, -1, -1));
 
         datasetMissingValuesHelpButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon4 - Copy.png"))); // NOI18N
-        datasetMissingValuesHelpButton.setToolTipText("");
+        datasetMissingValuesHelpButton.setToolTipText("<html><pre>Click on missing values if there are any in your dataset;\nspecify the missing value code in the box (e.g., '-999').<pre>");
         datasetMissingValuesHelpButton.setMaximumSize(new java.awt.Dimension(16, 16));
         datasetMissingValuesHelpButton.setMinimumSize(new java.awt.Dimension(16, 16));
         datasetMissingValuesHelpButton.setPreferredSize(new java.awt.Dimension(16, 16));
-        datasetMissingValuesHelpButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                datasetMissingValuesHelpButtonMouseClicked(evt);
-            }
-        });
         jPanel13.add(datasetMissingValuesHelpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 93, -1, -1));
 
         stageOneOutcomeHelpButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon4 - Copy.png"))); // NOI18N
-        stageOneOutcomeHelpButton.setToolTipText("");
+        stageOneOutcomeHelpButton.setToolTipText("<html><pre>(To be implemented in MixWILD 2.0) Currently, you are restricted to continuous Stage 1 outcomes.\nDichotomous and ordinal outcomes will run ordered logistic regressions at Stage 1.\nNote that random scale is not available for dichotomous outcomes.<pre>");
         stageOneOutcomeHelpButton.setMaximumSize(new java.awt.Dimension(16, 16));
         stageOneOutcomeHelpButton.setMinimumSize(new java.awt.Dimension(16, 16));
         stageOneOutcomeHelpButton.setPreferredSize(new java.awt.Dimension(16, 16));
-        stageOneOutcomeHelpButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                stageOneOutcomeHelpButtonMouseClicked(evt);
-            }
-        });
         jPanel13.add(stageOneOutcomeHelpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 176, -1, -1));
 
         stageOneRLEHelpButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon4 - Copy.png"))); // NOI18N
-        stageOneRLEHelpButton.setToolTipText("");
+        stageOneRLEHelpButton.setToolTipText("<html><pre>\nSelect “Intercept only”, and the model assumes the mean of the response does not differ between\nsubjects as a result of some covariate and engages the MixRegLS model, allowing users to\nspecify covariates for WS and BS variances. \n\nSelect “Intercept and slope(s)”, this will be MixRegMLS model. Adding slopes can have more than 2 random location effects, but estimation time is increased with each additional random effect.<pre>");
         stageOneRLEHelpButton.setMaximumSize(new java.awt.Dimension(16, 16));
         stageOneRLEHelpButton.setMinimumSize(new java.awt.Dimension(16, 16));
         stageOneRLEHelpButton.setPreferredSize(new java.awt.Dimension(16, 16));
-        stageOneRLEHelpButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                stageOneRLEHelpButtonMouseClicked(evt);
-            }
-        });
         jPanel13.add(stageOneRLEHelpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 207, -1, -1));
 
         stageOneRSHelpButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon4 - Copy.png"))); // NOI18N
-        stageOneRSHelpButton.setToolTipText("");
+        stageOneRSHelpButton.setToolTipText("<html><pre>Random scale parameters allow subjects to have individual estimates of the \nwithin-subject variance, and this is the distinguishing feature of a mixed-eefects locatio nscale model.\nFor random scale models, a linear or quadratic association is also possible.<pre>");
         stageOneRSHelpButton.setMaximumSize(new java.awt.Dimension(16, 16));
         stageOneRSHelpButton.setMinimumSize(new java.awt.Dimension(16, 16));
         stageOneRSHelpButton.setPreferredSize(new java.awt.Dimension(16, 16));
-        stageOneRSHelpButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                stageOneRSHelpButtonMouseClicked(evt);
-            }
-        });
         jPanel13.add(stageOneRSHelpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 239, -1, -1));
 
         stageTwoDescription.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon4 - Copy.png"))); // NOI18N
-        stageTwoDescription.setToolTipText("");
+        stageTwoDescription.setToolTipText("<html><pre>(To be implemented in MixWILD 2.0) Currently, you are restricted to single level models and\ncontinuous and dichotomous/ordinal Stage 2 outcomes. Multilevel models allow for additional estimation at\nStage 2 using random intercept mixed effects model in place of the standard single level model, similar to\nStage 1. Continuous outcomes will run a linear regression at Stage 2. Dichotomous and ordinal outcomes \nwill run an ordered logistic regression at Stage 2.<pre>");
         stageTwoDescription.setMaximumSize(new java.awt.Dimension(16, 16));
         stageTwoDescription.setMinimumSize(new java.awt.Dimension(16, 16));
         stageTwoDescription.setPreferredSize(new java.awt.Dimension(16, 16));
-        stageTwoDescription.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                stageTwoDescriptionMouseClicked(evt);
-            }
-        });
         jPanel13.add(stageTwoDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 302, -1, -1));
 
         stageTwoModelTypeHelpButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon4 - Copy.png"))); // NOI18N
-        stageTwoModelTypeHelpButton.setToolTipText("");
+        stageTwoModelTypeHelpButton.setToolTipText("<html><pre>Multilevel models allow for additional estimation at stage 2 \nusing random intercept mixed effect model.<pre>");
         stageTwoModelTypeHelpButton.setMaximumSize(new java.awt.Dimension(16, 16));
         stageTwoModelTypeHelpButton.setMinimumSize(new java.awt.Dimension(16, 16));
         stageTwoModelTypeHelpButton.setPreferredSize(new java.awt.Dimension(16, 16));
-        stageTwoModelTypeHelpButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                stageTwoModelTypeHelpButtonMouseClicked(evt);
-            }
-        });
         jPanel13.add(stageTwoModelTypeHelpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 333, -1, -1));
 
         stageTwoOutcomeTypeHelpButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon4 - Copy.png"))); // NOI18N
-        stageTwoOutcomeTypeHelpButton.setToolTipText("");
+        stageTwoOutcomeTypeHelpButton.setToolTipText("<html><pre>This stage 2 outcome can be a subject-level or 2-level outcome, and can be of four different outcome types:\ncontinuous (normal), dichotomous/ordinal, count, or nominal.<pre>");
         stageTwoOutcomeTypeHelpButton.setMaximumSize(new java.awt.Dimension(16, 16));
         stageTwoOutcomeTypeHelpButton.setMinimumSize(new java.awt.Dimension(16, 16));
         stageTwoOutcomeTypeHelpButton.setPreferredSize(new java.awt.Dimension(16, 16));
-        stageTwoOutcomeTypeHelpButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                stageTwoOutcomeTypeHelpButtonMouseClicked(evt);
-            }
-        });
         jPanel13.add(stageTwoOutcomeTypeHelpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 364, -1, -1));
 
         stageOneTabs.addTab("Model Configuration", jPanel13);
@@ -2930,68 +2886,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         //        loadModelByBrowseButton.setVisible(false);
         //        goBackButton.setVisible(false);
     }//GEN-LAST:event_fileBrowseButtonActionPerformed
-
-    private void datasetHelpButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_datasetHelpButtonMouseClicked
-        JOptionPane.showMessageDialog(null, "  Is your dataset MixWILD friendly?\n"
-                + "      1) You should always use a .csv file\n"
-                + "      2) You should ensure that missing values are not blanks\n"
-                + "      3) Missing value codes should be numeric only\n"
-                + "      4) Make sure your missing value code is the same as your dataset\n"
-                + "      5) Please ensure that the data is sorted by IDs\n"
-                + "      6) The first row in the .csv file should be column names",
-                "Dataset", JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_datasetHelpButtonMouseClicked
-
-    private void seedHelpButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seedHelpButtonMouseClicked
-        JOptionPane.showMessageDialog(null, "A seed is a number used to initialize a random number generator. Different seeds produce different sequences of random numbers."
-                + "\n" + "In the context of two-stage models, a seed is helpful for replicating models with identical results.", "What is a seed?", JOptionPane.INFORMATION_MESSAGE);
-
-    }//GEN-LAST:event_seedHelpButtonMouseClicked
-
-    private void datasetMissingValuesHelpButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_datasetMissingValuesHelpButtonMouseClicked
-        JOptionPane.showMessageDialog(null, "Click on missing values if there are any in your dataset;\n"
-                + "specify the missing value code in the box (e.g., '-999').",
-                "Missing Values", JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_datasetMissingValuesHelpButtonMouseClicked
-
-    private void stageOneOutcomeHelpButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stageOneOutcomeHelpButtonMouseClicked
-        JOptionPane.showMessageDialog(null, "(To be implemented in MixWILD 2.0) Currently, you are restricted to continuous Stage 1 outcomes."
-                + "\n" + "Dichotomous and ordinal outcomes will run ordered logistic regressions at Stage 1." + "\n"
-                + "Note that random scale is not available for dichotomous outcomes.", "Stage 1 Outcome Type", JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_stageOneOutcomeHelpButtonMouseClicked
-
-    private void stageOneRLEHelpButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stageOneRLEHelpButtonMouseClicked
-        JOptionPane.showMessageDialog(null, "Adding slopes can have more than 2 random location effects, but estimation time is increased with each additional random effect.",
-                "Stage 1 Random Location Effect", JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_stageOneRLEHelpButtonMouseClicked
-
-    private void stageOneRSHelpButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stageOneRSHelpButtonMouseClicked
-        JOptionPane.showMessageDialog(null, "Random scale parameters allow subjects to have individual estimates of the within-subject variance,"
-                + "\n" + "and this is the distinguishing feature of a mixed-eefects locatio nscale model." + "\n"
-                + "For random scale models, a linear or quadratic association is also possible.", "Stage 1 Random Scale", JOptionPane.INFORMATION_MESSAGE);
-
-    }//GEN-LAST:event_stageOneRSHelpButtonMouseClicked
-
-    private void stageTwoDescriptionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stageTwoDescriptionMouseClicked
-        JOptionPane.showMessageDialog(null, "(To be implemented in MixWILD 2.0) Currently, you are restricted to single level models and continuous and dichotomous/ordinal Stage 2 outcomes."
-                + "\n" + "Multilevel models allow for additional estimation at Stage 2 using random intercept mixed effects model in place of the standard single level model, similar to Stage 1."
-                + "\n" + "- Continuous outcomes will run a linear regression at Stage 2." + "\n"
-                + "- Dichotomous and ordinal outcomes will run an ordered logistic regression at Stage 2.", "Stage 2 Model", JOptionPane.INFORMATION_MESSAGE);
-
-    }//GEN-LAST:event_stageTwoDescriptionMouseClicked
-
-    private void stageTwoModelTypeHelpButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stageTwoModelTypeHelpButtonMouseClicked
-        JOptionPane.showMessageDialog(null, "Multilevel models allow for additional estimation at stage 2 using random intercept mixed effect model.",
-                "Stage 2 Model Type", JOptionPane.INFORMATION_MESSAGE);
-
-    }//GEN-LAST:event_stageTwoModelTypeHelpButtonMouseClicked
-
-    private void stageTwoOutcomeTypeHelpButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stageTwoOutcomeTypeHelpButtonMouseClicked
-        JOptionPane.showMessageDialog(null, "This stage 2 outcome can be a subject-level or 2-level outcome,"
-                + "\n" + "and can be of four different outcome types:" + "\n"
-                + "continuous (normal), dichotomous/ordinal, count, or nominal.", "Stage 2 Outcome Type", JOptionPane.INFORMATION_MESSAGE);
-
-    }//GEN-LAST:event_stageTwoOutcomeTypeHelpButtonMouseClicked
 
     // **********************update********************
     private void updateGuiView(MixRegGuiStates mxrStates) {

@@ -157,6 +157,7 @@
                   <Font name="Dialog" size="12" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="CSV file path: "/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -200,7 +201,7 @@
                   <Font name="Dialog" size="12" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Specify random location effects:"/>
-                <Property name="toolTipText" type="java.lang.String" value="Adding slopes can have more than 2 random location effects, but estimation time is increased with each additional random effect.&#xa;"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -252,7 +253,7 @@
                   <Font name="Dialog" size="12" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Include estimates of random scale:"/>
-                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;p&gt;Random scale parameters allow subjects to have individual estimates of the within-subject variance, &lt;/p&gt;&#xa;&lt;p&gt;and this is the distinguishing feature of a mixed-eefects locatio nscale model. &lt;/p&gt;&#xa;&lt;p&gt;For random scale models, a linear or quadratic association is also possible.&lt;/p&gt;"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -266,7 +267,7 @@
                   <Font name="Dialog" size="12" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Stage 2 outcome:"/>
-                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;p&gt;Continuous outcomes will run a linear regression at Stage 2. &lt;/p&gt;&#xa;&lt;p&gt;Dichotomous and ordinal outcomes will run an ordered logistic regression at Stage 2.&lt;/p&gt;"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -356,7 +357,7 @@
                   <Font name="Dialog" size="12" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Does your data contain missing values?"/>
-                <Property name="toolTipText" type="java.lang.String" value="Click on missing values if there are any in your dataset. "/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -370,7 +371,7 @@
                   <Font name="Dialog" size="12" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="What is your missing data coded as?"/>
-                <Property name="toolTipText" type="java.lang.String" value="Specify the missing value code in the box (e.g., &apos;-999&apos;)."/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -486,7 +487,7 @@
                   <Font name="Dialog" size="12" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Stage 1 outcome:"/>
-                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;p&gt;(To be implemented in MixWILD 2.0) Currently, you are restricted to continuous Stage 1 outcomes.&lt;/p&gt;&#xa;&lt;p&gt;Dichotomous and ordinal outcomes will run ordered logistic regressions at Stage 1.&lt;/p&gt;&#xa;&lt;p&gt;Note that random scale is not available for dichotomous outcomes.&lt;/p&gt;&#xa;"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -595,7 +596,7 @@
                   <Font name="Dialog" size="12" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Include Stage 2 model:"/>
-                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;p&gt;(To be implemented in MixWILD 2.0) Currently, you are restricted to single level models and &lt;/p&gt;&#xa;&lt;p&gt;continuous and dichotomous/ordinal Stage 2 outcomes. &lt;/p&gt;"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -647,7 +648,7 @@
                   <Font name="Dialog" size="12" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Stage 2 model type:"/>
-                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;p&gt;Multilevel models allow for additional estimation at Stage 2 using random intercept mixed effects model in place of the standard single level model, similar to Stage 1.&lt;/p&gt;"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -867,7 +868,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/resources/icon4 - Copy.png"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value=""/>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;pre&gt;Is your dataset MixWILD friendly?&#xa;    1) You should always use a .csv file.&#xa;    2) You should ensure that missing values are not blanks.&#xa;    3) Missing value codes should be numeric only.&lt;/p&gt;&#xa;    4) Make sure your missing value code is the same as your dataset.&#xa;    5) Please ensure that the data is sorted by IDs.&#xa;    6) The first row in the .csv file should be column names.&lt;pre&gt;"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[16, 16]"/>
                 </Property>
@@ -878,9 +879,6 @@
                   <Dimension value="[16, 16]"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="datasetHelpButtonMouseClicked"/>
-              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="220" y="40" width="-1" height="-1"/>
@@ -892,7 +890,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/resources/icon4 - Copy.png"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value=""/>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;pre&gt;A seed is a number used to initialize a random number generator. Different seeds produce &#xa;different sequences of random numbers.In the context of two-stage models, a seed is helpful for&#xa;replicating models with identical results.&lt;pre&gt;"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[16, 16]"/>
                 </Property>
@@ -903,9 +901,6 @@
                   <Dimension value="[16, 16]"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seedHelpButtonMouseClicked"/>
-              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="220" y="393" width="-1" height="-1"/>
@@ -917,7 +912,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/resources/icon4 - Copy.png"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value=""/>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;pre&gt;Click on missing values if there are any in your dataset;&#xa;specify the missing value code in the box (e.g., &apos;-999&apos;).&lt;pre&gt;"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[16, 16]"/>
                 </Property>
@@ -928,9 +923,6 @@
                   <Dimension value="[16, 16]"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="datasetMissingValuesHelpButtonMouseClicked"/>
-              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="220" y="93" width="-1" height="-1"/>
@@ -942,7 +934,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/resources/icon4 - Copy.png"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value=""/>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;pre&gt;(To be implemented in MixWILD 2.0) Currently, you are restricted to continuous Stage 1 outcomes.&#xa;Dichotomous and ordinal outcomes will run ordered logistic regressions at Stage 1.&#xa;Note that random scale is not available for dichotomous outcomes.&lt;pre&gt;"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[16, 16]"/>
                 </Property>
@@ -953,9 +945,6 @@
                   <Dimension value="[16, 16]"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="stageOneOutcomeHelpButtonMouseClicked"/>
-              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="220" y="176" width="-1" height="-1"/>
@@ -967,7 +956,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/resources/icon4 - Copy.png"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value=""/>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;pre&gt;&#xa;Select &#x201c;Intercept only&#x201d;, and the model assumes the mean of the response does not differ between&#xa;subjects as a result of some covariate and engages the MixRegLS model, allowing users to&#xa;specify covariates for WS and BS variances. &#xa;&#xa;Select &#x201c;Intercept and slope(s)&#x201d;, this will be MixRegMLS model. Adding slopes can have more than 2 random location effects, but estimation time is increased with each additional random effect.&lt;pre&gt;"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[16, 16]"/>
                 </Property>
@@ -978,9 +967,6 @@
                   <Dimension value="[16, 16]"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="stageOneRLEHelpButtonMouseClicked"/>
-              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="220" y="207" width="-1" height="-1"/>
@@ -992,7 +978,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/resources/icon4 - Copy.png"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value=""/>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;pre&gt;Random scale parameters allow subjects to have individual estimates of the &#xa;within-subject variance, and this is the distinguishing feature of a mixed-eefects locatio nscale model.&#xa;For random scale models, a linear or quadratic association is also possible.&lt;pre&gt;"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[16, 16]"/>
                 </Property>
@@ -1003,9 +989,6 @@
                   <Dimension value="[16, 16]"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="stageOneRSHelpButtonMouseClicked"/>
-              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="220" y="239" width="-1" height="-1"/>
@@ -1017,7 +1000,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/resources/icon4 - Copy.png"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value=""/>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;pre&gt;(To be implemented in MixWILD 2.0) Currently, you are restricted to single level models and&#xa;continuous and dichotomous/ordinal Stage 2 outcomes. Multilevel models allow for additional estimation at&#xa;Stage 2 using random intercept mixed effects model in place of the standard single level model, similar to&#xa;Stage 1. Continuous outcomes will run a linear regression at Stage 2. Dichotomous and ordinal outcomes &#xa;will run an ordered logistic regression at Stage 2.&lt;pre&gt;"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[16, 16]"/>
                 </Property>
@@ -1028,9 +1011,6 @@
                   <Dimension value="[16, 16]"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="stageTwoDescriptionMouseClicked"/>
-              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="220" y="302" width="-1" height="-1"/>
@@ -1042,7 +1022,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/resources/icon4 - Copy.png"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value=""/>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;pre&gt;Multilevel models allow for additional estimation at stage 2 &#xa;using random intercept mixed effect model.&lt;pre&gt;"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[16, 16]"/>
                 </Property>
@@ -1053,9 +1033,6 @@
                   <Dimension value="[16, 16]"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="stageTwoModelTypeHelpButtonMouseClicked"/>
-              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="220" y="333" width="-1" height="-1"/>
@@ -1067,7 +1044,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/resources/icon4 - Copy.png"/>
                 </Property>
-                <Property name="toolTipText" type="java.lang.String" value=""/>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;pre&gt;This stage 2 outcome can be a subject-level or 2-level outcome, and can be of four different outcome types:&#xa;continuous (normal), dichotomous/ordinal, count, or nominal.&lt;pre&gt;"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[16, 16]"/>
                 </Property>
@@ -1078,9 +1055,6 @@
                   <Dimension value="[16, 16]"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="stageTwoOutcomeTypeHelpButtonMouseClicked"/>
-              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="220" y="364" width="-1" height="-1"/>
