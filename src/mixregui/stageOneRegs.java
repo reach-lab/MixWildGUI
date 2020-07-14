@@ -124,23 +124,27 @@ public class stageOneRegs extends javax.swing.JFrame {
         StageOneLevelOneList = new javax.swing.JList<>();
         jScrollPane3 = new javax.swing.JScrollPane();
         StageOneLevelTwoList = new javax.swing.JList<>();
-        jLabel4 = new javax.swing.JLabel();
         stageOneCancel = new javax.swing.JButton();
 
         label1.setText("label1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Add Stage 1 Regressors");
+        setMinimumSize(new java.awt.Dimension(640, 510));
+        setPreferredSize(new java.awt.Dimension(680, 560));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setText("Variables");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 37, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel2.setText("Level-1 (Time Varying)");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 37, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 30, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setText("Level-2 (Time Invariant)");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(486, 257, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 255, -1, -1));
 
         stageOneSubmitButton.setText("Submit");
         stageOneSubmitButton.addActionListener(new java.awt.event.ActionListener() {
@@ -148,7 +152,7 @@ public class stageOneRegs extends javax.swing.JFrame {
                 stageOneSubmitButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(stageOneSubmitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 470, 80, -1));
+        getContentPane().add(stageOneSubmitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(545, 470, 95, -1));
 
         stageOneResetButton.setText("Reset");
         stageOneResetButton.addActionListener(new java.awt.event.ActionListener() {
@@ -156,7 +160,7 @@ public class stageOneRegs extends javax.swing.JFrame {
                 stageOneResetButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(stageOneResetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 470, 89, -1));
+        getContentPane().add(stageOneResetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(445, 470, 95, -1));
 
         removeLevelButton.setText("Remove");
         removeLevelButton.addActionListener(new java.awt.event.ActionListener() {
@@ -164,7 +168,7 @@ public class stageOneRegs extends javax.swing.JFrame {
                 removeLevelButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(removeLevelButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 112, 90, -1));
+        getContentPane().add(removeLevelButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 140, 90, -1));
 
         levelOneAddButton.setText("Add");
         levelOneAddButton.addActionListener(new java.awt.event.ActionListener() {
@@ -172,7 +176,7 @@ public class stageOneRegs extends javax.swing.JFrame {
                 levelOneAddButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(levelOneAddButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 77, 93, -1));
+        getContentPane().add(levelOneAddButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 110, 90, -1));
 
         removeLevelTwoButton.setText("Remove");
         removeLevelTwoButton.addActionListener(new java.awt.event.ActionListener() {
@@ -180,7 +184,7 @@ public class stageOneRegs extends javax.swing.JFrame {
                 removeLevelTwoButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(removeLevelTwoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 332, 90, -1));
+        getContentPane().add(removeLevelTwoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 360, 90, -1));
 
         addLevelTwoButton.setText("Add");
         addLevelTwoButton.addActionListener(new java.awt.event.ActionListener() {
@@ -188,7 +192,7 @@ public class stageOneRegs extends javax.swing.JFrame {
                 addLevelTwoButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(addLevelTwoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 297, 93, -1));
+        getContentPane().add(addLevelTwoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 330, 90, -1));
 
         jScrollPane1.setViewportView(AllVariablesList);
 
@@ -202,16 +206,13 @@ public class stageOneRegs extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 284, 287, 163));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/MixWildLogoTiny.png"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 467, -1, 34));
-
         stageOneCancel.setText("Cancel");
         stageOneCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stageOneCancelActionPerformed(evt);
             }
         });
-        getContentPane().add(stageOneCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 470, 80, -1));
+        getContentPane().add(stageOneCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 470, 95, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -381,7 +382,6 @@ public class stageOneRegs extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
