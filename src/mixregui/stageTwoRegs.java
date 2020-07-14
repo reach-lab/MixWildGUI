@@ -121,7 +121,7 @@ public class stageTwoRegs extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setText("Variables");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel2.setText("Level 2 (Time Invariant)");
@@ -201,7 +201,7 @@ public class stageTwoRegs extends javax.swing.JFrame {
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon4 - Copy.png"))); // NOI18N
         jLabel5.setToolTipText("<html><pre>Please select additional covariates to include in the stage-two model.\nNote: If you wish to re-run the second stage model without running stage 1, you will only be able to remove regressors. <pre>");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 10, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 32, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -395,8 +395,33 @@ public class stageTwoRegs extends javax.swing.JFrame {
 
     public void updateStageTwoAgain() {
 
-        //StageTwoAllVariables.setModel(StageTwoAllVariables.getModel());
+        int idIndex = mixregGUI.getIDFieldPosition();
+        int stageOneIndex = mixregGUI.getStageOneDVFieldPosition();
+        int stageTwoIndex = mixregGUI.getStageTwoDVFieldPosition();
+
+        stageTwoListModel.removeAllElements();
+
+        for (int j = 0; j < variableNamesList.length; j++) {
+            if (j == idIndex || j == stageOneIndex || j == stageTwoIndex) {
+                //do nothing               
+            } else {
+                stageTwoListModel.addElement(variableNamesList[j]);
+            }
+        }
+
+        DefaultListModel<String> stageTwoLevelOneListModel = (DefaultListModel<String>) StageTwoLevelOneVariables.getModel();
+        DefaultListModel<String> stageTwoLevelTwoListModel = (DefaultListModel<String>) StageTwoLevelTwoVariables.getModel();
+        for (int i = 0; i < stageTwoLevelOneListModel.getSize(); i++) {
+            Object item = stageTwoLevelOneListModel.getElementAt(i);
+            stageTwoListModel.removeElement(item);
+        }
+        for (int i = 0; i < stageTwoLevelTwoListModel.getSize(); i++) {
+            Object item = stageTwoLevelTwoListModel.getElementAt(i);
+            stageTwoListModel.removeElement(item);
+        }
+
         StageTwoAllVariables.setModel(stageTwoListModel);
+        StageTwoAllVariables.setSelectedIndex(1);
 
     }
 

@@ -136,7 +136,7 @@ public class stageOneRegs extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setText("Variables");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 30, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel2.setText("Level-1 (Time Varying)");
@@ -234,7 +234,7 @@ public class stageOneRegs extends javax.swing.JFrame {
         //mixregStageOne.updateLevelOneRegGrid(levelOneList);
         mixregGUI.mxr.updateStageOneLevelOneGrid(levelOneList);
         mixregGUI.mxr.updateStageOneLevelTwoGrid(levelTwoList);
-        
+
         this.dispose();
     }//GEN-LAST:event_stageOneSubmitButtonActionPerformed
 
@@ -417,9 +417,32 @@ public class stageOneRegs extends javax.swing.JFrame {
     }
 
     public void updateStageOneAgain() {
+        int idIndex = mixregGUI.getIDFieldPosition();
+        int stageOneIndex = mixregGUI.getStageOneDVFieldPosition();
 
-        //AllVariablesList.setModel(AllVariablesList.getModel());
+        varList.removeAllElements();
+
+        for (int j = 0; j < variableNamesList.length; j++) {
+            if (j == idIndex || j == stageOneIndex) {
+                //do nothing               
+            } else {
+                varList.addElement(variableNamesList[j]);
+            }
+        }
+
+        DefaultListModel<String> stageOneLevelOneListModel = (DefaultListModel<String>) getStageOneLevelOneList().getModel();
+        DefaultListModel<String> stageOneLevelTwoListModel = (DefaultListModel<String>) getStageOneLevelTwoList().getModel();
+        for (int i = 0; i < stageOneLevelOneListModel.getSize(); i++) {
+            Object item = stageOneLevelOneListModel.getElementAt(i);
+            varList.removeElement(item);
+        }
+        for (int i = 0; i < stageOneLevelTwoListModel.getSize(); i++) {
+            Object item = stageOneLevelTwoListModel.getElementAt(i);
+            varList.removeElement(item);
+        }
+
         AllVariablesList.setModel(varList);
+        AllVariablesList.setSelectedIndex(0);
 
     }
 
@@ -468,8 +491,8 @@ public class stageOneRegs extends javax.swing.JFrame {
     public javax.swing.JList<String> getStageOneLevelTwoList() {
         return StageOneLevelTwoList;
     }
-    
-    public void getEnabledStageOneSubmitButton(boolean turnon){
+
+    public void getEnabledStageOneSubmitButton(boolean turnon) {
         stageOneSubmitButton.setEnabled(turnon);
     }
 }

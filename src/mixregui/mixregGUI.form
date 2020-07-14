@@ -1564,28 +1564,22 @@
                   </Layout>
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="randomLocationEffectsLabel">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Selected model:"/>
-                      </Properties>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
                       </AuxValues>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="12" y="34" width="-1" height="-1"/>
+                          <AbsoluteConstraints x="110" y="34" width="-1" height="-1"/>
                         </Constraint>
                       </Constraints>
                     </Component>
                     <Component class="javax.swing.JLabel" name="stageTwoOutcomePrintLabel">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="State 1 outcome:"/>
-                      </Properties>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
                       </AuxValues>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="12" y="55" width="-1" height="-1"/>
+                          <AbsoluteConstraints x="115" y="55" width="-1" height="-1"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -1606,6 +1600,32 @@
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="12" y="28" width="165" height="6"/>
+                        </Constraint>
+                      </Constraints>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="randomLocationEffectsLabel1">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Stage 1 model:"/>
+                      </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+                      </AuxValues>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="12" y="34" width="-1" height="-1"/>
+                        </Constraint>
+                      </Constraints>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="stageTwoOutcomePrintLabel1">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="State 1 outcome:"/>
+                      </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+                      </AuxValues>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="12" y="55" width="-1" height="-1"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -2089,8 +2109,11 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="SansSerif" size="12" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Stage 1 Configuration"/>
+                <Property name="text" type="java.lang.String" value="Selected Model Configuration"/>
               </Properties>
+              <AccessibilityProperties>
+                <Property name="AccessibleContext.accessibleName" type="java.lang.String" value=""/>
+              </AccessibilityProperties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="90" y="25" width="-1" height="-1"/>
@@ -2098,52 +2121,37 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="stageOneOutcomeStageTwoConfigLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Stage 1 outcome:"/>
-              </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="90" y="70" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="195" y="70" width="-1" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="stageOneModelStageTwoConfigLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Stage 1 model:"/>
-              </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="90" y="50" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="180" y="50" width="-1" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="stageTwoOutcomeStageTwoConfigLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Stage 2 outcome:"/>
-              </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="90" y="110" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="195" y="110" width="-1" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="stageTwoModelTypeStageTwoConfigLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Stage 2 model type:"/>
-              </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="90" y="90" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="205" y="90" width="-1" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="numResamplingStageTwoConfigLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Number of resampling in stage 2:"/>
-              </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="90" y="130" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="275" y="130" width="-1" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -2157,7 +2165,7 @@
             <Component class="javax.swing.JSeparator" name="jSeparator17">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="90" y="41" width="120" height="10"/>
+                  <AbsoluteConstraints x="90" y="41" width="165" height="10"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -2210,6 +2218,59 @@
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="920" y="280" width="130" height="20"/>
+                </Constraint>
+              </Constraints>
+            </Component>
+            <Component class="javax.swing.JLabel" name="stageOneModelStageTwoConfigLabel1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Stage 1 model:"/>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="90" y="50" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
+            </Component>
+            <Component class="javax.swing.JLabel" name="stageOneOutcomeStageTwoConfigLabel1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Stage 1 outcome:"/>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="90" y="70" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
+            </Component>
+            <Component class="javax.swing.JLabel" name="stageTwoModelTypeStageTwoConfigLabel1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Stage 2 model type:"/>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="90" y="90" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
+            </Component>
+            <Component class="javax.swing.JLabel" name="stageTwoOutcomeStageTwoConfigLabel1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Stage 2 outcome:"/>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="90" y="110" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
+            </Component>
+            <Component class="javax.swing.JLabel" name="numResamplingStageTwoConfigLabel1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Number of resamples (stage 2):"/>
+              </Properties>
+              <AccessibilityProperties>
+                <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Number of resamples (stage 2):"/>
+              </AccessibilityProperties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="90" y="130" width="-1" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>

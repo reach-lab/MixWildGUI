@@ -35,6 +35,7 @@ import def_lib.MixLibrary;
 import def_lib.ModelBuilder;
 import def_lib.SuperUserMenu;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -415,10 +416,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         if (stageTwoSingleLevel.isSelected()) {
 
-            modelTypeText = "single-level";
+            modelTypeText = "Single-level";
         } else if (stageTwoMultiLevel.isSelected()) {
 
-            modelTypeText = "multi-level";
+            modelTypeText = "Multi-level";
         }
         return modelTypeText;
 
@@ -902,6 +903,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageTwoOutcomePrintLabel = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jSeparator18 = new javax.swing.JSeparator();
+        randomLocationEffectsLabel1 = new javax.swing.JLabel();
+        stageTwoOutcomePrintLabel1 = new javax.swing.JLabel();
         jSeparator7 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
         startStageTwo = new javax.swing.JButton();
@@ -945,6 +948,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         jLabel35 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
+        stageOneModelStageTwoConfigLabel1 = new javax.swing.JLabel();
+        stageOneOutcomeStageTwoConfigLabel1 = new javax.swing.JLabel();
+        stageTwoModelTypeStageTwoConfigLabel1 = new javax.swing.JLabel();
+        stageTwoOutcomeStageTwoConfigLabel1 = new javax.swing.JLabel();
+        numResamplingStageTwoConfigLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -1634,17 +1642,19 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         );
 
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        randomLocationEffectsLabel.setText("Selected model:");
-        jPanel7.add(randomLocationEffectsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 34, -1, -1));
-
-        stageTwoOutcomePrintLabel.setText("State 1 outcome:");
-        jPanel7.add(stageTwoOutcomePrintLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 55, -1, -1));
+        jPanel7.add(randomLocationEffectsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 34, -1, -1));
+        jPanel7.add(stageTwoOutcomePrintLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 55, -1, -1));
 
         jLabel21.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jLabel21.setText("Selected Model Configuration");
         jPanel7.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 12, 212, -1));
         jPanel7.add(jSeparator18, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 28, 165, 6));
+
+        randomLocationEffectsLabel1.setText("Stage 1 model:");
+        jPanel7.add(randomLocationEffectsLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 34, -1, -1));
+
+        stageTwoOutcomePrintLabel1.setText("State 1 outcome:");
+        jPanel7.add(stageTwoOutcomePrintLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 55, -1, -1));
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -1899,25 +1909,17 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         jPanel12.add(stageTwoLevelOnePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 90, 610, 170));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jLabel3.setText("Stage 1 Configuration");
+        jLabel3.setText("Selected Model Configuration");
         jPanel12.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 25, -1, -1));
+        jLabel3.getAccessibleContext().setAccessibleName("");
 
-        stageOneOutcomeStageTwoConfigLabel.setText("Stage 1 outcome:");
-        jPanel12.add(stageOneOutcomeStageTwoConfigLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, -1, -1));
-
-        stageOneModelStageTwoConfigLabel.setText("Stage 1 model:");
-        jPanel12.add(stageOneModelStageTwoConfigLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, -1, -1));
-
-        stageTwoOutcomeStageTwoConfigLabel.setText("Stage 2 outcome:");
-        jPanel12.add(stageTwoOutcomeStageTwoConfigLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, -1, -1));
-
-        stageTwoModelTypeStageTwoConfigLabel.setText("Stage 2 model type:");
-        jPanel12.add(stageTwoModelTypeStageTwoConfigLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, -1, -1));
-
-        numResamplingStageTwoConfigLabel.setText("Number of resampling in stage 2:");
-        jPanel12.add(numResamplingStageTwoConfigLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, -1, -1));
+        jPanel12.add(stageOneOutcomeStageTwoConfigLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 70, -1, -1));
+        jPanel12.add(stageOneModelStageTwoConfigLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, -1, -1));
+        jPanel12.add(stageTwoOutcomeStageTwoConfigLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 110, -1, -1));
+        jPanel12.add(stageTwoModelTypeStageTwoConfigLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 90, -1, -1));
+        jPanel12.add(numResamplingStageTwoConfigLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 130, -1, -1));
         jPanel12.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 260, 10));
-        jPanel12.add(jSeparator17, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 41, 120, 10));
+        jPanel12.add(jSeparator17, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 41, 165, 10));
 
         jLabel33.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel33.setText(" Main Effects");
@@ -1934,6 +1936,22 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         jLabel37.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel37.setText("Location X Scale");
         jPanel12.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 280, 130, 20));
+
+        stageOneModelStageTwoConfigLabel1.setText("Stage 1 model:");
+        jPanel12.add(stageOneModelStageTwoConfigLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, -1, -1));
+
+        stageOneOutcomeStageTwoConfigLabel1.setText("Stage 1 outcome:");
+        jPanel12.add(stageOneOutcomeStageTwoConfigLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, -1, -1));
+
+        stageTwoModelTypeStageTwoConfigLabel1.setText("Stage 2 model type:");
+        jPanel12.add(stageTwoModelTypeStageTwoConfigLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, -1, -1));
+
+        stageTwoOutcomeStageTwoConfigLabel1.setText("Stage 2 outcome:");
+        jPanel12.add(stageTwoOutcomeStageTwoConfigLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, -1, -1));
+
+        numResamplingStageTwoConfigLabel1.setText("Number of resamples (stage 2):");
+        jPanel12.add(numResamplingStageTwoConfigLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, -1, -1));
+        numResamplingStageTwoConfigLabel1.getAccessibleContext().setAccessibleName("Number of resamples (stage 2):");
 
         stageOneTabs.addTab("Stage 2 Configuration", jPanel12);
 
@@ -2513,6 +2531,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
                 stage_1_regs.setVisible(true);
                 stage_1_regs.updateStageOneAgain();
+//                stage_1_regs.updateAllVariables();
             } else {
                 stage_1_regs.setVisible(true);
                 stage_1_regs.updateAllVariables();
@@ -3378,12 +3397,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JButton newModelSubmit;
     private javax.swing.JButton newModel_resetButton;
     private javax.swing.JLabel numResamplingStageTwoConfigLabel;
+    private javax.swing.JLabel numResamplingStageTwoConfigLabel1;
     private javax.swing.JRadioButton oneRLERadio;
     private javax.swing.JTextPane outCategoryDisplay;
     private javax.swing.JButton outcomeCatButton;
     private javax.swing.JPanel parentPanel;
     public static javax.swing.JLabel printedFileName;
     public static javax.swing.JLabel randomLocationEffectsLabel;
+    public static javax.swing.JLabel randomLocationEffectsLabel1;
     private javax.swing.ButtonGroup randomScaleSelectionGroup;
     private javax.swing.JRadioButton randomScaleSelectionNo;
     private javax.swing.JRadioButton randomScaleSelectionYes;
@@ -3401,10 +3422,12 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JPanel stageOneLevelTwoPanel;
     private javax.swing.JLabel stageOneModelGiantLabel;
     private javax.swing.JLabel stageOneModelStageTwoConfigLabel;
+    private javax.swing.JLabel stageOneModelStageTwoConfigLabel1;
     private javax.swing.JRadioButton stageOneOrdinalRadio;
     private javax.swing.ButtonGroup stageOneOutcomeGroup;
     private javax.swing.JLabel stageOneOutcomeHelpButton;
     private javax.swing.JLabel stageOneOutcomeStageTwoConfigLabel;
+    private javax.swing.JLabel stageOneOutcomeStageTwoConfigLabel1;
     private javax.swing.JLabel stageOneOutcomeViewLabel;
     public static javax.swing.JTextArea stageOneOutput;
     private javax.swing.JLabel stageOneRLEHelpButton;
@@ -3420,10 +3443,13 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel stageTwoModelTypeHelpButton;
     private javax.swing.JLabel stageTwoModelTypeLabel;
     private javax.swing.JLabel stageTwoModelTypeStageTwoConfigLabel;
+    private javax.swing.JLabel stageTwoModelTypeStageTwoConfigLabel1;
     private javax.swing.JRadioButton stageTwoMultiLevel;
     private javax.swing.JComboBox<String> stageTwoOutcome;
     public static javax.swing.JLabel stageTwoOutcomePrintLabel;
+    public static javax.swing.JLabel stageTwoOutcomePrintLabel1;
     private javax.swing.JLabel stageTwoOutcomeStageTwoConfigLabel;
+    private javax.swing.JLabel stageTwoOutcomeStageTwoConfigLabel1;
     private javax.swing.JLabel stageTwoOutcomeTypeHelpButton;
     private javax.swing.JLabel stageTwoOutcomeTypeLabel;
     public static javax.swing.JTextArea stageTwoOutput;
@@ -6175,8 +6201,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
                     setVisible(true);
 //                    randomLocationEffectsLabel.setText("Random location effects: " + randomLocationEffects());
-                    randomLocationEffectsLabel.setText("Stage 1 model: " + randomLocationEffects());
-                    stageTwoOutcomePrintLabel.setText("Stage 1 outcome: " + stageOneOutcomeTypeString());
+                    Color darkGreen = new Color(0, 100, 0);
+                    randomLocationEffectsLabel.setText(randomLocationEffects());
+                    randomLocationEffectsLabel.setForeground(darkGreen);
+                    stageTwoOutcomePrintLabel.setText(stageOneOutcomeTypeString());
+                    stageTwoOutcomePrintLabel.setForeground(darkGreen);
 
                     if (!isUpdateStage2ConfigClicked) {
                         isSubmitClicked();
@@ -6801,11 +6830,17 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 //            stageOneTabs.setEnabledAt(2, false);
 //            stageOneTabs.setEnabledAt(4, false);
 //        }
-        stageOneModelStageTwoConfigLabel.setText("Stage 1 model: " + randomLocationEffects());
-        stageOneOutcomeStageTwoConfigLabel.setText("Stage 1 outcome: " + stageOneOutcomeTypeString());
-        stageTwoOutcomeStageTwoConfigLabel.setText("Stage 2 outcome: " + stageTwoOutcomeTypeString());
-        stageTwoModelTypeStageTwoConfigLabel.setText("Stage 2 model type: " + stageTwoModelTypeString());
-        numResamplingStageTwoConfigLabel.setText("Number of resampling (stage 2): " + numResamplingString());
+        Color darkGreen = new Color(0, 100, 0);
+        stageOneModelStageTwoConfigLabel.setText(randomLocationEffects());
+        stageOneModelStageTwoConfigLabel.setForeground(darkGreen);
+        stageOneOutcomeStageTwoConfigLabel.setText(stageOneOutcomeTypeString());
+        stageOneOutcomeStageTwoConfigLabel.setForeground(darkGreen);
+        stageTwoOutcomeStageTwoConfigLabel.setText(stageTwoOutcomeTypeString());
+        stageTwoOutcomeStageTwoConfigLabel.setForeground(darkGreen);
+        stageTwoModelTypeStageTwoConfigLabel.setText(stageTwoModelTypeString());
+        stageTwoModelTypeStageTwoConfigLabel.setForeground(darkGreen);
+        numResamplingStageTwoConfigLabel.setText(numResamplingString());
+        numResamplingStageTwoConfigLabel.setForeground(darkGreen);
     }
 
     private void update_trigger_StageOneRegConfig() {
@@ -7928,6 +7963,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         missingViewLabel.setVisible(turnOn);
         missingValueAbsent.setVisible(turnOn);
         missingValuePresent.setVisible(turnOn);
+        datasetHelpButton.setVisible(turnOn);
         datasetMissingValuesHelpButton.setVisible(turnOn);
 
         if (turnOn) {
