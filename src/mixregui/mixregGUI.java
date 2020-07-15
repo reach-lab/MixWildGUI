@@ -1642,7 +1642,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         );
 
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel7.add(randomLocationEffectsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 34, -1, -1));
+        jPanel7.add(randomLocationEffectsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(105, 34, -1, -1));
         jPanel7.add(stageTwoOutcomePrintLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 55, -1, -1));
 
         jLabel21.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
@@ -1742,7 +1742,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         jLabel14.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel14.setText(" Main Effects");
-        jPanel12.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(501, 70, 110, -1));
+        jPanel12.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 70, 110, -1));
 
         jLabel12.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel12.setText("Stage 2 Interactions");
@@ -1750,7 +1750,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         jLabel15.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel15.setText("Random Location");
-        jPanel12.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(631, 70, 140, -1));
+        jPanel12.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(655, 70, 140, -1));
 
         addStageTwoTabTwo.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         addStageTwoTabTwo.setText("Configure Stage 2 Regressors ...");
@@ -1923,11 +1923,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         jLabel33.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel33.setText(" Main Effects");
-        jPanel12.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(501, 280, 110, -1));
+        jPanel12.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 280, 110, -1));
 
         jLabel35.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel35.setText("Random Location");
-        jPanel12.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(631, 280, 140, -1));
+        jPanel12.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(655, 280, 140, -1));
 
         jLabel36.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel36.setText("Random Scale");
@@ -1951,7 +1951,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         numResamplingStageTwoConfigLabel1.setText("Number of resamples (stage 2):");
         jPanel12.add(numResamplingStageTwoConfigLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, -1, -1));
-        numResamplingStageTwoConfigLabel1.getAccessibleContext().setAccessibleName("Number of resamples (stage 2):");
 
         stageOneTabs.addTab("Stage 2 Configuration", jPanel12);
 
