@@ -39,7 +39,7 @@ You can access the video tutorial to using MixWILD [here](https://www.youtube.co
 
 ### Reference reading materials ###
 
-Download introductary slides, Part 1 here: [Details and Application of EMA](/SBM_Part_1.pdf)
+Download introductary slides here: [Details and Application of EMA](/SBM_Part_1.pdf)
 <br/>
 Download user guide here: [User Guide for MixWILD](/MixWILD_users_guide_with_appendix_AB.pdf)
 <br/>
