@@ -41,7 +41,7 @@ You can access the video tutorial to using MixWILD [here](https://www.youtube.co
 
 Download introductary slides, Part 1 here: [Details and Application of EMA](/SBM_Part_1.pdf)
 <br/>
-Download introductary slides, Part 2 here: [Introduction to MixWILD](https://hedeker-sites.uchicago.edu/sites/hedeker.uchicago.edu/files/uploads/SBM_MixWild.pdf)
+Download introductary slides, Part 2 here: [Introduction to MixWILD](/"MixWILD users guide with appendix A B.pdf")
 <br/>
 Download user guide here: [User Guide for MixWILD](https://hedeker-sites.uchicago.edu/sites/hedeker.uchicago.edu/files/uploads/MIXWILD%20Program%20User%20guide%20v040618.pdf)
 <br/>
