@@ -23,7 +23,7 @@ MixWILD (Also Mixed model analysis with Intensive Longitudinal Data) is a deskto
 3. Bugfixes
 
 ### Manuscript Supplement ###
-[MixWild User Guide](/"MixWILD users guide with appendix A B.pdf")
+[MixWild User Guide](/MixWILD_users_guide_with_appendix_AB.pdf)
 
 [Example Dataset MixWILD](/Mixwild_example_data.csv)
 
@@ -41,7 +41,7 @@ You can access the video tutorial to using MixWILD [here](https://www.youtube.co
 
 Download introductary slides, Part 1 here: [Details and Application of EMA](/SBM_Part_1.pdf)
 <br/>
-Download user guide here: [User Guide for MixWILD](/"MixWILD users guide with appendix A B.pdf")
+Download user guide here: [User Guide for MixWILD](/MixWILD_users_guide_with_appendix_AB.pdf)
 <br/>
 Download example data here: [Example Dataset MixWILD](/Mixwild_example_data.csv)
 
