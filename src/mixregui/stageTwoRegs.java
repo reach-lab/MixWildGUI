@@ -105,14 +105,13 @@ public class stageTwoRegs extends javax.swing.JFrame {
         StageTwoAllVariables = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         StageTwoLevelTwoVariables = new javax.swing.JList<>();
-        jLabel3 = new javax.swing.JLabel();
         stageTwoCancel = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         StageTwoLevelOneVariables = new javax.swing.JList<>();
         jLabel4 = new javax.swing.JLabel();
         stageTwoLevelOneAddButton = new javax.swing.JButton();
         stageTwoLevelOneRemoveButton = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Add Stage 2 regressors");
@@ -120,11 +119,13 @@ public class stageTwoRegs extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(600, 540));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setText("Variables");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel2.setText("Level 2 (Time Invariant)");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 230, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 230, -1, -1));
 
         stageTwoLevelTwoAddButton.setText("Add");
         stageTwoLevelTwoAddButton.addActionListener(new java.awt.event.ActionListener() {
@@ -132,7 +133,7 @@ public class stageTwoRegs extends javax.swing.JFrame {
                 stageTwoLevelTwoAddButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(stageTwoLevelTwoAddButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, 89, -1));
+        getContentPane().add(stageTwoLevelTwoAddButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 310, 89, -1));
 
         stageTwoLevelTwoRemoveButton.setText("Remove");
         stageTwoLevelTwoRemoveButton.addActionListener(new java.awt.event.ActionListener() {
@@ -140,7 +141,7 @@ public class stageTwoRegs extends javax.swing.JFrame {
                 stageTwoLevelTwoRemoveButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(stageTwoLevelTwoRemoveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, 89, -1));
+        getContentPane().add(stageTwoLevelTwoRemoveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 340, 89, -1));
 
         stageTwoResetButton.setText("Reset");
         stageTwoResetButton.addActionListener(new java.awt.event.ActionListener() {
@@ -148,7 +149,7 @@ public class stageTwoRegs extends javax.swing.JFrame {
                 stageTwoResetButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(stageTwoResetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(319, 460, 96, -1));
+        getContentPane().add(stageTwoResetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(365, 460, 96, -1));
 
         stageTwoSubmitButton.setText("Submit");
         stageTwoSubmitButton.addActionListener(new java.awt.event.ActionListener() {
@@ -156,7 +157,7 @@ public class stageTwoRegs extends javax.swing.JFrame {
                 stageTwoSubmitButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(stageTwoSubmitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(419, 460, 96, -1));
+        getContentPane().add(stageTwoSubmitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(465, 460, 96, -1));
 
         jScrollPane1.setViewportView(StageTwoAllVariables);
 
@@ -166,31 +167,21 @@ public class stageTwoRegs extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 257, 220, 170));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/MixWildLogoTiny.png"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 460, -1, 36));
-
         stageTwoCancel.setText("Cancel");
         stageTwoCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stageTwoCancelActionPerformed(evt);
             }
         });
-        getContentPane().add(stageTwoCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 460, 90, -1));
-
-        jButton1.setText("?");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 350, 41, -1));
+        getContentPane().add(stageTwoCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(265, 460, 96, -1));
 
         jScrollPane3.setViewportView(StageTwoLevelOneVariables);
 
         getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 220, 160));
 
+        jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel4.setText("Level 1 (Time Variant)");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, -1, -1));
 
         stageTwoLevelOneAddButton.setText("Add");
         stageTwoLevelOneAddButton.addActionListener(new java.awt.event.ActionListener() {
@@ -198,7 +189,7 @@ public class stageTwoRegs extends javax.swing.JFrame {
                 stageTwoLevelOneAddButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(stageTwoLevelOneAddButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 89, -1));
+        getContentPane().add(stageTwoLevelOneAddButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 89, -1));
 
         stageTwoLevelOneRemoveButton.setText("Remove");
         stageTwoLevelOneRemoveButton.addActionListener(new java.awt.event.ActionListener() {
@@ -206,7 +197,11 @@ public class stageTwoRegs extends javax.swing.JFrame {
                 stageTwoLevelOneRemoveButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(stageTwoLevelOneRemoveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 89, -1));
+        getContentPane().add(stageTwoLevelOneRemoveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 89, -1));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon4 - Copy.png"))); // NOI18N
+        jLabel5.setToolTipText("<html><pre>Please select additional covariates to include in the stage-two model.\nNote: If you wish to re-run the second stage model without running stage 1, you will only be able to remove regressors. <pre>");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 32, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -278,12 +273,6 @@ public class stageTwoRegs extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_stageTwoCancelActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JOptionPane.showMessageDialog(null, "Please select additional covariates to include in the stage-two model. "
-                + System.lineSeparator()
-                + "Note: If you wish to re-run the second stage model without running stage 1, you will only be able to remove regressors");
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void stageTwoLevelOneAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoLevelOneAddButtonActionPerformed
         //Add items to the model and then copy it to the UI list
@@ -359,11 +348,10 @@ public class stageTwoRegs extends javax.swing.JFrame {
     private javax.swing.JList<String> StageTwoAllVariables;
     private javax.swing.JList<String> StageTwoLevelOneVariables;
     private javax.swing.JList<String> StageTwoLevelTwoVariables;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -407,8 +395,33 @@ public class stageTwoRegs extends javax.swing.JFrame {
 
     public void updateStageTwoAgain() {
 
-        //StageTwoAllVariables.setModel(StageTwoAllVariables.getModel());
+        int idIndex = mixregGUI.getIDFieldPosition();
+        int stageOneIndex = mixregGUI.getStageOneDVFieldPosition();
+        int stageTwoIndex = mixregGUI.getStageTwoDVFieldPosition();
+
+        stageTwoListModel.removeAllElements();
+
+        for (int j = 0; j < variableNamesList.length; j++) {
+            if (j == idIndex || j == stageOneIndex || j == stageTwoIndex) {
+                //do nothing               
+            } else {
+                stageTwoListModel.addElement(variableNamesList[j]);
+            }
+        }
+
+        DefaultListModel<String> stageTwoLevelOneListModel = (DefaultListModel<String>) StageTwoLevelOneVariables.getModel();
+        DefaultListModel<String> stageTwoLevelTwoListModel = (DefaultListModel<String>) StageTwoLevelTwoVariables.getModel();
+        for (int i = 0; i < stageTwoLevelOneListModel.getSize(); i++) {
+            Object item = stageTwoLevelOneListModel.getElementAt(i);
+            stageTwoListModel.removeElement(item);
+        }
+        for (int i = 0; i < stageTwoLevelTwoListModel.getSize(); i++) {
+            Object item = stageTwoLevelTwoListModel.getElementAt(i);
+            stageTwoListModel.removeElement(item);
+        }
+
         StageTwoAllVariables.setModel(stageTwoListModel);
+        StageTwoAllVariables.setSelectedIndex(1);
 
     }
 
