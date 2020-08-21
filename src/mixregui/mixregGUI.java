@@ -585,7 +585,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         //Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/resources/mixLogo.png"));
         //setIconImage(image);
-        if (i > MixLibrary.STAGE_ONE_RLE_SLOPE) {
+        if (i == MixLibrary.STAGE_ONE_RLE_SLOPE) {
 
             NoAssociationRadio.setText("Yes");
 
@@ -1380,6 +1380,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         DatasetLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         DatasetLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         DatasetLabel.setText("Dataset");
+
         jPanel13.add(DatasetLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 97, -1, -1));
         jPanel13.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 12, 175, -1));
 
@@ -1792,6 +1793,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageTwoRegsGridLvl2.getAccessibleContext().setAccessibleParent(stageTwoRegsGridLvl2);
 
         jPanel12.add(stageTwoLevelTwoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 300, 610, 170));
+
         stageTwoLevelTwoPanel.getAccessibleContext().setAccessibleName("Level-2 Stage-2");
         stageTwoLevelTwoPanel.getAccessibleContext().setAccessibleDescription("");
 
@@ -2013,9 +2015,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 .addComponent(jLabel7)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(69, Short.MAX_VALUE))
+
         );
 
         stageOneTabs.addTab("Stage 1 Results", jPanel3);
@@ -3766,7 +3770,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             }
 
-            if (i > MixLibrary.STAGE_ONE_RLE_SLOPE) {
+            if (i == MixLibrary.STAGE_ONE_RLE_SLOPE) {
                 levelTwoBoxes.get(j).get(1).setVisible(false);
 
             } else {
@@ -6170,7 +6174,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
                 if (isOutcomeNone()) {
                     try {
-                        defFile.setAdvancedUseStageTwo("1");
+                        // defFile.setAdvancedUseStageTwo("1");
                         System.out.println("DROP SECOND STAGE?: " + defFile.getAdvancedUseStageTwo());
                     } catch (Exception ex) {
                         SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
@@ -6181,7 +6185,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 } else {
 
                     try {
-                        defFile.setAdvancedUseStageTwo("0");
+                        // defFile.setAdvancedUseStageTwo("0");
                         System.out.println("DROP SECOND STAGE?: " + defFile.getAdvancedUseStageTwo());
                     } catch (Exception ex) {
                         SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
@@ -6539,7 +6543,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
 
             //******************************************************************
-        } else if (i > MixLibrary.STAGE_ONE_RLE_SLOPE) {
+        } else if (i == MixLibrary.STAGE_ONE_RLE_SLOPE) {
 
             try {
                 tryCount = 1;
@@ -7048,7 +7052,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             }
 
-            if (i > MixLibrary.STAGE_ONE_RLE_SLOPE) {
+            if (i == MixLibrary.STAGE_ONE_RLE_SLOPE) {
                 levelTwoBoxes.get(j).get(1).setVisible(false);
 
             } else {
@@ -7163,7 +7167,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             } // field array counting ends
 
-        } else if (i > MixLibrary.STAGE_ONE_RLE_SLOPE) {
+        } else if (i == MixLibrary.STAGE_ONE_RLE_SLOPE) {
 
             //Check if the effect of mean on WS variances options have been selected
             if (NoAssociationRadio.isSelected()) {
@@ -7356,7 +7360,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 //                modelBuilder = new ModelBuilder(defFile);
                 //                modelEquationTextArea.setText(modelBuilder.meanEquation());
                 //                testEq.setText(modelBuilder.meanEquation());
-                equationArea.setText(modelBuilder.meanEquation());
+                // TODO THIS // equationArea.setText(modelBuilder.meanEquation());
 
                 //modelBuilder.saveWildFile(defFile);
                 //                modelBuilder.meanEquation();
@@ -7675,6 +7679,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         int regSize = defaultListModel.getSize();
         stageTwoLevelOneRegSize = regSize;
+        System.out.println("Eldin says: stage2lvl1 reg size is: " + stageTwoLevelOneRegSize);
 
         stageTwoRegsGridLvl1.removeAll();
 

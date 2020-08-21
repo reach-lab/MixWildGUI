@@ -58,7 +58,7 @@ import org.apache.commons.io.FilenameUtils;
  */
 public class ModelBuilder {
 
-    private DefinitionHelper buildFile;
+    private MixLibrary buildFile;
 
     private static final String KEY_ALPHA = "\u03b1";
     private static final String KEY_BETA = "\u03b2";
@@ -67,20 +67,20 @@ public class ModelBuilder {
     private static final String KEY_IJ = "\u1d62" + "\u2c7c";
     private static final String KEY_PLUS = " + ";
 
-    public ModelBuilder(DefinitionHelper defFile) {
+    public ModelBuilder(MixLibrary defFile) {
         this.buildFile = defFile;
-        switch (buildFile.sequenceDecision()) {
-            case DefinitionHelper.MIXREGLS_MIXREG_KEY:
-                break;
-            case DefinitionHelper.MIXREGLS_MIXOR_KEY:
-                break;
-            case DefinitionHelper.MIXREGMLS_MIXREG_KEY:
-                break;
-            case DefinitionHelper.MIXREGMLS_MIXOR_KEY:
-                break;
-            default:
-                break;
-        }
+//        switch (buildFile.sequenceDecision()) {
+//            case DefinitionHelper.MIXREGLS_MIXREG_KEY:
+//                break;
+//            case DefinitionHelper.MIXREGLS_MIXOR_KEY:
+//                break;
+//            case DefinitionHelper.MIXREGMLS_MIXREG_KEY:
+//                break;
+//            case DefinitionHelper.MIXREGMLS_MIXOR_KEY:
+//                break;
+//            default:
+//                break;
+//        }
     }
 
     public String meanEquation() {
@@ -88,7 +88,7 @@ public class ModelBuilder {
         String constant = KEY_BETA + KEY_IJ + KEY_PLUS;
         String bsvar = "u" + KEY_I + KEY_PLUS;
         String wsvar = KEY_EPSILON + KEY_IJ;
-        if (buildFile.getModelFixedInt().matches("0")) {
+        if (buildFile.getAdvancedMeanIntercept().matches("0")) {
             constant = "";
         }
         String regressorsOne = "";
@@ -113,7 +113,7 @@ public class ModelBuilder {
         }
 
         String regressors = regressorsOne + regressorsTwo;
-        String[] decompMeanArray = buildFile.getLabelDecompMeanRegressors();
+        String[] decompMeanArray = buildFile.getSharedModelDecomposeMeanRegressorLabels();
         for (int i = 0; i < decompMeanArray.length; i++) {
             regressors += decompMeanArray[i].toUpperCase() + "_BS" + KEY_BETA + KEY_I + KEY_PLUS + decompMeanArray[i].toUpperCase() + "_WS" + KEY_BETA + KEY_IJ + KEY_PLUS;
         }
@@ -121,7 +121,7 @@ public class ModelBuilder {
         return prefix + constant + regressors + bsvar + wsvar;
     }
 
-    public static void saveWildDefinitionFile(String filePath, DefinitionHelper defLib) throws FileNotFoundException, IOException {
+    public static void saveWildDefinitionFile(String filePath, MixLibrary defLib) throws FileNotFoundException, IOException {
         FileOutputStream fos = new FileOutputStream(filePath);
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         oos.writeObject(defLib);
@@ -160,11 +160,11 @@ public class ModelBuilder {
         in2.close();   
     }
      */
-    public static DefinitionHelper loadWildFile(String filePath) throws IOException, ClassNotFoundException {
+    public static MixLibrary loadWildFile(String filePath) throws IOException, ClassNotFoundException {
         FileInputStream fis = new FileInputStream(filePath);
         ObjectInputStream ino = new ObjectInputStream(fis);
-        DefinitionHelper s;
-        s = (DefinitionHelper) ino.readObject();
+        MixLibrary s;
+        s = (MixLibrary) ino.readObject();
         ino.close();
         fis.close();
         return s;
@@ -187,7 +187,7 @@ public class ModelBuilder {
         return "MIXWILD" + dirName + "/";
     }
 
-    public static void archiveFolder(DefinitionHelper defLib, String absoluteWorkingDirectory) throws IOException {
+    public static void archiveFolder(MixLibrary defLib, String absoluteWorkingDirectory) throws IOException {
         System.out.println(defLib.getUtcDirPath());
         System.out.println(absoluteWorkingDirectory);
         String folderPath = absoluteWorkingDirectory + defLib.getUtcDirPath();
@@ -228,7 +228,7 @@ public class ModelBuilder {
 
     }
 
-    public static DefinitionHelper accessFolderArchive(File mwaFile) throws IOException, ClassNotFoundException {
+    public static MixLibrary accessFolderArchive(File mwaFile) throws IOException, ClassNotFoundException {
         String folderPath = FilenameUtils.getFullPath(mwaFile.getAbsolutePath());
 //        String dirName = Long.toString(Instant.now().getEpochSecond());
         SimpleDateFormat formatter= new SimpleDateFormat("yyyyMMddHHmm");
@@ -264,7 +264,7 @@ public class ModelBuilder {
         zis.close();
         fis.close();
 
-        DefinitionHelper returnDefLib = loadWildFile(outputPath + "model.mwd");
+        MixLibrary returnDefLib = loadWildFile(outputPath + "model.mwd");
         returnDefLib.setUtcDirPath(mwaFile.getAbsolutePath());
 
         System.out.println("Complete: Open");
