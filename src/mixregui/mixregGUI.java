@@ -752,7 +752,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         stageTwoSingleLevel.setEnabled(true);
         stageTwoSingleLevel.setSelected(true);
-        stageTwoMultiLevel.setEnabled(false);
+        stageTwoMultiLevel.setEnabled(true);
 
         //updateMixRegGUI();
         //this.setResizable(false);
@@ -1380,7 +1380,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         DatasetLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         DatasetLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         DatasetLabel.setText("Dataset");
-
         jPanel13.add(DatasetLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 97, -1, -1));
         jPanel13.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 12, 175, -1));
 
@@ -1793,7 +1792,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageTwoRegsGridLvl2.getAccessibleContext().setAccessibleParent(stageTwoRegsGridLvl2);
 
         jPanel12.add(stageTwoLevelTwoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 300, 610, 170));
-
         stageTwoLevelTwoPanel.getAccessibleContext().setAccessibleName("Level-2 Stage-2");
         stageTwoLevelTwoPanel.getAccessibleContext().setAccessibleDescription("");
 
@@ -2015,11 +2013,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 .addComponent(jLabel7)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(69, Short.MAX_VALUE))
-
         );
 
         stageOneTabs.addTab("Stage 1 Results", jPanel3);
@@ -3125,6 +3121,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             stageTwoSingleLevel.setVisible(true);
             stageTwoSingleLevel.setEnabled(true);
             stageTwoMultiLevel.setVisible(true);
+            stageTwoMultiLevel.setEnabled(true);
             stageTwoContinuousRadio.setVisible(true);
             stageTwoContinuousRadio.setEnabled(true);
             stageTwoDichotomousRadio.setVisible(true);

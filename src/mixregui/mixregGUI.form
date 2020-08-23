@@ -1292,23 +1292,18 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="levelTwoGrid" alignment="0" max="32767" attributes="0"/>
-
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-
                       <Component id="levelTwoGrid" alignment="0" pref="157" max="32767" attributes="0"/>
-
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-
                 <Container class="javax.swing.JPanel" name="levelTwoGrid">
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
-
                 </Container>
               </SubComponents>
             </Container>
@@ -2010,13 +2005,11 @@
                           <Component id="jScrollPane5" pref="189" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
-
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
                 <Component class="javax.swing.JButton" name="outcomeCatButton">
-
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Dialog" size="14" style="1"/>
@@ -2093,9 +2086,7 @@
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-
                       <Component id="stageTwoRegsGridLvl1" alignment="0" pref="147" max="32767" attributes="0"/>
-
                   </Group>
                 </DimensionLayout>
               </Layout>
