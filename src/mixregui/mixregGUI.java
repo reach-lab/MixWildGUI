@@ -96,7 +96,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     static String[] variableArray;
 
     static int RLE;
-    static boolean NoneVar;
+    static boolean notIncludeStageTwo;
     static boolean outComeBoolean;
     static boolean isRandomScale = false;
     static String dataFileNameRef;
@@ -237,7 +237,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         return selection;
     }
 
-    public boolean isOutcomeNone() {
+    public boolean includeStageTwoNo() {
         System.out.println("In isOutcomeNone NewModel");
 
         boolean selection = false;
@@ -252,8 +252,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         return selection;
     }
 
-    public boolean getNoneVar() {
-        return NoneVar;
+    public boolean getNotIncludeStageTwo() {
+        return notIncludeStageTwo;
 
     }
 
@@ -538,7 +538,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     boolean isStageTwoOutcomeChanged = false;
 
     boolean suppressed = false;
-    boolean outcomeNone = false;
+    boolean stageTwoNotIncluded = false;
     boolean addStageOneCHecked = false;
     boolean addStageTwoChecked = false;
 
@@ -570,7 +570,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 //        advancedOptions_view = new advancedOptions();
         //instructions = new InstructionsGUI();
         variableNamesCombo = getVariableNames();
-        outcomeNone = getNoneVar();
+        stageTwoNotIncluded = getNotIncludeStageTwo();
         outComeType = getOutComeType();
 
         IDList = new DefaultComboBoxModel<String>();
@@ -613,13 +613,13 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageTwoLevelTwoPanel.setLayout(new BorderLayout());
 
         System.out.println("Right before");
-        if (isOutcomeNone() == true) {
+        if (includeStageTwoNo() == true) {
             System.out.println("In isOutcomeNone MixReg");
             startStageTwo.setText("Run Stage 1");
             System.out.println(startStageTwo.getText());
             //stageOneTabs.set
 //            stageOneTabs.setEnabledAt(2, false);
-        } else if (isOutcomeNone() == false) {
+        } else if (includeStageTwoNo() == false) {
             startStageTwo.setText("Configure Stage 2");
         }
         System.out.println("Right after");
@@ -5866,9 +5866,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             guiStatesSaveButtonStageOne.setVisible(true);
             guiStatesSaveButtonStageTwo.setVisible(true);
 
-            if (isOutcomeNone() == true) {
+            if (includeStageTwoNo() == true) {
                 startStageTwo.setText("Run Stage 1");
-            } else if (isOutcomeNone() == false) {
+            } else if (includeStageTwoNo() == false) {
                 startStageTwo.setText("Configure Stage 2");
             }
 
@@ -5942,7 +5942,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
 
 //            System.out.println("MODEL SELECTOR: " + String.valueOf(defFile.getSelectedModel()));
-            if (filePath.getText().toString().equals("")) {
+            if (filePath.getText().equals("")) {
                 JOptionPane.showMessageDialog(null, "Please upload a .csv file to start your analysis", "Caution!", JOptionPane.INFORMATION_MESSAGE);
             } else {
 
@@ -5956,7 +5956,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     variableArray = variableNames.split(",");
                     System.out.println("Variables are: " + Arrays.toString(variableArray));
                     // save all variables in an array
-                    String[] varTemp = getVariableNames();
                     defFile.setSharedDataFilename(extractDatFilePath());
                     defFile.setAdvancedVariableCount(String.valueOf(variableArray.length));
                     System.out.println("From defHelper | Variable count: " + defFile.getAdvancedVariableCount());
@@ -5970,11 +5969,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
                 // Read random location effects from new Model
                 //RLE = (Integer) randomLocationEffects.getValue();
-                NoneVar = isOutcomeNone();
+                notIncludeStageTwo = includeStageTwoNo();
                 outComeBoolean = isOutcomeContinous();
-                System.out.println("NoneVar: " + String.valueOf(NoneVar));
+                System.out.println("NoneVar: " + String.valueOf(notIncludeStageTwo));
                 System.out.println(String.valueOf(isOutcomeContinous()));
-                System.out.println("IsOutcomeNone: " + String.valueOf(isOutcomeNone()));
+                System.out.println("IsOutcomeNone: " + String.valueOf(includeStageTwoNo()));
                 // set Values in def helper
                 defFile.setSharedModelTitle(getTitle());
                 System.out.println("From defHelper | Title: " + defFile.getSharedModelTitle());
@@ -6176,7 +6175,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
                 }
 
-                if (isOutcomeNone()) {
+                if (includeStageTwoNo()) {
                     try {
                         // defFile.setAdvancedUseStageTwo("1");
                         System.out.println("DROP SECOND STAGE?: " + defFile.getAdvancedUseStageTwo());
@@ -6781,8 +6780,13 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
         }
+//        System.out.print("1!!!!!!!!!!!!!!!!!!!!!");
+//        System.out.print(defFile.getAdvancedResampleCount());
+//        advancedOptions_view.update_trigger_AdvancedOptionsSubmit();
+//        System.out.print("2!!!!!!!!!!!!!!!!!!!!!");
+//        System.out.print(defFile.getAdvancedResampleCount());
 
-        if (outcomeNone == true) {
+        if (stageTwoNotIncluded == true) {
 
             if (!checkTabExistinJTabbedPane(stageOneTabs, "View Model")) {
                 int viewModelTabIdx = stageOneTabs.indexOfTab("View Data");
@@ -6797,7 +6801,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 int defCatch = 0;
                 try {
                     List<String> defFileOutput;
-
+                    
+//                    System.out.print("3!!!!!!!!!!!!!!!!!!!!!");
+//                    System.out.print(defFile.getAdvancedResampleCount());
                     defFile.writeStageOneOnlyDefFileToFolder();
 
                     //defFileOutput = defFile.buildStageOneOnlyDefinitonList();
@@ -6834,7 +6840,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
         }
 
-//        if (outcomeNone == true) {
+//        if (stageTwoNotIncluded == true) {
 //            stageOneTabs.setEnabledAt(2, false);
 //            stageOneTabs.setEnabledAt(4, false);
 //        }
@@ -7357,10 +7363,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             int defCatch = 0;
             try {
                 List<String> defFileOutput;
-                
+
                 defFile.writeDefFileToFolder();
                 defFileOutput = defFile.buildDefinitionList();
-                System.out.println("From defHelper | Stage 1 def file created successfully!");
+                System.out.println("From defHelper | Stage 1&2 def file created successfully!");
                 //modelBuilder(defFile);
 //                modelBuilder = new ModelBuilder(defFile);
                 //                modelEquationTextArea.setText(modelBuilder.meanEquation());
@@ -7614,7 +7620,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         revalidate();
 
     }
-    
+
     private void update_StageTwoLevelOneBoxes(DefaultListModel<String> defaultListModel, boolean[][] stageTwoLevelOneGridBoxesSelection) {
 
         JScrollPane scrollpanel = new JScrollPane(stageTwoRegsGridLvl1);
@@ -7796,7 +7802,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     }
 
-    
     private void update_trigger_suppressIntCheckBox() {
         if (suppressIntCheckBox.isSelected()) {
 
@@ -8127,15 +8132,15 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         }
 
         int stage2TabIdx = stageOneTabs.indexOfTab("Stage 1 Configuration");
-        if (!checkTabExistinJTabbedPane(stageOneTabs, "Stage 2 Configuration") && (isOutcomeNone() == false)) {
+        if (!checkTabExistinJTabbedPane(stageOneTabs, "Stage 2 Configuration") && (includeStageTwoNo() == false)) {
             stageOneTabs.insertTab("Stage 2 Configuration", null, jPanel12, null, stage2TabIdx + 1);
         }
 
         // remove tabs
-        if (checkTabExistinJTabbedPane(stageOneTabs, "Stage 2 Configuration") && (isOutcomeNone() == true)) {
+        if (checkTabExistinJTabbedPane(stageOneTabs, "Stage 2 Configuration") && (includeStageTwoNo() == true)) {
             stageOneTabs.remove(jPanel12);
         }
-        if (checkTabExistinJTabbedPane(stageOneTabs, "Stage 2 Results") && (isOutcomeNone() == true)) {
+        if (checkTabExistinJTabbedPane(stageOneTabs, "Stage 2 Results") && (includeStageTwoNo() == true)) {
             stageOneTabs.remove(jPanel4);
         }
     }

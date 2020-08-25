@@ -79,7 +79,7 @@ public class advancedOptions extends javax.swing.JFrame {
         resampleCheckBox.setSelected(true);
 
         //variables to save values:
-        if (mixregGUI.NoneVar == true) {
+        if (mixregGUI.notIncludeStageTwo == true) {
 
             resampleSpinner.setEnabled(false);
             resampleCheckBox.setEnabled(false);

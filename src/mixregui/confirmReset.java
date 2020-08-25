@@ -104,7 +104,7 @@ public class confirmReset extends javax.swing.JDialog {
                 mixregGUI.variableArray = null;
                 mixregGUI.mxr = null;
                 mixregGUI.RLE = 0;
-                mixregGUI.NoneVar = false;
+                mixregGUI.notIncludeStageTwo = false;
                 mixregGUI.outComeBoolean = false;
                 mixregGUI.isRandomScale = false;
                 mixregGUI.dataFileNameRef = null;
@@ -196,7 +196,7 @@ public class confirmReset extends javax.swing.JDialog {
         mixregGUI.variableArray = null;
         mixregGUI.mxr = null;
         mixregGUI.RLE = 0;
-        mixregGUI.NoneVar = false;
+        mixregGUI.notIncludeStageTwo = false;
         mixregGUI.outComeBoolean = false;
         mixregGUI.isRandomScale = false;
         mixregGUI.dataFileNameRef = null;
