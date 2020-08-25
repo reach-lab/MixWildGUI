@@ -91,11 +91,14 @@ public class MixRegGuiStates {
 
     // gui states of Stage Two
     public DefaultListModel<String> stageTwoListModel;
+    public DefaultListModel<String> stageTwoLevelOne;
     public DefaultListModel<String> stageTwoLevelTwo;
     public String stageTwoListModelString;
+    public String stageTwoLevelOneString;
     public String stageTwoLevelTwoString;
     public boolean isStageTwoSubmitClicked;
-    public boolean[][] stageTwoGridBoxesSelection;
+    public boolean[][] stageTwoLevelOneGridBoxesSelection;
+    public boolean[][] stageTwoLevelTwoGridBoxesSelection;
     public boolean suppressIntCheckBox;
 
     public ArrayList<String> levelTwoSelected;
@@ -167,9 +170,11 @@ public class MixRegGuiStates {
         this.isStageTwoSubmitted = mxr.isStageTwoSubmitted;
 
         this.stageTwoListModelString = saveDefaultListModel(stageTwoRegs.stageTwoListModel);
+        this.stageTwoLevelOneString = saveDefaultListModel(stageTwoRegs.stageTwoLevelOne);
         this.stageTwoLevelTwoString = saveDefaultListModel(stageTwoRegs.stageTwoLevelTwo);
         this.isStageTwoSubmitClicked = stageTwoRegs.isStageTwoSubmitClicked;
-        this.stageTwoGridBoxesSelection = getSelectionBoxes(mxr.stageTwoLevelTwoGridBoxes);
+        this.stageTwoLevelOneGridBoxesSelection = getSelectionBoxes(mxr.stageTwoLevelOneGridBoxes);
+        this.stageTwoLevelTwoGridBoxesSelection = getSelectionBoxes(mxr.stageTwoLevelTwoGridBoxes);
         this.suppressIntCheckBox = mxr.getSuppressIntCheckBox();
         this.levelTwoSelected = mxr.levelTwoSelected;
         this.sessionFolderName = mxr.sessionFolderName;
@@ -292,12 +297,15 @@ public class MixRegGuiStates {
         stageTwoListModelString = hmapStates.get("stageTwoListModel").getString();
         stageTwoListModel = loadDefaultListModel(stageTwoListModelString);
 
+        stageTwoLevelOneString = hmapStates.get("stageTwoLevelOne").getString();
+        stageTwoLevelOne = loadDefaultListModel(stageTwoLevelOneString);
 //        stageTwoLevelTwo = hmapStates.get("stageTwoLevelTwo").getStringList();
         stageTwoLevelTwoString = hmapStates.get("stageTwoLevelTwo").getString();
         stageTwoLevelTwo = loadDefaultListModel(stageTwoLevelTwoString);
 
         isStageTwoSubmitClicked = hmapStates.get("isStageTwoSubmitClicked").getBoolean();
-        stageTwoGridBoxesSelection = hmapStates.get("stageTwoGridBoxesSelection").getBox();
+        stageTwoLevelOneGridBoxesSelection = hmapStates.get("stageTwoLevelOneGridBoxesSelection").getBox();
+        stageTwoLevelTwoGridBoxesSelection = hmapStates.get("stageTwoLevelTwoGridBoxesSelection").getBox();
 
         suppressIntCheckBox = hmapStates.get("suppressIntCheckBox").getBoolean();
         levelTwoSelected = hmapStates.get("levelTwoSelected").getStringArrayList();
@@ -361,12 +369,14 @@ public class MixRegGuiStates {
         StateObject po50 = new StateObject("isStageOneSubmitted", isStageOneSubmitted);
         StateObject po51 = new StateObject("isStageTwoSubmitted", isStageTwoSubmitted);
         StateObject po52 = new StateObject("stageTwoListModel", stageTwoListModelString);
-        StateObject po53 = new StateObject("stageTwoLevelTwo", stageTwoLevelTwoString);
-        StateObject po54 = new StateObject("isStageTwoSubmitClicked", isStageTwoSubmitClicked);
-        StateObject po55 = new StateObject("stageTwoGridBoxesSelection", stageTwoGridBoxesSelection);
-        StateObject po56 = new StateObject("suppressIntCheckBox", suppressIntCheckBox);
-        StateObject po57 = new StateObject("levelTwoSelected", levelTwoSelected, 0);
-        StateObject po58 = new StateObject("sessionFolderName", sessionFolderName);
+        StateObject po53 = new StateObject("stageTwoLevelOne", stageTwoLevelOneString);
+        StateObject po54 = new StateObject("stageTwoLevelTwo", stageTwoLevelTwoString);
+        StateObject po55 = new StateObject("isStageTwoSubmitClicked", isStageTwoSubmitClicked);
+        StateObject po56 = new StateObject("stageTwoLevelOneGridBoxesSelection", stageTwoLevelOneGridBoxesSelection);
+        StateObject po57 = new StateObject("stageTwoLevelTwoGridBoxesSelection", stageTwoLevelTwoGridBoxesSelection);
+        StateObject po58 = new StateObject("suppressIntCheckBox", suppressIntCheckBox);
+        StateObject po59 = new StateObject("levelTwoSelected", levelTwoSelected, 0);
+        StateObject po60 = new StateObject("sessionFolderName", sessionFolderName);
 
         hashmap.put(po0.getKey(), po0);
         hashmap.put(po1.getKey(), po1);
@@ -427,6 +437,8 @@ public class MixRegGuiStates {
         hashmap.put(po56.getKey(), po56);
         hashmap.put(po57.getKey(), po57);
         hashmap.put(po58.getKey(), po58);
+        hashmap.put(po59.getKey(), po59);
+        hashmap.put(po60.getKey(), po60);
         return hashmap;
     }
 
