@@ -456,4 +456,12 @@ public class stageTwoRegs extends javax.swing.JFrame {
     public void setEnabledStageTwoLevelOneRemoveButton(boolean turnon) {
         stageTwoLevelOneRemoveButton.setEnabled(turnon);
     }
+
+    public void setEnabledStageTwoLevelOneRegTitle(boolean turnon) {
+        jLabel4.setEnabled(turnon);
+    }
+
+    public void setEnabledStageTwoLevelOneRegVariables(boolean turnon) {
+        StageTwoLevelOneVariables.setEnabled(turnon);
+    }
 }
