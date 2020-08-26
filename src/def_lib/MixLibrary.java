@@ -143,7 +143,7 @@ public class MixLibrary implements Serializable {
 
     //auxiliary fields
     private String utcDirPath;
-    public Boolean win32;
+    public Boolean win32 = false;
     private JFrame myFrame;
     private JEditorPane myPane;
     private ProgressStatus progressStatus;
@@ -1964,6 +1964,7 @@ public class MixLibrary implements Serializable {
         String STAGETWO_ONLY = "stage2only";
 
         if (getOSName().contains("windows")) {
+            System.out.print(win32);
             if (win32) {
                 LSBOTH_PRE = "resources/Windows32/" + LSBOTH_PRE + ".exe";
                 MIXORS_PRE = "resources/Windows32/" + MIXORS_PRE + ".exe";
@@ -1973,6 +1974,7 @@ public class MixLibrary implements Serializable {
                 MIXPREG = "resources/Windows32/" + MIXPREG + ".exe";
                 STAGETWO_ONLY = "resources/Windows32/" + STAGETWO_ONLY + ".exe";
             } else {
+                System.out.print("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvva");
                 LSBOTH_PRE = "resources/Windows64/" + LSBOTH_PRE + ".exe";
                 MIXORS_PRE = "resources/Windows64/" + MIXORS_PRE + ".exe";
                 MIXNO = "resources/Windows64/" + MIXNO + ".exe";

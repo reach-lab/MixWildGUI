@@ -824,20 +824,20 @@ public class advancedOptions extends javax.swing.JFrame {
             this.dispose();
         }
     }
-    
+
     public void update_trigger_resampleCheckBox() {
         if (resampleCheckBox.isSelected()) {
-            mixregGUI.defFile.win32 = Boolean.TRUE;
+            resampleSpinner.setEnabled(true);
         } else {
-            mixregGUI.defFile.win32 = Boolean.FALSE;
+            resampleSpinner.setEnabled(false);
         }
     }
 
     public void update_trigger_run32BitCheckBox() {
         if (run32BitCheckBox.isSelected()) {
-            resampleSpinner.setEnabled(true);
+            mixregGUI.defFile.win32 = Boolean.TRUE;
         } else {
-            resampleSpinner.setEnabled(false);
+            mixregGUI.defFile.win32 = Boolean.FALSE;
         }
     }
 }

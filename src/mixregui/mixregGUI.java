@@ -207,11 +207,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }
 
     public boolean getCountRadio() {
-        return countRadio.isSelected();
+        return stageTwoCountRadio.isSelected();
     }
 
     public boolean getMultinomialRadio() {
-        return multinomialRadio.isSelected();
+        return stageTwoMultinomialRadio.isSelected();
     }
 
     public String getSeedTextBox() {
@@ -698,8 +698,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageTwoOutcomeTypeLabel.setVisible(turnOn);
         stageTwoContinuousRadio.setVisible(turnOn);
         stageTwoDichotomousRadio.setVisible(turnOn);
-        countRadio.setVisible(turnOn);
-        multinomialRadio.setVisible(turnOn);
+        stageTwoCountRadio.setVisible(turnOn);
+        stageTwoMultinomialRadio.setVisible(turnOn);
 
         setSeedLabel.setVisible(turnOn);
         seedTextBox.setVisible(turnOn);
@@ -750,8 +750,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageOneDichotomousRadio.setEnabled(false);
         stageOneOrdinalRadio.setEnabled(false);
 
-        countRadio.setEnabled(false);
-        multinomialRadio.setEnabled(false);
+        stageTwoCountRadio.setEnabled(false);
+        stageTwoMultinomialRadio.setEnabled(false);
 
         stageTwoSingleLevel.setEnabled(true);
 //        stageTwoSingleLevel.setSelected(true);
@@ -850,8 +850,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageTwoModelTypeLabel = new javax.swing.JLabel();
         stageTwoSingleLevel = new javax.swing.JRadioButton();
         stageTwoMultiLevel = new javax.swing.JRadioButton();
-        multinomialRadio = new javax.swing.JRadioButton();
-        countRadio = new javax.swing.JRadioButton();
+        stageTwoMultinomialRadio = new javax.swing.JRadioButton();
+        stageTwoCountRadio = new javax.swing.JRadioButton();
         hiddenBigIconLabel = new javax.swing.JLabel();
         guiStatesLoadButtonModalConfig = new javax.swing.JButton();
         guiStatesSaveButtonModalConfig = new javax.swing.JButton();
@@ -1019,10 +1019,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageOneTabs.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         stageOneTabs.setFocusable(false);
         stageOneTabs.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
-        stageOneTabs.setMinimumSize(new java.awt.Dimension(1000, 800));
-        stageOneTabs.setPreferredSize(new java.awt.Dimension(1300, 1060));
+        stageOneTabs.setMinimumSize(new java.awt.Dimension(1000, 700));
+        stageOneTabs.setPreferredSize(new java.awt.Dimension(1300, 960));
 
-        jPanel13.setMinimumSize(new java.awt.Dimension(1000, 800));
+        jPanel13.setMinimumSize(new java.awt.Dimension(1000, 700));
         jPanel13.setPreferredSize(new java.awt.Dimension(1297, 1032));
         jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -1304,25 +1304,25 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         });
         jPanel13.add(stageTwoMultiLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(691, 346, -1, -1));
 
-        buttonGroup3.add(multinomialRadio);
-        multinomialRadio.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        multinomialRadio.setText("Multinomial");
-        multinomialRadio.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup3.add(stageTwoMultinomialRadio);
+        stageTwoMultinomialRadio.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        stageTwoMultinomialRadio.setText("Multinomial");
+        stageTwoMultinomialRadio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                multinomialRadioActionPerformed(evt);
+                stageTwoMultinomialRadioActionPerformed(evt);
             }
         });
-        jPanel13.add(multinomialRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(919, 383, -1, -1));
+        jPanel13.add(stageTwoMultinomialRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(919, 383, -1, -1));
 
-        buttonGroup3.add(countRadio);
-        countRadio.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        countRadio.setText("Count");
-        countRadio.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup3.add(stageTwoCountRadio);
+        stageTwoCountRadio.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        stageTwoCountRadio.setText("Count");
+        stageTwoCountRadio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                countRadioActionPerformed(evt);
+                stageTwoCountRadioActionPerformed(evt);
             }
         });
-        jPanel13.add(countRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(852, 383, -1, -1));
+        jPanel13.add(stageTwoCountRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(852, 383, -1, -1));
 
         hiddenBigIconLabel.setFocusable(false);
         hiddenBigIconLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1452,8 +1452,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         stageOneTabs.addTab("Model Configuration", jPanel13);
 
-        jPanel1.setMinimumSize(new java.awt.Dimension(1000, 800));
-        jPanel1.setPreferredSize(new java.awt.Dimension(1000, 800));
+        jPanel1.setMinimumSize(new java.awt.Dimension(1000, 700));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1000, 700));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         resetButton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -1738,7 +1738,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         stageOneTabs.addTab("Stage 1 Configuration", jPanel1);
 
-        jPanel12.setMinimumSize(new java.awt.Dimension(1000, 800));
         jPanel12.setName(""); // NOI18N
         jPanel12.setPreferredSize(new java.awt.Dimension(1000, 800));
         jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1950,7 +1949,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         stageOneTabs.addTab("Stage 2 Configuration", jPanel12);
 
-        jPanel3.setPreferredSize(new java.awt.Dimension(1000, 800));
+        jPanel3.setPreferredSize(new java.awt.Dimension(1000, 700));
 
         jPanel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -2013,7 +2012,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(459, Short.MAX_VALUE))
+                .addContainerGap(359, Short.MAX_VALUE))
         );
 
         stageOneTabs.addTab("Stage 1 Results", jPanel3);
@@ -2133,7 +2132,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         stageOneTabs.addTab("View Model", jPanel2);
 
-        jPanel6.setPreferredSize(new java.awt.Dimension(1000, 800));
+        jPanel6.setMaximumSize(new java.awt.Dimension(1200, 700));
+        jPanel6.setName(""); // NOI18N
+        jPanel6.setPreferredSize(new java.awt.Dimension(824, 500));
 
         dataTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane4.setViewportView(dataTable);
@@ -2167,7 +2168,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     .addComponent(printedFileName))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(475, Short.MAX_VALUE))
+                .addContainerGap(375, Short.MAX_VALUE))
         );
 
         stageOneTabs.addTab("View Data", jPanel6);
@@ -2242,7 +2243,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     .addComponent(jLabel30)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3))
-                .addContainerGap(829, Short.MAX_VALUE))
+                .addContainerGap(729, Short.MAX_VALUE))
         );
 
         stageOneTabs.addTab("Postestimation", jPanel14);
@@ -2755,15 +2756,15 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         }
     }//GEN-LAST:event_hiddenBigIconLabelMouseClicked
 
-    private void countRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_countRadioActionPerformed
+    private void stageTwoCountRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoCountRadioActionPerformed
         MXRStates = new MixRegGuiStates(this, advancedOptions_view);
         updateGuiView(MXRStates);
-    }//GEN-LAST:event_countRadioActionPerformed
+    }//GEN-LAST:event_stageTwoCountRadioActionPerformed
 
-    private void multinomialRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_multinomialRadioActionPerformed
+    private void stageTwoMultinomialRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoMultinomialRadioActionPerformed
         MXRStates = new MixRegGuiStates(this, advancedOptions_view);
         updateGuiView(MXRStates);
-    }//GEN-LAST:event_multinomialRadioActionPerformed
+    }//GEN-LAST:event_stageTwoMultinomialRadioActionPerformed
 
     private void stageTwoMultiLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoMultiLevelActionPerformed
         MXRStates = new MixRegGuiStates(this, advancedOptions_view);
@@ -2818,18 +2819,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private void newModelSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModelSubmitActionPerformed
 
         isNewModalConfigSubmitted = true;
-        isUpdateStage2ConfigClicked = false;
-        // System.getProperty("os.name");
-        //        String osName = System.getProperty("os.name");
-        //        System.out.println("YOUR OPERATING SYSTEM IS: " + osName);
-        //        if (osName.contains("Windows")){
-        //            System.out.println("YES THE OS IS WINDOWS");
-        //        } else {
-        //            System.out.println("NO THE OS IS NOT WINDOWS");
-        //        }
-
         updateGuiView_trigger_NewModelSubmit();
         SystemLogger.LOGGER.log(Level.INFO, "Submit new model");
+        isUpdateStage2ConfigClicked = false;
     }//GEN-LAST:event_newModelSubmitActionPerformed
 
     private void newModel_resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModel_resetButtonActionPerformed
@@ -3070,14 +3062,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             stageTwoMultiLevel.setSelected(true);
         }
 
-        if (mxrStates.continuousRadio) {
+        if (mxrStates.stageTwoContinuousRadio) {
             stageTwoContinuousRadio.setSelected(true);
-        } else if (mxrStates.dichotomousRadio) {
+        } else if (mxrStates.stageTwoDichotomousRadio) {
             stageTwoDichotomousRadio.setSelected(true);
-        } else if (mxrStates.countRadio) {
-            countRadio.setSelected(true);
-        } else if (mxrStates.multinomialRadio) {
-            multinomialRadio.setSelected(true);
+        } else if (mxrStates.stageTwoCountRadio) {
+            stageTwoCountRadio.setSelected(true);
+        } else if (mxrStates.stageTwoMultinomialRadio) {
+            stageTwoMultinomialRadio.setSelected(true);
         }
 
         seedTextBox.setText(mxrStates.seedTextBox);
@@ -3100,8 +3092,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             stageTwoMultiLevel.setVisible(false);
             stageTwoContinuousRadio.setVisible(false);
             stageTwoDichotomousRadio.setVisible(false);
-            countRadio.setVisible(false);
-            multinomialRadio.setVisible(false);
+            stageTwoCountRadio.setVisible(false);
+            stageTwoMultinomialRadio.setVisible(false);
             stageTwoModelTypeLabel.setVisible(false);
             stageTwoOutcomeTypeLabel.setVisible(false);
             stageTwoModelGiantLabel.setVisible(false);
@@ -3127,10 +3119,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             stageTwoContinuousRadio.setEnabled(true);
             stageTwoDichotomousRadio.setVisible(true);
             stageTwoDichotomousRadio.setEnabled(true);
-            countRadio.setVisible(true);
-            countRadio.setEnabled(true);
-            multinomialRadio.setVisible(true);
-            multinomialRadio.setEnabled(true);
+            stageTwoCountRadio.setVisible(true);
+            stageTwoCountRadio.setEnabled(true);
+            stageTwoMultinomialRadio.setVisible(true);
+            stageTwoMultinomialRadio.setEnabled(true);
             stageTwoModelTypeLabel.setVisible(true);
             stageTwoOutcomeTypeLabel.setVisible(true);
             stageTwoModelGiantLabel.setVisible(true);
@@ -3205,7 +3197,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         advancedOptions_view.setResampleSpinner(mxrStates.resampleSpinner);
         advancedOptions_view.update_trigger_AdvancedOptionsSubmit();
         advancedOptions_view.update_trigger_resampleCheckBox();
-//        advancedOptions_view.update_trigger_run32BitCheckBox();
+        advancedOptions_view.update_trigger_run32BitCheckBox();
         NoAssociationRadio.setSelected(mxrStates.NoAssociationRadio);
         LinearAssociationRadio.setSelected(mxrStates.LinearAssociationRadio);
         QuadraticAssociationRadio.setSelected(mxrStates.QuadraticAssociationRadio);
@@ -3283,7 +3275,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.ButtonGroup buttonGroup4;
-    private javax.swing.JRadioButton countRadio;
     private javax.swing.JLabel dataFileLabel;
     public static javax.swing.JTable dataTable;
     private javax.swing.JLabel datasetHelpButton;
@@ -3393,7 +3384,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JRadioButton missingValuePresent;
     private javax.swing.JLabel missingViewLabel;
     private javax.swing.JRadioButton moreThanOneRLERadio;
-    private javax.swing.JRadioButton multinomialRadio;
     private javax.swing.JButton newDataSetButton;
     private javax.swing.JTextField newModelMissingValueCode;
     private javax.swing.JButton newModelSubmit;
@@ -3436,6 +3426,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel stageOneRSHelpButton;
     private javax.swing.JTabbedPane stageOneTabs;
     private javax.swing.JRadioButton stageTwoContinuousRadio;
+    private javax.swing.JRadioButton stageTwoCountRadio;
     private javax.swing.JLabel stageTwoDescription;
     private javax.swing.JRadioButton stageTwoDichotomousRadio;
     private javax.swing.ButtonGroup stageTwoLevelGroup;
@@ -3447,6 +3438,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel stageTwoModelTypeStageTwoConfigLabel;
     private javax.swing.JLabel stageTwoModelTypeStageTwoConfigLabel1;
     private javax.swing.JRadioButton stageTwoMultiLevel;
+    private javax.swing.JRadioButton stageTwoMultinomialRadio;
     public static javax.swing.JLabel stageTwoOutcomePrintLabel;
     public static javax.swing.JLabel stageTwoOutcomePrintLabel1;
     private javax.swing.JLabel stageTwoOutcomeStageTwoConfigLabel;
@@ -6235,6 +6227,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 randomScaleSelectionNo.setEnabled(false);
                 stageTwoContinuousRadio.setEnabled(false);
                 stageTwoDichotomousRadio.setEnabled(false);
+                stageTwoCountRadio.setEnabled(false);
+                stageTwoMultinomialRadio.setEnabled(false);
                 includeStageTwoNo.setEnabled(false);
                 includeStageTwoYes.setEnabled(false);
                 //noneRadio.setEnabled(false);
@@ -6257,6 +6251,13 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     stageTwoLevelOnePanel.setEnabled(false);
                     stageTwoRegsGridLvl1.setEnabled(false);
                     clearStageTwoLevelOneGrid();
+                } else if (getStageTwoMultiLevel() == true) {
+                    stage_2_regs.setEnabledStageTwoLevelOneAddButton(true);
+                    stage_2_regs.setEnabledStageTwoLevelOneRemoveButton(true);
+                    stage_2_regs.setEnabledStageTwoLevelOneRegTitle(true);
+                    stage_2_regs.setEnabledStageTwoLevelOneRegVariables(true);
+                    stageTwoLevelOnePanel.setEnabled(true);
+                    stageTwoRegsGridLvl1.setEnabled(true);
                 }
 
             }
