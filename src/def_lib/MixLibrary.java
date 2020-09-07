@@ -1871,7 +1871,7 @@ public class MixLibrary implements Serializable {
 
                 // FileReader reader = new FileReader(absoluteJavaPath + ".out file name");
             } else {
-                JOptionPane.showMessageDialog(null, "Failed to build model. Please revisit your regressors and try again. For more information, checkout help docs.", "Execution failed!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(progressWindow, "Failed to build model. Please revisit your regressors and try again. For more information, checkout help docs.", "Execution failed!", JOptionPane.INFORMATION_MESSAGE);
                 modelingProgressLogging("Failed to build model. Please revisit your regressors and try again. For more information, checkout help docs.");
                 Process p2;
                 if (getOSName().contains("windows")) {
@@ -1892,8 +1892,8 @@ public class MixLibrary implements Serializable {
             }
         } catch (Exception ex) {
             ex.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Failed");
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(progressWindow, "Failed");
+            JOptionPane.showMessageDialog(progressWindow, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
             SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
         }
     }
