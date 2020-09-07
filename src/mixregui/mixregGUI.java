@@ -7380,24 +7380,13 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 defFile.writeDefFileToFolder();
                 defFileOutput = defFile.buildDefinitionList();
                 System.out.println("From defHelper | Stage 1&2 def file created successfully!");
-                //modelBuilder(defFile);
-//                modelBuilder = new ModelBuilder(defFile);
-                //                modelEquationTextArea.setText(modelBuilder.meanEquation());
-                //                testEq.setText(modelBuilder.meanEquation());
-                // TODO THIS // equationArea.setText(modelBuilder.meanEquation());
 
-                //modelBuilder.saveWildFile(defFile);
-                //                modelBuilder.meanEquation();
             } catch (Exception ex) {
                 defCatch = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                 SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 System.out.println("From defHelper | Stage 1 def file failed!");
-            }
-
-            if (defCatch == 0) {
-                stageOneTabs.setSelectedIndex(3);//todo: get output as soon as it is ready
             }
 
         } else {
@@ -7416,6 +7405,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             int stage1ResultTabIdx = stageOneTabs.indexOfTab("Stage 2 Results");
             stageOneTabs.insertTab("Stage 1 Results", null, jPanel3, null, stage1ResultTabIdx);
         }
+
+        // jump to "stage 1 result" tab
+        int stageOneTabIdx = stageOneTabs.indexOfTab("Stage 1 Results");
+        stageOneTabs.setSelectedIndex(stageOneTabIdx);
 
     }
 
