@@ -121,7 +121,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     public static SystemLogger logger;
     public String sessionFolderName;
-
+    
     public int getRLE() {
         return RLE;
     }
@@ -735,8 +735,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
      */
     public mixregGUI() {
         initComponents();
+        this.setTitle("MixWILD-2.0-Alpha");
         // adjust the frame size to fit screen resolution
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+//        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 //        setBounds(0, 0, stageOneTabs.getWidth(), screenSize.height);
         setBounds(0, 0, stageOneTabs.getWidth(), 700);
         setVisible(true);
@@ -1021,10 +1022,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageOneTabs.setFocusable(false);
         stageOneTabs.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
         stageOneTabs.setMinimumSize(new java.awt.Dimension(1000, 700));
-        stageOneTabs.setPreferredSize(new java.awt.Dimension(1300, 960));
+        stageOneTabs.setPreferredSize(new java.awt.Dimension(1300, 700));
 
         jPanel13.setMinimumSize(new java.awt.Dimension(1000, 700));
-        jPanel13.setPreferredSize(new java.awt.Dimension(1297, 1032));
+        jPanel13.setPreferredSize(new java.awt.Dimension(1300, 700));
         jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         fileBrowseButton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -1454,7 +1455,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageOneTabs.addTab("Model Configuration", jPanel13);
 
         jPanel1.setMinimumSize(new java.awt.Dimension(1000, 700));
-        jPanel1.setPreferredSize(new java.awt.Dimension(1000, 700));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1300, 700));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         resetButton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -1745,7 +1746,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageOneTabs.addTab("Stage 1 Configuration", jPanel1);
 
         jPanel12.setName(""); // NOI18N
-        jPanel12.setPreferredSize(new java.awt.Dimension(1000, 800));
+        jPanel12.setPreferredSize(new java.awt.Dimension(1000, 700));
         jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel14.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
@@ -2018,12 +2019,12 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(359, Short.MAX_VALUE))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
 
         stageOneTabs.addTab("Stage 1 Results", jPanel3);
 
-        jPanel4.setPreferredSize(new java.awt.Dimension(1000, 800));
+        jPanel4.setPreferredSize(new java.awt.Dimension(1000, 700));
 
         jPanel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel11.setPreferredSize(new java.awt.Dimension(762, 462));
@@ -2088,6 +2089,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         stageOneTabs.addTab("Stage 2 Results", jPanel4);
 
+        jPanel2.setPreferredSize(new java.awt.Dimension(1300, 700));
+        jPanel2.setRequestFocusEnabled(false);
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel9.setPreferredSize(new java.awt.Dimension(1000, 800));
@@ -2140,7 +2143,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         jPanel6.setMaximumSize(new java.awt.Dimension(1200, 700));
         jPanel6.setName(""); // NOI18N
-        jPanel6.setPreferredSize(new java.awt.Dimension(824, 500));
+        jPanel6.setPreferredSize(new java.awt.Dimension(1300, 700));
 
         dataTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane4.setViewportView(dataTable);
@@ -2174,7 +2177,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     .addComponent(printedFileName))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(375, Short.MAX_VALUE))
+                .addContainerGap(115, Short.MAX_VALUE))
         );
 
         stageOneTabs.addTab("View Data", jPanel6);
@@ -2249,10 +2252,12 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     .addComponent(jLabel30)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3))
-                .addContainerGap(729, Short.MAX_VALUE))
+                .addContainerGap(469, Short.MAX_VALUE))
         );
 
         stageOneTabs.addTab("Postestimation", jPanel14);
+
+        jPanel15.setPreferredSize(new java.awt.Dimension(1295, 700));
 
         userGuideDownload.setText("Download MixWild User Guide");
         userGuideDownload.addActionListener(new java.awt.event.ActionListener() {

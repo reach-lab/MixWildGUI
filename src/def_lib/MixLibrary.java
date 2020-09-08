@@ -492,7 +492,6 @@ public class MixLibrary implements Serializable {
     private boolean validateFieldLabels(String countVariable, String[] fieldLabelLine) throws Exception {
         int field = -1;
         int labels = 0;
-        System.out.print("yyyaaa"+ countVariable);
         try {
             field = Integer.parseInt(countVariable);
         } catch (Exception ex) {
