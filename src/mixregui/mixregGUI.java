@@ -368,10 +368,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         String randLocString = "";
 
         if (oneRLERadio.isSelected()) {
-            randLocString = "Intercept";
+            randLocString = "Intercept Only";
 
         } else if (moreThanOneRLERadio.isSelected()) {
-            randLocString = "Intercept + Slope";
+            randLocString = "Intercept + Slope(s)";
 
         }
 
@@ -748,8 +748,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         bigIcon = new ImageIcon(getClass().getResource("/resources/mixwild_logo-red_large.png"));
 
         stageOneContinuousRadio.setSelected(true);
-        stageOneDichotomousRadio.setEnabled(false);
-        stageOneOrdinalRadio.setEnabled(false);
+        stageOneDichotomousRadio.setEnabled(true);
+        stageOneOrdinalRadio.setEnabled(true);
 
         stageTwoCountRadio.setEnabled(false);
         stageTwoMultinomialRadio.setEnabled(false);
@@ -1472,9 +1472,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         level1_MeanReg.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         level1_MeanReg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        level1_MeanReg.setText("Mean");
+        level1_MeanReg.setText("Random Location");
+        level1_MeanReg.setToolTipText("");
         level1_MeanReg.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel1.add(level1_MeanReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 70, 40, -1));
+        jPanel1.add(level1_MeanReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 70, 140, -1));
         level1_MeanReg.getAccessibleContext().setAccessibleName("");
 
         level1_WSVar.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
@@ -1482,21 +1483,25 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         jPanel1.add(level1_WSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 70, -1, -1));
 
         level2_MeanReg.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        level2_MeanReg.setText("Mean");
-        jPanel1.add(level2_MeanReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 280, 40, -1));
+        level2_MeanReg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        level2_MeanReg.setText("Random Location");
+        level2_MeanReg.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(level2_MeanReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 280, 140, -1));
 
         level2_BSVar.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        level2_BSVar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         level2_BSVar.setText("BS Variance");
-        jPanel1.add(level2_BSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 280, 90, -1));
+        jPanel1.add(level2_BSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 280, 110, -1));
 
         level2_WSVar.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         level2_WSVar.setText("WS Variance");
         jPanel1.add(level2_WSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 280, -1, -1));
 
         level1_BSVar.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        level1_BSVar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         level1_BSVar.setText("BS Variance");
         level1_BSVar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel1.add(level1_BSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 70, 90, -1));
+        jPanel1.add(level1_BSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 70, 110, -1));
 
         stageOneLevelOnePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Level-1"));
 
@@ -2805,11 +2810,17 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_randomScaleSelectionYesActionPerformed
 
     private void stageOneOrdinalRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneOrdinalRadioActionPerformed
-        // TODO add your handling code here:
+        randomScaleSelectionYes.setEnabled(false);
+        randomScaleSelectionYes.setSelected(false);
+        randomScaleSelectionNo.setEnabled(false);
+        randomScaleSelectionNo.setSelected(true);
     }//GEN-LAST:event_stageOneOrdinalRadioActionPerformed
 
     private void stageOneDichotomousRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneDichotomousRadioActionPerformed
-        // TODO add your handling code here:
+        randomScaleSelectionYes.setEnabled(false);
+        randomScaleSelectionYes.setSelected(false);
+        randomScaleSelectionNo.setEnabled(false);
+        randomScaleSelectionNo.setSelected(true);        // TODO add your handling code here:
     }//GEN-LAST:event_stageOneDichotomousRadioActionPerformed
 
     private void stageOneContinuousRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneContinuousRadioActionPerformed
@@ -2977,6 +2988,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             updateGuiView_trigger_dataview();
             // Update basic GUI States: Model Configuration Tab
             updateGuiView_TabOneStates(mxrStates);
+            // Trigger: stage 1 outcome
+            updateGuiView_trigger_stageOneOutcome();
             // Trigger: stage 1 config completed
             updateGuiView_trigger_stageOneConfig();
             // Trigger: Include Stage 2 or not
@@ -6239,6 +6252,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 seedTextBox.setEnabled(false);
                 seedHelpButton.setVisible(false);
                 stageOneContinuousRadio.setEnabled(false);
+                stageOneDichotomousRadio.setEnabled(false);
+                stageOneOrdinalRadio.setEnabled(false);
                 stageTwoSingleLevel.setEnabled(false);
                 stageTwoMultiLevel.setEnabled(false);
 
@@ -7383,12 +7398,12 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 System.out.println("From defHelper | Stage 1&2 def file created successfully!");
 
             } catch (Exception ex) {
-                
+
                 defCatch = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                 SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 // Error Jframe is set to be always on top
-                JFrame jf=new JFrame();
+                JFrame jf = new JFrame();
                 jf.setAlwaysOnTop(true);
                 JOptionPane.showMessageDialog(jf, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
 //                JOptionPane.setAlwaysOnTop(alwaysOnTop);
@@ -8113,6 +8128,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         missingValuePresent.setEnabled(turnOn);
         newModelMissingValueCode.setEnabled(turnOn);
         stageOneContinuousRadio.setEnabled(turnOn);
+        stageOneDichotomousRadio.setEnabled(turnOn);
+        stageOneOrdinalRadio.setEnabled(turnOn);
         oneRLERadio.setEnabled(turnOn);
         moreThanOneRLERadio.setEnabled(turnOn);
         randomScaleSelectionYes.setEnabled(turnOn);
@@ -8273,5 +8290,20 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         stage_2_regs.stageTwoLevelTwo.clear();
         updateStageTwoLevelTwoGrid(stage_2_regs.stageTwoLevelTwo);
+    }
+
+    private void updateGuiView_trigger_stageOneOutcome() {
+        if (getStageOneDichotomousRadio() || getStageOneOrdinalRadio()) {
+            randomScaleSelectionYes.setEnabled(false);
+            randomScaleSelectionYes.setSelected(false);
+            randomScaleSelectionNo.setEnabled(false);
+            randomScaleSelectionNo.setSelected(true);
+        }
+        if (getStageOneContinuousRadio()) {
+            randomScaleSelectionYes.setEnabled(true);
+            randomScaleSelectionYes.setSelected(false);
+            randomScaleSelectionNo.setEnabled(true);
+            randomScaleSelectionNo.setSelected(false);
+        }
     }
 }

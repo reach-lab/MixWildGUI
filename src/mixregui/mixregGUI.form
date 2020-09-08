@@ -1133,7 +1133,8 @@
                   <Font name="sansserif" size="14" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Mean"/>
+                <Property name="text" type="java.lang.String" value="Random Location"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
               </Properties>
               <AccessibilityProperties>
@@ -1141,7 +1142,7 @@
               </AccessibilityProperties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="670" y="70" width="40" height="-1"/>
+                  <AbsoluteConstraints x="590" y="70" width="140" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -1163,11 +1164,13 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="sansserif" size="14" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Mean"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="Random Location"/>
+                <Property name="horizontalTextPosition" type="int" value="0"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="670" y="280" width="40" height="-1"/>
+                  <AbsoluteConstraints x="590" y="280" width="140" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -1176,11 +1179,12 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="sansserif" size="14" style="1"/>
                 </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="BS Variance"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="760" y="280" width="90" height="-1"/>
+                  <AbsoluteConstraints x="740" y="280" width="110" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -1202,12 +1206,13 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="sansserif" size="14" style="1"/>
                 </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="BS Variance"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="760" y="70" width="90" height="-1"/>
+                  <AbsoluteConstraints x="740" y="70" width="110" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
