@@ -424,7 +424,6 @@ public class MixLibrary implements Serializable {
         newDefinitionFile.add(FilenameUtils.getName(getSharedDataFilename())); // LINE 3
         newDefinitionFile.add(getSharedOutputPrefix()); // LINE 4
         newDefinitionFile.add(Arrays.toString(getSharedAdvancedOptions()).replaceAll(",", " ")); // LINE 5
-        System.out.print("aaaaaaaaaa   ");
         System.out.print(Arrays.toString(getSharedAdvancedOptions()).replaceAll(",", " "));
         System.out.print("\n");
         if (getStageOneOutcome() == STAGE_ONE_OUTCOME_MIXOR) {
@@ -1251,8 +1250,12 @@ public class MixLibrary implements Serializable {
     }
 
     public String getAdvancedStageTwoMultilevel() {
-        if (advancedStageTwoMultilevel == null) {
+        advancedStageTwoMultilevel = "0";
+        if (this.stageTwoModelType == STAGE_TWO_MODEL_TYPE_SINGLE) {
             advancedStageTwoMultilevel = "0";
+        }
+        else if (this.stageTwoModelType == STAGE_TWO_MODEL_TYPE_MULTILEVEL){
+            advancedStageTwoMultilevel = "1";
         }
         return advancedStageTwoMultilevel;
     }

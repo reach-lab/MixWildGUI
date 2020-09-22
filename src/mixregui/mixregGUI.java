@@ -121,7 +121,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     public static SystemLogger logger;
     public String sessionFolderName;
-    
+
     public int getRLE() {
         return RLE;
     }
@@ -1473,7 +1473,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         level1_MeanReg.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         level1_MeanReg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        level1_MeanReg.setText("Random Location");
+        level1_MeanReg.setText("Mean");
         level1_MeanReg.setToolTipText("");
         level1_MeanReg.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel1.add(level1_MeanReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 70, 140, -1));
@@ -1485,14 +1485,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         level2_MeanReg.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         level2_MeanReg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        level2_MeanReg.setText("Random Location");
+        level2_MeanReg.setText("Mean");
         level2_MeanReg.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel1.add(level2_MeanReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 280, 140, -1));
 
         level2_BSVar.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         level2_BSVar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         level2_BSVar.setText("BS Variance");
-        jPanel1.add(level2_BSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 280, 110, -1));
+        jPanel1.add(level2_BSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 280, 110, -1));
 
         level2_WSVar.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         level2_WSVar.setText("WS Variance");
@@ -1502,7 +1502,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         level1_BSVar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         level1_BSVar.setText("BS Variance");
         level1_BSVar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel1.add(level1_BSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 70, 110, -1));
+        jPanel1.add(level1_BSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 70, 110, -1));
 
         stageOneLevelOnePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Level-1"));
 
@@ -2815,17 +2815,13 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_randomScaleSelectionYesActionPerformed
 
     private void stageOneOrdinalRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneOrdinalRadioActionPerformed
-        randomScaleSelectionYes.setEnabled(false);
-        randomScaleSelectionYes.setSelected(false);
-        randomScaleSelectionNo.setEnabled(false);
-        randomScaleSelectionNo.setSelected(true);
+        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
+        updateGuiView(MXRStates);
     }//GEN-LAST:event_stageOneOrdinalRadioActionPerformed
 
     private void stageOneDichotomousRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneDichotomousRadioActionPerformed
-        randomScaleSelectionYes.setEnabled(false);
-        randomScaleSelectionYes.setSelected(false);
-        randomScaleSelectionNo.setEnabled(false);
-        randomScaleSelectionNo.setSelected(true);        // TODO add your handling code here:
+        MXRStates = new MixRegGuiStates(this, advancedOptions_view);
+        updateGuiView(MXRStates);
     }//GEN-LAST:event_stageOneDichotomousRadioActionPerformed
 
     private void stageOneContinuousRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneContinuousRadioActionPerformed
@@ -7846,12 +7842,16 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
             }
 
-            for (int p = 0; p < stageTwoLevelTwoRegSize; p++) {
+            for (int p = 0; p < stageTwoLevelOneRegSize; p++) {
                 stageTwoLevelOneGridBoxes.get(p).get(3).setSelected(false);
                 stageTwoLevelOneGridBoxes.get(p).get(3).setEnabled(false);
+            }
+
+            for (int p = 0; p < stageTwoLevelTwoRegSize; p++) {
                 stageTwoLevelTwoGridBoxes.get(p).get(3).setSelected(false);
                 stageTwoLevelTwoGridBoxes.get(p).get(3).setEnabled(false);
             }
+            
             try {
                 defFile.setStageTwoInteractionFields(new String[0]);
                 defFile.setStageTwoInteractionLabels(new String[0]);
@@ -7872,18 +7872,21 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
             }
 
-            for (int p = 0; p < stageTwoLevelTwoRegSize; p++) {
-
-                if (stageTwoLevelTwoGridBoxes.get(p).get(1).isSelected() && stageTwoLevelTwoGridBoxes.get(p).get(2).isSelected()) {
-                    stageTwoLevelTwoGridBoxes.get(p).get(3).setEnabled(true);
-                }
+            for (int p = 0; p < stageTwoLevelOneRegSize; p++) {
 
                 if (stageTwoLevelOneGridBoxes.get(p).get(1).isSelected() && stageTwoLevelOneGridBoxes.get(p).get(2).isSelected()) {
                     stageTwoLevelOneGridBoxes.get(p).get(3).setEnabled(true);
                 }
 
             }
+            
+            for (int p = 0; p < stageTwoLevelTwoRegSize; p++) {
 
+                if (stageTwoLevelTwoGridBoxes.get(p).get(1).isSelected() && stageTwoLevelTwoGridBoxes.get(p).get(2).isSelected()) {
+                    stageTwoLevelTwoGridBoxes.get(p).get(3).setEnabled(true);
+                }
+
+            }
         }
 
     }
@@ -8127,6 +8130,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         if (isUpdateStage2ConfigClicked == true) {
             turnOn = false;
+            randomScaleSelectionYes.setEnabled(turnOn);
+            randomScaleSelectionNo.setEnabled(turnOn);
         }
         titleField.setEnabled(turnOn);
         missingValueAbsent.setEnabled(turnOn);
@@ -8137,8 +8142,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageOneOrdinalRadio.setEnabled(turnOn);
         oneRLERadio.setEnabled(turnOn);
         moreThanOneRLERadio.setEnabled(turnOn);
-        randomScaleSelectionYes.setEnabled(turnOn);
-        randomScaleSelectionNo.setEnabled(turnOn);
+
 
         guiStatesSaveButtonModalConfig.setVisible(turnOn);
         guiStatesSaveButtonStageOne.setVisible(turnOn);
