@@ -229,7 +229,7 @@ public class MixLibrary implements Serializable {
     private String mixorModelCovarianceParameter = "0";
     private String mixorModelThresholdParameter = "-1";
 
-    private String[] mixorModelStageOneOutcomeLevels; // LINE 14 for MIXOR
+    private String mixorModelStageOneOutcomeLevels; // LINE 14 for MIXOR
 
     /**
      * MixWILD V2.0 Stage Two Parameters Append at LINE 20 for MIXREG and LINE
@@ -237,7 +237,9 @@ public class MixLibrary implements Serializable {
      */
     private String[] stageTwoRegressorCounts; //  SEE LINE 220 FOR DETAILS
     private String stageTwoOutcomeField;
-
+    private String stageTwoOutcomeCategoryNum;
+    private String stageTwoCategoricalOutcomeUniqueList;
+    
     private String[] stageTwoFixedFields; // FIXEX
     private String[] stageTwoThetaFields; // INTERACTION WITH LOCATION
     private String[] stageTwoOmegaFields; // INTERACTION WITH SCALE
@@ -360,35 +362,35 @@ public class MixLibrary implements Serializable {
             }
 
             if (stageOneOutcome == STAGE_ONE_OUTCOME_MIXOR) {
-                advancedVariable.add(getAdvancedVariableCount());
-                advancedVariable.add(getAdvancedStageOneOutcomeValueCount());
+                advancedVariable.add(getAdvancedVariableCount());  //1
+                advancedVariable.add(getAdvancedStageOneOutcomeValueCount());  //2
 
-                advancedVariable.add(getAdvancedMeanRegressorCount());
-                advancedVariable.add(getAdvancedRandomRegressorCount());
-                advancedVariable.add(getAdvancedScaleRegressorCount());
-                advancedVariable.add(getAdvancedDecomposeMeanRegressorCount());
-                advancedVariable.add(getAdvancedDecomposeRandomRegressorCount());
-                advancedVariable.add(getAdvancedDecomposeScaleRegressorCount());
+                advancedVariable.add(getAdvancedMeanRegressorCount());  //3
+                advancedVariable.add(getAdvancedRandomRegressorCount());  //4
+                advancedVariable.add(getAdvancedScaleRegressorCount());  //5
+                advancedVariable.add(getAdvancedDecomposeMeanRegressorCount());  //6
+                advancedVariable.add(getAdvancedDecomposeRandomRegressorCount());  //7
+                advancedVariable.add(getAdvancedDecomposeScaleRegressorCount());  //8
 
-                advancedVariable.add(getAdvancedRandomIntercept());
+                advancedVariable.add(getAdvancedRandomIntercept());  //9
 
-                advancedVariable.add(getAdvancedConvergenceCriteria());
-                advancedVariable.add(getAdvancedQuadPoints());
-                advancedVariable.add(getAdvancedAdaptiveQuad());
-                advancedVariable.add(getAdvancedMaxIterations());
-                advancedVariable.add(getAdvancedMissingValueCode());
+                advancedVariable.add(getAdvancedConvergenceCriteria());  //10
+                advancedVariable.add(getAdvancedQuadPoints());  //11
+                advancedVariable.add(getAdvancedAdaptiveQuad());  //12
+                advancedVariable.add(getAdvancedMaxIterations());  //13
+                advancedVariable.add(getAdvancedMissingValueCode());  //14
 
-                advancedVariable.add(getAdvancedInitialRidge());
-                advancedVariable.add(getAdvancedLogisticProbitRegression());
-                advancedVariable.add(getAdvancedUseRandomScale());
+                advancedVariable.add(getAdvancedInitialRidge());  //15
+                advancedVariable.add(getAdvancedLogisticProbitRegression());  //16
+                advancedVariable.add(getAdvancedUseRandomScale());  //17
 
-                advancedVariable.add(getAdvancedResamplingSeed());
-                advancedVariable.add(getAdvancedUseStageTwo());
-                advancedVariable.add(getAdvancedStageTwoMultilevel());
-                advancedVariable.add(getAdvancedResampleCount());
-                advancedVariable.add(getAdvancedMultipleDataFiles());
-                advancedVariable.add(getAdvancedUseMLS());
-                advancedVariable.add(getAdvancedRandomScaleAssociation());
+                advancedVariable.add(getAdvancedResamplingSeed());  //18
+                advancedVariable.add(getAdvancedUseStageTwo());  //19
+                advancedVariable.add(getAdvancedStageTwoMultilevel());  //20
+                advancedVariable.add(getAdvancedResampleCount());  //21
+                advancedVariable.add(getAdvancedMultipleDataFiles());  //22
+                advancedVariable.add(getAdvancedUseMLS());  //23
+                advancedVariable.add(getAdvancedRandomScaleAssociation());  //24
             }
         }
 
@@ -424,8 +426,8 @@ public class MixLibrary implements Serializable {
         newDefinitionFile.add(FilenameUtils.getName(getSharedDataFilename())); // LINE 3
         newDefinitionFile.add(getSharedOutputPrefix()); // LINE 4
         newDefinitionFile.add(Arrays.toString(getSharedAdvancedOptions()).replaceAll(",", " ")); // LINE 5
-        System.out.print(Arrays.toString(getSharedAdvancedOptions()).replaceAll(",", " "));
-        System.out.print("\n");
+//        System.out.print(Arrays.toString(getSharedAdvancedOptions()).replaceAll(",", " "));
+//        System.out.print("\n");
         if (getStageOneOutcome() == STAGE_ONE_OUTCOME_MIXOR) {
             newDefinitionFile.add(Arrays.toString(getMixorModelCovarianceThresholdParameters()).replaceAll(",", " ")); // LINE 6/-
         }
@@ -441,7 +443,7 @@ public class MixLibrary implements Serializable {
         newDefinitionFile.add(Arrays.toString(getSharedModelDecomposeScaleRegressorFields()).replaceAll(",", " ")); // LINE 13/12
 
         if (getStageOneOutcome() == STAGE_ONE_OUTCOME_MIXOR) {
-            newDefinitionFile.add(Arrays.toString(getMixorModelStageOneOutcomeLevels()).replaceAll(",", " ")); // LINE 14/-
+            newDefinitionFile.add(getMixorModelStageOneOutcomeLevels()); // LINE 14/-
         }
 
         newDefinitionFile.add(getSharedModelStageOneOutcomeLabel()); // LINE 15/13
@@ -458,7 +460,12 @@ public class MixLibrary implements Serializable {
          * Appending Stage 2 (Optional)
          */
         if (stageTwoOutcomeType != STAGE_TWO_OUTCOME_NONE) {
-            newDefinitionFile.add(Arrays.toString(getStageTwoRegressorCounts()).replaceAll(",", " "));
+            newDefinitionFile.add(Arrays.toString(getStageTwoRegressorCounts()).replaceAll(",", " ")); // LINE 22/20
+            
+            if (stageTwoOutcomeType == STAGE_TWO_OUTCOME_ORDINAL || stageTwoOutcomeType == STAGE_TWO_OUTCOME_NOMINAL){
+                newDefinitionFile.add(getStageTwoOutcomeCategoryNum());           // LINE 23/21
+                newDefinitionFile.add(getStageTwoCategoricalOutcomeUniqueList()); // LINE 24/22
+            }
             newDefinitionFile.add(getStageTwoOutcomeField());
 
             newDefinitionFile.add(Arrays.toString(getStageTwoFixedFields()).replaceAll(",", " "));
@@ -915,11 +922,11 @@ public class MixLibrary implements Serializable {
                 = new String[]{getMixorModelCovarianceParameter(), getMixorModelThresholdParameter()};
     }
 
-    public String[] getMixorModelStageOneOutcomeLevels() {
+    public String getMixorModelStageOneOutcomeLevels() {
         return mixorModelStageOneOutcomeLevels;
     }
 
-    public void setMixorModelStageOneOutcomeLevels(String[] mixorModelStageOneOutcomeLevels) {
+    public void setMixorModelStageOneOutcomeLevels(String mixorModelStageOneOutcomeLevels) {
         this.mixorModelStageOneOutcomeLevels = mixorModelStageOneOutcomeLevels;
     }
 
@@ -981,7 +988,23 @@ public class MixLibrary implements Serializable {
     public void setStageTwoOutcomeLabel(String stageTwoOutcomeLabel) {
         this.stageTwoOutcomeLabel = stageTwoOutcomeLabel;
     }
-
+    
+    public String getStageTwoOutcomeCategoryNum(){
+        return stageTwoOutcomeCategoryNum;
+    }
+    
+    public void setStageTwoOutcomeCategoryNum(String stageTwoOutcomeCategoryNum){
+        this.stageTwoOutcomeCategoryNum = stageTwoOutcomeCategoryNum;
+    }
+    
+    public String getStageTwoCategoricalOutcomeUniqueList(){
+        return stageTwoCategoricalOutcomeUniqueList;
+    }
+    
+    public void setStageTwoCategoricalOutcomeUniqueList(String stageTwoCategoricalOutcomeUniqueList){
+        this.stageTwoCategoricalOutcomeUniqueList = stageTwoCategoricalOutcomeUniqueList;
+    }
+    
     public String[] getStageTwoFixedLabels() {
         return stageTwoFixedLabels;
     }
@@ -1169,6 +1192,8 @@ public class MixLibrary implements Serializable {
     }
 
     public String getAdvancedLogisticProbitRegression() {
+        // temporary setting
+        advancedLogisticProbitRegression = "1";
         return advancedLogisticProbitRegression;
     }
 

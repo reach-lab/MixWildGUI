@@ -889,7 +889,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageOneLevelTwoPanel = new javax.swing.JPanel();
         levelTwoGrid = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
-        StageOneVariableCombo = new javax.swing.JComboBox<>();
+        StageOneOutcomeCombo = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         IDvariableCombo = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
@@ -1542,16 +1542,16 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         jPanel1.add(stageOneLevelTwoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 300, 540, 180));
 
-        StageOneVariableCombo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        StageOneVariableCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        StageOneVariableCombo.addItemListener(new java.awt.event.ItemListener() {
+        StageOneOutcomeCombo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        StageOneOutcomeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        StageOneOutcomeCombo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                StageOneVariableComboItemStateChanged(evt);
+                StageOneOutcomeComboItemStateChanged(evt);
             }
         });
-        StageOneVariableCombo.addActionListener(new java.awt.event.ActionListener() {
+        StageOneOutcomeCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                StageOneVariableComboActionPerformed(evt);
+                StageOneOutcomeComboActionPerformed(evt);
             }
         });
 
@@ -1680,7 +1680,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                             .addGap(20, 20, 20)
                             .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(IDvariableCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(StageOneVariableCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(StageOneOutcomeCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(addStageOneButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jSeparator10)
                                 .addComponent(jLabel2)
@@ -1706,7 +1706,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 .addGap(0, 0, 0)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(StageOneVariableCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(StageOneOutcomeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16)
                 .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -2512,7 +2512,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageOneClicked = 1;
 
         IDpos = IDvariableCombo.getSelectedIndex();
-        stageOnePos = StageOneVariableCombo.getSelectedIndex();
+        stageOnePos = StageOneOutcomeCombo.getSelectedIndex();
         stageTwoPos = StageTwoOutcomeCombo.getSelectedIndex();
 
         if (stage_1_regs.isVisible()) { //if it is already open and visible in the background
@@ -2564,22 +2564,22 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         isIDChanged = true;
     }//GEN-LAST:event_IDvariableComboItemStateChanged
 
-    private void StageOneVariableComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StageOneVariableComboActionPerformed
+    private void StageOneOutcomeComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StageOneOutcomeComboActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_StageOneVariableComboActionPerformed
+    }//GEN-LAST:event_StageOneOutcomeComboActionPerformed
 
-    private void StageOneVariableComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_StageOneVariableComboItemStateChanged
+    private void StageOneOutcomeComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_StageOneOutcomeComboItemStateChanged
         // TODO add your handling code here:
-        stageOnePos = StageOneVariableCombo.getSelectedIndex();
+        stageOnePos = StageOneOutcomeCombo.getSelectedIndex();
         System.out.println("STAGE ONE OUTCOME CHANGED: " + String.valueOf(stageOnePos));
         isStageOneOutcomeChanged = true;
-    }//GEN-LAST:event_StageOneVariableComboItemStateChanged
+    }//GEN-LAST:event_StageOneOutcomeComboItemStateChanged
 
     private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
         SystemLogger.LOGGER.log(Level.INFO, "Clear Stage One");
 
         IDvariableCombo.setSelectedIndex(0);
-        StageOneVariableCombo.setSelectedIndex(1);
+        StageOneOutcomeCombo.setSelectedIndex(1);
         StageTwoOutcomeCombo.setSelectedIndex(2);
 
         buttonGroup1.clearSelection();
@@ -3161,7 +3161,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         IDvariableCombo.setSelectedIndex(IDpos);
 
         stageOnePos = mxrStates.stageOnePos;
-        StageOneVariableCombo.setSelectedIndex(stageOnePos);
+        StageOneOutcomeCombo.setSelectedIndex(stageOnePos);
 
         stageTwoPos = mxrStates.stageTwoPos;
         StageTwoOutcomeCombo.setSelectedIndex(stageTwoPos);
@@ -3279,7 +3279,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JRadioButton LinearAssociationRadio;
     private javax.swing.JRadioButton NoAssociationRadio;
     private javax.swing.JRadioButton QuadraticAssociationRadio;
-    private javax.swing.JComboBox<String> StageOneVariableCombo;
+    private javax.swing.JComboBox<String> StageOneOutcomeCombo;
     private javax.swing.JComboBox<String> StageTwoOutcomeCombo;
     private javax.swing.JButton addStageOneButton;
     private javax.swing.JButton addStageTwoReg;
@@ -3474,7 +3474,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     public void initiateStageOneTab() {
         IDvariableCombo.setSelectedIndex(0);
-        StageOneVariableCombo.setSelectedIndex(1);
+        StageOneOutcomeCombo.setSelectedIndex(1);
         StageTwoOutcomeCombo.setSelectedIndex(2);
 
         buttonGroup1.clearSelection();
@@ -3506,8 +3506,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         IDvariableCombo.setModel(IDList);
         IDvariableCombo.setSelectedIndex(0);
 
-        StageOneVariableCombo.setModel(StageOneList);
-        StageOneVariableCombo.setSelectedIndex(1);
+        StageOneOutcomeCombo.setModel(StageOneList);
+        StageOneOutcomeCombo.setSelectedIndex(1);
 
         StageTwoOutcomeCombo.setModel(StageTwoList);
         StageTwoOutcomeCombo.setSelectedIndex(2);
@@ -3559,7 +3559,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     public String getStageOneDV() {
         String StageOneDV;
 
-        StageOneDV = StageOneVariableCombo.getItemAt(StageOneVariableCombo.getSelectedIndex());
+        StageOneDV = StageOneOutcomeCombo.getItemAt(StageOneOutcomeCombo.getSelectedIndex());
 
         return StageOneDV;
 
@@ -5113,7 +5113,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     public String getOutcomeLabel() {
         String outcome;
 
-        outcome = StageOneVariableCombo.getSelectedItem().toString();
+        outcome = StageOneOutcomeCombo.getSelectedItem().toString();
         System.out.println("Stage-Two/MixRegGUI/Outcome-variable-Label: " + outcome);
 
         return outcome;
@@ -5121,12 +5121,12 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }
 
     public int getStageOneOutcome() {
-        int stageOneOutcome = 1;
+        int stageOneOutcome = MixLibrary.STAGE_ONE_OUTCOME_MIXREG;
 
         if (getStageOneContinuousRadio()) {
-            stageOneOutcome = 1;
+            stageOneOutcome = MixLibrary.STAGE_ONE_OUTCOME_MIXREG;
         } else if (getStageOneDichotomousRadio() || getStageOneOrdinalRadio()) {
-            stageOneOutcome = 2;
+            stageOneOutcome = MixLibrary.STAGE_ONE_OUTCOME_MIXOR;
         }
 
         return stageOneOutcome;
@@ -6302,7 +6302,26 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         System.out.println("Total selected WS variances in level two: " + String.valueOf(countLevelTwoTau()));
 
         // Reads selected ID variable and outcome variable from the first two comboboxes
-        String[] idOutcome = {String.valueOf(IDvariableCombo.getSelectedIndex() + 1), String.valueOf(StageOneVariableCombo.getSelectedIndex() + 1)};
+        String[] idOutcome = {String.valueOf(IDvariableCombo.getSelectedIndex() + 1), String.valueOf(StageOneOutcomeCombo.getSelectedIndex() + 1)};
+
+        if (getStageOneOutcome() == MixLibrary.STAGE_ONE_OUTCOME_MIXOR) {
+            try {
+                tryCount = 1;
+                ArrayList<Integer> uniqueIntegers = getStageOneOrTwoCategoricalOutcomeUniqueList(1);
+                Integer categoryNum = uniqueIntegers.size();
+                defFile.setAdvancedStageOneOutcomeValueCount(categoryNum.toString());
+                System.out.println("From defHelper | number of categories for the ordinal stage 1 outcome: " + Arrays.toString(defFile.getSharedIdAndStageOneOutcomeFields()));
+                if (getStageOneOrdinalRadio()) {
+                    defFile.setMixorModelStageOneOutcomeLevels(listToString(uniqueIntegers));
+                    System.out.println("From defHelper | Values for the ordinal stage 1 outcome: " + Arrays.toString(defFile.getSharedIdAndStageOneOutcomeFields()));
+                }
+            } catch (Exception ex) {
+                catchCount = 1;
+                Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+            }
+        }
 
         try {
             tryCount = 1;
@@ -7148,6 +7167,24 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         //**********************************************************************
         // Reads selected ID variable and outcome variable from the first two comboboxes
         //String[] idOutcome = {String.valueOf(IDvariableCombo.getSelectedIndex() + 1), String.valueOf(StageOneVariableCombo.getSelectedIndex() + 1)};
+        if (getStageTwoOutcomeType() == MixLibrary.STAGE_TWO_OUTCOME_NORMAL || getStageTwoOutcomeType() == MixLibrary.STAGE_TWO_OUTCOME_ORDINAL) {
+
+            try {
+                ArrayList<Integer> uniqueCategoryList = getStageOneOrTwoCategoricalOutcomeUniqueList(2);
+                Integer categoryNum = uniqueCategoryList.size();
+                defFile.setStageTwoOutcomeCategoryNum(categoryNum.toString());
+                System.out.println("From defHelper | Number of categories of categorical STAGE TWO Outcome: " + defFile.getStageTwoOutcomeField());
+
+                defFile.setStageTwoCategoricalOutcomeUniqueList(listToString(uniqueCategoryList));
+                System.out.println("From defHelper | Category values of categorical STAGE TWO Outcome: " + defFile.getStageTwoOutcomeField());
+            } catch (Exception ex) {
+                catchCount = 1;
+                Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
+                JOptionPane.showMessageDialog(stageOneTabs, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+            }
+        }
+
         try {
             defFile.setStageTwoOutcomeField(getStageTwoOutcomePosition());
             System.out.println("From defHelper | Outcome variable Position STAGE TWO: " + defFile.getStageTwoOutcomeField());
@@ -7851,7 +7888,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 stageTwoLevelTwoGridBoxes.get(p).get(3).setSelected(false);
                 stageTwoLevelTwoGridBoxes.get(p).get(3).setEnabled(false);
             }
-            
+
             try {
                 defFile.setStageTwoInteractionFields(new String[0]);
                 defFile.setStageTwoInteractionLabels(new String[0]);
@@ -7879,7 +7916,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 }
 
             }
-            
+
             for (int p = 0; p < stageTwoLevelTwoRegSize; p++) {
 
                 if (stageTwoLevelTwoGridBoxes.get(p).get(1).isSelected() && stageTwoLevelTwoGridBoxes.get(p).get(2).isSelected()) {
@@ -8119,6 +8156,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             stageTwoOutcomeType = MixLibrary.STAGE_TWO_OUTCOME_NORMAL;
         } else if (getStageTwoDichotomousRadio() == true) {
             stageTwoOutcomeType = MixLibrary.STAGE_TWO_OUTCOME_ORDINAL;
+        } else if (getCountRadio() == true) {
+            stageTwoOutcomeType = MixLibrary.STAGE_TWO_OUTCOME_COUNT;
+        } else if (getMultinomialRadio() == true) {
+            stageTwoOutcomeType = MixLibrary.STAGE_TWO_OUTCOME_NOMINAL;
         }
 
         return stageTwoOutcomeType;
@@ -8142,7 +8183,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageOneOrdinalRadio.setEnabled(turnOn);
         oneRLERadio.setEnabled(turnOn);
         moreThanOneRLERadio.setEnabled(turnOn);
-
 
         guiStatesSaveButtonModalConfig.setVisible(turnOn);
         guiStatesSaveButtonStageOne.setVisible(turnOn);
@@ -8315,4 +8355,102 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             randomScaleSelectionNo.setSelected(false);
         }
     }
+
+    private ArrayList<Integer> getStageOneOrTwoCategoricalOutcomeUniqueList(Integer stageNum) {
+        ArrayList<String> ColumnsCustom = new ArrayList<>();
+        ArrayList<String> UniqueList = new ArrayList<>();
+
+        String dataFileName = getDataFileName();
+        File file = new File(dataFileName);
+        //        //first get the column
+        BufferedReader br = null;
+        String line = "";
+        String commaSplitter = ",";
+        //
+        ArrayList<Integer> UniqueIntegers = new ArrayList<>();
+        try {
+            br = new BufferedReader(new FileReader(dataFileName));
+            line = br.readLine(); //consumes the first row
+            int index;
+            switch (stageNum) {
+                case 1:
+                    index = StageOneOutcomeCombo.getSelectedIndex();
+                    break;
+                case 2:
+                    index = StageTwoOutcomeCombo.getSelectedIndex();
+                    break;
+                default:
+                    index = StageOneOutcomeCombo.getSelectedIndex();
+                    break;
+            }
+            while ((line = br.readLine()) != null) {
+                String[] Columns = line.split(commaSplitter);
+
+//                int index = StageTwoOutcomeCombo.getSelectedIndex();
+                ColumnsCustom.add(Columns[index]);
+
+            }
+
+            System.out.println("COLUMN:");
+            for (int k = 0; k < ColumnsCustom.size(); k++) {
+
+                System.out.println(ColumnsCustom.get(k));
+            }
+
+            //            if (defFile.getAdvancedMissingValue().contains(".")){
+            //            String strippedMissingVal = defFile.getAdvancedMissingValue().substring(0,defFile.getAdvancedMissingValue().indexOf('.'));
+            //            }
+            //
+            //count the unique ones
+            for (int x = 0; x < ColumnsCustom.size(); x++) {
+                if (UniqueList.contains(ColumnsCustom.get(x))) {
+                    //do nothing
+                } else if (ColumnsCustom.get(x).equals(defFile.getAdvancedMissingValueCode()) && !ColumnsCustom.get(x).equals("0")) { //compare if the category is a missing value, then don't consider it as a category
+                    //do nothing
+
+                } else {
+                    UniqueList.add(ColumnsCustom.get(x));
+                }
+
+            }
+
+            //sort UniqueList First
+            for (int x = 0; x < UniqueList.size(); x++) {
+
+                UniqueIntegers.add(Integer.valueOf(UniqueList.get(x)));
+
+            }
+            Collections.sort(UniqueIntegers);
+
+        } catch (FileNotFoundException e) {
+            SystemLogger.LOGGER.log(Level.SEVERE, e.toString() + "{0}", SystemLogger.getLineNum());
+            e.printStackTrace();
+            Logger.getLogger(getName()).log(Level.SEVERE, null, e);
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+        } catch (IOException e) {
+            SystemLogger.LOGGER.log(Level.SEVERE, e.toString() + "{0}", SystemLogger.getLineNum());
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    SystemLogger.LOGGER.log(Level.SEVERE, e.toString() + "{0}", SystemLogger.getLineNum());
+                    e.printStackTrace();
+                }
+            }
+
+        }
+        return UniqueIntegers;
+
+    }
+
+    private static String listToString(List<Integer> numbers) {
+        StringBuilder buffer = new StringBuilder();
+        for (Integer nextNumber : numbers) {
+            buffer.append(nextNumber).append(" ");
+        }
+        return buffer.toString();
+    }
+
 }
