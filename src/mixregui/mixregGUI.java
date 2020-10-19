@@ -735,7 +735,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
      */
     public mixregGUI() {
         initComponents();
-        this.setTitle("MixWILD-2.0-Alpha");
+        this.setTitle("MixWILD-2.0-Beta");
         // adjust the frame size to fit screen resolution
 //        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 //        setBounds(0, 0, stageOneTabs.getWidth(), screenSize.height);
@@ -6311,10 +6311,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 Integer categoryNum = uniqueIntegers.size();
                 defFile.setAdvancedStageOneOutcomeValueCount(categoryNum.toString());
                 System.out.println("From defHelper | number of categories for the ordinal stage 1 outcome: " + Arrays.toString(defFile.getSharedIdAndStageOneOutcomeFields()));
-                if (getStageOneOrdinalRadio()) {
-                    defFile.setMixorModelStageOneOutcomeLevels(listToString(uniqueIntegers));
-                    System.out.println("From defHelper | Values for the ordinal stage 1 outcome: " + Arrays.toString(defFile.getSharedIdAndStageOneOutcomeFields()));
-                }
+//                if (getStageOneOrdinalRadio()) {
+                defFile.setMixorModelStageOneOutcomeLevels(listToString(uniqueIntegers));
+                System.out.println("From defHelper | Values for the ordinal stage 1 outcome: " + Arrays.toString(defFile.getSharedIdAndStageOneOutcomeFields()));
+//                }
             } catch (Exception ex) {
                 catchCount = 1;
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -8342,13 +8342,13 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }
 
     private void updateGuiView_trigger_stageOneOutcome() {
-        if (getStageOneDichotomousRadio() || getStageOneOrdinalRadio()) {
+        if (getStageOneDichotomousRadio()) {
             randomScaleSelectionYes.setEnabled(false);
             randomScaleSelectionYes.setSelected(false);
             randomScaleSelectionNo.setEnabled(false);
             randomScaleSelectionNo.setSelected(true);
         }
-        if (getStageOneContinuousRadio()) {
+        if (getStageOneContinuousRadio() || getStageOneOrdinalRadio()) {
             randomScaleSelectionYes.setEnabled(true);
             randomScaleSelectionYes.setSelected(false);
             randomScaleSelectionNo.setEnabled(true);
