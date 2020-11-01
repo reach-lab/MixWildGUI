@@ -35,6 +35,8 @@ public class MixRegGuiStates {
     public boolean stageOneContinuousRadio;
     public boolean stageOneDichotomousRadio;
     public boolean stageOneOrdinalRadio;
+    public boolean stageOneProbitRadio;
+    public boolean stageOneLogisticRadio;
     public boolean oneRLERadio;
     public boolean moreThanOneRLERadio;
     public boolean randomScaleSelectionYes;
@@ -120,6 +122,8 @@ public class MixRegGuiStates {
         this.stageOneContinuousRadio = mxr.getStageOneContinuousRadio();
         this.stageOneDichotomousRadio = mxr.getStageOneDichotomousRadio();
         this.stageOneOrdinalRadio = mxr.getStageOneOrdinalRadio();
+        this.stageOneProbitRadio = mxr.getStageOneProbit();
+        this.stageOneLogisticRadio = mxr.getStageOneLogistic();
         this.oneRLERadio = mxr.getOneRLERadio();
         this.moreThanOneRLERadio = mxr.getMoreThanOneRLERadio();
         this.randomScaleSelectionYes = mxr.getRandomScaleSelectionYes();
@@ -239,6 +243,8 @@ public class MixRegGuiStates {
         stageOneContinuousRadio = hmapStates.get("stageOneContinuousRadio").getBoolean();
         stageOneDichotomousRadio = hmapStates.get("stageOneDichotomousRadio").getBoolean();
         stageOneOrdinalRadio = hmapStates.get("stageOneOrdinalRadio").getBoolean();
+        stageOneProbitRadio = hmapStates.get("stageOneProbitRadio").getBoolean();
+        stageOneLogisticRadio = hmapStates.get("stageOneLogisticRadio").getBoolean();
         oneRLERadio = hmapStates.get("oneRLERadio").getBoolean();
         moreThanOneRLERadio = hmapStates.get("moreThanOneRLERadio").getBoolean();
         randomScaleSelectionYes = hmapStates.get("randomScaleSelectionYes").getBoolean();
@@ -377,7 +383,9 @@ public class MixRegGuiStates {
         StateObject po58 = new StateObject("suppressIntCheckBox", suppressIntCheckBox);
         StateObject po59 = new StateObject("levelTwoSelected", levelTwoSelected, 0);
         StateObject po60 = new StateObject("sessionFolderName", sessionFolderName);
-
+        StateObject po61 = new StateObject("stageOneProbitRadio", stageOneProbitRadio);
+        StateObject po62 = new StateObject("stageOneLogisticRadio", stageOneLogisticRadio);
+        
         hashmap.put(po0.getKey(), po0);
         hashmap.put(po1.getKey(), po1);
         hashmap.put(po2.getKey(), po2);
@@ -439,6 +447,8 @@ public class MixRegGuiStates {
         hashmap.put(po58.getKey(), po58);
         hashmap.put(po59.getKey(), po59);
         hashmap.put(po60.getKey(), po60);
+        hashmap.put(po61.getKey(), po61);
+        hashmap.put(po62.getKey(), po62);
         return hashmap;
     }
 

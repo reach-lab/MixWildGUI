@@ -1193,7 +1193,7 @@ public class MixLibrary implements Serializable {
 
     public String getAdvancedLogisticProbitRegression() {
         // temporary setting
-        advancedLogisticProbitRegression = "1";
+//        advancedLogisticProbitRegression = "1";
         return advancedLogisticProbitRegression;
     }
 
