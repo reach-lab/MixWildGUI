@@ -54,11 +54,13 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JEditorPane;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
@@ -239,7 +241,7 @@ public class MixLibrary implements Serializable {
     private String stageTwoOutcomeField;
     private String stageTwoOutcomeCategoryNum;
     private String stageTwoCategoricalOutcomeUniqueList;
-    
+
     private String[] stageTwoFixedFields; // FIXEX
     private String[] stageTwoThetaFields; // INTERACTION WITH LOCATION
     private String[] stageTwoOmegaFields; // INTERACTION WITH SCALE
@@ -461,8 +463,8 @@ public class MixLibrary implements Serializable {
          */
         if (stageTwoOutcomeType != STAGE_TWO_OUTCOME_NONE) {
             newDefinitionFile.add(Arrays.toString(getStageTwoRegressorCounts()).replaceAll(",", " ")); // LINE 22/20
-            
-            if (stageTwoOutcomeType == STAGE_TWO_OUTCOME_ORDINAL || stageTwoOutcomeType == STAGE_TWO_OUTCOME_NOMINAL){
+
+            if (stageTwoOutcomeType == STAGE_TWO_OUTCOME_ORDINAL || stageTwoOutcomeType == STAGE_TWO_OUTCOME_NOMINAL) {
                 newDefinitionFile.add(getStageTwoOutcomeCategoryNum());           // LINE 23/21
                 newDefinitionFile.add(getStageTwoCategoricalOutcomeUniqueList()); // LINE 24/22
             }
@@ -931,9 +933,7 @@ public class MixLibrary implements Serializable {
     }
 
     public String[] getStageTwoRegressorCounts() {
-        if (stageTwoRegressorCounts == null) {
-            setStageTwoRegressorCounts();
-        }
+        setStageTwoRegressorCounts();
         return stageTwoRegressorCounts;
     }
 
@@ -988,23 +988,23 @@ public class MixLibrary implements Serializable {
     public void setStageTwoOutcomeLabel(String stageTwoOutcomeLabel) {
         this.stageTwoOutcomeLabel = stageTwoOutcomeLabel;
     }
-    
-    public String getStageTwoOutcomeCategoryNum(){
+
+    public String getStageTwoOutcomeCategoryNum() {
         return stageTwoOutcomeCategoryNum;
     }
-    
-    public void setStageTwoOutcomeCategoryNum(String stageTwoOutcomeCategoryNum){
+
+    public void setStageTwoOutcomeCategoryNum(String stageTwoOutcomeCategoryNum) {
         this.stageTwoOutcomeCategoryNum = stageTwoOutcomeCategoryNum;
     }
-    
-    public String getStageTwoCategoricalOutcomeUniqueList(){
+
+    public String getStageTwoCategoricalOutcomeUniqueList() {
         return stageTwoCategoricalOutcomeUniqueList;
     }
-    
-    public void setStageTwoCategoricalOutcomeUniqueList(String stageTwoCategoricalOutcomeUniqueList){
+
+    public void setStageTwoCategoricalOutcomeUniqueList(String stageTwoCategoricalOutcomeUniqueList) {
         this.stageTwoCategoricalOutcomeUniqueList = stageTwoCategoricalOutcomeUniqueList;
     }
-    
+
     public String[] getStageTwoFixedLabels() {
         return stageTwoFixedLabels;
     }
@@ -1278,8 +1278,7 @@ public class MixLibrary implements Serializable {
         advancedStageTwoMultilevel = "0";
         if (this.stageTwoModelType == STAGE_TWO_MODEL_TYPE_SINGLE) {
             advancedStageTwoMultilevel = "0";
-        }
-        else if (this.stageTwoModelType == STAGE_TWO_MODEL_TYPE_MULTILEVEL){
+        } else if (this.stageTwoModelType == STAGE_TWO_MODEL_TYPE_MULTILEVEL) {
             advancedStageTwoMultilevel = "1";
         }
         return advancedStageTwoMultilevel;
@@ -1487,7 +1486,7 @@ public class MixLibrary implements Serializable {
 
     }
 
-    public void writeStageOneOnlyDefFileToFolder() {
+    public void writeStageOneOnlyDefFileToFolder(Dimension windowPanelDim) {
 
         try {
             myFrame = new JFrame("Definition File Preview");
@@ -1497,13 +1496,14 @@ public class MixLibrary implements Serializable {
             myFrame.setLayout(defFileFlow);
             defFileFlow.setAlignment(FlowLayout.TRAILING);
             myFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            myFrame.setSize(510, 700);
+
+            myFrame.setSize(windowPanelDim.width / 2, windowPanelDim.height - 50);
             myFrame.setResizable(false);
             myPane = new JEditorPane();
-            myPane.setSize(500, 500);
+            myPane.setSize(windowPanelDim.width / 2 - 20, windowPanelDim.height - 50);
             myPane.setContentType("text/plain");
             myPane.setFont(new Font("Monospaced", 0, 12));
-            myPane.setLayout(new BorderLayout(500, 500));
+            myPane.setLayout(new BorderLayout(windowPanelDim.width / 2 - 20, windowPanelDim.height - 50));
             myPane.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
             String newline = System.getProperty("line.separator");
             try {
@@ -1515,11 +1515,26 @@ public class MixLibrary implements Serializable {
 
             JButton proceedButton = new JButton("Proceed");
             JButton saveDefFile = new JButton("Save Def File");
+            proceedButton.setPreferredSize(new Dimension(120, 30));
+            saveDefFile.setPreferredSize(new Dimension(120, 30));
 
-            myFrame.add(myPane);
-            myFrame.add(proceedButton);
-            myFrame.add(saveDefFile);
+            JPanel container = new JPanel();
+            BoxLayout boxlayout = new BoxLayout(container, BoxLayout.Y_AXIS);
+            container.setLayout(boxlayout);
+            container.add(myPane);
+
+            JPanel buttonContainer = new JPanel();
+            buttonContainer.setLayout(new FlowLayout());
+
+            buttonContainer.add(proceedButton);
+            buttonContainer.add(saveDefFile);
+            container.add(buttonContainer);
+
             myFrame.setComponentOrientation(ComponentOrientation.UNKNOWN);
+            myFrame.setResizable(true);
+            JScrollPane scrPane = new JScrollPane(container);
+            myFrame.getContentPane().add(scrPane, BorderLayout.CENTER);
+            myFrame.pack();
 
             proceedButton.addActionListener(new ActionListener() {
 
@@ -1619,24 +1634,26 @@ public class MixLibrary implements Serializable {
         }
     }
 
-    public void writeDefFileToFolder() {
+    public void writeDefFileToFolder(Dimension windowPanelDim) {
 
         try {
+
             myFrame = new JFrame("Definition File Preview");
 
             FlowLayout defFileFlow = new FlowLayout();
-
-            myFrame.setLayout(defFileFlow);
-            defFileFlow.setAlignment(FlowLayout.TRAILING);
+//            myFrame.setLayout(defFileFlow);
+//            defFileFlow.setAlignment(FlowLayout.TRAILING);
             myFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            myFrame.setSize(550, 700);
+
+            myFrame.setSize(windowPanelDim.width / 2, windowPanelDim.height - 50);
             myFrame.setResizable(false);
+
             myPane = new JEditorPane();
-            myPane.setSize(500, 500);
+            myPane.setSize(windowPanelDim.width / 2 - 30, windowPanelDim.height - 50);
             myPane.setContentType("text/plain");
             myPane.setFont(new Font("Monospaced", 0, 12));
-            myPane.setLayout(new BorderLayout(500, 500));
-            myPane.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+            myPane.setLayout(new BorderLayout(windowPanelDim.width / 2 - 30, windowPanelDim.height - 50));
+            myPane.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
             String newline = System.getProperty("line.separator");
             try {
                 myPane.setText(String.join(newline, buildDefinitionList()).replace("[", "").replace("]", ""));
@@ -1647,11 +1664,26 @@ public class MixLibrary implements Serializable {
 
             JButton proceedButton = new JButton("Proceed");
             JButton saveDefFile = new JButton("Save Def File");
+            proceedButton.setPreferredSize(new Dimension(120, 30));
+            saveDefFile.setPreferredSize(new Dimension(120, 30));
 
-            myFrame.add(myPane);
-            myFrame.add(proceedButton);
-            myFrame.add(saveDefFile);
+            JPanel container = new JPanel();
+            BoxLayout boxlayout = new BoxLayout(container, BoxLayout.Y_AXIS);
+            container.setLayout(boxlayout);
+            container.add(myPane);
+
+            JPanel buttonContainer = new JPanel();
+            buttonContainer.setLayout(new FlowLayout());
+
+            buttonContainer.add(proceedButton);
+            buttonContainer.add(saveDefFile);
+            container.add(buttonContainer);
+
             myFrame.setComponentOrientation(ComponentOrientation.UNKNOWN);
+            myFrame.setResizable(true);
+            JScrollPane scrPane = new JScrollPane(container);
+            myFrame.getContentPane().add(scrPane, BorderLayout.CENTER);
+            myFrame.pack();
 
             proceedButton.addActionListener(new ActionListener() {
 

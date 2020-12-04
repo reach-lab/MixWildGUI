@@ -573,8 +573,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     static String outPutStageTwo;
 
     private void initiateStageOneTabLayout() {
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
+//        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+//        this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
 
         // newModel = new NewModel();
 //        advancedOptions_view = new advancedOptions();
@@ -748,11 +748,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
      */
     public mixregGUI() {
         initComponents();
-        this.setTitle("MixWILD-2.0-Beta");
+        this.setTitle("MixWILD-2.0-Beta5");
         // adjust the frame size to fit screen resolution
-//        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-//        setBounds(0, 0, stageOneTabs.getWidth(), screenSize.height);
-        setBounds(0, 0, stageOneTabs.getWidth(), 700);
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        setBounds(0, 0, stageOneTabs.getWidth(), (int) Math.round(screenSize.height / 1.5));
+//        setBounds(0, 0, stageOneTabs.getWidth(), 700);
         setVisible(true);
 
         MXRStates = new MixRegGuiStates();
@@ -1039,7 +1039,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageOneTabs.setFocusable(false);
         stageOneTabs.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
         stageOneTabs.setMinimumSize(new java.awt.Dimension(1000, 700));
-        stageOneTabs.setPreferredSize(new java.awt.Dimension(1300, 700));
+        stageOneTabs.setPreferredSize(new java.awt.Dimension(1200, 700));
 
         jPanel13.setMinimumSize(new java.awt.Dimension(1000, 700));
         jPanel13.setPreferredSize(new java.awt.Dimension(1300, 700));
@@ -1851,7 +1851,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         jPanel12.add(runTabTwoStageOneTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 530, 160, 35));
 
         suppressIntCheckBox.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        suppressIntCheckBox.setText("Suppress Scale X Random Interaction");
+        suppressIntCheckBox.setText("Suppress 2-way Location X Scale Interaction");
         suppressIntCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 suppressIntCheckBoxActionPerformed(evt);
@@ -2049,7 +2049,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(544, 544, 544)
                                 .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(454, Short.MAX_VALUE))
+                .addContainerGap(354, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2114,7 +2114,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel11)))
-                .addContainerGap(455, Short.MAX_VALUE))
+                .addContainerGap(355, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2207,7 +2207,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                         .addComponent(jLabel20)
                         .addGap(31, 31, 31)
                         .addComponent(printedFileName)))
-                .addContainerGap(308, Short.MAX_VALUE))
+                .addContainerGap(208, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2269,7 +2269,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                         .addComponent(jLabel28)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(964, Short.MAX_VALUE))
+                .addContainerGap(864, Short.MAX_VALUE))
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2324,7 +2324,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             .addGroup(jPanel15Layout.createSequentialGroup()
                 .addGap(73, 73, 73)
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel31, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
+                    .addComponent(jLabel31, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
                     .addComponent(userGuideDownload)
                     .addComponent(exampleDataDownload))
                 .addGap(868, 868, 868))
@@ -2474,6 +2474,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         SystemLogger.LOGGER.log(Level.INFO, "Clear Stage Two");
         clearStageTwoLevelOneGrid();
         clearStageTwoLevelTwoGrid();
+        suppressIntCheckBox.setEnabled(true);
+        suppressIntCheckBox.setSelected(false);
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -3826,16 +3828,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 levelTwoGrid.add(levelTwoBoxes.get(j).get(k), constraints);
             }
 
-            if (isRandomScale) {
-
-                levelTwoBoxes.get(j).get(2).setEnabled(true);
-
-            } else {
-
-                levelTwoBoxes.get(j).get(2).setEnabled(false);
-
-            }
-
             if (RLE_selected == MixLibrary.STAGE_ONE_RLE_SLOPE) {
                 levelTwoBoxes.get(j).get(1).setVisible(false);
 
@@ -3964,8 +3956,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                         stageTwoLevelTwoGridBoxes.get(row).get(3).setEnabled(false);
                         randomChecked = false;
                         scaleChecked = false;
-                        suppressIntCheckBox.setEnabled(false);
-                        suppressIntCheckBox.setSelected(false);
+//                        suppressIntCheckBox.setEnabled(false);
+//                        suppressIntCheckBox.setSelected(false);
 
                     }
 
@@ -4128,6 +4120,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         int stageTwoBeta = 0;
 
+        for (int p = 0; p < stageTwoLevelOneRegSize; p++) {
+
+            if (stageTwoLevelOneGridBoxes.get(p).get(0).isSelected()) {
+
+                stageTwoBeta = stageTwoBeta + 1;
+            }
+        }
+
         for (int p = 0; p < stageTwoLevelTwoRegSize; p++) {
 
             if (stageTwoLevelTwoGridBoxes.get(p).get(0).isSelected()) {
@@ -4176,6 +4176,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     public int countStageTwoAlpha() {
 
         int stageTwoAlpha = 0;
+
+        for (int p = 0; p < stageTwoLevelOneRegSize; p++) {
+
+            if (stageTwoLevelOneGridBoxes.get(p).get(1).isSelected()) {
+
+                stageTwoAlpha = stageTwoAlpha + 1;
+            }
+        }
 
         for (int p = 0; p < stageTwoLevelTwoRegSize; p++) {
 
@@ -4226,6 +4234,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         int stageTwoTau = 0;
 
+        for (int p = 0; p < stageTwoLevelOneRegSize; p++) {
+
+            if (stageTwoLevelOneGridBoxes.get(p).get(2).isSelected()) {
+
+                stageTwoTau = stageTwoTau + 1;
+            }
+        }
+
         for (int p = 0; p < stageTwoLevelTwoRegSize; p++) {
 
             if (stageTwoLevelTwoGridBoxes.get(p).get(2).isSelected()) {
@@ -4241,6 +4257,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     public int countStageTwoInteractions() {
 
         int stageTwoInter = 0;
+
+        for (int p = 0; p < stageTwoLevelOneRegSize; p++) {
+
+            if (stageTwoLevelOneGridBoxes.get(p).get(3).isSelected()) {
+
+                stageTwoInter = stageTwoInter + 1;
+            }
+        }
 
         for (int p = 0; p < stageTwoLevelTwoRegSize; p++) {
 
@@ -5237,17 +5261,44 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         String fieldLabel;
 
-        String[] regressorLabels = new String[stageTwoLevelTwoRegSize];
+        String[] regressorLabels = new String[stageTwoLevelOneRegSize + stageTwoLevelTwoRegSize];
         int index = 0;
 
         ArrayList<String> position = new ArrayList<>();
+
+        for (int p = 0; p < stageTwoLevelOneRegSize; p++) {
+
+            if (stageTwoLevelOneGridBoxes.get(p).get(0).isSelected()) {
+                regressorLabels[index] = stageTwoLevelOneSelected.get(p);
+                fieldLabel = stageTwoLevelOneSelected.get(p);
+                System.out.println("Stage-Two/mixRegGUI/Level 1 Regressor-Fields-(Fixed): " + regressorLabels[index]);
+                index++;
+
+                int posIndex = 0;
+
+                for (int q = 0; q < variableNamesCombo.length; q++) {
+
+                    if (variableNamesCombo[q].equals(fieldLabel)) {
+                        //position[index] = String.valueOf(q + 1);
+                        position.add(String.valueOf(q + 1));
+                        System.out.println("Regressor position test: " + String.valueOf(q + 1));
+                        System.out.println("From inside mixRegGUI | Position of this regressor: " + position.get(posIndex));
+                        System.out.println("Position array: " + position);
+                        posIndex++;
+
+                    }
+
+                }
+            }
+
+        }
 
         for (int p = 0; p < stageTwoLevelTwoRegSize; p++) {
 
             if (stageTwoLevelTwoGridBoxes.get(p).get(0).isSelected()) {
                 regressorLabels[index] = stageTwoLevelTwoSelected.get(p);
                 fieldLabel = stageTwoLevelTwoSelected.get(p);
-                System.out.println("Stage-Two/mixRegGUI/Regressor-Fields-(Fixed): " + regressorLabels[index]);
+                System.out.println("Stage-Two/mixRegGUI/Level 2 Regressor-Fields-(Fixed): " + regressorLabels[index]);
                 index++;
 
                 int posIndex = 0;
@@ -5292,17 +5343,44 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         String fieldLabel;
 
-        String[] regressorLabels = new String[stageTwoLevelTwoRegSize];
+        String[] regressorLabels = new String[stageTwoLevelOneRegSize + stageTwoLevelTwoRegSize];
         int index = 0;
 
         ArrayList<String> position = new ArrayList<>();
+
+        for (int p = 0; p < stageTwoLevelOneRegSize; p++) {
+
+            if (stageTwoLevelOneGridBoxes.get(p).get(1).isSelected()) {
+                regressorLabels[index] = stageTwoLevelOneSelected.get(p);
+                fieldLabel = stageTwoLevelOneSelected.get(p);
+                System.out.println("Stage-Two/mixRegGUI/Level 1 Regressor-Fields-(LocRan): " + regressorLabels[index]);
+                index++;
+
+                int posIndex = 0;
+
+                for (int q = 0; q < variableNamesCombo.length; q++) {
+
+                    if (variableNamesCombo[q].equals(fieldLabel)) {
+                        //position[index] = String.valueOf(q + 1);
+                        position.add(String.valueOf(q + 1));
+                        System.out.println("Regressor position test: " + String.valueOf(q + 1));
+                        System.out.println("From inside mixRegGUI | Position of this regressor: " + position.get(posIndex));
+                        System.out.println("Position array: " + position);
+                        posIndex++;
+
+                    }
+
+                }
+            }
+
+        }
 
         for (int p = 0; p < stageTwoLevelTwoRegSize; p++) {
 
             if (stageTwoLevelTwoGridBoxes.get(p).get(1).isSelected()) {
                 regressorLabels[index] = stageTwoLevelTwoSelected.get(p);
                 fieldLabel = stageTwoLevelTwoSelected.get(p);
-                System.out.println("Stage-Two/mixRegGUI/Regressor-Fields-(LocRan): " + regressorLabels[index]);
+                System.out.println("Stage-Two/mixRegGUI/Level 2 Regressor-Fields-(LocRan): " + regressorLabels[index]);
                 index++;
 
                 int posIndex = 0;
@@ -5347,10 +5425,37 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         String fieldLabel;
 
-        String[] regressorLabels = new String[stageTwoLevelTwoRegSize];
+        String[] regressorLabels = new String[stageTwoLevelOneRegSize + stageTwoLevelTwoRegSize];
         int index = 0;
 
         ArrayList<String> position = new ArrayList<>();
+
+        for (int p = 0; p < stageTwoLevelOneRegSize; p++) {
+
+            if (stageTwoLevelOneGridBoxes.get(p).get(2).isSelected()) {
+                regressorLabels[index] = stageTwoLevelOneSelected.get(p);
+                fieldLabel = stageTwoLevelOneSelected.get(p);
+                System.out.println("Stage-Two/mixRegGUI/Regressor Fields (Scale): " + regressorLabels[index]);
+                index++;
+
+                int posIndex = 0;
+
+                for (int q = 0; q < variableNamesCombo.length; q++) {
+
+                    if (variableNamesCombo[q].equals(fieldLabel)) {
+                        //position[index] = String.valueOf(q + 1);
+                        position.add(String.valueOf(q + 1));
+                        System.out.println("Regressor position test: " + String.valueOf(q + 1));
+                        System.out.println("Stage-two/mixRegGUI/Position of this regressor: " + position.get(posIndex));
+                        System.out.println("Position array: " + position);
+                        posIndex++;
+
+                    }
+
+                }
+            }
+
+        }
 
         for (int p = 0; p < stageTwoLevelTwoRegSize; p++) {
 
@@ -5405,12 +5510,23 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         ArrayList<String> regressorLabels = new ArrayList<String>();
         int index = 0;
 
+        for (int p = 0; p < stageTwoLevelOneRegSize; p++) {
+
+            if (stageTwoLevelOneGridBoxes.get(p).get(0).isSelected()) {
+                regressorLabels.add(stageTwoLevelOneSelected.get(p));
+                fieldLabel = stageTwoLevelOneSelected.get(p);
+                System.out.println("Stage-Two/mixRegGUI/Level 1 Regressor-Fields-(FIXED): " + regressorLabels.get(index));
+                index++;
+
+            }
+        }
+
         for (int p = 0; p < stageTwoLevelTwoRegSize; p++) {
 
             if (stageTwoLevelTwoGridBoxes.get(p).get(0).isSelected()) {
                 regressorLabels.add(stageTwoLevelTwoSelected.get(p));
                 fieldLabel = stageTwoLevelTwoSelected.get(p);
-                System.out.println("Stage-Two/mixRegGUI/Regressor-Fields-(FIXED): " + regressorLabels.get(index));
+                System.out.println("Stage-Two/mixRegGUI/Level 2 Regressor-Fields-(FIXED): " + regressorLabels.get(index));
                 index++;
 
             }
@@ -5438,12 +5554,23 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         ArrayList<String> regressorLabels = new ArrayList<String>();
         int index = 0;
 
+        for (int p = 0; p < stageTwoLevelOneRegSize; p++) {
+
+            if (stageTwoLevelOneGridBoxes.get(p).get(1).isSelected()) {
+                regressorLabels.add(stageTwoLevelOneSelected.get(p));
+                fieldLabel = stageTwoLevelOneSelected.get(p);
+                System.out.println("STAGE-TWO/MIXREGGUI/Level 1 Regressor-Fields-(LOC RAN): " + regressorLabels.get(index));
+                index++;
+
+            }
+        }
+
         for (int p = 0; p < stageTwoLevelTwoRegSize; p++) {
 
             if (stageTwoLevelTwoGridBoxes.get(p).get(1).isSelected()) {
                 regressorLabels.add(stageTwoLevelTwoSelected.get(p));
                 fieldLabel = stageTwoLevelTwoSelected.get(p);
-                System.out.println("STAGE-TWO/MIXREGGUI/Regressor-Fields-(LOC RAN): " + regressorLabels.get(index));
+                System.out.println("STAGE-TWO/MIXREGGUI/Level 2 Regressor-Fields-(LOC RAN): " + regressorLabels.get(index));
                 index++;
 
             }
@@ -5471,12 +5598,22 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         ArrayList<String> regressorLabels = new ArrayList<String>();
         int index = 0;
 
+        for (int p = 0; p < stageTwoLevelOneRegSize; p++) {
+
+            if (stageTwoLevelOneGridBoxes.get(p).get(2).isSelected()) {
+                regressorLabels.add(stageTwoLevelOneSelected.get(p));
+                fieldLabel = stageTwoLevelOneSelected.get(p);
+                System.out.println("Stage-Two/mixRegGUI/Level 1 Regressor-Fields-(SCALE): " + regressorLabels.get(index));
+                index++;
+            }
+        }
+
         for (int p = 0; p < stageTwoLevelTwoRegSize; p++) {
 
             if (stageTwoLevelTwoGridBoxes.get(p).get(2).isSelected()) {
                 regressorLabels.add(stageTwoLevelTwoSelected.get(p));
                 fieldLabel = stageTwoLevelTwoSelected.get(p);
-                System.out.println("Stage-Two/mixRegGUI/Regressor-Fields-(SCALE): " + regressorLabels.get(index));
+                System.out.println("Stage-Two/mixRegGUI/Level 2 Regressor-Fields-(SCALE): " + regressorLabels.get(index));
                 index++;
             }
         }
@@ -5500,17 +5637,44 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         String fieldLabel;
 
-        String[] regressorLabels = new String[stageTwoLevelTwoRegSize];
+        String[] regressorLabels = new String[stageTwoLevelOneRegSize + stageTwoLevelTwoRegSize];
         int index = 0;
 
         ArrayList<String> position = new ArrayList<>();
+
+        for (int p = 0; p < stageTwoLevelOneRegSize; p++) {
+
+            if (stageTwoLevelOneGridBoxes.get(p).get(3).isSelected()) {
+                regressorLabels[index] = stageTwoLevelOneSelected.get(p);
+                fieldLabel = stageTwoLevelOneSelected.get(p);
+                System.out.println("Stage-two/mixRegGUI/Level 1 Regressor-Fields-(INTERACTION): " + regressorLabels[index]);
+                index++;
+
+                int posIndex = 0;
+
+                for (int q = 0; q < variableNamesCombo.length; q++) {
+
+                    if (variableNamesCombo[q].equals(fieldLabel)) {
+                        //position[index] = String.valueOf(q + 1);
+                        position.add(String.valueOf(q + 1));
+                        System.out.println("Stage-Two/Regressor-position-test: " + String.valueOf(q + 1));
+                        System.out.println("Stage-Two/mixRegGUI | Position of this regressor: " + position.get(posIndex));
+                        System.out.println("Stage-Two/Position array: " + position);
+                        posIndex++;
+
+                    }
+
+                }
+            }
+
+        }
 
         for (int p = 0; p < stageTwoLevelTwoRegSize; p++) {
 
             if (stageTwoLevelTwoGridBoxes.get(p).get(3).isSelected()) {
                 regressorLabels[index] = stageTwoLevelTwoSelected.get(p);
                 fieldLabel = stageTwoLevelTwoSelected.get(p);
-                System.out.println("Stage-two/mixRegGUI/Regressor-Fields-(INTERACTION): " + regressorLabels[index]);
+                System.out.println("Stage-two/mixRegGUI/Level 2 Regressor-Fields-(INTERACTION): " + regressorLabels[index]);
                 index++;
 
                 int posIndex = 0;
@@ -5558,12 +5722,22 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         ArrayList<String> regressorLabels = new ArrayList<String>();
         int index = 0;
 
+        for (int p = 0; p < stageTwoLevelOneRegSize; p++) {
+
+            if (stageTwoLevelOneGridBoxes.get(p).get(3).isSelected()) {
+                regressorLabels.add(stageTwoLevelOneSelected.get(p));
+                fieldLabel = stageTwoLevelOneSelected.get(p);
+                System.out.println("STAGE-TWO/MIXREGGUI/Level 1 Regressor-Fields-(INTERACTIONS)= " + regressorLabels.get(index));
+                index++;
+            }
+        }
+
         for (int p = 0; p < stageTwoLevelTwoRegSize; p++) {
 
             if (stageTwoLevelTwoGridBoxes.get(p).get(3).isSelected()) {
                 regressorLabels.add(stageTwoLevelTwoSelected.get(p));
                 fieldLabel = stageTwoLevelTwoSelected.get(p);
-                System.out.println("STAGE-TWO/MIXREGGUI/Regressor-Fields-(INTERACTIONS)= " + regressorLabels.get(index));
+                System.out.println("STAGE-TWO/MIXREGGUI/Level 2 Regressor-Fields-(INTERACTIONS)= " + regressorLabels.get(index));
                 index++;
             }
         }
@@ -6939,7 +7113,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
 //                    System.out.print("3!!!!!!!!!!!!!!!!!!!!!");
 //                    System.out.print(defFile.getAdvancedResampleCount());
-                    defFile.writeStageOneOnlyDefFileToFolder();
+                    defFile.writeStageOneOnlyDefFileToFolder(stageOneTabs.getSize());
 
                     //defFileOutput = defFile.buildStageOneOnlyDefinitonList();
                     System.out.println("From defHelper | Stage 1 def file created successfully!");
@@ -6963,8 +7137,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 //System.out.println("outcome not true!!!!");
             }
 
+            stageOneTabs.setSelectedIndex(2);
+
         } else {
             stageOneTabs.setSelectedIndex(2);
+            stageOneTabs.setEnabledAt(2, true);
             System.out.println("outcome not none!!!!");
         }
 
@@ -7186,16 +7363,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 }
 
                 levelTwoGrid.add(levelTwoBoxes.get(j).get(k), constraints);
-            }
-
-            if (isRandomScale) {
-
-                levelTwoBoxes.get(j).get(2).setEnabled(true);
-
-            } else {
-
-                levelTwoBoxes.get(j).get(2).setEnabled(false);
-
             }
 
             if (RLE_selected == MixLibrary.STAGE_ONE_RLE_SLOPE) {
@@ -7517,7 +7684,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             try {
                 List<String> defFileOutput;
 
-                defFile.writeDefFileToFolder();
+                defFile.writeDefFileToFolder(stageOneTabs.getSize());
                 defFileOutput = defFile.buildDefinitionList();
                 System.out.println("From defHelper | Stage 1&2 def file created successfully!");
 
@@ -8125,8 +8292,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                         stageTwoLevelOneGridBoxes.get(row).get(3).setEnabled(false);
                         randomChecked = false;
                         scaleChecked = false;
-                        suppressIntCheckBox.setEnabled(false);
-                        suppressIntCheckBox.setSelected(false);
+//                        suppressIntCheckBox.setEnabled(false);
+//                        suppressIntCheckBox.setSelected(false);
 
                     }
 
@@ -8300,6 +8467,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         int stage2TabIdx = stageOneTabs.indexOfTab("Stage 1 Configuration");
         if (!checkTabExistinJTabbedPane(stageOneTabs, "Stage 2 Configuration") && (includeStageTwoNo() == false)) {
             stageOneTabs.insertTab("Stage 2 Configuration", null, jPanel12, null, stage2TabIdx + 1);
+            stageOneTabs.setEnabledAt(stage2TabIdx + 1, false);
         }
 
         // remove tabs

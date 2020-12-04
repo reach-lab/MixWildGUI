@@ -274,6 +274,7 @@ public class stageTwoRegs extends javax.swing.JFrame {
     }//GEN-LAST:event_stageTwoLevelTwoRemoveButtonActionPerformed
 
     private void stageTwoResetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoResetButtonActionPerformed
+        stageTwoLevelOne.clear();
         stageTwoLevelTwo.clear();
     }//GEN-LAST:event_stageTwoResetButtonActionPerformed
 
