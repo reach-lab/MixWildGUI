@@ -68,8 +68,8 @@ public class stageOneRegs extends javax.swing.JFrame {
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
 
         //get variable names from the data set
-        //variableNamesList = newModel2.getVariableNames();
-        variableNamesList = mixregGUI.getVariableNames();
+        //variableNamesList = newModel2.getVariableNames_stageOne();
+        variableNamesList = mixregGUI.getVariableNames_stageOne();
         System.out.println("Preparing variables of size: " + variableNamesList.length);
 
         icon = new ImageIcon(getClass().getResource("/resources/mixLogo.png"));

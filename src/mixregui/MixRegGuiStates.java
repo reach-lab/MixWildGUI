@@ -27,7 +27,10 @@ import javax.swing.JFileChooser;
 public class MixRegGuiStates {
 
     // gui states of New Model Configuration Tab
+    public File file;
+    public File file_stageTwo;
     public String filepath;
+    public String filepath_stageTwo;
     public String title;
     public boolean missingValuePresent;
     public boolean missingValueAbsent;
@@ -43,6 +46,8 @@ public class MixRegGuiStates {
     public boolean randomScaleSelectionNo;
     public boolean includeStageTwoYes;
     public boolean includeStageTwoNo;
+    public boolean includeStageTwoDataYes;
+    public boolean includeStageTwoDataNo;
     public boolean stageTwoSingleLevel;
     public boolean stageTwoMultiLevel;
     public boolean stageTwoContinuousRadio;
@@ -114,7 +119,11 @@ public class MixRegGuiStates {
     // init a snapshot of mixregGui states
     MixRegGuiStates(mixregGUI mxr, advancedOptions ao) {
 //        System.out.print(mxr.file.getAbsolutePath());
-        this.filepath = mxr.file.getAbsolutePath();
+//        this.filepath = mxr.file.getAbsolutePath();
+        this.file = mxr.file;
+        this.file_stageTwo = mxr.file_stageTwo;
+        this.filepath = mxr.getFilePath();
+        this.filepath_stageTwo = mxr.getFilePath_stageTwo();
         this.title = mxr.getTitle();
         this.missingValuePresent = mxr.getMissingValuePresent();
         this.missingValueAbsent = mxr.getMissingValueAbsent();
@@ -130,6 +139,8 @@ public class MixRegGuiStates {
         this.randomScaleSelectionNo = mxr.getRandomScaleSelectionNo();
         this.includeStageTwoYes = mxr.getIncludeStageTwoYes();
         this.includeStageTwoNo = mxr.getIncludeStageTwoNo();
+        this.includeStageTwoDataYes = mxr.getIncludeStageTwoDataYes();
+        this.includeStageTwoDataNo = mxr.getIncludeStageTwoDataNo();
         this.stageTwoSingleLevel = mxr.getStageTwoSingleLevel();
         this.stageTwoMultiLevel = mxr.getStageTwoMultiLevel();
         this.stageTwoContinuousRadio = mxr.getStageTwoContinuousRadio();
@@ -208,7 +219,8 @@ public class MixRegGuiStates {
         }
     }
 
-    public void readAllStates(mixregGUI mxr) throws NullPointerException {
+    public boolean readAllStates(mixregGUI mxr) throws NullPointerException {
+        boolean read_success = false;
         HashMap<String, StateObject> hmapStates = null;
 
         JFileChooser fileChooser_load = new JFileChooser();
@@ -234,94 +246,107 @@ public class MixRegGuiStates {
             }
         }
 
-        // gui states of New Model Configuration Tab
-        filepath = hmapStates.get("filepath").getString();
-        title = hmapStates.get("titleField").getString();
-        missingValuePresent = hmapStates.get("missingValuePresent").getBoolean();
-        missingValueAbsent = hmapStates.get("missingValueAbsent").getBoolean();
-        newModelMissingValueCode = hmapStates.get("newModelMissingValueCode").getString();
-        stageOneContinuousRadio = hmapStates.get("stageOneContinuousRadio").getBoolean();
-        stageOneDichotomousRadio = hmapStates.get("stageOneDichotomousRadio").getBoolean();
-        stageOneOrdinalRadio = hmapStates.get("stageOneOrdinalRadio").getBoolean();
-        stageOneProbitRadio = hmapStates.get("stageOneProbitRadio").getBoolean();
-        stageOneLogisticRadio = hmapStates.get("stageOneLogisticRadio").getBoolean();
-        oneRLERadio = hmapStates.get("oneRLERadio").getBoolean();
-        moreThanOneRLERadio = hmapStates.get("moreThanOneRLERadio").getBoolean();
-        randomScaleSelectionYes = hmapStates.get("randomScaleSelectionYes").getBoolean();
-        randomScaleSelectionNo = hmapStates.get("randomScaleSelectionNo").getBoolean();
-        includeStageTwoYes = hmapStates.get("includeStageTwoYes").getBoolean();
-        includeStageTwoNo = hmapStates.get("includeStageTwoNo").getBoolean();
-        stageTwoSingleLevel = hmapStates.get("stageTwoSingleLevel").getBoolean();
-        stageTwoMultiLevel = hmapStates.get("stageTwoMultiLevel").getBoolean();
-        stageTwoContinuousRadio = hmapStates.get("continuousRadio").getBoolean();
-        stageTwoDichotomousRadio = hmapStates.get("dichotomousRadio").getBoolean();
-        stageTwoCountRadio = hmapStates.get("countRadio").getBoolean();
-        stageTwoMultinomialRadio = hmapStates.get("multinomialRadio").getBoolean();
-        seedTextBox = hmapStates.get("seedTextBox").getString();
-        isNewModalConfigSubmitted = hmapStates.get("isNewModalConfigSubmitted").getBoolean();
-        IDpos = hmapStates.get("IDpos").getInt();
-        stageOnePos = hmapStates.get("stageOnePos").getInt();
-        stageTwoPos = hmapStates.get("stageTwoPos").getInt();
-        stageOneClicked = hmapStates.get("stageOneClicked").getInt();
-        addStageOneCHecked = hmapStates.get("addStageOneCHecked").getBoolean();
+        if (hmapStates != null) {
+            // gui states of New Model Configuration Tab
+            file = hmapStates.get("file").getFile();
+            file_stageTwo = hmapStates.get("file_stageTwo").getFile();
+            filepath = hmapStates.get("filepath").getString();
+            filepath_stageTwo = hmapStates.get("filepath_stageTwo").getString();
+            title = hmapStates.get("titleField").getString();
+            missingValuePresent = hmapStates.get("missingValuePresent").getBoolean();
+            missingValueAbsent = hmapStates.get("missingValueAbsent").getBoolean();
+            newModelMissingValueCode = hmapStates.get("newModelMissingValueCode").getString();
+            stageOneContinuousRadio = hmapStates.get("stageOneContinuousRadio").getBoolean();
+            stageOneDichotomousRadio = hmapStates.get("stageOneDichotomousRadio").getBoolean();
+            stageOneOrdinalRadio = hmapStates.get("stageOneOrdinalRadio").getBoolean();
+            stageOneProbitRadio = hmapStates.get("stageOneProbitRadio").getBoolean();
+            stageOneLogisticRadio = hmapStates.get("stageOneLogisticRadio").getBoolean();
+            oneRLERadio = hmapStates.get("oneRLERadio").getBoolean();
+            moreThanOneRLERadio = hmapStates.get("moreThanOneRLERadio").getBoolean();
+            randomScaleSelectionYes = hmapStates.get("randomScaleSelectionYes").getBoolean();
+            randomScaleSelectionNo = hmapStates.get("randomScaleSelectionNo").getBoolean();
+            includeStageTwoYes = hmapStates.get("includeStageTwoYes").getBoolean();
+            includeStageTwoNo = hmapStates.get("includeStageTwoNo").getBoolean();
+            includeStageTwoDataYes = hmapStates.get("includeStageTwoDataYes").getBoolean();
+            includeStageTwoDataNo = hmapStates.get("includeStageTwoDataNo").getBoolean();
+            stageTwoSingleLevel = hmapStates.get("stageTwoSingleLevel").getBoolean();
+            stageTwoMultiLevel = hmapStates.get("stageTwoMultiLevel").getBoolean();
+            stageTwoContinuousRadio = hmapStates.get("continuousRadio").getBoolean();
+            stageTwoDichotomousRadio = hmapStates.get("dichotomousRadio").getBoolean();
+            stageTwoCountRadio = hmapStates.get("countRadio").getBoolean();
+            stageTwoMultinomialRadio = hmapStates.get("multinomialRadio").getBoolean();
+            seedTextBox = hmapStates.get("seedTextBox").getString();
+            isNewModalConfigSubmitted = hmapStates.get("isNewModalConfigSubmitted").getBoolean();
+            IDpos = hmapStates.get("IDpos").getInt();
+            stageOnePos = hmapStates.get("stageOnePos").getInt();
+            stageTwoPos = hmapStates.get("stageTwoPos").getInt();
+            stageOneClicked = hmapStates.get("stageOneClicked").getInt();
+            addStageOneCHecked = hmapStates.get("addStageOneCHecked").getBoolean();
 
-        varListString = hmapStates.get("varList").getString();
-        varList = loadDefaultListModel(varListString);
-        levelOneListString = hmapStates.get("levelOneList").getString();
-        levelOneList = loadDefaultListModel(levelOneListString);
-        levelTwoListString = hmapStates.get("levelTwoList").getString();
-        levelTwoList = loadDefaultListModel(levelTwoListString);
+            varListString = hmapStates.get("varList").getString();
+            varList = loadDefaultListModel(varListString);
+            levelOneListString = hmapStates.get("levelOneList").getString();
+            levelOneList = loadDefaultListModel(levelOneListString);
+            levelTwoListString = hmapStates.get("levelTwoList").getString();
+            levelTwoList = loadDefaultListModel(levelTwoListString);
 
-        isStageOneRegSubmitClicked = hmapStates.get("isStageOneRegSubmitClicked").getBoolean();
+            isStageOneRegSubmitClicked = hmapStates.get("isStageOneRegSubmitClicked").getBoolean();
 //        levelOneBoxes = hmapStates.get("levelOneBoxes").getBox();
 //        disaggVarianceBoxes = hmapStates.get("disaggVarianceBoxes").getBox();
 //        levelTwoBoxes = hmapStates.get("levelTwoBoxes").getBox();
-        StageOneLevelOneBoxesSelection = hmapStates.get("StageOneLevelOneBoxesSelection").getBox();
-        disaggVarianceBoxesSelection = hmapStates.get("disaggVarianceBoxesSelection").getBox();
-        StageOneLevelTwoBoxesSelection = hmapStates.get("StageOneLevelTwoBoxesSelection").getBox();
+            StageOneLevelOneBoxesSelection = hmapStates.get("StageOneLevelOneBoxesSelection").getBox();
+            disaggVarianceBoxesSelection = hmapStates.get("disaggVarianceBoxesSelection").getBox();
+            StageOneLevelTwoBoxesSelection = hmapStates.get("StageOneLevelTwoBoxesSelection").getBox();
 
-        meanSubmodelCheckBox = hmapStates.get("meanSubmodelCheckBox").getBoolean();
-        BSVarianceCheckBox = hmapStates.get("BSVarianceCheckBox").getBoolean();
-        WSVarianceCheckBox = hmapStates.get("WSVarianceCheckBox").getBoolean();
-        centerRegressorsCheckBox = hmapStates.get("centerRegressorsCheckBox").getBoolean();
-        discardSubjectsCheckBox = hmapStates.get("discardSubjectsCheckBox").getBoolean();
-        resampleCheckBox = hmapStates.get("resampleCheckBox").getBoolean();
-        adaptiveQuadritureCheckBox = hmapStates.get("adaptiveQuadritureCheckBox").getBoolean();
-        run32BitCheckBox = hmapStates.get("run32BitCheckBox").getBoolean();
-        convergenceCriteria = hmapStates.get("convergenceCriteria").getString();
-        quadriturePoints = hmapStates.get("quadriturePoints").getInt();
-        maximumIterations = hmapStates.get("maximumIterations").getInt();
-        ridgeSpinner = hmapStates.get("ridgeSpinner").getDouble();
-        resampleSpinner = hmapStates.get("resampleSpinner").getInt();
-        NoAssociationRadio = hmapStates.get("NoAssociationRadio").getBoolean();
-        LinearAssociationRadio = hmapStates.get("LinearAssociationRadio").getBoolean();
-        QuadraticAssociationRadio = hmapStates.get("QuadraticAssociationRadio").getBoolean();
-        isStageOneSubmitted = hmapStates.get("isStageOneSubmitted").getBoolean();
-        isStageTwoSubmitted = hmapStates.get("isStageTwoSubmitted").getBoolean();
+            meanSubmodelCheckBox = hmapStates.get("meanSubmodelCheckBox").getBoolean();
+            BSVarianceCheckBox = hmapStates.get("BSVarianceCheckBox").getBoolean();
+            WSVarianceCheckBox = hmapStates.get("WSVarianceCheckBox").getBoolean();
+            centerRegressorsCheckBox = hmapStates.get("centerRegressorsCheckBox").getBoolean();
+            discardSubjectsCheckBox = hmapStates.get("discardSubjectsCheckBox").getBoolean();
+            resampleCheckBox = hmapStates.get("resampleCheckBox").getBoolean();
+            adaptiveQuadritureCheckBox = hmapStates.get("adaptiveQuadritureCheckBox").getBoolean();
+            run32BitCheckBox = hmapStates.get("run32BitCheckBox").getBoolean();
+            convergenceCriteria = hmapStates.get("convergenceCriteria").getString();
+            quadriturePoints = hmapStates.get("quadriturePoints").getInt();
+            maximumIterations = hmapStates.get("maximumIterations").getInt();
+            ridgeSpinner = hmapStates.get("ridgeSpinner").getDouble();
+            resampleSpinner = hmapStates.get("resampleSpinner").getInt();
+            NoAssociationRadio = hmapStates.get("NoAssociationRadio").getBoolean();
+            LinearAssociationRadio = hmapStates.get("LinearAssociationRadio").getBoolean();
+            QuadraticAssociationRadio = hmapStates.get("QuadraticAssociationRadio").getBoolean();
+            isStageOneSubmitted = hmapStates.get("isStageOneSubmitted").getBoolean();
+            isStageTwoSubmitted = hmapStates.get("isStageTwoSubmitted").getBoolean();
 
 //        stageTwoListModel = hmapStates.get("stageTwoListModel").getStringList();
-        stageTwoListModelString = hmapStates.get("stageTwoListModel").getString();
-        stageTwoListModel = loadDefaultListModel(stageTwoListModelString);
+            stageTwoListModelString = hmapStates.get("stageTwoListModel").getString();
+            stageTwoListModel = loadDefaultListModel(stageTwoListModelString);
 
-        stageTwoLevelOneString = hmapStates.get("stageTwoLevelOne").getString();
-        stageTwoLevelOne = loadDefaultListModel(stageTwoLevelOneString);
+            stageTwoLevelOneString = hmapStates.get("stageTwoLevelOne").getString();
+            stageTwoLevelOne = loadDefaultListModel(stageTwoLevelOneString);
 //        stageTwoLevelTwo = hmapStates.get("stageTwoLevelTwo").getStringList();
-        stageTwoLevelTwoString = hmapStates.get("stageTwoLevelTwo").getString();
-        stageTwoLevelTwo = loadDefaultListModel(stageTwoLevelTwoString);
+            stageTwoLevelTwoString = hmapStates.get("stageTwoLevelTwo").getString();
+            stageTwoLevelTwo = loadDefaultListModel(stageTwoLevelTwoString);
 
-        isStageTwoSubmitClicked = hmapStates.get("isStageTwoSubmitClicked").getBoolean();
-        stageTwoLevelOneGridBoxesSelection = hmapStates.get("stageTwoLevelOneGridBoxesSelection").getBox();
-        stageTwoLevelTwoGridBoxesSelection = hmapStates.get("stageTwoLevelTwoGridBoxesSelection").getBox();
+            isStageTwoSubmitClicked = hmapStates.get("isStageTwoSubmitClicked").getBoolean();
+            stageTwoLevelOneGridBoxesSelection = hmapStates.get("stageTwoLevelOneGridBoxesSelection").getBox();
+            stageTwoLevelTwoGridBoxesSelection = hmapStates.get("stageTwoLevelTwoGridBoxesSelection").getBox();
 
-        suppressIntCheckBox = hmapStates.get("suppressIntCheckBox").getBoolean();
-        levelTwoSelected = hmapStates.get("levelTwoSelected").getStringArrayList();
+            suppressIntCheckBox = hmapStates.get("suppressIntCheckBox").getBoolean();
+            levelTwoSelected = hmapStates.get("levelTwoSelected").getStringArrayList();
 
-        sessionFolderName = hmapStates.get("sessionFolderName").getString();
-
+            sessionFolderName = hmapStates.get("sessionFolderName").getString();
+            
+            read_success = true;
+        } else {
+            System.out.println("Loading Cancelled by User.");
+        }
+        
+        return read_success;
     }
 
     public HashMap<String, StateObject> createStatesHashMap() {
         HashMap<String, StateObject> hashmap = new HashMap<>();
+        StateObject po00 = new StateObject("file", file);
         StateObject po0 = new StateObject("filepath", filepath);
         StateObject po1 = new StateObject("titleField", title);
         StateObject po2 = new StateObject("missingValuePresent", missingValuePresent);
@@ -385,7 +410,12 @@ public class MixRegGuiStates {
         StateObject po60 = new StateObject("sessionFolderName", sessionFolderName);
         StateObject po61 = new StateObject("stageOneProbitRadio", stageOneProbitRadio);
         StateObject po62 = new StateObject("stageOneLogisticRadio", stageOneLogisticRadio);
-        
+        StateObject po63 = new StateObject("includeStageTwoDataYes", includeStageTwoDataYes);
+        StateObject po64 = new StateObject("includeStageTwoDataNo", includeStageTwoDataNo);
+        StateObject po65 = new StateObject("filepath_stageTwo", filepath_stageTwo);
+        StateObject po66 = new StateObject("file_stageTwo", file_stageTwo);
+
+        hashmap.put(po00.getKey(), po00);
         hashmap.put(po0.getKey(), po0);
         hashmap.put(po1.getKey(), po1);
         hashmap.put(po2.getKey(), po2);
@@ -449,6 +479,11 @@ public class MixRegGuiStates {
         hashmap.put(po60.getKey(), po60);
         hashmap.put(po61.getKey(), po61);
         hashmap.put(po62.getKey(), po62);
+        hashmap.put(po63.getKey(), po63);
+        hashmap.put(po64.getKey(), po64);
+        hashmap.put(po65.getKey(), po65);
+        hashmap.put(po66.getKey(), po66);
+//        hashmap.put(po67.getKey(), po67);
         return hashmap;
     }
 

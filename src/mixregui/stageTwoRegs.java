@@ -35,7 +35,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.ListModel;
 //import static mixregui.stageOneRegs.varList;
-import static mixregui.stageOneRegs.variableNamesList;
+//import static mixregui.stageOneRegs.variableNamesList;
 
 /**
  * Use this class to add stage two regressors in the model
@@ -46,6 +46,7 @@ public class stageTwoRegs extends javax.swing.JFrame {
 
     //setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     stageOneRegs stageOne;
+    static String[] variableNamesList_stageTwo;
     static DefaultListModel<String> stageTwoListModel;
     static DefaultListModel<String> stageTwoLevelOne;
     static DefaultListModel<String> stageTwoLevelTwo;
@@ -68,6 +69,9 @@ public class stageTwoRegs extends javax.swing.JFrame {
 
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
+
+        variableNamesList_stageTwo = mixregGUI.getVariableNames_stageTwo();
+//        System.out.println("Preparing variables of size: " + variableNamesList_stageTwo.length);
 
         //newModel2 = new NewModel();
         icon = new ImageIcon(getClass().getResource("/resources/mixLogo.png"));
@@ -389,11 +393,11 @@ public class stageTwoRegs extends javax.swing.JFrame {
 
         stageTwoListModel.removeAllElements();
 
-        for (int j = 0; j < variableNamesList.length; j++) {
+        for (int j = 0; j < variableNamesList_stageTwo.length; j++) {
             if (j == idIndex || j == stageOneIndex || j == stageTwoIndex) {
                 //do nothing               
             } else {
-                stageTwoListModel.addElement(variableNamesList[j]);
+                stageTwoListModel.addElement(variableNamesList_stageTwo[j]);
             }
         }
 
@@ -410,11 +414,11 @@ public class stageTwoRegs extends javax.swing.JFrame {
 
         stageTwoListModel.removeAllElements();
 
-        for (int j = 0; j < variableNamesList.length; j++) {
+        for (int j = 0; j < variableNamesList_stageTwo.length; j++) {
             if (j == idIndex || j == stageOneIndex || j == stageTwoIndex) {
                 //do nothing               
             } else {
-                stageTwoListModel.addElement(variableNamesList[j]);
+                stageTwoListModel.addElement(variableNamesList_stageTwo[j]);
             }
         }
 

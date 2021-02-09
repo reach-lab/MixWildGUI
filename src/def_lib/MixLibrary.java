@@ -142,6 +142,7 @@ public class MixLibrary implements Serializable {
     private int stageOneRandomScale;
     private int stageTwoModelType;
     private int stageTwoOutcomeType;
+    private boolean stageTwoNewDataIncluded;
 
     //auxiliary fields
     private String utcDirPath;
@@ -187,12 +188,13 @@ public class MixLibrary implements Serializable {
      * STAGE_TWO_OUTCOME_NOMINAL
      */
     public MixLibrary(int stageOneOutcome, int stageOneRandomLocationEffects,
-            int stageOneRandomScale, int stageTwoModelType, int stageTwoOutcomeType) {
+            int stageOneRandomScale, int stageTwoModelType, int stageTwoOutcomeType, boolean stageTwoNewDataIncluded) {
         this.stageOneOutcome = stageOneOutcome;
         this.stageOneRandomLocationEffects = stageOneRandomLocationEffects;
         this.stageOneRandomScale = stageOneRandomScale;
         this.stageTwoModelType = stageTwoModelType;
         this.stageTwoOutcomeType = stageTwoOutcomeType;
+        this.stageTwoNewDataIncluded = stageTwoNewDataIncluded;
     }
 
     /**
@@ -201,6 +203,7 @@ public class MixLibrary implements Serializable {
     private String sharedModelTitle; // LINE 1
     private String sharedModelSubtitle; // LINE 2
     private String sharedDataFilename; // LINE 3
+    private String sharedDataFilename_stageTwo;
     private String sharedOutputPrefix; // LINE 4
     private String[] sharedAdvancedOptions; // LINE 5  -  SEE LINE 190 FOR DETAILS
 
@@ -253,6 +256,13 @@ public class MixLibrary implements Serializable {
     private String[] stageTwoThetaLabels; // INTERACTION WITH LOCATION
     private String[] stageTwoOmegaLabels; // INTERACTION WITH SCALE
     private String[] stageTwoInteractionLabels; // INTERACTION WITH INTERACTION OF LOCATION*SCALE
+
+    /**
+     * MixWILD V2.0 Stage Two Parameters for additional data in stage two
+     */
+    private String[] stageTwoNewDataFeatures;
+    private String stageTwoNewDataVariableCount;
+    private String stageTwoNewDataIDField;
 
     /**
      * MixWILD V2.0 MIXREG Advanced Parameters
@@ -412,6 +422,21 @@ public class MixLibrary implements Serializable {
         return returnVars;
     }
 
+    private String[] stageTwoNewDataFeaturesBuild() {
+        List<String> stageTwoNewDataVariables = new ArrayList();
+
+        stageTwoNewDataVariables.add(getStageTwoNewDataVariableCount());
+        stageTwoNewDataVariables.add(getStageTwoNewDataIDField());
+
+        String[] returnVars = new String[stageTwoNewDataVariables.size()];
+        int iter = 0;
+        for (String iterate : stageTwoNewDataVariables) {
+            returnVars[iter] = iterate;
+            iter++;
+        };
+        return returnVars;
+    }
+
     /**
      * Creates the definition file list See comments for line numbers
      * referencing MIXOR/MIXREG
@@ -464,10 +489,22 @@ public class MixLibrary implements Serializable {
         if (stageTwoOutcomeType != STAGE_TWO_OUTCOME_NONE) {
             newDefinitionFile.add(Arrays.toString(getStageTwoRegressorCounts()).replaceAll(",", " ")); // LINE 22/20
 
+            // if stage 2 outcome is ordinal / multinomial, add additional two lines
             if (stageTwoOutcomeType == STAGE_TWO_OUTCOME_ORDINAL || stageTwoOutcomeType == STAGE_TWO_OUTCOME_NOMINAL) {
                 newDefinitionFile.add(getStageTwoOutcomeCategoryNum());           // LINE 23/21
                 newDefinitionFile.add(getStageTwoCategoricalOutcomeUniqueList()); // LINE 24/22
             }
+
+            // if include additonal stage 2 data
+            if (stageTwoNewDataIncluded == true) {
+                // stage 2 dataset path
+                newDefinitionFile.add(FilenameUtils.getName(getSharedDataFilename_stageTwo()));
+
+                //  stage 2 number of variables, fileds of ID variable
+                newDefinitionFile.add(Arrays.toString(getStageTwoNewDataFeatures()).replaceAll(",", " "));
+
+            }
+
             newDefinitionFile.add(getStageTwoOutcomeField());
 
             newDefinitionFile.add(Arrays.toString(getStageTwoFixedFields()).replaceAll(",", " "));
@@ -777,6 +814,18 @@ public class MixLibrary implements Serializable {
         }
     }
 
+    public String getSharedDataFilename_stageTwo() {
+        return sharedDataFilename_stageTwo;
+    }
+
+    public void setSharedDataFilename_stageTwo(String sharedDataFilename_stageTwo) throws Exception {
+        if (sharedDataFilename_stageTwo.endsWith(".dat") || sharedDataFilename_stageTwo.endsWith(".csv")) {
+            this.sharedDataFilename_stageTwo = sharedDataFilename_stageTwo.replace(" ", "_");
+        } else {
+            throw new Exception("Stage 2 data file name is not a valid .dat or .csv file");
+        }
+    }
+
     public String getSharedOutputPrefix() {
         return sharedOutputPrefix;
     }
@@ -798,6 +847,16 @@ public class MixLibrary implements Serializable {
 
     public void setSharedAdvancedOptions() {
         this.sharedAdvancedOptions = advancedVariableBuild(1); // = sharedAdvancedOptions;
+    }
+
+    public String[] getStageTwoNewDataFeatures() {
+        // do not set if == null, it will prevent modifications to the def file
+        setStageTwoNewDataFeatures();
+        return stageTwoNewDataFeatures;
+    }
+
+    public void setStageTwoNewDataFeatures() {
+        this.stageTwoNewDataFeatures = stageTwoNewDataFeaturesBuild(); // = sharedAdvancedOptions;
     }
 
     public String[] getSharedIdAndStageOneOutcomeFields() {
@@ -1045,6 +1104,24 @@ public class MixLibrary implements Serializable {
         if (setValidator("number of variables", "5", advancedVariableCount, 2, 255, MIX_INTEGER)) {
             this.advancedVariableCount = advancedVariableCount;
         }
+    }
+
+    public String getStageTwoNewDataVariableCount() {
+        return stageTwoNewDataVariableCount;
+    }
+
+    public void setStageTwoNewDataVariableCount(String stageTwoNewDataVariableCount) throws Exception {
+        this.stageTwoNewDataVariableCount = stageTwoNewDataVariableCount;
+
+    }
+
+    public String getStageTwoNewDataIDField() {
+        return stageTwoNewDataIDField;
+    }
+
+    public void setStageTwoNewDataIDField(String stageTwoNewDataVariableCount) throws Exception {
+        this.stageTwoNewDataIDField = stageTwoNewDataVariableCount;
+
     }
 
     public String getAdvancedMeanRegressorCount() {
