@@ -80,6 +80,7 @@ import java.io.Serializable;
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
+import javax.swing.border.LineBorder;
 import org.apache.commons.io.FileUtils;
 
 /**
@@ -748,7 +749,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
      */
     public mixregGUI() {
         initComponents();
-        this.setTitle("MixWILD-2.0-Beta5");
+        this.setTitle("MixWILD-2.0-Beta7");
         // adjust the frame size to fit screen resolution
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         setBounds(0, 0, stageOneTabs.getWidth(), (int) Math.round(screenSize.height / 1.5));
@@ -3693,9 +3694,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         separatorConstraint.gridwidth = GridBagConstraints.REMAINDER;
         separatorConstraint.gridx = 0;
 
-        constraints.insets = new Insets(3, 0, 5, 25);
+        constraints.insets = new Insets(3, 10, 5, 0);
         separatorConstraint.insets = new Insets(0, 0, 0, 0);
-        //constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.weightx = 1;
 
         levelOneBoxes = new ArrayList<>();
@@ -3705,7 +3706,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             constraints.gridx = 0;
             constraints.anchor = GridBagConstraints.LINE_END;
             levelOneSelected.add(defaultListModel.getElementAt(j));
-            levelOneGrid.add(new JLabel(levelOneSelected.get(j)), constraints);
+            JLabel variableText = new JLabel(levelOneSelected.get(j));
+//            variableText.setBorder(new LineBorder(Color.BLACK));
+            variableText.setPreferredSize(new Dimension(80, 20));
+            levelOneGrid.add(variableText, constraints);
 
             levelOneBoxes.add(j, new ArrayList<JCheckBox>());
 
@@ -3803,9 +3807,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         separatorConstraint.gridwidth = GridBagConstraints.REMAINDER;
         separatorConstraint.gridx = 0;
 
-        constraints.insets = new Insets(3, 0, 5, 25);
+        constraints.insets = new Insets(3, 10, 5, 0);
         separatorConstraint.insets = new Insets(0, 0, 0, 0);
-        //constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.weightx = 1;
 
         levelTwoBoxes = new ArrayList<ArrayList<JCheckBox>>();
@@ -3815,8 +3819,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             constraints.gridx = 0;
             constraints.anchor = GridBagConstraints.LINE_END;
             levelTwoSelected.add(defaultListModel.getElementAt(j));
-            levelTwoGrid.add(new JLabel(levelTwoSelected.get(j)), constraints);
-            //levelTwoGrid.add(new JLabel(defaultListModel.getElementAt(j)), constraints);
+            JLabel variableText = new JLabel(levelTwoSelected.get(j));
+//            variableText.setBorder(new LineBorder(Color.BLACK));
+            variableText.setPreferredSize(new Dimension(80, 20));
+            levelTwoGrid.add(variableText, constraints);
 
             levelTwoBoxes.add(j, new ArrayList<JCheckBox>());
 
@@ -3884,7 +3890,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         separatorConstraint.gridwidth = GridBagConstraints.REMAINDER;
         separatorConstraint.gridx = 0;
 
-        constraints.insets = new Insets(3, 0, 5, 25);
+        constraints.insets = new Insets(3, 5, 5, 0);
+        constraints.fill = GridBagConstraints.HORIZONTAL;
         separatorConstraint.insets = new Insets(0, 0, 0, 0);
         constraints.weightx = 1;
 
@@ -3896,9 +3903,13 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             constraints.gridx = 1;
             constraints.anchor = GridBagConstraints.FIRST_LINE_START;
             stageTwoLevelTwoSelected.add(defaultListModel.getElementAt(j));
-            JLabel testLabel = new JLabel(stageTwoLevelTwoSelected.get(j));
-//            System.out.print("labelll  "+testLabel.isVisible());
-            stageTwoRegsGridLvl2.add(testLabel, constraints);
+//            JLabel testLabel = new JLabel(stageTwoLevelTwoSelected.get(j));
+////            System.out.print("labelll  "+testLabel.isVisible());
+//            stageTwoRegsGridLvl2.add(testLabel, constraints);
+            JLabel variableText = new JLabel(stageTwoLevelTwoSelected.get(j));
+//            variableText.setBorder(new LineBorder(Color.BLACK));
+            variableText.setPreferredSize(new Dimension(60, 20));
+            stageTwoRegsGridLvl2.add(variableText, constraints);
 
             //stageTwoGrid.add(new JLabel(defaultListModel.getElementAt(j)), constraints);
             stageTwoLevelTwoGridBoxes.add(j, new ArrayList<JCheckBox>());
@@ -7210,9 +7221,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         separatorConstraint.gridwidth = GridBagConstraints.REMAINDER;
         separatorConstraint.gridx = 0;
 
-        constraints.insets = new Insets(3, 0, 5, 25);
+        constraints.insets = new Insets(3, 10, 5, 0);
         separatorConstraint.insets = new Insets(0, 0, 0, 0);
-        //constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.weightx = 1;
 
         levelOneBoxes = new ArrayList<>();
@@ -7221,8 +7232,12 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         for (int j = 0; j < regSize; j++) {
             constraints.gridx = 0;
             constraints.anchor = GridBagConstraints.LINE_END;
+//            constraints.fill = GridBagConstraints.HORIZONTAL;
             levelOneSelected.add(defaultListModel.getElementAt(j));
-            levelOneGrid.add(new JLabel(levelOneSelected.get(j)), constraints);
+            JLabel variableText = new JLabel(levelOneSelected.get(j));
+//            variableText.setBorder(new LineBorder(Color.BLACK));
+            variableText.setPreferredSize(new Dimension(80, 20));
+            levelOneGrid.add(variableText, constraints);
 
             levelOneBoxes.add(j, new ArrayList<JCheckBox>());
 
@@ -7323,7 +7338,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         constraints.gridx = 0;
         constraints.gridy = 0;
-        constraints.weightx = 1.0;
+//        constraints.weightx = 1.0;
         // constraints.weighty = 1.0;
         constraints.anchor = GridBagConstraints.NORTH;
         //constraints.gridwidth = 4;
@@ -7334,9 +7349,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         separatorConstraint.gridwidth = GridBagConstraints.REMAINDER;
         separatorConstraint.gridx = 0;
 
-        constraints.insets = new Insets(3, 0, 5, 25);
+        constraints.insets = new Insets(3, 10, 5, 0);
         separatorConstraint.insets = new Insets(0, 0, 0, 0);
-        //constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.weightx = 1;
 
         levelTwoBoxes = new ArrayList<ArrayList<JCheckBox>>();
@@ -7346,7 +7361,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             constraints.gridx = 0;
             constraints.anchor = GridBagConstraints.LINE_END;
             levelTwoSelected.add(defaultListModel.getElementAt(j));
-            levelTwoGrid.add(new JLabel(levelTwoSelected.get(j)), constraints);
+            JLabel variableText = new JLabel(levelTwoSelected.get(j));
+//            variableText.setBorder(new LineBorder(Color.BLACK));
+            variableText.setPreferredSize(new Dimension(80, 20));
+            levelTwoGrid.add(variableText, constraints);
             //levelTwoGrid.add(new JLabel(defaultListModel.getElementAt(j)), constraints);
 
             levelTwoBoxes.add(j, new ArrayList<JCheckBox>());
@@ -7420,7 +7438,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         //**********************************************************************
         // Reads selected ID variable and outcome variable from the first two comboboxes
         //String[] idOutcome = {String.valueOf(IDvariableCombo.getSelectedIndex() + 1), String.valueOf(StageOneVariableCombo.getSelectedIndex() + 1)};
-        if (getStageTwoOutcomeType() == MixLibrary.STAGE_TWO_OUTCOME_NORMAL || getStageTwoOutcomeType() == MixLibrary.STAGE_TWO_OUTCOME_ORDINAL) {
+        if (getStageTwoOutcomeType() == MixLibrary.STAGE_TWO_OUTCOME_ORDINAL || getStageTwoOutcomeType() == MixLibrary.STAGE_TWO_OUTCOME_NOMINAL) {
 
             try {
                 ArrayList<Double> uniqueCategoryList = getStageOneOrTwoCategoricalOutcomeUniqueList(2);
@@ -7556,7 +7574,15 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             JOptionPane.showMessageDialog(stageOneTabs, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
 
-        if (suppressed == false) {
+        if (getSuppressIntCheckBox() == true) {
+
+            try {
+                defFile.setAdvancedStageTwoInteractionRegressorCount("-1");
+            } catch (Exception ex) {
+                Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
+            }
+        } else {
 
             try {
                 defFile.setAdvancedStageTwoInteractionRegressorCount(String.valueOf(countStageTwoInteractions()));
@@ -7568,6 +7594,25 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 JOptionPane.showMessageDialog(stageOneTabs, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
+        }
+        try {
+            defFile.setStageTwoInteractionFields(getInteractionFieldRegressors_StageTwo());
+            System.out.println("From defHelper | STAGE TWO  INTERACTIONS REGRESSOR Positions: " + Arrays.toString(defFile.getStageTwoInteractionFields()));
+        } catch (Exception ex) {
+            catchCount = 1;
+            Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
+            JOptionPane.showMessageDialog(stageOneTabs, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+        }
+
+        try {
+            defFile.setStageTwoInteractionLabels(getModelInteractionLabelsStageTwo());
+            System.out.println("From defHelper | STAGE TWO  INTERACTIONS REGRESSORS: " + Arrays.toString(defFile.getStageTwoInteractionLabels()));
+        } catch (Exception ex) {
+            catchCount = 1;
+            Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
+            JOptionPane.showMessageDialog(stageOneTabs, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
 
         try {
@@ -7598,29 +7643,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
             SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
             JOptionPane.showMessageDialog(stageOneTabs, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-        }
-
-        if (suppressed == false) {
-
-            try {
-                defFile.setStageTwoInteractionFields(getInteractionFieldRegressors_StageTwo());
-                System.out.println("From defHelper | STAGE TWO  INTERACTIONS REGRESSOR Positions: " + Arrays.toString(defFile.getStageTwoInteractionFields()));
-            } catch (Exception ex) {
-                catchCount = 1;
-                Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
-                JOptionPane.showMessageDialog(stageOneTabs, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-            }
-
-            try {
-                defFile.setStageTwoInteractionLabels(getModelInteractionLabelsStageTwo());
-                System.out.println("From defHelper | STAGE TWO  INTERACTIONS REGRESSORS: " + Arrays.toString(defFile.getStageTwoInteractionLabels()));
-            } catch (Exception ex) {
-                catchCount = 1;
-                Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
-                JOptionPane.showMessageDialog(stageOneTabs, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-            }
         }
 
         try {
@@ -7784,8 +7806,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         separatorConstraint.gridwidth = GridBagConstraints.REMAINDER;
         separatorConstraint.gridx = 0;
 
-        constraints.insets = new Insets(3, 0, 5, 25);
+        constraints.insets = new Insets(3, 5, 5, 0);
         separatorConstraint.insets = new Insets(0, 0, 0, 0);
+        constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.weightx = 1;
 
         stageTwoLevelTwoGridBoxes = new ArrayList<ArrayList<JCheckBox>>();
@@ -7796,7 +7819,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             constraints.gridx = 1;
             constraints.anchor = GridBagConstraints.FIRST_LINE_START;
             stageTwoLevelTwoSelected.add(defaultListModel.getElementAt(j));
-            stageTwoRegsGridLvl2.add(new JLabel(stageTwoLevelTwoSelected.get(j)), constraints);
+            JLabel variableText = new JLabel(stageTwoLevelTwoSelected.get(j));
+//            variableText.setBorder(new LineBorder(Color.BLACK));
+            variableText.setPreferredSize(new Dimension(60, 20));
+            stageTwoRegsGridLvl2.add(variableText, constraints);
+//            stageTwoRegsGridLvl2.add(new JLabel(stageTwoLevelTwoSelected.get(j)), constraints);
 
             //stageTwoGrid.add(new JLabel(defaultListModel.getElementAt(j)), constraints);
             stageTwoLevelTwoGridBoxes.add(j, new ArrayList<JCheckBox>());
@@ -7965,8 +7992,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         separatorConstraint.gridwidth = GridBagConstraints.REMAINDER;
         separatorConstraint.gridx = 0;
 
-        constraints.insets = new Insets(3, 0, 5, 25);
+        constraints.insets = new Insets(3, 5, 5, 0);
         separatorConstraint.insets = new Insets(0, 0, 0, 0);
+        constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.weightx = 1;
 
         stageTwoLevelOneGridBoxes = new ArrayList<ArrayList<JCheckBox>>();
@@ -7977,7 +8005,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             constraints.gridx = 1;
             constraints.anchor = GridBagConstraints.FIRST_LINE_START;
             stageTwoLevelOneSelected.add(defaultListModel.getElementAt(j));
-            stageTwoRegsGridLvl1.add(new JLabel(stageTwoLevelOneSelected.get(j)), constraints);
+            JLabel variableText = new JLabel(stageTwoLevelOneSelected.get(j));
+//            variableText.setBorder(new LineBorder(Color.BLACK));
+            variableText.setPreferredSize(new Dimension(60, 20));
+            stageTwoRegsGridLvl1.add(variableText, constraints);
+//            stageTwoRegsGridLvl1.add(new JLabel(stageTwoLevelOneSelected.get(j)), constraints);
 
             //stageTwoGrid.add(new JLabel(defaultListModel.getElementAt(j)), constraints);
             stageTwoLevelOneGridBoxes.add(j, new ArrayList<JCheckBox>());
@@ -8125,13 +8157,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             suppressed = true;
 
-            try {
-                defFile.setAdvancedStageTwoInteractionRegressorCount("-1");
-            } catch (Exception ex) {
-                Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
-            }
-
             for (int p = 0; p < stageTwoLevelOneRegSize; p++) {
                 stageTwoLevelOneGridBoxes.get(p).get(3).setSelected(false);
                 stageTwoLevelOneGridBoxes.get(p).get(3).setEnabled(false);
@@ -8140,6 +8165,13 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             for (int p = 0; p < stageTwoLevelTwoRegSize; p++) {
                 stageTwoLevelTwoGridBoxes.get(p).get(3).setSelected(false);
                 stageTwoLevelTwoGridBoxes.get(p).get(3).setEnabled(false);
+            }
+
+            try {
+                defFile.setAdvancedStageTwoInteractionRegressorCount("-1");
+            } catch (Exception ex) {
+                Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
             }
 
             try {
@@ -8220,7 +8252,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         separatorConstraint.gridwidth = GridBagConstraints.REMAINDER;
         separatorConstraint.gridx = 0;
 
-        constraints.insets = new Insets(3, 0, 5, 25);
+        constraints.insets = new Insets(3, 5, 5, 0);
+        constraints.fill = GridBagConstraints.HORIZONTAL;
         separatorConstraint.insets = new Insets(0, 0, 0, 0);
         constraints.weightx = 1;
 
@@ -8232,9 +8265,13 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             constraints.gridx = 1;
             constraints.anchor = GridBagConstraints.FIRST_LINE_START;
             stageTwoLevelOneSelected.add(defaultListModel.getElementAt(j));
-            JLabel testLabel = new JLabel(stageTwoLevelOneSelected.get(j));
+//            JLabel testLabel = new JLabel(stageTwoLevelOneSelected.get(j));
 //            System.out.print("labelll  "+testLabel.isVisible());
-            stageTwoRegsGridLvl1.add(testLabel, constraints);
+            JLabel variableText = new JLabel(stageTwoLevelOneSelected.get(j));
+//            variableText.setBorder(new LineBorder(Color.BLACK));
+            variableText.setPreferredSize(new Dimension(60, 20));
+            stageTwoRegsGridLvl1.add(variableText, constraints);
+//            stageTwoRegsGridLvl1.add(testLabel, constraints);
 
             //stageTwoGrid.add(new JLabel(defaultListModel.getElementAt(j)), constraints);
             stageTwoLevelOneGridBoxes.add(j, new ArrayList<JCheckBox>());
