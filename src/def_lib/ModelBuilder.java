@@ -38,6 +38,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -100,7 +101,7 @@ public class ModelBuilder {
                 regressorsOne += meanArrayOne[i].toUpperCase() + KEY_IJ + KEY_PLUS;
             }
         } catch (NullPointerException npe) {
-            SystemLogger.LOGGER.log(Level.SEVERE, npe.toString()+ "{0}", SystemLogger.getLineNum());
+            SystemLogger.LOGGER.log(Level.SEVERE, npe.toString() + "{0}", SystemLogger.getLineNum());
 
         }
         try {
@@ -108,7 +109,7 @@ public class ModelBuilder {
                 regressorsOne += meanArrayTwo[i].toUpperCase() + KEY_I + KEY_PLUS;
             }
         } catch (NullPointerException npe) {
-            SystemLogger.LOGGER.log(Level.SEVERE, npe.toString()+ "{0}", SystemLogger.getLineNum());
+            SystemLogger.LOGGER.log(Level.SEVERE, npe.toString() + "{0}", SystemLogger.getLineNum());
 
         }
 
@@ -174,17 +175,33 @@ public class ModelBuilder {
         String absolutePath = csvFile.getAbsolutePath();
         String folderPath = FilenameUtils.getFullPath(absolutePath);
 //        String dirName = Long.toString(Instant.now().getEpochSecond());
-        SimpleDateFormat formatter= new SimpleDateFormat("yyyyMMddHHmm");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmm");
         Date date = new Date(System.currentTimeMillis());
         String dirName = formatter.format(date);
-        String newPath = folderPath + "MIXWILD" + dirName + "/";
+        String folderName = "MIXWILD" + dirName + "/";
+        String newPath = folderPath + folderName;
         File dirGen = new File(newPath);
-        System.out.println(newPath);
+        // check if file exists
+        boolean dirExist = Files.exists(dirGen.toPath());
+        // if exists, add (number) to avoid duplicate folder names
+        if (dirExist) {
+            Integer i = 2;
+            folderName = "MIXWILD" + dirName + "(" + i + ")" + "/";
+            newPath = folderPath + folderName;
+            dirGen = new File(newPath);
+            while (Files.exists(dirGen.toPath())) {
+                i = i + 1;
+                folderName = "MIXWILD" + dirName + "(" + i + ")" + "/";
+                newPath = folderPath + folderName;
+                dirGen = new File(newPath);
+            }
+        }
+
         boolean genTrue = dirGen.mkdirs();
         if (!genTrue) {
             throw new IOException("Cannot generate temporary work directory, please check folder permissions");
         }
-        return "MIXWILD" + dirName + "/";
+        return folderName;
     }
 
     public static void archiveFolder(MixLibrary defLib, String absoluteWorkingDirectory) throws IOException {
@@ -231,7 +248,7 @@ public class ModelBuilder {
     public static MixLibrary accessFolderArchive(File mwaFile) throws IOException, ClassNotFoundException {
         String folderPath = FilenameUtils.getFullPath(mwaFile.getAbsolutePath());
 //        String dirName = Long.toString(Instant.now().getEpochSecond());
-        SimpleDateFormat formatter= new SimpleDateFormat("yyyyMMddHHmm");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmm");
         Date date = new Date(System.currentTimeMillis());
         String dirName = formatter.format(date);
         String outputPath = folderPath + "MIXWILD" + dirName + "/";

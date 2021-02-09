@@ -35,6 +35,8 @@ public class MixRegGuiStates {
     public boolean stageOneContinuousRadio;
     public boolean stageOneDichotomousRadio;
     public boolean stageOneOrdinalRadio;
+    public boolean stageOneProbitRadio;
+    public boolean stageOneLogisticRadio;
     public boolean oneRLERadio;
     public boolean moreThanOneRLERadio;
     public boolean randomScaleSelectionYes;
@@ -43,10 +45,10 @@ public class MixRegGuiStates {
     public boolean includeStageTwoNo;
     public boolean stageTwoSingleLevel;
     public boolean stageTwoMultiLevel;
-    public boolean continuousRadio;
-    public boolean dichotomousRadio;
-    public boolean countRadio;
-    public boolean multinomialRadio;
+    public boolean stageTwoContinuousRadio;
+    public boolean stageTwoDichotomousRadio;
+    public boolean stageTwoCountRadio;
+    public boolean stageTwoMultinomialRadio;
     public String seedTextBox;
     public boolean isNewModalConfigSubmitted;
 
@@ -91,11 +93,14 @@ public class MixRegGuiStates {
 
     // gui states of Stage Two
     public DefaultListModel<String> stageTwoListModel;
+    public DefaultListModel<String> stageTwoLevelOne;
     public DefaultListModel<String> stageTwoLevelTwo;
     public String stageTwoListModelString;
+    public String stageTwoLevelOneString;
     public String stageTwoLevelTwoString;
     public boolean isStageTwoSubmitClicked;
-    public boolean[][] stageTwoGridBoxesSelection;
+    public boolean[][] stageTwoLevelOneGridBoxesSelection;
+    public boolean[][] stageTwoLevelTwoGridBoxesSelection;
     public boolean suppressIntCheckBox;
 
     public ArrayList<String> levelTwoSelected;
@@ -117,6 +122,8 @@ public class MixRegGuiStates {
         this.stageOneContinuousRadio = mxr.getStageOneContinuousRadio();
         this.stageOneDichotomousRadio = mxr.getStageOneDichotomousRadio();
         this.stageOneOrdinalRadio = mxr.getStageOneOrdinalRadio();
+        this.stageOneProbitRadio = mxr.getStageOneProbit();
+        this.stageOneLogisticRadio = mxr.getStageOneLogistic();
         this.oneRLERadio = mxr.getOneRLERadio();
         this.moreThanOneRLERadio = mxr.getMoreThanOneRLERadio();
         this.randomScaleSelectionYes = mxr.getRandomScaleSelectionYes();
@@ -125,10 +132,10 @@ public class MixRegGuiStates {
         this.includeStageTwoNo = mxr.getIncludeStageTwoNo();
         this.stageTwoSingleLevel = mxr.getStageTwoSingleLevel();
         this.stageTwoMultiLevel = mxr.getStageTwoMultiLevel();
-        this.continuousRadio = mxr.getStageTwoContinuousRadio();
-        this.dichotomousRadio = mxr.getStageTwoDichotomousRadio();
-        this.countRadio = mxr.getCountRadio();
-        this.multinomialRadio = mxr.getMultinomialRadio();
+        this.stageTwoContinuousRadio = mxr.getStageTwoContinuousRadio();
+        this.stageTwoDichotomousRadio = mxr.getStageTwoDichotomousRadio();
+        this.stageTwoCountRadio = mxr.getCountRadio();
+        this.stageTwoMultinomialRadio = mxr.getMultinomialRadio();
         this.seedTextBox = mxr.getSeedTextBox();
         this.isNewModalConfigSubmitted = mxr.isNewModalConfigSubmitted;
         this.IDpos = mixregGUI.IDpos;
@@ -167,9 +174,11 @@ public class MixRegGuiStates {
         this.isStageTwoSubmitted = mxr.isStageTwoSubmitted;
 
         this.stageTwoListModelString = saveDefaultListModel(stageTwoRegs.stageTwoListModel);
+        this.stageTwoLevelOneString = saveDefaultListModel(stageTwoRegs.stageTwoLevelOne);
         this.stageTwoLevelTwoString = saveDefaultListModel(stageTwoRegs.stageTwoLevelTwo);
         this.isStageTwoSubmitClicked = stageTwoRegs.isStageTwoSubmitClicked;
-        this.stageTwoGridBoxesSelection = getSelectionBoxes(mxr.stageTwoLevelTwoGridBoxes);
+        this.stageTwoLevelOneGridBoxesSelection = getSelectionBoxes(mxr.stageTwoLevelOneGridBoxes);
+        this.stageTwoLevelTwoGridBoxesSelection = getSelectionBoxes(mxr.stageTwoLevelTwoGridBoxes);
         this.suppressIntCheckBox = mxr.getSuppressIntCheckBox();
         this.levelTwoSelected = mxr.levelTwoSelected;
         this.sessionFolderName = mxr.sessionFolderName;
@@ -234,6 +243,8 @@ public class MixRegGuiStates {
         stageOneContinuousRadio = hmapStates.get("stageOneContinuousRadio").getBoolean();
         stageOneDichotomousRadio = hmapStates.get("stageOneDichotomousRadio").getBoolean();
         stageOneOrdinalRadio = hmapStates.get("stageOneOrdinalRadio").getBoolean();
+        stageOneProbitRadio = hmapStates.get("stageOneProbitRadio").getBoolean();
+        stageOneLogisticRadio = hmapStates.get("stageOneLogisticRadio").getBoolean();
         oneRLERadio = hmapStates.get("oneRLERadio").getBoolean();
         moreThanOneRLERadio = hmapStates.get("moreThanOneRLERadio").getBoolean();
         randomScaleSelectionYes = hmapStates.get("randomScaleSelectionYes").getBoolean();
@@ -242,10 +253,10 @@ public class MixRegGuiStates {
         includeStageTwoNo = hmapStates.get("includeStageTwoNo").getBoolean();
         stageTwoSingleLevel = hmapStates.get("stageTwoSingleLevel").getBoolean();
         stageTwoMultiLevel = hmapStates.get("stageTwoMultiLevel").getBoolean();
-        continuousRadio = hmapStates.get("continuousRadio").getBoolean();
-        dichotomousRadio = hmapStates.get("dichotomousRadio").getBoolean();
-        countRadio = hmapStates.get("countRadio").getBoolean();
-        multinomialRadio = hmapStates.get("multinomialRadio").getBoolean();
+        stageTwoContinuousRadio = hmapStates.get("continuousRadio").getBoolean();
+        stageTwoDichotomousRadio = hmapStates.get("dichotomousRadio").getBoolean();
+        stageTwoCountRadio = hmapStates.get("countRadio").getBoolean();
+        stageTwoMultinomialRadio = hmapStates.get("multinomialRadio").getBoolean();
         seedTextBox = hmapStates.get("seedTextBox").getString();
         isNewModalConfigSubmitted = hmapStates.get("isNewModalConfigSubmitted").getBoolean();
         IDpos = hmapStates.get("IDpos").getInt();
@@ -292,12 +303,15 @@ public class MixRegGuiStates {
         stageTwoListModelString = hmapStates.get("stageTwoListModel").getString();
         stageTwoListModel = loadDefaultListModel(stageTwoListModelString);
 
+        stageTwoLevelOneString = hmapStates.get("stageTwoLevelOne").getString();
+        stageTwoLevelOne = loadDefaultListModel(stageTwoLevelOneString);
 //        stageTwoLevelTwo = hmapStates.get("stageTwoLevelTwo").getStringList();
         stageTwoLevelTwoString = hmapStates.get("stageTwoLevelTwo").getString();
         stageTwoLevelTwo = loadDefaultListModel(stageTwoLevelTwoString);
 
         isStageTwoSubmitClicked = hmapStates.get("isStageTwoSubmitClicked").getBoolean();
-        stageTwoGridBoxesSelection = hmapStates.get("stageTwoGridBoxesSelection").getBox();
+        stageTwoLevelOneGridBoxesSelection = hmapStates.get("stageTwoLevelOneGridBoxesSelection").getBox();
+        stageTwoLevelTwoGridBoxesSelection = hmapStates.get("stageTwoLevelTwoGridBoxesSelection").getBox();
 
         suppressIntCheckBox = hmapStates.get("suppressIntCheckBox").getBoolean();
         levelTwoSelected = hmapStates.get("levelTwoSelected").getStringArrayList();
@@ -324,10 +338,10 @@ public class MixRegGuiStates {
         StateObject po13 = new StateObject("includeStageTwoNo", includeStageTwoNo);
         StateObject po14 = new StateObject("stageTwoSingleLevel", stageTwoSingleLevel);
         StateObject po15 = new StateObject("stageTwoMultiLevel", stageTwoMultiLevel);
-        StateObject po16 = new StateObject("continuousRadio", continuousRadio);
-        StateObject po17 = new StateObject("dichotomousRadio", dichotomousRadio);
-        StateObject po18 = new StateObject("countRadio", countRadio);
-        StateObject po19 = new StateObject("multinomialRadio", multinomialRadio);
+        StateObject po16 = new StateObject("continuousRadio", stageTwoContinuousRadio);
+        StateObject po17 = new StateObject("dichotomousRadio", stageTwoDichotomousRadio);
+        StateObject po18 = new StateObject("countRadio", stageTwoCountRadio);
+        StateObject po19 = new StateObject("multinomialRadio", stageTwoMultinomialRadio);
         StateObject po20 = new StateObject("seedTextBox", seedTextBox);
         StateObject po21 = new StateObject("isNewModalConfigSubmitted", isNewModalConfigSubmitted);
         StateObject po22 = new StateObject("IDpos", IDpos);
@@ -361,13 +375,17 @@ public class MixRegGuiStates {
         StateObject po50 = new StateObject("isStageOneSubmitted", isStageOneSubmitted);
         StateObject po51 = new StateObject("isStageTwoSubmitted", isStageTwoSubmitted);
         StateObject po52 = new StateObject("stageTwoListModel", stageTwoListModelString);
-        StateObject po53 = new StateObject("stageTwoLevelTwo", stageTwoLevelTwoString);
-        StateObject po54 = new StateObject("isStageTwoSubmitClicked", isStageTwoSubmitClicked);
-        StateObject po55 = new StateObject("stageTwoGridBoxesSelection", stageTwoGridBoxesSelection);
-        StateObject po56 = new StateObject("suppressIntCheckBox", suppressIntCheckBox);
-        StateObject po57 = new StateObject("levelTwoSelected", levelTwoSelected, 0);
-        StateObject po58 = new StateObject("sessionFolderName", sessionFolderName);
-
+        StateObject po53 = new StateObject("stageTwoLevelOne", stageTwoLevelOneString);
+        StateObject po54 = new StateObject("stageTwoLevelTwo", stageTwoLevelTwoString);
+        StateObject po55 = new StateObject("isStageTwoSubmitClicked", isStageTwoSubmitClicked);
+        StateObject po56 = new StateObject("stageTwoLevelOneGridBoxesSelection", stageTwoLevelOneGridBoxesSelection);
+        StateObject po57 = new StateObject("stageTwoLevelTwoGridBoxesSelection", stageTwoLevelTwoGridBoxesSelection);
+        StateObject po58 = new StateObject("suppressIntCheckBox", suppressIntCheckBox);
+        StateObject po59 = new StateObject("levelTwoSelected", levelTwoSelected, 0);
+        StateObject po60 = new StateObject("sessionFolderName", sessionFolderName);
+        StateObject po61 = new StateObject("stageOneProbitRadio", stageOneProbitRadio);
+        StateObject po62 = new StateObject("stageOneLogisticRadio", stageOneLogisticRadio);
+        
         hashmap.put(po0.getKey(), po0);
         hashmap.put(po1.getKey(), po1);
         hashmap.put(po2.getKey(), po2);
@@ -427,6 +445,10 @@ public class MixRegGuiStates {
         hashmap.put(po56.getKey(), po56);
         hashmap.put(po57.getKey(), po57);
         hashmap.put(po58.getKey(), po58);
+        hashmap.put(po59.getKey(), po59);
+        hashmap.put(po60.getKey(), po60);
+        hashmap.put(po61.getKey(), po61);
+        hashmap.put(po62.getKey(), po62);
         return hashmap;
     }
 

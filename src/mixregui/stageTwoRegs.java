@@ -33,6 +33,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.ListModel;
 //import static mixregui.stageOneRegs.varList;
 import static mixregui.stageOneRegs.variableNamesList;
 
@@ -273,6 +274,7 @@ public class stageTwoRegs extends javax.swing.JFrame {
     }//GEN-LAST:event_stageTwoLevelTwoRemoveButtonActionPerformed
 
     private void stageTwoResetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoResetButtonActionPerformed
+        stageTwoLevelOne.clear();
         stageTwoLevelTwo.clear();
     }//GEN-LAST:event_stageTwoResetButtonActionPerformed
 
@@ -416,8 +418,8 @@ public class stageTwoRegs extends javax.swing.JFrame {
             }
         }
 
-        DefaultListModel<String> stageTwoLevelOneListModel = (DefaultListModel<String>) StageTwoLevelOneVariables.getModel();
-        DefaultListModel<String> stageTwoLevelTwoListModel = (DefaultListModel<String>) StageTwoLevelTwoVariables.getModel();
+        ListModel<String> stageTwoLevelOneListModel = (ListModel<String>) StageTwoLevelOneVariables.getModel();
+        ListModel<String> stageTwoLevelTwoListModel = (ListModel<String>) StageTwoLevelTwoVariables.getModel();
         for (int i = 0; i < stageTwoLevelOneListModel.getSize(); i++) {
             Object item = stageTwoLevelOneListModel.getElementAt(i);
             stageTwoListModel.removeElement(item);
@@ -436,6 +438,10 @@ public class stageTwoRegs extends javax.swing.JFrame {
         return StageTwoAllVariables;
     }
 
+    public javax.swing.JList<String> getStageTwoLevelOneVariables() {
+        return StageTwoLevelOneVariables;
+    }
+
     public javax.swing.JList<String> getStageTwoLevelTwoVariables() {
         return StageTwoLevelTwoVariables;
     }
@@ -444,4 +450,19 @@ public class stageTwoRegs extends javax.swing.JFrame {
         stageTwoSubmitButton.setEnabled(turnon);
     }
 
+    public void setEnabledStageTwoLevelOneAddButton(boolean turnon) {
+        stageTwoLevelOneAddButton.setEnabled(turnon);
+    }
+
+    public void setEnabledStageTwoLevelOneRemoveButton(boolean turnon) {
+        stageTwoLevelOneRemoveButton.setEnabled(turnon);
+    }
+
+    public void setEnabledStageTwoLevelOneRegTitle(boolean turnon) {
+        jLabel4.setEnabled(turnon);
+    }
+
+    public void setEnabledStageTwoLevelOneRegVariables(boolean turnon) {
+        StageTwoLevelOneVariables.setEnabled(turnon);
+    }
 }

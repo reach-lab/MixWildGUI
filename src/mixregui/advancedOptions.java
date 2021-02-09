@@ -43,7 +43,6 @@ import javax.swing.JOptionPane;
 public class advancedOptions extends javax.swing.JFrame {
 
     MixLibrary defFile3;
-    final ImageIcon icon;
     boolean osWindows = System.getProperty("os.name").toLowerCase().contains("windows");
 
     /**
@@ -59,17 +58,16 @@ public class advancedOptions extends javax.swing.JFrame {
 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         //Add tool tips to advanced options
-        icon = new ImageIcon(getClass().getResource("/resources/mixLogo.png"));
-        meanSubmodelCheckBox.setToolTipText("Check mean submodel");
-        BSVarianceCheckBox.setToolTipText("Check mean submodel");
-        WSVarianceCheckBox.setToolTipText("Tool tip here");
-        convergenceCriteria.setToolTipText("Tool tip here");
-        quadriturePoints.setToolTipText("Tool tip here");
-        adaptiveQuadritureCheckBox.setToolTipText("Tool tip here");
-        maximumIterations.setToolTipText("Tool tip here");
-        //standardizedCoeff.setToolTipText("Tool tip here");
-        ridgeSpinner.setToolTipText("Tool tip here");
-        centerRegressorsCheckBox.setToolTipText("Tool tip here");
+//        meanSubmodelCheckBox.setToolTipText("Check mean submodel");
+//        BSVarianceCheckBox.setToolTipText("Check mean submodel");
+//        WSVarianceCheckBox.setToolTipText("Tool tip here");
+//        convergenceCriteria.setToolTipText("Tool tip here");
+//        quadriturePoints.setToolTipText("Tool tip here");
+//        adaptiveQuadritureCheckBox.setToolTipText("Tool tip here");
+//        maximumIterations.setToolTipText("Tool tip here");
+//        //standardizedCoeff.setToolTipText("Tool tip here");
+//        ridgeSpinner.setToolTipText("Tool tip here");
+//        centerRegressorsCheckBox.setToolTipText("Tool tip here");
 
         //set default selections
         meanSubmodelCheckBox.setSelected(true);
@@ -81,7 +79,7 @@ public class advancedOptions extends javax.swing.JFrame {
         resampleCheckBox.setSelected(true);
 
         //variables to save values:
-        if (mixregGUI.NoneVar == true) {
+        if (mixregGUI.notIncludeStageTwo == true) {
 
             resampleSpinner.setEnabled(false);
             resampleCheckBox.setEnabled(false);
@@ -134,7 +132,6 @@ public class advancedOptions extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JSeparator();
         jButton1 = new javax.swing.JButton();
         advancedOptions_resetButton = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
         advancedOptionsCancel = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         run32BitCheckBox = new javax.swing.JCheckBox();
@@ -291,9 +288,6 @@ public class advancedOptions extends javax.swing.JFrame {
         });
         getContentPane().add(advancedOptions_resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 310, 90, -1));
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/MixWildLogoTiny.png"))); // NOI18N
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, 29));
-
         advancedOptionsCancel.setText("Cancel");
         advancedOptionsCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -448,7 +442,6 @@ public class advancedOptions extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -709,7 +702,7 @@ public class advancedOptions extends javax.swing.JFrame {
             tryCount = 1;
 
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
             catchCount = 1;
         }
@@ -720,7 +713,7 @@ public class advancedOptions extends javax.swing.JFrame {
             tryCount = 1;
         } catch (Exception ex) {
             Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
             catchCount = 1;
         }
 
@@ -730,7 +723,7 @@ public class advancedOptions extends javax.swing.JFrame {
             tryCount = 1;
         } catch (Exception ex) {
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
             catchCount = 1;
         }
 
@@ -742,7 +735,7 @@ public class advancedOptions extends javax.swing.JFrame {
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
         }
 
         try {
@@ -752,7 +745,7 @@ public class advancedOptions extends javax.swing.JFrame {
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
         }
 
         try {
@@ -762,7 +755,7 @@ public class advancedOptions extends javax.swing.JFrame {
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
         }
 
         try {
@@ -774,7 +767,7 @@ public class advancedOptions extends javax.swing.JFrame {
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
         }
 
         try {
@@ -786,7 +779,7 @@ public class advancedOptions extends javax.swing.JFrame {
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
         }
 
         try {
@@ -796,7 +789,7 @@ public class advancedOptions extends javax.swing.JFrame {
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
         }
 
         try {
@@ -806,7 +799,7 @@ public class advancedOptions extends javax.swing.JFrame {
         } catch (Exception ex) {
             catchCount = 1;
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
         }
 
         try {
@@ -815,7 +808,7 @@ public class advancedOptions extends javax.swing.JFrame {
             tryCount = 1;
         } catch (Exception ex) {
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
         }
 
         try {
@@ -823,7 +816,7 @@ public class advancedOptions extends javax.swing.JFrame {
             System.out.println("From defHelper | Resample count: " + mixregGUI.defFile.getAdvancedResampleCount());
         } catch (Exception ex) {
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
         }
 
         if (catchCount == 0) {
@@ -831,19 +824,20 @@ public class advancedOptions extends javax.swing.JFrame {
             this.dispose();
         }
     }
+
     public void update_trigger_resampleCheckBox() {
         if (resampleCheckBox.isSelected()) {
-            mixregGUI.defFile.win32 = Boolean.TRUE;
+            resampleSpinner.setEnabled(true);
         } else {
-            mixregGUI.defFile.win32 = Boolean.FALSE;
+            resampleSpinner.setEnabled(false);
         }
     }
 
     public void update_trigger_run32BitCheckBox() {
         if (run32BitCheckBox.isSelected()) {
-            resampleSpinner.setEnabled(true);
+            mixregGUI.defFile.win32 = Boolean.TRUE;
         } else {
-            resampleSpinner.setEnabled(false);
+            mixregGUI.defFile.win32 = Boolean.FALSE;
         }
     }
 }
