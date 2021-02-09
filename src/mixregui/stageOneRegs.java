@@ -35,6 +35,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.ListModel;
 
 /**
  * Use this to add or remove stage 1 regressors into the model
@@ -430,8 +431,8 @@ public class stageOneRegs extends javax.swing.JFrame {
             }
         }
 
-        DefaultListModel<String> stageOneLevelOneListModel = (DefaultListModel<String>) getStageOneLevelOneList().getModel();
-        DefaultListModel<String> stageOneLevelTwoListModel = (DefaultListModel<String>) getStageOneLevelTwoList().getModel();
+        ListModel<String> stageOneLevelOneListModel = (ListModel<String>) getStageOneLevelOneList().getModel();
+        ListModel<String> stageOneLevelTwoListModel = (ListModel<String>) getStageOneLevelTwoList().getModel();
         for (int i = 0; i < stageOneLevelOneListModel.getSize(); i++) {
             Object item = stageOneLevelOneListModel.getElementAt(i);
             varList.removeElement(item);
