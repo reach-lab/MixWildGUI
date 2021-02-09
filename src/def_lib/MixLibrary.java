@@ -2021,7 +2021,10 @@ public class MixLibrary implements Serializable {
         String MIXREG = "mixreg";
         String MIXORS = "mixors";
         String MIXPREG = "mixpreg";
-        String STAGETWO_ONLY = "stage2only";
+        String STAGETWO_ONLY = "stage2only64";
+        if(win32){
+            STAGETWO_ONLY = "stage2only";
+        }
 
         if (getOSName().contains("windows")) {
             System.out.print(win32);
