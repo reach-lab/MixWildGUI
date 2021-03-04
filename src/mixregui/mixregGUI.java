@@ -150,7 +150,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 dataFileName = dataFileNameRef;
                 break;
             case 2:
-                if ((includeStageTwoDataYes.isSelected() == true) && (!dataFileNameRef_stageTwo.isEmpty())){
+                if ((includeStageTwoDataYes.isSelected() == true) && (!dataFileNameRef_stageTwo.isEmpty())) {
                     dataFileName = dataFileNameRef_stageTwo;
                 } else {
                     dataFileName = dataFileNameRef;
@@ -7759,6 +7759,13 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }
 
     private void update_trigger_runTabTwoStageOneTwo() {
+        // validate ID variable of second dataset
+        boolean validation_pass = validate_stageTwoDataset_ID();
+        if (!validation_pass) {
+            //error message
+            return;
+        }
+
         // TODO add your handling code here:
         // tryCount counts the number of successful DefinitionHelper function calls
         //catchCount counts number of exceptions in reading values to derHelper.
@@ -8082,33 +8089,32 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 System.out.println("From defHelper | Stage 1 def file failed!");
             }
 
-        } else {
+            if (!checkTabExistinJTabbedPane(stageOneTabs, "View Model")) {
+                int viewModelTabIdx;
+                if (checkTabExistinJTabbedPane(stageOneTabs, "View Data")) {
+                    viewModelTabIdx = stageOneTabs.indexOfTab("View Data");
+                    stageOneTabs.insertTab("View Model", null, jPanel2, null, viewModelTabIdx);
+                } else if (checkTabExistinJTabbedPane(stageOneTabs, "View Stage 1 Data")) {
+                    viewModelTabIdx = stageOneTabs.indexOfTab("View Stage 1 Data");
+                    stageOneTabs.insertTab("View Model", null, jPanel2, null, viewModelTabIdx);
+                }
+            }
+            if (!checkTabExistinJTabbedPane(stageOneTabs, "Stage 2 Results")) {
+                int stage2TabIdx = stageOneTabs.indexOfTab("View Model");
+                stageOneTabs.insertTab("Stage 2 Results", null, jPanel4, null, stage2TabIdx);
+            }
+            if (!checkTabExistinJTabbedPane(stageOneTabs, "Stage 1 Results")) {
+                int stage1ResultTabIdx = stageOneTabs.indexOfTab("Stage 2 Results");
+                stageOneTabs.insertTab("Stage 1 Results", null, jPanel3, null, stage1ResultTabIdx);
+            }
 
+            // jump to "stage 1 result" tab
+            int stageOneTabIdx = stageOneTabs.indexOfTab("Stage 1 Results");
+            stageOneTabs.setSelectedIndex(stageOneTabIdx);
+
+        } else {
             // do nothing
         }
-        if (!checkTabExistinJTabbedPane(stageOneTabs, "View Model")) {
-            int viewModelTabIdx;
-            if (checkTabExistinJTabbedPane(stageOneTabs, "View Data")){
-                viewModelTabIdx = stageOneTabs.indexOfTab("View Data");
-                stageOneTabs.insertTab("View Model", null, jPanel2, null, viewModelTabIdx);
-            } else if (checkTabExistinJTabbedPane(stageOneTabs, "View Stage 1 Data")) {
-                viewModelTabIdx = stageOneTabs.indexOfTab("View Stage 1 Data");
-                stageOneTabs.insertTab("View Model", null, jPanel2, null, viewModelTabIdx);
-            }
-            
-        }
-        if (!checkTabExistinJTabbedPane(stageOneTabs, "Stage 2 Results")) {
-            int stage2TabIdx = stageOneTabs.indexOfTab("View Model");
-            stageOneTabs.insertTab("Stage 2 Results", null, jPanel4, null, stage2TabIdx);
-        }
-        if (!checkTabExistinJTabbedPane(stageOneTabs, "Stage 1 Results")) {
-            int stage1ResultTabIdx = stageOneTabs.indexOfTab("Stage 2 Results");
-            stageOneTabs.insertTab("Stage 1 Results", null, jPanel3, null, stage1ResultTabIdx);
-        }
-
-        // jump to "stage 1 result" tab
-        int stageOneTabIdx = stageOneTabs.indexOfTab("Stage 1 Results");
-        stageOneTabs.setSelectedIndex(stageOneTabIdx);
 
     }
 
@@ -9344,6 +9350,117 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             jPanel5.setVisible(false);
             jPanel5.setEnabled(false);
         }
+    }
+
+    private boolean validate_stageTwoDataset_ID() {
+        boolean validation_pass = true;
+        if ((includeStageTwoDataYes.isSelected() == true) && (!dataFileNameRef_stageTwo.isEmpty())) {
+            ArrayList<String> uniqueListIDStageOne = get_unique_list_from_dataset_column(1);
+            ArrayList<String> uniqueListIDStageTwo = get_unique_list_from_dataset_column(2);
+            // step1: check number of unique IDs
+            int uniqueListIDStageOneSize = uniqueListIDStageOne.size();
+            int uniqueListIDStageTwoSize = uniqueListIDStageTwo.size();
+
+            if (uniqueListIDStageOneSize > uniqueListIDStageTwoSize) {
+                // error message
+                JOptionPane.showMessageDialog(this, "Stage 1 dataset has more unique IDs than stage 2 dataset. Please upload two datasets with the same amount of unique IDs.",
+                        "Error", JOptionPane.INFORMATION_MESSAGE);
+                validation_pass = false;
+            } else if (uniqueListIDStageOneSize < uniqueListIDStageTwoSize) {
+                // error message
+                JOptionPane.showMessageDialog(this, "Stage 2 dataset has more unique IDs than stage 1 dataset. Please upload two datasets with the same amount of unique IDs.",
+                        "Error", JOptionPane.INFORMATION_MESSAGE);
+                validation_pass = false;
+            } else {
+                // if the two ID unique lists have the same length
+                // step2: check order and elements
+                for (int x = 0; x < uniqueListIDStageOneSize; x++) {
+                    if (!uniqueListIDStageOne.get(x).equals(uniqueListIDStageTwo.get(x))) {
+                        if (uniqueListIDStageTwo.contains(uniqueListIDStageOne.get(x))) {
+                            // order problem message
+                            JOptionPane.showMessageDialog(this, "Stage 1 and stage 2 datasets have different order of IDs. Please upload two datasets with the same order of IDs.",
+                                    "Error", JOptionPane.INFORMATION_MESSAGE);
+                        } else {
+                            // element problem message
+                            JOptionPane.showMessageDialog(this, "Stage 1 dataset has ID that stage 2 datasets doesn't have. Please upload two datasets with the same unique IDs.",
+                                    "Error", JOptionPane.INFORMATION_MESSAGE);
+                        }
+                        validation_pass = false;
+                        break;
+                    } else {
+                        // do nothing
+                    }
+                }
+            }
+
+        }
+
+        return validation_pass;
+    }
+
+    private ArrayList<String> get_unique_list_from_dataset_column(int datasetNum) {
+        ArrayList<String> ColumnsCustom = new ArrayList<>();
+        ArrayList<String> UniqueList = new ArrayList<>();
+
+        String dataFileName = getDataFileName(datasetNum);
+
+        //        //first get the column
+        BufferedReader br = null;
+        String line = "";
+        String commaSplitter = ",";
+
+        try {
+            br = new BufferedReader(new FileReader(dataFileName));
+            line = br.readLine(); //consumes the first row
+            // determine the ID variable position
+            int IDVaraibleIndex;
+            switch (datasetNum) {
+                case 1:
+                    IDVaraibleIndex = IDvariableCombo.getSelectedIndex();
+                    break;
+                case 2:
+                    IDVaraibleIndex = IDStageTwoVariableCombo.getSelectedIndex();
+                    break;
+                default:
+                    IDVaraibleIndex = IDStageTwoVariableCombo.getSelectedIndex();
+            }
+
+            while ((line = br.readLine()) != null) {
+                String[] Columns = line.split(commaSplitter);
+                ColumnsCustom.add(Columns[IDVaraibleIndex]);
+
+            }
+
+            //count the unique ones
+            for (int x = 0; x < ColumnsCustom.size(); x++) {
+                if (UniqueList.contains(ColumnsCustom.get(x))) {
+                    //do nothing
+                } else {
+                    UniqueList.add(ColumnsCustom.get(x));
+                }
+
+            }
+
+        } catch (FileNotFoundException e) {
+            SystemLogger.LOGGER.log(Level.SEVERE, e.toString() + "{0}", SystemLogger.getLineNum());
+            e.printStackTrace();
+            Logger.getLogger(getName()).log(Level.SEVERE, null, e);
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+        } catch (IOException e) {
+            SystemLogger.LOGGER.log(Level.SEVERE, e.toString() + "{0}", SystemLogger.getLineNum());
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    SystemLogger.LOGGER.log(Level.SEVERE, e.toString() + "{0}", SystemLogger.getLineNum());
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return UniqueList;
     }
 
 }
