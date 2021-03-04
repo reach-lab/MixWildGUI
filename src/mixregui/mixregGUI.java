@@ -143,9 +143,25 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }
 
     //get data file name when created
-    public static String getDataFileName() {
+    public String getDataFileName(int stageNum) {
+        String dataFileName;
+        switch (stageNum) {
+            case 1:
+                dataFileName = dataFileNameRef;
+                break;
+            case 2:
+                if ((includeStageTwoDataYes.isSelected() == true) && (!dataFileNameRef_stageTwo.isEmpty())){
+                    dataFileName = dataFileNameRef_stageTwo;
+                } else {
+                    dataFileName = dataFileNameRef;
+                }
 
-        return dataFileNameRef;
+                break;
+            default:
+                dataFileName = dataFileNameRef;
+                break;
+        }
+        return dataFileName;
     }
 
     //get title from the text box
@@ -632,9 +648,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             // if random location effects are more than one, change the table column names
             level2_BSVar.setVisible(false);
             level1_BSVar.setText("Random Slope");
-            level1_WSVar.setText("Scale");
-            //level2_BSVar.setText("Loc. eff.");
-            level2_WSVar.setText("Scale");
+//            level1_WSVar.setText("Scale");
+//            level2_WSVar.setText("Scale");
+            level1_WSVar.setText("WS Variance");
+            level2_WSVar.setText("WS Variance");
 
         }
 
@@ -757,7 +774,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
      */
     public mixregGUI() {
         initComponents();
-        this.setTitle("MixWILD-2.0-Beta8");
+        this.setTitle("MixWILD-2.0-Beta9");
         // adjust the frame size to fit screen resolution
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         setBounds(0, 0, stageOneTabs.getWidth(), (int) Math.round(screenSize.height / 1.5));
@@ -2500,7 +2517,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         ArrayList<String> ColumnsCustom = new ArrayList<>();
         ArrayList<String> UniqueList = new ArrayList<>();
 
-        String dataFileName = getDataFileName();
+        String dataFileName = getDataFileName(2);
         File file = new File(dataFileName);
         //        //first get the column
         BufferedReader br = null;
@@ -2519,11 +2536,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             }
 
-            System.out.println("COLUMN:");
-            for (int k = 0; k < ColumnsCustom.size(); k++) {
-                System.out.println(ColumnsCustom.get(k));
-            }
-
+//            System.out.println("COLUMN:");
+//            for (int k = 0; k < ColumnsCustom.size(); k++) {
+//                System.out.println(ColumnsCustom.get(k));
+//            }
             //            if (defFile.getAdvancedMissingValue().contains(".")){
             //            String strippedMissingVal = defFile.getAdvancedMissingValue().substring(0,defFile.getAdvancedMissingValue().indexOf('.'));
             //            }
@@ -2542,11 +2558,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
 
             //sort UniqueList First
-            ArrayList<Integer> UniqueIntegers = new ArrayList<>();
+            ArrayList<Double> UniqueIntegers = new ArrayList<>();
 
             for (int x = 0; x < UniqueList.size(); x++) {
 
-                UniqueIntegers.add(Integer.valueOf(UniqueList.get(x)));
+                UniqueIntegers.add(Double.valueOf(UniqueList.get(x)));
 
             }
 
@@ -3151,6 +3167,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     private void includeStageTwoDataYesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_includeStageTwoDataYesActionPerformed
         this.includeStageTwoDataYes.setSelected(true);
+        // check if stage 2 dataset same as stage 1 dataset
+
+        JOptionPane.showMessageDialog(this, "Both files need to be sorted by the same ID variable.",
+                "Notice", JOptionPane.INFORMATION_MESSAGE);
+
         MXRStates = new MixRegGuiStates(this, advancedOptions_view);
         updateGuiView(MXRStates);
     }//GEN-LAST:event_includeStageTwoDataYesActionPerformed
@@ -3250,7 +3271,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         if (file.exists()) {
 //            setFirstTabStatus(true);
-            if (!checkTabExistinJTabbedPane(stageOneTabs, "View Data")) {
+            if (!checkTabExistinJTabbedPane(stageOneTabs, "View Data") && !checkTabExistinJTabbedPane(stageOneTabs, "View Stage 1 Data")) {
                 int helpTabIdx = stageOneTabs.indexOfTab("Help");
                 stageOneTabs.insertTab("View Data", null, jPanel6, null, helpTabIdx);
             }
@@ -3280,8 +3301,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 if (file_stageTwo.exists()) {
 
                     if (!checkTabExistinJTabbedPane(stageOneTabs, "View Stage 2 Data")) {
+                        int viewDataStageOneIdx = stageOneTabs.indexOfTab("View Data");
+                        stageOneTabs.setTitleAt(viewDataStageOneIdx, "View Stage 1 Data");
                         int helpTabIdx = stageOneTabs.indexOfTab("Help");
                         stageOneTabs.insertTab("View Stage 2 Data", null, jPanel16, null, helpTabIdx);
+
                     }
                     // update Stage 2 Data View tab
                     updateGuiView_trigger_dataview_stageTwo();
@@ -3400,7 +3424,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             newModelSubmit.setVisible(true);
             newModelSubmit.setEnabled(true);
 
-//            updateStage2ConfigButton.setVisible(true);
+            includeStageTwoDataNo.setSelected(true);
+
         } else if (includeStageTwoYes.isSelected()) {
             setSeedLabel.setVisible(true);
             seedTextBox.setVisible(true);
@@ -6061,9 +6086,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         return regLabels;
     }
 
-    public static void produceStageTwoOutput(File filename) throws FileNotFoundException, IOException {
+    public void produceStageTwoOutput(File filename) throws FileNotFoundException, IOException {
 
-        String outputFileName = FilenameUtils.removeExtension(getDataFileName()) + "_output_1" + ".out";
+        String outputFileName = FilenameUtils.removeExtension(getDataFileName(2)) + "_output_1" + ".out";
         //read file here
         FileReader reader = new FileReader(outputFileName);
 
@@ -6232,7 +6257,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         ArrayList<String> ColumnsCustom = new ArrayList<>();
         ArrayList<String> UniqueList = new ArrayList<>();
 
-        String dataFileName = getDataFileName();
+        String dataFileName = getDataFileName(2);
         File file = new File(dataFileName);
         //first get the column
         BufferedReader br = null;
@@ -6293,7 +6318,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         ArrayList<String> UniqueList = new ArrayList<>();
         ArrayList<Integer> UniqueIntegers = new ArrayList<>();
 
-        String dataFileName = getDataFileName();
+        String dataFileName = getDataFileName(2);
         File file = new File(dataFileName);
         //first get the column
         BufferedReader br = null;
@@ -6794,7 +6819,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                         defFile.setSharedDataFilename_stageTwo(extractDatFilePath(file_stageTwo));
                         defFile.setStageTwoNewDataVariableCount(String.valueOf(variableNamesCombo_stageTwo.length));
                         defFile.setStageTwoNewDataIDField(String.valueOf(IDStageTwoVariableCombo.getSelectedIndex() + 1));
-                        
+
                     } catch (Exception ex) {
                         Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                         SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
@@ -7995,6 +8020,19 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
             JOptionPane.showMessageDialog(stageOneTabs, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
+
+        if (getIncludeStageTwoDataYes() == true) {
+            try {
+//                defFile.setAdvancedMultipleDataFiles("1");
+//                defFile.setSharedDataFilename_stageTwo(extractDatFilePath(file_stageTwo));
+//                defFile.setStageTwoNewDataVariableCount(String.valueOf(variableNamesCombo_stageTwo.length));
+                defFile.setStageTwoNewDataIDField(String.valueOf(IDStageTwoVariableCombo.getSelectedIndex() + 1));
+
+            } catch (Exception ex) {
+                Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
+            }
+        }
 //        if (outComeType == false) {
 //            try {
 //                defFile.setStageTwoOutcomeCatCount(String.valueOf(getStagetwoOutcomeCats()));
@@ -8049,8 +8087,15 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             // do nothing
         }
         if (!checkTabExistinJTabbedPane(stageOneTabs, "View Model")) {
-            int viewModelTabIdx = stageOneTabs.indexOfTab("View Data");
-            stageOneTabs.insertTab("View Model", null, jPanel2, null, viewModelTabIdx);
+            int viewModelTabIdx;
+            if (checkTabExistinJTabbedPane(stageOneTabs, "View Data")){
+                viewModelTabIdx = stageOneTabs.indexOfTab("View Data");
+                stageOneTabs.insertTab("View Model", null, jPanel2, null, viewModelTabIdx);
+            } else if (checkTabExistinJTabbedPane(stageOneTabs, "View Stage 1 Data")) {
+                viewModelTabIdx = stageOneTabs.indexOfTab("View Stage 1 Data");
+                stageOneTabs.insertTab("View Model", null, jPanel2, null, viewModelTabIdx);
+            }
+            
         }
         if (!checkTabExistinJTabbedPane(stageOneTabs, "Stage 2 Results")) {
             int stage2TabIdx = stageOneTabs.indexOfTab("View Model");
@@ -9023,7 +9068,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         ArrayList<String> ColumnsCustom = new ArrayList<>();
         ArrayList<String> UniqueList = new ArrayList<>();
 
-        String dataFileName = getDataFileName();
+        String dataFileName = getDataFileName(stageNum);
         File file = new File(dataFileName);
         //        //first get the column
         BufferedReader br = null;
@@ -9121,6 +9166,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 //            DataFileStageTwoLabel.setEnabled(false);
             filePath_stageTwo.setEnabled(false);
             fileBrowseButtonStageTwoData.setEnabled(false);
+            if (checkTabExistinJTabbedPane(stageOneTabs, "View Stage 2 Data")) {
+                stageOneTabs.remove(jPanel16);
+            }
+            if (checkTabExistinJTabbedPane(stageOneTabs, "View Stage 1 Data")) {
+                int viewDataStageOneIdx = stageOneTabs.indexOfTab("View Stage 1 Data");
+                stageOneTabs.setTitleAt(viewDataStageOneIdx, "View Data");
+            }
+            filePath_stageTwo.setText("");
         } else if (includeStageTwoDataYes.isSelected()) {
 //            DataFileStageTwoLabel.setVisible(true);
             DataFileStageTwoLabel.setEnabled(true);
@@ -9163,8 +9216,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 System.out.println("NEW STAGE TWO DATA READ");
                 if (validDataset_stageTwo) {
                     filePath_stageTwo.setText(fileName);
+                    int viewDataStageOneIdx = stageOneTabs.indexOfTab("View Data");
+                    stageOneTabs.setTitleAt(viewDataStageOneIdx, "View Stage 1 Data");
                     int helpTabIdx = stageOneTabs.indexOfTab("Help");
                     stageOneTabs.insertTab("View Stage 2 Data", null, jPanel16, null, helpTabIdx);
+
                 }
             } catch (IOException ex) {
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
