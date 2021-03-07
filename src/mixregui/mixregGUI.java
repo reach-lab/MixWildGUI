@@ -304,7 +304,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }
 
     public boolean getNotIncludeStageTwo() {
-        return notIncludeStageTwo;
+        return includeStageTwoNo.isSelected();
 
     }
 
@@ -774,7 +774,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
      */
     public mixregGUI() {
         initComponents();
-        this.setTitle("MixWILD-2.0-Beta9");
+        this.setTitle("MixWILD-2.0-Beta10");
         // adjust the frame size to fit screen resolution
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         setBounds(0, 0, stageOneTabs.getWidth(), (int) Math.round(screenSize.height / 1.5));
@@ -7452,7 +7452,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 //        System.out.print("2!!!!!!!!!!!!!!!!!!!!!");
 //        System.out.print(defFile.getAdvancedResampleCount());
 
-        if (stageTwoNotIncluded == true) {
+        if (getNotIncludeStageTwo() == true) {
 
             if (!checkTabExistinJTabbedPane(stageOneTabs, "View Model")) {
                 int viewModelTabIdx = stageOneTabs.indexOfTab("View Data");

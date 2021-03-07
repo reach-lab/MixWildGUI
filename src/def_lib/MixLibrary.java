@@ -1928,16 +1928,27 @@ public class MixLibrary implements Serializable {
             copyExecutable(definitionFilepath);
             Process p;
             String macOSCommand = "\"" + definitionFilepath + defFileName + "\"";
+            // debug
+            SystemLogger.LOGGER.log(Level.CONFIG, getOSName(), SystemLogger.getLineNum());
+            
             if (getOSName().contains("windows")) {
                 System.out.print("$$$$$$$$$$$$$: " + definitionFilepath);
                 // the file path is not in the C drive
                 if (!"C".equals(definitionFilepath.split(":")[0])) {
                     p = Runtime.getRuntime().exec("cmd /c dir && cd /d" + "\"" + definitionFilepath + "\"" + " && dir && "
                             + defFileName);
+                    // debug
+                    SystemLogger.LOGGER.log(Level.CONFIG, "cmd /c dir && cd /d" + "\"" + definitionFilepath + "\"" + " && dir && "
+                            + defFileName, SystemLogger.getLineNum());
                 } else {
                     p = Runtime.getRuntime().exec("cmd /c dir && cd " + "\"" + definitionFilepath + "\"" + " && dir && "
                             + defFileName);
+                    // debug
+                    SystemLogger.LOGGER.log(Level.CONFIG, "cmd /c dir && cd " + "\"" + definitionFilepath + "\"" + " && dir && "
+                            + defFileName, SystemLogger.getLineNum());
                 }
+                //
+
 
             } else {
                 ProcessBuilder pb = new ProcessBuilder(
