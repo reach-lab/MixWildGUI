@@ -1930,25 +1930,26 @@ public class MixLibrary implements Serializable {
             String macOSCommand = "\"" + definitionFilepath + defFileName + "\"";
             // debug
             SystemLogger.LOGGER.log(Level.CONFIG, getOSName(), SystemLogger.getLineNum());
-            
+
             if (getOSName().contains("windows")) {
                 System.out.print("$$$$$$$$$$$$$: " + definitionFilepath);
                 // the file path is not in the C drive
                 if (!"C".equals(definitionFilepath.split(":")[0])) {
-                    p = Runtime.getRuntime().exec("cmd /c dir && cd /d" + "\"" + definitionFilepath + "\"" + " && dir && "
-                            + defFileName);
+                    String command = "cmd /c dir && cd /d" + "\"" + definitionFilepath + "\"" + " && dir && "
+                            + defFileName;
+                    p = Runtime.getRuntime().exec(command);
                     // debug
                     SystemLogger.LOGGER.log(Level.CONFIG, "cmd /c dir && cd /d" + "\"" + definitionFilepath + "\"" + " && dir && "
                             + defFileName, SystemLogger.getLineNum());
                 } else {
-                    p = Runtime.getRuntime().exec("cmd /c dir && cd " + "\"" + definitionFilepath + "\"" + " && dir && "
-                            + defFileName);
+                    String command = "cmd /c dir && cd " + "\"" + definitionFilepath + "\"" + " && dir && "
+                            + defFileName;
+                    p = Runtime.getRuntime().exec(command);
                     // debug
                     SystemLogger.LOGGER.log(Level.CONFIG, "cmd /c dir && cd " + "\"" + definitionFilepath + "\"" + " && dir && "
                             + defFileName, SystemLogger.getLineNum());
                 }
                 //
-
 
             } else {
                 ProcessBuilder pb = new ProcessBuilder(
@@ -2002,7 +2003,14 @@ public class MixLibrary implements Serializable {
                 terminalVal = exitVal;
                 Process p2;
                 if (getOSName().contains("windows")) {
-                    p2 = Runtime.getRuntime().exec("cmd /c dir && cd " + "\"" + definitionFilepath + "\"" + " && del /f " + "\"" + defFileName + "\""); //delete the file when everything works great.
+                    String[] executable_array = {"lsboth_random_mixblank", "mixors_random_mixblank", "mixno", "mixreg", "mixors", "mixpreg", "stage2only"};
+                    for (int i = 0; i < executable_array.length; i++) {
+                        String executableFile = executable_array[i];
+                        String command = "cmd /c dir && cd " + "\"" + definitionFilepath + "\"" + " && del /f " + "\"" + executableFile + ".exe" + "\"";
+                        p2 = Runtime.getRuntime().exec(command); //delete the file when everything works great.
+                    }
+//                    String command = "cmd /c dir && cd " + "\"" + definitionFilepath + "\"" + " && del /f " + "\"" + defFileName + "\"";
+//                    p2 = Runtime.getRuntime().exec(command); //delete the file when everything works great.
                 } else {
                     ProcessBuilder pb = new ProcessBuilder(
                             "bash",

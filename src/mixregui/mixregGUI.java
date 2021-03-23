@@ -774,7 +774,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
      */
     public mixregGUI() {
         initComponents();
-        this.setTitle("MixWILD-2.0-Beta10");
+        this.setTitle("MixWILD-2.0-Beta11");
         // adjust the frame size to fit screen resolution
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         setBounds(0, 0, stageOneTabs.getWidth(), (int) Math.round(screenSize.height / 1.5));
@@ -7468,8 +7468,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 try {
                     List<String> defFileOutput;
 
-//                    System.out.print("3!!!!!!!!!!!!!!!!!!!!!");
-//                    System.out.print(defFile.getAdvancedResampleCount());
                     defFile.writeStageOneOnlyDefFileToFolder(stageOneTabs.getSize());
 
                     //defFileOutput = defFile.buildStageOneOnlyDefinitonList();
@@ -7502,12 +7500,12 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             System.out.println("outcome not none!!!!");
         }
 
-        try {
-            produceStageOneOutput();
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
-        }
+//        try {
+//            produceStageOneOutput();
+//        } catch (FileNotFoundException ex) {
+//            Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+//            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
+//        }
 
 //        if (stageTwoNotIncluded == true) {
 //            stageOneTabs.setEnabledAt(2, false);
