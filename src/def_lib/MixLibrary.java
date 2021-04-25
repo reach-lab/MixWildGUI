@@ -1872,10 +1872,14 @@ public class MixLibrary implements Serializable {
         boolean isWindows = getOSName().contains("windows");
         String defFileName;
 
+        String system_bit_extension = "";
+        if (!win32){
+            system_bit_extension = "64";
+        }
         if (stageOneOutcome == STAGE_ONE_OUTCOME_MIXOR) {
-            defFileName = "mixors_random_mixblank";
+            defFileName = "mixors_random_mixblank" + system_bit_extension;
         } else {
-            defFileName = "lsboth_random_mixblank";
+            defFileName = "lsboth_random_mixblank" + system_bit_extension;
         }
         if (isWindows) {
             defFileName = defFileName + ".exe";
@@ -1930,9 +1934,9 @@ public class MixLibrary implements Serializable {
             String macOSCommand = "\"" + definitionFilepath + defFileName + "\"";
             // debug
             SystemLogger.LOGGER.log(Level.CONFIG, getOSName(), SystemLogger.getLineNum());
-
+            
             if (getOSName().contains("windows")) {
-                System.out.print("$$$$$$$$$$$$$: " + definitionFilepath);
+                System.out.print("$$$$$$$$$$$$$: " + definitionFilepath);              
                 // the file path is not in the C drive
                 if (!"C".equals(definitionFilepath.split(":")[0])) {
                     String command = "cmd /c dir && cd /d" + "\"" + definitionFilepath + "\"" + " && dir && "
@@ -2131,13 +2135,13 @@ public class MixLibrary implements Serializable {
                 STAGETWO_ONLY = "resources/Windows32/" + STAGETWO_ONLY + ".exe";
             } else {
                 System.out.print("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvva");
-                LSBOTH_PRE = "resources/Windows64/" + LSBOTH_PRE + ".exe";
-                MIXORS_PRE = "resources/Windows64/" + MIXORS_PRE + ".exe";
+                LSBOTH_PRE = "resources/Windows64/" + LSBOTH_PRE + "64" + ".exe";
+                MIXORS_PRE = "resources/Windows64/" + MIXORS_PRE + "64"  + ".exe";
                 MIXNO = "resources/Windows64/" + MIXNO + ".exe";
                 MIXREG = "resources/Windows64/" + MIXREG + ".exe";
                 MIXORS = "resources/Windows64/" + MIXORS + ".exe";
                 MIXPREG = "resources/Windows64/" + MIXPREG + ".exe";
-                STAGETWO_ONLY = "resources/Windows64/" + STAGETWO_ONLY + ".exe";
+                STAGETWO_ONLY = "resources/Windows64/" + STAGETWO_ONLY + "64"  + ".exe";
             }
         } else {
             LSBOTH_PRE = "resources/macOS/" + LSBOTH_PRE;

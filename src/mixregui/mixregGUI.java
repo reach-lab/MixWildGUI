@@ -637,13 +637,19 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         //Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/resources/mixLogo.png"));
         //setIconImage(image);
         if (RLE_selected == MixLibrary.STAGE_ONE_RLE_SLOPE) {
-
+            associationLabel.setText("Association of random location & scale?"); //Switch to this when RLE_selected > 1
             NoAssociationRadio.setText("Yes");
             LinearAssociationRadio.setText("No");
             QuadraticAssociationRadio.setVisible(false);
 
-            associationLabel.setText("Association of random location & scale?"); //Switch to this when RLE_selected > 1
-            LinearAssociationRadio.setSelected(true);
+            if (isRandomScale){
+                NoAssociationRadio.setEnabled(false);
+                LinearAssociationRadio.setEnabled(false);
+                associationLabel.setEnabled(false);
+                NoAssociationRadio.setSelected(true);
+            } else {
+                LinearAssociationRadio.setSelected(true);
+            }
 
             // if random location effects are more than one, change the table column names
             level2_BSVar.setVisible(false);
