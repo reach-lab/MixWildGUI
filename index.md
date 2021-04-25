@@ -18,9 +18,9 @@ MixWILD (Also Mixed model analysis with Intensive Longitudinal Data) is a deskto
 [Windows](https://github.com/reach-lab/MixWildGUI/releases/download/v2.0-windows/MixWILD-2.0.exe) (current version: 2.0)
 
 ### In the current version ###
-1. Ability to save and reload model configurations
-2. Error and performance logging
-3. Bugfixes
+1. Ability to add a second data file for stage 2 modeling
+2. Multi-level stage 2 modeling
+3. Probit and logistic for Stage 1 regression
 
 ### Manuscript Supplement ###
 [MixWild User Guide](/MixWILD_users_guide_with_appendix_AB.pdf)
