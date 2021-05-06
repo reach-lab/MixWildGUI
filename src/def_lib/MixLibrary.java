@@ -2121,7 +2121,7 @@ public class MixLibrary implements Serializable {
         String MIXREG = "mixreg";
         String MIXORS = "mixors";
         String MIXPREG = "mixpreg";
-        String STAGETWO_ONLY = "stage2only64";
+        String STAGETWO_ONLY = "stage2only";
         if(win32){
             STAGETWO_ONLY = "stage2only";
         }
