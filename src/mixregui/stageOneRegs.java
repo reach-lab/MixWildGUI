@@ -398,7 +398,7 @@ public class stageOneRegs extends javax.swing.JFrame {
     public void updateAllVariables() {
 
         // mixregGUI.g
-        int idIndex = mixregGUI.getIDFieldPosition();
+        int idIndex = mixregGUI.getIDFieldPosition(1);
         System.out.println("STAGE ONE | THE ID IS: " + String.valueOf(idIndex));
         int stageOneIndex = mixregGUI.getStageOneDVFieldPosition();
         System.out.println("STAGE ONE | THE OUTCOME IS: " + String.valueOf(stageOneIndex));
@@ -418,7 +418,7 @@ public class stageOneRegs extends javax.swing.JFrame {
     }
 
     public void updateStageOneAgain() {
-        int idIndex = mixregGUI.getIDFieldPosition();
+        int idIndex = mixregGUI.getIDFieldPosition(1);
         int stageOneIndex = mixregGUI.getStageOneDVFieldPosition();
 
         varList.removeAllElements();
