@@ -6539,6 +6539,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 //defFile.
                 if (sessionFolderName == null) {
                     defFile.csvToDatConverter(file);
+                    if (getIncludeStageTwoDataYes()){
+                        defFile.csvToDatConverterSecondDataset(file_stageTwo);
+                    }
                     sessionFolderName = defFile.getUtcDirPath();
 
                     // create logger after session folder created
