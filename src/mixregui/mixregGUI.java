@@ -577,6 +577,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     ArrayList<ArrayList<JCheckBox>> disaggVarianceBoxes;
 
     public static int IDpos;
+    public static int IDposStageTwo;
     public static int stageOnePos;
     public static int stageTwoPos;
 
@@ -3205,6 +3206,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     private void IDStageTwoVariableComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDStageTwoVariableComboActionPerformed
         // TODO add your handling code here:
+        IDposStageTwo = IDStageTwoVariableCombo.getSelectedIndex();
     }//GEN-LAST:event_IDStageTwoVariableComboActionPerformed
 
     // **********************update********************
@@ -3897,6 +3899,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 // No 2nd dataset imported: Use variables from 1st dataset
                 variableNamesCombo_stageTwo = variableNamesCombo;
 
+                StageTwoList = new DefaultComboBoxModel<String>();
                 for (String variableNamesComboItem : variableNamesCombo_stageTwo) {
                     StageTwoList.addElement(variableNamesComboItem);
                 }
@@ -3941,9 +3944,21 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }
 
     //Get the position of ID variable in the data file
-    public static int getIDFieldPosition() {
-
-        return IDpos;
+    public static int getIDFieldPosition(int stage) {
+        switch (stage) {
+            case 1:
+                return IDpos;
+            case 2:
+                // no new stage 2 dataset imported
+                if (IDposStageTwo == -1){
+                    return IDpos;
+                } else {
+                    return IDposStageTwo;
+                }
+            default:
+                return -2;
+        }
+        
     }
 
     //get Stage One DV variable selected by the user
@@ -6524,6 +6539,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 //defFile.
                 if (sessionFolderName == null) {
                     defFile.csvToDatConverter(file);
+                    if (getIncludeStageTwoDataYes()){
+                        defFile.csvToDatConverterSecondDataset(file_stageTwo);
+                    }
                     sessionFolderName = defFile.getUtcDirPath();
 
                     // create logger after session folder created
@@ -6830,8 +6848,12 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     } catch (Exception ex) {
                         Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                         SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
-                    }
+                    }   
+                } else {
+                    IDposStageTwo = -1;
                 }
+                
+                
 
                 // View Update for Model Configuration Tab 
                 stageOneTabs.setSelectedIndex(1);

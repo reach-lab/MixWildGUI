@@ -1460,6 +1460,28 @@ public class MixLibrary implements Serializable {
             writer.close();
         }
     }
+    
+        public void csvToDatConverterSecondDataset(File csvFileToConvert) throws IOException {
+        String fileName = csvFileToConvert.getAbsolutePath();
+        String fileNameShort = FilenameUtils.removeExtension(fileName);
+        String baseName = FilenameUtils.getBaseName(fileName);
+        String filePath = FilenameUtils.getFullPath(fileName);
+        // TODO: Deprecate
+        //String filePath = fileName.substring(0, fileName.lastIndexOf(File.separator)) + "/"; //subset the string.
+
+        try (CSVReader reader = new CSVReader(new FileReader(fileName))) {
+//            setUtcDirPath(csvFileToConvert);
+            List<String[]> csvRows = reader.readAll();
+            reader.close();
+
+            csvRows.remove(0); // TODO: make sure this isn't removing data
+
+            CSVWriter writer = new CSVWriter(new FileWriter(filePath + utcDirPath + baseName.replace(" ", "_") + ".dat"), ' ', CSVWriter.NO_QUOTE_CHARACTER,
+                    CSVWriter.NO_ESCAPE_CHARACTER, CSVWriter.RFC4180_LINE_END);
+            writer.writeAll(csvRows);
+            writer.close();
+        }
+    }
 
     public String[] getLabelModelMeanRegressorsLevelOne() {
         return labelModelMeanRegressorsLevelOne;
@@ -1873,7 +1895,7 @@ public class MixLibrary implements Serializable {
         String defFileName;
 
         String system_bit_extension = "";
-        if (!win32){
+        if (!win32) {
             system_bit_extension = "64";
         }
         if (stageOneOutcome == STAGE_ONE_OUTCOME_MIXOR) {
@@ -1934,9 +1956,9 @@ public class MixLibrary implements Serializable {
             String macOSCommand = "\"" + definitionFilepath + defFileName + "\"";
             // debug
             SystemLogger.LOGGER.log(Level.CONFIG, getOSName(), SystemLogger.getLineNum());
-            
+
             if (getOSName().contains("windows")) {
-                System.out.print("$$$$$$$$$$$$$: " + definitionFilepath);              
+                System.out.print("$$$$$$$$$$$$$: " + definitionFilepath);
                 // the file path is not in the C drive
                 if (!"C".equals(definitionFilepath.split(":")[0])) {
                     String command = "cmd /c dir && cd /d" + "\"" + definitionFilepath + "\"" + " && dir && "
@@ -2007,7 +2029,7 @@ public class MixLibrary implements Serializable {
                 terminalVal = exitVal;
                 Process p2;
                 if (getOSName().contains("windows")) {
-                    String[] executable_array = {"lsboth_random_mixblank", "mixors_random_mixblank", "mixno", "mixreg", "mixors", "mixpreg", "stage2only"};
+                    String[] executable_array = {"lsboth_random_mixblank", "mixors_random_mixblank", "mixno", "mixreg", "mixors", "mixpreg", "stage2only", "lsboth_random_mixblank64", "mixors_random_mixblank64", "stage2only64"};
                     for (int i = 0; i < executable_array.length; i++) {
                         String executableFile = executable_array[i];
                         String command = "cmd /c dir && cd " + "\"" + definitionFilepath + "\"" + " && del /f " + "\"" + executableFile + ".exe" + "\"";
@@ -2089,13 +2111,17 @@ public class MixLibrary implements Serializable {
         if (mixregGUI.defFile.getAdvancedUseStageTwo().equals("0")) {
             //do nothing
         } else {
-            String fileName = mixregGUI.defFile.getSharedDataFilename();
+            String fileName;
+            if (stageTwoNewDataIncluded) {
+                fileName = mixregGUI.defFile.getSharedDataFilename();
+            } else {
+                fileName = mixregGUI.defFile.getSharedDataFilename_stageTwo();
+            }
             String outputFilePath = FilenameUtils.removeExtension(fileName) + "_Output_stage2.out";
             File file = new File(outputFilePath);
-            BufferedReader br = null;
             String line = "";
 
-            br = new BufferedReader(new FileReader(file));
+            BufferedReader br = new BufferedReader(new FileReader(file));
             while ((line = br.readLine()) != null) {
                 //System.out.println(line);
                 mixregGUI.stageTwoOutput.append(line + "\n");
@@ -2122,7 +2148,7 @@ public class MixLibrary implements Serializable {
         String MIXORS = "mixors";
         String MIXPREG = "mixpreg";
         String STAGETWO_ONLY = "stage2only";
-        if(win32){
+        if (win32) {
             STAGETWO_ONLY = "stage2only";
         }
 
@@ -2139,12 +2165,12 @@ public class MixLibrary implements Serializable {
             } else {
                 System.out.print("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvva");
                 LSBOTH_PRE = "resources/Windows64/" + LSBOTH_PRE + "64" + ".exe";
-                MIXORS_PRE = "resources/Windows64/" + MIXORS_PRE + "64"  + ".exe";
+                MIXORS_PRE = "resources/Windows64/" + MIXORS_PRE + "64" + ".exe";
                 MIXNO = "resources/Windows64/" + MIXNO + ".exe";
                 MIXREG = "resources/Windows64/" + MIXREG + ".exe";
                 MIXORS = "resources/Windows64/" + MIXORS + ".exe";
                 MIXPREG = "resources/Windows64/" + MIXPREG + ".exe";
-                STAGETWO_ONLY = "resources/Windows64/" + STAGETWO_ONLY + "64"  + ".exe";
+                STAGETWO_ONLY = "resources/Windows64/" + STAGETWO_ONLY + "64" + ".exe";
             }
         } else {
             LSBOTH_PRE = "resources/macOS/" + LSBOTH_PRE;

@@ -387,14 +387,13 @@ public class stageTwoRegs extends javax.swing.JFrame {
     }
 
     public void updateStageTwoWithoutStageOne() {
-        int idIndex = mixregGUI.getIDFieldPosition();
-        int stageOneIndex = mixregGUI.getStageOneDVFieldPosition();
+        int idIndex = mixregGUI.getIDFieldPosition(2);
         int stageTwoIndex = mixregGUI.getStageTwoDVFieldPosition();
 
         stageTwoListModel.removeAllElements();
 
         for (int j = 0; j < variableNamesList_stageTwo.length; j++) {
-            if (j == idIndex || j == stageOneIndex || j == stageTwoIndex) {
+            if (j == idIndex || j == stageTwoIndex) {
                 //do nothing               
             } else {
                 stageTwoListModel.addElement(variableNamesList_stageTwo[j]);
@@ -408,14 +407,13 @@ public class stageTwoRegs extends javax.swing.JFrame {
 
     public void updateStageTwoAgain() {
 
-        int idIndex = mixregGUI.getIDFieldPosition();
-        int stageOneIndex = mixregGUI.getStageOneDVFieldPosition();
+        int idIndex = mixregGUI.getIDFieldPosition(2);
         int stageTwoIndex = mixregGUI.getStageTwoDVFieldPosition();
 
         stageTwoListModel.removeAllElements();
 
         for (int j = 0; j < variableNamesList_stageTwo.length; j++) {
-            if (j == idIndex || j == stageOneIndex || j == stageTwoIndex) {
+            if (j == idIndex || j == stageTwoIndex) {
                 //do nothing               
             } else {
                 stageTwoListModel.addElement(variableNamesList_stageTwo[j]);
