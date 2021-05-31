@@ -1895,7 +1895,7 @@ public class MixLibrary implements Serializable {
         String defFileName;
 
         String system_bit_extension = "";
-        if (!win32) {
+        if (isWindows & !win32) {
             system_bit_extension = "64";
         }
         if (stageOneOutcome == STAGE_ONE_OUTCOME_MIXOR) {
@@ -2112,10 +2112,14 @@ public class MixLibrary implements Serializable {
             //do nothing
         } else {
             String fileName;
-            if (stageTwoNewDataIncluded) {
+            if (!stageTwoNewDataIncluded) {
+                System.out.println("Stage Two New Data NOT Included");
                 fileName = mixregGUI.defFile.getSharedDataFilename();
+                System.out.println("Stage Two New Data: " + fileName);
             } else {
+                System.out.println("Stage Two New Data Included");
                 fileName = mixregGUI.defFile.getSharedDataFilename_stageTwo();
+                System.out.println("Stage Two New Data: " + fileName);
             }
             String outputFilePath = FilenameUtils.removeExtension(fileName) + "_Output_stage2.out";
             File file = new File(outputFilePath);
@@ -2147,7 +2151,7 @@ public class MixLibrary implements Serializable {
         String MIXREG = "mixreg";
         String MIXORS = "mixors";
         String MIXPREG = "mixpreg";
-        String STAGETWO_ONLY = "stage2only";
+        String STAGETWO_ONLY = "stage2only64";
         if (win32) {
             STAGETWO_ONLY = "stage2only";
         }

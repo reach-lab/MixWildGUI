@@ -1,3 +1,10 @@
 Manifest-Version: 1.0
-X-COMMENT: Main-Class will be added automatically by build
+Ant-Version: Apache Ant 1.10.4
+Created-By: 14.0.1+7 (Oracle Corporation)
+Bundle-Name: MixWILD
+Bundle-Version: 2.0
+Bundle-Date: 2021-05-31 13:04:54 PDT
+Implementation-Title: MixWILD
+Implementation-Version: 2.0
+Implementation-URL: https://reach-lab.github.io/MixWildGUI/
 

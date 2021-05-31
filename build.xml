@@ -7,8 +7,42 @@
 <!-- the Compile on Save feature is turned off for the project. -->
 <!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
 <!-- in the project's Project Properties dialog box.-->
-<project name="mixreg" default="default" basedir=".">
+<project name="MixWILD" default="default" basedir=".">
     <description>Builds, tests, and runs the project mixreg.</description>
+    
+    <target name="-pre-init">
+       <property name="project.name" value="MixWILD" />
+       <property name="version.num" value="2.0" />
+       <tstamp>
+          <format property="NOW" pattern="yyyy-MM-dd HH:mm:ss z" />
+       </tstamp>
+
+       <!--
+       <exec outputproperty="svna.version" executable="svnversion">
+           <arg value="-c" />
+           <redirector>
+               <outputfilterchain>
+                   <tokenfilter>
+                       <replaceregex pattern="^[0-9]*:?" replace="" flags="g"/>
+                       <replaceregex pattern="M" replace="" flags="g"/>
+                   </tokenfilter>
+               </outputfilterchain>
+           </redirector>
+       </exec>
+       -->
+
+
+       <manifest file="MANIFEST.MF">
+          <attribute name="Bundle-Name" value="${project.name}" />           
+          <attribute name="Bundle-Version" value="${version.num}" />
+          <attribute name="Bundle-Date" value="${NOW}" />
+          <!--<attribute name="Bundle-Revision" value="${svna.version}" />-->
+          <attribute name="Implementation-Title" value="${project.name}" />
+          <attribute name="Implementation-Version" value="${version.num}" />
+          <attribute name="Implementation-URL" value="https://reach-lab.github.io/MixWildGUI/" />
+       </manifest>
+
+    </target>
     <import file="nbproject/build-impl.xml"/>
     <!--
 
