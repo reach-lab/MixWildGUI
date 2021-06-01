@@ -15,7 +15,7 @@ MixWILD (Also Mixed model analysis with Intensive Longitudinal Data) is a deskto
 ### Download MixWild for Mac or PC ###
 [macOS Intel (Not Tested on Apple Silicon)](https://github.com/reach-lab/MixWildGUI/releases/download/v2.0-stable/MixWILD-2.0.dmg) (current version: 2.0)
 
-[Windows](https://github.com/reach-lab/MixWildGUI/releases/download/v2.0-windows/MixWILD-2.0.exe) (current version: 2.0)
+[Windows](https://github.com/reach-lab/MixWildGUI/releases/download/v2.0-stable/MixWILD-2.0.exe) (current version: 2.0)
 
 ### In the current version ###
 1. Ability to add a second data file for stage 2 modeling
