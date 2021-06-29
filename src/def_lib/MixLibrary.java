@@ -2112,7 +2112,7 @@ public class MixLibrary implements Serializable {
             //do nothing
         } else {
             String fileName;
-            if (stageTwoNewDataIncluded) {
+            if (!stageTwoNewDataIncluded) {
                 fileName = mixregGUI.defFile.getSharedDataFilename();
             } else {
                 fileName = mixregGUI.defFile.getSharedDataFilename_stageTwo();
