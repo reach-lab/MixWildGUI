@@ -4105,7 +4105,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             //constraints.gridx = 0;
             separatorConstraint.gridy = separatorConstraint.gridy + 3;
             //System.out.println("before seperator");
-            levelOneGrid.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
+//            levelOneGrid.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
             //System.out.println("after seperator");
             constraints.gridy++;
 
