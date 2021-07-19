@@ -33,16 +33,18 @@ public class SystemLogger {
 
         try {
             System.out.print(logPath);
-//            fileHandler = new FileHandler("/Users/jixin/Documents/logger.log");
             fileHandler = new FileHandler(logPath + "logger.log");
-
+            // For logging fine clicking behavior
+            fileHandler.setLevel(Level.FINEST);
+            
         } catch (IOException e) {
             LOGGER.log(Level.SEVERE, "SystemLogger init error");
         }
 
         fileHandler.setFormatter(formatter);
         LOGGER.addHandler(fileHandler);
-
+        // For logging fine clicking behavior
+        LOGGER.setLevel(Level.ALL);
     }
     
     public static String getLineNum() {

@@ -2502,6 +2502,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }// </editor-fold>//GEN-END:initComponents
 
     private void saveStage2OutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveStage2OutButtonActionPerformed
+        SystemLogger.LOGGER.log(Level.FINE, "saveStage2OutButtonActionPerformed");
         try {
             // TODO add your handling code here:
 
@@ -2513,12 +2514,12 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_saveStage2OutButtonActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
+        SystemLogger.LOGGER.log(Level.FINE, "jButton8ActionPerformed");
         saveStageOneOutput();
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void outcomeCatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_outcomeCatButtonActionPerformed
-        // TODO add your handling code here:
+        SystemLogger.LOGGER.log(Level.FINE, "outcomeCatButtonActionPerformed");
         //get the categories of the stage two outcome variable
         System.out.println("Inside click for categories");
 
@@ -2622,6 +2623,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_outcomeCatButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        SystemLogger.LOGGER.log(Level.FINE, "jButton1ActionPerformed");
         SystemLogger.LOGGER.log(Level.INFO, "Clear Stage Two");
         clearStageTwoLevelOneGrid();
         clearStageTwoLevelTwoGrid();
@@ -2638,10 +2640,12 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_StageTwoOutcomeComboItemStateChanged
 
     private void suppressIntCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suppressIntCheckBoxActionPerformed
+        SystemLogger.LOGGER.log(Level.FINE, "suppressIntCheckBoxActionPerformed");
         update_trigger_suppressIntCheckBox();
     }//GEN-LAST:event_suppressIntCheckBoxActionPerformed
 
     private void runTabTwoStageOneTwoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_runTabTwoStageOneTwoActionPerformed
+        SystemLogger.LOGGER.log(Level.FINE, "runTabTwoStageOneTwoActionPerformed");
         SystemLogger.LOGGER.log(Level.INFO, "Run Stage One and Two");
         isStageTwoSubmitted = true;
         update_trigger_runTabTwoStageOneTwo();
@@ -2649,7 +2653,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_runTabTwoStageOneTwoActionPerformed
 
     private void addStageTwoRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStageTwoRegActionPerformed
-        // TODO add your handling code here:
+        SystemLogger.LOGGER.log(Level.FINE, "addStageTwoRegActionPerformed");
 
         if (stage_2_regs.isVisible()) { //if it is already open and visible in the background
 
@@ -2682,27 +2686,29 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_addStageTwoRegActionPerformed
 
     private void startStageTwoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startStageTwoActionPerformed
+        SystemLogger.LOGGER.log(Level.FINE, "startStageTwoActionPerformed");
         SystemLogger.LOGGER.log(Level.INFO, "Submit stage one configurations");
         isStageOneSubmitted = true;
         update_trigger_StartStageTwo();
     }//GEN-LAST:event_startStageTwoActionPerformed
 
     private void LinearAssociationRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LinearAssociationRadioActionPerformed
-        // TODO add your handling code here:
+        SystemLogger.LOGGER.log(Level.FINE, "LinearAssociationRadioActionPerformed");
     }//GEN-LAST:event_LinearAssociationRadioActionPerformed
 
     private void NoAssociationRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoAssociationRadioActionPerformed
-        // TODO add your handling code here:
+        SystemLogger.LOGGER.log(Level.FINE, "NoAssociationRadioActionPerformed");
     }//GEN-LAST:event_NoAssociationRadioActionPerformed
 
     private void advancedOptionsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_advancedOptionsButtonActionPerformed
-        // TODO add your handling code here:
+        SystemLogger.LOGGER.log(Level.FINE, "advancedOptionsButtonActionPerformed");
         //advancedOptions_view = new advancedOptions();
 
         advancedOptions_view.setVisible(true);
     }//GEN-LAST:event_advancedOptionsButtonActionPerformed
 
     private void addStageOneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStageOneButtonActionPerformed
+        SystemLogger.LOGGER.log(Level.FINE, "addStageOneButtonActionPerformed");
         stageOneClicked = 1;
 
         IDpos = IDvariableCombo.getSelectedIndex();
@@ -2747,7 +2753,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_addStageOneButtonActionPerformed
 
     private void IDvariableComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDvariableComboActionPerformed
-        // TODO add your handling code here:
+        SystemLogger.LOGGER.log(Level.FINE, "IDvariableComboActionPerformed");
     }//GEN-LAST:event_IDvariableComboActionPerformed
 
     private void IDvariableComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_IDvariableComboItemStateChanged
@@ -2759,7 +2765,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_IDvariableComboItemStateChanged
 
     private void StageOneOutcomeComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StageOneOutcomeComboActionPerformed
-        // TODO add your handling code here:
+        SystemLogger.LOGGER.log(Level.FINE, "StageOneOutcomeComboActionPerformed");
     }//GEN-LAST:event_StageOneOutcomeComboActionPerformed
 
     private void StageOneOutcomeComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_StageOneOutcomeComboItemStateChanged
@@ -2770,6 +2776,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_StageOneOutcomeComboItemStateChanged
 
     private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
+        SystemLogger.LOGGER.log(Level.FINE, "resetButtonActionPerformed");
         SystemLogger.LOGGER.log(Level.INFO, "Clear Stage One");
 
         IDvariableCombo.setSelectedIndex(0);
@@ -2797,7 +2804,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_resetButtonActionPerformed
 
     private void userGuideDownloadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userGuideDownloadActionPerformed
-
+        SystemLogger.LOGGER.log(Level.FINE, "userGuideDownloadActionPerformed");
+        
         // user open filechooser and select save path
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setSelectedFile(new File("MixWild_User_Guide.pdf"));
@@ -2827,7 +2835,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_userGuideDownloadActionPerformed
 
     private void exampleDataDownloadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exampleDataDownloadActionPerformed
-
+        SystemLogger.LOGGER.log(Level.FINE, "exampleDataDownloadActionPerformed");
+        
         // user open filechooser and select save path
         JFileChooser filechooser_sample = new JFileChooser();
         filechooser_sample.setSelectedFile(new File("Mixwild_example_data.csv"));
@@ -2855,27 +2864,30 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_exampleDataDownloadActionPerformed
 
     private void guiStatesSaveButtonStageOneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guiStatesSaveButtonStageOneActionPerformed
+        SystemLogger.LOGGER.log(Level.FINE, "guiStatesSaveButtonStageOneActionPerformed");
         SystemLogger.LOGGER.log(Level.INFO, "Saving GUI states");
         MXRStates = new MixRegGuiStates(this, advancedOptions_view);
         MXRStates.writeAllStates(this);
     }//GEN-LAST:event_guiStatesSaveButtonStageOneActionPerformed
 
     private void guiStatesSaveButtonStageTwoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guiStatesSaveButtonStageTwoActionPerformed
+        SystemLogger.LOGGER.log(Level.FINE, "guiStatesSaveButtonStageTwoActionPerformed");
         SystemLogger.LOGGER.log(Level.INFO, "Saving GUI states");
         MXRStates = new MixRegGuiStates(this, advancedOptions_view);
         MXRStates.writeAllStates(this);
     }//GEN-LAST:event_guiStatesSaveButtonStageTwoActionPerformed
 
     private void QuadraticAssociationRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuadraticAssociationRadioActionPerformed
-        // TODO add your handling code here:
+        SystemLogger.LOGGER.log(Level.FINE, "QuadraticAssociationRadioActionPerformed");
     }//GEN-LAST:event_QuadraticAssociationRadioActionPerformed
 
     private void StageTwoOutcomeComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StageTwoOutcomeComboActionPerformed
-        // TODO add your handling code here:
+        SystemLogger.LOGGER.log(Level.FINE, "StageTwoOutcomeComboActionPerformed");
     }//GEN-LAST:event_StageTwoOutcomeComboActionPerformed
 
     private void newDataSetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newDataSetButtonActionPerformed
-
+        SystemLogger.LOGGER.log(Level.FINE, "newDataSetButtonActionPerformed");
+        
         importDataSet();
 
         if (validDataset) {
@@ -2899,6 +2911,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_newDataSetButtonActionPerformed
 
     private void updateStage2ConfigButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateStage2ConfigButtonActionPerformed
+        SystemLogger.LOGGER.log(Level.FINE, "updateStage2ConfigButtonActionPerformed");
         isUpdateStage2ConfigClicked = true;
 
         includeStageTwoYes.setEnabled(true);
@@ -2914,6 +2927,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_updateStage2ConfigButtonActionPerformed
 
     private void loadModelByBrowseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadModelByBrowseButtonActionPerformed
+        
+        SystemLogger.LOGGER.log(Level.FINE, "loadModelByBrowseButtonActionPerformed");
+
         // choose saved progress file
         MXRStates = new MixRegGuiStates();
         boolean read_success = MXRStates.readAllStates(this);
@@ -2939,6 +2955,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_loadModelByBrowseButtonActionPerformed
 
     private void guiStatesSaveButtonModalConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guiStatesSaveButtonModalConfigActionPerformed
+        SystemLogger.LOGGER.log(Level.FINE, "guiStatesSaveButtonModalConfigActionPerformed");
         if (sessionFolderName != null) {
             SystemLogger.LOGGER.log(Level.INFO, "Saving GUI states");
         }
@@ -2969,34 +2986,39 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_hiddenBigIconLabelMouseClicked
 
     private void stageTwoCountRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoCountRadioActionPerformed
+        SystemLogger.LOGGER.log(Level.FINE, "stageTwoCountRadioActionPerformed");
         MXRStates = new MixRegGuiStates(this, advancedOptions_view);
         updateGuiView(MXRStates);
     }//GEN-LAST:event_stageTwoCountRadioActionPerformed
 
     private void stageTwoMultinomialRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoMultinomialRadioActionPerformed
+        SystemLogger.LOGGER.log(Level.FINE, "stageTwoMultinomialRadioActionPerformed");
         MXRStates = new MixRegGuiStates(this, advancedOptions_view);
         updateGuiView(MXRStates);
     }//GEN-LAST:event_stageTwoMultinomialRadioActionPerformed
 
     private void stageTwoMultiLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoMultiLevelActionPerformed
+        SystemLogger.LOGGER.log(Level.FINE, "stageTwoMultiLevelActionPerformed");
         MXRStates = new MixRegGuiStates(this, advancedOptions_view);
         updateGuiView(MXRStates);
     }//GEN-LAST:event_stageTwoMultiLevelActionPerformed
 
     private void stageTwoSingleLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoSingleLevelActionPerformed
+        SystemLogger.LOGGER.log(Level.FINE, "stageTwoSingleLevelActionPerformed");
         MXRStates = new MixRegGuiStates(this, advancedOptions_view);
         updateGuiView(MXRStates);
     }//GEN-LAST:event_stageTwoSingleLevelActionPerformed
 
     private void includeStageTwoNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_includeStageTwoNoActionPerformed
-        // TODO add your handling code here:
+        SystemLogger.LOGGER.log(Level.FINE, "includeStageTwoNoActionPerformed");
         this.includeStageTwoNo.setSelected(true);
         MXRStates = new MixRegGuiStates(this, advancedOptions_view);
         updateGuiView(MXRStates);
     }//GEN-LAST:event_includeStageTwoNoActionPerformed
 
     private void includeStageTwoYesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_includeStageTwoYesActionPerformed
-        // TODO add your handling code here:
+
+        SystemLogger.LOGGER.log(Level.FINE, "includeStageTwoYesActionPerformed");
         this.includeStageTwoYes.setSelected(true);
         String seedVal = generateSeed();
         seedTextBox.setText(seedVal);
@@ -3006,32 +3028,37 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_includeStageTwoYesActionPerformed
 
     private void randomScaleSelectionNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_randomScaleSelectionNoActionPerformed
+        SystemLogger.LOGGER.log(Level.FINE, "randomScaleSelectionNoActionPerformed");
         MXRStates = new MixRegGuiStates(this, advancedOptions_view);
         updateGuiView(MXRStates);
     }//GEN-LAST:event_randomScaleSelectionNoActionPerformed
 
     private void randomScaleSelectionYesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_randomScaleSelectionYesActionPerformed
+        SystemLogger.LOGGER.log(Level.FINE, "randomScaleSelectionYesActionPerformed");
         MXRStates = new MixRegGuiStates(this, advancedOptions_view);
         updateGuiView(MXRStates);
     }//GEN-LAST:event_randomScaleSelectionYesActionPerformed
 
     private void stageOneOrdinalRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneOrdinalRadioActionPerformed
+        SystemLogger.LOGGER.log(Level.FINE, "stageOneOrdinalRadioActionPerformed");
         MXRStates = new MixRegGuiStates(this, advancedOptions_view);
         updateGuiView(MXRStates);
     }//GEN-LAST:event_stageOneOrdinalRadioActionPerformed
 
     private void stageOneDichotomousRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneDichotomousRadioActionPerformed
+        SystemLogger.LOGGER.log(Level.FINE, "stageOneDichotomousRadioActionPerformed");
         MXRStates = new MixRegGuiStates(this, advancedOptions_view);
         updateGuiView(MXRStates);
     }//GEN-LAST:event_stageOneDichotomousRadioActionPerformed
 
     private void stageOneContinuousRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneContinuousRadioActionPerformed
+        SystemLogger.LOGGER.log(Level.FINE, "stageOneContinuousRadioActionPerformed");
         MXRStates = new MixRegGuiStates(this, advancedOptions_view);
         updateGuiView(MXRStates);
     }//GEN-LAST:event_stageOneContinuousRadioActionPerformed
 
     private void newModelSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModelSubmitActionPerformed
-
+        SystemLogger.LOGGER.log(Level.FINE, "newModelSubmitActionPerformed");
         isNewModalConfigSubmitted = true;
         updateGuiView_trigger_NewModelSubmit();
         SystemLogger.LOGGER.log(Level.INFO, "Submit new model");
@@ -3039,6 +3066,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_newModelSubmitActionPerformed
 
     private void newModel_resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModel_resetButtonActionPerformed
+        SystemLogger.LOGGER.log(Level.FINE, "newModel_resetButtonActionPerformed");
+
         if (sessionFolderName != null) {
             SystemLogger.LOGGER.log(Level.INFO, "Reset MixWild");
         }
@@ -3073,7 +3102,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_newModel_resetButtonActionPerformed
 
     private void seedTextBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seedTextBoxActionPerformed
-        // TODO add your handling code here:
+        SystemLogger.LOGGER.log(Level.FINE, "seedTextBoxActionPerformed");
     }//GEN-LAST:event_seedTextBoxActionPerformed
 
     private void newModelMissingValueCodeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_newModelMissingValueCodeKeyTyped
@@ -3089,23 +3118,25 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_newModelMissingValueCodeKeyTyped
 
     private void newModelMissingValueCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModelMissingValueCodeActionPerformed
-        // TODO add your handling code here:
+        SystemLogger.LOGGER.log(Level.FINE, "newModelMissingValueCodeActionPerformed");
     }//GEN-LAST:event_newModelMissingValueCodeActionPerformed
 
     private void missingValuePresentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_missingValuePresentActionPerformed
-        // TODO add your handling code here:
+        SystemLogger.LOGGER.log(Level.FINE, "missingValuePresentActionPerformed");
 
         MXRStates = new MixRegGuiStates(this, advancedOptions_view);
         updateGuiView(MXRStates);
     }//GEN-LAST:event_missingValuePresentActionPerformed
 
     private void missingValueAbsentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_missingValueAbsentActionPerformed
-        // TODO add your handling code here:
+        SystemLogger.LOGGER.log(Level.FINE, "missingValueAbsentActionPerformed");
+        
         MXRStates = new MixRegGuiStates(this, advancedOptions_view);
         updateGuiView(MXRStates);
     }//GEN-LAST:event_missingValueAbsentActionPerformed
 
     private void stageTwoDichotomousRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoDichotomousRadioActionPerformed
+        SystemLogger.LOGGER.log(Level.FINE, "stageTwoDichotomousRadioActionPerformed");
         MXRStates = new MixRegGuiStates(this, advancedOptions_view);
         updateGuiView(MXRStates);
         /*if (includeStageTwoNo.isSelected()){
@@ -3120,6 +3151,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_stageTwoDichotomousRadioActionPerformed
 
     private void stageTwoContinuousRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoContinuousRadioActionPerformed
+        SystemLogger.LOGGER.log(Level.FINE, "stageTwoContinuousRadioActionPerformed");
         MXRStates = new MixRegGuiStates(this, advancedOptions_view);
         updateGuiView(MXRStates);
         /*if (includeStageTwoNo.isSelected()){
@@ -3135,17 +3167,19 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_stageTwoContinuousRadioActionPerformed
 
     private void moreThanOneRLERadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moreThanOneRLERadioActionPerformed
+        SystemLogger.LOGGER.log(Level.FINE, "moreThanOneRLERadioActionPerformed");
         MXRStates = new MixRegGuiStates(this, advancedOptions_view);
         updateGuiView(MXRStates);
     }//GEN-LAST:event_moreThanOneRLERadioActionPerformed
 
     private void oneRLERadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oneRLERadioActionPerformed
+        SystemLogger.LOGGER.log(Level.FINE, "oneRLERadioActionPerformed");
         MXRStates = new MixRegGuiStates(this, advancedOptions_view);
         updateGuiView(MXRStates);
     }//GEN-LAST:event_oneRLERadioActionPerformed
 
     private void titleFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_titleFieldActionPerformed
-        // TODO add your handling code here:
+        SystemLogger.LOGGER.log(Level.FINE, "titleFieldActionPerformed");
     }//GEN-LAST:event_titleFieldActionPerformed
 
     private void filePathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filePathActionPerformed
@@ -3154,6 +3188,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     private void fileBrowseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileBrowseButtonActionPerformed
 
+        SystemLogger.LOGGER.log(Level.FINE, "fileBrowseButtonActionPerformed");
+        
         importDataSet();
         MXRStates = new MixRegGuiStates(this, advancedOptions_view);
         updateGuiView(MXRStates);
@@ -3164,16 +3200,19 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_fileBrowseButtonActionPerformed
 
     private void StageOneProbitRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StageOneProbitRadioActionPerformed
+        SystemLogger.LOGGER.log(Level.FINE, "StageOneProbitRadioActionPerformed");
         MXRStates = new MixRegGuiStates(this, advancedOptions_view);
         updateGuiView(MXRStates);
     }//GEN-LAST:event_StageOneProbitRadioActionPerformed
 
     private void StageOneLogisticRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StageOneLogisticRadioActionPerformed
+        SystemLogger.LOGGER.log(Level.FINE, "StageOneLogisticRadioActionPerformed");
         MXRStates = new MixRegGuiStates(this, advancedOptions_view);
         updateGuiView(MXRStates);
     }//GEN-LAST:event_StageOneLogisticRadioActionPerformed
 
     private void includeStageTwoDataYesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_includeStageTwoDataYesActionPerformed
+        SystemLogger.LOGGER.log(Level.FINE, "includeStageTwoDataYesActionPerformed");
         this.includeStageTwoDataYes.setSelected(true);
         // check if stage 2 dataset same as stage 1 dataset
 
@@ -3185,12 +3224,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_includeStageTwoDataYesActionPerformed
 
     private void includeStageTwoDataNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_includeStageTwoDataNoActionPerformed
+        SystemLogger.LOGGER.log(Level.FINE, "includeStageTwoDataNoActionPerformed");
         this.includeStageTwoDataNo.setSelected(true);
         MXRStates = new MixRegGuiStates(this, advancedOptions_view);
         updateGuiView(MXRStates);
     }//GEN-LAST:event_includeStageTwoDataNoActionPerformed
 
     private void fileBrowseButtonStageTwoDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileBrowseButtonStageTwoDataActionPerformed
+        SystemLogger.LOGGER.log(Level.FINE, "fileBrowseButtonStageTwoDataActionPerformed");
         importDataSetStageTwo();
         MXRStates = new MixRegGuiStates(this, advancedOptions_view);
         updateGuiView(MXRStates);
@@ -3205,7 +3246,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_IDStageTwoVariableComboItemStateChanged
 
     private void IDStageTwoVariableComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDStageTwoVariableComboActionPerformed
-        // TODO add your handling code here:
+        SystemLogger.LOGGER.log(Level.FINE, "IDStageTwoVariableComboActionPerformed");
         IDposStageTwo = IDStageTwoVariableCombo.getSelectedIndex();
     }//GEN-LAST:event_IDStageTwoVariableComboActionPerformed
 
@@ -9317,6 +9358,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                             JOptionPane.showMessageDialog(null, "The .csv file should contain no blanks. Please insert a number for all missing values (e.g., -999)."
                                     + "\n" + "Missing value codes should be numeric only.",
                                     "Dataset Error", JOptionPane.INFORMATION_MESSAGE);
+                            SystemLogger.LOGGER.log(Level.SEVERE, "Dataset Blanks Error", SystemLogger.getLineNum());
                             break outerloop;
                         }
                         if (!isNumeric(thiscellvalue)) {
@@ -9324,6 +9366,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                             JOptionPane.showMessageDialog(null, "The .csv file should contain only numeric values, except for the headers in the first row."
                                     + "\n" + "Missing value codes should be numeric only.",
                                     "Dataset Error", JOptionPane.INFORMATION_MESSAGE);
+                            SystemLogger.LOGGER.log(Level.SEVERE, "Dataset Non-numeric Values Error", SystemLogger.getLineNum());
                             break outerloop;
                         }
                         tableModel.setValueAt(thiscellvalue, x - 1, columnnumber);
@@ -9393,11 +9436,13 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 JOptionPane.showMessageDialog(this, "Stage 1 dataset has more unique IDs than stage 2 dataset. Please upload two datasets with the same amount of unique IDs.",
                         "Error", JOptionPane.INFORMATION_MESSAGE);
                 validation_pass = false;
+                SystemLogger.LOGGER.log(Level.SEVERE, "Stage 1 dataset has more unique IDs than stage 2 dataset.", SystemLogger.getLineNum());
             } else if (uniqueListIDStageOneSize < uniqueListIDStageTwoSize) {
                 // error message
                 JOptionPane.showMessageDialog(this, "Stage 2 dataset has more unique IDs than stage 1 dataset. Please upload two datasets with the same amount of unique IDs.",
                         "Error", JOptionPane.INFORMATION_MESSAGE);
                 validation_pass = false;
+                SystemLogger.LOGGER.log(Level.SEVERE, "Stage 2 dataset has more unique IDs than stage 1 dataset.", SystemLogger.getLineNum());
             } else {
                 // if the two ID unique lists have the same length
                 // step2: check order and elements
@@ -9407,10 +9452,12 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                             // order problem message
                             JOptionPane.showMessageDialog(this, "Stage 1 and stage 2 datasets have different order of IDs. Please upload two datasets with the same order of IDs.",
                                     "Error", JOptionPane.INFORMATION_MESSAGE);
+                            SystemLogger.LOGGER.log(Level.SEVERE, "Stage 1 and stage 2 datasets have different order of IDs.", SystemLogger.getLineNum());
                         } else {
                             // element problem message
                             JOptionPane.showMessageDialog(this, "Stage 1 dataset has ID that stage 2 datasets doesn't have. Please upload two datasets with the same unique IDs.",
                                     "Error", JOptionPane.INFORMATION_MESSAGE);
+                            SystemLogger.LOGGER.log(Level.SEVERE, "Stage 1 dataset has ID that stage 2 datasets doesn't have.", SystemLogger.getLineNum());
                         }
                         validation_pass = false;
                         break;
