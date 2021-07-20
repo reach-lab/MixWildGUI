@@ -1638,7 +1638,7 @@ public class MixLibrary implements Serializable {
             proceedButton.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
-
+                    SystemLogger.LOGGER.log(Level.FINE, "Stage 1 Proceed performed");
                     try {
                         // modelSelector();
                         // System.out.println("SELECTED MODEL: " + );
@@ -1789,7 +1789,7 @@ public class MixLibrary implements Serializable {
                 @Override
                 public void actionPerformed(ActionEvent e) {
 
-                    SystemLogger.LOGGER.log(Level.INFO, "Proceed");
+                    SystemLogger.LOGGER.log(Level.INFO, "Stage 2 Proceed performed");
 
                     try {
                         // modelSelector();
@@ -2112,11 +2112,12 @@ public class MixLibrary implements Serializable {
             //do nothing
         } else {
             String fileName;
-            if (!stageTwoNewDataIncluded) {
-                fileName = mixregGUI.defFile.getSharedDataFilename();
-            } else {
-                fileName = mixregGUI.defFile.getSharedDataFilename_stageTwo();
-            }
+//            if (!stageTwoNewDataIncluded) {
+//                fileName = mixregGUI.defFile.getSharedDataFilename();
+//            } else {
+//                fileName = mixregGUI.defFile.getSharedDataFilename_stageTwo();
+//            }
+            fileName = mixregGUI.defFile.getSharedDataFilename();
             String outputFilePath = FilenameUtils.removeExtension(fileName) + "_Output_stage2.out";
             File file = new File(outputFilePath);
             String line = "";
