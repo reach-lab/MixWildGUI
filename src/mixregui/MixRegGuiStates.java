@@ -19,6 +19,7 @@ import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
+import static mixregui.mixregGUI.logFilePath;
 
 /**
  *
@@ -111,6 +112,7 @@ public class MixRegGuiStates {
     public ArrayList<String> levelTwoSelected;
 
     public String sessionFolderName;
+    public String logFilePath;
 
     // init default
     MixRegGuiStates() {
@@ -193,6 +195,8 @@ public class MixRegGuiStates {
         this.suppressIntCheckBox = mxr.getSuppressIntCheckBox();
         this.levelTwoSelected = mxr.levelTwoSelected;
         this.sessionFolderName = mxr.sessionFolderName;
+        
+        this.logFilePath = mixregGUI.logFilePath;
     }
 
     public void writeAllStates(mixregGUI mxr) {
@@ -335,6 +339,7 @@ public class MixRegGuiStates {
             levelTwoSelected = hmapStates.get("levelTwoSelected").getStringArrayList();
 
             sessionFolderName = hmapStates.get("sessionFolderName").getString();
+            logFilePath = hmapStates.get("logFilePath").getString();
             
             read_success = true;
         } else {
@@ -414,6 +419,7 @@ public class MixRegGuiStates {
         StateObject po64 = new StateObject("includeStageTwoDataNo", includeStageTwoDataNo);
         StateObject po65 = new StateObject("filepath_stageTwo", filepath_stageTwo);
         StateObject po66 = new StateObject("file_stageTwo", file_stageTwo);
+        StateObject po67 = new StateObject("logFilePath", logFilePath);
 
         hashmap.put(po00.getKey(), po00);
         hashmap.put(po0.getKey(), po0);
@@ -483,7 +489,7 @@ public class MixRegGuiStates {
         hashmap.put(po64.getKey(), po64);
         hashmap.put(po65.getKey(), po65);
         hashmap.put(po66.getKey(), po66);
-//        hashmap.put(po67.getKey(), po67);
+        hashmap.put(po67.getKey(), po67);
         return hashmap;
     }
 

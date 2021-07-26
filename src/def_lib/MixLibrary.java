@@ -1426,7 +1426,9 @@ public class MixLibrary implements Serializable {
 
     //auxiliary functions
     public void setUtcDirPath(File csvFileLocation) throws IOException {
-        String utcDirPath = ModelBuilder.buildFolder(csvFileLocation);
+        // build session folder
+//        String utcDirPath = ModelBuilder.buildFolder(csvFileLocation);
+        String utcDirPath = mixregGUI.sessionFolderNameBuilt;
         this.utcDirPath = utcDirPath;
     }
 
@@ -1470,7 +1472,6 @@ public class MixLibrary implements Serializable {
         //String filePath = fileName.substring(0, fileName.lastIndexOf(File.separator)) + "/"; //subset the string.
 
         try (CSVReader reader = new CSVReader(new FileReader(fileName))) {
-//            setUtcDirPath(csvFileToConvert);
             List<String[]> csvRows = reader.readAll();
             reader.close();
 

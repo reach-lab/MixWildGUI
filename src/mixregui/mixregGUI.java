@@ -48,13 +48,11 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -79,8 +77,6 @@ import org.apache.commons.io.FilenameUtils;
 import java.io.Serializable;
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
-import javax.swing.JTextArea;
-import javax.swing.border.LineBorder;
 import org.apache.commons.io.FileUtils;
 
 /**
@@ -95,6 +91,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     // Declarations from old java
     public File file;
     public File file_stageTwo;
+
+    public static String sessionFolderNameBuilt;
 
     static String[] variableNamesCombo_stageOne;
 
@@ -125,6 +123,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     public static SystemLogger logger;
     public String sessionFolderName;
+    public static String logFilePath;
 
     public int getRLE() {
         return RLE;
@@ -643,7 +642,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             LinearAssociationRadio.setText("No");
             QuadraticAssociationRadio.setVisible(false);
 
-            if (isRandomScale){
+            if (isRandomScale) {
                 NoAssociationRadio.setEnabled(false);
                 LinearAssociationRadio.setEnabled(false);
                 associationLabel.setEnabled(false);
@@ -2805,7 +2804,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     private void userGuideDownloadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userGuideDownloadActionPerformed
         SystemLogger.LOGGER.log(Level.FINE, "userGuideDownloadActionPerformed");
-        
+
         // user open filechooser and select save path
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setSelectedFile(new File("MixWild_User_Guide.pdf"));
@@ -2836,7 +2835,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     private void exampleDataDownloadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exampleDataDownloadActionPerformed
         SystemLogger.LOGGER.log(Level.FINE, "exampleDataDownloadActionPerformed");
-        
+
         // user open filechooser and select save path
         JFileChooser filechooser_sample = new JFileChooser();
         filechooser_sample.setSelectedFile(new File("Mixwild_example_data.csv"));
@@ -2887,7 +2886,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     private void newDataSetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newDataSetButtonActionPerformed
         SystemLogger.LOGGER.log(Level.FINE, "newDataSetButtonActionPerformed");
-        
+
         importDataSet();
 
         if (validDataset) {
@@ -2927,7 +2926,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_updateStage2ConfigButtonActionPerformed
 
     private void loadModelByBrowseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadModelByBrowseButtonActionPerformed
-        
+
         SystemLogger.LOGGER.log(Level.FINE, "loadModelByBrowseButtonActionPerformed");
 
         // choose saved progress file
@@ -2935,8 +2934,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         boolean read_success = MXRStates.readAllStates(this);
 
         if (read_success) {
+            SystemLogger.LOGGER.log(Level.FINE, "Load Model Success");
             // update view with saved states
             updateGuiView(MXRStates);
+            SystemLogger.LOGGER.log(Level.FINE, "Load GUI View Success");
             // check if dataset loading is success
             if (checkTabExistinJTabbedPane(stageOneTabs, "View Data")) {
                 // hide and show fields
@@ -2950,7 +2951,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 // select the first tab
                 stageOneTabs.setSelectedIndex(0);
             }
-
+            
+            // reregister logger
+            logFilePath = MXRStates.logFilePath;
+            loadLogger(logFilePath);
         }
     }//GEN-LAST:event_loadModelByBrowseButtonActionPerformed
 
@@ -3102,7 +3106,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_newModel_resetButtonActionPerformed
 
     private void seedTextBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seedTextBoxActionPerformed
-        SystemLogger.LOGGER.log(Level.FINE, "seedTextBoxActionPerformed");
+        SystemLogger.LOGGER.log(Level.FINE, "seedTextBoxActionPerformed : {0}", seedTextBox.getText());
     }//GEN-LAST:event_seedTextBoxActionPerformed
 
     private void newModelMissingValueCodeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_newModelMissingValueCodeKeyTyped
@@ -3118,7 +3122,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_newModelMissingValueCodeKeyTyped
 
     private void newModelMissingValueCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModelMissingValueCodeActionPerformed
-        SystemLogger.LOGGER.log(Level.FINE, "newModelMissingValueCodeActionPerformed");
+        SystemLogger.LOGGER.log(Level.FINE, "newModelMissingValueCodeActionPerformed : {0}", newModelMissingValueCode.getText());
     }//GEN-LAST:event_newModelMissingValueCodeActionPerformed
 
     private void missingValuePresentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_missingValuePresentActionPerformed
@@ -3130,7 +3134,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     private void missingValueAbsentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_missingValueAbsentActionPerformed
         SystemLogger.LOGGER.log(Level.FINE, "missingValueAbsentActionPerformed");
-        
+
         MXRStates = new MixRegGuiStates(this, advancedOptions_view);
         updateGuiView(MXRStates);
     }//GEN-LAST:event_missingValueAbsentActionPerformed
@@ -3179,7 +3183,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_oneRLERadioActionPerformed
 
     private void titleFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_titleFieldActionPerformed
-        SystemLogger.LOGGER.log(Level.FINE, "titleFieldActionPerformed");
+        SystemLogger.LOGGER.log(Level.FINE, "titleFieldActionPerformed" + " : " + titleField.getText());
     }//GEN-LAST:event_titleFieldActionPerformed
 
     private void filePathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filePathActionPerformed
@@ -3189,7 +3193,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private void fileBrowseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileBrowseButtonActionPerformed
 
         SystemLogger.LOGGER.log(Level.FINE, "fileBrowseButtonActionPerformed");
-        
         importDataSet();
         MXRStates = new MixRegGuiStates(this, advancedOptions_view);
         updateGuiView(MXRStates);
@@ -3231,7 +3234,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_includeStageTwoDataNoActionPerformed
 
     private void fileBrowseButtonStageTwoDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileBrowseButtonStageTwoDataActionPerformed
-        SystemLogger.LOGGER.log(Level.FINE, "fileBrowseButtonStageTwoDataActionPerformed");
+        SystemLogger.LOGGER.log(Level.FINE, "fileBrowseButtonStageTwoDataActionPerformed : {0}", filePath_stageTwo.getText());
         importDataSetStageTwo();
         MXRStates = new MixRegGuiStates(this, advancedOptions_view);
         updateGuiView(MXRStates);
@@ -3991,7 +3994,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 return IDpos;
             case 2:
                 // no new stage 2 dataset imported
-                if (IDposStageTwo == -1){
+                if (IDposStageTwo == -1) {
                     return IDpos;
                 } else {
                     return IDposStageTwo;
@@ -3999,7 +4002,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             default:
                 return -2;
         }
-        
+
     }
 
     //get Stage One DV variable selected by the user
@@ -6499,6 +6502,22 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
+            // build session folder
+            try {
+                sessionFolderNameBuilt = ModelBuilder.buildFolder(file);
+            } catch (IOException ex) {
+                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
+            }
+
+            // create new logger
+            try {
+                createNewLogger(file);
+            } catch (IOException ex) {
+                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
+            }
+
         } else {
             System.out.println("File access cancelled by user.");
             try {
@@ -6580,20 +6599,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 //defFile.
                 if (sessionFolderName == null) {
                     defFile.csvToDatConverter(file);
-                    if (getIncludeStageTwoDataYes()){
+                    if (getIncludeStageTwoDataYes()) {
                         defFile.csvToDatConverterSecondDataset(file_stageTwo);
                     }
                     sessionFolderName = defFile.getUtcDirPath();
 
-                    // create logger after session folder created
-                    SystemLogger.logPath = FilenameUtils.getFullPath(dataFileNameRef) + sessionFolderName;
-                    logger = new SystemLogger();
-
                 } else {
                     defFile.setUtcDirPath(sessionFolderName);
 
-                    SystemLogger.logPath = FilenameUtils.getFullPath(dataFileNameRef) + sessionFolderName;
-                    logger = new SystemLogger();
                 }
 
             } catch (IOException ex) {
@@ -6889,12 +6902,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     } catch (Exception ex) {
                         Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                         SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
-                    }   
+                    }
                 } else {
                     IDposStageTwo = -1;
                 }
-                
-                
 
                 // View Update for Model Configuration Tab 
                 stageOneTabs.setSelectedIndex(1);
@@ -7576,7 +7587,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 //            Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
 //            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
 //        }
-
 //        if (stageTwoNotIncluded == true) {
 //            stageOneTabs.setEnabledAt(2, false);
 //            stageOneTabs.setEnabledAt(4, false);
@@ -9535,6 +9545,32 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         }
 
         return UniqueList;
+    }
+
+    private void createNewLogger(File csvFile) throws IOException {
+        String absolutePath = csvFile.getAbsolutePath();
+        String folderPath = FilenameUtils.getFullPath(absolutePath);
+        logFilePath = folderPath + "MixWILD Logs/" + sessionFolderNameBuilt + "/" ;
+        File dirGen = new File(logFilePath);
+        // check if file exists
+        boolean dirExist = Files.exists(dirGen.toPath());
+        if (!dirExist) {
+            boolean genTrue = dirGen.mkdirs();
+            if (!genTrue) {
+                throw new IOException("Cannot generate log directory, please check folder permissions");
+            }
+
+        }
+
+        // create logger after session folder created
+//        SystemLogger.logPath = FilenameUtils.getFullPath(dataFileNameRef) + sessionFolderName;
+        SystemLogger.logPath = logFilePath;
+        logger = new SystemLogger();
+    }
+    
+    private void loadLogger(String logFile){
+        SystemLogger.logPath = logFile;
+        logger = new SystemLogger();
     }
 
 }
