@@ -48,13 +48,11 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -79,9 +77,9 @@ import org.apache.commons.io.FilenameUtils;
 import java.io.Serializable;
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
-import javax.swing.JTextArea;
-import javax.swing.border.LineBorder;
 import org.apache.commons.io.FileUtils;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 /**
  * Main class for the program that is used to manipulate regressors
@@ -95,6 +93,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     // Declarations from old java
     public File file;
     public File file_stageTwo;
+
+    public static String sessionFolderNameBuilt;
 
     static String[] variableNamesCombo_stageOne;
 
@@ -125,6 +125,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     public static SystemLogger logger;
     public String sessionFolderName;
+    public static String logFilePath;
 
     public int getRLE() {
         return RLE;
@@ -643,7 +644,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             LinearAssociationRadio.setText("No");
             QuadraticAssociationRadio.setVisible(false);
 
-            if (isRandomScale){
+            if (isRandomScale) {
                 NoAssociationRadio.setEnabled(false);
                 LinearAssociationRadio.setEnabled(false);
                 associationLabel.setEnabled(false);
@@ -827,6 +828,13 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageOneTabs.remove(jPanel16);
         stageOneTabs.remove(jPanel14);
 
+        stageOneTabs.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+                System.out.println("Select Tab: " + stageOneTabs.getTitleAt(stageOneTabs.getSelectedIndex()));
+                SystemLogger.LOGGER.log(Level.FINE, "Select Tab: " + stageOneTabs.getTitleAt(stageOneTabs.getSelectedIndex()));
+            }
+        });
+
         //updateMixRegGUI();
         //this.setResizable(false);
         // TODO: Fix superuser menu code
@@ -834,6 +842,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 //       IDpos = IDvariableCombo.getSelectedIndex();
 //       stageOnePos = StageOneVariableCombo.getSelectedIndex();
 //       stageTwoPos = StageTwoOutcomeCombo.getSelectedIndex();
+        this.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent e) {
+                e.getWindow().dispose();
+                System.out.println("Program Closed!");
+                SystemLogger.LOGGER.log(Level.INFO, "Program Closed");
+            }
+        });
 //        
     }
 
@@ -932,7 +948,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         fileBrowseButtonStageTwoData = new javax.swing.JButton();
         filePath_stageTwo = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
-        resetButton = new javax.swing.JButton();
+        clearStageOneButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         level1_MeanReg = new javax.swing.JLabel();
         level1_WSVar = new javax.swing.JLabel();
@@ -985,7 +1001,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         suppressIntCheckBox = new javax.swing.JCheckBox();
         StageTwoOutcomeCombo = new javax.swing.JComboBox<>();
         jLabel22 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        clearStageTwoButton = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 2), new java.awt.Dimension(0, 2), new java.awt.Dimension(32767, 2));
         jSeparator14 = new javax.swing.JSeparator();
         jSeparator15 = new javax.swing.JSeparator();
@@ -1021,7 +1037,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         jPanel10 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         stageOneOutput = new javax.swing.JTextArea();
-        jButton8 = new javax.swing.JButton();
+        saveStage1OutButton = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
@@ -1595,14 +1611,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         jPanel1.setPreferredSize(new java.awt.Dimension(1300, 700));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        resetButton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        resetButton.setText("Clear Stage 1");
-        resetButton.addActionListener(new java.awt.event.ActionListener() {
+        clearStageOneButton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        clearStageOneButton.setText("Clear Stage 1");
+        clearStageOneButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resetButtonActionPerformed(evt);
+                clearStageOneButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 530, 140, 35));
+        jPanel1.add(clearStageOneButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 530, 140, 35));
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel4.setText("Stage 1 Regressors");
@@ -1974,14 +1990,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         jLabel22.setText("Stage 2 Outcome:");
         jPanel12.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 210, -1));
 
-        jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton1.setText("Clear Stage 2");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        clearStageTwoButton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        clearStageTwoButton.setText("Clear Stage 2");
+        clearStageTwoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                clearStageTwoButtonActionPerformed(evt);
             }
         });
-        jPanel12.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 530, 140, 35));
+        jPanel12.add(clearStageTwoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 530, 140, 35));
         jPanel12.add(filler1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 570, -1, 80));
         jPanel12.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, 610, 10));
         jPanel12.add(jSeparator15, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 660, -1, -1));
@@ -2139,10 +2155,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 .addContainerGap())
         );
 
-        jButton8.setText("Save Results As ...");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        saveStage1OutButton.setText("Save Results As ...");
+        saveStage1OutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                saveStage1OutButtonActionPerformed(evt);
             }
         });
 
@@ -2164,7 +2180,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                             .addComponent(jLabel7)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(544, 544, 544)
-                                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(saveStage1OutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(354, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -2175,7 +2191,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 .addGap(18, 18, 18)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(saveStage1OutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(99, Short.MAX_VALUE))
         );
 
@@ -2513,10 +2529,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         }
     }//GEN-LAST:event_saveStage2OutButtonActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void saveStage1OutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveStage1OutButtonActionPerformed
         SystemLogger.LOGGER.log(Level.FINE, "jButton8ActionPerformed");
         saveStageOneOutput();
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_saveStage1OutButtonActionPerformed
 
     private void outcomeCatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_outcomeCatButtonActionPerformed
         SystemLogger.LOGGER.log(Level.FINE, "outcomeCatButtonActionPerformed");
@@ -2622,7 +2638,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     }//GEN-LAST:event_outcomeCatButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void clearStageTwoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearStageTwoButtonActionPerformed
         SystemLogger.LOGGER.log(Level.FINE, "jButton1ActionPerformed");
         SystemLogger.LOGGER.log(Level.INFO, "Clear Stage Two");
         clearStageTwoLevelOneGrid();
@@ -2630,7 +2646,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         suppressIntCheckBox.setEnabled(true);
         suppressIntCheckBox.setSelected(false);
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_clearStageTwoButtonActionPerformed
 
     private void StageTwoOutcomeComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_StageTwoOutcomeComboItemStateChanged
         // TODO add your handling code here:
@@ -2775,7 +2791,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         isStageOneOutcomeChanged = true;
     }//GEN-LAST:event_StageOneOutcomeComboItemStateChanged
 
-    private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
+    private void clearStageOneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearStageOneButtonActionPerformed
         SystemLogger.LOGGER.log(Level.FINE, "resetButtonActionPerformed");
         SystemLogger.LOGGER.log(Level.INFO, "Clear Stage One");
 
@@ -2801,11 +2817,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         updateStageOneLevelTwoGrid(stage_1_regs.levelTwoList);
         updateStageOneLevelOneGrid(stage_1_regs.levelOneList);
 
-    }//GEN-LAST:event_resetButtonActionPerformed
+    }//GEN-LAST:event_clearStageOneButtonActionPerformed
 
     private void userGuideDownloadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userGuideDownloadActionPerformed
         SystemLogger.LOGGER.log(Level.FINE, "userGuideDownloadActionPerformed");
-        
+
         // user open filechooser and select save path
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setSelectedFile(new File("MixWild_User_Guide.pdf"));
@@ -2836,7 +2852,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     private void exampleDataDownloadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exampleDataDownloadActionPerformed
         SystemLogger.LOGGER.log(Level.FINE, "exampleDataDownloadActionPerformed");
-        
+
         // user open filechooser and select save path
         JFileChooser filechooser_sample = new JFileChooser();
         filechooser_sample.setSelectedFile(new File("Mixwild_example_data.csv"));
@@ -2886,9 +2902,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_StageTwoOutcomeComboActionPerformed
 
     private void newDataSetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newDataSetButtonActionPerformed
-        SystemLogger.LOGGER.log(Level.FINE, "newDataSetButtonActionPerformed");
-        
         importDataSet();
+        SystemLogger.LOGGER.log(Level.FINE, "newDataSetButtonActionPerformed");
 
         if (validDataset) {
             MXRStates = new MixRegGuiStates(this, advancedOptions_view);
@@ -2927,16 +2942,16 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_updateStage2ConfigButtonActionPerformed
 
     private void loadModelByBrowseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadModelByBrowseButtonActionPerformed
-        
-        SystemLogger.LOGGER.log(Level.FINE, "loadModelByBrowseButtonActionPerformed");
 
         // choose saved progress file
         MXRStates = new MixRegGuiStates();
         boolean read_success = MXRStates.readAllStates(this);
 
         if (read_success) {
+            SystemLogger.LOGGER.log(Level.FINE, "Load Model Success");
             // update view with saved states
             updateGuiView(MXRStates);
+            SystemLogger.LOGGER.log(Level.FINE, "Load GUI View Success");
             // check if dataset loading is success
             if (checkTabExistinJTabbedPane(stageOneTabs, "View Data")) {
                 // hide and show fields
@@ -2951,7 +2966,12 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 stageOneTabs.setSelectedIndex(0);
             }
 
+            // reregister logger
+            logFilePath = MXRStates.logFilePath;
+            loadLogger(logFilePath);
         }
+        
+        SystemLogger.LOGGER.log(Level.FINE, "loadModelByBrowseButtonActionPerformed");
     }//GEN-LAST:event_loadModelByBrowseButtonActionPerformed
 
     private void guiStatesSaveButtonModalConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guiStatesSaveButtonModalConfigActionPerformed
@@ -3102,7 +3122,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_newModel_resetButtonActionPerformed
 
     private void seedTextBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seedTextBoxActionPerformed
-        SystemLogger.LOGGER.log(Level.FINE, "seedTextBoxActionPerformed");
+        SystemLogger.LOGGER.log(Level.FINE, "seedTextBoxActionPerformed : {0}", seedTextBox.getText());
     }//GEN-LAST:event_seedTextBoxActionPerformed
 
     private void newModelMissingValueCodeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_newModelMissingValueCodeKeyTyped
@@ -3118,7 +3138,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_newModelMissingValueCodeKeyTyped
 
     private void newModelMissingValueCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModelMissingValueCodeActionPerformed
-        SystemLogger.LOGGER.log(Level.FINE, "newModelMissingValueCodeActionPerformed");
+        SystemLogger.LOGGER.log(Level.FINE, "newModelMissingValueCodeActionPerformed : {0}", newModelMissingValueCode.getText());
     }//GEN-LAST:event_newModelMissingValueCodeActionPerformed
 
     private void missingValuePresentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_missingValuePresentActionPerformed
@@ -3130,7 +3150,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     private void missingValueAbsentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_missingValueAbsentActionPerformed
         SystemLogger.LOGGER.log(Level.FINE, "missingValueAbsentActionPerformed");
-        
+
         MXRStates = new MixRegGuiStates(this, advancedOptions_view);
         updateGuiView(MXRStates);
     }//GEN-LAST:event_missingValueAbsentActionPerformed
@@ -3179,7 +3199,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_oneRLERadioActionPerformed
 
     private void titleFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_titleFieldActionPerformed
-        SystemLogger.LOGGER.log(Level.FINE, "titleFieldActionPerformed");
+        SystemLogger.LOGGER.log(Level.FINE, "titleFieldActionPerformed" + " : " + titleField.getText());
     }//GEN-LAST:event_titleFieldActionPerformed
 
     private void filePathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filePathActionPerformed
@@ -3189,7 +3209,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private void fileBrowseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileBrowseButtonActionPerformed
 
         SystemLogger.LOGGER.log(Level.FINE, "fileBrowseButtonActionPerformed");
-        
         importDataSet();
         MXRStates = new MixRegGuiStates(this, advancedOptions_view);
         updateGuiView(MXRStates);
@@ -3231,7 +3250,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_includeStageTwoDataNoActionPerformed
 
     private void fileBrowseButtonStageTwoDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileBrowseButtonStageTwoDataActionPerformed
-        SystemLogger.LOGGER.log(Level.FINE, "fileBrowseButtonStageTwoDataActionPerformed");
+        SystemLogger.LOGGER.log(Level.FINE, "fileBrowseButtonStageTwoDataActionPerformed : {0}", filePath_stageTwo.getText());
         importDataSetStageTwo();
         MXRStates = new MixRegGuiStates(this, advancedOptions_view);
         updateGuiView(MXRStates);
@@ -3676,6 +3695,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.ButtonGroup buttonGroup5;
+    private javax.swing.JButton clearStageOneButton;
+    private javax.swing.JButton clearStageTwoButton;
     private javax.swing.JLabel dataFileLabel;
     public static javax.swing.JTable dataTable;
     public static javax.swing.JTable dataTable_stageTwo;
@@ -3700,9 +3721,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel includeStageTwoLabel;
     private javax.swing.JRadioButton includeStageTwoNo;
     private javax.swing.JRadioButton includeStageTwoYes;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton8;
     private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
@@ -3814,9 +3833,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JRadioButton randomScaleSelectionNo;
     private javax.swing.JRadioButton randomScaleSelectionYes;
     private javax.swing.JLabel randomScaleViewLabel;
-    private javax.swing.JButton resetButton;
     private javax.swing.JLabel rleViewLabel;
     private javax.swing.JButton runTabTwoStageOneTwo;
+    private javax.swing.JButton saveStage1OutButton;
     private javax.swing.JButton saveStage2OutButton;
     private javax.swing.JLabel seedHelpButton;
     private javax.swing.JTextField seedTextBox;
@@ -3991,7 +4010,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 return IDpos;
             case 2:
                 // no new stage 2 dataset imported
-                if (IDposStageTwo == -1){
+                if (IDposStageTwo == -1) {
                     return IDpos;
                 } else {
                     return IDposStageTwo;
@@ -3999,7 +4018,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             default:
                 return -2;
         }
-        
+
     }
 
     //get Stage One DV variable selected by the user
@@ -6499,6 +6518,22 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
+            // build session folder
+            try {
+                sessionFolderNameBuilt = ModelBuilder.buildFolder(file);
+            } catch (IOException ex) {
+                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
+            }
+
+            // create new logger
+            try {
+                createNewLogger(file);
+            } catch (IOException ex) {
+                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
+            }
+
         } else {
             System.out.println("File access cancelled by user.");
             try {
@@ -6580,20 +6615,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 //defFile.
                 if (sessionFolderName == null) {
                     defFile.csvToDatConverter(file);
-                    if (getIncludeStageTwoDataYes()){
+                    if (getIncludeStageTwoDataYes()) {
                         defFile.csvToDatConverterSecondDataset(file_stageTwo);
                     }
                     sessionFolderName = defFile.getUtcDirPath();
 
-                    // create logger after session folder created
-                    SystemLogger.logPath = FilenameUtils.getFullPath(dataFileNameRef) + sessionFolderName;
-                    logger = new SystemLogger();
-
                 } else {
                     defFile.setUtcDirPath(sessionFolderName);
 
-                    SystemLogger.logPath = FilenameUtils.getFullPath(dataFileNameRef) + sessionFolderName;
-                    logger = new SystemLogger();
                 }
 
             } catch (IOException ex) {
@@ -6889,12 +6918,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     } catch (Exception ex) {
                         Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                         SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
-                    }   
+                    }
                 } else {
                     IDposStageTwo = -1;
                 }
-                
-                
 
                 // View Update for Model Configuration Tab 
                 stageOneTabs.setSelectedIndex(1);
@@ -7576,7 +7603,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 //            Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
 //            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
 //        }
-
 //        if (stageTwoNotIncluded == true) {
 //            stageOneTabs.setEnabledAt(2, false);
 //            stageOneTabs.setEnabledAt(4, false);
@@ -9535,6 +9561,32 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         }
 
         return UniqueList;
+    }
+
+    private void createNewLogger(File csvFile) throws IOException {
+        String absolutePath = csvFile.getAbsolutePath();
+        String folderPath = FilenameUtils.getFullPath(absolutePath);
+        logFilePath = folderPath + "MixWILD Logs/" + sessionFolderNameBuilt + "/";
+        File dirGen = new File(logFilePath);
+        // check if file exists
+        boolean dirExist = Files.exists(dirGen.toPath());
+        if (!dirExist) {
+            boolean genTrue = dirGen.mkdirs();
+            if (!genTrue) {
+                throw new IOException("Cannot generate log directory, please check folder permissions");
+            }
+
+        }
+
+        // create logger after session folder created
+//        SystemLogger.logPath = FilenameUtils.getFullPath(dataFileNameRef) + sessionFolderName;
+        SystemLogger.logPath = logFilePath;
+        logger = new SystemLogger();
+    }
+
+    private void loadLogger(String logFile) {
+        SystemLogger.logPath = logFile;
+        logger = new SystemLogger();
     }
 
 }

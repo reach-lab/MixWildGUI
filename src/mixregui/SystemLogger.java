@@ -28,12 +28,14 @@ public class SystemLogger {
 
 
     public SystemLogger() {
+        LOGGER.removeHandler(fileHandler);
+        
         LOGGER.setUseParentHandlers(false);
         formatter = new MyFormatter();
 
         try {
             System.out.print(logPath);
-            fileHandler = new FileHandler(logPath + "logger.log");
+            fileHandler = new FileHandler(logPath + "logger.log", true);
             // For logging fine clicking behavior
             fileHandler.setLevel(Level.FINEST);
             

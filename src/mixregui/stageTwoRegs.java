@@ -34,6 +34,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.ListModel;
+import mixregui.SystemLogger;
+import java.util.logging.Level;
 //import static mixregui.stageOneRegs.varList;
 //import static mixregui.stageOneRegs.variableNamesList;
 
@@ -221,6 +223,7 @@ public class stageTwoRegs extends javax.swing.JFrame {
     private void stageTwoSubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoSubmitButtonActionPerformed
         //dispose closes the window
         //mixregGUI.
+        SystemLogger.LOGGER.log(Level.FINE, "stageTwoSubmitButtonActionPerformed");
         isStageTwoSubmitClicked = true;
 
         //mixregGUIStageTwo = newModel2.getMixReg();
@@ -235,7 +238,7 @@ public class stageTwoRegs extends javax.swing.JFrame {
     }//GEN-LAST:event_stageTwoSubmitButtonActionPerformed
 
     private void stageTwoLevelTwoAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoLevelTwoAddButtonActionPerformed
-
+        SystemLogger.LOGGER.log(Level.FINE, "stageTwoLevelTwoAddButtonActionPerformed");
         //Add items to the model and then copy it to the UI list
         if (!StageTwoAllVariables.isSelectionEmpty()) {
 
@@ -257,7 +260,7 @@ public class stageTwoRegs extends javax.swing.JFrame {
     }//GEN-LAST:event_stageTwoLevelTwoAddButtonActionPerformed
 
     private void stageTwoLevelTwoRemoveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoLevelTwoRemoveButtonActionPerformed
-
+        SystemLogger.LOGGER.log(Level.FINE, "stageTwoLevelTwoRemoveButtonActionPerformed");
         //Remove an item from the model
         if (!StageTwoLevelTwoVariables.isSelectionEmpty()) {
             stageTwoSubmitButton.setEnabled(true);
@@ -278,17 +281,19 @@ public class stageTwoRegs extends javax.swing.JFrame {
     }//GEN-LAST:event_stageTwoLevelTwoRemoveButtonActionPerformed
 
     private void stageTwoResetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoResetButtonActionPerformed
+        SystemLogger.LOGGER.log(Level.FINE, "stageTwoResetButtonActionPerformed");
         stageTwoLevelOne.clear();
         stageTwoLevelTwo.clear();
     }//GEN-LAST:event_stageTwoResetButtonActionPerformed
 
     private void stageTwoCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoCancelActionPerformed
-        // TODO add your handling code here:
+        SystemLogger.LOGGER.log(Level.FINE, "stageTwoCancelActionPerformed");        // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_stageTwoCancelActionPerformed
 
     private void stageTwoLevelOneAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoLevelOneAddButtonActionPerformed
         //Add items to the model and then copy it to the UI list
+        SystemLogger.LOGGER.log(Level.FINE, "stageTwoLevelOneAddButtonActionPerformed");
         if (!StageTwoAllVariables.isSelectionEmpty()) {
 
             stageTwoLevelOne.addElement(StageTwoAllVariables.getSelectedValue());
@@ -303,7 +308,7 @@ public class stageTwoRegs extends javax.swing.JFrame {
     }//GEN-LAST:event_stageTwoLevelOneAddButtonActionPerformed
 
     private void stageTwoLevelOneRemoveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageTwoLevelOneRemoveButtonActionPerformed
-
+        SystemLogger.LOGGER.log(Level.FINE, "stageTwoLevelOneRemoveButtonActionPerformed");
         //Remove an item from the model
         if (!StageTwoLevelOneVariables.isSelectionEmpty()) {
             stageTwoSubmitButton.setEnabled(true);
