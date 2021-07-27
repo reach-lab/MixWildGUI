@@ -34,6 +34,7 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import mixregui.SystemLogger;
 
 /**
  * All the advanced functions to support the model
@@ -130,7 +131,7 @@ public class advancedOptions extends javax.swing.JFrame {
         discardSubjectsCheckBox = new javax.swing.JCheckBox();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
-        jButton1 = new javax.swing.JButton();
+        advancedOptionsSubmit = new javax.swing.JButton();
         advancedOptions_resetButton = new javax.swing.JButton();
         advancedOptionsCancel = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
@@ -272,13 +273,13 @@ public class advancedOptions extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(294, 21, 300, 230));
 
-        jButton1.setText("Submit");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        advancedOptionsSubmit.setText("Submit");
+        advancedOptionsSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                advancedOptionsSubmitActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 310, 90, -1));
+        getContentPane().add(advancedOptionsSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 310, 90, -1));
 
         advancedOptions_resetButton.setText("Reset");
         advancedOptions_resetButton.addActionListener(new java.awt.event.ActionListener() {
@@ -314,34 +315,38 @@ public class advancedOptions extends javax.swing.JFrame {
 
     private void meanSubmodelCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_meanSubmodelCheckBoxActionPerformed
         // TODO add your handling code here:
+        SystemLogger.LOGGER.log(Level.FINE, "meanSubmodelCheckBoxActionPerformed");
 
     }//GEN-LAST:event_meanSubmodelCheckBoxActionPerformed
 
     private void BSVarianceCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSVarianceCheckBoxActionPerformed
         // TODO add your handling code here:
+        SystemLogger.LOGGER.log(Level.FINE, "BSVarianceCheckBoxActionPerformed");
     }//GEN-LAST:event_BSVarianceCheckBoxActionPerformed
 
     private void WSVarianceCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WSVarianceCheckBoxActionPerformed
-        // TODO add your handling code here:
+        SystemLogger.LOGGER.log(Level.FINE, "WSVarianceCheckBoxActionPerformed");
     }//GEN-LAST:event_WSVarianceCheckBoxActionPerformed
 
     private void adaptiveQuadritureCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adaptiveQuadritureCheckBoxActionPerformed
         // TODO add your handling code here:
+        SystemLogger.LOGGER.log(Level.FINE, "adaptiveQuadritureCheckBoxActionPerformed");
     }//GEN-LAST:event_adaptiveQuadritureCheckBoxActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+    private void advancedOptionsSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_advancedOptionsSubmitActionPerformed
+        SystemLogger.LOGGER.log(Level.FINE, "advancedOptionsSubmitActionPerformed");
         update_trigger_AdvancedOptionsSubmit();
 
-
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_advancedOptionsSubmitActionPerformed
 
     private void centerRegressorsCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_centerRegressorsCheckBoxActionPerformed
         // TODO add your handling code here:
+        SystemLogger.LOGGER.log(Level.FINE, "centerRegressorsCheckBoxActionPerformed");
     }//GEN-LAST:event_centerRegressorsCheckBoxActionPerformed
 
     private void advancedOptions_resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_advancedOptions_resetButtonActionPerformed
         // TODO add your handling code here:
+        SystemLogger.LOGGER.log(Level.FINE, "advancedOptions_resetButtonActionPerformed");
 
         meanSubmodelCheckBox.setSelected(false);
         BSVarianceCheckBox.setSelected(false);
@@ -363,11 +368,12 @@ public class advancedOptions extends javax.swing.JFrame {
 
     private void advancedOptionsCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_advancedOptionsCancelActionPerformed
         // TODO add your handling code here:
+        SystemLogger.LOGGER.log(Level.FINE, "advancedOptionsCancelActionPerformed");
         this.dispose();
     }//GEN-LAST:event_advancedOptionsCancelActionPerformed
 
     private void resampleCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resampleCheckBoxActionPerformed
-        // TODO add your handling code here:
+        SystemLogger.LOGGER.log(Level.FINE, "resampleCheckBoxActionPerformed");
 
         update_trigger_resampleCheckBox();
     }//GEN-LAST:event_resampleCheckBoxActionPerformed
@@ -375,11 +381,12 @@ public class advancedOptions extends javax.swing.JFrame {
 
     private void run32BitCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_run32BitCheckBoxActionPerformed
         // TODO add your handling code here:
+        SystemLogger.LOGGER.log(Level.FINE, "run32BitCheckBoxActionPerformed");
         update_trigger_run32BitCheckBox();
     }//GEN-LAST:event_run32BitCheckBoxActionPerformed
 
     private void discardSubjectsCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_discardSubjectsCheckBoxActionPerformed
-        // TODO add your handling code here:
+        SystemLogger.LOGGER.log(Level.FINE, "discardSubjectsCheckBoxActionPerformed");
     }//GEN-LAST:event_discardSubjectsCheckBoxActionPerformed
 
     private void convergenceCriteriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_convergenceCriteriaActionPerformed
@@ -426,11 +433,11 @@ public class advancedOptions extends javax.swing.JFrame {
     private javax.swing.JCheckBox WSVarianceCheckBox;
     private javax.swing.JCheckBox adaptiveQuadritureCheckBox;
     private javax.swing.JButton advancedOptionsCancel;
+    private javax.swing.JButton advancedOptionsSubmit;
     private javax.swing.JButton advancedOptions_resetButton;
     private javax.swing.JCheckBox centerRegressorsCheckBox;
     private javax.swing.JTextField convergenceCriteria;
     private javax.swing.JCheckBox discardSubjectsCheckBox;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

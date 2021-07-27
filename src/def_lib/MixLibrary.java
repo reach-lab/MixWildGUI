@@ -1660,6 +1660,7 @@ public class MixLibrary implements Serializable {
             saveDefFile.addActionListener(new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
+                    SystemLogger.LOGGER.log(Level.FINE, "Stage 1 SaveDefFile performed");
                     try {
                         saveDefFileLocally();
                     } catch (IOException ex) {
@@ -1959,7 +1960,6 @@ public class MixLibrary implements Serializable {
             SystemLogger.LOGGER.log(Level.CONFIG, getOSName(), SystemLogger.getLineNum());
 
             if (getOSName().contains("windows")) {
-                System.out.print("$$$$$$$$$$$$$: " + definitionFilepath);
                 // the file path is not in the C drive
                 if (!"C".equals(definitionFilepath.split(":")[0])) {
                     String command = "cmd /c dir && cd /d" + "\"" + definitionFilepath + "\"" + " && dir && "
@@ -2025,6 +2025,7 @@ public class MixLibrary implements Serializable {
             modelingProgressLogging("MIXWILD::Exit Value: " + String.valueOf(exitVal) + "\n");
 
             if (exitVal == 0) {
+                SystemLogger.LOGGER.log(Level.INFO, "Fortran executables ran successfully");
                 //send the out to StageTwoOutPu from here
                 // FileReader reader = new FileReader(absoluteJavaPath + ".out file name");
                 terminalVal = exitVal;
@@ -2054,6 +2055,7 @@ public class MixLibrary implements Serializable {
 
                 // FileReader reader = new FileReader(absoluteJavaPath + ".out file name");
             } else {
+                SystemLogger.LOGGER.log(Level.INFO, "Fortran executables failed");
                 JOptionPane.showMessageDialog(progressWindow, "Failed to build model. Please revisit your regressors and try again. For more information, checkout help docs.", "Execution failed!", JOptionPane.INFORMATION_MESSAGE);
                 modelingProgressLogging("Failed to build model. Please revisit your regressors and try again. For more information, checkout help docs.");
                 Process p2;
@@ -2157,6 +2159,7 @@ public class MixLibrary implements Serializable {
         if (getOSName().contains("windows")) {
             System.out.print(win32);
             if (win32) {
+                SystemLogger.LOGGER.log(Level.INFO, "Operating System : win32");
                 LSBOTH_PRE = "resources/Windows32/" + LSBOTH_PRE + ".exe";
                 MIXORS_PRE = "resources/Windows32/" + MIXORS_PRE + ".exe";
                 MIXNO = "resources/Windows32/" + MIXNO + ".exe";
@@ -2165,7 +2168,7 @@ public class MixLibrary implements Serializable {
                 MIXPREG = "resources/Windows32/" + MIXPREG + ".exe";
                 STAGETWO_ONLY = "resources/Windows32/" + STAGETWO_ONLY + ".exe";
             } else {
-                System.out.print("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvva");
+                SystemLogger.LOGGER.log(Level.INFO, "Operating System : win64");
                 LSBOTH_PRE = "resources/Windows64/" + LSBOTH_PRE + "64" + ".exe";
                 MIXORS_PRE = "resources/Windows64/" + MIXORS_PRE + "64" + ".exe";
                 MIXNO = "resources/Windows64/" + MIXNO + ".exe";
@@ -2175,6 +2178,7 @@ public class MixLibrary implements Serializable {
                 STAGETWO_ONLY = "resources/Windows64/" + STAGETWO_ONLY + "64" + ".exe";
             }
         } else {
+            SystemLogger.LOGGER.log(Level.INFO, "Operating System : macOS");
             LSBOTH_PRE = "resources/macOS/" + LSBOTH_PRE;
             MIXORS_PRE = "resources/macOS/" + MIXORS_PRE;
             MIXNO = "resources/macOS/" + MIXNO;
@@ -2187,7 +2191,6 @@ public class MixLibrary implements Serializable {
         String exeArray[] = {LSBOTH_PRE, MIXORS_PRE, MIXNO, MIXREG, MIXORS, MIXPREG, STAGETWO_ONLY};
 
         for (String exe : exeArray) {
-            System.out.println("Working on Exes");
             InputStream stream = getClass().getClassLoader().getResourceAsStream(exe);
             OutputStream outputStream
                     = new FileOutputStream(new File(absoluteDirectoryPath + FilenameUtils.getName(exe)));

@@ -29,6 +29,7 @@ package mixregui;
 import java.awt.Dimension;
 import java.awt.List;
 import java.awt.Toolkit;
+import java.util.logging.Level;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
@@ -36,6 +37,7 @@ import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.ListModel;
+import mixregui.SystemLogger;
 
 /**
  * Use this to add or remove stage 1 regressors into the model
@@ -219,7 +221,7 @@ public class stageOneRegs extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void stageOneSubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneSubmitButtonActionPerformed
-
+        SystemLogger.LOGGER.log(Level.FINE, "stageOneSubmitButtonActionPerformed");
         for (int k = 0; k < varList.size(); k++) {
             System.out.println("VarList Submitted: " + String.valueOf(varList.getElementAt(k)));
 
@@ -240,7 +242,7 @@ public class stageOneRegs extends javax.swing.JFrame {
     }//GEN-LAST:event_stageOneSubmitButtonActionPerformed
 
     private void levelOneAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_levelOneAddButtonActionPerformed
-
+        SystemLogger.LOGGER.log(Level.FINE, "levelOneAddButtonActionPerformed");
         if (!AllVariablesList.isSelectionEmpty()) {
             levelOneList.addElement(AllVariablesList.getSelectedValue());
             StageOneLevelOneList.setModel(levelOneList);
@@ -263,7 +265,7 @@ public class stageOneRegs extends javax.swing.JFrame {
     }//GEN-LAST:event_levelOneAddButtonActionPerformed
 
     private void addLevelTwoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addLevelTwoButtonActionPerformed
-
+        SystemLogger.LOGGER.log(Level.FINE, "addLevelTwoButtonActionPerformed");
         if (!AllVariablesList.isSelectionEmpty()) {
             stageOneSubmitButton.setEnabled(true);
 
@@ -280,7 +282,7 @@ public class stageOneRegs extends javax.swing.JFrame {
     }//GEN-LAST:event_addLevelTwoButtonActionPerformed
 
     private void removeLevelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeLevelButtonActionPerformed
-
+        SystemLogger.LOGGER.log(Level.FINE, "removeLevelButtonActionPerformed");
         if (!StageOneLevelOneList.isSelectionEmpty()) {
 
             stageOneSubmitButton.setEnabled(true);
@@ -305,7 +307,7 @@ public class stageOneRegs extends javax.swing.JFrame {
     }//GEN-LAST:event_removeLevelButtonActionPerformed
 
     private void removeLevelTwoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeLevelTwoButtonActionPerformed
-
+        SystemLogger.LOGGER.log(Level.FINE, "removeLevelTwoButtonActionPerformed");
         if (!StageOneLevelTwoList.isSelectionEmpty()) {
             stageOneSubmitButton.setEnabled(true);
 
@@ -327,7 +329,7 @@ public class stageOneRegs extends javax.swing.JFrame {
     }//GEN-LAST:event_removeLevelTwoButtonActionPerformed
 
     private void stageOneResetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneResetButtonActionPerformed
-
+        SystemLogger.LOGGER.log(Level.FINE, "stageOneResetButtonActionPerformed");
         //clear lists on reset
         updateAllVariables();
 
@@ -336,7 +338,7 @@ public class stageOneRegs extends javax.swing.JFrame {
     }//GEN-LAST:event_stageOneResetButtonActionPerformed
 
     private void stageOneCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneCancelActionPerformed
-        // TODO add your handling code here:
+        SystemLogger.LOGGER.log(Level.FINE, "stageOneCancelActionPerformed");
         this.dispose();
     }//GEN-LAST:event_stageOneCancelActionPerformed
 
