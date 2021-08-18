@@ -588,7 +588,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     boolean isStageOneOutcomeChanged = false;
     boolean isStageTwoOutcomeChanged = false;
 
-    boolean suppressed = false;
+    boolean suppressed = true;
     boolean stageTwoNotIncluded = false;
     boolean addStageOneCHecked = false;
     boolean addStageTwoChecked = false;
@@ -632,9 +632,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         RLE_selected = getRLE();
 
 //        stageOneTabs.setEnabledAt(2, false);
-        suppressIntCheckBox.setVisible(true);
-        suppressIntCheckBox.setSelected(false);
-        suppressIntCheckBox.setEnabled(true);
+        EnableInteractionCheckBox.setVisible(true);
+        EnableInteractionCheckBox.setSelected(false);
+        EnableInteractionCheckBox.setEnabled(true);
 
         //Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/resources/mixLogo.png"));
         //setIconImage(image);
@@ -998,7 +998,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageTwoLevelTwoPanel = new javax.swing.JPanel();
         stageTwoRegsGridLvl2 = new javax.swing.JPanel();
         runTabTwoStageOneTwo = new javax.swing.JButton();
-        suppressIntCheckBox = new javax.swing.JCheckBox();
+        EnableInteractionCheckBox = new javax.swing.JCheckBox();
         StageTwoOutcomeCombo = new javax.swing.JComboBox<>();
         jLabel22 = new javax.swing.JLabel();
         clearStageTwoButton = new javax.swing.JButton();
@@ -1929,8 +1929,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         jPanel12.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(799, 70, 110, 20));
 
         jLabel18.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel18.setText("Location X Scale");
-        jPanel12.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 70, 130, 20));
+        jLabel18.setText("<html><div style='text-align: center;'>3-way<br/> Location X Scale</div></html>");
+        jLabel18.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel12.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 50, 130, 40));
 
         stageTwoLevelTwoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Level-2"));
 
@@ -1963,14 +1964,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         });
         jPanel12.add(runTabTwoStageOneTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 530, 160, 35));
 
-        suppressIntCheckBox.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        suppressIntCheckBox.setText("Suppress 2-way Location X Scale Interaction");
-        suppressIntCheckBox.addActionListener(new java.awt.event.ActionListener() {
+        EnableInteractionCheckBox.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        EnableInteractionCheckBox.setText("Enable 2-way Location X Scale Interaction");
+        EnableInteractionCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                suppressIntCheckBoxActionPerformed(evt);
+                EnableInteractionCheckBoxActionPerformed(evt);
             }
         });
-        jPanel12.add(suppressIntCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 480, -1, -1));
+        jPanel12.add(EnableInteractionCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 480, -1, -1));
 
         StageTwoOutcomeCombo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         StageTwoOutcomeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -2090,8 +2091,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         jPanel12.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(799, 280, 110, 20));
 
         jLabel37.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel37.setText("Location X Scale");
-        jPanel12.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 280, 130, 20));
+        jLabel37.setText("<html><div style='text-align: center;'>3-way<br/> Location X Scale</div></html>");
+        jPanel12.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 260, 130, 40));
 
         stageOneModelStageTwoConfigLabel1.setText("Stage 1 model:");
         jPanel12.add(stageOneModelStageTwoConfigLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, -1, -1));
@@ -2643,8 +2644,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         SystemLogger.LOGGER.log(Level.INFO, "Clear Stage Two");
         clearStageTwoLevelOneGrid();
         clearStageTwoLevelTwoGrid();
-        suppressIntCheckBox.setEnabled(true);
-        suppressIntCheckBox.setSelected(false);
+        EnableInteractionCheckBox.setEnabled(true);
+        EnableInteractionCheckBox.setSelected(false);
 
     }//GEN-LAST:event_clearStageTwoButtonActionPerformed
 
@@ -2655,10 +2656,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         isStageTwoOutcomeChanged = true;
     }//GEN-LAST:event_StageTwoOutcomeComboItemStateChanged
 
-    private void suppressIntCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suppressIntCheckBoxActionPerformed
+    private void EnableInteractionCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnableInteractionCheckBoxActionPerformed
         SystemLogger.LOGGER.log(Level.FINE, "suppressIntCheckBoxActionPerformed");
         update_trigger_suppressIntCheckBox();
-    }//GEN-LAST:event_suppressIntCheckBoxActionPerformed
+    }//GEN-LAST:event_EnableInteractionCheckBoxActionPerformed
 
     private void runTabTwoStageOneTwoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_runTabTwoStageOneTwoActionPerformed
         SystemLogger.LOGGER.log(Level.FINE, "runTabTwoStageOneTwoActionPerformed");
@@ -3675,6 +3676,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel DataFileStageTwoLabel;
     private javax.swing.JLabel DatasetLabel;
+    private javax.swing.JCheckBox EnableInteractionCheckBox;
     private javax.swing.JComboBox<String> IDStageTwoVariableCombo;
     private javax.swing.JComboBox<String> IDvariableCombo;
     private javax.swing.JRadioButton LinearAssociationRadio;
@@ -3883,7 +3885,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JPanel stageTwoRegsGridLvl2;
     private javax.swing.JRadioButton stageTwoSingleLevel;
     private javax.swing.JButton startStageTwo;
-    private javax.swing.JCheckBox suppressIntCheckBox;
     private javax.swing.JTextField titleField;
     private javax.swing.JLabel titleViewLabel;
     private javax.swing.JButton updateStage2ConfigButton;
@@ -4064,7 +4065,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }
 
     public boolean getSuppressIntCheckBox() {
-        return suppressIntCheckBox.isSelected();
+        return EnableInteractionCheckBox.isSelected();
     }
 
     //Update level 1 table with regressors
@@ -4249,7 +4250,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             separatorConstraint.gridy = separatorConstraint.gridy + 2;
             // System.out.println("before seperator");
-            levelTwoGrid.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
+//            levelTwoGrid.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
             // System.out.println("after seperator");
             constraints.gridy++;
 
@@ -4335,7 +4336,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             separatorConstraint.gridy = separatorConstraint.gridy + 2;
 
-            stageTwoRegsGridLvl2.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
+//            stageTwoRegsGridLvl2.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
             //System.out.println("after seperator");
             constraints.gridy++;
 
@@ -4436,7 +4437,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     randomChecked = false;
                     scaleChecked = false;
 
-                    suppressIntCheckBox.setEnabled(true);
+                    EnableInteractionCheckBox.setEnabled(true);
 
                 }
             });
@@ -7744,7 +7745,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             //constraints.gridx = 0;
             separatorConstraint.gridy = separatorConstraint.gridy + 3;
             //System.out.println("before seperator");
-            levelOneGrid.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
+//            levelOneGrid.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
             //System.out.println("after seperator");
             constraints.gridy++;
 
@@ -7837,7 +7838,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             separatorConstraint.gridy = separatorConstraint.gridy + 2;
             // System.out.println("before seperator");
-            levelTwoGrid.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
+//            levelTwoGrid.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
             // System.out.println("after seperator");
             constraints.gridy++;
 
@@ -8233,7 +8234,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             stage_2_regs.setEnabledStageTwoSubmitButton(true);
             update_StageTwoLevelOneBoxes(stageTwoRegs.stageTwoLevelOne, mxrStates.stageTwoLevelOneGridBoxesSelection);
             update_StageTwoLevelTwoBoxes(stageTwoRegs.stageTwoLevelTwo, mxrStates.stageTwoLevelTwoGridBoxesSelection);
-            suppressIntCheckBox.setSelected(mxrStates.suppressIntCheckBox);
+            EnableInteractionCheckBox.setSelected(mxrStates.suppressIntCheckBox);
             update_trigger_suppressIntCheckBox();
         }
 
@@ -8316,7 +8317,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             separatorConstraint.gridy = separatorConstraint.gridy + 2;
 
-            stageTwoRegsGridLvl2.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
+//            stageTwoRegsGridLvl2.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
             //System.out.println("after seperator");
             constraints.gridy++;
 
@@ -8348,8 +8349,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                         stageTwoLevelTwoGridBoxes.get(row).get(3).setEnabled(false);
                         randomChecked = false;
                         scaleChecked = false;
-                        suppressIntCheckBox.setEnabled(false);
-                        suppressIntCheckBox.setSelected(false);
+                        EnableInteractionCheckBox.setEnabled(false);
+                        EnableInteractionCheckBox.setSelected(false);
 
                     }
 
@@ -8416,7 +8417,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     randomChecked = false;
                     scaleChecked = false;
 
-                    suppressIntCheckBox.setEnabled(true);
+                    EnableInteractionCheckBox.setEnabled(true);
 
                 }
             });
@@ -8502,7 +8503,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             separatorConstraint.gridy = separatorConstraint.gridy + 2;
 
-            stageTwoRegsGridLvl1.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
+//            stageTwoRegsGridLvl1.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
             //System.out.println("after seperator");
             constraints.gridy++;
 
@@ -8534,8 +8535,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                         stageTwoLevelOneGridBoxes.get(row).get(3).setEnabled(false);
                         randomChecked = false;
                         scaleChecked = false;
-                        suppressIntCheckBox.setEnabled(false);
-                        suppressIntCheckBox.setSelected(false);
+                        EnableInteractionCheckBox.setEnabled(false);
+                        EnableInteractionCheckBox.setSelected(false);
 
                     }
 
@@ -8602,7 +8603,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     randomChecked = false;
                     scaleChecked = false;
 
-                    suppressIntCheckBox.setEnabled(true);
+                    EnableInteractionCheckBox.setEnabled(true);
 
                 }
             });
@@ -8619,7 +8620,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }
 
     private void update_trigger_suppressIntCheckBox() {
-        if (suppressIntCheckBox.isSelected()) {
+        if (!EnableInteractionCheckBox.isSelected()) {
 
             suppressed = true;
 
@@ -8774,7 +8775,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             separatorConstraint.gridy = separatorConstraint.gridy + 2;
 
-            stageTwoRegsGridLvl1.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
+//            stageTwoRegsGridLvl1.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
             //System.out.println("after seperator");
             constraints.gridy++;
 
@@ -8875,7 +8876,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     randomChecked = false;
                     scaleChecked = false;
 
-                    suppressIntCheckBox.setEnabled(true);
+                    EnableInteractionCheckBox.setEnabled(true);
 
                 }
             });

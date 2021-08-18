@@ -1701,7 +1701,10 @@ public class MixLibrary implements Serializable {
 //
 //                newDefFile = new File(newDefFilePrefix + "MIXREGMLS_RANDOM_MIXOR");
 //            }
-
+//            File parentDir = newDefFile.getParentFile();
+//            if (! parentDir.exists()){
+//                parentDir.mkdirs();
+//            }
             FileWriter out = new FileWriter(newDefFile + ".def");
             out.write(myPane.getText());
             out.close();
