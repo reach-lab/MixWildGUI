@@ -808,7 +808,8 @@ public class MixLibrary implements Serializable {
 
     public void setSharedDataFilename(String sharedDataFilename) throws Exception {
         if (sharedDataFilename.endsWith(".dat") || sharedDataFilename.endsWith(".csv")) {
-            this.sharedDataFilename = sharedDataFilename.replace(" ", "_");
+//            this.sharedDataFilename = sharedDataFilename.replace(" ", "_");
+            this.sharedDataFilename = sharedDataFilename;
         } else {
             throw new Exception("Data file name is not a valid .dat or .csv file");
         }
@@ -834,9 +835,9 @@ public class MixLibrary implements Serializable {
         if (sharedOutputPrefix.length() > 72) {
             this.sharedOutputPrefix = sharedOutputPrefix.substring(0, 200).replace(" ", "_");
         } else {
-            this.sharedOutputPrefix = sharedOutputPrefix.replace(" ", "_");;
+            this.sharedOutputPrefix = sharedOutputPrefix.replace(" ", "_");
         }
-        this.sharedOutputPrefix = sharedOutputPrefix.replace(" ", "_");;
+        this.sharedOutputPrefix = sharedOutputPrefix.replace(" ", "_");
     }
 
     public String[] getSharedAdvancedOptions() {
@@ -1702,7 +1703,7 @@ public class MixLibrary implements Serializable {
 //                newDefFile = new File(newDefFilePrefix + "MIXREGMLS_RANDOM_MIXOR");
 //            }
 
-            FileWriter out = new FileWriter(newDefFile + ".def");
+            FileWriter out = new FileWriter(newDefFile + ".def", false);
             out.write(myPane.getText());
             out.close();
         } catch (Exception exception) {

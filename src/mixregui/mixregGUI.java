@@ -344,18 +344,31 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         List myEntries = CSVFileReader.readAll();
         columnnames = (String[]) myEntries.get(0);
 
-        // validation: check first row should be column names (every column name contains letters)
-        for (int i = 0; i < columnnames.length; i++) {
-            String colname = (String) columnnames[i];
-            // check if colname contains just numbers
-            if (colname.matches("[0-9]+")) {
-                validDataset = false;
-                JOptionPane.showMessageDialog(null, "The first row of .csv file should be column names in letters.",
-                        "Dataset Error", JOptionPane.INFORMATION_MESSAGE);
-                break;
-            }
+        // validation: check if dataset name include space
+        String filename = file.getName();
+        if (filename.contains(" ")){
+            validDataset = false;
+            JOptionPane.showMessageDialog(null, "The filename of .csv file can not include space. Please try to use underscore instead.",
+                            "Dataset Naming Error", JOptionPane.INFORMATION_MESSAGE);
+        } else {
             validDataset = true;
         }
+        
+        // validation: check first row should be column names (every column name contains letters)
+        if (validDataset){
+            for (int i = 0; i < columnnames.length; i++) {
+                String colname = (String) columnnames[i];
+                // check if colname contains just numbers
+                if (colname.matches("[0-9]+")) {
+                    validDataset = false;
+                    JOptionPane.showMessageDialog(null, "The first row of .csv file should be column names in letters.",
+                            "Dataset Error", JOptionPane.INFORMATION_MESSAGE);
+                    break;
+                }
+                validDataset = true;
+            }
+        }
+
 
         outerloop:
         if (validDataset) {
@@ -788,6 +801,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         setBounds(0, 0, stageOneTabs.getWidth(), (int) Math.round(screenSize.height / 1.5));
 //        setBounds(0, 0, stageOneTabs.getWidth(), 700);
         setVisible(true);
+        
+        // set tooltip display time
+        int delayTimeDesired = 10000; //10 seconds
+        javax.swing.ToolTipManager.sharedInstance().setDismissDelay(delayTimeDesired);
 
         MXRStates = new MixRegGuiStates();
         advancedOptions_view = new advancedOptions();
