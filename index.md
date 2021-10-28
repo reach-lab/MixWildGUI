@@ -23,7 +23,7 @@ MixWILD (Also Mixed model analysis with Intensive Longitudinal Data) is a deskto
 3. Probit and logistic for Stage 1 regression
 
 ### Manuscript Supplement ###
-[MixWild User Guide](/MixWILD_users_guide_with_appendix_AB.pdf)
+[MixWild User Guide](/MixWILD_UG_All_combine.html)
 
 [Example Dataset MixWILD](/Mixwild_example_data.csv)
 
