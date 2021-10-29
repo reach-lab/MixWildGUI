@@ -821,7 +821,8 @@ public class MixLibrary implements Serializable {
 
     public void setSharedDataFilename_stageTwo(String sharedDataFilename_stageTwo) throws Exception {
         if (sharedDataFilename_stageTwo.endsWith(".dat") || sharedDataFilename_stageTwo.endsWith(".csv")) {
-            this.sharedDataFilename_stageTwo = sharedDataFilename_stageTwo.replace(" ", "_");
+//            this.sharedDataFilename_stageTwo = sharedDataFilename_stageTwo.replace(" ", "_");
+            this.sharedDataFilename_stageTwo = sharedDataFilename_stageTwo;
         } else {
             throw new Exception("Stage 2 data file name is not a valid .dat or .csv file");
         }

@@ -353,6 +353,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         } else {
             validDataset = true;
         }
+//        validDataset = true;
         
         // validation: check first row should be column names (every column name contains letters)
         if (validDataset){
@@ -9363,17 +9364,29 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         List myEntries = CSVFileReader.readAll();
         columnnames = (String[]) myEntries.get(0);
 
-        // validation1: check first row should be column names (every column name contains letters)
-        for (int i = 0; i < columnnames.length; i++) {
-            String colname = (String) columnnames[i];
-            // check if colname contains just numbers
-            if (colname.matches("[0-9]+")) {
-                validDataset_stageTwo = false;
-                JOptionPane.showMessageDialog(null, "The first row of .csv file should be column names in letters.",
-                        "Stage Two Dataset Error", JOptionPane.INFORMATION_MESSAGE);
-                break;
-            }
+        // validation: check if dataset name include space
+        String filename = file_stageTwo.getName();
+        if (filename.contains(" ")){
+            validDataset_stageTwo = false;
+            JOptionPane.showMessageDialog(null, "The filename of .csv file can not include space. Please try to use underscore instead.",
+                            "Dataset Naming Error", JOptionPane.INFORMATION_MESSAGE);
+        } else {
             validDataset_stageTwo = true;
+        }
+        
+        if (validDataset_stageTwo){
+            // validation1: check first row should be column names (every column name contains letters)
+            for (int i = 0; i < columnnames.length; i++) {
+                String colname = (String) columnnames[i];
+                // check if colname contains just numbers
+                if (colname.matches("[0-9]+")) {
+                    validDataset_stageTwo = false;
+                    JOptionPane.showMessageDialog(null, "The first row of .csv file should be column names in letters.",
+                            "Stage Two Dataset Error", JOptionPane.INFORMATION_MESSAGE);
+                    break;
+                }
+                validDataset_stageTwo = true;
+            }
         }
 
         DefaultTableModel tableModel = null;
