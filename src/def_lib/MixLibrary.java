@@ -1899,7 +1899,7 @@ public class MixLibrary implements Serializable {
         String defFileName;
 
         String system_bit_extension = "";
-        if (!win32) {
+        if (getOSName().contains("windows") && !win32) {
             system_bit_extension = "64";
         }
         if (stageOneOutcome == STAGE_ONE_OUTCOME_MIXOR) {
@@ -2153,7 +2153,7 @@ public class MixLibrary implements Serializable {
         String MIXREG = "mixreg";
         String MIXORS = "mixors";
         String MIXPREG = "mixpreg";
-        String STAGETWO_ONLY = "stage2only";
+        String STAGETWO_ONLY = "stage2only64";
         if (win32) {
             STAGETWO_ONLY = "stage2only";
         }
@@ -2177,7 +2177,7 @@ public class MixLibrary implements Serializable {
                 MIXREG = "resources/Windows64/" + MIXREG + ".exe";
                 MIXORS = "resources/Windows64/" + MIXORS + ".exe";
                 MIXPREG = "resources/Windows64/" + MIXPREG + ".exe";
-                STAGETWO_ONLY = "resources/Windows64/" + STAGETWO_ONLY + "64" + ".exe";
+                STAGETWO_ONLY = "resources/Windows64/" + STAGETWO_ONLY + ".exe";
             }
         } else {
             SystemLogger.LOGGER.log(Level.INFO, "Operating System : macOS");
