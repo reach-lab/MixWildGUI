@@ -7,23 +7,27 @@
 MixWILD (Also Mixed model analysis with Intensive Longitudinal Data) is a desktop GUI-based application for examining the effects of variance and slope of time-varying variables in intensive longitudinal data, especially the ones collected using ecological momentary assessments.
 
 ### Please submit your email prior to downloading the application so we can notify you of major software updates ###
-{% include formspree.html %}  
-
+{% include formspree.html %}    
+  
+  
+  
 ### Download MixWild for Mac or PC ###
 [macOS Intel (Not Tested on Apple Silicon)](https://github.com/reach-lab/MixWildGUI/releases/download/v2.0-stable/MixWILD-2.0.dmg) (current version: 2.0)
 
 [Windows](https://github.com/reach-lab/MixWildGUI/releases/download/v2.0-stable/MixWILD-2.0.exe) (current version: 2.0)
 
 ### Manuscript Supplement ###
-[User Guide](/MixWILD_UG_All_combine.html)
-[Cheat Sheets](/MixWILD_UG_All_combine.html)
+[User Guide](/MixWILD_UG_All_combine.html)  
+
+[Cheat Sheets](/MixWILD_UG_All_combine.html)  
+
 [Example Dataset MixWILD](/Mixwild_example_data.csv)
 
 ### Video tutorial
 You can access the video tutorial to using MixWILD [here](https://www.youtube.com/watch?v=ZqyCxrMG1R8&feature=emb_logo)
 
 ### Q and A ###
-- For general discussions, reporting bugs, seeking help, and making GUI suggestions, please use our [GitHub discussion groups](https://github.com/reach-lab/MixWildGUI/discussions)
+- For general discussions, reporting bugs, seeking help, and making GUI suggestions, please use our **[GitHub discussion groups](https://github.com/reach-lab/MixWildGUI/discussions)**
 - For questions on application, contact [Aditya Ponnada](mailto:ponnada.a@husky.neu.edu) and [Jixin Li](mailto:li.jix@husky.neu.edu)
 - For questions on models and interpretation, contact [Dr. Eldin Dzubur](mailto:dzubur@usc.edu) and [Rachel Nordgren](mailto:rknordgren@gmail.com)
 - For future collaborations, contact [Prof. Don Hedeker](mailto:DHedeker@health.bsd.uchicago.edu), [Prof. Genevieve Dunton](mailto:dunton@usc.edu), and [Prof. Stephen Intille](S.Intille@northeastern.edu)
