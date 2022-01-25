@@ -18,7 +18,7 @@ MixWILD (Also Mixed model analysis with Intensive Longitudinal Data) is a deskto
 
 ### Manuscript Supplement ###
 - [User Guide](/resources/user_guide/MixWILD_UG_All_combine.html)  
-- [Cheat Sheets](/resources/cheat_sheets/MixWILD_UG_CS_211213.html)  
+- [Cheat Sheets](/resources/cheat_sheets/MixWILD_UG_CS_220124.html)  
 - [Example Dataset](/resources/dataset/Mixwild_example_data.csv)  
 
 ### Video tutorial
