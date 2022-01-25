@@ -26,7 +26,7 @@ MixWILD (Also Mixed model analysis with Intensive Longitudinal Data) is a deskto
 - [Video2: intro to the Mixed Effects Location Scale MELS Model](https://www.youtube.com/watch?v=wCEHuv9t1xw)
 
 ### Q and A ###
-- (### New~ ###) Please use our **[GitHub discussion groups](https://github.com/reach-lab/MixWildGUI/discussions)** for discussions, bug report, help seeking, and sharing new feature ideas **(recommended)**
+- Please use our **[GitHub discussion groups](https://github.com/reach-lab/MixWildGUI/discussions)** for discussions, bug report, help seeking, and sharing new feature ideas **(recommended)**
 - For questions on application, contact [Aditya Ponnada](mailto:ponnada.a@husky.neu.edu) and [Jixin Li](mailto:li.jix@husky.neu.edu)
 - For questions on models and interpretation, contact [Dr. Eldin Dzubur](mailto:dzubur@usc.edu) and [Rachel Nordgren](mailto:rknordgren@gmail.com)
 - For future collaborations, contact [Prof. Don Hedeker](mailto:DHedeker@health.bsd.uchicago.edu), [Prof. Genevieve Dunton](mailto:dunton@usc.edu), and [Prof. Stephen Intille](S.Intille@northeastern.edu)
