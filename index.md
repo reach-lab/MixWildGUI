@@ -1,5 +1,5 @@
 
-![png](mixwild_logo-06.png)
+![png](/resources/logo/mixwild_logo-06.png)
 
 # MixWild #
 
@@ -17,9 +17,9 @@ MixWILD (Also Mixed model analysis with Intensive Longitudinal Data) is a deskto
 - [Windows](https://github.com/reach-lab/MixWildGUI/releases/download/v2.0-stable/MixWILD-2.0.exe) (current version: 2.0)
 
 ### Manuscript Supplement ###
-- [User Guide](/MixWILD_UG_All_combine.html)  
-- [Cheat Sheets](/MixWILD_UG_All_combine.html)  
-- [Example Dataset](/Mixwild_example_data.csv)  
+- [User Guide](/resources/user_guide/MixWILD_UG_All_combine.html)  
+- [Cheat Sheets](/resources/user_guide/MixWILD_UG_CS_211213.html)  
+- [Example Dataset](/resources/dataset/Mixwild_example_data.csv)  
 
 ### Video tutorial
 - [Video1: simple tutorial about MixWILD](https://www.youtube.com/watch?v=ZqyCxrMG1R8&feature=emb_logo)
@@ -43,11 +43,11 @@ Open access manuscript available by clicking [here](https://link.springer.com/ar
 
 ### Reference reading materials ###
 
-Download introductary slides here: [Details and Application of EMA](/SBM_Part_1.pdf)
+Download introductary slides here: [Details and Application of EMA](/resources/logo/SBM_Part_1.pdf)
 <br/>
-Download user guide here: [User Guide for MixWILD](/MixWILD_users_guide_with_appendix_AB.pdf)
+Download user guide here: [User Guide for MixWILD](/resources/user_guide/MixWILD_users_guide_with_appendix_AB.pdf)
 <br/>
-Download example data here: [Example Dataset MixWILD](/Mixwild_example_data.csv)
+Download example data here: [Example Dataset MixWILD](/resources/dataset/Mixwild_example_data.csv)
 
 
 ### Project Information ###
