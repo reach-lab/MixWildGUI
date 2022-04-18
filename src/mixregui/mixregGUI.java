@@ -670,6 +670,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             // if random location effects are more than one, change the table column names
             level2_BSVar.setVisible(false);
             level1_BSVar.setText("Random Slope");
+            level1_BSVar.setToolTipText("Select the checkbox and allows for \n"
+                    + "extra random slope effects in the \n"
+                    + "[Mean model].");
 //            level1_WSVar.setText("Scale");
 //            level2_WSVar.setText("Scale");
             level1_WSVar.setText("WS Variance");
@@ -1649,33 +1652,38 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         level1_MeanReg.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         level1_MeanReg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         level1_MeanReg.setText("Mean");
-        level1_MeanReg.setToolTipText("");
+        level1_MeanReg.setToolTipText("Select the regressors in [Mean  Model] to predict the mean value of the outcome variable ");
         level1_MeanReg.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel1.add(level1_MeanReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 70, 140, -1));
         level1_MeanReg.getAccessibleContext().setAccessibleName("");
 
         level1_WSVar.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         level1_WSVar.setText("WS Variance");
+        level1_WSVar.setToolTipText("Select the regressors to predict  the within-subject variance of the  outcome variable");
         jPanel1.add(level1_WSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 70, -1, -1));
 
         level2_MeanReg.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         level2_MeanReg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         level2_MeanReg.setText("Mean");
+        level2_MeanReg.setToolTipText("Select the regressors in [Mean  Model] to predict the mean value of the outcome variable ");
         level2_MeanReg.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel1.add(level2_MeanReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 280, 140, -1));
 
         level2_BSVar.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         level2_BSVar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         level2_BSVar.setText("BS Variance");
+        level2_BSVar.setToolTipText("Select the regressors to predict  the between-subject variance of  the outcome variable");
         jPanel1.add(level2_BSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 280, 110, -1));
 
         level2_WSVar.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         level2_WSVar.setText("WS Variance");
+        level2_WSVar.setToolTipText("Select the regressors to predict  the within-subject variance of the  outcome variable");
         jPanel1.add(level2_WSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 280, -1, -1));
 
         level1_BSVar.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         level1_BSVar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         level1_BSVar.setText("BS Variance");
+        level1_BSVar.setToolTipText("Select the regressors to predict  the between-subject variance of  the outcome variable");
         level1_BSVar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel1.add(level1_BSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 70, 110, -1));
 
@@ -1927,6 +1935,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         jLabel14.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel14.setText(" Main Effects");
+        jLabel14.setToolTipText("Check the box(s) of the regressor(s) to add the main effect in the model");
         jPanel12.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 70, 110, -1));
 
         jLabel12.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -1935,6 +1944,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         jLabel15.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel15.setText("Random Location");
+        jLabel15.setToolTipText("Check the box(s) of the regressor(s) to  add the interaction effect by random location (intercept + slope(s)) in the model");
         jPanel12.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(655, 70, 140, -1));
 
         addStageTwoReg.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -1948,10 +1958,12 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         jLabel17.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel17.setText("Random Scale");
+        jLabel17.setToolTipText("Check the box(s) of the regressor(s) to add the interaction effect by random  scale in the model");
         jPanel12.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(799, 70, 110, 20));
 
         jLabel18.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel18.setText("Location X Scale");
+        jLabel18.setToolTipText("Check the box(s) of the regressor(s) to add the interaction effect by random location and scale in the model");
         jPanel12.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 70, 130, 20));
 
         stageTwoLevelTwoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Level-2"));
@@ -1987,6 +1999,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         suppressIntCheckBox.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         suppressIntCheckBox.setText("Suppress 2-way Location X Scale Interaction");
+        suppressIntCheckBox.setToolTipText("<html><pre>The interaction(s) of location by scale are automatically specified in the default Stage 2 model, \nbut this option can be disabled by checking this box, which limits the model to show the main effects of random effects only <pre>");
         suppressIntCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 suppressIntCheckBoxActionPerformed(evt);
@@ -2101,18 +2114,22 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         jLabel33.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel33.setText(" Main Effects");
+        jLabel33.setToolTipText("Check the box(s) of the regressor(s) to add the main effect in the model");
         jPanel12.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 280, 110, -1));
 
         jLabel35.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel35.setText("Random Location");
+        jLabel35.setToolTipText("Check the box(s) of the regressor(s) to  add the interaction effect by random location (intercept + slope(s)) in the model");
         jPanel12.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(655, 280, 140, -1));
 
         jLabel36.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel36.setText("Random Scale");
+        jLabel36.setToolTipText("Check the box(s) of the regressor(s) to add the interaction effect by random  scale in the model");
         jPanel12.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(799, 280, 110, 20));
 
         jLabel37.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel37.setText("Location X Scale");
+        jLabel37.setToolTipText("Check the box(s) of the regressor(s) to add the interaction effect by random location and scale in the model");
         jPanel12.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 280, 130, 20));
 
         stageOneModelStageTwoConfigLabel1.setText("Stage 1 model:");
@@ -2187,7 +2204,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel7.setText("Results from stage 1 analysis");
 
-        openStage1OutButton.setText("Open Results In Window");
+        openStage1OutButton.setText("Open Results In Editor");
         openStage1OutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 openStage1OutButtonActionPerformed(evt);
@@ -2268,7 +2285,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         jLabel11.setText("Results from stage 2 analysis");
         jLabel11.setToolTipText("");
 
-        openStage2OutButton.setText("Open Results In Window");
+        openStage2OutButton.setText("Open Results In Editor");
         openStage2OutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 openStage2OutButtonActionPerformed(evt);

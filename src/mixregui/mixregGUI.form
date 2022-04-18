@@ -1284,7 +1284,7 @@
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Mean"/>
-                <Property name="toolTipText" type="java.lang.String" value=""/>
+                <Property name="toolTipText" type="java.lang.String" value="Select the regressors in [Mean  Model] to predict the mean value of the outcome variable "/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
               </Properties>
               <AccessibilityProperties>
@@ -1302,6 +1302,7 @@
                   <Font name="sansserif" size="14" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="WS Variance"/>
+                <Property name="toolTipText" type="java.lang.String" value="Select the regressors to predict  the within-subject variance of the  outcome variable"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1316,6 +1317,7 @@
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Mean"/>
+                <Property name="toolTipText" type="java.lang.String" value="Select the regressors in [Mean  Model] to predict the mean value of the outcome variable "/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
               </Properties>
               <Constraints>
@@ -1331,6 +1333,7 @@
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="BS Variance"/>
+                <Property name="toolTipText" type="java.lang.String" value="Select the regressors to predict  the between-subject variance of  the outcome variable"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1344,6 +1347,7 @@
                   <Font name="sansserif" size="14" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="WS Variance"/>
+                <Property name="toolTipText" type="java.lang.String" value="Select the regressors to predict  the within-subject variance of the  outcome variable"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1358,6 +1362,7 @@
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="BS Variance"/>
+                <Property name="toolTipText" type="java.lang.String" value="Select the regressors to predict  the between-subject variance of  the outcome variable"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
               </Properties>
               <Constraints>
@@ -1861,6 +1866,7 @@
                   <Font name="sansserif" size="14" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value=" Main Effects"/>
+                <Property name="toolTipText" type="java.lang.String" value="Check the box(s) of the regressor(s) to add the main effect in the model"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1887,6 +1893,7 @@
                   <Font name="sansserif" size="14" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Random Location"/>
+                <Property name="toolTipText" type="java.lang.String" value="Check the box(s) of the regressor(s) to  add the interaction effect by random location (intercept + slope(s)) in the model"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1916,6 +1923,7 @@
                   <Font name="sansserif" size="14" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Random Scale"/>
+                <Property name="toolTipText" type="java.lang.String" value="Check the box(s) of the regressor(s) to add the interaction effect by random  scale in the model"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1929,6 +1937,7 @@
                   <Font name="sansserif" size="14" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Location X Scale"/>
+                <Property name="toolTipText" type="java.lang.String" value="Check the box(s) of the regressor(s) to add the interaction effect by random location and scale in the model"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -2011,6 +2020,7 @@
                   <Font name="Dialog" size="14" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Suppress 2-way Location X Scale Interaction"/>
+                <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;pre&gt;The interaction(s) of location by scale are automatically specified in the default Stage 2 model, &#xa;but this option can be disabled by checking this box, which limits the model to show the main effects of random effects only &lt;pre&gt;"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="suppressIntCheckBoxActionPerformed"/>
@@ -2313,6 +2323,7 @@
                   <Font name="sansserif" size="14" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value=" Main Effects"/>
+                <Property name="toolTipText" type="java.lang.String" value="Check the box(s) of the regressor(s) to add the main effect in the model"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -2326,6 +2337,7 @@
                   <Font name="sansserif" size="14" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Random Location"/>
+                <Property name="toolTipText" type="java.lang.String" value="Check the box(s) of the regressor(s) to  add the interaction effect by random location (intercept + slope(s)) in the model"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -2339,6 +2351,7 @@
                   <Font name="sansserif" size="14" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Random Scale"/>
+                <Property name="toolTipText" type="java.lang.String" value="Check the box(s) of the regressor(s) to add the interaction effect by random  scale in the model"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -2352,6 +2365,7 @@
                   <Font name="sansserif" size="14" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Location X Scale"/>
+                <Property name="toolTipText" type="java.lang.String" value="Check the box(s) of the regressor(s) to add the interaction effect by random location and scale in the model"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -2587,7 +2601,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="openStage1OutButton">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Open Results In Window"/>
+                <Property name="text" type="java.lang.String" value="Open Results In Editor"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="openStage1OutButtonActionPerformed"/>
@@ -2722,7 +2736,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="openStage2OutButton">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Open Results In Window"/>
+                <Property name="text" type="java.lang.String" value="Open Results In Editor"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="openStage2OutButtonActionPerformed"/>
