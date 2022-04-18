@@ -1834,8 +1834,8 @@ public class MixLibrary implements Serializable {
             Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
             myFrame.setLocation(dim.width / 2 - myFrame.getSize().width / 2, dim.height / 2 - myFrame.getSize().height / 2);
 
-            Document defDoc = myPane.getDocument();
-            int length = defDoc.getLength();
+//            Document defDoc = myPane.getDocument();
+//            int length = defDoc.getLength();
 
             //File newDefFile = new File("MIXREGLS_MIXREG_KEY");
             String dataFileSample = new File(this.getSharedDataFilename()).getAbsolutePath();
