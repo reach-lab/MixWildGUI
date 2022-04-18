@@ -75,6 +75,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import org.apache.commons.io.FilenameUtils;
 import java.io.Serializable;
+import java.net.URI;
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
 import org.apache.commons.io.FileUtils;
@@ -346,17 +347,17 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         // validation: check if dataset name include space
         String filename = file.getName();
-        if (filename.contains(" ")){
+        if (filename.contains(" ")) {
             validDataset = false;
             JOptionPane.showMessageDialog(null, "The filename of .csv file can not include space. Please try to use underscore instead.",
-                            "Dataset Naming Error", JOptionPane.INFORMATION_MESSAGE);
+                    "Dataset Naming Error", JOptionPane.INFORMATION_MESSAGE);
         } else {
             validDataset = true;
         }
 //        validDataset = true;
-        
+
         // validation: check first row should be column names (every column name contains letters)
-        if (validDataset){
+        if (validDataset) {
             for (int i = 0; i < columnnames.length; i++) {
                 String colname = (String) columnnames[i];
                 // check if colname contains just numbers
@@ -369,7 +370,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 validDataset = true;
             }
         }
-
 
         outerloop:
         if (validDataset) {
@@ -802,7 +802,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         setBounds(0, 0, stageOneTabs.getWidth(), (int) Math.round(screenSize.height / 1.5));
 //        setBounds(0, 0, stageOneTabs.getWidth(), 700);
         setVisible(true);
-        
+
         // set tooltip display time
         int delayTimeDesired = 10000; //10 seconds
         javax.swing.ToolTipManager.sharedInstance().setDismissDelay(delayTimeDesired);
@@ -1095,6 +1095,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         userGuideDownload = new javax.swing.JButton();
         jLabel31 = new javax.swing.JLabel();
         exampleDataDownload = new javax.swing.JButton();
+        online_support_help_label = new javax.swing.JLabel();
+        online_support_button = new javax.swing.JButton();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -2238,7 +2240,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -2504,6 +2506,16 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
         });
 
+        online_support_help_label.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        online_support_help_label.setText("Online Support");
+
+        online_support_button.setText("Open Github Discussion Group");
+        online_support_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                online_support_buttonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
         jPanel15Layout.setHorizontalGroup(
@@ -2511,10 +2523,18 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             .addGroup(jPanel15Layout.createSequentialGroup()
                 .addGap(73, 73, 73)
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel31, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
-                    .addComponent(userGuideDownload)
-                    .addComponent(exampleDataDownload))
-                .addGap(868, 868, 868))
+                    .addGroup(jPanel15Layout.createSequentialGroup()
+                        .addComponent(online_support_button)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel15Layout.createSequentialGroup()
+                        .addComponent(online_support_help_label)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel15Layout.createSequentialGroup()
+                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(userGuideDownload)
+                            .addComponent(exampleDataDownload))
+                        .addGap(868, 868, 868))))
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2525,7 +2545,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 .addComponent(userGuideDownload)
                 .addGap(18, 18, 18)
                 .addComponent(exampleDataDownload)
-                .addGap(1496, 1496, 1496))
+                .addGap(18, 18, 18)
+                .addComponent(online_support_help_label)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(online_support_button)
+                .addGap(1413, 1413, 1413))
         );
 
         stageOneTabs.addTab("Help", jPanel15);
@@ -2988,7 +3012,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             logFilePath = MXRStates.logFilePath;
             loadLogger(logFilePath);
         }
-        
+
         SystemLogger.LOGGER.log(Level.FINE, "loadModelByBrowseButtonActionPerformed");
     }//GEN-LAST:event_loadModelByBrowseButtonActionPerformed
 
@@ -3275,17 +3299,34 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_fileBrowseButtonStageTwoDataActionPerformed
 
     private void filePath_stageTwoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filePath_stageTwoActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_filePath_stageTwoActionPerformed
 
     private void IDStageTwoVariableComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_IDStageTwoVariableComboItemStateChanged
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_IDStageTwoVariableComboItemStateChanged
 
     private void IDStageTwoVariableComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDStageTwoVariableComboActionPerformed
         SystemLogger.LOGGER.log(Level.FINE, "IDStageTwoVariableComboActionPerformed");
         IDposStageTwo = IDStageTwoVariableCombo.getSelectedIndex();
     }//GEN-LAST:event_IDStageTwoVariableComboActionPerformed
+
+    public static boolean openWebpage(URI uri) {
+        Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+        if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+            try {
+                desktop.browse(uri);
+                return true;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
+    }
+
+    private void online_support_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_online_support_buttonActionPerformed
+        openWebpage("https://github.com/reach-lab/MixWildGUI/discussions");
+    }//GEN-LAST:event_online_support_buttonActionPerformed
 
     // **********************update********************
     private void updateGuiView(MixRegGuiStates mxrStates) {
@@ -3840,6 +3881,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel numResamplingStageTwoConfigLabel;
     private javax.swing.JLabel numResamplingStageTwoConfigLabel1;
     private javax.swing.JRadioButton oneRLERadio;
+    private javax.swing.JButton online_support_button;
+    private javax.swing.JLabel online_support_help_label;
     private javax.swing.JTextPane outCategoryDisplay;
     private javax.swing.JButton outcomeCatButton;
     private javax.swing.JPanel parentPanel;
@@ -9366,15 +9409,15 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         // validation: check if dataset name include space
         String filename = file_stageTwo.getName();
-        if (filename.contains(" ")){
+        if (filename.contains(" ")) {
             validDataset_stageTwo = false;
             JOptionPane.showMessageDialog(null, "The filename of .csv file can not include space. Please try to use underscore instead.",
-                            "Dataset Naming Error", JOptionPane.INFORMATION_MESSAGE);
+                    "Dataset Naming Error", JOptionPane.INFORMATION_MESSAGE);
         } else {
             validDataset_stageTwo = true;
         }
-        
-        if (validDataset_stageTwo){
+
+        if (validDataset_stageTwo) {
             // validation1: check first row should be column names (every column name contains letters)
             for (int i = 0; i < columnnames.length; i++) {
                 String colname = (String) columnnames[i];
