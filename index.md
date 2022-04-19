@@ -6,6 +6,19 @@
 ### What is this project about? ###
 MixWILD (Also Mixed model analysis with Intensive Longitudinal Data) is a desktop GUI-based application for examining the effects of variance and slope of time-varying variables in intensive longitudinal data, especially the ones collected using ecological momentary assessments.
 
+<details>
+  <summary>
+    Research using MixWILD
+  </summary>  
+  
+  -   Home Disorganization Correlates of Children’s School Year Sleep Duration and Bedtime Consistency  
+  
+  -   Associations between Variability in Feeling States and Physical Activity Among Older Adults  
+  
+  -   Between-and Within-subject Variance of Cognitive Function and Daily Steps in Older Adults: An Ambulatory Assessment Study  
+  
+</details>
+
 ### Please submit your email prior to downloading the application so we can notify you of major software updates ###
 {% include formspree.html %}    
   
@@ -72,3 +85,4 @@ Download example data here: [Example Dataset MixWILD](/resources/dataset/Mixwild
 #### Logotype credits ####
 [Gentium Book Basic](https://fonts.google.com/specimen/Gentium+Book+Basic) by Victor Gaultney and 
 [Roboto](https://fonts.google.com/specimen/Roboto) by Christian Robertson
+
