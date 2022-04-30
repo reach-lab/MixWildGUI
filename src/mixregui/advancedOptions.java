@@ -35,6 +35,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import mixregui.SystemLogger;
+import static mixregui.stageOneRegs.levelOneList;
 
 /**
  * All the advanced functions to support the model
@@ -45,6 +46,7 @@ public class advancedOptions extends javax.swing.JFrame {
 
     MixLibrary defFile3;
     boolean osWindows = System.getProperty("os.name").toLowerCase().contains("windows");
+    static boolean disaggregateEnabled = false;
 
     /**
      * Creates new form advancedOptions
@@ -136,6 +138,8 @@ public class advancedOptions extends javax.swing.JFrame {
         advancedOptionsCancel = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         run32BitCheckBox = new javax.swing.JCheckBox();
+        jPanel4 = new javax.swing.JPanel();
+        enableDisaggregateCheckBox = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Options ...");
@@ -279,7 +283,7 @@ public class advancedOptions extends javax.swing.JFrame {
                 advancedOptionsSubmitActionPerformed(evt);
             }
         });
-        getContentPane().add(advancedOptionsSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 310, 90, -1));
+        getContentPane().add(advancedOptionsSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 360, 90, -1));
 
         advancedOptions_resetButton.setText("Reset");
         advancedOptions_resetButton.addActionListener(new java.awt.event.ActionListener() {
@@ -287,7 +291,7 @@ public class advancedOptions extends javax.swing.JFrame {
                 advancedOptions_resetButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(advancedOptions_resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 310, 90, -1));
+        getContentPane().add(advancedOptions_resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 360, 90, -1));
 
         advancedOptionsCancel.setText("Cancel");
         advancedOptionsCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -295,7 +299,7 @@ public class advancedOptions extends javax.swing.JFrame {
                 advancedOptionsCancelActionPerformed(evt);
             }
         });
-        getContentPane().add(advancedOptionsCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 310, 90, -1));
+        getContentPane().add(advancedOptionsCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 360, 90, -1));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -308,7 +312,20 @@ public class advancedOptions extends javax.swing.JFrame {
         });
         jPanel3.add(run32BitCheckBox);
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 570, 40));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 570, 40));
+
+        jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        enableDisaggregateCheckBox.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        enableDisaggregateCheckBox.setText("Enable disaggregate");
+        enableDisaggregateCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                enableDisaggregateCheckBoxActionPerformed(evt);
+            }
+        });
+        jPanel4.add(enableDisaggregateCheckBox);
+
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 570, 40));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -393,6 +410,10 @@ public class advancedOptions extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_convergenceCriteriaActionPerformed
 
+    private void enableDisaggregateCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enableDisaggregateCheckBoxActionPerformed
+        update_enableDisaggregate();
+    }//GEN-LAST:event_enableDisaggregateCheckBoxActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -438,6 +459,7 @@ public class advancedOptions extends javax.swing.JFrame {
     private javax.swing.JCheckBox centerRegressorsCheckBox;
     private javax.swing.JTextField convergenceCriteria;
     private javax.swing.JCheckBox discardSubjectsCheckBox;
+    private javax.swing.JCheckBox enableDisaggregateCheckBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -453,6 +475,7 @@ public class advancedOptions extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -845,6 +868,16 @@ public class advancedOptions extends javax.swing.JFrame {
             mixregGUI.defFile.win32 = Boolean.TRUE;
         } else {
             mixregGUI.defFile.win32 = Boolean.FALSE;
+        }
+    }
+
+    public void update_enableDisaggregate() {
+        if (enableDisaggregateCheckBox.isSelected()) {
+            disaggregateEnabled = true;
+            mixregGUI.mxr.updateStageOneLevelOneGrid(levelOneList);
+        } else {
+            disaggregateEnabled = false;
+            mixregGUI.mxr.updateStageOneLevelOneGrid(levelOneList);
         }
     }
 }

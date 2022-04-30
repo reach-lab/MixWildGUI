@@ -81,6 +81,7 @@ import javax.swing.JTabbedPane;
 import org.apache.commons.io.FileUtils;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import static mixregui.advancedOptions.disaggregateEnabled;
 
 /**
  * Main class for the program that is used to manipulate regressors
@@ -3393,17 +3394,16 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         openWebpage("https://github.com/reach-lab/MixWildGUI/discussions");
     }//GEN-LAST:event_online_support_buttonActionPerformed
 
-    public void openTextFileInEditor(File file) throws IOException{
+    public void openTextFileInEditor(File file) throws IOException {
         if (System.getProperty("os.name").toLowerCase().contains("windows")) {
             String cmd = "rundll32 url.dll,FileProtocolHandler " + file.getCanonicalPath();
             Runtime.getRuntime().exec(cmd);
-        } 
-        else {
-          Desktop.getDesktop().edit(file);
+        } else {
+            Desktop.getDesktop().edit(file);
         }
     }
-    
-    
+
+
     private void openStage1OutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openStage1OutButtonActionPerformed
         String fileName = mixregGUI.defFile.getSharedDataFilename();
         String outputFilePath = FilenameUtils.removeExtension(fileName) + "_Output_stage1.out";
@@ -3428,12 +3428,12 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
         int helpTabIdx = stageOneTabs.indexOfTab("Help");
-        stageOneTabs.setSelectedIndex(helpTabIdx);    
+        stageOneTabs.setSelectedIndex(helpTabIdx);
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
         int helpTabIdx = stageOneTabs.indexOfTab("Help");
-        stageOneTabs.setSelectedIndex(helpTabIdx);    
+        stageOneTabs.setSelectedIndex(helpTabIdx);
     }//GEN-LAST:event_jLabel9MouseClicked
 
     // **********************update********************
@@ -3779,6 +3779,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         advancedOptions_view.update_trigger_AdvancedOptionsSubmit();
         advancedOptions_view.update_trigger_resampleCheckBox();
         advancedOptions_view.update_trigger_run32BitCheckBox();
+        advancedOptions_view.update_enableDisaggregate();
         NoAssociationRadio.setSelected(mxrStates.NoAssociationRadio);
         LinearAssociationRadio.setSelected(mxrStates.LinearAssociationRadio);
         QuadraticAssociationRadio.setSelected(mxrStates.QuadraticAssociationRadio);
@@ -4300,14 +4301,18 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
                         AbstractButton abstractButton = (AbstractButton) e.getSource();
                         boolean selected = abstractButton.getModel().isSelected();
-                        if (selected) {
-                            System.out.println("Checkbox selected");
-                            disaggVarianceBoxes.get(row).get(column).setEnabled(true);
-                            disaggVarianceBoxes.get(row).get(column).setSelected(false);
-                            System.out.println(disaggVarianceBoxes.size());
-                        } else {
-                            disaggVarianceBoxes.get(row).get(column).setEnabled(false);
-                            disaggVarianceBoxes.get(row).get(column).setSelected(false);
+                        try {
+                            if (selected) {
+                                System.out.println("Checkbox selected");
+                                disaggVarianceBoxes.get(row).get(column).setEnabled(true);
+                                disaggVarianceBoxes.get(row).get(column).setSelected(false);
+//                            System.out.println(disaggVarianceBoxes.size());
+                            } else {
+                                disaggVarianceBoxes.get(row).get(column).setEnabled(false);
+                                disaggVarianceBoxes.get(row).get(column).setSelected(false);
+                            }
+                        } catch (java.lang.IndexOutOfBoundsException indexE) {
+
                         }
 
                     }
@@ -4315,22 +4320,24 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             }
 
-            constraints.gridy++;
-            constraints.gridx = 0;
-            constraints.anchor = GridBagConstraints.LINE_END;
+            if (disaggregateEnabled == true) {
+                constraints.gridy++;
+                constraints.gridx = 0;
+                constraints.anchor = GridBagConstraints.LINE_END;
 
-            levelOneGrid.add(new JLabel("Disaggregate?"), constraints);
-            disaggVarianceBoxes.add(j, new ArrayList<JCheckBox>());
+                levelOneGrid.add(new JLabel("Disaggregate?"), constraints);
+                disaggVarianceBoxes.add(j, new ArrayList<JCheckBox>());
 
-            for (int k = 0; k < 3; k++) {
-                constraints.gridx++;
-                constraints.anchor = GridBagConstraints.CENTER;
+                for (int k = 0; k < 3; k++) {
+                    constraints.gridx++;
+                    constraints.anchor = GridBagConstraints.CENTER;
 
-                disaggVarianceBoxes.get(j).add(k, new JCheckBox());
+                    disaggVarianceBoxes.get(j).add(k, new JCheckBox());
 
-                levelOneGrid.add(disaggVarianceBoxes.get(j).get(k), constraints);
-                disaggVarianceBoxes.get(j).get(k).setEnabled(false);
+                    levelOneGrid.add(disaggVarianceBoxes.get(j).get(k), constraints);
+                    disaggVarianceBoxes.get(j).get(k).setEnabled(false);
 
+                }
             }
 
             constraints.gridy++;
@@ -4421,7 +4428,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             separatorConstraint.gridy = separatorConstraint.gridy + 2;
             // System.out.println("before seperator");
-            levelTwoGrid.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
+//            levelTwoGrid.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
             // System.out.println("after seperator");
             constraints.gridy++;
 
@@ -4643,13 +4650,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     public int countLevelOneDicompMean() {
         int levelOneDisagg = 0;
+        if (disaggregateEnabled == true) {
+            for (int p = 0; p < levelOneRegSize; p++) {
 
-        for (int p = 0; p < levelOneRegSize; p++) {
+                if (disaggVarianceBoxes.get(p).get(0).isSelected()) {
+                    levelOneDisagg = levelOneDisagg + 1;
+                }
 
-            if (disaggVarianceBoxes.get(p).get(0).isSelected()) {
-                levelOneDisagg = levelOneDisagg + 1;
             }
-
         }
 
         return levelOneDisagg;
@@ -4657,13 +4665,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     public int countLevelOneDicompBS() {
         int levelOneDisagg = 0;
+        if (disaggregateEnabled == true) {
+            for (int p = 0; p < levelOneRegSize; p++) {
 
-        for (int p = 0; p < levelOneRegSize; p++) {
+                if (disaggVarianceBoxes.get(p).get(1).isSelected()) {
+                    levelOneDisagg = levelOneDisagg + 1;
+                }
 
-            if (disaggVarianceBoxes.get(p).get(1).isSelected()) {
-                levelOneDisagg = levelOneDisagg + 1;
             }
-
         }
 
         return levelOneDisagg;
@@ -4671,13 +4680,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     public int countLevelOneDicompWS() {
         int levelOneDisagg = 0;
+        if (disaggregateEnabled == true) {
+            for (int p = 0; p < levelOneRegSize; p++) {
 
-        for (int p = 0; p < levelOneRegSize; p++) {
+                if (disaggVarianceBoxes.get(p).get(2).isSelected()) {
+                    levelOneDisagg = levelOneDisagg + 1;
+                }
 
-            if (disaggVarianceBoxes.get(p).get(2).isSelected()) {
-                levelOneDisagg = levelOneDisagg + 1;
             }
-
         }
 
         return levelOneDisagg;
@@ -4874,12 +4884,15 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         String[] regressorLabels = new String[levelOneRegSize];
         int index = 0;
-
+        boolean disaggVarianceBoxesSelected;
         ArrayList<String> position = new ArrayList<>();
 
         for (int p = 0; p < levelOneRegSize; p++) {
-
-            if (levelOneBoxes.get(p).get(0).isSelected() && !disaggVarianceBoxes.get(p).get(0).isSelected()) {
+            disaggVarianceBoxesSelected = false;
+            if (disaggregateEnabled == true) {
+                disaggVarianceBoxesSelected = disaggVarianceBoxes.get(p).get(0).isSelected();
+            }
+            if (levelOneBoxes.get(p).get(0).isSelected() && !disaggVarianceBoxesSelected) {
                 regressorLabels[index] = levelOneSelected.get(p);
                 fieldLabel = levelOneSelected.get(p);
                 System.out.println("From inside mixRegGUI | Level One Regressor Fields (Mean): " + regressorLabels[index]);
@@ -5012,10 +5025,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         int index = 0;
 
         ArrayList<String> position = new ArrayList<>();
+        boolean disaggVarianceBoxesSelected;
 
         for (int p = 0; p < levelOneRegSize; p++) {
-
-            if (levelOneBoxes.get(p).get(0).isSelected() && disaggVarianceBoxes.get(p).get(0).isSelected()) {
+            disaggVarianceBoxesSelected = false;
+            if (disaggregateEnabled == true) {
+                disaggVarianceBoxesSelected = disaggVarianceBoxes.get(p).get(0).isSelected();
+            }
+            if (levelOneBoxes.get(p).get(0).isSelected() && disaggVarianceBoxesSelected) {
                 regressorLabels[index] = levelOneSelected.get(p);
                 fieldLabel = levelOneSelected.get(p);
                 System.out.println("From inside mixRegGUI | Level One Regressor Fields (Mean + Disagg.): " + regressorLabels[index]);
@@ -5200,10 +5217,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         String[] regressorLabels = new String[levelOneRegSize];
         int index = 0;
         ArrayList<String> position = new ArrayList<>();
+        boolean disaggVarianceBoxesSelected;
 
         for (int p = 0; p < levelOneRegSize; p++) {
-
-            if (levelOneBoxes.get(p).get(1).isSelected() && disaggVarianceBoxes.get(p).get(1).isSelected()) {
+            disaggVarianceBoxesSelected = false;
+            if (disaggregateEnabled == true) {
+                disaggVarianceBoxesSelected = disaggVarianceBoxes.get(p).get(1).isSelected();
+            }
+            if (levelOneBoxes.get(p).get(1).isSelected() && disaggVarianceBoxesSelected) {
                 regressorLabels[index] = levelOneSelected.get(p);
                 fieldLabel = levelOneSelected.get(p);
                 System.out.println("From inside mixRegGUI | Level One Regressor Fields (BS): " + regressorLabels[index]);
@@ -5378,11 +5399,15 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         String fieldLabel;
 
         int index = 0;
+        boolean disaggVarianceBoxesSelected;
         ArrayList<String> position = new ArrayList<>();
 
         for (int p = 0; p < levelOneRegSize; p++) {
-
-            if (levelOneBoxes.get(p).get(2).isSelected() && disaggVarianceBoxes.get(p).get(2).isSelected()) {
+            disaggVarianceBoxesSelected = false;
+            if (disaggregateEnabled == true) {
+                disaggVarianceBoxesSelected = disaggVarianceBoxes.get(p).get(2).isSelected();
+            }
+            if (levelOneBoxes.get(p).get(2).isSelected() && disaggVarianceBoxesSelected) {
                 regressorLabels[index] = levelOneSelected.get(p);
                 fieldLabel = levelOneSelected.get(p);
                 System.out.println("From inside mixRegGUI | Level One Regressor Fields (WS): " + regressorLabels[index]);
@@ -5431,10 +5456,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         ArrayList<String> regressorLabels = new ArrayList<String>();
 
         int index = 0;
+        boolean disaggVarianceBoxesSelected;
 
         for (int p = 0; p < levelOneRegSize; p++) {
-
-            if (levelOneBoxes.get(p).get(0).isSelected() && !disaggVarianceBoxes.get(p).get(0).isSelected()) {
+            disaggVarianceBoxesSelected = false;
+            if (disaggregateEnabled == true) {
+                disaggVarianceBoxesSelected = disaggVarianceBoxes.get(p).get(0).isSelected();
+            }
+            if (levelOneBoxes.get(p).get(0).isSelected() && !disaggVarianceBoxesSelected) {
 
                 regressorLabels.add(levelOneSelected.get(p));
                 fieldLabel = levelOneSelected.get(p);
@@ -5521,10 +5550,13 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         ArrayList<String> regressorLabels = new ArrayList<String>();
         int index = 0;
-
+        boolean disaggVarianceBoxesSelected;
         for (int p = 0; p < levelOneRegSize; p++) {
-
-            if (levelOneBoxes.get(p).get(1).isSelected() && !disaggVarianceBoxes.get(p).get(1).isSelected()) {
+            disaggVarianceBoxesSelected = false;
+            if (disaggregateEnabled == true) {
+                disaggVarianceBoxesSelected = disaggVarianceBoxes.get(p).get(1).isSelected();
+            }
+            if (levelOneBoxes.get(p).get(1).isSelected() && !disaggVarianceBoxesSelected) {
                 regressorLabels.add(levelOneSelected.get(p));
                 fieldLabel = levelOneSelected.get(p);
                 System.out.println("From inside mixRegGUI | LEVEL ONE Regressor Fields (BS): " + regressorLabels.get(index));
@@ -5607,10 +5639,13 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         ArrayList<String> regressorLabels = new ArrayList<String>();
         int index = 0;
-
+        boolean disaggVarianceBoxesSelected;
         for (int p = 0; p < levelOneRegSize; p++) {
-
-            if (levelOneBoxes.get(p).get(2).isSelected() && !disaggVarianceBoxes.get(p).get(2).isSelected()) {
+            disaggVarianceBoxesSelected = false;
+            if (disaggregateEnabled == true) {
+                disaggVarianceBoxesSelected = disaggVarianceBoxes.get(p).get(2).isSelected();
+            }
+            if (levelOneBoxes.get(p).get(2).isSelected() && !disaggVarianceBoxesSelected) {
                 regressorLabels.add(levelOneSelected.get(p));
                 System.out.println("From inside mixRegGUI | LEVEL ONE Regressor Fields (WS): " + regressorLabels.get(index));
                 index++;
@@ -5694,10 +5729,15 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         ArrayList<String> regressorLabels = new ArrayList<String>();
 
         int index = 0;
+        boolean disaggVarianceBoxesSelected;
 
         for (int p = 0; p < levelOneRegSize; p++) {
+            disaggVarianceBoxesSelected = false;
+            if (disaggregateEnabled == true) {
+                disaggVarianceBoxesSelected = disaggVarianceBoxes.get(p).get(0).isSelected();
+            }
 
-            if (levelOneBoxes.get(p).get(0).isSelected() && disaggVarianceBoxes.get(p).get(0).isSelected()) {
+            if (levelOneBoxes.get(p).get(0).isSelected() && disaggVarianceBoxesSelected) {
 
                 regressorLabels.add(levelOneSelected.get(p));
                 System.out.println("From inside mixRegGUI | LEVEL ONE Regressor Fields (Mean + Disagg): " + regressorLabels.get(index));
@@ -5725,10 +5765,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         ArrayList<String> regressorLabels = new ArrayList<String>();
 
         int index = 0;
+        boolean disaggVarianceBoxesSelected;
 
         for (int p = 0; p < levelOneRegSize; p++) {
-
-            if (levelOneBoxes.get(p).get(1).isSelected() && disaggVarianceBoxes.get(p).get(1).isSelected()) {
+            disaggVarianceBoxesSelected = false;
+            if (disaggregateEnabled == true) {
+                disaggVarianceBoxesSelected = disaggVarianceBoxes.get(p).get(1).isSelected();
+            }
+            if (levelOneBoxes.get(p).get(1).isSelected() && disaggVarianceBoxesSelected) {
 
                 regressorLabels.add(levelOneSelected.get(p));
                 System.out.println("From inside mixRegGUI | LEVEL ONE Regressor Fields (Mean + Disagg.): " + regressorLabels.get(index));
@@ -5756,10 +5800,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         ArrayList<String> regressorLabels = new ArrayList<String>();
 
         int index = 0;
+        boolean disaggVarianceBoxesSelected;
 
         for (int p = 0; p < levelOneRegSize; p++) {
-
-            if (levelOneBoxes.get(p).get(2).isSelected() && disaggVarianceBoxes.get(p).get(2).isSelected()) {
+            disaggVarianceBoxesSelected = false;
+            if (disaggregateEnabled == true) {
+                disaggVarianceBoxesSelected = disaggVarianceBoxes.get(p).get(2).isSelected();
+            }
+            if (levelOneBoxes.get(p).get(2).isSelected() && disaggVarianceBoxesSelected) {
 
                 regressorLabels.add(levelOneSelected.get(p));
                 System.out.println("Stage-Two/mixRegGUI/Regressor-Fields-(Mean + Disagg.): " + regressorLabels.get(index));
