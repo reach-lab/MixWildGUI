@@ -647,9 +647,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         RLE_selected = getRLE();
 
 //        stageOneTabs.setEnabledAt(2, false);
-        suppressIntCheckBox.setVisible(true);
-        suppressIntCheckBox.setSelected(false);
-        suppressIntCheckBox.setEnabled(true);
+        enbaleInteractionCheckBox.setVisible(true);
+        enbaleInteractionCheckBox.setSelected(false);
+        enbaleInteractionCheckBox.setEnabled(true);
 
         //Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/resources/mixLogo.png"));
         //setIconImage(image);
@@ -1020,7 +1020,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageTwoLevelTwoPanel = new javax.swing.JPanel();
         stageTwoRegsGridLvl2 = new javax.swing.JPanel();
         runTabTwoStageOneTwo = new javax.swing.JButton();
-        suppressIntCheckBox = new javax.swing.JCheckBox();
+        enbaleInteractionCheckBox = new javax.swing.JCheckBox();
         StageTwoOutcomeCombo = new javax.swing.JComboBox<>();
         jLabel22 = new javax.swing.JLabel();
         clearStageTwoButton = new javax.swing.JButton();
@@ -2000,15 +2000,15 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         });
         jPanel12.add(runTabTwoStageOneTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 530, 160, 35));
 
-        suppressIntCheckBox.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        suppressIntCheckBox.setText("Suppress 2-way Location X Scale Interaction");
-        suppressIntCheckBox.setToolTipText("<html><pre>The interaction(s) of location by scale are automatically specified in the default Stage 2 model, \nbut this option can be disabled by checking this box, which limits the model to show the main effects of random effects only <pre>");
-        suppressIntCheckBox.addActionListener(new java.awt.event.ActionListener() {
+        enbaleInteractionCheckBox.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        enbaleInteractionCheckBox.setText("Enable 2-way Location X Scale Interaction");
+        enbaleInteractionCheckBox.setToolTipText("<html><pre>The interaction(s) of location by scale are automatically specified in the default Stage 2 model, \nbut this option can be disabled by checking this box, which limits the model to show the main effects of random effects only <pre>");
+        enbaleInteractionCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                suppressIntCheckBoxActionPerformed(evt);
+                enbaleInteractionCheckBoxActionPerformed(evt);
             }
         });
-        jPanel12.add(suppressIntCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 480, -1, -1));
+        jPanel12.add(enbaleInteractionCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 480, -1, -1));
 
         StageTwoOutcomeCombo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         StageTwoOutcomeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -2751,8 +2751,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         SystemLogger.LOGGER.log(Level.INFO, "Clear Stage Two");
         clearStageTwoLevelOneGrid();
         clearStageTwoLevelTwoGrid();
-        suppressIntCheckBox.setEnabled(true);
-        suppressIntCheckBox.setSelected(false);
+        enbaleInteractionCheckBox.setEnabled(true);
+        enbaleInteractionCheckBox.setSelected(false);
 
     }//GEN-LAST:event_clearStageTwoButtonActionPerformed
 
@@ -2763,10 +2763,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         isStageTwoOutcomeChanged = true;
     }//GEN-LAST:event_StageTwoOutcomeComboItemStateChanged
 
-    private void suppressIntCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suppressIntCheckBoxActionPerformed
+    private void enbaleInteractionCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enbaleInteractionCheckBoxActionPerformed
         SystemLogger.LOGGER.log(Level.FINE, "suppressIntCheckBoxActionPerformed");
-        update_trigger_suppressIntCheckBox();
-    }//GEN-LAST:event_suppressIntCheckBoxActionPerformed
+        update_trigger_enableInteractionCheckBox();
+    }//GEN-LAST:event_enbaleInteractionCheckBoxActionPerformed
 
     private void runTabTwoStageOneTwoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_runTabTwoStageOneTwoActionPerformed
         SystemLogger.LOGGER.log(Level.FINE, "runTabTwoStageOneTwoActionPerformed");
@@ -3870,6 +3870,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     public static javax.swing.JTable dataTable_stageTwo;
     private javax.swing.JLabel datasetHelpButton;
     private javax.swing.JLabel datasetMissingValuesHelpButton;
+    private javax.swing.JCheckBox enbaleInteractionCheckBox;
     private javax.swing.JTextArea equationArea;
     private javax.swing.JButton exampleDataDownload;
     private javax.swing.JButton fileBrowseButton;
@@ -4056,7 +4057,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JPanel stageTwoRegsGridLvl2;
     private javax.swing.JRadioButton stageTwoSingleLevel;
     private javax.swing.JButton startStageTwo;
-    private javax.swing.JCheckBox suppressIntCheckBox;
     private javax.swing.JTextField titleField;
     private javax.swing.JLabel titleViewLabel;
     private javax.swing.JButton updateStage2ConfigButton;
@@ -4237,7 +4237,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }
 
     public boolean getSuppressIntCheckBox() {
-        return suppressIntCheckBox.isSelected();
+        return enbaleInteractionCheckBox.isSelected();
     }
 
     //Update level 1 table with regressors
@@ -4615,7 +4615,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     randomChecked = false;
                     scaleChecked = false;
 
-                    suppressIntCheckBox.setEnabled(true);
+                    enbaleInteractionCheckBox.setEnabled(true);
 
                 }
             });
@@ -8453,8 +8453,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             stage_2_regs.setEnabledStageTwoSubmitButton(true);
             update_StageTwoLevelOneBoxes(stageTwoRegs.stageTwoLevelOne, mxrStates.stageTwoLevelOneGridBoxesSelection);
             update_StageTwoLevelTwoBoxes(stageTwoRegs.stageTwoLevelTwo, mxrStates.stageTwoLevelTwoGridBoxesSelection);
-            suppressIntCheckBox.setSelected(mxrStates.suppressIntCheckBox);
-            update_trigger_suppressIntCheckBox();
+            enbaleInteractionCheckBox.setSelected(mxrStates.suppressIntCheckBox);
+            update_trigger_enableInteractionCheckBox();
         }
 
         // suppress scale X random Interaction
@@ -8568,8 +8568,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                         stageTwoLevelTwoGridBoxes.get(row).get(3).setEnabled(false);
                         randomChecked = false;
                         scaleChecked = false;
-                        suppressIntCheckBox.setEnabled(false);
-                        suppressIntCheckBox.setSelected(false);
+                        enbaleInteractionCheckBox.setEnabled(false);
+                        enbaleInteractionCheckBox.setSelected(false);
 
                     }
 
@@ -8636,7 +8636,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     randomChecked = false;
                     scaleChecked = false;
 
-                    suppressIntCheckBox.setEnabled(true);
+                    enbaleInteractionCheckBox.setEnabled(true);
 
                 }
             });
@@ -8754,8 +8754,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                         stageTwoLevelOneGridBoxes.get(row).get(3).setEnabled(false);
                         randomChecked = false;
                         scaleChecked = false;
-                        suppressIntCheckBox.setEnabled(false);
-                        suppressIntCheckBox.setSelected(false);
+                        enbaleInteractionCheckBox.setEnabled(false);
+                        enbaleInteractionCheckBox.setSelected(false);
 
                     }
 
@@ -8822,7 +8822,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     randomChecked = false;
                     scaleChecked = false;
 
-                    suppressIntCheckBox.setEnabled(true);
+                    enbaleInteractionCheckBox.setEnabled(true);
 
                 }
             });
@@ -8838,8 +8838,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     }
 
-    private void update_trigger_suppressIntCheckBox() {
-        if (suppressIntCheckBox.isSelected()) {
+    private void update_trigger_enableInteractionCheckBox() {
+        if (!enbaleInteractionCheckBox.isSelected()) {
 
             suppressed = true;
 
@@ -9095,7 +9095,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     randomChecked = false;
                     scaleChecked = false;
 
-                    suppressIntCheckBox.setEnabled(true);
+                    enbaleInteractionCheckBox.setEnabled(true);
 
                 }
             });
