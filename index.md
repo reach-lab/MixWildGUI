@@ -20,7 +20,7 @@ MixWILD (Also Mixed model analysis with Intensive Longitudinal Data) is a deskto
 </details>  
   
   
-<div style="height:120px;width:120px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
+<div style="height:120px;width:480px;border:none;font:16px/24px sans-serif;overflow:auto;padding:10px;">
     <ul>
       <li>Home Disorganization Correlates of Children’s School Year Sleep Duration and Bedtime Consistency</li>
       <li>Associations between Variability in Feeling States and Physical Activity Among Older Adults</li>
