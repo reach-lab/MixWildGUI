@@ -17,7 +17,16 @@ MixWILD (Also Mixed model analysis with Intensive Longitudinal Data) is a deskto
       <li>Associations between Variability in Feeling States and Physical Activity Among Older Adults</li>
       <li>Between-and Within-subject Variance of Cognitive Function and Daily Steps in Older Adults: An Ambulatory Assessment Study</li>
     </ul>
-</details>
+</details>  
+  
+  
+<div style="height:120px;width:120px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
+    <ul>
+      <li>Home Disorganization Correlates of Children’s School Year Sleep Duration and Bedtime Consistency</li>
+      <li>Associations between Variability in Feeling States and Physical Activity Among Older Adults</li>
+      <li>Between-and Within-subject Variance of Cognitive Function and Daily Steps in Older Adults: An Ambulatory Assessment Study</li>
+    </ul>
+</div>
   
 ---  
   
