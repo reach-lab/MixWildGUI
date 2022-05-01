@@ -10,7 +10,7 @@ MixWILD (Also Mixed model analysis with Intensive Longitudinal Data) is a deskto
   
 <details open>
   <summary>
-      <h3 style="font-size:1.5em">Research using MixWILD</h3>
+      <h3 style="font-size:1em">Research using MixWILD</h3>
   </summary>  
     <ul>
       <li>Home Disorganization Correlates of Children’s School Year Sleep Duration and Bedtime Consistency</li>
