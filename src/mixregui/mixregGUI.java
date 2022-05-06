@@ -800,7 +800,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
      */
     public mixregGUI() {
         initComponents();
-        this.setTitle("MixWILD-2.0.1");
+        this.setTitle("MixWILD-2.0.3");
         // adjust the frame size to fit screen resolution
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         setBounds(0, 0, stageOneTabs.getWidth(), (int) Math.round(screenSize.height / 1.5));
@@ -4236,7 +4236,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         return QuadraticAssociationRadio.isSelected();
     }
 
-    public boolean getSuppressIntCheckBox() {
+    public boolean getEnableInteractionCheckBox() {
         return enbaleInteractionCheckBox.isSelected();
     }
 
@@ -5088,11 +5088,15 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         String[] regressorLabels = new String[levelOneRegSize];
         int index = 0;
+        boolean disaggVarianceBoxesSelected;
         ArrayList<String> position = new ArrayList<>();
 
         for (int p = 0; p < levelOneRegSize; p++) {
-
-            if (levelOneBoxes.get(p).get(1).isSelected() && !disaggVarianceBoxes.get(p).get(1).isSelected()) {
+            disaggVarianceBoxesSelected = false;
+            if (disaggregateEnabled == true) {
+                disaggVarianceBoxesSelected = disaggVarianceBoxes.get(p).get(1).isSelected();
+            }
+            if (levelOneBoxes.get(p).get(1).isSelected() && !disaggVarianceBoxesSelected) {
                 regressorLabels[index] = levelOneSelected.get(p);
                 fieldLabel = levelOneSelected.get(p);
                 System.out.println("From inside mixRegGUI | Level One Regressor Fields (BS + Disagg.): " + regressorLabels[index]);
@@ -5271,10 +5275,15 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         int index = 0;
         ArrayList<String> position = new ArrayList<>();
+        boolean disaggVarianceBoxesSelected;
 
         for (int p = 0; p < levelOneRegSize; p++) {
+            disaggVarianceBoxesSelected = false;
+            if (disaggregateEnabled == true) {
+                disaggVarianceBoxesSelected = disaggVarianceBoxes.get(p).get(2).isSelected();
+            }
 
-            if (levelOneBoxes.get(p).get(2).isSelected() && !disaggVarianceBoxes.get(p).get(2).isSelected()) {
+            if (levelOneBoxes.get(p).get(2).isSelected() && !disaggVarianceBoxesSelected) {
                 regressorLabels[index] = levelOneSelected.get(p);
                 fieldLabel = levelOneSelected.get(p);
                 System.out.println("From inside mixRegGUI | Level one Regressor Fields (WS): " + regressorLabels[index]);
@@ -8241,7 +8250,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             JOptionPane.showMessageDialog(stageOneTabs, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
 
-        if (getSuppressIntCheckBox() == true) {
+        if (getEnableInteractionCheckBox() == false) {
 
             try {
                 defFile.setAdvancedStageTwoInteractionRegressorCount("-1");

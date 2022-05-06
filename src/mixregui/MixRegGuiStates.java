@@ -192,7 +192,7 @@ public class MixRegGuiStates {
         this.isStageTwoSubmitClicked = stageTwoRegs.isStageTwoSubmitClicked;
         this.stageTwoLevelOneGridBoxesSelection = getSelectionBoxes(mxr.stageTwoLevelOneGridBoxes);
         this.stageTwoLevelTwoGridBoxesSelection = getSelectionBoxes(mxr.stageTwoLevelTwoGridBoxes);
-        this.suppressIntCheckBox = mxr.getSuppressIntCheckBox();
+        this.suppressIntCheckBox = mxr.getEnableInteractionCheckBox();
         this.levelTwoSelected = mxr.levelTwoSelected;
         this.sessionFolderName = mxr.sessionFolderName;
         
