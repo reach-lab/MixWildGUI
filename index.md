@@ -9,7 +9,7 @@ MixWILD (Also Mixed model analysis with Intensive Longitudinal Data) is a deskto
 ---  
   
 ### Research using MixWILD ###
-<div style="height:120px;width:480px;border:none;font:12px/18px sans-serif;overflow:auto;">
+<div style="height:200px;width:480px;border:none;font:12px/18px sans-serif;overflow:auto;">
     <ul>
       <li>Brick, L., Nugent, N., & Armey, M. (2021). <a href="https://nam12.safelinks.protection.outlook.com/?url=https%3A%2F%2Fonlinelibrary.wiley.com%2Fdoi%2Fabs%2F10.1002%2Fjts.22739&data=05%7C01%7Cli.jix%40northeastern.edu%7C76eb9c0da50d437aff0508da2d37f008%7Ca8eec281aaa34daeac9b9a398b9215e7%7C0%7C0%7C637872015519761508%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=xmeb6i%2Bd%2FjB23lG1xLfIGGLeEu5bSVxIbTg7gBt0vuE%3D&reserved=0">Affective variability and childhood abuse increase the risk for nonsuicidal self‐injury following psychiatric hospitalization</a>. Journal of traumatic stress, 34(6), 1118-1131.</li>
       <li>Smith, D. L., Kovacevic, M., Montes, M., Pridgen, S., & Held, P. (2022). <a href="https://nam12.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.sciencedirect.com%2Fscience%2Farticle%2Fpii%2FS0887618522000330&data=05%7C01%7Cli.jix%40northeastern.edu%7C76eb9c0da50d437aff0508da2d37f008%7Ca8eec281aaa34daeac9b9a398b9215e7%7C0%7C0%7C637872015519917761%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=lo0WgNaZn62NSrXcEJSLfkiNU8GoVpjFK3W1kjy4o8g%3D&reserved=0">Improving mental, physical, and social functioning through participation in a 3-week cognitive processing therapy-based intensive PTSD treatment</a>. Journal of Anxiety Disorders, 88, 102560.</li>
