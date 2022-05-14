@@ -603,7 +603,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     boolean isStageOneOutcomeChanged = false;
     boolean isStageTwoOutcomeChanged = false;
 
-    boolean suppressed = false;
+    boolean suppressed = true;
     boolean stageTwoNotIncluded = false;
     boolean addStageOneCHecked = false;
     boolean addStageTwoChecked = false;
@@ -800,7 +800,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
      */
     public mixregGUI() {
         initComponents();
-        this.setTitle("MixWILD-2.0.3");
+        this.setTitle("MixWILD-2.0.4");
         // adjust the frame size to fit screen resolution
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         setBounds(0, 0, stageOneTabs.getWidth(), (int) Math.round(screenSize.height / 1.5));
