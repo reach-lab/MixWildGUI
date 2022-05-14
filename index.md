@@ -11,9 +11,10 @@ MixWILD (Also Mixed model analysis with Intensive Longitudinal Data) is a deskto
 ### Research using MixWILD ###
 <div style="height:120px;width:480px;border:none;font:12px/18px sans-serif;overflow:auto;">
     <ul>
-      <li>Home Disorganization Correlates of Children’s School Year Sleep Duration and Bedtime Consistency</li>
-      <li>Associations between Variability in Feeling States and Physical Activity Among Older Adults</li>
-      <li>Between-and Within-subject Variance of Cognitive Function and Daily Steps in Older Adults: An Ambulatory Assessment Study</li>
+      <li>Brick, L., Nugent, N., & Armey, M. (2021). [Affective variability and childhood abuse increase the risk for nonsuicidal self‐injury following psychiatric hospitalization](https://nam12.safelinks.protection.outlook.com/?url=https%3A%2F%2Fonlinelibrary.wiley.com%2Fdoi%2Fabs%2F10.1002%2Fjts.22739&data=05%7C01%7Cli.jix%40northeastern.edu%7C76eb9c0da50d437aff0508da2d37f008%7Ca8eec281aaa34daeac9b9a398b9215e7%7C0%7C0%7C637872015519761508%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=xmeb6i%2Bd%2FjB23lG1xLfIGGLeEu5bSVxIbTg7gBt0vuE%3D&reserved=0). Journal of traumatic stress, 34(6), 1118-1131.</li>
+      <li>Smith, D. L., Kovacevic, M., Montes, M., Pridgen, S., & Held, P. (2022). [Improving mental, physical, and social functioning through participation in a 3-week cognitive processing therapy-based intensive PTSD treatment](https://nam12.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.sciencedirect.com%2Fscience%2Farticle%2Fpii%2FS0887618522000330&data=05%7C01%7Cli.jix%40northeastern.edu%7C76eb9c0da50d437aff0508da2d37f008%7Ca8eec281aaa34daeac9b9a398b9215e7%7C0%7C0%7C637872015519917761%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=lo0WgNaZn62NSrXcEJSLfkiNU8GoVpjFK3W1kjy4o8g%3D&reserved=0). Journal of Anxiety Disorders, 88, 102560.</li>
+      <li>Gandelman, E. M., Miller, S. A., & Back, S. E. (2022). [Imaginal exposure processing during Concurrent Treatment of PTSD and Substance Use Disorders using Prolonged Exposure (COPE) therapy: Examination of linguistic markers of cohesiveness](https://onlinelibrary.wiley.com/doi/abs/10.1002/jts.22786). Journal of traumatic stress.</li>
+      <li>Sherwood, S. N. (2022). [Feasibility and Efficacy of Virtual Darkness in Reducing Intra-Individual Sleep Variability Among Young Adults with Insomnia](https://www.proquest.com/openview/f3352949d032c7661299d1738f22ba07/1?pq-origsite=gscholar&cbl=18750&diss=y) (Doctoral dissertation, University of Nevada, Las Vegas).</li>
     </ul>
 </div>
   
