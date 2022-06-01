@@ -803,7 +803,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
      */
     public mixregGUI() {
         initComponents();
-        this.setTitle("MixWILD-2.0.4");
+        this.setTitle("MixWILD-2.0.5");
         // adjust the frame size to fit screen resolution
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         setBounds(0, 0, stageOneTabs.getWidth(), (int) Math.round(screenSize.height / 1.5));
@@ -4353,13 +4353,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     disaggVarianceBoxes.get(j).get(k).setEnabled(false);
 
                 }
+                separatorConstraint.gridy = separatorConstraint.gridy + 1;
             }
 
             constraints.gridy++;
             //constraints.gridx = 0;
-            separatorConstraint.gridy = separatorConstraint.gridy + 3;
+            separatorConstraint.gridy = separatorConstraint.gridy + 2;
             //System.out.println("before seperator");
-//            levelOneGrid.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
+            levelOneGrid.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
             //System.out.println("after seperator");
             constraints.gridy++;
 
@@ -4443,7 +4444,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             separatorConstraint.gridy = separatorConstraint.gridy + 2;
             // System.out.println("before seperator");
-//            levelTwoGrid.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
+            levelTwoGrid.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
             // System.out.println("after seperator");
             constraints.gridy++;
 
@@ -8012,12 +8013,12 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 if (levelOneBoxes.get(j).get(k).isSelected() == true) {
                     disaggVarianceBoxes.get(j).get(k).setEnabled(true);
                 }
-
+                separatorConstraint.gridy = separatorConstraint.gridy + 1;
             }
 
             constraints.gridy++;
             //constraints.gridx = 0;
-            separatorConstraint.gridy = separatorConstraint.gridy + 3;
+            separatorConstraint.gridy = separatorConstraint.gridy + 2;
             //System.out.println("before seperator");
             levelOneGrid.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
             //System.out.println("after seperator");
