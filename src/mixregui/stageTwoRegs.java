@@ -229,8 +229,6 @@ public class stageTwoRegs extends javax.swing.JFrame {
         //mixregGUIStageTwo = newModel2.getMixReg();
         // mixregGUIStageTwo.updateStageTwoGrid_version2(stageTwoLevelTwo);
         //mixregGUIStageTwo.setSele
-        System.out.println("coolman1: " + stageTwoLevelOne);
-        System.out.println("coolman2: " + stageTwoLevelTwo);
 
         mixregGUI.mxr.updateStageTwoLevelTwoGrid(stageTwoLevelTwo);
         mixregGUI.mxr.updateStageTwoLevelOneGrid(stageTwoLevelOne);

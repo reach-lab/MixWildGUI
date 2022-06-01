@@ -317,7 +317,7 @@ public class advancedOptions extends javax.swing.JFrame {
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         enableDisaggregateCheckBox.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
-        enableDisaggregateCheckBox.setText("Enable disaggregate");
+        enableDisaggregateCheckBox.setText("Enable disaggregation (decomposition) of level-1 regressors\n");
         enableDisaggregateCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 enableDisaggregateCheckBoxActionPerformed(evt);

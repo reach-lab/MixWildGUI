@@ -457,7 +457,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="sansserif" size="12" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Enable disaggregate"/>
+            <Property name="text" type="java.lang.String" value="Enable disaggregation (decomposition) of level-1 regressors&#xa;"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="enableDisaggregateCheckBoxActionPerformed"/>
