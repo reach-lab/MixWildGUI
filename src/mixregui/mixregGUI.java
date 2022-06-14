@@ -803,7 +803,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
      */
     public mixregGUI() {
         initComponents();
-        this.setTitle("MixWILD-2.0.5");
+        this.setTitle("MixWILD-2.0.6");
         // adjust the frame size to fit screen resolution
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         setBounds(0, 0, stageOneTabs.getWidth(), (int) Math.round(screenSize.height / 1.5));
@@ -4544,10 +4544,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     stageTwoLevelTwoGridBoxes.get(j).get(k).setVisible(false);
                     constraints.gridx++;
 
-                    JLabel placeHolder1 = new JLabel(" ");
-                    placeHolder1.setPreferredSize(new Dimension(60, 20));
-                    stageTwoRegsGridLvl2.add(placeHolder1, constraints);
-
+                    if (isRandomScale) {
+                        JLabel placeHolder1 = new JLabel(" ");
+                        placeHolder1.setPreferredSize(new Dimension(60, 20));
+                        stageTwoRegsGridLvl2.add(placeHolder1, constraints);
+                    }
                 }
 
                 if (k == 3) {
@@ -4571,6 +4572,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             stageTwoLevelTwoGridBoxes.get(row).get(1).setEnabled(true);
             stageTwoLevelTwoGridBoxes.get(row).get(2).setEnabled(true);
+
+            if (!isRandomScale) {
+                stageTwoLevelTwoGridBoxes.get(row).get(2).setVisible(false);
+            }
 
 //            stageTwoLevelTwoGridBoxes.get(j).get(0).addActionListener(new ActionListener() {
 //                public void actionPerformed(ActionEvent e) {
@@ -6948,6 +6953,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 //Check if the randome scale is checked or not
                 if (randomScaleSelectionYes.isSelected()) {
                     isRandomScale = true;
+
                 } else if (randomScaleSelectionNo.isSelected()) {
                     isRandomScale = false;
                 } else {
@@ -7256,6 +7262,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     stageTwoRegsGridLvl1.setEnabled(true);
                 }
 
+                updateGuiView_trigger_randomScaleSelection();
             }
         } else {
 
@@ -8613,10 +8620,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     stageTwoLevelTwoGridBoxes.get(j).get(k).setVisible(false);
                     constraints.gridx++;
 
-                    JLabel placeHolder1 = new JLabel(" ");
-                    placeHolder1.setPreferredSize(new Dimension(60, 20));
-                    stageTwoRegsGridLvl2.add(placeHolder1, constraints);
-
+                    if (isRandomScale) {
+                        JLabel placeHolder1 = new JLabel(" ");
+                        placeHolder1.setPreferredSize(new Dimension(60, 20));
+                        stageTwoRegsGridLvl2.add(placeHolder1, constraints);
+                    }
                 }
 
                 if (k == 3) {
@@ -8638,6 +8646,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             stageTwoRegsGridLvl2.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
             //System.out.println("after seperator");
             constraints.gridy++;
+
+            if (!isRandomScale) {
+                stageTwoLevelTwoGridBoxes.get(row).get(2).setVisible(false);
+            }
 
 //            stageTwoLevelTwoGridBoxes.get(row).get(1).setEnabled(true);
 //            stageTwoLevelTwoGridBoxes.get(row).get(2).setEnabled(true);
@@ -8841,10 +8853,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     stageTwoLevelOneGridBoxes.get(j).get(k).setVisible(false);
                     constraints.gridx++;
 
-                    JLabel placeHolder1 = new JLabel(" ");
-                    placeHolder1.setPreferredSize(new Dimension(60, 20));
-                    stageTwoRegsGridLvl1.add(placeHolder1, constraints);
-
+                    if (isRandomScale) {
+                        JLabel placeHolder1 = new JLabel(" ");
+                        placeHolder1.setPreferredSize(new Dimension(60, 20));
+                        stageTwoRegsGridLvl1.add(placeHolder1, constraints);
+                    }
                 }
 
                 if (k == 3) {
@@ -8865,6 +8878,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             stageTwoRegsGridLvl1.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
             constraints.gridy++;
+
+            if (!isRandomScale) {
+                stageTwoLevelOneGridBoxes.get(row).get(2).setVisible(false);
+            }
 
             stageTwoLevelOneGridBoxes.get(j).get(1).addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -9181,10 +9198,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     stageTwoLevelOneGridBoxes.get(j).get(k).setVisible(false);
                     constraints.gridx++;
 
-                    JLabel placeHolder1 = new JLabel(" ");
-                    placeHolder1.setPreferredSize(new Dimension(60, 20));
-                    stageTwoRegsGridLvl1.add(placeHolder1, constraints);
-
+                    if (isRandomScale) {
+                        JLabel placeHolder1 = new JLabel(" ");
+                        placeHolder1.setPreferredSize(new Dimension(60, 20));
+                        stageTwoRegsGridLvl1.add(placeHolder1, constraints);
+                    }
                 }
 
                 if (k == 3) {
@@ -9208,6 +9226,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             stageTwoLevelOneGridBoxes.get(row).get(1).setEnabled(true);
             stageTwoLevelOneGridBoxes.get(row).get(2).setEnabled(true);
+
+            if (!isRandomScale) {
+                stageTwoLevelOneGridBoxes.get(row).get(2).setVisible(false);
+            }
 
             stageTwoLevelOneGridBoxes.get(j).get(1).addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -9990,6 +10012,18 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private void loadLogger(String logFile) {
         SystemLogger.logPath = logFile;
         logger = new SystemLogger();
+    }
+
+    private void updateGuiView_trigger_randomScaleSelection() {
+        if (!isRandomScale) {
+            jLabel17.setVisible(false);
+            jLabel36.setVisible(false);
+            jLabel18.setVisible(false);
+            jLabel37.setVisible(false);
+            enbaleInteractionCheckBox.setVisible(false);
+        } else {
+            // do nothing
+        }
     }
 
 }
