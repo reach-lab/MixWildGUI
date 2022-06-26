@@ -4427,18 +4427,25 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 constraints.gridx++;
                 constraints.anchor = GridBagConstraints.CENTER;
                 levelTwoBoxes.get(j).add(k, new JCheckBox());
+
+                if (k == 1) {
+                    if (RLE_selected == MixLibrary.STAGE_ONE_RLE_SLOPE) {
+                        levelTwoBoxes.get(j).get(1).setVisible(false);
+
+                        JLabel placeHolder3 = new JLabel(" ");
+                        placeHolder3.setPreferredSize(new Dimension(20, 20));
+                        levelTwoGrid.add(placeHolder3, constraints);
+                    } else {
+
+                        levelTwoBoxes.get(j).get(1).setVisible(true);
+                        levelTwoBoxes.get(j).get(1).setEnabled(true);
+
+                    }
+                }
+
                 levelTwoGrid.add(levelTwoBoxes.get(j).get(k), constraints);
             }
 
-            if (RLE_selected == MixLibrary.STAGE_ONE_RLE_SLOPE) {
-                levelTwoBoxes.get(j).get(1).setVisible(false);
-
-            } else {
-
-                levelTwoBoxes.get(j).get(1).setVisible(true);
-                levelTwoBoxes.get(j).get(1).setEnabled(true);
-
-            }
 
             constraints.gridy++;
 
@@ -8103,17 +8110,22 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 //                    System.out.print("********"+j+k+"********");
                 }
 
+                if (k == 1) {
+                    if (RLE_selected == MixLibrary.STAGE_ONE_RLE_SLOPE) {
+                        levelTwoBoxes.get(j).get(1).setVisible(false);
+
+                        JLabel placeHolder3 = new JLabel(" ");
+                        placeHolder3.setPreferredSize(new Dimension(20, 20));
+                        levelTwoGrid.add(placeHolder3, constraints);
+                    } else {
+
+                        levelTwoBoxes.get(j).get(1).setVisible(true);
+                        levelTwoBoxes.get(j).get(1).setEnabled(true);
+
+                    }
+                }
+
                 levelTwoGrid.add(levelTwoBoxes.get(j).get(k), constraints);
-            }
-
-            if (RLE_selected == MixLibrary.STAGE_ONE_RLE_SLOPE) {
-                levelTwoBoxes.get(j).get(1).setVisible(false);
-
-            } else {
-
-                levelTwoBoxes.get(j).get(1).setVisible(true);
-                levelTwoBoxes.get(j).get(1).setEnabled(true);
-
             }
 
             constraints.gridy++;
