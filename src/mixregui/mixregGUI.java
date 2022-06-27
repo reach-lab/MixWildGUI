@@ -8847,7 +8847,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                         stageTwoLevelOneGridBoxes.get(j).get(k).setEnabled(false);
                     } else {
                         stageTwoLevelOneGridBoxes.get(j).add(k, new JCheckBox());
-                        stageTwoLevelOneGridBoxes.get(j).get(k).setEnabled(true);
+                        stageTwoLevelOneGridBoxes.get(j).get(k).setEnabled(false);
                     }
                 } else {
                     stageTwoLevelOneGridBoxes.get(j).add(k, new JCheckBox());
@@ -8952,10 +8952,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     AbstractButton abstractButton = (AbstractButton) e.getSource();
                     boolean selected = abstractButton.getModel().isSelected();
 
-                    randomChecked = false;
-                    scaleChecked = false;
-
-                    enbaleInteractionCheckBox.setEnabled(true);
+//                    randomChecked = false;
+//                    scaleChecked = false;
+//
+//                    enbaleInteractionCheckBox.setEnabled(true);
 
                 }
             });
@@ -9194,7 +9194,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                         stageTwoLevelOneGridBoxes.get(j).get(k).setEnabled(false);
                     } else {
                         stageTwoLevelOneGridBoxes.get(j).add(k, new JCheckBox());
-                        stageTwoLevelOneGridBoxes.get(j).get(k).setEnabled(true);
+                        stageTwoLevelOneGridBoxes.get(j).get(k).setEnabled(false);
                     }
                 } else {
                     stageTwoLevelOneGridBoxes.get(j).add(k, new JCheckBox());
@@ -9300,10 +9300,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     AbstractButton abstractButton = (AbstractButton) e.getSource();
                     boolean selected = abstractButton.getModel().isSelected();
 
-                    randomChecked = false;
-                    scaleChecked = false;
-
-                    enbaleInteractionCheckBox.setEnabled(true);
+//                    randomChecked = false;
+//                    scaleChecked = false;
+//
+//                    enbaleInteractionCheckBox.setEnabled(true);
 
                 }
             });
