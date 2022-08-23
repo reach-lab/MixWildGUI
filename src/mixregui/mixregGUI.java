@@ -371,6 +371,13 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                             "Dataset Error", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 }
+
+                if (colname.contains(" ")) {
+                    validDataset = false;
+                    JOptionPane.showMessageDialog(null, String.format("The header of .csv file should contain no space. Please modify the header [%s] and import again.", colname),
+                            "Dataset Error", JOptionPane.INFORMATION_MESSAGE);
+                    break;
+                }
                 validDataset = true;
             }
         }
@@ -803,7 +810,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
      */
     public mixregGUI() {
         initComponents();
-        this.setTitle("MixWILD-2.0.6");
+        this.setTitle("MixWILD-2.0.8");
         // adjust the frame size to fit screen resolution
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         setBounds(0, 0, stageOneTabs.getWidth(), (int) Math.round(screenSize.height / 1.5));
@@ -4446,7 +4453,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 levelTwoGrid.add(levelTwoBoxes.get(j).get(k), constraints);
             }
 
-
             constraints.gridy++;
 
             separatorConstraint.gridy = separatorConstraint.gridy + 2;
@@ -4535,7 +4541,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                         stageTwoLevelTwoGridBoxes.get(j).get(k).setEnabled(false);
                     } else {
                         stageTwoLevelTwoGridBoxes.get(j).add(k, new JCheckBox());
-                        stageTwoLevelTwoGridBoxes.get(j).get(k).setEnabled(true);
+                        stageTwoLevelTwoGridBoxes.get(j).get(k).setEnabled(false);
                     }
                 } else {
                     stageTwoLevelTwoGridBoxes.get(j).add(k, new JCheckBox());
@@ -4673,11 +4679,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     AbstractButton abstractButton = (AbstractButton) e.getSource();
                     boolean selected = abstractButton.getModel().isSelected();
 
-                    randomChecked = false;
-                    scaleChecked = false;
-
-                    enbaleInteractionCheckBox.setEnabled(true);
-
+//                    randomChecked = false;
+//                    scaleChecked = false;
+//
+//                    enbaleInteractionCheckBox.setEnabled(true);
                 }
             });
 
@@ -8614,7 +8619,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                         stageTwoLevelTwoGridBoxes.get(j).get(k).setEnabled(false);
                     } else {
                         stageTwoLevelTwoGridBoxes.get(j).add(k, new JCheckBox());
-                        stageTwoLevelTwoGridBoxes.get(j).get(k).setEnabled(true);
+                        stageTwoLevelTwoGridBoxes.get(j).get(k).setEnabled(false);
                     }
                 } else {
                     stageTwoLevelTwoGridBoxes.get(j).add(k, new JCheckBox());
@@ -8755,11 +8760,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     AbstractButton abstractButton = (AbstractButton) e.getSource();
                     boolean selected = abstractButton.getModel().isSelected();
 
-                    randomChecked = false;
-                    scaleChecked = false;
-
-                    enbaleInteractionCheckBox.setEnabled(true);
-
+//                    randomChecked = false;
+//                    scaleChecked = false;
+//
+//                    enbaleInteractionCheckBox.setEnabled(true);
                 }
             });
 
@@ -8956,7 +8960,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 //                    scaleChecked = false;
 //
 //                    enbaleInteractionCheckBox.setEnabled(true);
-
                 }
             });
 
@@ -9304,7 +9307,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 //                    scaleChecked = false;
 //
 //                    enbaleInteractionCheckBox.setEnabled(true);
-
                 }
             });
 
@@ -9790,6 +9792,13 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     validDataset_stageTwo = false;
                     JOptionPane.showMessageDialog(null, "The first row of .csv file should be column names in letters.",
                             "Stage Two Dataset Error", JOptionPane.INFORMATION_MESSAGE);
+                    break;
+                }
+
+                if (colname.contains(" ")) {
+                    validDataset = false;
+                    JOptionPane.showMessageDialog(null, String.format("The header of .csv file should contain no space. Please modify the header [%s] and import again.", colname),
+                            "Dataset Error", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 }
                 validDataset_stageTwo = true;
