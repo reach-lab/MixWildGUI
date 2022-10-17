@@ -128,13 +128,18 @@ public class stageOneRegs extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         StageOneLevelTwoList = new javax.swing.JList<>();
         stageOneCancel = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        StageOneLevelThreeList = new javax.swing.JList<>();
+        addLevelThreeButton = new javax.swing.JButton();
+        removeLevelThreeButton = new javax.swing.JButton();
 
         label1.setText("label1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Add Stage 1 Regressors");
         setMinimumSize(new java.awt.Dimension(640, 510));
-        setPreferredSize(new java.awt.Dimension(680, 560));
+        setPreferredSize(new java.awt.Dimension(680, 800));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -155,7 +160,7 @@ public class stageOneRegs extends javax.swing.JFrame {
                 stageOneSubmitButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(stageOneSubmitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(545, 470, 95, -1));
+        getContentPane().add(stageOneSubmitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(545, 700, 95, -1));
 
         stageOneResetButton.setText("Reset");
         stageOneResetButton.addActionListener(new java.awt.event.ActionListener() {
@@ -163,7 +168,7 @@ public class stageOneRegs extends javax.swing.JFrame {
                 stageOneResetButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(stageOneResetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(445, 470, 95, -1));
+        getContentPane().add(stageOneResetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(445, 700, 95, -1));
 
         removeLevelButton.setText("Remove");
         removeLevelButton.addActionListener(new java.awt.event.ActionListener() {
@@ -199,7 +204,7 @@ public class stageOneRegs extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(AllVariablesList);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 59, 198, 388));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 59, 198, 620));
 
         jScrollPane2.setViewportView(StageOneLevelOneList);
 
@@ -215,7 +220,31 @@ public class stageOneRegs extends javax.swing.JFrame {
                 stageOneCancelActionPerformed(evt);
             }
         });
-        getContentPane().add(stageOneCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 470, 95, -1));
+        getContentPane().add(stageOneCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 700, 95, -1));
+
+        jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel4.setText("Level-3 (Time Invariant)");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 480, -1, -1));
+
+        jScrollPane4.setViewportView(StageOneLevelThreeList);
+
+        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 510, 287, 163));
+
+        addLevelThreeButton.setText("Add");
+        addLevelThreeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addLevelThreeButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(addLevelThreeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 560, 90, -1));
+
+        removeLevelThreeButton.setText("Remove");
+        removeLevelThreeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeLevelThreeButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(removeLevelThreeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 590, 90, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -342,6 +371,14 @@ public class stageOneRegs extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_stageOneCancelActionPerformed
 
+    private void addLevelThreeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addLevelThreeButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addLevelThreeButtonActionPerformed
+
+    private void removeLevelThreeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeLevelThreeButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_removeLevelThreeButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -380,17 +417,22 @@ public class stageOneRegs extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JList<String> AllVariablesList;
     private javax.swing.JList<String> StageOneLevelOneList;
+    private javax.swing.JList<String> StageOneLevelThreeList;
     private javax.swing.JList<String> StageOneLevelTwoList;
+    private javax.swing.JButton addLevelThreeButton;
     private javax.swing.JButton addLevelTwoButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private java.awt.Label label1;
     private javax.swing.JButton levelOneAddButton;
     private javax.swing.JButton removeLevelButton;
+    private javax.swing.JButton removeLevelThreeButton;
     private javax.swing.JButton removeLevelTwoButton;
     private javax.swing.JButton stageOneCancel;
     private javax.swing.JButton stageOneResetButton;
