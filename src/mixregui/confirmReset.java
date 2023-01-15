@@ -111,7 +111,7 @@ public class confirmReset extends javax.swing.JDialog {
                 mixregGUI.defFile = null;
                 mixregGUI.modelBuilder = null;
 
-                mixregGUI.IDpos = 0;
+                mixregGUI.IDLevel3pos = 0;
                 mixregGUI.stageOnePos = 0;
                 mixregGUI.stageTwoPos = 0;
 
@@ -203,7 +203,7 @@ public class confirmReset extends javax.swing.JDialog {
         mixregGUI.defFile = null;
         mixregGUI.modelBuilder = null;
 
-        mixregGUI.IDpos = 0;
+        mixregGUI.IDLevel3pos = 0;
         mixregGUI.stageOnePos = 0;
         mixregGUI.stageTwoPos = 0;
 

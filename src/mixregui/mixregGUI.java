@@ -195,6 +195,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         return newModelMissingValueCode.getText();
     }
 
+    public boolean getStageOneTwoLevelRadio() {
+        return stageOneTwoLevelRadio.isSelected();
+    }
+
+    public boolean getStageOneThreeLevelParticipantLevelThreeRadio() {
+        return stageOneThreeLevelParticipantLevelThreeRadio.isSelected();
+    }
+
     public boolean getStageOneContinuousRadio() {
         return stageOneContinuousRadio.isSelected();
     }
@@ -229,6 +237,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     public boolean getRandomScaleSelectionNo() {
         return randomScaleSelectionNo.isSelected();
+    }
+
+    public boolean getRandomScaleSpecSelectionInterceptOnly() {
+        return randomScaleSpecSelectionInterceptOnly.isSelected();
+    }
+
+    public boolean getRandomScaleSpecSelectionInterceptSlope() {
+        return randomScaleSpecSelectionInterceptSlope.isSelected();
     }
 
     public boolean getIncludeStageTwoYes() {
@@ -582,7 +598,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     static String[] variableNamesCombo_stageTwo;
 
-    DefaultComboBoxModel<String> IDList;
+    DefaultComboBoxModel<String> IDlevel3List;
+
+    DefaultComboBoxModel<String> IDlevel2List;
 
     DefaultComboBoxModel<String> StageOneList;
 
@@ -602,7 +620,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     ArrayList<ArrayList<JCheckBox>> disaggVarianceBoxes;
 
-    public static int IDpos;
+    public static int IDLevel2pos;
+    public static int IDLevel3pos;
     public static int IDposStageTwo;
     public static int stageOnePos;
     public static int stageTwoPos;
@@ -615,7 +634,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     boolean suppressed = true;
     boolean stageTwoNotIncluded = false;
-    boolean addStageOneCHecked = false;
+    boolean addStageOneChecked = false;
     boolean addStageTwoChecked = false;
 
     ArrayList<String> levelOneSelected;
@@ -648,7 +667,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         variableNamesCombo = getVariableNames_stageOne();
         stageTwoNotIncluded = getNotIncludeStageTwo();
 
-        IDList = new DefaultComboBoxModel<String>();
+        IDlevel3List = new DefaultComboBoxModel<String>();
+        IDlevel2List = new DefaultComboBoxModel<String>();
         StageOneList = new DefaultComboBoxModel<String>();
         StageTwoList = new DefaultComboBoxModel<String>();
         NoAssociationRadio.setSelected(true);
@@ -679,7 +699,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
 
         }
-        
+
         level1_WSVar1.setVisible(false);
         level1_WSVar2.setVisible(false);
 
@@ -688,57 +708,57 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         level3_WSVar1.setVisible(false);
         level3_WSVar2.setVisible(false);
-        
+
         level1_BSVar1.setText("");
         level2_BSVar1.setText("");
         level3_BSVar1.setText("");
-        
+
         // Three level of Stage One Model
-        if (stageOneThreeLevelParticipantLevelThreeRadio.isSelected()){
+        if (stageOneThreeLevelParticipantLevelThreeRadio.isSelected()) {
             stageOneLevelTwoIDVariableLabel.setVisible(true);
             stageOneLevelTwoIDvariableCombo.setVisible(true);
             stageOneLevelThreeIDVariableLabel.setText("Level-3 ID Variable");
             stageOneLevelTwoIDVariableLabel.setText("Level-2 ID Variable");
-            
-            if (moreThanOneRLERadio.isSelected()){
+
+            if (moreThanOneRLERadio.isSelected()) {
                 // if random location effects are more than one, change the table column names
                 level3_BSVar2.setVisible(false);
                 level1_BSVar1.setText("Random Slope");
                 level1_BSVar2.setText("in Mean");
                 level2_BSVar1.setText("Random Slope");
                 level2_BSVar2.setText("in Mean");
-                
+
                 level1_BSVar2.setToolTipText("Select the checkbox and allows for \n"
                         + "extra random slope effects in the \n"
                         + "[Mean model].");
                 level2_BSVar2.setToolTipText("Select the checkbox and allows for \n"
                         + "extra random slope effects in the \n"
                         + "[Mean model].");
-                
+
                 level1_WSVar.setText("WS Variance");
                 level2_WSVar.setText("WS Variance");
             }
-            
-            if (randomScaleSelectionYes.isSelected() && randomScaleSpecSelectionInterceptSlope.isSelected()){
+
+            if (randomScaleSelectionYes.isSelected() && randomScaleSpecSelectionInterceptSlope.isSelected()) {
                 level1_WSVar1.setVisible(true);
                 level1_WSVar2.setVisible(true);
-                        
+
                 level2_WSVar1.setVisible(true);
                 level2_WSVar2.setVisible(true);
-            
-            } 
-            
+
+            }
+
         } else {
             stageOneLevelTwoIDVariableLabel.setVisible(false);
             stageOneLevelTwoIDvariableCombo.setVisible(false);
-            
+
             level3_MeanReg.setVisible(false);
             level3_BSVar2.setVisible(false);
             level3_WSVar.setVisible(false);
             level3_WSVar1.setVisible(false);
             level3_WSVar2.setVisible(false);
-            
-            if (moreThanOneRLERadio.isSelected()){
+
+            if (moreThanOneRLERadio.isSelected()) {
                 // if random location effects are more than one, change the table column names
                 level2_BSVar2.setVisible(false);
                 level1_BSVar1.setText("Random Slope");
@@ -748,14 +768,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                         + "[Mean model].");
                 level1_WSVar.setText("WS Variance");
                 level2_WSVar.setText("WS Variance");
-                
+
             }
-            
-            if (randomScaleSelectionYes.isSelected() && randomScaleSpecSelectionInterceptSlope.isSelected()){
+
+            if (randomScaleSelectionYes.isSelected() && randomScaleSpecSelectionInterceptSlope.isSelected()) {
                 level1_WSVar1.setVisible(true);
                 level1_WSVar2.setVisible(true);
-            } 
-        
+            }
+
         }
 
         stageOneLevelOnePanel.setLayout(new BorderLayout());
@@ -3120,7 +3140,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         SystemLogger.LOGGER.log(Level.FINE, "addStageOneButtonActionPerformed");
         stageOneClicked = 1;
 
-        IDpos = stageOneLevelThreeIDvariableCombo.getSelectedIndex();
+        IDLevel3pos = stageOneLevelThreeIDvariableCombo.getSelectedIndex();
+        if (stageOneThreeLevelParticipantLevelThreeRadio.isSelected()) {
+            IDLevel2pos = stageOneLevelTwoIDvariableCombo.getSelectedIndex();
+        }
         stageOnePos = StageOneOutcomeCombo.getSelectedIndex();
         stageTwoPos = StageTwoOutcomeCombo.getSelectedIndex();
 
@@ -3139,14 +3162,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             stageOneClicked = 1;
             addStageTwoReg.setEnabled(true);
 
-            //            if (levelOneRegSize == 0 && levelTwoRegSize ==0){
-            //
-            //            //refresh as normal
-            //            } else {
-            //
-            //
-            //            }
-            if (addStageOneCHecked == true) {
+            if (addStageOneChecked == true) {
 
                 stage_1_regs.setVisible(true);
                 stage_1_regs.updateStageOneAgain();
@@ -3157,19 +3173,19 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
         }
 
-        addStageOneCHecked = true;
+        addStageOneChecked = true;
 
     }//GEN-LAST:event_addStageOneButtonActionPerformed
 
     private void stageOneLevelThreeIDvariableComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneLevelThreeIDvariableComboActionPerformed
-        SystemLogger.LOGGER.log(Level.FINE, "IDvariableComboActionPerformed");
+        SystemLogger.LOGGER.log(Level.FINE, "stageOneLevelThreeIDvariableComboActionPerformed");
     }//GEN-LAST:event_stageOneLevelThreeIDvariableComboActionPerformed
 
     private void stageOneLevelThreeIDvariableComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_stageOneLevelThreeIDvariableComboItemStateChanged
         // TODO add your handling code here:
-
-        IDpos = stageOneLevelThreeIDvariableCombo.getSelectedIndex();
-        System.out.println("ID CHANGED: " + String.valueOf(IDpos));
+        SystemLogger.LOGGER.log(Level.FINE, "stageOneLevelThreeIDvariableComboItemStateChanged");
+        IDLevel3pos = stageOneLevelThreeIDvariableCombo.getSelectedIndex();
+        System.out.println("Level 3 ID CHANGED: " + String.valueOf(IDLevel3pos));
         isIDChanged = true;
     }//GEN-LAST:event_stageOneLevelThreeIDvariableComboItemStateChanged
 
@@ -3188,9 +3204,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         SystemLogger.LOGGER.log(Level.FINE, "resetButtonActionPerformed");
         SystemLogger.LOGGER.log(Level.INFO, "Clear Stage One");
 
-        stageOneLevelThreeIDvariableCombo.setSelectedIndex(0);
-        StageOneOutcomeCombo.setSelectedIndex(1);
-        StageTwoOutcomeCombo.setSelectedIndex(2);
+        int default_pos = 0;
+
+        stageOneLevelThreeIDvariableCombo.setSelectedIndex(default_pos);
+        if (stageOneThreeLevelParticipantLevelThreeRadio.isSelected()) {
+            stageOneLevelTwoIDvariableCombo.setSelectedIndex(++default_pos);
+        }
+        StageOneOutcomeCombo.setSelectedIndex(++default_pos);
+        StageTwoOutcomeCombo.setSelectedIndex(++default_pos);
 
         buttonGroup1.clearSelection();
 
@@ -3476,6 +3497,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         updateGuiView_trigger_NewModelSubmit();
         SystemLogger.LOGGER.log(Level.INFO, "Submit new model");
         isUpdateStage2ConfigClicked = false;
+
     }//GEN-LAST:event_newModelSubmitActionPerformed
 
     private void newModel_resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newModel_resetButtonActionPerformed
@@ -3746,11 +3768,13 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_randomScaleSpecSelectionInterceptSlopeActionPerformed
 
     private void stageOneLevelTwoIDvariableComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_stageOneLevelTwoIDvariableComboItemStateChanged
-        // TODO add your handling code here:
+        IDLevel2pos = stageOneLevelTwoIDvariableCombo.getSelectedIndex();
+        System.out.println("Level 2 ID CHANGED: " + String.valueOf(IDLevel2pos));
+//        isIDChanged = true;
     }//GEN-LAST:event_stageOneLevelTwoIDvariableComboItemStateChanged
 
     private void stageOneLevelTwoIDvariableComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneLevelTwoIDvariableComboActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_stageOneLevelTwoIDvariableComboActionPerformed
 
     // **********************update********************
@@ -3890,6 +3914,12 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         titleField.setText(mxrStates.title);
         sessionFolderName = mxrStates.sessionFolderName;
 
+        if (mxrStates.stageOneTwoLevelRadio) {
+            stageOneTwoLevelRadio.setSelected(true);
+        } else if (mxrStates.stageOneThreeLevelParticipantLevelThreeRadio) {
+            stageOneThreeLevelParticipantLevelThreeRadio.setSelected(true);
+        }
+
         if (mxrStates.stageOneContinuousRadio) {
             stageOneContinuousRadio.setSelected(true);
         } else if (mxrStates.stageOneDichotomousRadio) {
@@ -3914,6 +3944,12 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             randomScaleSelectionYes.setSelected(true);
         } else if (mxrStates.randomScaleSelectionNo) {
             randomScaleSelectionNo.setSelected(true);
+        }
+
+        if (mxrStates.randomScaleSpecSelectionInterceptOnly) {
+            randomScaleSpecSelectionInterceptOnly.setSelected(true);
+        } else if (mxrStates.randomScaleSpecSelectionInterceptSlope) {
+            randomScaleSpecSelectionInterceptSlope.setSelected(true);
         }
 
         if (mxrStates.includeStageTwoYes) {
@@ -4044,8 +4080,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }
 
     private void update_StageOneStates(MixRegGuiStates mxrStates) {
-        IDpos = mxrStates.IDpos;
-        stageOneLevelThreeIDvariableCombo.setSelectedIndex(IDpos);
+        IDLevel3pos = mxrStates.IDLevel3pos;
+        stageOneLevelThreeIDvariableCombo.setSelectedIndex(IDLevel3pos);
+
+        IDLevel2pos = mxrStates.IDLevel2pos;
+        stageOneLevelTwoIDvariableCombo.setSelectedIndex(IDLevel2pos);
 
         stageOnePos = mxrStates.stageOnePos;
         StageOneOutcomeCombo.setSelectedIndex(stageOnePos);
@@ -4054,7 +4093,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         StageTwoOutcomeCombo.setSelectedIndex(stageTwoPos);
 
         stageOneClicked = mxrStates.stageOneClicked;
-        addStageOneCHecked = mxrStates.addStageOneCHecked;
+        addStageOneChecked = mxrStates.addStageOneCHecked;
         stageOneRegs.varList = mxrStates.varList;
         stageOneRegs.levelOneList = mxrStates.levelOneList;
         stageOneRegs.levelTwoList = mxrStates.levelTwoList;
@@ -4066,6 +4105,15 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stage_1_regs.getStageOneLevelOneList().setModel(mxrStates.levelOneList);
         stage_1_regs.getStageOneLevelTwoList().removeAll();
         stage_1_regs.getStageOneLevelTwoList().setModel(mxrStates.levelTwoList);
+
+        // GUI updates on stage 1 config: 2 level or 3 level model
+        if (stageOneTwoLevelRadio.isSelected() == true) {
+            // 2 level
+            stage_1_regs.enableLevel3(false);
+        } else if (stageOneThreeLevelParticipantLevelThreeRadio.isSelected() == true) {
+            // 3 level
+            stage_1_regs.enableLevel3(true);
+        }
 
         stageOneRegs.isSubmitClicked = mxrStates.isStageOneRegSubmitClicked;
         if (stageOneRegs.isSubmitClicked == true) {
@@ -4411,10 +4459,15 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     // End of variables declaration//GEN-END:variables
 
     public void initiateStageOneTab() {
-        stageOneLevelThreeIDvariableCombo.setSelectedIndex(0);
-        stageOneLevelTwoIDvariableCombo.setSelectedIndex(0);
-        StageOneOutcomeCombo.setSelectedIndex(1);
-        StageTwoOutcomeCombo.setSelectedIndex(2);
+
+        int default_pos = 0;
+
+        stageOneLevelThreeIDvariableCombo.setSelectedIndex(default_pos);
+        if (stageOneThreeLevelParticipantLevelThreeRadio.isSelected()) {
+            stageOneLevelTwoIDvariableCombo.setSelectedIndex(++default_pos);
+        }
+        StageOneOutcomeCombo.setSelectedIndex(++default_pos);
+        StageTwoOutcomeCombo.setSelectedIndex(++default_pos);
 
         buttonGroup1.clearSelection();
 
@@ -4437,18 +4490,22 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     public void initiateStageOneComboBoxes() {
 
         for (int j = 0; j < variableNamesCombo.length; j++) {
-            IDList.addElement(variableNamesCombo[j]);
+            IDlevel3List.addElement(variableNamesCombo[j]);
+            IDlevel2List.addElement(variableNamesCombo[j]);
             StageOneList.addElement(variableNamesCombo[j]);
         }
 
-        stageOneLevelThreeIDvariableCombo.setModel(IDList);
-        stageOneLevelThreeIDvariableCombo.setSelectedIndex(0);
-        
-        stageOneLevelTwoIDvariableCombo.setModel(IDList);
-        stageOneLevelTwoIDvariableCombo.setSelectedIndex(0);
+        int default_pos = 0;
+        stageOneLevelThreeIDvariableCombo.setModel(IDlevel3List);
+        stageOneLevelThreeIDvariableCombo.setSelectedIndex(default_pos);
+
+        if (stageOneThreeLevelParticipantLevelThreeRadio.isSelected()) {
+            stageOneLevelTwoIDvariableCombo.setModel(IDlevel2List);
+            stageOneLevelTwoIDvariableCombo.setSelectedIndex(++default_pos);
+        }
 
         StageOneOutcomeCombo.setModel(StageOneList);
-        StageOneOutcomeCombo.setSelectedIndex(1);
+        StageOneOutcomeCombo.setSelectedIndex(++default_pos);
 
     }
 
@@ -4456,7 +4513,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         if (getIncludeStageTwoYes() == true) {
             // 2nd dataset imported: Update stage 2 combo with 2nd dataset variables
             if (getIncludeStageTwoDataYes() == true) {
-                IDList = new DefaultComboBoxModel<>();
+                IDlevel3List = new DefaultComboBoxModel<>();
                 StageTwoList = new DefaultComboBoxModel<String>();
 
                 Scanner inputStream;
@@ -4470,11 +4527,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 }
 
                 for (String variableNamesComboItem : variableNamesCombo_stageTwo) {
-                    IDList.addElement(variableNamesComboItem);
+                    IDlevel3List.addElement(variableNamesComboItem);
                     StageTwoList.addElement(variableNamesComboItem);
                 }
 
-                IDStageTwoVariableCombo.setModel(IDList);
+                IDStageTwoVariableCombo.setModel(IDlevel3List);
                 IDStageTwoVariableCombo.setSelectedIndex(0);
 
                 StageTwoOutcomeCombo.setModel(StageTwoList);
@@ -4531,11 +4588,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     public static int getIDFieldPosition(int stage) {
         switch (stage) {
             case 1:
-                return IDpos;
+                return IDLevel3pos;
             case 2:
                 // no new stage 2 dataset imported
                 if (IDposStageTwo == -1) {
-                    return IDpos;
+                    return IDLevel3pos;
                 } else {
                     return IDposStageTwo;
                 }
@@ -7524,6 +7581,15 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     //Update ID, stage one and stage two variable comboboxes
                     initiateStageOneTabLayout();
                     initiateStageOneComboBoxes();
+
+                    // GUI updates on stage 1 config: 2 level or 3 level model
+                    if (stageOneTwoLevelRadio.isSelected() == true) {
+                        // 2 level
+                        stage_1_regs.enableLevel3(false);
+                    } else if (stageOneThreeLevelParticipantLevelThreeRadio.isSelected() == true) {
+                        // 3 level
+                        stage_1_regs.enableLevel3(true);
+                    }
                 }
 
                 // Initiation for stage 2 configuration
@@ -8251,7 +8317,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private void update_trigger_StageOneRegConfig() {
         if (stageOneClicked == 1) {
             addStageTwoReg.setEnabled(true);
-            if (addStageOneCHecked == true) {
+            if (addStageOneChecked == true) {
                 stage_1_regs.updateStageOneAgain();
             } else {
                 stage_1_regs.updateAllVariables();
@@ -10323,21 +10389,21 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             br = new BufferedReader(new FileReader(dataFileName));
             line = br.readLine(); //consumes the first row
             // determine the ID variable position
-            int IDVaraibleIndex;
+            int IDLevel3VaraibleIndex;
             switch (datasetNum) {
                 case 1:
-                    IDVaraibleIndex = stageOneLevelThreeIDvariableCombo.getSelectedIndex();
+                    IDLevel3VaraibleIndex = stageOneLevelThreeIDvariableCombo.getSelectedIndex();
                     break;
                 case 2:
-                    IDVaraibleIndex = IDStageTwoVariableCombo.getSelectedIndex();
+                    IDLevel3VaraibleIndex = IDStageTwoVariableCombo.getSelectedIndex();
                     break;
                 default:
-                    IDVaraibleIndex = IDStageTwoVariableCombo.getSelectedIndex();
+                    IDLevel3VaraibleIndex = IDStageTwoVariableCombo.getSelectedIndex();
             }
 
             while ((line = br.readLine()) != null) {
                 String[] Columns = line.split(commaSplitter);
-                ColumnsCustom.add(Columns[IDVaraibleIndex]);
+                ColumnsCustom.add(Columns[IDLevel3VaraibleIndex]);
 
             }
 

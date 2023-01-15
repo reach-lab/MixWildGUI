@@ -148,11 +148,11 @@ public class stageOneRegs extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel2.setText("Level-1 (Time Varying)");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 30, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 30, 220, -1));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setText("Level-2 (Time Invariant)");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 255, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 255, 280, -1));
 
         stageOneSubmitButton.setText("Submit");
         stageOneSubmitButton.addActionListener(new java.awt.event.ActionListener() {
@@ -224,7 +224,7 @@ public class stageOneRegs extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel4.setText("Level-3 (Time Invariant)");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 480, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 480, 280, -1));
 
         jScrollPane4.setViewportView(StageOneLevelThreeList);
 
@@ -539,5 +539,29 @@ public class stageOneRegs extends javax.swing.JFrame {
 
     public void getEnabledStageOneSubmitButton(boolean turnon) {
         stageOneSubmitButton.setEnabled(turnon);
+    }
+
+    public void setLevel2Text(String text) {
+        jLabel3.setText(text);
+    }
+
+    public void setLevel3Text(String text) {
+        jLabel4.setText(text);
+    }
+
+    public void enableLevel3(boolean turnon) {
+        jLabel4.setEnabled(turnon);
+        addLevelThreeButton.setEnabled(turnon);
+        removeLevelThreeButton.setEnabled(turnon);
+        StageOneLevelThreeList.setEnabled(turnon);
+
+        if (!turnon) {
+            setLevel2Text("Level-2 (Time Invariant) - Subject Level");
+            setLevel3Text("Level-3");
+        } else {
+            setLevel2Text("Level-2 (Time Varying)");
+            setLevel3Text("Level-3 (Time Invariant) - Subject Level");
+        }
+
     }
 }
