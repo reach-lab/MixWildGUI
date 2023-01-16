@@ -874,10 +874,10 @@ public class advancedOptions extends javax.swing.JFrame {
     public void update_enableDisaggregate() {
         if (enableDisaggregateCheckBox.isSelected()) {
             disaggregateEnabled = true;
-            mixregGUI.mxr.updateStageOneLevelOneGrid(levelOneList);
         } else {
             disaggregateEnabled = false;
-            mixregGUI.mxr.updateStageOneLevelOneGrid(levelOneList);
         }
+//        mixregGUI.mxr.updateStageOneLevelOneGrid(levelOneList);
+        mixregGUI.mxr.update_StageOneLevelXTableBoxes(1, stageOneRegs.levelOneList, null, null);
     }
 }

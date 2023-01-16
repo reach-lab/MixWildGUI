@@ -53,6 +53,7 @@ public class stageOneRegs extends javax.swing.JFrame {
     public static DefaultListModel<String> varList;
     static DefaultListModel<String> levelOneList;
     static DefaultListModel<String> levelTwoList;
+    static DefaultListModel<String> levelThreeList;
     public static boolean isSubmitClicked = false;
     final ImageIcon icon;
 
@@ -80,6 +81,7 @@ public class stageOneRegs extends javax.swing.JFrame {
             varList = new DefaultListModel<String>();
             levelOneList = new DefaultListModel<String>();
             levelTwoList = new DefaultListModel<String>();
+            levelThreeList = new DefaultListModel<String>();
 
         } else {
             AllVariablesList.removeAll();
@@ -89,6 +91,8 @@ public class stageOneRegs extends javax.swing.JFrame {
             StageOneLevelOneList.setModel(levelOneList);
             StageOneLevelTwoList.removeAll();
             StageOneLevelTwoList.setModel(levelTwoList);
+            StageOneLevelThreeList.removeAll();
+            StageOneLevelThreeList.setModel(levelThreeList);
         }
 
         stageOneSubmitButton.setEnabled(false);
@@ -264,8 +268,11 @@ public class stageOneRegs extends javax.swing.JFrame {
         //update regressors on stage one regressors window
         // mixregStageOne.updateRegressors(getSelectedLevelOneVars(), getSelectedLevelTwoVars());
         //mixregStageOne.updateLevelOneRegGrid(levelOneList);
-        mixregGUI.mxr.updateStageOneLevelOneGrid(levelOneList);
-        mixregGUI.mxr.updateStageOneLevelTwoGrid(levelTwoList);
+        
+//        mixregGUI.mxr.updateStageOneLevelOneGrid(levelOneList);
+        mixregGUI.mxr.update_StageOneLevelXTableBoxes(1, levelOneList, null, null);
+        mixregGUI.mxr.update_StageOneLevelXTableBoxes(2, levelTwoList, null, null);
+        mixregGUI.mxr.update_StageOneLevelXTableBoxes(3, levelThreeList, null, null);
 
         this.dispose();
     }//GEN-LAST:event_stageOneSubmitButtonActionPerformed
@@ -277,11 +284,6 @@ public class stageOneRegs extends javax.swing.JFrame {
             StageOneLevelOneList.setModel(levelOneList);
             //remove the variable once it is added to levelOne regressors
             varList.remove(AllVariablesList.getSelectedIndex());
-
-            for (int k = 0; k < varList.size(); k++) {
-                System.out.println("VarList: " + String.valueOf(varList.getElementAt(k)));
-
-            }
 
             stageOneSubmitButton.setEnabled(true);
         } else {
@@ -364,6 +366,7 @@ public class stageOneRegs extends javax.swing.JFrame {
 
         levelOneList.clear();
         levelTwoList.clear();
+        levelThreeList.clear();
     }//GEN-LAST:event_stageOneResetButtonActionPerformed
 
     private void stageOneCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneCancelActionPerformed
@@ -372,11 +375,39 @@ public class stageOneRegs extends javax.swing.JFrame {
     }//GEN-LAST:event_stageOneCancelActionPerformed
 
     private void addLevelThreeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addLevelThreeButtonActionPerformed
-        // TODO add your handling code here:
+        SystemLogger.LOGGER.log(Level.FINE, "addLevelThreeButtonActionPerformed");
+        if (!AllVariablesList.isSelectionEmpty()) {
+            stageOneSubmitButton.setEnabled(true);
+
+            levelThreeList.addElement(AllVariablesList.getSelectedValue());
+            StageOneLevelThreeList.setModel(levelThreeList);
+
+            varList.remove(AllVariablesList.getSelectedIndex());
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a variable for level three.", "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+        }
     }//GEN-LAST:event_addLevelThreeButtonActionPerformed
 
     private void removeLevelThreeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeLevelThreeButtonActionPerformed
-        // TODO add your handling code here:
+        SystemLogger.LOGGER.log(Level.FINE, "removeLevelTwoButtonActionPerformed");
+        if (!StageOneLevelThreeList.isSelectionEmpty()) {
+            stageOneSubmitButton.setEnabled(true);
+
+            if (!varList.contains(StageOneLevelThreeList.getSelectedValue())) {
+
+                varList.addElement(StageOneLevelThreeList.getSelectedValue());
+
+            }
+
+            //varList.addElement(StageOneLevelTwoList.getSelectedValue());
+            AllVariablesList.setModel(varList);
+
+            levelThreeList.remove(StageOneLevelThreeList.getSelectedIndex());
+        } else {
+
+            JOptionPane.showMessageDialog(null, "Please select a variable from level three.", "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+        }
     }//GEN-LAST:event_removeLevelThreeButtonActionPerformed
 
     /**
@@ -477,12 +508,18 @@ public class stageOneRegs extends javax.swing.JFrame {
 
         ListModel<String> stageOneLevelOneListModel = (ListModel<String>) getStageOneLevelOneList().getModel();
         ListModel<String> stageOneLevelTwoListModel = (ListModel<String>) getStageOneLevelTwoList().getModel();
+        ListModel<String> stageOneLevelThreeListModel = (ListModel<String>) getStageOneLevelThreeList().getModel();
+
         for (int i = 0; i < stageOneLevelOneListModel.getSize(); i++) {
             Object item = stageOneLevelOneListModel.getElementAt(i);
             varList.removeElement(item);
         }
         for (int i = 0; i < stageOneLevelTwoListModel.getSize(); i++) {
             Object item = stageOneLevelTwoListModel.getElementAt(i);
+            varList.removeElement(item);
+        }
+        for (int i = 0; i < stageOneLevelThreeListModel.getSize(); i++) {
+            Object item = stageOneLevelThreeListModel.getElementAt(i);
             varList.removeElement(item);
         }
 
@@ -525,6 +562,19 @@ public class stageOneRegs extends javax.swing.JFrame {
 
     }
 
+    public DefaultComboBoxModel<String> getSelectedLevelThreeVars() {
+
+        DefaultComboBoxModel<String> levelTwoCombo = new DefaultComboBoxModel();
+
+        for (int j = 0; j < levelThreeList.getSize(); j++) {
+
+            levelTwoCombo.addElement(levelThreeList.getElementAt(j));
+
+        }
+        return levelTwoCombo;
+
+    }
+
     public javax.swing.JList<String> getAllVariablesList() {
         return AllVariablesList;
     }
@@ -535,6 +585,10 @@ public class stageOneRegs extends javax.swing.JFrame {
 
     public javax.swing.JList<String> getStageOneLevelTwoList() {
         return StageOneLevelTwoList;
+    }
+
+    public javax.swing.JList<String> getStageOneLevelThreeList() {
+        return StageOneLevelThreeList;
     }
 
     public void getEnabledStageOneSubmitButton(boolean turnon) {

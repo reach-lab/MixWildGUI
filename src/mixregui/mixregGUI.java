@@ -122,7 +122,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     boolean isStageOneSubmitted;
     boolean isStageTwoSubmitted;
 
-//    public static DefinitionHelper defFile;
+    // public static DefinitionHelper defFile;
     public static MixLibrary defFile;
     public static ModelBuilder modelBuilder;
 
@@ -131,6 +131,83 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     public static SystemLogger logger;
     public String sessionFolderName;
     public static String logFilePath;
+
+    // Original declarations
+    // NewModel newModel;
+    advancedOptions advancedOptions_view;
+    stageOneRegs stage_1_regs;
+    stageTwoRegs stage_2_regs;
+    def_lib.SuperUserMenu superUserMenuLaunch;
+
+    // RLE_selected represents number of random location effects selected in new model
+    int RLE_selected;
+
+    int levelOneRegSize = 0;
+    int levelTwoRegSize = 0;
+    int levelThreeRegSize = 0;
+    int stageTwoLevelOneRegSize = 0;
+    int stageTwoLevelTwoRegSize = 0;
+    int stageTwoLevelThreeRegSize = 0;
+    int levelOneDisaggSize = 0;
+    int levelTwoDisaggSize = 0;
+    int levelThreeDisaggSize = 0;
+
+    int SUPERUSER_KEY = 0;
+
+    String[] variableNamesCombo;
+
+    static String[] variableNamesCombo_stageTwo;
+
+    DefaultComboBoxModel<String> IDlevel3List;
+    DefaultComboBoxModel<String> IDlevel2List;
+    DefaultComboBoxModel<String> StageOneList;
+    DefaultComboBoxModel<String> StageTwoList;
+    DefaultListModel<String> savedVariablesStageOne;
+    ArrayList<ArrayList<JCheckBox>> levelOneBoxes;
+    ArrayList<ArrayList<JCheckBox>> levelTwoBoxes;
+    ArrayList<ArrayList<JCheckBox>> levelThreeBoxes;
+    ArrayList<ArrayList<JCheckBox>> stageTwoBoxes;
+    ArrayList<ArrayList<JCheckBox>> stageTwoLevelOneGridBoxes;
+    ArrayList<ArrayList<JCheckBox>> stageTwoLevelTwoGridBoxes;
+    ArrayList<ArrayList<JCheckBox>> disaggVarianceBoxes;
+
+    public static int IDLevel2pos;
+    public static int IDLevel3pos;
+    public static int IDposStageTwo;
+    public static int stageOnePos;
+    public static int stageTwoPos;
+
+    boolean scaleChecked = false;
+    boolean randomChecked = false;
+    boolean isIDChanged = false;
+    boolean isStageOneOutcomeChanged = false;
+    boolean isStageTwoOutcomeChanged = false;
+
+    boolean suppressed = true;
+    boolean stageTwoNotIncluded = false;
+    boolean addStageOneChecked = false;
+    boolean addStageTwoChecked = false;
+
+    ArrayList<String> levelOneSelected;
+    ArrayList<String> levelTwoSelected;
+    ArrayList<String> levelThreeSelected;
+    ArrayList<String> stageTwoSelected;
+    ArrayList<String> stageTwoLevelOneSelected;
+    ArrayList<String> stageTwoLevelTwoSelected;
+
+    static ActionListener actionListener;
+
+    int stageOneClicked = 0;
+
+    JFileChooser fileChooser = new JFileChooser();
+    int selectedModel;
+    String defFilePath;
+
+    String[] dataValues;
+
+    int outComeType;
+
+    static String outPutStageTwo;
 
     public int getRLE() {
         return RLE;
@@ -576,87 +653,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         return seed;
     }
 
-    // Original declarations
-    // NewModel newModel;
-    advancedOptions advancedOptions_view;
-    stageOneRegs stage_1_regs;
-    stageTwoRegs stage_2_regs;
-    def_lib.SuperUserMenu superUserMenuLaunch;
-
-    // RLE_selected represents number of random location effects selected in new model
-    int RLE_selected;
-
-    int levelOneRegSize = 0;
-    int levelTwoRegSize = 0;
-    int stageTwoLevelOneRegSize = 0;
-    int stageTwoLevelTwoRegSize = 0;
-    int levelOneDisaggSize = 0;
-
-    int SUPERUSER_KEY = 0;
-
-    String[] variableNamesCombo;
-
-    static String[] variableNamesCombo_stageTwo;
-
-    DefaultComboBoxModel<String> IDlevel3List;
-
-    DefaultComboBoxModel<String> IDlevel2List;
-
-    DefaultComboBoxModel<String> StageOneList;
-
-    DefaultComboBoxModel<String> StageTwoList;
-
-    DefaultListModel<String> savedVariablesStageOne;
-
-    ArrayList<ArrayList<JCheckBox>> levelOneBoxes;
-
-    ArrayList<ArrayList<JCheckBox>> levelTwoBoxes;
-
-    ArrayList<ArrayList<JCheckBox>> stageTwoBoxes;
-
-    ArrayList<ArrayList<JCheckBox>> stageTwoLevelOneGridBoxes;
-
-    ArrayList<ArrayList<JCheckBox>> stageTwoLevelTwoGridBoxes;
-
-    ArrayList<ArrayList<JCheckBox>> disaggVarianceBoxes;
-
-    public static int IDLevel2pos;
-    public static int IDLevel3pos;
-    public static int IDposStageTwo;
-    public static int stageOnePos;
-    public static int stageTwoPos;
-
-    boolean scaleChecked = false;
-    boolean randomChecked = false;
-    boolean isIDChanged = false;
-    boolean isStageOneOutcomeChanged = false;
-    boolean isStageTwoOutcomeChanged = false;
-
-    boolean suppressed = true;
-    boolean stageTwoNotIncluded = false;
-    boolean addStageOneChecked = false;
-    boolean addStageTwoChecked = false;
-
-    ArrayList<String> levelOneSelected;
-    ArrayList<String> levelTwoSelected;
-    ArrayList<String> stageTwoSelected;
-    ArrayList<String> stageTwoLevelOneSelected;
-    ArrayList<String> stageTwoLevelTwoSelected;
-
-    static ActionListener actionListener;
-
-    int stageOneClicked = 0;
-
-    JFileChooser fileChooser = new JFileChooser();
-    int selectedModel;
-    String defFilePath;
-
-    String[] dataValues;
-
-    int outComeType;
-
-    static String outPutStageTwo;
-
     private void initiateStageOneTabLayout() {
 //        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 //        this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
@@ -758,6 +754,13 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             level3_WSVar1.setVisible(false);
             level3_WSVar2.setVisible(false);
 
+            level1_BWVar1.setVisible(false);
+            level1_BWVar2.setVisible(false);
+            level2_BWVar1.setVisible(false);
+            level2_BWVar2.setVisible(false);
+            level3_BWVar1.setVisible(false);
+            level3_BWVar2.setVisible(false);
+
             if (moreThanOneRLERadio.isSelected()) {
                 // if random location effects are more than one, change the table column names
                 level2_BSVar2.setVisible(false);
@@ -780,6 +783,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         stageOneLevelOnePanel.setLayout(new BorderLayout());
         stageOneLevelTwoPanel.setLayout(new BorderLayout());
+        stageOneLevelThreePanel.setLayout(new BorderLayout());
         stageTwoLevelOnePanel.setLayout(new BorderLayout());
         stageTwoLevelTwoPanel.setLayout(new BorderLayout());
 
@@ -907,8 +911,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         initComponents();
         this.setTitle("MixWILD-2.0.9");
         // adjust the frame size to fit screen resolution
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds(0, 0, stageOneTabs.getWidth(), (int) Math.round(screenSize.height / 1.5));
+//        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+//        setBounds(0, 0, stageOneTabs.getWidth(), (int) Math.round(screenSize.height / 1.5));
 //        setBounds(0, 0, stageOneTabs.getWidth(), 700);
         setVisible(true);
 
@@ -1133,11 +1137,17 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         level3_WSVar2 = new javax.swing.JLabel();
         level3_WSVar1 = new javax.swing.JLabel();
         stageOneLevelThreePanel = new javax.swing.JPanel();
-        levelTwoGrid1 = new javax.swing.JPanel();
+        levelThreeGrid = new javax.swing.JPanel();
         level1_BSVar1 = new javax.swing.JLabel();
         level1_BSVar2 = new javax.swing.JLabel();
         level2_BSVar1 = new javax.swing.JLabel();
         level3_BSVar1 = new javax.swing.JLabel();
+        level1_BWVar1 = new javax.swing.JLabel();
+        level1_BWVar2 = new javax.swing.JLabel();
+        level2_BWVar1 = new javax.swing.JLabel();
+        level2_BWVar2 = new javax.swing.JLabel();
+        level3_BWVar2 = new javax.swing.JLabel();
+        level3_BWVar1 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -1251,7 +1261,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MixWILD");
-        setMinimumSize(new java.awt.Dimension(1150, 670));
+        setMinimumSize(new java.awt.Dimension(1600, 1600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         parentPanel.setLayout(new java.awt.CardLayout());
@@ -1261,8 +1271,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageOneTabs.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         stageOneTabs.setFocusable(false);
         stageOneTabs.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
-        stageOneTabs.setMinimumSize(new java.awt.Dimension(1000, 700));
-        stageOneTabs.setPreferredSize(new java.awt.Dimension(1300, 1000));
+        stageOneTabs.setMinimumSize(new java.awt.Dimension(1300, 1300));
+        stageOneTabs.setPreferredSize(new java.awt.Dimension(1300, 1300));
 
         jPanel13.setMinimumSize(new java.awt.Dimension(1000, 700));
         jPanel13.setPreferredSize(new java.awt.Dimension(1300, 1300));
@@ -1815,8 +1825,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         stageOneTabs.addTab("Model Configuration", jPanel13);
 
-        jPanel1.setMinimumSize(new java.awt.Dimension(1000, 700));
-        jPanel1.setPreferredSize(new java.awt.Dimension(1300, 1000));
+        jPanel1.setMinimumSize(new java.awt.Dimension(1600, 1600));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1600, 1600));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         clearStageOneButton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -1873,7 +1883,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             stageOneLevelOnePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(stageOneLevelOnePanelLayout.createSequentialGroup()
                 .addComponent(levelOneGrid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 678, Short.MAX_VALUE))
+                .addGap(0, 848, Short.MAX_VALUE))
         );
         stageOneLevelOnePanelLayout.setVerticalGroup(
             stageOneLevelOnePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1882,7 +1892,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         levelOneGrid.getAccessibleContext().setAccessibleName("Level-1");
 
-        jPanel1.add(stageOneLevelOnePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 100, 690, 170));
+        jPanel1.add(stageOneLevelOnePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 100, 860, 170));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, 540, 10));
         jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 50, -1, 140));
 
@@ -1894,14 +1904,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageOneLevelTwoPanel.setLayout(stageOneLevelTwoPanelLayout);
         stageOneLevelTwoPanelLayout.setHorizontalGroup(
             stageOneLevelTwoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(levelTwoGrid, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(levelTwoGrid, javax.swing.GroupLayout.DEFAULT_SIZE, 848, Short.MAX_VALUE)
         );
         stageOneLevelTwoPanelLayout.setVerticalGroup(
             stageOneLevelTwoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(levelTwoGrid, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
         );
 
-        jPanel1.add(stageOneLevelTwoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 320, 690, 170));
+        jPanel1.add(stageOneLevelTwoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 320, 860, 170));
 
         StageOneOutcomeCombo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         StageOneOutcomeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -2184,21 +2194,20 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         stageOneLevelThreePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Level-3"));
 
-        levelTwoGrid1.setLayout(new java.awt.BorderLayout());
+        levelThreeGrid.setLayout(new java.awt.BorderLayout());
 
         javax.swing.GroupLayout stageOneLevelThreePanelLayout = new javax.swing.GroupLayout(stageOneLevelThreePanel);
         stageOneLevelThreePanel.setLayout(stageOneLevelThreePanelLayout);
         stageOneLevelThreePanelLayout.setHorizontalGroup(
             stageOneLevelThreePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(levelTwoGrid1, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
+            .addComponent(levelThreeGrid, javax.swing.GroupLayout.DEFAULT_SIZE, 848, Short.MAX_VALUE)
         );
         stageOneLevelThreePanelLayout.setVerticalGroup(
             stageOneLevelThreePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(levelTwoGrid1, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+            .addComponent(levelThreeGrid, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
         );
 
-        jPanel1.add(stageOneLevelThreePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 540, -1, -1));
-        stageOneLevelThreePanel.getAccessibleContext().setAccessibleName("Level-3");
+        jPanel1.add(stageOneLevelThreePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 540, 860, 170));
 
         level1_BSVar1.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         level1_BSVar1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -2225,6 +2234,42 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         level3_BSVar1.setText("BS Variance");
         level3_BSVar1.setToolTipText("Select the regressors to predict  the between-subject variance of  the outcome variable");
         jPanel1.add(level3_BSVar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 500, 110, -1));
+
+        level1_BWVar1.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        level1_BWVar1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        level1_BWVar1.setText("Between-Wave");
+        level1_BWVar1.setToolTipText("");
+        jPanel1.add(level1_BWVar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 60, 220, -1));
+
+        level1_BWVar2.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        level1_BWVar2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        level1_BWVar2.setText("Variance");
+        level1_BWVar2.setToolTipText("");
+        jPanel1.add(level1_BWVar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 80, 220, -1));
+
+        level2_BWVar1.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        level2_BWVar1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        level2_BWVar1.setText("Between-Wave");
+        level2_BWVar1.setToolTipText("");
+        jPanel1.add(level2_BWVar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 280, 220, -1));
+
+        level2_BWVar2.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        level2_BWVar2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        level2_BWVar2.setText("Variance");
+        level2_BWVar2.setToolTipText("");
+        jPanel1.add(level2_BWVar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 300, 220, -1));
+
+        level3_BWVar2.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        level3_BWVar2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        level3_BWVar2.setText("Variance");
+        level3_BWVar2.setToolTipText("");
+        jPanel1.add(level3_BWVar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 520, 220, -1));
+
+        level3_BWVar1.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        level3_BWVar1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        level3_BWVar1.setText("Between-Wave");
+        level3_BWVar1.setToolTipText("");
+        jPanel1.add(level3_BWVar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 500, 220, -1));
 
         stageOneTabs.addTab("Stage 1 Configuration", jPanel1);
 
@@ -2275,7 +2320,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageTwoLevelTwoPanel.setLayout(stageTwoLevelTwoPanelLayout);
         stageTwoLevelTwoPanelLayout.setHorizontalGroup(
             stageTwoLevelTwoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(stageTwoRegsGridLvl2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(stageTwoRegsGridLvl2, javax.swing.GroupLayout.DEFAULT_SIZE, 598, Short.MAX_VALUE)
         );
         stageTwoLevelTwoPanelLayout.setVerticalGroup(
             stageTwoLevelTwoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2357,7 +2402,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(outcomeCatButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(outcomeCatButton, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
                     .addComponent(jScrollPane5))
                 .addContainerGap())
         );
@@ -2390,7 +2435,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageTwoLevelOnePanel.setLayout(stageTwoLevelOnePanelLayout);
         stageTwoLevelOnePanelLayout.setHorizontalGroup(
             stageTwoLevelOnePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(stageTwoRegsGridLvl1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(stageTwoRegsGridLvl1, javax.swing.GroupLayout.DEFAULT_SIZE, 598, Short.MAX_VALUE)
         );
         stageTwoLevelOnePanelLayout.setVerticalGroup(
             stageTwoLevelOnePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2545,7 +2590,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                             .addComponent(jLabel8)
                             .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel7))
-                .addContainerGap(454, Short.MAX_VALUE))
+                .addContainerGap(814, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2560,7 +2605,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(openStage1OutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(saveStage1OutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(470, Short.MAX_VALUE))
+                .addContainerGap(680, Short.MAX_VALUE))
         );
 
         stageOneTabs.addTab("Stage 1 Results", jPanel3);
@@ -2633,7 +2678,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                         .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel11)
                         .addComponent(jLabel9)))
-                .addContainerGap(455, Short.MAX_VALUE))
+                .addContainerGap(815, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2730,7 +2775,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                         .addComponent(jLabel20)
                         .addGap(31, 31, 31)
                         .addComponent(printedFileName)))
-                .addContainerGap(308, Short.MAX_VALUE))
+                .addContainerGap(668, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2741,7 +2786,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     .addComponent(printedFileName))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(503, Short.MAX_VALUE))
+                .addContainerGap(713, Short.MAX_VALUE))
         );
 
         stageOneTabs.addTab("View Data", jPanel6);
@@ -2767,7 +2812,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                         .addComponent(jLabel29)
                         .addGap(31, 31, 31)
                         .addComponent(printedFileName_stageTwo)))
-                .addContainerGap(308, Short.MAX_VALUE))
+                .addContainerGap(668, Short.MAX_VALUE))
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2778,7 +2823,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     .addComponent(printedFileName_stageTwo))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(503, Short.MAX_VALUE))
+                .addContainerGap(713, Short.MAX_VALUE))
         );
 
         stageOneTabs.addTab("View Stage 2 Data", jPanel16);
@@ -2829,7 +2874,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                         .addComponent(jLabel28)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(964, Short.MAX_VALUE))
+                .addContainerGap(1324, Short.MAX_VALUE))
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2853,7 +2898,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     .addComponent(jLabel30)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3))
-                .addContainerGap(853, Short.MAX_VALUE))
+                .addContainerGap(1063, Short.MAX_VALUE))
         );
 
         stageOneTabs.addTab("Postestimation", jPanel14);
@@ -2902,7 +2947,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel15Layout.createSequentialGroup()
                         .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel31, javax.swing.GroupLayout.DEFAULT_SIZE, 714, Short.MAX_VALUE)
                             .addComponent(userGuideDownload)
                             .addComponent(exampleDataDownload))
                         .addGap(868, 868, 868))))
@@ -2925,7 +2970,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         stageOneTabs.addTab("Help", jPanel15);
 
-        getContentPane().add(stageOneTabs, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 1090));
+        getContentPane().add(stageOneTabs, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1660, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -3215,21 +3260,28 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         buttonGroup1.clearSelection();
 
-        //addStageTwoTabTwo.setEnabled(false);
+        stageOneLevelOnePanel.removeAll();
+        stageOneLevelOnePanel.revalidate();
+        stageOneLevelOnePanel.repaint();
+
         stageOneLevelTwoPanel.removeAll();
         stageOneLevelTwoPanel.revalidate();
         stageOneLevelTwoPanel.repaint();
 
-        stageOneLevelOnePanel.removeAll();
-        stageOneLevelOnePanel.revalidate();
-        stageOneLevelOnePanel.repaint();
+        stageOneLevelThreePanel.removeAll();
+        stageOneLevelThreePanel.revalidate();
+        stageOneLevelThreePanel.repaint();
 
         stage_1_regs.updateAllVariables();
 
         stage_1_regs.levelOneList.clear();
         stage_1_regs.levelTwoList.clear();
-        updateStageOneLevelTwoGrid(stage_1_regs.levelTwoList);
-        updateStageOneLevelOneGrid(stage_1_regs.levelOneList);
+        stage_1_regs.levelThreeList.clear();
+
+//        updateStageOneLevelOneGrid(stage_1_regs.levelOneList);
+        update_StageOneLevelXTableBoxes(1, stage_1_regs.levelOneList, null, null);
+        update_StageOneLevelXTableBoxes(2, stage_1_regs.levelTwoList, null, null);
+        update_StageOneLevelXTableBoxes(3, stage_1_regs.levelThreeList, null, null);
 
     }//GEN-LAST:event_clearStageOneButtonActionPerformed
 
@@ -4097,6 +4149,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageOneRegs.varList = mxrStates.varList;
         stageOneRegs.levelOneList = mxrStates.levelOneList;
         stageOneRegs.levelTwoList = mxrStates.levelTwoList;
+        stageOneRegs.levelThreeList = mxrStates.levelThreeList;
         update_trigger_StageOneRegConfig();
         stage_1_regs.getAllVariablesList().removeAll();
         stage_1_regs.getAllVariablesList().setModel(mxrStates.varList);
@@ -4105,14 +4158,18 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stage_1_regs.getStageOneLevelOneList().setModel(mxrStates.levelOneList);
         stage_1_regs.getStageOneLevelTwoList().removeAll();
         stage_1_regs.getStageOneLevelTwoList().setModel(mxrStates.levelTwoList);
+        stage_1_regs.getStageOneLevelThreeList().removeAll();
+        stage_1_regs.getStageOneLevelThreeList().setModel(mxrStates.levelThreeList);
 
         // GUI updates on stage 1 config: 2 level or 3 level model
         if (stageOneTwoLevelRadio.isSelected() == true) {
             // 2 level
             stage_1_regs.enableLevel3(false);
+            stageOneLevelThreePanel.setVisible(false);
         } else if (stageOneThreeLevelParticipantLevelThreeRadio.isSelected() == true) {
             // 3 level
             stage_1_regs.enableLevel3(true);
+            stageOneLevelThreePanel.setVisible(true);
         }
 
         stageOneRegs.isSubmitClicked = mxrStates.isStageOneRegSubmitClicked;
@@ -4124,11 +4181,15 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 //            disaggVarianceBoxes = mxrStates.disaggVarianceBoxes;
 //            levelTwoBoxes = mxrStates.levelTwoBoxes;
             if (mxrStates.levelOneList.getSize() > 0) {
-                update_StageOneLevelOneBoxes(stageOneRegs.levelOneList, mxrStates.StageOneLevelOneBoxesSelection, mxrStates.disaggVarianceBoxesSelection);
+                update_StageOneLevelXTableBoxes(1, stageOneRegs.levelOneList, mxrStates.StageOneLevelOneBoxesSelection, mxrStates.disaggVarianceBoxesSelection);
             }
             if (mxrStates.levelTwoList.getSize() > 0) {
-                update_StageOneLevelTwoBoxes(stageOneRegs.levelTwoList, mxrStates.StageOneLevelTwoBoxesSelection);
+                update_StageOneLevelXTableBoxes(2, stageOneRegs.levelTwoList, mxrStates.StageOneLevelTwoBoxesSelection, null);
             }
+            if (mxrStates.levelThreeList.getSize() > 0) {
+                update_StageOneLevelXTableBoxes(3, stageOneRegs.levelThreeList, mxrStates.StageOneLevelThreeBoxesSelection, null);
+            }
+
         }
 
         //update advanced options
@@ -4344,25 +4405,31 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel level1_BSVar1;
     private javax.swing.JLabel level1_BSVar2;
+    private javax.swing.JLabel level1_BWVar1;
+    private javax.swing.JLabel level1_BWVar2;
     private javax.swing.JLabel level1_MeanReg;
     private javax.swing.JLabel level1_WSVar;
     private javax.swing.JLabel level1_WSVar1;
     private javax.swing.JLabel level1_WSVar2;
     private javax.swing.JLabel level2_BSVar1;
     private javax.swing.JLabel level2_BSVar2;
+    private javax.swing.JLabel level2_BWVar1;
+    private javax.swing.JLabel level2_BWVar2;
     private javax.swing.JLabel level2_MeanReg;
     private javax.swing.JLabel level2_WSVar;
     private javax.swing.JLabel level2_WSVar1;
     private javax.swing.JLabel level2_WSVar2;
     private javax.swing.JLabel level3_BSVar1;
     private javax.swing.JLabel level3_BSVar2;
+    private javax.swing.JLabel level3_BWVar1;
+    private javax.swing.JLabel level3_BWVar2;
     private javax.swing.JLabel level3_MeanReg;
     private javax.swing.JLabel level3_WSVar;
     private javax.swing.JLabel level3_WSVar1;
     private javax.swing.JLabel level3_WSVar2;
     private javax.swing.JPanel levelOneGrid;
+    private javax.swing.JPanel levelThreeGrid;
     private javax.swing.JPanel levelTwoGrid;
-    private javax.swing.JPanel levelTwoGrid1;
     private javax.swing.JButton loadModelByBrowseButton;
     private javax.swing.JLabel missingCodeViewLabel;
     private javax.swing.JRadioButton missingValueAbsent;
@@ -4471,19 +4538,22 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         buttonGroup1.clearSelection();
 
-        //addStageTwoTabTwo.setEnabled(false);
-        stageOneLevelTwoPanel.removeAll();
-        stageOneLevelTwoPanel.revalidate();
-        stageOneLevelTwoPanel.repaint();
-
         stageOneLevelOnePanel.removeAll();
         stageOneLevelOnePanel.revalidate();
         stageOneLevelOnePanel.repaint();
 
-        parentPanel.removeAll();
-        parentPanel.add(stageOneTabs);
-        parentPanel.repaint();
-        parentPanel.revalidate();
+        stageOneLevelTwoPanel.removeAll();
+        stageOneLevelTwoPanel.revalidate();
+        stageOneLevelTwoPanel.repaint();
+
+        stageOneLevelThreePanel.removeAll();
+        stageOneLevelThreePanel.revalidate();
+        stageOneLevelThreePanel.repaint();
+
+//        parentPanel.removeAll();
+//        parentPanel.add(stageOneTabs);
+//        parentPanel.repaint();
+//        parentPanel.revalidate();
     }
 
     //Updates IDs and outcome variables list
@@ -4648,215 +4718,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         return enbaleInteractionCheckBox.isSelected();
     }
 
-    //Update level 1 table with regressors
-    public void updateStageOneLevelOneGrid(DefaultListModel<String> defaultListModel) {
-
-        levelOneSelected = new ArrayList<String>();
-
-        JScrollPane scrollpanel = new JScrollPane(levelOneGrid);
-
-        int regSize = defaultListModel.getSize();
-        levelOneRegSize = regSize;
-        levelOneDisaggSize = regSize;
-
-        levelOneGrid.removeAll();
-
-        levelOneGrid.setLayout(new GridBagLayout());
-        GridBagConstraints constraints = new GridBagConstraints();
-
-        constraints.gridx = 0;
-        constraints.gridy = 0;
-        //constraints.weightx = 1.0;
-        constraints.anchor = GridBagConstraints.NORTH;
-        //constraints.gridwidth = 4;
-
-        GridBagConstraints separatorConstraint = new GridBagConstraints();
-        separatorConstraint.weightx = 1.0;
-        separatorConstraint.fill = GridBagConstraints.HORIZONTAL;
-        separatorConstraint.gridwidth = GridBagConstraints.REMAINDER;
-        separatorConstraint.gridx = 0;
-
-        constraints.insets = new Insets(3, 10, 5, 0);
-        separatorConstraint.insets = new Insets(0, 0, 0, 0);
-        constraints.fill = GridBagConstraints.HORIZONTAL;
-        constraints.weightx = 1;
-
-        levelOneBoxes = new ArrayList<>();
-        disaggVarianceBoxes = new ArrayList<>();
-
-        for (int j = 0; j < regSize; j++) {
-            constraints.gridx = 0;
-            constraints.anchor = GridBagConstraints.LINE_END;
-            levelOneSelected.add(defaultListModel.getElementAt(j));
-            JLabel variableText = new JLabel(levelOneSelected.get(j));
-//            variableText.setBorder(new LineBorder(Color.BLACK));
-            variableText.setPreferredSize(new Dimension(80, 20));
-            levelOneGrid.add(variableText, constraints);
-
-            levelOneBoxes.add(j, new ArrayList<JCheckBox>());
-
-            for (int k = 0; k < 3; k++) {
-                int row = j;
-                int column = k;
-
-                constraints.gridx++;
-                constraints.anchor = GridBagConstraints.CENTER;
-                levelOneBoxes.get(j).add(k, new JCheckBox());
-                levelOneGrid.add(levelOneBoxes.get(j).get(k), constraints);
-                levelOneBoxes.get(j).get(k).addActionListener(actionListener);
-                levelOneBoxes.get(j).get(k).addActionListener(new ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
-                        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                        AbstractButton abstractButton = (AbstractButton) e.getSource();
-                        boolean selected = abstractButton.getModel().isSelected();
-                        try {
-                            if (selected) {
-                                System.out.println("Checkbox selected");
-                                disaggVarianceBoxes.get(row).get(column).setEnabled(true);
-                                disaggVarianceBoxes.get(row).get(column).setSelected(false);
-//                            System.out.println(disaggVarianceBoxes.size());
-                            } else {
-                                disaggVarianceBoxes.get(row).get(column).setEnabled(false);
-                                disaggVarianceBoxes.get(row).get(column).setSelected(false);
-                            }
-                        } catch (java.lang.IndexOutOfBoundsException indexE) {
-
-                        }
-
-                    }
-                });
-
-            }
-
-            if (disaggregateEnabled == true) {
-                constraints.gridy++;
-                constraints.gridx = 0;
-                constraints.anchor = GridBagConstraints.LINE_END;
-
-                levelOneGrid.add(new JLabel("  - Disaggregate"), constraints);
-                disaggVarianceBoxes.add(j, new ArrayList<JCheckBox>());
-
-                for (int k = 0; k < 3; k++) {
-                    constraints.gridx++;
-                    constraints.anchor = GridBagConstraints.CENTER;
-
-                    disaggVarianceBoxes.get(j).add(k, new JCheckBox());
-
-                    levelOneGrid.add(disaggVarianceBoxes.get(j).get(k), constraints);
-                    disaggVarianceBoxes.get(j).get(k).setEnabled(false);
-
-                }
-                separatorConstraint.gridy = separatorConstraint.gridy + 1;
-            }
-
-            constraints.gridy++;
-            //constraints.gridx = 0;
-            separatorConstraint.gridy = separatorConstraint.gridy + 2;
-            //System.out.println("before seperator");
-            levelOneGrid.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
-            //System.out.println("after seperator");
-            constraints.gridy++;
-
-        }
-
-        stageOneLevelOnePanel.removeAll();
-        stageOneLevelOnePanel.revalidate();
-        stageOneLevelOnePanel.repaint();
-
-        stageOneLevelOnePanel.add(scrollpanel);
-        revalidate();
-
-    }
-
-    //Update level 2 table with regressors
-    public void updateStageOneLevelTwoGrid(DefaultListModel<String> defaultListModel) {
-
-        //levelTwoGrid.setVisible(true);
-        JScrollPane scrollpanel = new JScrollPane(levelTwoGrid);
-        levelTwoSelected = new ArrayList<String>();
-
-        int regSize = defaultListModel.getSize();
-        levelTwoRegSize = regSize;
-
-        levelTwoGrid.removeAll();
-
-        levelTwoGrid.setLayout(new GridBagLayout());
-        GridBagConstraints constraints = new GridBagConstraints();
-
-        constraints.gridx = 0;
-        constraints.gridy = 0;
-        constraints.weightx = 1.0;
-        // constraints.weighty = 1.0;
-        constraints.anchor = GridBagConstraints.NORTH;
-        //constraints.gridwidth = 4;
-
-        GridBagConstraints separatorConstraint = new GridBagConstraints();
-        separatorConstraint.weightx = 1.0;
-        separatorConstraint.fill = GridBagConstraints.HORIZONTAL;
-        separatorConstraint.gridwidth = GridBagConstraints.REMAINDER;
-        separatorConstraint.gridx = 0;
-
-        constraints.insets = new Insets(3, 10, 5, 0);
-        separatorConstraint.insets = new Insets(0, 0, 0, 0);
-        constraints.fill = GridBagConstraints.HORIZONTAL;
-        constraints.weightx = 1;
-
-        levelTwoBoxes = new ArrayList<ArrayList<JCheckBox>>();
-        //disaggVarianceBoxes = new ArrayList<ArrayList<JCheckBox>>();
-
-        for (int j = 0; j < regSize; j++) {
-            constraints.gridx = 0;
-            constraints.anchor = GridBagConstraints.LINE_END;
-            levelTwoSelected.add(defaultListModel.getElementAt(j));
-            JLabel variableText = new JLabel(levelTwoSelected.get(j));
-//            variableText.setBorder(new LineBorder(Color.BLACK));
-            variableText.setPreferredSize(new Dimension(80, 20));
-            levelTwoGrid.add(variableText, constraints);
-
-            levelTwoBoxes.add(j, new ArrayList<JCheckBox>());
-
-            for (int k = 0; k < 3; k++) {
-
-                constraints.gridx++;
-                constraints.anchor = GridBagConstraints.CENTER;
-                levelTwoBoxes.get(j).add(k, new JCheckBox());
-
-                if (k == 1) {
-                    if (RLE_selected == MixLibrary.STAGE_ONE_RLE_SLOPE) {
-                        levelTwoBoxes.get(j).get(1).setVisible(false);
-
-                        JLabel placeHolder3 = new JLabel(" ");
-                        placeHolder3.setPreferredSize(new Dimension(20, 20));
-                        levelTwoGrid.add(placeHolder3, constraints);
-                    } else {
-
-                        levelTwoBoxes.get(j).get(1).setVisible(true);
-                        levelTwoBoxes.get(j).get(1).setEnabled(true);
-
-                    }
-                }
-
-                levelTwoGrid.add(levelTwoBoxes.get(j).get(k), constraints);
-            }
-
-            constraints.gridy++;
-
-            separatorConstraint.gridy = separatorConstraint.gridy + 2;
-            // System.out.println("before seperator");
-            levelTwoGrid.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
-            // System.out.println("after seperator");
-            constraints.gridy++;
-
-        }
-
-        stageOneLevelTwoPanel.removeAll();
-        stageOneLevelTwoPanel.revalidate();
-        stageOneLevelTwoPanel.repaint();
-
-        stageOneLevelTwoPanel.add(scrollpanel);
-        revalidate();
-
-    }
 
     //Update stage 2 table with selected regressors
     public void updateStageTwoLevelTwoGrid(DefaultListModel<String> defaultListModel) {
@@ -7586,9 +7447,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     if (stageOneTwoLevelRadio.isSelected() == true) {
                         // 2 level
                         stage_1_regs.enableLevel3(false);
+                        stageOneLevelThreePanel.setVisible(false);
                     } else if (stageOneThreeLevelParticipantLevelThreeRadio.isSelected() == true) {
                         // 3 level
                         stage_1_regs.enableLevel3(true);
+                        stageOneLevelThreePanel.setVisible(true);
                     }
                 }
 
@@ -7679,7 +7542,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             System.out.println("VALIDATION OF FIELDS: " + String.valueOf(false));
 
-        } //To change body of generated methods, choose Tools | Templates.
+        }
     }
 
     private void update_trigger_StartStageTwo() {
@@ -8326,28 +8189,69 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         }
     }
 
-    private void update_StageOneLevelOneBoxes(DefaultListModel<String> defaultListModel,
-            boolean[][] StageOneLevelOneBoxesSelection,
-            boolean[][] disaggVarianceBoxesSelection) {
+    public void update_StageOneLevelXTableBoxes(Integer stageOneTableLevel, DefaultListModel<String> defaultListModel,
+            boolean[][] StageOneLevelXBoxesSelection,
+            boolean[][] StageOneLevelXDisaggVarianceBoxesSelection) {
 
-        levelOneSelected = new ArrayList<String>();
-
-        JScrollPane scrollpanel = new JScrollPane(levelOneGrid);
-
+        ArrayList<String> tableSelected;
+        JScrollPane scrollpanel;
         int regSize = defaultListModel.getSize();
-        levelOneRegSize = regSize;
-        levelOneDisaggSize = regSize;
+        javax.swing.JPanel tableGrid;
+        ArrayList<ArrayList<JCheckBox>> tableBoxes;
+        ArrayList<ArrayList<JCheckBox>> tableDisaggVarianceBoxes;
+        javax.swing.JPanel tablePanel;
 
-        levelOneGrid.removeAll();
+        if (stageOneTableLevel == 1) {
+            levelOneSelected = new ArrayList<String>();
+            tableSelected = levelOneSelected;
+            scrollpanel = new JScrollPane(levelOneGrid);
+            levelOneRegSize = regSize;
+            levelOneDisaggSize = regSize;
+            tableGrid = levelOneGrid;
+            levelOneBoxes = new ArrayList<>();
+            tableBoxes = levelOneBoxes;
+            disaggVarianceBoxes = new ArrayList<>();
+            tableDisaggVarianceBoxes = disaggVarianceBoxes;
+            tablePanel = stageOneLevelOnePanel;
+        } else if (stageOneTableLevel == 2) {
+            levelTwoSelected = new ArrayList<String>();
+            tableSelected = levelTwoSelected;
+            scrollpanel = new JScrollPane(levelTwoGrid);
+            levelTwoRegSize = regSize;
+            levelTwoDisaggSize = regSize;
+            tableGrid = levelTwoGrid;
+            levelTwoBoxes = new ArrayList<>();
+            tableBoxes = levelTwoBoxes;
+//            disaggVarianceBoxes = new ArrayList<>();
+            tableDisaggVarianceBoxes = disaggVarianceBoxes;
+            tablePanel = stageOneLevelTwoPanel;
+        } else if (stageOneTableLevel == 3) {
+            levelThreeSelected = new ArrayList<String>();
+            tableSelected = levelThreeSelected;
+            scrollpanel = new JScrollPane(levelThreeGrid);
+            levelThreeRegSize = regSize;
+            levelThreeDisaggSize = regSize;
+            tableGrid = levelThreeGrid;
+            levelThreeBoxes = new ArrayList<>();
+            tableBoxes = levelThreeBoxes;
+//            disaggVarianceBoxes = new ArrayList<>();
+            tableDisaggVarianceBoxes = disaggVarianceBoxes;
+            tablePanel = stageOneLevelThreePanel;
+        } else {
+            Logger.getLogger(getName()).log(Level.SEVERE, null, "Invalid stage one table level");
+            SystemLogger.LOGGER.log(Level.SEVERE, "Invalid stage one table level" + "{0}", SystemLogger.getLineNum());
+            JOptionPane.showMessageDialog(null, "Invalid stage one table level", "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+            return;
+        }
 
-        levelOneGrid.setLayout(new GridBagLayout());
+        tableGrid.removeAll();
+        tableGrid.setLayout(new GridBagLayout());
+
         GridBagConstraints constraints = new GridBagConstraints();
 
         constraints.gridx = 0;
         constraints.gridy = 0;
-        //constraints.weightx = 1.0;
         constraints.anchor = GridBagConstraints.NORTH;
-        //constraints.gridwidth = 4;
 
         GridBagConstraints separatorConstraint = new GridBagConstraints();
         separatorConstraint.weightx = 1.0;
@@ -8360,97 +8264,201 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.weightx = 1;
 
-        levelOneBoxes = new ArrayList<>();
-        disaggVarianceBoxes = new ArrayList<>();
-
         for (int j = 0; j < regSize; j++) {
             constraints.gridx = 0;
             constraints.anchor = GridBagConstraints.LINE_END;
-//            constraints.fill = GridBagConstraints.HORIZONTAL;
-            levelOneSelected.add(defaultListModel.getElementAt(j));
-            JLabel variableText = new JLabel(levelOneSelected.get(j));
-//            variableText.setBorder(new LineBorder(Color.BLACK));
-            variableText.setPreferredSize(new Dimension(80, 20));
-            levelOneGrid.add(variableText, constraints);
+            tableSelected.add(defaultListModel.getElementAt(j));
+            JLabel variableText = new JLabel(tableSelected.get(j));
+            variableText.setPreferredSize(new Dimension(60, 20));
+            tableGrid.add(variableText, constraints);
 
-            levelOneBoxes.add(j, new ArrayList<JCheckBox>());
+            tableBoxes.add(j, new ArrayList<JCheckBox>());
 
-            for (int k = 0; k < 3; k++) {
+            for (int k = 0; k < 5; k++) {
                 int row = j;
                 int column = k;
 
                 constraints.gridx++;
                 constraints.anchor = GridBagConstraints.CENTER;
-                levelOneBoxes.get(j).add(k, new JCheckBox());
+                tableBoxes.get(j).add(k, new JCheckBox());
 
-                if (StageOneLevelOneBoxesSelection[j][k] == true) {
-                    levelOneBoxes.get(j).get(k).setSelected(true);
+                if ((StageOneLevelXBoxesSelection != null) && (StageOneLevelXBoxesSelection[j][k] == true)) {
+                    tableBoxes.get(j).get(k).setSelected(true);
 //                    disaggVarianceBoxes.get(j).get(k).setEnabled(true);
                 }
-                levelOneGrid.add(levelOneBoxes.get(j).get(k), constraints);
 
-                levelOneBoxes.get(j).get(k).addActionListener(actionListener);
-                levelOneBoxes.get(j).get(k).addActionListener(new ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
-                        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                        AbstractButton abstractButton = (AbstractButton) e.getSource();
-                        boolean selected = abstractButton.getModel().isSelected();
-                        if (selected) {
-                            System.out.println("Checkbox selected");
-                            disaggVarianceBoxes.get(row).get(column).setEnabled(true);
-                            disaggVarianceBoxes.get(row).get(column).setSelected(false);
-                            System.out.println(disaggVarianceBoxes.size());
-                        } else {
-                            disaggVarianceBoxes.get(row).get(column).setEnabled(false);
-                            disaggVarianceBoxes.get(row).get(column).setSelected(false);
+                if (stageOneTableLevel == 1) {
+                    tableGrid.add(tableBoxes.get(j).get(k), constraints);
+                    tableBoxes.get(j).get(k).addActionListener(actionListener);
+                    tableBoxes.get(j).get(k).addActionListener(new ActionListener() {
+                        public void actionPerformed(ActionEvent e) {
+                            //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                            AbstractButton abstractButton = (AbstractButton) e.getSource();
+                            boolean selected = abstractButton.getModel().isSelected();
+                            if (disaggregateEnabled == true) {
+                                if (selected) {
+                                    System.out.println("Checkbox selected");
+                                    tableDisaggVarianceBoxes.get(row).get(column).setEnabled(true);
+                                    tableDisaggVarianceBoxes.get(row).get(column).setSelected(false);
+                                    System.out.println(tableDisaggVarianceBoxes.size());
+                                } else {
+                                    tableDisaggVarianceBoxes.get(row).get(column).setEnabled(false);
+                                    tableDisaggVarianceBoxes.get(row).get(column).setSelected(false);
+                                }
+                            }
                         }
+                    });
 
+                    if (stageOneTwoLevelRadio.isSelected()) { // two-level
+                        if (k <= 2) {
+                            tableBoxes.get(j).get(k).setVisible(true);
+                            tableBoxes.get(j).get(k).setEnabled(true);
+                        } else if (k == 3) {
+                            if (randomScaleSpecSelectionInterceptSlope.isSelected()) {
+                                tableBoxes.get(j).get(k).setVisible(true);
+                                tableBoxes.get(j).get(k).setEnabled(true);
+                            } else {
+                                tableBoxes.get(j).get(k).setVisible(false);
+                                JLabel placeHolder3 = new JLabel(" ");
+                                placeHolder3.setPreferredSize(new Dimension(20, 20));
+                                tableGrid.add(placeHolder3, constraints);
+                            }
+                        } else {
+                            tableBoxes.get(j).get(k).setVisible(false);
+                            JLabel placeHolder3 = new JLabel(" ");
+                            placeHolder3.setPreferredSize(new Dimension(20, 20));
+                            tableGrid.add(placeHolder3, constraints);
+                        }
+                    } else if (stageOneThreeLevelParticipantLevelThreeRadio.isSelected()) { //three-level
+                        if (k <= 2) {
+                            tableBoxes.get(j).get(k).setVisible(true);
+                            tableBoxes.get(j).get(k).setEnabled(true);
+                        } else if (k == 3) {
+                            if (randomScaleSpecSelectionInterceptSlope.isSelected()) {
+                                tableBoxes.get(j).get(k).setVisible(true);
+                                tableBoxes.get(j).get(k).setEnabled(true);
+                            } else {
+                                tableBoxes.get(j).get(k).setVisible(false);
+                                JLabel placeHolder3 = new JLabel(" ");
+                                placeHolder3.setPreferredSize(new Dimension(20, 20));
+                                tableGrid.add(placeHolder3, constraints);
+                            }
+                        } else {
+                            tableBoxes.get(j).get(k).setVisible(true);
+                            tableBoxes.get(j).get(k).setEnabled(true);
+                        }
                     }
-                });
+
+                } else if (stageOneTableLevel == 2) {
+                    if (stageOneTwoLevelRadio.isSelected()) { // two-level
+                        if (k == 1) {
+                            if (RLE_selected == MixLibrary.STAGE_ONE_RLE_SLOPE) {
+                                tableBoxes.get(j).get(k).setVisible(false);
+                                JLabel placeHolder3 = new JLabel(" ");
+                                placeHolder3.setPreferredSize(new Dimension(20, 20));
+                                tableGrid.add(placeHolder3, constraints);
+                            } else {
+                                tableBoxes.get(j).get(k).setVisible(true);
+                                tableBoxes.get(j).get(k).setEnabled(true);
+                            }
+                        } else if (k >= 3) {
+                            tableBoxes.get(j).get(k).setVisible(false);
+                            JLabel placeHolder3 = new JLabel(" ");
+                            placeHolder3.setPreferredSize(new Dimension(20, 20));
+                            tableGrid.add(placeHolder3, constraints);
+                        } else {
+                            tableBoxes.get(j).get(k).setVisible(true);
+                            tableBoxes.get(j).get(k).setEnabled(true);
+                        }
+                    } else if (stageOneThreeLevelParticipantLevelThreeRadio.isSelected()) { //three-level
+                        if (k <= 2) {
+                            tableBoxes.get(j).get(k).setVisible(true);
+                            tableBoxes.get(j).get(k).setEnabled(true);
+                        } else if (k == 3) {
+                            if (randomScaleSpecSelectionInterceptSlope.isSelected()) {
+                                tableBoxes.get(j).get(k).setVisible(true);
+                                tableBoxes.get(j).get(k).setEnabled(true);
+                            } else {
+                                tableBoxes.get(j).get(k).setVisible(false);
+                                JLabel placeHolder3 = new JLabel(" ");
+                                placeHolder3.setPreferredSize(new Dimension(20, 20));
+                                tableGrid.add(placeHolder3, constraints);
+                            }
+                        } else {
+                            tableBoxes.get(j).get(k).setVisible(true);
+                            tableBoxes.get(j).get(k).setEnabled(true);
+                        }
+                    }
+
+                    tableGrid.add(tableBoxes.get(j).get(k), constraints);
+
+                } else if (stageOneTableLevel == 3) {
+                    if (stageOneThreeLevelParticipantLevelThreeRadio.isSelected()) { //three-level
+                        if (k == 1) {
+                            if (RLE_selected == MixLibrary.STAGE_ONE_RLE_SLOPE) {
+                                tableBoxes.get(j).get(k).setVisible(false);
+                                JLabel placeHolder3 = new JLabel(" ");
+                                placeHolder3.setPreferredSize(new Dimension(20, 20));
+                                tableGrid.add(placeHolder3, constraints);
+                            } else {
+                                tableBoxes.get(j).get(k).setVisible(true);
+                                tableBoxes.get(j).get(k).setEnabled(true);
+                            }
+                        } else if (k == 3) {
+                            tableBoxes.get(j).get(k).setVisible(false);
+                            JLabel placeHolder3 = new JLabel(" ");
+                            placeHolder3.setPreferredSize(new Dimension(20, 20));
+                            tableGrid.add(placeHolder3, constraints);
+                        } else {
+                            tableBoxes.get(j).get(k).setVisible(true);
+                            tableBoxes.get(j).get(k).setEnabled(true);
+                        }
+                    }
+                    tableGrid.add(tableBoxes.get(j).get(k), constraints);
+                }
 
             }
 
-            constraints.gridy++;
-            constraints.gridx = 0;
-            constraints.anchor = GridBagConstraints.LINE_END;
+            if ((stageOneTableLevel == 1) && (disaggregateEnabled == true)) {
+                constraints.gridy++;
+                constraints.gridx = 0;
+                constraints.anchor = GridBagConstraints.LINE_END;
 
-            levelOneGrid.add(new JLabel("  - Disaggregate"), constraints);
-            disaggVarianceBoxes.add(j, new ArrayList<JCheckBox>());
+                tableGrid.add(new JLabel("  - Disaggregate"), constraints);
+                tableDisaggVarianceBoxes.add(j, new ArrayList<JCheckBox>());
 
-            for (int k = 0; k < 3; k++) {
-                constraints.gridx++;
-                constraints.anchor = GridBagConstraints.CENTER;
+                for (int k = 0; k < 3; k++) {
+                    constraints.gridx++;
+                    constraints.anchor = GridBagConstraints.CENTER;
 
-                disaggVarianceBoxes.get(j).add(k, new JCheckBox());
-                if (disaggVarianceBoxesSelection[j][k] == true) {
-                    disaggVarianceBoxes.get(j).get(k).setSelected(true);
+                    tableDisaggVarianceBoxes.get(j).add(k, new JCheckBox());
+                    if ((StageOneLevelXDisaggVarianceBoxesSelection != null) && (StageOneLevelXDisaggVarianceBoxesSelection[j][k] == true)) {
+                        tableDisaggVarianceBoxes.get(j).get(k).setSelected(true);
+                    }
+                    tableGrid.add(tableDisaggVarianceBoxes.get(j).get(k), constraints);
+                    tableDisaggVarianceBoxes.get(j).get(k).setEnabled(false);
+
+                    if (tableBoxes.get(j).get(k).isSelected() == true) {
+                        tableDisaggVarianceBoxes.get(j).get(k).setEnabled(true);
+                    }
+                    separatorConstraint.gridy = separatorConstraint.gridy + 1;
                 }
-                levelOneGrid.add(disaggVarianceBoxes.get(j).get(k), constraints);
-                disaggVarianceBoxes.get(j).get(k).setEnabled(false);
-
-                if (levelOneBoxes.get(j).get(k).isSelected() == true) {
-                    disaggVarianceBoxes.get(j).get(k).setEnabled(true);
-                }
-                separatorConstraint.gridy = separatorConstraint.gridy + 1;
             }
 
             constraints.gridy++;
-            //constraints.gridx = 0;
             separatorConstraint.gridy = separatorConstraint.gridy + 2;
-            //System.out.println("before seperator");
-            levelOneGrid.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
-            //System.out.println("after seperator");
+            tableGrid.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
             constraints.gridy++;
 
         }
 
-        stageOneLevelOnePanel.removeAll();
+        tablePanel.removeAll();
 
-        stageOneLevelOnePanel.revalidate();
+        tablePanel.revalidate();
 
-        stageOneLevelOnePanel.repaint();
+        tablePanel.repaint();
 
-        stageOneLevelOnePanel.add(scrollpanel);
+        tablePanel.add(scrollpanel);
 
         revalidate();
 
@@ -8547,6 +8555,101 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageOneLevelTwoPanel.repaint();
 
         stageOneLevelTwoPanel.add(scrollpanel);
+        revalidate();
+
+    }
+
+    private void update_StageOneLevelThreeBoxes(DefaultListModel<String> defaultListModel, boolean[][] StageOneLevelTwoBoxesSelection) {
+
+        //levelTwoGrid.setVisible(true);
+        JScrollPane scrollpanel = new JScrollPane(levelThreeGrid);
+        levelThreeSelected = new ArrayList<String>();
+
+        int regSize = defaultListModel.getSize();
+        levelThreeRegSize = regSize;
+
+        levelThreeGrid.removeAll();
+
+        levelThreeGrid.setLayout(new GridBagLayout());
+        GridBagConstraints constraints = new GridBagConstraints();
+
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+//        constraints.weightx = 1.0;
+        // constraints.weighty = 1.0;
+        constraints.anchor = GridBagConstraints.NORTH;
+        //constraints.gridwidth = 4;
+
+        GridBagConstraints separatorConstraint = new GridBagConstraints();
+        separatorConstraint.weightx = 1.0;
+        separatorConstraint.fill = GridBagConstraints.HORIZONTAL;
+        separatorConstraint.gridwidth = GridBagConstraints.REMAINDER;
+        separatorConstraint.gridx = 0;
+
+        constraints.insets = new Insets(3, 10, 5, 0);
+        separatorConstraint.insets = new Insets(0, 0, 0, 0);
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.weightx = 1;
+
+        levelThreeBoxes = new ArrayList<ArrayList<JCheckBox>>();
+        //disaggVarianceBoxes = new ArrayList<ArrayList<JCheckBox>>();
+
+        for (int j = 0; j < regSize; j++) {
+            constraints.gridx = 0;
+            constraints.anchor = GridBagConstraints.LINE_END;
+            levelThreeSelected.add(defaultListModel.getElementAt(j));
+            JLabel variableText = new JLabel(levelThreeSelected.get(j));
+//            variableText.setBorder(new LineBorder(Color.BLACK));
+            variableText.setPreferredSize(new Dimension(80, 20));
+            levelThreeGrid.add(variableText, constraints);
+            //levelTwoGrid.add(new JLabel(defaultListModel.getElementAt(j)), constraints);
+
+            levelThreeBoxes.add(j, new ArrayList<JCheckBox>());
+
+            for (int k = 0; k < 3; k++) {
+
+                constraints.gridx++;
+                constraints.anchor = GridBagConstraints.CENTER;
+                levelThreeBoxes.get(j).add(k, new JCheckBox());
+                // hoho
+                if (StageOneLevelTwoBoxesSelection[j][k] == true) {
+                    levelThreeBoxes.get(j).get(k).setSelected(true);
+//                    System.out.print("********"+j+k+"********");
+                }
+
+                if (k == 1) {
+                    if (RLE_selected == MixLibrary.STAGE_ONE_RLE_SLOPE) {
+                        levelThreeBoxes.get(j).get(1).setVisible(false);
+
+                        JLabel placeHolder3 = new JLabel(" ");
+                        placeHolder3.setPreferredSize(new Dimension(20, 20));
+                        levelThreeGrid.add(placeHolder3, constraints);
+                    } else {
+
+                        levelThreeBoxes.get(j).get(1).setVisible(true);
+                        levelThreeBoxes.get(j).get(1).setEnabled(true);
+
+                    }
+                }
+
+                levelThreeGrid.add(levelThreeBoxes.get(j).get(k), constraints);
+            }
+
+            constraints.gridy++;
+
+            separatorConstraint.gridy = separatorConstraint.gridy + 2;
+            // System.out.println("before seperator");
+            levelThreeGrid.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
+            // System.out.println("after seperator");
+            constraints.gridy++;
+
+        }
+
+        stageOneLevelThreePanel.removeAll();
+        stageOneLevelThreePanel.revalidate();
+        stageOneLevelThreePanel.repaint();
+
+        stageOneLevelThreePanel.add(scrollpanel);
         revalidate();
 
     }
@@ -9831,6 +9934,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         if (checkTabExistinJTabbedPane(stageOneTabs, "Stage 2 Results") && (includeStageTwoNo() == true)) {
             stageOneTabs.remove(jPanel4);
         }
+
     }
 
     private void updateGuiView_trigger_browse(boolean turnOn) {

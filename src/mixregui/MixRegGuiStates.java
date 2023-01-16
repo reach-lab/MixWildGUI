@@ -79,13 +79,16 @@ public class MixRegGuiStates {
     public DefaultListModel<String> varList;
     public DefaultListModel<String> levelOneList;
     public DefaultListModel<String> levelTwoList;
+    public DefaultListModel<String> levelThreeList;
     public String varListString;
     public String levelOneListString;
     public String levelTwoListString;
+    public String levelThreeListString;
     public boolean isStageOneRegSubmitClicked;
     public boolean[][] StageOneLevelOneBoxesSelection;
     public boolean[][] disaggVarianceBoxesSelection;
     public boolean[][] StageOneLevelTwoBoxesSelection;
+    public boolean[][] StageOneLevelThreeBoxesSelection;
 
     // advanced options
     public boolean meanSubmodelCheckBox;
@@ -174,6 +177,7 @@ public class MixRegGuiStates {
         this.varListString = saveDefaultListModel(stageOneRegs.varList);
         this.levelOneListString = saveDefaultListModel(stageOneRegs.levelOneList);
         this.levelTwoListString = saveDefaultListModel(stageOneRegs.levelTwoList);
+        this.levelThreeListString = saveDefaultListModel(stageOneRegs.levelThreeList);
 
         this.addStageOneCHecked = mxr.addStageOneChecked;
         this.isStageOneRegSubmitClicked = stageOneRegs.isSubmitClicked;
@@ -181,6 +185,7 @@ public class MixRegGuiStates {
         this.StageOneLevelOneBoxesSelection = getSelectionBoxes(mxr.levelOneBoxes);
         this.disaggVarianceBoxesSelection = getSelectionBoxes(mxr.disaggVarianceBoxes);
         this.StageOneLevelTwoBoxesSelection = getSelectionBoxes(mxr.levelTwoBoxes);
+        this.StageOneLevelThreeBoxesSelection = getSelectionBoxes(mxr.levelThreeBoxes);
 
         this.meanSubmodelCheckBox = ao.isMeanSubmodelCheckBoxChecked();
         this.BSVarianceCheckBox = ao.isBSVarianceCheckBoxChecked();
@@ -313,6 +318,8 @@ public class MixRegGuiStates {
             levelOneList = loadDefaultListModel(levelOneListString);
             levelTwoListString = hmapStates.get("levelTwoList").getString();
             levelTwoList = loadDefaultListModel(levelTwoListString);
+            levelThreeListString = hmapStates.get("levelThreeList").getString();
+            levelThreeList = loadDefaultListModel(levelThreeListString);
 
             isStageOneRegSubmitClicked = hmapStates.get("isStageOneRegSubmitClicked").getBoolean();
 //        levelOneBoxes = hmapStates.get("levelOneBoxes").getBox();
@@ -321,6 +328,7 @@ public class MixRegGuiStates {
             StageOneLevelOneBoxesSelection = hmapStates.get("StageOneLevelOneBoxesSelection").getBox();
             disaggVarianceBoxesSelection = hmapStates.get("disaggVarianceBoxesSelection").getBox();
             StageOneLevelTwoBoxesSelection = hmapStates.get("StageOneLevelTwoBoxesSelection").getBox();
+            StageOneLevelThreeBoxesSelection = hmapStates.get("StageOneLevelThreeBoxesSelection").getBox();
 
             meanSubmodelCheckBox = hmapStates.get("meanSubmodelCheckBox").getBoolean();
             BSVarianceCheckBox = hmapStates.get("BSVarianceCheckBox").getBoolean();
@@ -445,6 +453,8 @@ public class MixRegGuiStates {
         StateObject po70 = new StateObject("randomScaleSpecSelectionInterceptOnly", randomScaleSpecSelectionInterceptOnly);
         StateObject po71 = new StateObject("randomScaleSpecSelectionInterceptSlope", randomScaleSpecSelectionInterceptSlope);
         StateObject po72 = new StateObject("IDLevel2pos", IDLevel2pos);
+        StateObject po73 = new StateObject("levelTwoList", levelThreeListString);
+        StateObject po74 = new StateObject("StageOneLevelThreeBoxesSelection", StageOneLevelThreeBoxesSelection);
 
         hashmap.put(po00.getKey(), po00);
         hashmap.put(po0.getKey(), po0);
@@ -520,6 +530,7 @@ public class MixRegGuiStates {
         hashmap.put(po70.getKey(), po70);
         hashmap.put(po71.getKey(), po71);
         hashmap.put(po72.getKey(), po72);
+        hashmap.put(po73.getKey(), po73);
         return hashmap;
     }
 
