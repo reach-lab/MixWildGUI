@@ -12,14 +12,14 @@ MixWILD (Also Mixed model analysis with Intensive Longitudinal Data) is a deskto
 ---
   
 ### Download MixWild for Mac or PC ###
-- [macOS Intel (Not Tested on Apple Silicon)](https://github.com/reach-lab/MixWildGUI/releases/download/v2.0-stable/MixWILD-2.0.dmg) (current version: 2.0)
+- [macOS Intel (Need Rosetta on Apple Silicon)](https://github.com/reach-lab/MixWildGUI/releases/download/v2.0-stable/MixWILD-2.0.dmg) (current version: 2.0)
 
 - [Windows](https://github.com/reach-lab/MixWildGUI/releases/download/v2.0-stable/MixWILD-2.0.exe) (current version: 2.0)
 
 ### Manuscript Supplement ###
-- [User Guide](/resources/user_guide/MixWILD_UG_All_combine.html)  
+- [User Guide](/resources/user_guide/MixWILD_users_guide_with_appendix_AB.pdf)  
 - [Cheat Sheets](/resources/cheat_sheets/MixWILD_UG_CS_220124.html)  
-- [Example Dataset](/resources/dataset/Mixwild_example_data.csv)  
+- [Example Dataset](/resources/dataset/SBM_MixWILD_Example_Data.zip)  
 
 ### Video tutorial
 - [Video1: simple tutorial about MixWILD](https://www.youtube.com/watch?v=ZqyCxrMG1R8&feature=emb_logo)
