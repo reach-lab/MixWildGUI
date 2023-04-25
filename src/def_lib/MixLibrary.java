@@ -2372,7 +2372,8 @@ public class MixLibrary implements Serializable {
             MIXREG = "resources/macOS/" + MIXREG;
             MIXORS = "resources/macOS/" + MIXORS;
             MIXPREG = "resources/macOS/" + MIXPREG;
-            STAGETWO_ONLY = "resources/macOS/" + STAGETWO_ONLY;
+//            STAGETWO_ONLY = "resources/macOS/" + STAGETWO_ONLY;
+            STAGETWO_ONLY = "resources/macOS/" + "stage2only.f90";
 //            LSBOTH_PRE_LEVEL3 = "resources/macOS/" + LSBOTH_PRE_LEVEL3;
 //            LSBOTH_PRE_LEVEL3_STAGE2 = "resources/macOS/" + LSBOTH_PRE_LEVEL3_STAGE2;
         }
