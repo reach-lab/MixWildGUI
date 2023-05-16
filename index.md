@@ -23,6 +23,13 @@ MixWILD (Also Mixed model analysis with Intensive Longitudinal Data) is a deskto
 </div>
   
 ---  
+
+### Presentation ###
+
+- [SBM 2023 Paper Presentation](/resources/presentation/SBM_2023_MixWILD_slides_to_REACH_Lab.pdf)  
+- [SBM 2023 MixWILD Workshop](resources/presentation/SBM2023_MixWILD_workshop_slides.zip)  
+
+---  
   
 ### Please submit your email prior to downloading the application so we can notify you of major software updates ###
 {% include formspree.html %}    
@@ -31,9 +38,11 @@ MixWILD (Also Mixed model analysis with Intensive Longitudinal Data) is a deskto
 ---
   
 ### Download MixWild for Mac or PC ###
-- [macOS Intel (Need Rosetta on Apple Silicon)](https://github.com/reach-lab/MixWildGUI/releases/download/v2.0-stable/MixWILD-2.0.dmg) (current version: 2.0)
+- [macOS Intel (Need Rosetta on Apple Silicon)](https://github.com/reach-lab/MixWildGUI/releases/download/v2.0-stable/MixWILD-2.0.dmg) (current version: 2.0)  
+- [Windows](https://github.com/reach-lab/MixWildGUI/releases/download/v2.0-stable/MixWILD-2.0.exe) (current version: 2.0)  
 
-- [Windows](https://github.com/reach-lab/MixWildGUI/releases/download/v2.0-stable/MixWILD-2.0.exe) (current version: 2.0)
+### Tools ###
+- [Power analysis](https://kleimanlab.org/resources/)
 
 ### Manuscript Supplement ###
 - [User Guide](/resources/user_guide/MixWILD_users_guide_with_appendix_AB.pdf)  
