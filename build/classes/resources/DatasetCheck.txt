@@ -1,7 +1,0 @@
-  Is your dataset MixWILD friendly?
-      1) You should always use a .csv file
-      2) You should ensure that missing values are not blanks
-      3) Missing value codes should be numeric only
-      4) Make sure your missing value code is the same as your dataset
-      5) Please ensure that the data is sorted by IDs
-      6) The first row in the .csv file should be column names

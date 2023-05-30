@@ -27,7 +27,7 @@ MixWILD (Also Mixed model analysis with Intensive Longitudinal Data) is a deskto
 ### Presentation ###
 
 - [SBM 2023 Paper Presentation](/resources/presentation/SBM_2023_MixWILD_slides_to_REACH_Lab.pdf)  
-- [SBM 2023 MixWILD Workshop](resources/presentation/SBM2023_MixWILD_workshop_slides.zip)  
+- [SBM 2023 MixWILD Workshop](resources/presentation/SBM2023_MixWILD_combo.pdf)  
 
 ---  
   
