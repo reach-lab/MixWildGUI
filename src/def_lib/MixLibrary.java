@@ -1732,6 +1732,10 @@ public class MixLibrary implements Serializable {
         return advancedGammaTrans;
     }
 
+    public int getStageOneLevelNum() {
+        return stageOneLevelNum;
+    }
+
     /**
      * Ancillary classes
      */
@@ -2080,11 +2084,12 @@ public class MixLibrary implements Serializable {
         if (stageOneOutcome == STAGE_ONE_OUTCOME_MIXOR) {
             defFileName = "mixors_random_mixblank" + system_bit_extension;
         } else {
-            defFileName = "lsboth_random_mixblank" + system_bit_extension;
+//            defFileName = "lsboth_random_mixblank" + system_bit_extension;
+            defFileName = "mixregls_3level_2stage";
         }
-        if (stageOneLevelNum == 3) {
-            defFileName = "mixregls_3level";
-        }
+//        if (stageOneLevelNum == 3) {
+//            defFileName = "mixregls_3level";
+//        }
         if (isWindows) {
             defFileName = defFileName + ".exe";
         }

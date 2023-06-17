@@ -12185,6 +12185,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             stageOneOrdinalRadio.setVisible(true);
             stageOneDichotomousRadio.setEnabled(true);
             stageOneOrdinalRadio.setEnabled(true);
+            advancedOptions_view.update_stageOneLevel3_advanced_options(2);
         } else if (stageOneThreeLevelParticipantLevelThreeRadio.isSelected()) {
             stageOneOutcomeHelpButton.setVisible(true);
             stageOneOutcomeViewLabel.setVisible(true);
@@ -12192,6 +12193,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             stageOneContinuousRadio.setSelected(true);
             stageOneDichotomousRadio.setVisible(false);
             stageOneOrdinalRadio.setVisible(false);
+            advancedOptions_view.update_stageOneLevel3_advanced_options(3);
 //            stageOneDichotomousRadio.setEnabled(false);
 //            stageOneOrdinalRadio.setEnabled(false);
         }
