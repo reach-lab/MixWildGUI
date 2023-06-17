@@ -9999,7 +9999,20 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 tableGrid.add(new JLabel("  - Disaggregate"), constraints);
                 tableDisaggVarianceBoxes.add(j, new ArrayList<JCheckBox>());
 
-                for (int k = 0; k < 3; k++) {
+                int max_k;
+                if (stageOneTwoLevelRadio.isSelected()) { // two-level
+                    if (randomScaleSpecSelectionInterceptSlope.isSelected()) {
+                        max_k = 4;
+                    } else {
+                        max_k = 3;
+                    }
+                } else if (stageOneThreeLevelParticipantLevelThreeRadio.isSelected()) {
+                    max_k = 5;
+                } else {
+                    max_k = 5;
+                }
+
+                for (int k = 0; k < max_k; k++) {
                     constraints.gridx++;
                     constraints.anchor = GridBagConstraints.CENTER;
 
@@ -10013,6 +10026,16 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     if (tableBoxes.get(j).get(k).isSelected() == true) {
                         tableDisaggVarianceBoxes.get(j).get(k).setEnabled(true);
                     }
+
+                    if (!randomScaleSpecSelectionInterceptSlope.isSelected()) {
+                        if (k == 3) {
+                            tableDisaggVarianceBoxes.get(j).get(k).setEnabled(false);
+                            tableDisaggVarianceBoxes.get(j).get(k).setVisible(false);
+                        }
+                    } else {
+                        // pass
+                    }
+
                     separatorConstraint.gridy = separatorConstraint.gridy + 1;
                 }
             }
