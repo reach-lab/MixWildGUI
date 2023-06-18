@@ -8,16 +8,14 @@ MixWILD (Also Mixed model analysis with Intensive Longitudinal Data) is a deskto
   
 ---  
   
-### Research paper and citation request ###
+### Citation Request ###
 MixWILD is a free and open-source tool by and for the behavioral researchers. If you are using MixWILD in your research or data analysis, please read ans cite the following paper for more details:
 
-Dzubur, E., Ponnada, A., Nordgren, R., Yang, C. H., Intille, S., Dunton, G., & Hedeker, D. (2020). MixWILD: A program for examining the effects of variance and slope of time-varying variables in intensive longitudinal data. Behavior Research Methods, 1-25.
+[Dzubur, E., Ponnada, A., Nordgren, R., Yang, C. H., Intille, S., Dunton, G., & Hedeker, D. (2020). MixWILD: A program for examining the effects of variance and slope of time-varying variables in intensive longitudinal data. Behavior Research Methods, 1-25.](https://link.springer.com/article/10.3758/s13428-019-01322-1?wt_mc=Internal.Event.1.SEM.ArticleAuthorOnlineFirst&utm_source=ArticleAuthorContributingOnlineFirst&utm_medium=email&utm_content=AA_en_06082018&ArticleAuthorContributingOnlineFirst_20200103#citeas) 
 
-Open access manuscript available by clicking [here](https://link.springer.com/article/10.3758/s13428-019-01322-1?wt_mc=Internal.Event.1.SEM.ArticleAuthorOnlineFirst&utm_source=ArticleAuthorContributingOnlineFirst&utm_medium=email&utm_content=AA_en_06082018&ArticleAuthorContributingOnlineFirst_20200103#citeas) 
-  
 ---
   
-## Recommended to get started ##
+## Recommended to Get Started ##
 
 ### 1. Watch Video Tutorial
 - [Video1: simple tutorial about MixWILD](https://www.youtube.com/watch?v=ZqyCxrMG1R8&feature=emb_logo)
@@ -31,14 +29,14 @@ Open access manuscript available by clicking [here](https://link.springer.com/ar
 ### 3. Download MixWild for Mac or PC ###
 ### Please submit your email prior to downloading the application so we can notify you of major software updates ###
 {% include formspree.html %}    
-
+  
 - [macOS Intel (Need Rosetta on Apple Silicon)](https://github.com/reach-lab/MixWildGUI/releases/download/v2.0-stable/MixWILD-2.0.dmg) (current version: 2.0)  
 - [Windows](https://github.com/reach-lab/MixWildGUI/releases/download/v2.0-stable/MixWILD-2.0.exe) (current version: 2.0)  
 
 ---
   
-### Contact Us with Questions or Suggestions ###
-- Please use our **[GitHub discussion groups](https://github.com/reach-lab/MixWildGUI/discussions)** for discussions, bug report, help seeking, and sharing new feature ideas **(recommended)**
+## Contact Us with Questions or Suggestions ##
+-  **(Recommended)** Please use our **[GitHub discussion groups](https://github.com/reach-lab/MixWildGUI/discussions)** for discussions, bug report, help seeking, and sharing new feature ideas
 - For questions on application, contact [Aditya Ponnada](mailto:ponnada.a@husky.neu.edu) and [Jixin Li](mailto:li.jix@husky.neu.edu)
 - For questions on models and interpretation, contact [Dr. Eldin Dzubur](mailto:dzubur@usc.edu) and [Rachel Nordgren](mailto:rknordgren@gmail.com)
 - For future collaborations, contact [Prof. Don Hedeker](mailto:DHedeker@health.bsd.uchicago.edu), [Prof. Genevieve Dunton](mailto:dunton@usc.edu), and [Prof. Stephen Intille](S.Intille@northeastern.edu)
@@ -52,8 +50,8 @@ Open access manuscript available by clicking [here](https://link.springer.com/ar
   
 ### Recent Presentations ###
 
-- [SBM 2023 SBM Paper on "Older adults’ daily sleep duration and quality"](/resources/presentation/SBM_2023_MixWILD_slides_to_REACH_Lab.pdf)  
-- [SBM 2023 MixWILD Workshop](resources/presentation/SBM2023_MixWILD_combo.pdf)  
+- [2023 SBM Paper on "Older adults’ daily sleep duration and quality"](/resources/presentation/SBM_2023_MixWILD_slides_to_REACH_Lab.pdf)  
+- [2023 SBM MixWILD Workshop](resources/presentation/SBM2023_MixWILD_combo.pdf)  
 
   
 ---  
