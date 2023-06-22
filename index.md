@@ -1,5 +1,4 @@
 ![png](/resources/logo/mixwild_logo-red_large.png)
-# MixWild #
 
 ### What is this project about? ###
 MixWILD (Also Mixed model analysis with Intensive Longitudinal Data) is a desktop GUI-based application for examining the effects of variance and slope of time-varying variables in intensive longitudinal data, especially the ones collected using ecological momentary assessments.
