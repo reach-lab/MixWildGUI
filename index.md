@@ -1,4 +1,4 @@
-![png](/resources/logo/MixWILDLogoResized.png)
+![png](/resources/logo/mixwild_logo-red_large.png)
 # MixWild #
 
 ### What is this project about? ###
