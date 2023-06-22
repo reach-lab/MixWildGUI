@@ -1,5 +1,5 @@
 
-![png](/resources/logo/mixwild_logo-06.png)
+![png](/resources/logo/MixWILDLogoResized.png)
 
 # MixWild #
 
@@ -17,28 +17,31 @@ MixWILD is a free and open-source tool by and for the behavioral researchers. If
   
 ## Recommended to Get Started ##
 
-### 1. Watch Video Tutorial
-- [Video1: simple tutorial about MixWILD](https://www.youtube.com/watch?v=ZqyCxrMG1R8&feature=emb_logo)
-- [Video2: intro to the Mixed Effects Location Scale MELS Model](https://www.youtube.com/watch?v=wCEHuv9t1xw)
+### 1. Watch video tutorial
+- [Video1: simple tutorial about MixWILD](https://www.youtube.com/watch?v=ZqyCxrMG1R8&feature=emb_logo) (13 min)
+- [Video2: intro to the Mixed Effects Location Scale MELS Model](https://www.youtube.com/watch?v=wCEHuv9t1xw) (47 min) 
 
-### 2. Read Supplementary Material ###
-- [User Guide](/resources/user_guide/MixWILD_users_guide_with_appendix_AB.pdf)  
-- [Cheat Sheets](/resources/cheat_sheets/MixWILD_UG_CS_220124.html)  
-- [Example Dataset](/resources/dataset/SBM_MixWILD_Example_Data.zip)  
-
-### 3. Download MixWild for Mac or PC ###
+### 2. Download MixWild for Mac or PC ###
 ### Please submit your email prior to downloading the application so we can notify you of major software updates ###
 {% include formspree.html %}    
   
 - [macOS Intel (Need Rosetta on Apple Silicon)](https://github.com/reach-lab/MixWildGUI/releases/download/v2.0-stable/MixWILD-2.0.dmg) (current version: 2.0)  
 - [Windows](https://github.com/reach-lab/MixWildGUI/releases/download/v2.0-stable/MixWILD-2.0.exe) (current version: 2.0)  
 
+
+### 3. Read introductory material ###
+- [User Guide](/resources/user_guide/MixWILD_users_guide_with_appendix_AB.pdf)  
+- [Cheat Sheets](/resources/cheat_sheets/MixWILD_UG_CS_220124.html)  
+- [Example Dataset](/resources/dataset/SBM_MixWILD_Example_Data.zip) 
+
+### 4. Try running some basic models on example dataset and ask questions ###
+- MELS model: examine whether a person’s positive mood is related to their negative mood
+- MEMLS model: examine whether positive affect (PA) differs on weekend days (vs. weekdays)
+
 ---
   
 ## Contact Us with Questions or Suggestions ##
--  **(Recommended)** Please use our **[GitHub discussion groups](https://github.com/reach-lab/MixWildGUI/discussions)** for discussions, bug report, help seeking, and sharing new feature ideas
-- For questions on application, contact [Aditya Ponnada](mailto:ponnada.a@husky.neu.edu) and [Jixin Li](mailto:li.jix@husky.neu.edu)
-- For questions on models and interpretation, contact [Dr. Eldin Dzubur](mailto:dzubur@usc.edu) and [Rachel Nordgren](mailto:rknordgren@gmail.com)
+- For questions, bug report, or new feature ideas, please post an issue on **[GitHub discussion groups](https://github.com/reach-lab/MixWildGUI/discussions)** 
 - For future collaborations, contact [Prof. Don Hedeker](mailto:DHedeker@health.bsd.uchicago.edu), [Prof. Genevieve Dunton](mailto:dunton@usc.edu), and [Prof. Stephen Intille](S.Intille@northeastern.edu)
   
 ---
@@ -50,7 +53,7 @@ MixWILD is a free and open-source tool by and for the behavioral researchers. If
   
 ### Recent Presentations ###
 
-- [2023 SBM Paper on "Older adults’ daily sleep duration and quality"](/resources/presentation/SBM_2023_MixWILD_slides_to_REACH_Lab.pdf)  
+- [2023 SBM Paper on "Modeling variability of daily sleep quality and duration"](/resources/presentation/SBM_2023_MixWILD_slides_to_REACH_Lab.pdf)  
 - [2023 SBM MixWILD Workshop](resources/presentation/SBM2023_MixWILD_combo.pdf)  
 
   
@@ -75,11 +78,9 @@ MixWILD is a free and open-source tool by and for the behavioral researchers. If
 ### Funding and Team ###
 *Agency:* National Institutes of Health (NIH)
 
-*Institute:* National Heart, Lung, and Blood Institute (NHLBI)
+*Institutes:* National Heart, Lung, and Blood Institute (NHLBI) and National Cancer Institute (NCI)
 
-*Project:* 5R01HL121330-05 and 1R01CA240713-01
-
-*Title:* Novel Statistical Models for Intensive Longitudinal Analysis of Cancer Control Behaviors
+*Grant numbers:* 5R01HL121330-05 and 1R01CA240713-01
 
 *Principal Investigator(s):* Hedeker, Donald (University of Chicago); Dunton, Genevieve Fridlund (University of Southern California); Intille, Stephen (Northeastern University)
 
@@ -87,9 +88,9 @@ MixWILD is a free and open-source tool by and for the behavioral researchers. If
 
 *Research Groups:* REACH Lab, University of Southern California and mHealth Research Group, Northeastern University
 
-[Grant 1](https://projectreporter.nih.gov/project_info_details.cfm?aid=9268804&icde=0)
+[NIH report: Novel Statistical Models for EMA Studies of Physical Activity](https://projectreporter.nih.gov/project_info_details.cfm?aid=9268804&icde=0)
 
-[Grant 2](https://projectreporter.nih.gov/project_info_details.cfm?aid=9803376&icde=47317498)
+[NIH report: Novel Statistical Models for Intensive Longitudinal Analyses of Cancer Control Behaviors](https://projectreporter.nih.gov/project_info_details.cfm?aid=9803376&icde=47317498)
 
 #### Logotype credits ####
 [Gentium Book Basic](https://fonts.google.com/specimen/Gentium+Book+Basic) by Victor Gaultney and 
