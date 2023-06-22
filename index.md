@@ -1,6 +1,4 @@
-
 ![png](/resources/logo/MixWILDLogoResized.png)
-
 # MixWild #
 
 ### What is this project about? ###
@@ -9,7 +7,7 @@ MixWILD (Also Mixed model analysis with Intensive Longitudinal Data) is a deskto
 ---  
   
 ### Citation Request ###
-MixWILD is a free and open-source tool by and for the behavioral researchers. If you are using MixWILD in your research or data analysis, please read ans cite the following paper for more details:
+MixWILD is a free and open-source tool by and for the behavioral researchers. If you are using MixWILD in your research or data analysis, please read and cite the following paper for more details:
 
 [Dzubur, E., Ponnada, A., Nordgren, R., Yang, C. H., Intille, S., Dunton, G., & Hedeker, D. (2020). MixWILD: A program for examining the effects of variance and slope of time-varying variables in intensive longitudinal data. Behavior Research Methods, 1-25.](https://link.springer.com/article/10.3758/s13428-019-01322-1?wt_mc=Internal.Event.1.SEM.ArticleAuthorOnlineFirst&utm_source=ArticleAuthorContributingOnlineFirst&utm_medium=email&utm_content=AA_en_06082018&ArticleAuthorContributingOnlineFirst_20200103#citeas) 
 
@@ -17,7 +15,7 @@ MixWILD is a free and open-source tool by and for the behavioral researchers. If
   
 ## Recommended to Get Started ##
 
-### 1. Watch video tutorial
+### 1. Watch introductory video(s)
 - [Video1: simple tutorial about MixWILD](https://www.youtube.com/watch?v=ZqyCxrMG1R8&feature=emb_logo) (13 min)
 - [Video2: intro to the Mixed Effects Location Scale MELS Model](https://www.youtube.com/watch?v=wCEHuv9t1xw) (47 min) 
 
@@ -34,14 +32,14 @@ MixWILD is a free and open-source tool by and for the behavioral researchers. If
 - [Cheat Sheets](/resources/cheat_sheets/MixWILD_UG_CS_220124.html)  
 - [Example Dataset](/resources/dataset/SBM_MixWILD_Example_Data.zip) 
 
-### 4. Try running some basic models on example dataset and ask questions ###
+### 4. Run some basic models on example dataset and ask questions ###
 - MELS model: examine whether a person’s positive mood is related to their negative mood
 - MEMLS model: examine whether positive affect (PA) differs on weekend days (vs. weekdays)
 
 ---
   
 ## Contact Us with Questions or Suggestions ##
-- For questions, bug report, or new feature ideas, please post an issue on **[GitHub discussion groups](https://github.com/reach-lab/MixWildGUI/discussions)** 
+- For questions, bug report, or new feature ideas, please post an issue on our [GitHub discussion group](https://github.com/reach-lab/MixWildGUI/discussions)
 - For future collaborations, contact [Prof. Don Hedeker](mailto:DHedeker@health.bsd.uchicago.edu), [Prof. Genevieve Dunton](mailto:dunton@usc.edu), and [Prof. Stephen Intille](S.Intille@northeastern.edu)
   
 ---
@@ -80,7 +78,7 @@ MixWILD is a free and open-source tool by and for the behavioral researchers. If
 
 *Institutes:* National Heart, Lung, and Blood Institute (NHLBI) and National Cancer Institute (NCI)
 
-*Grant numbers:* 5R01HL121330-05 and 1R01CA240713-01
+*Grant Numbers:* 5R01HL121330-05 and 1R01CA240713-01
 
 *Principal Investigator(s):* Hedeker, Donald (University of Chicago); Dunton, Genevieve Fridlund (University of Southern California); Intille, Stephen (Northeastern University)
 
