@@ -57,7 +57,7 @@ MixWILD is a free and open-source tool by and for the behavioral researchers. If
 ---  
   
 ### Papers that cite MixWILD ###
-<div style="height:200px;width:480px;border:none;font:12px/18px sans-serif;overflow:auto;">
+<div style="height:300px;width:680px;border:none;font:12px/18px sans-serif;overflow:auto;">
     <ul>
       <li>Kaden, S. J., & Dalton, E. D. (2022). <a href="https://ijbnpa.biomedcentral.com/articles/10.1186/s12966-021-01121-y">Momentary fluctuations in emotional intelligence and stress predict changes in disordered eating</a>. Journal of American College Health, 1-8.</li>
       <li>Kracht, C. L., Beyl, R. A., Maher, J. P., Katzmarzyk, P. T., & Staiano, A. E. (2021). <a href="https://ijbnpa.biomedcentral.com/articles/10.1186/s12966-021-01121-y">Adolescents’ sedentary time, affect, and contextual factors: An ecological momentary assessment study</a>. International Journal of Behavioral Nutrition and Physical Activity, 18(1), 1-10.
