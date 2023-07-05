@@ -290,6 +290,8 @@ public class MixLibrary implements Serializable {
     private String advancedMeanIntercept; // NULL if MIXOR - PNINT
     private String advancedRandomIntercept; // RNINT
     private String advancedScaleIntercept; // NULL if MIXOR - SNINT
+    private String WSWaveVarianceIntercept;
+    private String subjectScaleRandomIntercept;
 
     private String advancedDecomposeMeanRegressorCount; // P1
     private String advancedDecomposeRandomRegressorCount; // R1
@@ -299,7 +301,8 @@ public class MixLibrary implements Serializable {
 
     private String advancedConvergenceCriteria; //CONV
     private String advancedQuadPoints; // QP
-    private String advancedAdaptiveQuad; // AQ
+    private String advancedAdaptiveQuadSubject; // AQ
+    private String advancedAdaptiveQuadWave; // AQWAVE
     private String advancedMaxIterations; // MAXIT
     private String advancedMissingValueCode; // YMISS
     private String advancedCenterScaleVariables; // NULL if MIXOR - NCENT
@@ -307,6 +310,7 @@ public class MixLibrary implements Serializable {
     private String advancedInitialRidge; // RIDGEIN
     private String advancedLogisticProbitRegression; // NULL if MIXREG - NFN 
     private String advancedDiscardNoVariance; // NULL if MIXOR - DISCARD0
+    private String advancedDiscardCutoff; // NULL if MIXOR - DISCARD0
     private String advancedUseMLS; // ALWAYS 1 for MIXOR - MLS
     private String advancedCovarianceMatrix; // NULL if MIXOR - CHOL
     private String advancedWaves; // waves
@@ -320,6 +324,7 @@ public class MixLibrary implements Serializable {
     private String advancedUseStageTwo; // STAGE2
     private String advancedStageTwoMultilevel; // MULTI2ND
     private String advancedMultipleDataFiles; // SEPFILE
+    private String advancedStageOneLevelNum; // no3
 
     /**
      * MixWILD V2.0 MIXREG Stage 2 Advanced Parameters
@@ -367,8 +372,8 @@ public class MixLibrary implements Serializable {
                 advancedVariable.add(getAdvancedRandomIntercept());
                 advancedVariable.add(getAdvancedScaleIntercept());
                 if (stageOneLevelNum == 3) { // when stage one has three levels
-                    advancedVariable.add("1");// tnint 
-                    advancedVariable.add("1");// rsnint 
+                    advancedVariable.add(getWSWaveVarianceIntercept());// tnint 
+                    advancedVariable.add(getSubjectScaleRandomIntercept());// rsnint 
                 }
 
                 advancedVariable.add(getAdvancedDecomposeMeanRegressorCount());
@@ -381,29 +386,34 @@ public class MixLibrary implements Serializable {
 
                 advancedVariable.add(getAdvancedConvergenceCriteria());
                 advancedVariable.add(getAdvancedQuadPoints());
-                advancedVariable.add(getAdvancedAdaptiveQuad());
-                advancedVariable.add(getAdvancedMaxIterations());
-                advancedVariable.add(getAdvancedMissingValueCode());
-                advancedVariable.add(getAdvancedCenterScaleVariables());
+                advancedVariable.add(getAdvancedAdaptiveQuadSubject());
+                if (stageOneLevelNum == 3) { // when stage one has three levels
+                    advancedVariable.add(getAdvancedAdaptiveQuadWave()); // aqwave
+                }
+                advancedVariable.add(getAdvancedMaxIterations()); // maxit
+                advancedVariable.add(getAdvancedMissingValueCode()); // yMiss
+                advancedVariable.add(getAdvancedCenterScaleVariables()); // ncent
 
-                advancedVariable.add(getAdvancedRandomScaleAssociation());
-                advancedVariable.add(getAdvancedInitialRidge());
-                advancedVariable.add(getAdvancedDiscardNoVariance());
-                advancedVariable.add(getAdvancedUseMLS());
-                advancedVariable.add(getAdvancedCovarianceMatrix());
+                advancedVariable.add(getAdvancedRandomScaleAssociation()); //ncov
+                advancedVariable.add(getAdvancedInitialRidge()); // ridgein
+                advancedVariable.add(getAdvancedDiscardNoVariance()); // discard0
+                advancedVariable.add(getAdvancedDiscardCutoff()); // discard_cutoff 
+                advancedVariable.add(getAdvancedUseMLS()); // mls
+                advancedVariable.add(getAdvancedCovarianceMatrix()); // chol ?
                 if (stageOneLevelNum == 3) { // when stage one has three levels
                     advancedVariable.add(getAdvancedWaveCount()); // waves
                     advancedVariable.add(getAdvancedGammatransCount());// gammatrans
                 }
 
-                advancedVariable.add(getAdvancedResampleCount());
-                advancedVariable.add(getAdvancedRandomScaleCutoff());
-                advancedVariable.add(getAdvancedUseRandomScale());
-                advancedVariable.add(getAdvancedResamplingSeed());
+                advancedVariable.add(getAdvancedResampleCount()); // nreps
+                advancedVariable.add(getAdvancedRandomScaleCutoff()); // ?  
+                advancedVariable.add(getAdvancedUseRandomScale()); // ?
+                advancedVariable.add(getAdvancedResamplingSeed()); // myseed
 
-                advancedVariable.add(getAdvancedUseStageTwo());
-                advancedVariable.add(getAdvancedStageTwoMultilevel());
-                advancedVariable.add(getAdvancedMultipleDataFiles());
+                advancedVariable.add(getAdvancedUseStageTwo()); // stage2
+                advancedVariable.add(getAdvancedStageTwoMultilevel()); // multi2nd
+                advancedVariable.add(getAdvancedMultipleDataFiles()); // sepfile
+                advancedVariable.add(getStageOneLevelNum()); // no3
             }
 
             if (stageOneOutcome == STAGE_ONE_OUTCOME_MIXOR) {
@@ -421,7 +431,7 @@ public class MixLibrary implements Serializable {
 
                 advancedVariable.add(getAdvancedConvergenceCriteria());  //10
                 advancedVariable.add(getAdvancedQuadPoints());  //11
-                advancedVariable.add(getAdvancedAdaptiveQuad());  //12
+                advancedVariable.add(getAdvancedAdaptiveQuadSubject());  //12
                 advancedVariable.add(getAdvancedMaxIterations());  //13
                 advancedVariable.add(getAdvancedMissingValueCode());  //14
 
@@ -1312,6 +1322,22 @@ public class MixLibrary implements Serializable {
         this.advancedScaleIntercept = advancedScaleIntercept;
     }
 
+    public String getWSWaveVarianceIntercept() {
+        return WSWaveVarianceIntercept;
+    }
+
+    public void setWSWaveVarianceIntercept(String WSWaveVarianceIntercept) {
+        this.WSWaveVarianceIntercept = WSWaveVarianceIntercept;
+    }
+
+    public String getSubjectScaleRandomIntercept() {
+        return subjectScaleRandomIntercept;
+    }
+
+    public void setSubjectScaleRandomIntercept(String subjectScaleRandomIntercept) {
+        this.subjectScaleRandomIntercept = subjectScaleRandomIntercept;
+    }
+
     public String getAdvancedDecomposeMeanRegressorCount() {
         return advancedDecomposeMeanRegressorCount;
     }
@@ -1368,12 +1394,20 @@ public class MixLibrary implements Serializable {
         this.advancedQuadPoints = advancedQuadPoints;
     }
 
-    public String getAdvancedAdaptiveQuad() {
-        return advancedAdaptiveQuad;
+    public String getAdvancedAdaptiveQuadSubject() {
+        return advancedAdaptiveQuadSubject;
     }
 
-    public void setAdvancedAdaptiveQuad(String advancedAdaptiveQuad) {
-        this.advancedAdaptiveQuad = advancedAdaptiveQuad;
+    public void setAdvancedAdaptiveQuadSubject(String advancedAdaptiveQuadSubject) {
+        this.advancedAdaptiveQuadSubject = advancedAdaptiveQuadSubject;
+    }
+
+    public String getAdvancedAdaptiveQuadWave() {
+        return advancedAdaptiveQuadWave;
+    }
+
+    public void setAdvancedAdaptiveQuadWave(String advancedAdaptiveQuadWave) {
+        this.advancedAdaptiveQuadWave = advancedAdaptiveQuadWave;
     }
 
     public String getAdvancedMaxIterations() {
@@ -1432,6 +1466,14 @@ public class MixLibrary implements Serializable {
 
     public void setAdvancedDiscardNoVariance(String advancedDiscardNoVariance) {
         this.advancedDiscardNoVariance = advancedDiscardNoVariance;
+    }
+
+    public String getAdvancedDiscardCutoff() {
+        return advancedDiscardCutoff;
+    }
+
+    public void setAdvancedDiscardCutoff(String advancedDiscardCutoff) {
+        this.advancedDiscardCutoff = advancedDiscardCutoff;
     }
 
     public String getAdvancedUseMLS() {
@@ -1522,6 +1564,19 @@ public class MixLibrary implements Serializable {
 
     public void setAdvancedMultipleDataFiles(String advancedMultipleDataFiles) {
         this.advancedMultipleDataFiles = advancedMultipleDataFiles;
+    }
+
+    public String getStageOneLevelNum() {
+        if (this.stageOneLevelNum == 3) {
+            advancedStageOneLevelNum = "0";
+        } else {
+            advancedStageOneLevelNum = "1";
+        }
+        return advancedStageOneLevelNum;
+    }
+
+    public void setStageOneLevelNum(String advancedStageOneLevelNum) {
+        this.advancedStageOneLevelNum = advancedStageOneLevelNum;
     }
 
     public String getAdvancedStageTwoFixedRegressorCount() {
@@ -1856,12 +1911,12 @@ public class MixLibrary implements Serializable {
             String newDefFilePrefix = dataFileSample.substring(0, dataFileSample.lastIndexOf(File.separator)) + "/";
 
             if (stageOneLevelNum == 3) {
-                newDefFile = new File(newDefFilePrefix + "mixregls_3level");
+                newDefFile = new File(newDefFilePrefix + "mixregls_3level_2stage");
             } else {
                 if (getStageOneOutcome() == STAGE_ONE_OUTCOME_MIXOR) {
                     newDefFile = new File(newDefFilePrefix + "mixors_random_mixblank");
                 } else {
-                    newDefFile = new File(newDefFilePrefix + "lsboth_random_mixblank");
+                    newDefFile = new File(newDefFilePrefix + "mixregls_3level_2stage");
                 }
             }
             //newDefFile = new File(newDefFilePrefix + "MixWild");
@@ -2016,12 +2071,12 @@ public class MixLibrary implements Serializable {
             String newDefFilePrefix = dataFileSample.substring(0, dataFileSample.lastIndexOf(File.separator)) + "/";
             // this one is run for stage 2
             if (stageOneLevelNum == 3) {
-                newDefFile = new File(newDefFilePrefix + "mixregls_3level");
+                newDefFile = new File(newDefFilePrefix + "mixregls_3level_2stage");
             } else {
                 if (getStageOneOutcome() == STAGE_ONE_OUTCOME_MIXOR) {
                     newDefFile = new File(newDefFilePrefix + "mixors_random_mixblank");
                 } else {
-                    newDefFile = new File(newDefFilePrefix + "lsboth_random_mixblank");
+                    newDefFile = new File(newDefFilePrefix + "mixregls_3level_2stage");
                 }
             }
 

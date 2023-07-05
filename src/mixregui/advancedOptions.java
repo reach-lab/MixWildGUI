@@ -75,7 +75,10 @@ public class advancedOptions extends javax.swing.JFrame {
         meanSubmodelCheckBox.setSelected(true);
         BSVarianceCheckBox.setSelected(true);
         WSVarianceCheckBox.setSelected(true);
+        SubjectScaleRandomInterceptBox.setSelected(true);
+        WaveWSVarianceInterceptBox.setSelected(true);
         adaptiveQuadritureCheckBox.setSelected(true);
+        adaptiveQuadritureWaveVarianceCheckBox.setSelected(true);
         discardSubjectsCheckBox.setSelected(false);
 
         resampleCheckBox.setSelected(true);
@@ -92,7 +95,6 @@ public class advancedOptions extends javax.swing.JFrame {
             resampleCheckBox.setEnabled(true);
 
         }
-        
 
     }
 
@@ -163,6 +165,7 @@ public class advancedOptions extends javax.swing.JFrame {
         jLabel1.setText("Mean Intercept:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 7, -1, -1));
 
+        meanSubmodelCheckBox.setSelected(true);
         meanSubmodelCheckBox.setToolTipText("Include submodel intercepts (Default is on)");
         meanSubmodelCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -199,7 +202,7 @@ public class advancedOptions extends javax.swing.JFrame {
         jLabel5.setText("Quadrature Points:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, 30));
 
-        jLabel6.setText("Adaptive Quadrature:");
+        jLabel6.setText("Adaptive Quadrature of Subject Variance:");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, 30));
 
         adaptiveQuadritureCheckBox.setToolTipText("Adaptive quadrature, usually on to maximize convergence");
@@ -606,6 +609,34 @@ public class advancedOptions extends javax.swing.JFrame {
         return checked;
     }
 
+    // check if BS variance is checked
+    public int isWSWaveVarianceInterceptChecked() {
+
+        int checked = 0;
+
+        if (SubjectScaleRandomInterceptBox.isSelected() == true) {
+            checked = 0;
+        } else {
+            checked = 1;
+        }
+
+        return checked;
+    }
+
+    // check if BS variance is checked
+    public int isSubjectScaleRandomInterceptChecked() {
+
+        int checked = 0;
+
+        if (WaveWSVarianceInterceptBox.isSelected() == true) {
+            checked = 0;
+        } else {
+            checked = 1;
+        }
+
+        return checked;
+    }
+
 // get the convergence criteria
     public String getConvergenceCriteria() {
 
@@ -628,10 +659,24 @@ public class advancedOptions extends javax.swing.JFrame {
     }
 
 // check if adaptive quadriture is checked
-    public int isAdaptiveQuadritureChecked() {
+    public int isAdaptiveQuadritureSubjectChecked() {
         int checked = 0;
 
         if (adaptiveQuadritureCheckBox.isSelected() == true) {
+            checked = 1;
+        } else {
+
+            checked = 0;
+        }
+
+        return checked;
+    }
+    
+   // check if adaptive quadriture is checked
+    public int isAdaptiveQuadritureWaveChecked() {
+        int checked = 0;
+
+        if (adaptiveQuadritureWaveVarianceCheckBox.isSelected() == true) {
             checked = 1;
         } else {
 
@@ -889,8 +934,42 @@ public class advancedOptions extends javax.swing.JFrame {
         }
 
         try {
-            mixregGUI.defFile.setAdvancedAdaptiveQuad(String.valueOf(isAdaptiveQuadritureChecked()));
-            System.out.println("From defHelper | Adaptive Quadriture Checked?: " + mixregGUI.defFile.getAdvancedAdaptiveQuad());
+            mixregGUI.defFile.setWSWaveVarianceIntercept(String.valueOf(isWSWaveVarianceInterceptChecked()));
+//            mixregGUI.defFile.setModelWithinInt(String.valueOf(isWSVarianceChecked()));
+            System.out.println("From defHelper | WSWaveVarianceIntercept Checked?: " + mixregGUI.defFile.getWSWaveVarianceIntercept());
+//            System.out.println("From defHelper | WS SubModel Checked?: " + mixregGUI.defFile.getModelWithinInt());
+            tryCount = 1;
+        } catch (Exception ex) {
+            catchCount = 1;
+            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+        try {
+            mixregGUI.defFile.setSubjectScaleRandomIntercept(String.valueOf(isSubjectScaleRandomInterceptChecked()));
+//            mixregGUI.defFile.setModelWithinInt(String.valueOf(isWSVarianceChecked()));
+            System.out.println("From defHelper | SubjectScaleRandomIntercept Checked?: " + mixregGUI.defFile.getSubjectScaleRandomIntercept());
+//            System.out.println("From defHelper | WS SubModel Checked?: " + mixregGUI.defFile.getModelWithinInt());
+            tryCount = 1;
+        } catch (Exception ex) {
+            catchCount = 1;
+            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+        try {
+            mixregGUI.defFile.setAdvancedAdaptiveQuadSubject(String.valueOf(isAdaptiveQuadritureSubjectChecked()));
+            System.out.println("From defHelper | Adaptive Quadriture Subject Checked?: " + mixregGUI.defFile.getAdvancedAdaptiveQuadSubject());
+            tryCount = 1;
+        } catch (Exception ex) {
+            catchCount = 1;
+            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+        try {
+            mixregGUI.defFile.setAdvancedAdaptiveQuadWave(String.valueOf(isAdaptiveQuadritureWaveChecked()));
+            System.out.println("From defHelper | Adaptive Quadriture Wave Checked?: " + mixregGUI.defFile.getAdvancedAdaptiveQuadWave());
             tryCount = 1;
         } catch (Exception ex) {
             catchCount = 1;
@@ -956,9 +1035,9 @@ public class advancedOptions extends javax.swing.JFrame {
 //        mixregGUI.mxr.updateStageOneLevelOneGrid(levelOneList);
         mixregGUI.mxr.update_StageOneLevelXTableBoxes(1, stageOneRegs.levelOneList, null, null);
     }
-    
-    public void update_stageOneLevel3_advanced_options(int stageOneLevelNum){
-        if (stageOneLevelNum == 3){
+
+    public void update_stageOneLevel3_advanced_options(int stageOneLevelNum) {
+        if (stageOneLevelNum == 3) {
             jLabel13.setEnabled(true);
             WaveWSVarianceInterceptBox.setEnabled(true);
             jLabel14.setEnabled(true);
@@ -969,6 +1048,6 @@ public class advancedOptions extends javax.swing.JFrame {
             jLabel14.setEnabled(false);
             adaptiveQuadritureWaveVarianceCheckBox.setEnabled(false);
         }
-    
+
     }
 }

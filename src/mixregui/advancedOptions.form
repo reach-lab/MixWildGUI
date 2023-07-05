@@ -59,6 +59,7 @@
         </Component>
         <Component class="javax.swing.JCheckBox" name="meanSubmodelCheckBox">
           <Properties>
+            <Property name="selected" type="boolean" value="true"/>
             <Property name="toolTipText" type="java.lang.String" value="Include submodel intercepts (Default is on)"/>
           </Properties>
           <Events>
@@ -138,7 +139,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Adaptive Quadrature:"/>
+            <Property name="text" type="java.lang.String" value="Adaptive Quadrature of Subject Variance:"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

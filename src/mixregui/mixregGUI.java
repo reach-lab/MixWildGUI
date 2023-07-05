@@ -8539,8 +8539,21 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
                 try {
-                    defFile.setAdvancedAdaptiveQuad(String.valueOf(1));
-                    System.out.println("From defHelper | Adaptive Quadriture Checked?: " + defFile.getAdvancedAdaptiveQuad());
+                    defFile.setAdvancedAdaptiveQuadSubject(String.valueOf(1));
+                    System.out.println("From defHelper | Adaptive Quadriture Checked?: " + defFile.getAdvancedAdaptiveQuadSubject());
+                    //tryCount = 1;
+
+                } catch (Exception ex) {
+                    //catchCount = 1;
+                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
+                    Logger
+                            .getLogger(advancedOptions.class
+                                    .getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                }
+                try {
+                    defFile.setAdvancedAdaptiveQuadWave(String.valueOf(1));
+                    System.out.println("From defHelper | Adaptive Quadriture Checked?: " + defFile.getAdvancedAdaptiveQuadWave());
                     //tryCount = 1;
 
                 } catch (Exception ex) {
@@ -8613,6 +8626,17 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 try {
                     defFile.setAdvancedDiscardNoVariance("0");
                     System.out.println("DISCARD SUBJECTS: " + defFile.getAdvancedDiscardNoVariance());
+
+                } catch (Exception ex) {
+                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
+                    Logger
+                            .getLogger(advancedOptions.class
+                                    .getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                }
+                try {
+                    defFile.setAdvancedDiscardCutoff("0");
+                    System.out.println("DISCARD SUBJECTS: " + defFile.getAdvancedDiscardCutoff());
 
                 } catch (Exception ex) {
                     SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
