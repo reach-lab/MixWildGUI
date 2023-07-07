@@ -5,18 +5,19 @@ MixWILD (Also Mixed model analysis with Intensive Longitudinal Data) is a deskto
   
 ---  
   
-### Citation Request ###
+### Citation ###
 MixWILD is a free and open-source tool by and for the behavioral researchers. If you are using MixWILD in your research or data analysis, please read and cite the following paper for more details:
 
 [Dzubur, E., Ponnada, A., Nordgren, R., Yang, C. H., Intille, S., Dunton, G., & Hedeker, D. (2020). MixWILD: A program for examining the effects of variance and slope of time-varying variables in intensive longitudinal data. Behavior Research Methods, 1-25.](https://link.springer.com/article/10.3758/s13428-019-01322-1?wt_mc=Internal.Event.1.SEM.ArticleAuthorOnlineFirst&utm_source=ArticleAuthorContributingOnlineFirst&utm_medium=email&utm_content=AA_en_06082018&ArticleAuthorContributingOnlineFirst_20200103#citeas) 
 
 ---
   
-## Recommended to Get Started ##
+## Recommended Steps to Get Started ##
 
 ### 1. Watch introductory video(s)
 - [Video1: simple tutorial about MixWILD](https://www.youtube.com/watch?v=ZqyCxrMG1R8&feature=emb_logo) (13 min)
 - [Video2: intro to the Mixed Effects Location Scale MELS Model](https://www.youtube.com/watch?v=wCEHuv9t1xw) (47 min) 
+- [Video3: SBM workshop (coming soon)]() (X min) 
 
 ### 2. Download MixWild for Mac or PC ###
 ### Please submit your email prior to downloading the application so we can notify you of major software updates ###
@@ -29,11 +30,11 @@ MixWILD is a free and open-source tool by and for the behavioral researchers. If
 ### 3. Read introductory material ###
 - [User Guide](/resources/user_guide/MixWILD_users_guide_with_appendix_AB.pdf)  
 - [Cheat Sheets](/resources/cheat_sheets/MixWILD_UG_CS_220124.html)  
-- [Example Dataset](/resources/dataset/SBM_MixWILD_Example_Data.zip) 
 
 ### 4. Run some basic models on example dataset and ask questions ###
-- MELS model: examine whether a person’s positive mood is related to their negative mood
-- MEMLS model: examine whether positive affect (PA) differs on weekend days (vs. weekdays)
+- Download [example dataset](/resources/dataset/SBM_MixWILD_Example_Data.zip) 
+- MELS model: examine whether a person’s positive mood is related to their negative mood (see user guide page X)
+- MEMLS model: examine whether positive affect (PA) differs on weekend days (vs. weekdays) (see user guide page X)
 
 ---
   
@@ -43,7 +44,7 @@ MixWILD is a free and open-source tool by and for the behavioral researchers. If
   
 ---
   
-### Additional Tools ###
+### Additional Tools Developed by Others ###
 - [Power analysis](https://kleimanlab.org/resources/)
   
 ---  
@@ -56,7 +57,7 @@ MixWILD is a free and open-source tool by and for the behavioral researchers. If
   
 ---  
   
-### Papers that cite MixWILD ###
+### Selective papers that use MixWILD ###
 <div style="height:300px;width:680px;border:none;font:12px/18px sans-serif;overflow:auto;">
     <ul>
       <li>Kaden, S. J., & Dalton, E. D. (2022). <a href="https://ijbnpa.biomedcentral.com/articles/10.1186/s12966-021-01121-y">Momentary fluctuations in emotional intelligence and stress predict changes in disordered eating</a>. Journal of American College Health, 1-8.</li>
@@ -79,15 +80,15 @@ MixWILD is a free and open-source tool by and for the behavioral researchers. If
 
 *Grant Numbers:* 5R01HL121330-05 and 1R01CA240713-01
 
-*Principal Investigator(s):* Hedeker, Donald (University of Chicago); Dunton, Genevieve Fridlund (University of Southern California); Intille, Stephen (Northeastern University)
+*Principal Investigator(s):* [Hedeker, Donald](https://voices.uchicago.edu/hedeker/) (University of Chicago); [Dunton, Genevieve Fridlund](https://reach.usc.edu/contact/people/genevieve-dunton/) (University of Southern California); [Intille, Stephen](https://www.ccs.neu.edu/home/intille/) (Northeastern University)
 
-*Team:* Aditya Ponnada (Northeastern University), Jixin Li (Northeastern University), Eldin Dzubur (University of Southern Califrnia), Rachel Nordgren (University of Illinois-Chicago)
+*Team:* Rachel Nordgren, Chih-Hsiang "Jason" Yang, Eldin Dzubur, Wei-Lin Wang, Aditya Ponnada, Jixin Li
 
-*Research Groups:* REACH Lab, University of Southern California and mHealth Research Group, Northeastern University
+*Research Groups:* [REACH Lab, University of Southern California](https://reach.usc.edu/) and [mHealth Research Group, Northeastern University](https://mhealthgroup.org/)
 
-[NIH report: Novel Statistical Models for EMA Studies of Physical Activity](https://projectreporter.nih.gov/project_info_details.cfm?aid=9268804&icde=0)
-
-[NIH report: Novel Statistical Models for Intensive Longitudinal Analyses of Cancer Control Behaviors](https://projectreporter.nih.gov/project_info_details.cfm?aid=9803376&icde=47317498)
+Listing on NIH RePOERTER: 
+- [Novel Statistical Models for EMA Studies of Physical Activity](https://projectreporter.nih.gov/project_info_details.cfm?aid=9268804&icde=0)
+- [Novel Statistical Models for Intensive Longitudinal Analyses of Cancer Control Behaviors](https://projectreporter.nih.gov/project_info_details.cfm?aid=9803376&icde=47317498)
 
 #### Logotype credits ####
 [Gentium Book Basic](https://fonts.google.com/specimen/Gentium+Book+Basic) by Victor Gaultney and 
