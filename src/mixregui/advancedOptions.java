@@ -671,8 +671,8 @@ public class advancedOptions extends javax.swing.JFrame {
 
         return checked;
     }
-    
-   // check if adaptive quadriture is checked
+
+    // check if adaptive quadriture is checked
     public int isAdaptiveQuadritureWaveChecked() {
         int checked = 0;
 
@@ -753,6 +753,12 @@ public class advancedOptions extends javax.swing.JFrame {
         }
 
         return check;
+    }
+
+    public Double getDiscardSubjectsCutoffCheck() {
+
+        return (Double) thresholdRidgeSpinner.getValue();
+
     }
 
     public boolean isRun32BitChecked() {
@@ -871,6 +877,16 @@ public class advancedOptions extends javax.swing.JFrame {
         try {
             mixregGUI.defFile.setAdvancedDiscardNoVariance(getDiscardSubjectsCheck());
             System.out.println("DISCARD SUBJECTS: " + mixregGUI.defFile.getAdvancedDiscardNoVariance());
+            tryCount = 1;
+        } catch (Exception ex) {
+            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+            catchCount = 1;
+        }
+
+        try {
+            mixregGUI.defFile.setAdvancedDiscardCutoff(String.valueOf(getDiscardSubjectsCutoffCheck()));
+            System.out.println("DISCARD SUBJECTS W/ CUTOFF: " + mixregGUI.defFile.getAdvancedDiscardCutoff());
             tryCount = 1;
         } catch (Exception ex) {
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);

@@ -399,7 +399,7 @@ public class MixLibrary implements Serializable {
                 advancedVariable.add(getAdvancedDiscardNoVariance()); // discard0
                 advancedVariable.add(getAdvancedDiscardCutoff()); // discard_cutoff 
                 advancedVariable.add(getAdvancedUseMLS()); // mls
-                advancedVariable.add(getAdvancedCovarianceMatrix()); // chol ?
+                advancedVariable.add(getAdvancedCovarianceMatrix()); // chol
                 if (stageOneLevelNum == 3) { // when stage one has three levels
                     advancedVariable.add(getAdvancedWaveCount()); // waves
                     advancedVariable.add(getAdvancedGammatransCount());// gammatrans
@@ -413,7 +413,7 @@ public class MixLibrary implements Serializable {
                 advancedVariable.add(getAdvancedUseStageTwo()); // stage2
                 advancedVariable.add(getAdvancedStageTwoMultilevel()); // multi2nd
                 advancedVariable.add(getAdvancedMultipleDataFiles()); // sepfile
-                advancedVariable.add(getStageOneLevelNum()); // no3
+                advancedVariable.add(getAdvancedStageOneLevelNum()); // no3
             }
 
             if (stageOneOutcome == STAGE_ONE_OUTCOME_MIXOR) {
@@ -1488,7 +1488,11 @@ public class MixLibrary implements Serializable {
     }
 
     public String getAdvancedCovarianceMatrix() {
-        if (advancedCovarianceMatrix == null) {
+
+        String mls = getAdvancedUseMLS();
+        if (mls == "0") {
+            advancedCovarianceMatrix = "2";
+        } else {
             advancedCovarianceMatrix = "0";
         }
         return advancedCovarianceMatrix;
@@ -1566,7 +1570,7 @@ public class MixLibrary implements Serializable {
         this.advancedMultipleDataFiles = advancedMultipleDataFiles;
     }
 
-    public String getStageOneLevelNum() {
+    public String getAdvancedStageOneLevelNum() {
         if (this.stageOneLevelNum == 3) {
             advancedStageOneLevelNum = "0";
         } else {
@@ -1787,9 +1791,9 @@ public class MixLibrary implements Serializable {
         return advancedGammaTrans;
     }
 
-    public int getStageOneLevelNum() {
-        return stageOneLevelNum;
-    }
+//    public int getStageOneLevelNum() {
+//        return stageOneLevelNum;
+//    }
 
     /**
      * Ancillary classes
