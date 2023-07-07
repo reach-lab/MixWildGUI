@@ -86,7 +86,7 @@ MixWILD is a free and open-source tool by and for the behavioral researchers. If
 
 *Research Groups:* [REACH Lab, University of Southern California](https://reach.usc.edu/) and [mHealth Research Group, Northeastern University](https://mhealthgroup.org/)
 
-Listing on NIH RePOERTER: 
+*Listing on NIH RePOERTER:*
 - [Novel Statistical Models for EMA Studies of Physical Activity](https://projectreporter.nih.gov/project_info_details.cfm?aid=9268804&icde=0)
 - [Novel Statistical Models for Intensive Longitudinal Analyses of Cancer Control Behaviors](https://projectreporter.nih.gov/project_info_details.cfm?aid=9803376&icde=47317498)
 
