@@ -77,6 +77,8 @@ import javax.swing.table.DefaultTableModel;
 import org.apache.commons.io.FilenameUtils;
 import java.io.Serializable;
 import java.net.URI;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
 import org.apache.commons.io.FileUtils;
@@ -85,6 +87,9 @@ import javax.swing.event.ChangeListener;
 import static mixregui.advancedOptions.disaggregateEnabled;
 import static mixregui.stageTwoRegs.stageTwoLevelOne;
 import static mixregui.stageTwoRegs.stageTwoLevelTwo;
+import org.scilab.forge.jlatexmath.TeXConstants;
+import org.scilab.forge.jlatexmath.TeXFormula;
+import org.scilab.forge.jlatexmath.TeXIcon;
 
 /**
  * Main class for the program that is used to manipulate regressors
@@ -953,7 +958,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageOneTabs.remove(jPanel12);
         stageOneTabs.remove(jPanel3);
         stageOneTabs.remove(jPanel4);
-        stageOneTabs.remove(jPanel2);
+//        stageOneTabs.remove(jPanel2);
         stageOneTabs.remove(jPanel6);
         stageOneTabs.remove(jPanel16);
         stageOneTabs.remove(jPanel14);
@@ -1214,9 +1219,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         jPanel2 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        jScrollPane8 = new javax.swing.JScrollPane();
-        equationArea = new javax.swing.JTextArea();
-        jLabel23 = new javax.swing.JLabel();
+        equationArea = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -2707,40 +2710,30 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         jLabel13.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel13.setText("Your resulting model equation");
 
-        equationArea.setColumns(20);
-        equationArea.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        equationArea.setRows(5);
-        jScrollPane8.setViewportView(equationArea);
-
-        jLabel23.setText("You can copy this model equation directly into Latex, Word or any other text editor.");
+        equationArea.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                .addContainerGap(162, Short.MAX_VALUE)
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 885, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(163, Short.MAX_VALUE))
             .addGroup(jPanel9Layout.createSequentialGroup()
-                .addGap(367, 367, 367)
-                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel13)
-                .addGap(486, 486, 486))
+                .addContainerGap(430, Short.MAX_VALUE)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                        .addComponent(jLabel13)
+                        .addGap(486, 486, 486))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                        .addComponent(equationArea, javax.swing.GroupLayout.PREFERRED_SIZE, 578, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(202, 202, 202))))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addComponent(jLabel13)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(jLabel23)
-                .addContainerGap(460, Short.MAX_VALUE))
+                .addGap(60, 60, 60)
+                .addComponent(equationArea, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(253, Short.MAX_VALUE))
         );
 
         jPanel2.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1210, 660));
@@ -3388,6 +3381,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             filePath.setVisible(true);
             fileBrowseButton.setVisible(true);
             datasetHelpButton.setVisible(true);
+
+            generate_latex_formula();
         }
     }//GEN-LAST:event_newDataSetButtonActionPerformed
 
@@ -4301,7 +4296,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel datasetMissingValuesHelpButton;
     private javax.swing.ButtonGroup dichModelTypeButtonGroup;
     private javax.swing.JCheckBox enbaleInteractionCheckBox;
-    private javax.swing.JTextArea equationArea;
+    private javax.swing.JLabel equationArea;
     private javax.swing.JButton exampleDataDownload;
     private javax.swing.JButton fileBrowseButton;
     private javax.swing.JButton fileBrowseButtonStageTwoData;
@@ -4337,7 +4332,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
@@ -4382,7 +4376,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
@@ -12255,6 +12248,48 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             stageOneLevelNum = 3;
         }
         return stageOneLevelNum;
+    }
+
+    private void generate_latex_formula() {
+        int fontsize = 30;
+
+        String latex1 = "";
+        String latex2 = "PA_i_j = \\beta_0 + \\beta_1 Day\\_c_i_j + \\nu_i + \\epsilon_i_j";
+        String latex3 = "\\int_0^{+\\infty} e^{-x^2}\\mathrm{d}x = \\frac\\sqrt{\\pi}2 \\text{ and } \\sum_{n=0}^{\\infty}\\frac{1}{n^2}=\\frac{\\pi^2}6";
+        TeXFormula formula1 = new TeXFormula(latex1);
+        TeXIcon icon1 = formula1.new TeXIconBuilder().setStyle(TeXConstants.STYLE_DISPLAY)
+                .setSize(fontsize)
+                .setWidth(TeXConstants.UNIT_PIXEL, 256f, TeXConstants.ALIGN_CENTER)
+                .setIsMaxWidth(true)
+                .setInterLineSpacing(TeXConstants.UNIT_PIXEL, 20f).build();
+
+        TeXFormula formula2 = new TeXFormula(latex2);
+        TeXIcon icon2 = formula2.new TeXIconBuilder().setStyle(TeXConstants.STYLE_DISPLAY)
+                .setSize(fontsize)
+                .setWidth(TeXConstants.UNIT_PIXEL, 256f, TeXConstants.ALIGN_CENTER)
+                .setIsMaxWidth(true)
+                .setInterLineSpacing(TeXConstants.UNIT_PIXEL, 20f).build();
+
+        TeXFormula formula3 = new TeXFormula(latex3);
+        TeXIcon icon3 = formula3.new TeXIconBuilder().setStyle(TeXConstants.STYLE_DISPLAY)
+                .setSize(fontsize)
+                .setWidth(TeXConstants.UNIT_PIXEL, 256f, TeXConstants.ALIGN_CENTER)
+                .setIsMaxWidth(true)
+                .setInterLineSpacing(TeXConstants.UNIT_PIXEL, 20f).build();
+
+        equationArea.setLayout(new BoxLayout(equationArea, BoxLayout.Y_AXIS));
+        JLabel icon1Label = new JLabel();
+        JLabel icon2Label = new JLabel();
+        JLabel icon3Label = new JLabel();
+        icon1Label.setIcon(icon1);
+        icon2Label.setIcon(icon2);
+        icon3Label.setIcon(icon3);
+        equationArea.add(icon1Label);
+        equationArea.add(Box.createVerticalGlue());
+        equationArea.add(icon2Label);
+        equationArea.add(Box.createVerticalGlue());
+        equationArea.add(icon3Label);
+        equationArea.setAlignmentX(Component.CENTER_ALIGNMENT);
     }
 
 }
