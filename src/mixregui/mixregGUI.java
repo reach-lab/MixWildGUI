@@ -34,6 +34,7 @@ import javax.swing.DefaultListModel;
 import def_lib.MixLibrary;
 import def_lib.ModelBuilder;
 import def_lib.SuperUserMenu;
+import equation.EquationBuilder;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -87,6 +88,7 @@ import javax.swing.event.ChangeListener;
 import static mixregui.advancedOptions.disaggregateEnabled;
 import static mixregui.stageTwoRegs.stageTwoLevelOne;
 import static mixregui.stageTwoRegs.stageTwoLevelTwo;
+import org.apache.commons.lang3.StringUtils;
 import org.scilab.forge.jlatexmath.TeXConstants;
 import org.scilab.forge.jlatexmath.TeXFormula;
 import org.scilab.forge.jlatexmath.TeXIcon;
@@ -914,7 +916,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
      */
     public mixregGUI() {
         initComponents();
-        this.setTitle("MixWILD-2.2.0");
+        this.setTitle("MixWILD-2.2.1");
         // adjust the frame size to fit screen resolution
 //        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 //        setBounds(0, 0, stageOneTabs.getWidth(), (int) Math.round(screenSize.height / 1.5));
@@ -1220,6 +1222,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         jPanel9 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         equationArea = new javax.swing.JLabel();
+        latexVaraibleScrollPane = new javax.swing.JScrollPane();
+        latexVaraibleTextArea = new javax.swing.JTextArea();
         jLabel10 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -2707,33 +2711,47 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         jPanel9.setPreferredSize(new java.awt.Dimension(1000, 800));
 
-        jLabel13.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel13.setText("Your resulting model equation");
 
         equationArea.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        equationArea.setBorder(javax.swing.BorderFactory.createTitledBorder(null, " Stage 1 Models", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14))); // NOI18N
+
+        latexVaraibleTextArea.setColumns(20);
+        latexVaraibleTextArea.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        latexVaraibleTextArea.setRows(5);
+        latexVaraibleTextArea.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Variable Name Table", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12))); // NOI18N
+        latexVaraibleScrollPane.setViewportView(latexVaraibleTextArea);
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
-                .addContainerGap(430, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
                         .addComponent(jLabel13)
-                        .addGap(486, 486, 486))
+                        .addGap(913, 913, 913))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                        .addComponent(equationArea, javax.swing.GroupLayout.PREFERRED_SIZE, 578, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(202, 202, 202))))
+                        .addComponent(equationArea, javax.swing.GroupLayout.PREFERRED_SIZE, 841, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)
+                        .addComponent(latexVaraibleScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(333, 333, 333))))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addComponent(jLabel13)
-                .addGap(60, 60, 60)
-                .addComponent(equationArea, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(253, Short.MAX_VALUE))
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(equationArea, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addComponent(latexVaraibleScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(250, Short.MAX_VALUE))
         );
 
         jPanel2.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1210, 660));
@@ -3383,6 +3401,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             datasetHelpButton.setVisible(true);
 
             generate_latex_formula();
+            generate_latex_variable_table();
         }
     }//GEN-LAST:event_newDataSetButtonActionPerformed
 
@@ -4396,6 +4415,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JScrollPane latexVaraibleScrollPane;
+    private javax.swing.JTextArea latexVaraibleTextArea;
     private javax.swing.JLabel level1_BSVar1;
     private javax.swing.JLabel level1_BSVar2;
     private javax.swing.JLabel level1_BWVar1;
@@ -12251,11 +12272,20 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }
 
     private void generate_latex_formula() {
-        int fontsize = 30;
+        int fontsize = 26;
 
-        String latex1 = "";
-        String latex2 = "PA_i_j = \\beta_0 + \\beta_1 Day\\_c_i_j + \\nu_i + \\epsilon_i_j";
-        String latex3 = "\\int_0^{+\\infty} e^{-x^2}\\mathrm{d}x = \\frac\\sqrt{\\pi}2 \\text{ and } \\sum_{n=0}^{\\infty}\\frac{1}{n^2}=\\frac{\\pi^2}6";
+        String[] stageOneModelLatexArray = EquationBuilder.getStageOneModelLatex();
+        String latex1 = stageOneModelLatexArray[0];
+        String latex2 = stageOneModelLatexArray[1];
+        String latex3 = stageOneModelLatexArray[2];
+
+        int n = 20;
+        String space = "\\:";
+        String space_str = StringUtils.repeat(space, n);
+        latex1 = "Mean Model:" + space_str + latex1;
+        latex2 = "BSV Model:\\:" + space_str + latex2;
+        latex3 = "WSV Model:\\:" + space_str + latex3;
+
         TeXFormula formula1 = new TeXFormula(latex1);
         TeXIcon icon1 = formula1.new TeXIconBuilder().setStyle(TeXConstants.STYLE_DISPLAY)
                 .setSize(fontsize)
@@ -12284,12 +12314,31 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         icon1Label.setIcon(icon1);
         icon2Label.setIcon(icon2);
         icon3Label.setIcon(icon3);
+        equationArea.add(Box.createVerticalGlue());
         equationArea.add(icon1Label);
         equationArea.add(Box.createVerticalGlue());
         equationArea.add(icon2Label);
         equationArea.add(Box.createVerticalGlue());
         equationArea.add(icon3Label);
+        equationArea.add(Box.createVerticalGlue());
         equationArea.setAlignmentX(Component.CENTER_ALIGNMENT);
+    }
+
+    private void generate_latex_variable_table() {
+        latexVaraibleTextArea.setEditable(false);
+//        JScrollPane scroll = new JScrollPane(latexVaraibleTextArea);
+        String[] stageOneModelVarArray = EquationBuilder.getStageOneModelVariables();
+//        latexVaraibleTextArea.append(" \n");
+        for (int i = 0; i < stageOneModelVarArray.length; i++) {
+            String row;
+            if (i == (stageOneModelVarArray.length - 1)) {
+                row = " "+ stageOneModelVarArray[i];
+            } else {
+                row = " "+ stageOneModelVarArray[i] + "\n";
+            }
+
+            latexVaraibleTextArea.append(row);
+        }
     }
 
 }
