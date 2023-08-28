@@ -406,8 +406,8 @@ public class MixLibrary implements Serializable {
                 }
 
                 advancedVariable.add(getAdvancedResampleCount()); // nreps
-                advancedVariable.add(getAdvancedRandomScaleCutoff()); // ?  
-                advancedVariable.add(getAdvancedUseRandomScale()); // ?
+//                advancedVariable.add(getAdvancedRandomScaleCutoff()); // ?  
+//                advancedVariable.add(getAdvancedUseRandomScale()); // ?
                 advancedVariable.add(getAdvancedResamplingSeed()); // myseed
 
                 advancedVariable.add(getAdvancedUseStageTwo()); // stage2
@@ -1490,7 +1490,7 @@ public class MixLibrary implements Serializable {
     public String getAdvancedCovarianceMatrix() {
 
         String mls = getAdvancedUseMLS();
-        if (mls == "0") {
+        if (mls.equals("0")) {
             advancedCovarianceMatrix = "2";
         } else {
             advancedCovarianceMatrix = "0";
