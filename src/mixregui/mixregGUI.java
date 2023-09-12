@@ -916,7 +916,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
      */
     public mixregGUI() {
         initComponents();
-        this.setTitle("MixWILD-2.2.2");
+        this.setTitle("MixWILD-2.2.3");
         // adjust the frame size to fit screen resolution
 //        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 //        setBounds(0, 0, stageOneTabs.getWidth(), (int) Math.round(screenSize.height / 1.5));
@@ -8552,6 +8552,34 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                                     .getName()).log(Level.SEVERE, null, ex);
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
+
+                try {
+                    defFile.setWSWaveVarianceIntercept(String.valueOf(advancedOptions_view.isWSWaveVarianceInterceptChecked()));
+//            mixregGUI.defFile.setModelWithinInt(String.valueOf(isWSVarianceChecked()));
+                    System.out.println("From defHelper | WSWaveVarianceIntercept Checked?: " + defFile.getWSWaveVarianceIntercept());
+
+                } catch (Exception ex) {
+                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
+                    Logger
+                            .getLogger(advancedOptions.class
+                                    .getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                }
+
+                try {
+                    defFile.setSubjectScaleRandomIntercept(String.valueOf(advancedOptions_view.isSubjectScaleRandomInterceptChecked()));
+//            mixregGUI.defFile.setModelWithinInt(String.valueOf(isWSVarianceChecked()));
+                    System.out.println("From defHelper | SubjectScaleRandomIntercept Checked?: " + defFile.getSubjectScaleRandomIntercept());
+//            System.out.println("From defHelper | WS SubModel Checked?: " + mixregGUI.defFile.getModelWithinInt());
+
+                } catch (Exception ex) {
+                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
+                    Logger
+                            .getLogger(advancedOptions.class
+                                    .getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                }
+
                 try {
                     defFile.setAdvancedAdaptiveQuadSubject(String.valueOf(1));
                     System.out.println("From defHelper | Adaptive Quadriture Checked?: " + defFile.getAdvancedAdaptiveQuadSubject());
@@ -12332,9 +12360,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         for (int i = 0; i < stageOneModelVarArray.length; i++) {
             String row;
             if (i == (stageOneModelVarArray.length - 1)) {
-                row = " "+ stageOneModelVarArray[i];
+                row = " " + stageOneModelVarArray[i];
             } else {
-                row = " "+ stageOneModelVarArray[i] + "\n";
+                row = " " + stageOneModelVarArray[i] + "\n";
             }
 
             latexVaraibleTextArea.append(row);
