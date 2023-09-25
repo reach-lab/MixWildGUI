@@ -363,33 +363,33 @@ public class MixLibrary implements Serializable {
                 advancedVariable.add(getAdvancedMeanRegressorCount());
                 advancedVariable.add(getAdvancedRandomRegressorCount());
                 advancedVariable.add(getAdvancedScaleRegressorCount());
-                if (stageOneLevelNum == 3) { // when stage one has three levels
-                    advancedVariable.add(getAdvancedBetweenWaveRegressorCount()); // T
-                    advancedVariable.add(getAdvancedScaleRandomRegressorCount());// RS
-                }
+//                if (stageOneLevelNum == 3) { // when stage one has three levels
+                advancedVariable.add(getAdvancedBetweenWaveRegressorCount()); // T
+                advancedVariable.add(getAdvancedScaleRandomRegressorCount());// RS
+//                }
 
                 advancedVariable.add(getAdvancedMeanIntercept());
                 advancedVariable.add(getAdvancedRandomIntercept());
                 advancedVariable.add(getAdvancedScaleIntercept());
-                if (stageOneLevelNum == 3) { // when stage one has three levels
-                    advancedVariable.add(getWSWaveVarianceIntercept());// tnint 
-                    advancedVariable.add(getSubjectScaleRandomIntercept());// rsnint 
-                }
+//                if (stageOneLevelNum == 3) { // when stage one has three levels
+                advancedVariable.add(getWSWaveVarianceIntercept());// tnint 
+                advancedVariable.add(getSubjectScaleRandomIntercept());// rsnint 
+//                }
 
                 advancedVariable.add(getAdvancedDecomposeMeanRegressorCount());
                 advancedVariable.add(getAdvancedDecomposeRandomRegressorCount());
                 advancedVariable.add(getAdvancedDecomposeScaleRegressorCount());
-                if (stageOneLevelNum == 3) { // when stage one has three levels
-                    advancedVariable.add(getAdvancedDecomposeBetweenWaveRegressorCount()); // T1
-                    advancedVariable.add(getAdvancedDecomposeScaleRandomRegressorCount());// RS1
-                }
+//                if (stageOneLevelNum == 3) { // when stage one has three levels
+                advancedVariable.add(getAdvancedDecomposeBetweenWaveRegressorCount()); // T1
+                advancedVariable.add(getAdvancedDecomposeScaleRandomRegressorCount());// RS1
+//                }
 
                 advancedVariable.add(getAdvancedConvergenceCriteria());
                 advancedVariable.add(getAdvancedQuadPoints());
                 advancedVariable.add(getAdvancedAdaptiveQuadSubject());
-                if (stageOneLevelNum == 3) { // when stage one has three levels
-                    advancedVariable.add(getAdvancedAdaptiveQuadWave()); // aqwave
-                }
+//                if (stageOneLevelNum == 3) { // when stage one has three levels
+                advancedVariable.add(getAdvancedAdaptiveQuadWave()); // aqwave
+//                }
                 advancedVariable.add(getAdvancedMaxIterations()); // maxit
                 advancedVariable.add(getAdvancedMissingValueCode()); // yMiss
                 advancedVariable.add(getAdvancedCenterScaleVariables()); // ncent
@@ -400,10 +400,10 @@ public class MixLibrary implements Serializable {
                 advancedVariable.add(getAdvancedDiscardCutoff()); // discard_cutoff 
                 advancedVariable.add(getAdvancedUseMLS()); // mls
                 advancedVariable.add(getAdvancedCovarianceMatrix()); // chol
-                if (stageOneLevelNum == 3) { // when stage one has three levels
-                    advancedVariable.add(getAdvancedWaveCount()); // waves
-                    advancedVariable.add(getAdvancedGammatransCount());// gammatrans
-                }
+//                if (stageOneLevelNum == 3) { // when stage one has three levels
+                advancedVariable.add(getAdvancedWaveCount()); // waves
+                advancedVariable.add(getAdvancedGammatransCount());// gammatrans
+//                }
 
                 advancedVariable.add(getAdvancedResampleCount()); // nreps
 //                advancedVariable.add(getAdvancedRandomScaleCutoff()); // ?  
@@ -507,7 +507,7 @@ public class MixLibrary implements Serializable {
         newDefinitionFile.add(Arrays.toString(getSharedModelRandomRegressorFields()).replaceAll(",", " ")); // LINE 9/8
         newDefinitionFile.add(Arrays.toString(getSharedModelScaleRegressorFields()).replaceAll(",", " ")); // LINE 10/9
 
-        if (stageOneLevelNum == 3) { // when stage one has three levels
+        if (getStageOneOutcome() == STAGE_ONE_OUTCOME_MIXREG) { // when stage one has three levels
             newDefinitionFile.add(Arrays.toString(getSharedModelBetweenWaveRegressorFields()).replaceAll(",", " ")); // T parameters; LINE 10 in three level
             newDefinitionFile.add(Arrays.toString(getSharedModelScaleRandomRegressorFields()).replaceAll(",", " "));// RS parameters; LINE 11 in three level
         }
@@ -516,7 +516,7 @@ public class MixLibrary implements Serializable {
         newDefinitionFile.add(Arrays.toString(getSharedModelDecomposeRandomRegressorFields()).replaceAll(",", " ")); // LINE 12/11
         newDefinitionFile.add(Arrays.toString(getSharedModelDecomposeScaleRegressorFields()).replaceAll(",", " ")); // LINE 13/12
 
-        if (stageOneLevelNum == 3) { // when stage one has three levels
+        if (getStageOneOutcome() == STAGE_ONE_OUTCOME_MIXREG) { // when stage one has three levels
             newDefinitionFile.add(Arrays.toString(getSharedModelDecomposeBetweenWaveRegressorFields()).replaceAll(",", " ")); // T1 parameters; LINE 15 in three level
             newDefinitionFile.add(Arrays.toString(getSharedModelDecomposeScaleRandomRegressorFields()).replaceAll(",", " "));// RS1 parameters; LINE 16 in three level
         }
@@ -529,7 +529,7 @@ public class MixLibrary implements Serializable {
         newDefinitionFile.add(Arrays.toString(getSharedModelMeanRegressorLabels()).replaceAll(",", " ")); // LINE 16/14
         newDefinitionFile.add(Arrays.toString(getSharedModelRandomRegressorLabels()).replaceAll(",", " ")); // LINE 17/15
         newDefinitionFile.add(Arrays.toString(getSharedModelScaleRegressorLabels()).replaceAll(",", " ")); // LINE 18/16
-        if (stageOneLevelNum == 3) { // when stage one has three levels
+        if (getStageOneOutcome() == STAGE_ONE_OUTCOME_MIXREG) { // when stage one has three levels
             newDefinitionFile.add(Arrays.toString(getSharedModelBetweenWaveRegressorLabels()).replaceAll(",", " ")); // T parameters; LINE 21 in three level
             newDefinitionFile.add(Arrays.toString(getSharedModelScaleRandomRegressorLabels()).replaceAll(",", " "));// RS parameters; LINE 22 in three level
         }
@@ -538,7 +538,7 @@ public class MixLibrary implements Serializable {
         newDefinitionFile.add(Arrays.toString(getSharedModelDecomposeRandomRegressorLabels()).replaceAll(",", " ")); // LINE 20/18
         newDefinitionFile.add(Arrays.toString(getSharedModelDecomposeScaleRegressorLabels()).replaceAll(",", " ")); // LINE 21/19
 
-        if (stageOneLevelNum == 3) { // when stage one has three levels
+        if (getStageOneOutcome() == STAGE_ONE_OUTCOME_MIXREG) { // when stage one has three levels
             newDefinitionFile.add(Arrays.toString(getSharedModelDecomposeBetweenWaveRegressorLabels()).replaceAll(",", " ")); // T1 parameters; LINE 26 in three level
             newDefinitionFile.add(Arrays.toString(getSharedModelDecomposeScaleRandomRegressorLabels()).replaceAll(",", " "));// RS1 parameters; LINE 27 in three level
         }
@@ -1783,10 +1783,13 @@ public class MixLibrary implements Serializable {
     }
 
     private String getAdvancedGammatransCount() {
-        if (getAdvancedBetweenWaveRegressorCount().equals("0") && getAdvancedDecomposeBetweenWaveRegressorCount().equals("0")) {
-            advancedGammaTrans = "1";
-        } else {
-            advancedGammaTrans = "0";
+        advancedGammaTrans = "1";
+        if (stageOneLevelNum == 3) {
+            if (getAdvancedBetweenWaveRegressorCount().equals("0") && getAdvancedDecomposeBetweenWaveRegressorCount().equals("0")) {
+                advancedGammaTrans = "1";
+            } else {
+                advancedGammaTrans = "0";
+            }
         }
         return advancedGammaTrans;
     }
@@ -1794,7 +1797,6 @@ public class MixLibrary implements Serializable {
 //    public int getStageOneLevelNum() {
 //        return stageOneLevelNum;
 //    }
-
     /**
      * Ancillary classes
      */
@@ -1837,12 +1839,14 @@ public class MixLibrary implements Serializable {
             myPane.setLayout(new BorderLayout(windowPanelDim.width / 2 - 20, windowPanelDim.height - 50));
             myPane.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
             String newline = System.getProperty("line.separator");
-            try {
-                myPane.setText(String.join(newline, buildDefinitionList()).replace("[", "").replace("]", ""));
-            } catch (Exception e) {
-                SystemLogger.LOGGER.log(Level.SEVERE, e.toString());
-                //myPane.setText(String.join(newline, buildDefinitionList()()).replace("[", "").replace("]", ""));
-            }
+//            try {
+            String defContent = String.join(newline, buildDefinitionList()).replace("[", "").replace("]", "");
+            myPane.setText(defContent);
+            System.out.println(defContent);
+//            } catch (Exception e) {
+//                SystemLogger.LOGGER.log(Level.SEVERE, e.toString());
+            //myPane.setText(String.join(newline, buildDefinitionList()()).replace("[", "").replace("]", ""));
+//            }
 
             JButton proceedButton = new JButton("Proceed");
             JButton saveDefFile = new JButton("Save Def File");
@@ -2276,7 +2280,7 @@ public class MixLibrary implements Serializable {
                 terminalVal = exitVal;
                 Process p2;
                 if (getOSName().contains("windows")) {
-                    String[] executable_array = {"lsboth_random_mixblank", "mixors_random_mixblank", "mixno", "mixreg", "mixors", "mixpreg", "stage2only", "lsboth_random_mixblank64", "mixors_random_mixblank64", "stage2only64", "mixregls_3level", "mixregls_3level_2stage"};
+                    String[] executable_array = {"mixors_random_mixblank", "mixno", "mixreg", "mixors", "mixpreg", "stage2only", "mixors_random_mixblank64", "stage2only64", "mixregls_3level_2stage"};
                     for (int i = 0; i < executable_array.length; i++) {
                         String executableFile = executable_array[i];
                         String command = "cmd /c dir && cd " + "\"" + definitionFilepath + "\"" + " && del /f " + "\"" + executableFile + ".exe" + "\"";
@@ -2337,7 +2341,7 @@ public class MixLibrary implements Serializable {
     public void readStageOneOutputfile() throws FileNotFoundException, IOException {
         mixregGUI.stageOneOutput.setText("");
         String fileName = mixregGUI.defFile.getSharedDataFilename();
-        String outputFilePath = FilenameUtils.removeExtension(fileName) + "_Output_stage1.out";
+        String outputFilePath = FilenameUtils.removeExtension(fileName) + "_Output.out";
         File file = new File(outputFilePath);
         BufferedReader br = null;
         String line = "";
@@ -2390,14 +2394,14 @@ public class MixLibrary implements Serializable {
     private void copyExecutable(String absoluteDirectoryPath) throws FileNotFoundException, IOException {
         String modelPath;
 
-        String LSBOTH_PRE = "lsboth_random_mixblank";
+//        String LSBOTH_PRE = "lsboth_random_mixblank";
         String MIXORS_PRE = "mixors_random_mixblank";
         String MIXNO = "mixno";
         String MIXREG = "mixreg";
         String MIXORS = "mixors";
         String MIXPREG = "mixpreg";
-        String STAGETWO_ONLY = "stage2only64";
-        String LSBOTH_PRE_LEVEL3 = "mixregls_3level";
+        String STAGETWO_ONLY = "stage2only";
+//        String LSBOTH_PRE_LEVEL3 = "mixregls_3level";
         String LSBOTH_PRE_LEVEL3_STAGE2 = "mixregls_3level_2stage";
         if (win32) {
             STAGETWO_ONLY = "stage2only";
@@ -2407,30 +2411,30 @@ public class MixLibrary implements Serializable {
             System.out.print(win32);
             if (win32) {
                 SystemLogger.LOGGER.log(Level.INFO, "Operating System : win32");
-                LSBOTH_PRE = "resources/Windows32/" + LSBOTH_PRE + ".exe";
+//                LSBOTH_PRE = "resources/Windows32/" + LSBOTH_PRE + ".exe";
                 MIXORS_PRE = "resources/Windows32/" + MIXORS_PRE + ".exe";
                 MIXNO = "resources/Windows32/" + MIXNO + ".exe";
                 MIXREG = "resources/Windows32/" + MIXREG + ".exe";
                 MIXORS = "resources/Windows32/" + MIXORS + ".exe";
                 MIXPREG = "resources/Windows32/" + MIXPREG + ".exe";
                 STAGETWO_ONLY = "resources/Windows32/" + STAGETWO_ONLY + ".exe";
-                LSBOTH_PRE_LEVEL3 = "resources/Windows32/" + LSBOTH_PRE_LEVEL3 + ".exe";
+//                LSBOTH_PRE_LEVEL3 = "resources/Windows32/" + LSBOTH_PRE_LEVEL3 + ".exe";
                 LSBOTH_PRE_LEVEL3_STAGE2 = "resources/Windows32/" + LSBOTH_PRE_LEVEL3_STAGE2 + ".exe";
             } else {
                 SystemLogger.LOGGER.log(Level.INFO, "Operating System : win64");
-                LSBOTH_PRE = "resources/Windows64/" + LSBOTH_PRE + "64" + ".exe";
+//                LSBOTH_PRE = "resources/Windows64/" + LSBOTH_PRE + "64" + ".exe";
                 MIXORS_PRE = "resources/Windows64/" + MIXORS_PRE + "64" + ".exe";
                 MIXNO = "resources/Windows64/" + MIXNO + ".exe";
                 MIXREG = "resources/Windows64/" + MIXREG + ".exe";
                 MIXORS = "resources/Windows64/" + MIXORS + ".exe";
                 MIXPREG = "resources/Windows64/" + MIXPREG + ".exe";
-                STAGETWO_ONLY = "resources/Windows64/" + STAGETWO_ONLY + ".exe";
-                LSBOTH_PRE_LEVEL3 = "resources/Windows64/" + LSBOTH_PRE_LEVEL3 + ".exe";
+                STAGETWO_ONLY = "resources/Windows64/" + STAGETWO_ONLY + "64" + ".exe";
+//                LSBOTH_PRE_LEVEL3 = "resources/Windows64/" + LSBOTH_PRE_LEVEL3 + ".exe";
                 LSBOTH_PRE_LEVEL3_STAGE2 = "resources/Windows64/" + LSBOTH_PRE_LEVEL3_STAGE2 + ".exe";
             }
         } else {
             SystemLogger.LOGGER.log(Level.INFO, "Operating System : macOS");
-            LSBOTH_PRE = "resources/macOS/" + LSBOTH_PRE;
+//            LSBOTH_PRE = "resources/macOS/" + LSBOTH_PRE;
             MIXORS_PRE = "resources/macOS/" + MIXORS_PRE;
             MIXNO = "resources/macOS/" + MIXNO;
             MIXREG = "resources/macOS/" + MIXREG;
@@ -2442,7 +2446,7 @@ public class MixLibrary implements Serializable {
 //            LSBOTH_PRE_LEVEL3_STAGE2 = "resources/macOS/" + LSBOTH_PRE_LEVEL3_STAGE2;
         }
 
-        String exeArray[] = {LSBOTH_PRE, MIXORS_PRE, MIXNO, MIXREG, MIXORS, MIXPREG, STAGETWO_ONLY};
+        String exeArray[] = {MIXORS_PRE, MIXNO, MIXREG, MIXORS, MIXPREG, STAGETWO_ONLY, LSBOTH_PRE_LEVEL3_STAGE2};
 
         for (String exe : exeArray) {
             InputStream stream = getClass().getClassLoader().getResourceAsStream(exe);
@@ -2452,6 +2456,7 @@ public class MixLibrary implements Serializable {
             int read;
             byte[] bytes = new byte[4096];
 
+            System.out.print(exe);
             while ((read = stream.read(bytes)) > 0) {
                 //System.out.println("Working on output stream");
                 outputStream.write(bytes, 0, read);
@@ -2461,13 +2466,15 @@ public class MixLibrary implements Serializable {
         }
 
         if (!getOSName().contains("windows")) {
-            String[] commands = {"chmod u+x " + "\"" + definitionFilepath + FilenameUtils.getName(LSBOTH_PRE) + "\"",
+            String[] commands = {
+                //                "chmod u+x " + "\"" + definitionFilepath + FilenameUtils.getName(LSBOTH_PRE) + "\"",
                 "chmod u+x " + "\"" + definitionFilepath + FilenameUtils.getName(MIXORS_PRE) + "\"",
                 "chmod u+x " + "\"" + definitionFilepath + FilenameUtils.getName(MIXNO) + "\"",
                 "chmod u+x " + "\"" + definitionFilepath + FilenameUtils.getName(MIXPREG) + "\"",
                 "chmod u+x " + "\"" + definitionFilepath + FilenameUtils.getName(MIXREG) + "\"",
                 "chmod u+x " + "\"" + definitionFilepath + FilenameUtils.getName(MIXORS) + "\"",
-                "chmod u+x " + "\"" + definitionFilepath + FilenameUtils.getName(STAGETWO_ONLY) + "\""};
+                "chmod u+x " + "\"" + definitionFilepath + FilenameUtils.getName(STAGETWO_ONLY) + "\"", //                "chmod u+x " + "\"" + definitionFilepath + FilenameUtils.getName(LSBOTH_PRE_LEVEL3_STAGE2) + "\""
+            };
             for (String command : commands) {
                 ProcessBuilder pb1 = new ProcessBuilder(
                         "bash",

@@ -35,8 +35,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import mixregui.SystemLogger;
-import static mixregui.mixregGUI.isRandomScale;
-import static mixregui.stageOneRegs.levelOneList;
+//import static mixregui.mixregGUI.isRandomScale;
+//import static mixregui.stageOneRegs.levelOneList;
 
 /**
  * All the advanced functions to support the model
@@ -79,7 +79,7 @@ public class advancedOptions extends javax.swing.JFrame {
         SubjectScaleRandomInterceptBox.setSelected(true);
         WaveWSVarianceInterceptBox.setSelected(true);
         adaptiveQuadritureCheckBox.setSelected(true);
-        adaptiveQuadritureWaveVarianceCheckBox.setSelected(true);
+        adaptiveQuadritureWaveVarianceCheckBox.setSelected(false);
         discardSubjectsCheckBox.setSelected(false);
         thresholdRidgeSpinner.setValue(0.0);
 
@@ -1055,12 +1055,16 @@ public class advancedOptions extends javax.swing.JFrame {
     }
 
     public void update_stageOneLevel3_advanced_options(int stageOneLevelNum) {
-        if (!isRandomScale){
+        if (mixregGUI.isRandomScale) {
+            jLabel8.setEnabled(true);
+            SubjectScaleRandomInterceptBox.setEnabled(true);
+            SubjectScaleRandomInterceptBox.setSelected(true);
+        } else {
             jLabel8.setEnabled(false);
             SubjectScaleRandomInterceptBox.setEnabled(false);
             SubjectScaleRandomInterceptBox.setSelected(false);
         }
-        
+
         if (stageOneLevelNum == 3) {
             jLabel13.setEnabled(true);
             WaveWSVarianceInterceptBox.setEnabled(true);

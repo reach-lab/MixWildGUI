@@ -916,7 +916,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
      */
     public mixregGUI() {
         initComponents();
-        this.setTitle("MixWILD-2.2.3");
+        this.setTitle("MixWILD-2.2.4");
         // adjust the frame size to fit screen resolution
 //        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 //        setBounds(0, 0, stageOneTabs.getWidth(), (int) Math.round(screenSize.height / 1.5));
@@ -3529,12 +3529,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     private void randomScaleSelectionNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_randomScaleSelectionNoActionPerformed
         SystemLogger.LOGGER.log(Level.FINE, "randomScaleSelectionNoActionPerformed");
+        isRandomScale = false;
         MXRStates = new MixRegGuiStates(this, advancedOptions_view);
         updateGuiView(MXRStates);
     }//GEN-LAST:event_randomScaleSelectionNoActionPerformed
 
     private void randomScaleSelectionYesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_randomScaleSelectionYesActionPerformed
         SystemLogger.LOGGER.log(Level.FINE, "randomScaleSelectionYesActionPerformed");
+        isRandomScale = true;
         MXRStates = new MixRegGuiStates(this, advancedOptions_view);
         updateGuiView(MXRStates);
     }//GEN-LAST:event_randomScaleSelectionYesActionPerformed
