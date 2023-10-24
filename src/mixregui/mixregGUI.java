@@ -916,7 +916,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
      */
     public mixregGUI() {
         initComponents();
-        this.setTitle("MixWILD-2.2.4");
+        this.setTitle("MixWILD-2.2.5");
         // adjust the frame size to fit screen resolution
 //        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 //        setBounds(0, 0, stageOneTabs.getWidth(), (int) Math.round(screenSize.height / 1.5));
@@ -9029,6 +9029,31 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
 
+            } else if (stageOneTwoLevelRadio.isSelected()) {
+                try {
+                    tryCount = 1;
+                    int withinCount = countLevelOneBetweenWave() + countLevelTwoBetweenWave();
+                    defFile.setAdvancedBetweenWaveRegressorCount(String.valueOf(withinCount));
+                    System.out.println("From defHelper | Model Between Wave Count: " + defFile.getAdvancedBetweenWaveRegressorCount());
+                } catch (Exception ex) {
+                    catchCount = 1;
+                    Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                }
+
+                try {
+                    tryCount = 1;
+                    int withinCount = countLevelOneScaleRandom() + countLevelTwoScaleRandom() ;
+                    defFile.setAdvancedScaleRandomRegressorCount(String.valueOf(withinCount));
+                    System.out.println("From defHelper | Model Scale Random Count: " + defFile.getAdvancedScaleRandomRegressorCount());
+                } catch (Exception ex) {
+                    catchCount = 1;
+                    Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                }
+
             }
 
             //Number of disaggregate means
@@ -9419,6 +9444,30 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 try {
                     tryCount = 1;
                     int withinCount = countLevelOneScaleRandom() + countLevelTwoScaleRandom() + countLevelThreeScaleRandom() - countLevelOneDicompScaleRandom();
+                    defFile.setAdvancedScaleRandomRegressorCount(String.valueOf(withinCount));
+                    System.out.println("From defHelper | Model Scale Random Count: " + defFile.getAdvancedScaleRandomRegressorCount());
+                } catch (Exception ex) {
+                    catchCount = 1;
+                    Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                }
+            } else if (stageOneTwoLevelRadio.isSelected()) {
+                try {
+                    tryCount = 1;
+                    int withinCount = countLevelOneBetweenWave() + countLevelTwoBetweenWave() - countLevelOneDicompBetweenWave();
+                    defFile.setAdvancedBetweenWaveRegressorCount(String.valueOf(withinCount));
+                    System.out.println("From defHelper | Model Between Wave Count: " + defFile.getAdvancedBetweenWaveRegressorCount());
+                } catch (Exception ex) {
+                    catchCount = 1;
+                    Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                }
+
+                try {
+                    tryCount = 1;
+                    int withinCount = countLevelOneScaleRandom() + countLevelTwoScaleRandom() - countLevelOneDicompScaleRandom();
                     defFile.setAdvancedScaleRandomRegressorCount(String.valueOf(withinCount));
                     System.out.println("From defHelper | Model Scale Random Count: " + defFile.getAdvancedScaleRandomRegressorCount());
                 } catch (Exception ex) {

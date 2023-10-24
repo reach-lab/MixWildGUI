@@ -954,6 +954,9 @@ public class MixLibrary implements Serializable {
     }
 
     public String[] getSharedModelBetweenWaveRegressorFields() {
+        if (sharedModelBetweenWaveRegressorFields == null) {
+            sharedModelBetweenWaveRegressorFields = new String[0];
+        }
         return sharedModelBetweenWaveRegressorFields;
     }
 
@@ -962,6 +965,9 @@ public class MixLibrary implements Serializable {
     }
 
     public String[] getSharedModelScaleRandomRegressorFields() {
+        if (sharedModelScaleRandomRegressorFields == null) {
+            sharedModelScaleRandomRegressorFields = new String[0];
+        }
         return sharedModelScaleRandomRegressorFields;
     }
 
@@ -994,6 +1000,9 @@ public class MixLibrary implements Serializable {
     }
 
     public String[] getSharedModelDecomposeBetweenWaveRegressorFields() {
+        if (sharedModelDecomposeBetweenWaveRegressorFields == null) {
+            sharedModelDecomposeBetweenWaveRegressorFields = new String[0];
+        }
         return sharedModelDecomposeBetweenWaveRegressorFields;
     }
 
@@ -1002,6 +1011,9 @@ public class MixLibrary implements Serializable {
     }
 
     public String[] getSharedModelDecomposeScaleRandomRegressorFields() {
+        if (sharedModelDecomposeScaleRandomRegressorFields == null) {
+            sharedModelDecomposeScaleRandomRegressorFields = new String[0];
+        }
         return sharedModelDecomposeScaleRandomRegressorFields;
     }
 
@@ -1042,6 +1054,9 @@ public class MixLibrary implements Serializable {
     }
 
     public String[] getSharedModelBetweenWaveRegressorLabels() {
+        if (sharedModelBetweenWaveRegressorLabels == null) {
+            sharedModelBetweenWaveRegressorLabels = new String[0];
+        }
         return sharedModelBetweenWaveRegressorLabels;
     }
 
@@ -1050,6 +1065,9 @@ public class MixLibrary implements Serializable {
     }
 
     public String[] getSharedModelScaleRandomRegressorLabels() {
+        if (sharedModelScaleRandomRegressorLabels == null) {
+            sharedModelScaleRandomRegressorLabels = new String[0];
+        }
         return sharedModelScaleRandomRegressorLabels;
     }
 
@@ -1082,6 +1100,9 @@ public class MixLibrary implements Serializable {
     }
 
     public String[] getSharedModelDecomposeBetweenWaveRegressorLabels() {
+        if (sharedModelDecomposeBetweenWaveRegressorLabels == null) {
+            sharedModelDecomposeBetweenWaveRegressorLabels = new String[0];
+        }
         return sharedModelDecomposeBetweenWaveRegressorLabels;
     }
 
@@ -1090,6 +1111,9 @@ public class MixLibrary implements Serializable {
     }
 
     public String[] getSharedModelDecomposeScaleRandomRegressorLabels() {
+        if (sharedModelDecomposeScaleRandomRegressorLabels == null) {
+            sharedModelDecomposeScaleRandomRegressorLabels = new String[0];
+        }
         return sharedModelDecomposeScaleRandomRegressorLabels;
     }
 
@@ -1275,6 +1299,9 @@ public class MixLibrary implements Serializable {
     }
 
     public String getAdvancedBetweenWaveRegressorCount() {
+        if (advancedBetweenWaveRegressorCount == null) {
+            advancedBetweenWaveRegressorCount = "0";
+        }
         return advancedBetweenWaveRegressorCount;
     }
 
@@ -1283,6 +1310,9 @@ public class MixLibrary implements Serializable {
     }
 
     public String getAdvancedScaleRandomRegressorCount() {
+        if (advancedScaleRandomRegressorCount == null) {
+            advancedScaleRandomRegressorCount = "0";
+        }
         return advancedScaleRandomRegressorCount;
     }
 
@@ -1363,6 +1393,9 @@ public class MixLibrary implements Serializable {
     }
 
     public String getAdvancedDecomposeBetweenWaveRegressorCount() {
+        if (advancedDecomposeBetweenWaveRegressorCount == null) {
+            advancedDecomposeBetweenWaveRegressorCount = "0";
+        }
         return advancedDecomposeBetweenWaveRegressorCount;
     }
 
@@ -1371,6 +1404,9 @@ public class MixLibrary implements Serializable {
     }
 
     public String getAdvancedDecomposeScaleRandomRegressorCount() {
+        if (advancedDecomposeScaleRandomRegressorCount == null) {
+            advancedDecomposeScaleRandomRegressorCount = "0";
+        }
         return advancedDecomposeScaleRandomRegressorCount;
     }
 
@@ -2341,7 +2377,7 @@ public class MixLibrary implements Serializable {
     public void readStageOneOutputfile() throws FileNotFoundException, IOException {
         mixregGUI.stageOneOutput.setText("");
         String fileName = mixregGUI.defFile.getSharedDataFilename();
-        String outputFilePath = FilenameUtils.removeExtension(fileName) + "_Output.out";
+        String outputFilePath = FilenameUtils.removeExtension(fileName) + "_Output_stage1.out";
         File file = new File(outputFilePath);
         BufferedReader br = null;
         String line = "";
