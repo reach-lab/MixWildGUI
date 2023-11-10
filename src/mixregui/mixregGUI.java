@@ -916,7 +916,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
      */
     public mixregGUI() {
         initComponents();
-        this.setTitle("MixWILD-2.2.5");
+        this.setTitle("MixWILD-2.2.6");
         // adjust the frame size to fit screen resolution
 //        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 //        setBounds(0, 0, stageOneTabs.getWidth(), (int) Math.round(screenSize.height / 1.5));
@@ -7235,9 +7235,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         System.out.println("*********************************");
         System.out.println("ScaleRandom Labels From stage one (Labels)");
-        String[] lvlOneReg = getModelWSLabelsLevelOne();
-        String[] lvlTwoReg = getModelWSLabelsLevelTwo();
-        String[] lvlThreeReg = getModelWSLabelsLevelThree();
+        String[] lvlOneReg = getModelScaleRandomLabelsLevelOne();
+        String[] lvlTwoReg = getModelScaleRandomLabelsLevelTwo();
+        String[] lvlThreeReg = getModelScaleRandomLabelsLevelThree();
 
         int arraySize = lvlOneReg.length + lvlTwoReg.length + lvlThreeReg.length;
         String[] meanModel = new String[arraySize];
