@@ -60,7 +60,7 @@ public class stageTwoRegs extends javax.swing.JFrame {
      */
     public stageTwoRegs() {
         initComponents();
-        this.setResizable(false);
+//        this.setResizable(false);
 //        if(mixregGUI.defFile.getStageTwoModelType() == MixLibrary.STAGE_TWO_MODEL_TYPE_SINGLE){
 //            jLabel4.setVisible(false);
 //            jScrollPane3.setVisible(false);

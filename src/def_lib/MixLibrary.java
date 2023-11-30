@@ -1867,7 +1867,7 @@ public class MixLibrary implements Serializable {
             myFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
             myFrame.setSize(windowPanelDim.width / 2, windowPanelDim.height - 50);
-            myFrame.setResizable(false);
+//            myFrame.setResizable(false);
             myPane = new JEditorPane();
             myPane.setSize(windowPanelDim.width / 2 - 20, windowPanelDim.height - 50);
             myPane.setContentType("text/plain");
@@ -2023,7 +2023,7 @@ public class MixLibrary implements Serializable {
             myFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
             myFrame.setSize(windowPanelDim.width / 2, windowPanelDim.height - 50);
-            myFrame.setResizable(false);
+//            myFrame.setResizable(false);
 
             myPane = new JEditorPane();
             myPane.setSize(windowPanelDim.width / 2 - 30, windowPanelDim.height - 50);
@@ -2202,7 +2202,7 @@ public class MixLibrary implements Serializable {
         defFileFlow.setAlignment(FlowLayout.TRAILING);
         progressWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         progressWindow.setSize(630, 680);
-        progressWindow.setResizable(false);
+//        progressWindow.setResizable(false);
 
         progressPane = new JTextArea(30, 80);
         DefaultCaret caret = (DefaultCaret) progressPane.getCaret();

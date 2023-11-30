@@ -916,10 +916,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
      */
     public mixregGUI() {
         initComponents();
-        this.setTitle("MixWILD-2.2.6");
+        this.setTitle("MixWILD-2.2.7");
         // adjust the frame size to fit screen resolution
 //        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-//        setBounds(0, 0, stageOneTabs.getWidth(), (int) Math.round(screenSize.height / 1.5));
+//        setBounds(0, 0, stageOneTabs.getWidth()/2, (int) Math.round(screenSize.height / 1.5));
 //        setBounds(0, 0, stageOneTabs.getWidth(), 700);
         setVisible(true);
 
@@ -944,7 +944,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageTwoMultiLevel.setEnabled(true);
 
         //updateMixRegGUI();
-        //this.setResizable(false);
+        this.setResizable(true);
         // hide components for user operating in order
         setFirstTabStatus(false);
 
@@ -956,14 +956,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 //        stageOneTabs.setEnabledAt(5, false);
 //        stageOneTabs.setEnabledAt(6, false);
 //        stageOneTabs.setEnabledAt(7, false);
-        stageOneTabs.remove(jPanel1);
-        stageOneTabs.remove(jPanel12);
-        stageOneTabs.remove(jPanel3);
-        stageOneTabs.remove(jPanel4);
+        stageOneTabs.remove(jScrollPane_stage1);
+        stageOneTabs.remove(jScrollPane_stage2);
+        stageOneTabs.remove(jScrollPane_stage1result);
+        stageOneTabs.remove(jScrollPane_stage2result);
 //        stageOneTabs.remove(jPanel2);
-        stageOneTabs.remove(jPanel6);
-        stageOneTabs.remove(jPanel16);
-        stageOneTabs.remove(jPanel14);
+        stageOneTabs.remove(jScrollPane_viewdata1);
+        stageOneTabs.remove(jScrollPane_viewdata2);
+        stageOneTabs.remove(jScrollPane_postestimation);
 
         stageOneTabs.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
@@ -973,7 +973,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         });
 
         //updateMixRegGUI();
-        //this.setResizable(false);
+
         // TODO: Fix superuser menu code
         //superUserMenu.setVisible(SUPERUSER_KEY > 2);
 //       IDpos = IDvariableCombo.getSelectedIndex();
@@ -1018,7 +1018,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         randomScaleSpecButtonGroup = new javax.swing.ButtonGroup();
         parentPanel = new javax.swing.JPanel();
         stageOneTabs = new javax.swing.JTabbedPane();
-        jPanel13 = new javax.swing.JPanel();
+        jScrollPane_modelconfig = new javax.swing.JScrollPane();
+        jPanel_modelconfig = new javax.swing.JPanel();
         fileBrowseButton = new javax.swing.JButton();
         filePath = new javax.swing.JTextField();
         dataFileLabel = new javax.swing.JLabel();
@@ -1092,7 +1093,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         randomScaleEffectsSpecViewLabel = new javax.swing.JLabel();
         randomScaleSpecSelectionInterceptOnly = new javax.swing.JRadioButton();
         randomScaleSpecSelectionInterceptSlope = new javax.swing.JRadioButton();
-        jPanel1 = new javax.swing.JPanel();
+        jScrollPane_stage1 = new javax.swing.JScrollPane();
+        jPanel_stage1 = new javax.swing.JPanel();
         clearStageOneButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         level1_MeanReg = new javax.swing.JLabel();
@@ -1155,7 +1157,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         level2_BWVar2 = new javax.swing.JLabel();
         level3_BWVar2 = new javax.swing.JLabel();
         level3_BWVar1 = new javax.swing.JLabel();
-        jPanel12 = new javax.swing.JPanel();
+        jScrollPane_stage2 = new javax.swing.JScrollPane();
+        jPanel_stage2 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -1202,7 +1205,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         IDStageTwoVariableCombo = new javax.swing.JComboBox<>();
         jLabel32 = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        jScrollPane_stage1result = new javax.swing.JScrollPane();
+        jPanel_stage1result = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         stageOneOutput = new javax.swing.JTextArea();
@@ -1210,7 +1214,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         jLabel7 = new javax.swing.JLabel();
         openStage1OutButton = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
+        jScrollPane_stage2result = new javax.swing.JScrollPane();
+        jPanel_stage2result = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         stageTwoOutput = new javax.swing.JTextArea();
@@ -1218,24 +1223,28 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         jLabel11 = new javax.swing.JLabel();
         javax.swing.JButton openStage2OutButton = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        jScrollPane_viewmodel = new javax.swing.JScrollPane();
+        jPanel_viewmodel = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         equationArea = new javax.swing.JLabel();
         latexVaraibleScrollPane = new javax.swing.JScrollPane();
         latexVaraibleTextArea = new javax.swing.JTextArea();
         jLabel10 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
+        jScrollPane_viewdata1 = new javax.swing.JScrollPane();
+        jPanel_viewdata1 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         dataTable = new javax.swing.JTable();
         jLabel20 = new javax.swing.JLabel();
         printedFileName = new javax.swing.JLabel();
-        jPanel16 = new javax.swing.JPanel();
+        jScrollPane_viewdata2 = new javax.swing.JScrollPane();
+        jPanel_viewdata2 = new javax.swing.JPanel();
         jLabel29 = new javax.swing.JLabel();
         printedFileName_stageTwo = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
         dataTable_stageTwo = new javax.swing.JTable();
-        jPanel14 = new javax.swing.JPanel();
+        jScrollPane_postestimation = new javax.swing.JScrollPane();
+        jPanel_postestimation = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
@@ -1246,7 +1255,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         jLabel30 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
-        jPanel15 = new javax.swing.JPanel();
+        jScrollPane_help = new javax.swing.JScrollPane();
+        jPanel_help = new javax.swing.JPanel();
         userGuideDownload = new javax.swing.JButton();
         jLabel31 = new javax.swing.JLabel();
         exampleDataDownload = new javax.swing.JButton();
@@ -1268,9 +1278,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MixWILD");
-        setMinimumSize(new java.awt.Dimension(1600, 1600));
+        setPreferredSize(new java.awt.Dimension(1415, 938));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        parentPanel.setMaximumSize(new java.awt.Dimension(1600, 1600));
         parentPanel.setLayout(new java.awt.CardLayout());
         getContentPane().add(parentPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1224, -1));
 
@@ -1278,12 +1289,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageOneTabs.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         stageOneTabs.setFocusable(false);
         stageOneTabs.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N
-        stageOneTabs.setMinimumSize(new java.awt.Dimension(1300, 1300));
-        stageOneTabs.setPreferredSize(new java.awt.Dimension(1300, 1300));
+        stageOneTabs.setMaximumSize(new java.awt.Dimension(1600, 1600));
+        stageOneTabs.setPreferredSize(new java.awt.Dimension(1400, 900));
 
-        jPanel13.setMinimumSize(new java.awt.Dimension(1000, 700));
-        jPanel13.setPreferredSize(new java.awt.Dimension(1300, 1300));
-        jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel_modelconfig.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         fileBrowseButton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         fileBrowseButton.setText("Change Dataset");
@@ -1292,7 +1301,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 fileBrowseButtonActionPerformed(evt);
             }
         });
-        jPanel13.add(fileBrowseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 40, 145, 30));
+        jPanel_modelconfig.add(fileBrowseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 40, 145, 30));
 
         filePath.setEditable(false);
         filePath.addActionListener(new java.awt.event.ActionListener() {
@@ -1300,29 +1309,29 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 filePathActionPerformed(evt);
             }
         });
-        jPanel13.add(filePath, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 45, 254, -1));
+        jPanel_modelconfig.add(filePath, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 45, 254, -1));
 
         dataFileLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         dataFileLabel.setText("CSV file path: ");
         dataFileLabel.setToolTipText("");
-        jPanel13.add(dataFileLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 45, -1, -1));
+        jPanel_modelconfig.add(dataFileLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 45, -1, -1));
 
         titleViewLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         titleViewLabel.setText("Title (optional):");
-        jPanel13.add(titleViewLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, -1, -1));
+        jPanel_modelconfig.add(titleViewLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, -1, -1));
 
         titleField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 titleFieldActionPerformed(evt);
             }
         });
-        jPanel13.add(titleField, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 80, 254, -1));
-        jPanel13.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 627, 770, 11));
+        jPanel_modelconfig.add(titleField, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 80, 254, -1));
+        jPanel_modelconfig.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 627, 770, 11));
 
         rleViewLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         rleViewLabel.setText("Specify random location effects:");
         rleViewLabel.setToolTipText("");
-        jPanel13.add(rleViewLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 298, -1, -1));
+        jPanel_modelconfig.add(rleViewLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 298, -1, -1));
 
         buttonGroup2.add(oneRLERadio);
         oneRLERadio.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -1332,7 +1341,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 oneRLERadioActionPerformed(evt);
             }
         });
-        jPanel13.add(oneRLERadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 294, -1, -1));
+        jPanel_modelconfig.add(oneRLERadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 294, -1, -1));
 
         buttonGroup2.add(moreThanOneRLERadio);
         moreThanOneRLERadio.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -1342,17 +1351,17 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 moreThanOneRLERadioActionPerformed(evt);
             }
         });
-        jPanel13.add(moreThanOneRLERadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(704, 294, -1, -1));
+        jPanel_modelconfig.add(moreThanOneRLERadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(704, 294, -1, -1));
 
         randomScaleViewLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         randomScaleViewLabel.setText("Include estimates of random scale:");
         randomScaleViewLabel.setToolTipText("");
-        jPanel13.add(randomScaleViewLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 332, -1, -1));
+        jPanel_modelconfig.add(randomScaleViewLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 332, -1, -1));
 
         stageTwoOutcomeTypeLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         stageTwoOutcomeTypeLabel.setText("Stage 2 outcome:");
         stageTwoOutcomeTypeLabel.setToolTipText("");
-        jPanel13.add(stageTwoOutcomeTypeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 559, -1, -1));
+        jPanel_modelconfig.add(stageTwoOutcomeTypeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 559, -1, -1));
 
         buttonGroup3.add(stageTwoContinuousRadio);
         stageTwoContinuousRadio.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -1362,7 +1371,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 stageTwoContinuousRadioActionPerformed(evt);
             }
         });
-        jPanel13.add(stageTwoContinuousRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 559, -1, -1));
+        jPanel_modelconfig.add(stageTwoContinuousRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 559, -1, -1));
 
         buttonGroup3.add(stageTwoDichotomousRadio);
         stageTwoDichotomousRadio.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -1372,7 +1381,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 stageTwoDichotomousRadioActionPerformed(evt);
             }
         });
-        jPanel13.add(stageTwoDichotomousRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(691, 559, -1, -1));
+        jPanel_modelconfig.add(stageTwoDichotomousRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(691, 559, -1, -1));
 
         buttonGroup4.add(missingValueAbsent);
         missingValueAbsent.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -1382,7 +1391,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 missingValueAbsentActionPerformed(evt);
             }
         });
-        jPanel13.add(missingValueAbsent, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 114, -1, 20));
+        jPanel_modelconfig.add(missingValueAbsent, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 114, -1, 20));
 
         buttonGroup4.add(missingValuePresent);
         missingValuePresent.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -1392,17 +1401,17 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 missingValuePresentActionPerformed(evt);
             }
         });
-        jPanel13.add(missingValuePresent, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 114, 60, 20));
+        jPanel_modelconfig.add(missingValuePresent, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 114, 60, 20));
 
         missingViewLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         missingViewLabel.setText("Does your data contain missing values?");
         missingViewLabel.setToolTipText("");
-        jPanel13.add(missingViewLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 114, -1, -1));
+        jPanel_modelconfig.add(missingViewLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 114, -1, -1));
 
         missingCodeViewLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         missingCodeViewLabel.setText("What is your missing data coded as?");
         missingCodeViewLabel.setToolTipText("");
-        jPanel13.add(missingCodeViewLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 145, -1, -1));
+        jPanel_modelconfig.add(missingCodeViewLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 145, -1, -1));
 
         newModelMissingValueCode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1414,19 +1423,19 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 newModelMissingValueCodeKeyTyped(evt);
             }
         });
-        jPanel13.add(newModelMissingValueCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 145, 80, -1));
+        jPanel_modelconfig.add(newModelMissingValueCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 145, 80, -1));
 
         seedTextBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 seedTextBoxActionPerformed(evt);
             }
         });
-        jPanel13.add(seedTextBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 594, 80, -1));
+        jPanel_modelconfig.add(seedTextBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 594, 80, -1));
 
         setSeedLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         setSeedLabel.setText("Set a seed for Stage 2 resampling (optional):");
         setSeedLabel.setToolTipText("");
-        jPanel13.add(setSeedLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 594, 320, -1));
+        jPanel_modelconfig.add(setSeedLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 594, 320, -1));
 
         newModel_resetButton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         newModel_resetButton.setText("Reset");
@@ -1435,7 +1444,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 newModel_resetButtonActionPerformed(evt);
             }
         });
-        jPanel13.add(newModel_resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 648, 120, 35));
+        jPanel_modelconfig.add(newModel_resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 648, 120, 35));
 
         newModelSubmit.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         newModelSubmit.setText("Continue");
@@ -1444,23 +1453,23 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 newModelSubmitActionPerformed(evt);
             }
         });
-        jPanel13.add(newModelSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 648, 120, 35));
+        jPanel_modelconfig.add(newModelSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 648, 120, 35));
 
         stageOneModelGiantLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         stageOneModelGiantLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         stageOneModelGiantLabel.setText("Stage 1 Model");
-        jPanel13.add(stageOneModelGiantLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(91, 230, -1, -1));
+        jPanel_modelconfig.add(stageOneModelGiantLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(91, 230, -1, -1));
 
         stageTwoModelGiantLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         stageTwoModelGiantLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         stageTwoModelGiantLabel.setText("Stage 2 Model");
-        jPanel13.add(stageTwoModelGiantLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(91, 435, -1, -1));
-        jPanel13.add(jSeparator16, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 770, 12));
+        jPanel_modelconfig.add(stageTwoModelGiantLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(91, 435, -1, -1));
+        jPanel_modelconfig.add(jSeparator16, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 770, 12));
 
         stageOneOutcomeViewLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         stageOneOutcomeViewLabel.setText("Stage 1 outcome:");
         stageOneOutcomeViewLabel.setToolTipText("");
-        jPanel13.add(stageOneOutcomeViewLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, -1, -1));
+        jPanel_modelconfig.add(stageOneOutcomeViewLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, -1, -1));
 
         stageOneOutcomeGroup.add(stageOneContinuousRadio);
         stageOneContinuousRadio.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -1470,7 +1479,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 stageOneContinuousRadioActionPerformed(evt);
             }
         });
-        jPanel13.add(stageOneContinuousRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 226, -1, -1));
+        jPanel_modelconfig.add(stageOneContinuousRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 226, -1, -1));
 
         stageOneOutcomeGroup.add(stageOneDichotomousRadio);
         stageOneDichotomousRadio.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -1480,7 +1489,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 stageOneDichotomousRadioActionPerformed(evt);
             }
         });
-        jPanel13.add(stageOneDichotomousRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(691, 226, -1, -1));
+        jPanel_modelconfig.add(stageOneDichotomousRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(691, 226, -1, -1));
 
         stageOneOutcomeGroup.add(stageOneOrdinalRadio);
         stageOneOrdinalRadio.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -1490,7 +1499,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 stageOneOrdinalRadioActionPerformed(evt);
             }
         });
-        jPanel13.add(stageOneOrdinalRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(802, 226, -1, -1));
+        jPanel_modelconfig.add(stageOneOrdinalRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(802, 226, -1, -1));
 
         randomScaleSelectionGroup.add(randomScaleSelectionYes);
         randomScaleSelectionYes.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -1500,7 +1509,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 randomScaleSelectionYesActionPerformed(evt);
             }
         });
-        jPanel13.add(randomScaleSelectionYes, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 328, -1, -1));
+        jPanel_modelconfig.add(randomScaleSelectionYes, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 328, -1, -1));
 
         randomScaleSelectionGroup.add(randomScaleSelectionNo);
         randomScaleSelectionNo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -1510,12 +1519,12 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 randomScaleSelectionNoActionPerformed(evt);
             }
         });
-        jPanel13.add(randomScaleSelectionNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 328, -1, -1));
+        jPanel_modelconfig.add(randomScaleSelectionNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 328, -1, -1));
 
         includeStageTwoLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         includeStageTwoLabel.setText("Include Stage 2 model:");
         includeStageTwoLabel.setToolTipText("");
-        jPanel13.add(includeStageTwoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 417, -1, -1));
+        jPanel_modelconfig.add(includeStageTwoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 417, -1, -1));
 
         includeStageTwoGroup.add(includeStageTwoYes);
         includeStageTwoYes.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -1525,7 +1534,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 includeStageTwoYesActionPerformed(evt);
             }
         });
-        jPanel13.add(includeStageTwoYes, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 413, -1, -1));
+        jPanel_modelconfig.add(includeStageTwoYes, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 413, -1, -1));
 
         includeStageTwoGroup.add(includeStageTwoNo);
         includeStageTwoNo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -1535,12 +1544,12 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 includeStageTwoNoActionPerformed(evt);
             }
         });
-        jPanel13.add(includeStageTwoNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(643, 413, -1, -1));
+        jPanel_modelconfig.add(includeStageTwoNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(643, 413, -1, -1));
 
         stageTwoModelTypeLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         stageTwoModelTypeLabel.setText("Stage 2 model type:");
         stageTwoModelTypeLabel.setToolTipText("");
-        jPanel13.add(stageTwoModelTypeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 522, -1, -1));
+        jPanel_modelconfig.add(stageTwoModelTypeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 522, -1, -1));
 
         stageTwoLevelGroup.add(stageTwoSingleLevel);
         stageTwoSingleLevel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -1550,7 +1559,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 stageTwoSingleLevelActionPerformed(evt);
             }
         });
-        jPanel13.add(stageTwoSingleLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 518, -1, -1));
+        jPanel_modelconfig.add(stageTwoSingleLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 518, -1, -1));
 
         stageTwoLevelGroup.add(stageTwoMultiLevel);
         stageTwoMultiLevel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -1561,7 +1570,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 stageTwoMultiLevelActionPerformed(evt);
             }
         });
-        jPanel13.add(stageTwoMultiLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(691, 518, -1, -1));
+        jPanel_modelconfig.add(stageTwoMultiLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(691, 518, -1, -1));
 
         buttonGroup3.add(stageTwoMultinomialRadio);
         stageTwoMultinomialRadio.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -1571,7 +1580,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 stageTwoMultinomialRadioActionPerformed(evt);
             }
         });
-        jPanel13.add(stageTwoMultinomialRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(919, 559, -1, -1));
+        jPanel_modelconfig.add(stageTwoMultinomialRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(919, 559, -1, -1));
 
         buttonGroup3.add(stageTwoCountRadio);
         stageTwoCountRadio.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -1581,7 +1590,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 stageTwoCountRadioActionPerformed(evt);
             }
         });
-        jPanel13.add(stageTwoCountRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(852, 559, -1, -1));
+        jPanel_modelconfig.add(stageTwoCountRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(852, 559, -1, -1));
 
         hiddenBigIconLabel.setFocusable(false);
         hiddenBigIconLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1589,7 +1598,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 hiddenBigIconLabelMouseClicked(evt);
             }
         });
-        jPanel13.add(hiddenBigIconLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(264, 22, -1, -1));
+        jPanel_modelconfig.add(hiddenBigIconLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(264, 22, -1, -1));
 
         guiStatesLoadButtonModalConfig.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         guiStatesLoadButtonModalConfig.setText("Load Model");
@@ -1598,7 +1607,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 guiStatesLoadButtonModalConfigActionPerformed(evt);
             }
         });
-        jPanel13.add(guiStatesLoadButtonModalConfig, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 648, 120, 35));
+        jPanel_modelconfig.add(guiStatesLoadButtonModalConfig, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 648, 120, 35));
 
         guiStatesSaveButtonModalConfig.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         guiStatesSaveButtonModalConfig.setText("Save Model");
@@ -1607,7 +1616,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 guiStatesSaveButtonModalConfigActionPerformed(evt);
             }
         });
-        jPanel13.add(guiStatesSaveButtonModalConfig, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 648, 120, 35));
+        jPanel_modelconfig.add(guiStatesSaveButtonModalConfig, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 648, 120, 35));
 
         loadModelByBrowseButton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         loadModelByBrowseButton.setText("Start with Previous Model");
@@ -1616,7 +1625,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 loadModelByBrowseButtonActionPerformed(evt);
             }
         });
-        jPanel13.add(loadModelByBrowseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 258, -1, -1));
+        jPanel_modelconfig.add(loadModelByBrowseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 258, -1, -1));
 
         updateStage2ConfigButton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         updateStage2ConfigButton.setText("Update Stage 2");
@@ -1625,7 +1634,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 updateStage2ConfigButtonActionPerformed(evt);
             }
         });
-        jPanel13.add(updateStage2ConfigButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 648, -1, 35));
+        jPanel_modelconfig.add(updateStage2ConfigButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 648, -1, 35));
 
         newDataSetButton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         newDataSetButton.setText("Start with New CSV File");
@@ -1634,84 +1643,84 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 newDataSetButtonActionPerformed(evt);
             }
         });
-        jPanel13.add(newDataSetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 258, -1, -1));
+        jPanel_modelconfig.add(newDataSetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 258, -1, -1));
 
         DatasetLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         DatasetLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         DatasetLabel.setText("Dataset");
-        jPanel13.add(DatasetLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 97, -1, -1));
-        jPanel13.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 12, 175, -1));
+        jPanel_modelconfig.add(DatasetLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 97, -1, -1));
+        jPanel_modelconfig.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 12, 175, -1));
 
         jLabel34.setText("  ");
-        jPanel13.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(262, 183, 164, -1));
-        jPanel13.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 401, 770, 11));
+        jPanel_modelconfig.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(262, 183, 164, -1));
+        jPanel_modelconfig.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 401, 770, 11));
 
         datasetHelpButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon4 - Copy.png"))); // NOI18N
         datasetHelpButton.setToolTipText("<html><pre>Is your dataset MixWILD friendly?\n    1) You should always use a .csv file.\n    2) You should ensure that missing values are not blanks.\n    3) Missing value codes should be numeric only.</p>\n    4) Make sure your missing value code is the same as your dataset.\n    5) Please ensure that the data is sorted by IDs.\n    6) The first row in the .csv file should be column names.<pre>");
         datasetHelpButton.setMaximumSize(new java.awt.Dimension(16, 16));
         datasetHelpButton.setMinimumSize(new java.awt.Dimension(16, 16));
         datasetHelpButton.setPreferredSize(new java.awt.Dimension(16, 16));
-        jPanel13.add(datasetHelpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 46, -1, -1));
+        jPanel_modelconfig.add(datasetHelpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 46, -1, -1));
 
         seedHelpButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon4 - Copy.png"))); // NOI18N
         seedHelpButton.setToolTipText("<html><pre>A seed is a number used to initialize a random number generator. Different seeds produce \ndifferent sequences of random numbers.In the context of two-stage models, a seed is helpful for\nreplicating models with identical results.<pre>");
         seedHelpButton.setMaximumSize(new java.awt.Dimension(16, 16));
         seedHelpButton.setMinimumSize(new java.awt.Dimension(16, 16));
         seedHelpButton.setPreferredSize(new java.awt.Dimension(16, 16));
-        jPanel13.add(seedHelpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 596, -1, -1));
+        jPanel_modelconfig.add(seedHelpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 596, -1, -1));
 
         datasetMissingValuesHelpButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon4 - Copy.png"))); // NOI18N
         datasetMissingValuesHelpButton.setToolTipText("<html><pre>Click on missing values if there are any in your dataset;\nspecify the missing value code in the box (e.g., '-999').<pre>");
         datasetMissingValuesHelpButton.setMaximumSize(new java.awt.Dimension(16, 16));
         datasetMissingValuesHelpButton.setMinimumSize(new java.awt.Dimension(16, 16));
         datasetMissingValuesHelpButton.setPreferredSize(new java.awt.Dimension(16, 16));
-        jPanel13.add(datasetMissingValuesHelpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 116, -1, -1));
+        jPanel_modelconfig.add(datasetMissingValuesHelpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 116, -1, -1));
 
         stageOneOutcomeHelpButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon4 - Copy.png"))); // NOI18N
         stageOneOutcomeHelpButton.setToolTipText("<html><pre>(To be implemented in MixWILD 2.0) Currently, you are restricted to continuous Stage 1 outcomes.\nDichotomous and ordinal outcomes will run ordered logistic regressions at Stage 1.\nNote that random scale is not available for dichotomous outcomes.<pre>");
         stageOneOutcomeHelpButton.setMaximumSize(new java.awt.Dimension(16, 16));
         stageOneOutcomeHelpButton.setMinimumSize(new java.awt.Dimension(16, 16));
         stageOneOutcomeHelpButton.setPreferredSize(new java.awt.Dimension(16, 16));
-        jPanel13.add(stageOneOutcomeHelpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 232, -1, -1));
+        jPanel_modelconfig.add(stageOneOutcomeHelpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 232, -1, -1));
 
         stageOneRLEHelpButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon4 - Copy.png"))); // NOI18N
         stageOneRLEHelpButton.setToolTipText("<html><pre>\nSelect “Intercept only”, and the model assumes the mean of the response does not differ between\nsubjects as a result of some covariate and engages the MixRegLS model, allowing users to\nspecify covariates for WS and BS variances. \n\nSelect “Intercept and slope(s)”, this will be MixRegMLS model. Adding slopes can have more than 2 random location effects, but estimation time is increased with each additional random effect.<pre>");
         stageOneRLEHelpButton.setMaximumSize(new java.awt.Dimension(16, 16));
         stageOneRLEHelpButton.setMinimumSize(new java.awt.Dimension(16, 16));
         stageOneRLEHelpButton.setPreferredSize(new java.awt.Dimension(16, 16));
-        jPanel13.add(stageOneRLEHelpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 300, -1, -1));
+        jPanel_modelconfig.add(stageOneRLEHelpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 300, -1, -1));
 
         stageOneRSHelpButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon4 - Copy.png"))); // NOI18N
         stageOneRSHelpButton.setToolTipText("<html><pre>Random scale parameters allow subjects to have individual estimates of the \nwithin-subject variance, and this is the distinguishing feature of a mixed-eefects locatio nscale model.\nFor random scale models, a linear or quadratic association is also possible.<pre>");
         stageOneRSHelpButton.setMaximumSize(new java.awt.Dimension(16, 16));
         stageOneRSHelpButton.setMinimumSize(new java.awt.Dimension(16, 16));
         stageOneRSHelpButton.setPreferredSize(new java.awt.Dimension(16, 16));
-        jPanel13.add(stageOneRSHelpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 334, -1, -1));
+        jPanel_modelconfig.add(stageOneRSHelpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 334, -1, -1));
 
         stageTwoDescription.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon4 - Copy.png"))); // NOI18N
         stageTwoDescription.setToolTipText("<html><pre>(To be implemented in MixWILD 2.0) Currently, you are restricted to single level models and\ncontinuous and dichotomous/ordinal Stage 2 outcomes. Multilevel models allow for additional estimation at\nStage 2 using random intercept mixed effects model in place of the standard single level model, similar to\nStage 1. Continuous outcomes will run a linear regression at Stage 2. Dichotomous and ordinal outcomes \nwill run an ordered logistic regression at Stage 2.<pre>");
         stageTwoDescription.setMaximumSize(new java.awt.Dimension(16, 16));
         stageTwoDescription.setMinimumSize(new java.awt.Dimension(16, 16));
         stageTwoDescription.setPreferredSize(new java.awt.Dimension(16, 16));
-        jPanel13.add(stageTwoDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 419, -1, -1));
+        jPanel_modelconfig.add(stageTwoDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 419, -1, -1));
 
         stageTwoModelTypeHelpButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon4 - Copy.png"))); // NOI18N
         stageTwoModelTypeHelpButton.setToolTipText("<html><pre>Multilevel models allow for additional estimation at stage 2 \nusing random intercept mixed effect model.<pre>");
         stageTwoModelTypeHelpButton.setMaximumSize(new java.awt.Dimension(16, 16));
         stageTwoModelTypeHelpButton.setMinimumSize(new java.awt.Dimension(16, 16));
         stageTwoModelTypeHelpButton.setPreferredSize(new java.awt.Dimension(16, 16));
-        jPanel13.add(stageTwoModelTypeHelpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 524, -1, -1));
+        jPanel_modelconfig.add(stageTwoModelTypeHelpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 524, -1, -1));
 
         stageTwoOutcomeTypeHelpButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon4 - Copy.png"))); // NOI18N
         stageTwoOutcomeTypeHelpButton.setToolTipText("<html><pre>This stage 2 outcome can be a subject-level or 2-level outcome, and can be of four different outcome types:\ncontinuous (normal), dichotomous/ordinal, count, or nominal.<pre>");
         stageTwoOutcomeTypeHelpButton.setMaximumSize(new java.awt.Dimension(16, 16));
         stageTwoOutcomeTypeHelpButton.setMinimumSize(new java.awt.Dimension(16, 16));
         stageTwoOutcomeTypeHelpButton.setPreferredSize(new java.awt.Dimension(16, 16));
-        jPanel13.add(stageTwoOutcomeTypeHelpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 561, -1, -1));
+        jPanel_modelconfig.add(stageTwoOutcomeTypeHelpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 561, -1, -1));
 
         StageOneModelTypeLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         StageOneModelTypeLabel.setText("Stage 1 regression type: ");
-        jPanel13.add(StageOneModelTypeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 264, -1, -1));
+        jPanel_modelconfig.add(StageOneModelTypeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 264, -1, -1));
 
         dichModelTypeButtonGroup.add(StageOneLogisticRadio);
         StageOneLogisticRadio.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -1721,7 +1730,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 StageOneLogisticRadioActionPerformed(evt);
             }
         });
-        jPanel13.add(StageOneLogisticRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(691, 260, -1, -1));
+        jPanel_modelconfig.add(StageOneLogisticRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(691, 260, -1, -1));
 
         dichModelTypeButtonGroup.add(StageOneProbitRadio);
         StageOneProbitRadio.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -1731,17 +1740,17 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 StageOneProbitRadioActionPerformed(evt);
             }
         });
-        jPanel13.add(StageOneProbitRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 260, -1, -1));
+        jPanel_modelconfig.add(StageOneProbitRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 260, -1, -1));
 
         includeStageTwoDataLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         includeStageTwoDataLabel.setText("Include separate Stage 2 data file:");
         includeStageTwoDataLabel.setToolTipText("");
-        jPanel13.add(includeStageTwoDataLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 452, -1, -1));
+        jPanel_modelconfig.add(includeStageTwoDataLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 452, -1, -1));
 
         DataFileStageTwoLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         DataFileStageTwoLabel.setText("Stage 2 CSV file path:");
         DataFileStageTwoLabel.setToolTipText("");
-        jPanel13.add(DataFileStageTwoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 487, -1, -1));
+        jPanel_modelconfig.add(DataFileStageTwoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 487, -1, -1));
 
         stageTwoDataButtonGroup.add(includeStageTwoDataYes);
         includeStageTwoDataYes.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -1751,7 +1760,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 includeStageTwoDataYesActionPerformed(evt);
             }
         });
-        jPanel13.add(includeStageTwoDataYes, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 448, -1, -1));
+        jPanel_modelconfig.add(includeStageTwoDataYes, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 448, -1, -1));
 
         stageTwoDataButtonGroup.add(includeStageTwoDataNo);
         includeStageTwoDataNo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -1761,7 +1770,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 includeStageTwoDataNoActionPerformed(evt);
             }
         });
-        jPanel13.add(includeStageTwoDataNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(643, 448, -1, -1));
+        jPanel_modelconfig.add(includeStageTwoDataNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(643, 448, -1, -1));
 
         fileBrowseButtonStageTwoData.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         fileBrowseButtonStageTwoData.setText("Import Dataset");
@@ -1770,7 +1779,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 fileBrowseButtonStageTwoDataActionPerformed(evt);
             }
         });
-        jPanel13.add(fileBrowseButtonStageTwoData, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 482, 145, 30));
+        jPanel_modelconfig.add(fileBrowseButtonStageTwoData, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 482, 145, 30));
 
         filePath_stageTwo.setEditable(false);
         filePath_stageTwo.addActionListener(new java.awt.event.ActionListener() {
@@ -1778,12 +1787,12 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 filePath_stageTwoActionPerformed(evt);
             }
         });
-        jPanel13.add(filePath_stageTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 487, 254, -1));
+        jPanel_modelconfig.add(filePath_stageTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 487, 254, -1));
 
         stageOneDataStructureViewLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         stageOneDataStructureViewLabel.setText("Stage 1 data structure:");
         stageOneDataStructureViewLabel.setToolTipText("");
-        jPanel13.add(stageOneDataStructureViewLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 196, -1, -1));
+        jPanel_modelconfig.add(stageOneDataStructureViewLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 196, -1, -1));
 
         StageOneLevelButtonGroup.add(stageOneTwoLevelRadio);
         stageOneTwoLevelRadio.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -1793,7 +1802,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 stageOneTwoLevelRadioActionPerformed(evt);
             }
         });
-        jPanel13.add(stageOneTwoLevelRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 192, -1, -1));
+        jPanel_modelconfig.add(stageOneTwoLevelRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 192, -1, -1));
 
         StageOneLevelButtonGroup.add(stageOneThreeLevelParticipantLevelThreeRadio);
         stageOneThreeLevelParticipantLevelThreeRadio.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -1803,12 +1812,12 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 stageOneThreeLevelParticipantLevelThreeRadioActionPerformed(evt);
             }
         });
-        jPanel13.add(stageOneThreeLevelParticipantLevelThreeRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(691, 192, -1, -1));
+        jPanel_modelconfig.add(stageOneThreeLevelParticipantLevelThreeRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(691, 192, -1, -1));
 
         randomScaleEffectsSpecViewLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         randomScaleEffectsSpecViewLabel.setText("Specify random scale effects:");
         randomScaleEffectsSpecViewLabel.setToolTipText("");
-        jPanel13.add(randomScaleEffectsSpecViewLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 366, -1, -1));
+        jPanel_modelconfig.add(randomScaleEffectsSpecViewLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 366, -1, -1));
 
         randomScaleSpecButtonGroup.add(randomScaleSpecSelectionInterceptOnly);
         randomScaleSpecSelectionInterceptOnly.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -1818,7 +1827,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 randomScaleSpecSelectionInterceptOnlyActionPerformed(evt);
             }
         });
-        jPanel13.add(randomScaleSpecSelectionInterceptOnly, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 362, -1, -1));
+        jPanel_modelconfig.add(randomScaleSpecSelectionInterceptOnly, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 362, -1, -1));
 
         randomScaleSpecButtonGroup.add(randomScaleSpecSelectionInterceptSlope);
         randomScaleSpecSelectionInterceptSlope.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -1828,13 +1837,15 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 randomScaleSpecSelectionInterceptSlopeActionPerformed(evt);
             }
         });
-        jPanel13.add(randomScaleSpecSelectionInterceptSlope, new org.netbeans.lib.awtextra.AbsoluteConstraints(704, 362, -1, -1));
+        jPanel_modelconfig.add(randomScaleSpecSelectionInterceptSlope, new org.netbeans.lib.awtextra.AbsoluteConstraints(704, 362, -1, -1));
 
-        stageOneTabs.addTab("Model Configuration", jPanel13);
+        jScrollPane_modelconfig.setViewportView(jPanel_modelconfig);
 
-        jPanel1.setMinimumSize(new java.awt.Dimension(1600, 1600));
-        jPanel1.setPreferredSize(new java.awt.Dimension(1600, 1600));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        stageOneTabs.addTab("Model Configuration", jScrollPane_modelconfig);
+
+        jPanel_stage1.setMinimumSize(new java.awt.Dimension(1600, 1600));
+        jPanel_stage1.setPreferredSize(new java.awt.Dimension(1600, 1600));
+        jPanel_stage1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         clearStageOneButton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         clearStageOneButton.setText("Clear Stage 1");
@@ -1843,42 +1854,42 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 clearStageOneButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(clearStageOneButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 760, 140, 35));
+        jPanel_stage1.add(clearStageOneButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 760, 140, 35));
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel4.setText("Stage 1 Regressors");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 18, -1, -1));
+        jPanel_stage1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 18, -1, -1));
 
         level1_MeanReg.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         level1_MeanReg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         level1_MeanReg.setText("Mean");
         level1_MeanReg.setToolTipText("Select the regressors in [Mean  Model] to predict the mean value of the outcome variable ");
         level1_MeanReg.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel1.add(level1_MeanReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 80, 140, -1));
+        jPanel_stage1.add(level1_MeanReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 80, 140, -1));
         level1_MeanReg.getAccessibleContext().setAccessibleName("");
 
         level1_WSVar.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         level1_WSVar.setText("WS Variance");
         level1_WSVar.setToolTipText("Select the regressors to predict  the within-subject variance of the  outcome variable");
-        jPanel1.add(level1_WSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 80, -1, -1));
+        jPanel_stage1.add(level1_WSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 80, -1, -1));
 
         level2_MeanReg.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         level2_MeanReg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         level2_MeanReg.setText("Mean");
         level2_MeanReg.setToolTipText("Select the regressors in [Mean  Model] to predict the mean value of the outcome variable ");
         level2_MeanReg.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel1.add(level2_MeanReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 300, 140, -1));
+        jPanel_stage1.add(level2_MeanReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 300, 140, -1));
 
         level2_BSVar2.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         level2_BSVar2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         level2_BSVar2.setText("BS Variance");
         level2_BSVar2.setToolTipText("Select the regressors to predict  the between-subject variance of  the outcome variable");
-        jPanel1.add(level2_BSVar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 300, 110, -1));
+        jPanel_stage1.add(level2_BSVar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 300, 110, -1));
 
         level2_WSVar.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         level2_WSVar.setText("WS Variance");
         level2_WSVar.setToolTipText("Select the regressors to predict  the within-subject variance of the  outcome variable");
-        jPanel1.add(level2_WSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 300, -1, -1));
+        jPanel_stage1.add(level2_WSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 300, -1, -1));
 
         stageOneLevelOnePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Level-1"));
 
@@ -1899,9 +1910,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         levelOneGrid.getAccessibleContext().setAccessibleName("Level-1");
 
-        jPanel1.add(stageOneLevelOnePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 100, 860, 170));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, 540, 10));
-        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 50, -1, 140));
+        jPanel_stage1.add(stageOneLevelOnePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 100, 860, 170));
+        jPanel_stage1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, 540, 10));
+        jPanel_stage1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 50, -1, 140));
 
         stageOneLevelTwoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Level-2"));
 
@@ -1918,7 +1929,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             .addComponent(levelTwoGrid, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
         );
 
-        jPanel1.add(stageOneLevelTwoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 320, 860, 170));
+        jPanel_stage1.add(stageOneLevelTwoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 320, 860, 170));
 
         StageOneOutcomeCombo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         StageOneOutcomeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -2121,8 +2132,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 .addContainerGap())
         );
 
-        jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 310, 710));
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 530, -1, -1));
+        jPanel_stage1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 310, 710));
+        jPanel_stage1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 530, -1, -1));
 
         startStageTwo.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         startStageTwo.setText("Configure Stage 2");
@@ -2131,7 +2142,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 startStageTwoActionPerformed(evt);
             }
         });
-        jPanel1.add(startStageTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 760, 160, 35));
+        jPanel_stage1.add(startStageTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 760, 160, 35));
 
         guiStatesSaveButtonStageOne.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         guiStatesSaveButtonStageOne.setText("Save Model");
@@ -2143,61 +2154,61 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 guiStatesSaveButtonStageOneActionPerformed(evt);
             }
         });
-        jPanel1.add(guiStatesSaveButtonStageOne, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 760, 140, 35));
+        jPanel_stage1.add(guiStatesSaveButtonStageOne, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 760, 140, 35));
 
         level1_WSVar1.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         level1_WSVar1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         level1_WSVar1.setText("Random Slope");
         level1_WSVar1.setToolTipText("Select the regressors to predict  the within-subject variance of the  outcome variable");
-        jPanel1.add(level1_WSVar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 60, 220, -1));
+        jPanel_stage1.add(level1_WSVar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 60, 220, -1));
 
         level1_WSVar2.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         level1_WSVar2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         level1_WSVar2.setText("in WS Variance");
         level1_WSVar2.setToolTipText("Select the regressors to predict  the within-subject variance of the  outcome variable");
-        jPanel1.add(level1_WSVar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 80, 220, -1));
+        jPanel_stage1.add(level1_WSVar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 80, 220, -1));
 
         level2_WSVar1.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         level2_WSVar1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         level2_WSVar1.setText("Random Slope");
         level2_WSVar1.setToolTipText("Select the regressors to predict  the within-subject variance of the  outcome variable");
-        jPanel1.add(level2_WSVar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 280, 220, -1));
+        jPanel_stage1.add(level2_WSVar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 280, 220, -1));
 
         level2_WSVar2.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         level2_WSVar2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         level2_WSVar2.setText("in WS Variance");
         level2_WSVar2.setToolTipText("Select the regressors to predict  the within-subject variance of the  outcome variable");
-        jPanel1.add(level2_WSVar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 300, 220, -1));
+        jPanel_stage1.add(level2_WSVar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 300, 220, -1));
 
         level3_MeanReg.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         level3_MeanReg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         level3_MeanReg.setText("Mean");
         level3_MeanReg.setToolTipText("Select the regressors in [Mean  Model] to predict the mean value of the outcome variable ");
         level3_MeanReg.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel1.add(level3_MeanReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 520, 140, -1));
+        jPanel_stage1.add(level3_MeanReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 520, 140, -1));
 
         level3_BSVar2.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         level3_BSVar2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         level3_BSVar2.setText("BS Variance");
         level3_BSVar2.setToolTipText("Select the regressors to predict  the between-subject variance of  the outcome variable");
-        jPanel1.add(level3_BSVar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 520, 110, -1));
+        jPanel_stage1.add(level3_BSVar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 520, 110, -1));
 
         level3_WSVar.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         level3_WSVar.setText("WS Variance");
         level3_WSVar.setToolTipText("Select the regressors to predict  the within-subject variance of the  outcome variable");
-        jPanel1.add(level3_WSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 520, -1, -1));
+        jPanel_stage1.add(level3_WSVar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 520, -1, -1));
 
         level3_WSVar2.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         level3_WSVar2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         level3_WSVar2.setText("in WS Variance");
         level3_WSVar2.setToolTipText("Select the regressors to predict  the within-subject variance of the  outcome variable");
-        jPanel1.add(level3_WSVar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 520, 220, -1));
+        jPanel_stage1.add(level3_WSVar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 520, 220, -1));
 
         level3_WSVar1.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         level3_WSVar1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         level3_WSVar1.setText("Random Slope");
         level3_WSVar1.setToolTipText("Select the regressors to predict  the within-subject variance of the  outcome variable");
-        jPanel1.add(level3_WSVar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 500, 220, -1));
+        jPanel_stage1.add(level3_WSVar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 500, 220, -1));
 
         stageOneLevelThreePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Level-3"));
 
@@ -2214,90 +2225,92 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             .addComponent(levelThreeGrid, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
         );
 
-        jPanel1.add(stageOneLevelThreePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 540, 860, 170));
+        jPanel_stage1.add(stageOneLevelThreePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 540, 860, 170));
 
         level1_BSVar1.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         level1_BSVar1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         level1_BSVar1.setText("BS Variance");
         level1_BSVar1.setToolTipText("Select the regressors to predict  the between-subject variance of  the outcome variable");
         level1_BSVar1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel1.add(level1_BSVar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 60, 110, -1));
+        jPanel_stage1.add(level1_BSVar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 60, 110, -1));
 
         level1_BSVar2.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         level1_BSVar2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         level1_BSVar2.setText("BS Variance");
         level1_BSVar2.setToolTipText("Select the regressors to predict  the between-subject variance of  the outcome variable");
         level1_BSVar2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel1.add(level1_BSVar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 80, 110, -1));
+        jPanel_stage1.add(level1_BSVar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 80, 110, -1));
 
         level2_BSVar1.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         level2_BSVar1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         level2_BSVar1.setText("BS Variance");
         level2_BSVar1.setToolTipText("Select the regressors to predict  the between-subject variance of  the outcome variable");
-        jPanel1.add(level2_BSVar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 280, 110, -1));
+        jPanel_stage1.add(level2_BSVar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 280, 110, -1));
 
         level3_BSVar1.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         level3_BSVar1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         level3_BSVar1.setText("BS Variance");
         level3_BSVar1.setToolTipText("Select the regressors to predict  the between-subject variance of  the outcome variable");
-        jPanel1.add(level3_BSVar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 500, 110, -1));
+        jPanel_stage1.add(level3_BSVar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 500, 110, -1));
 
         level1_BWVar1.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         level1_BWVar1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         level1_BWVar1.setText("Between-Wave");
         level1_BWVar1.setToolTipText("");
-        jPanel1.add(level1_BWVar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 60, 220, -1));
+        jPanel_stage1.add(level1_BWVar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 60, 220, -1));
 
         level1_BWVar2.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         level1_BWVar2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         level1_BWVar2.setText("Variance");
         level1_BWVar2.setToolTipText("");
-        jPanel1.add(level1_BWVar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 80, 220, -1));
+        jPanel_stage1.add(level1_BWVar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 80, 220, -1));
 
         level2_BWVar1.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         level2_BWVar1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         level2_BWVar1.setText("Between-Wave");
         level2_BWVar1.setToolTipText("");
-        jPanel1.add(level2_BWVar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 280, 220, -1));
+        jPanel_stage1.add(level2_BWVar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 280, 220, -1));
 
         level2_BWVar2.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         level2_BWVar2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         level2_BWVar2.setText("Variance");
         level2_BWVar2.setToolTipText("");
-        jPanel1.add(level2_BWVar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 300, 220, -1));
+        jPanel_stage1.add(level2_BWVar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 300, 220, -1));
 
         level3_BWVar2.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         level3_BWVar2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         level3_BWVar2.setText("Variance");
         level3_BWVar2.setToolTipText("");
-        jPanel1.add(level3_BWVar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 520, 220, -1));
+        jPanel_stage1.add(level3_BWVar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 520, 220, -1));
 
         level3_BWVar1.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         level3_BWVar1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         level3_BWVar1.setText("Between-Wave");
         level3_BWVar1.setToolTipText("");
-        jPanel1.add(level3_BWVar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 500, 220, -1));
+        jPanel_stage1.add(level3_BWVar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 500, 220, -1));
 
-        stageOneTabs.addTab("Stage 1 Configuration", jPanel1);
+        jScrollPane_stage1.setViewportView(jPanel_stage1);
 
-        jPanel12.setMinimumSize(new java.awt.Dimension(1000, 700));
-        jPanel12.setName(""); // NOI18N
-        jPanel12.setPreferredSize(new java.awt.Dimension(1300, 700));
-        jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        stageOneTabs.addTab("Stage 1 Configuration", jScrollPane_stage1);
+
+        jPanel_stage2.setMinimumSize(new java.awt.Dimension(1000, 700));
+        jPanel_stage2.setName(""); // NOI18N
+        jPanel_stage2.setPreferredSize(new java.awt.Dimension(1300, 700));
+        jPanel_stage2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel14.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel14.setText("Regressor(s)");
         jLabel14.setToolTipText("Check the box(s) of the regressor(s) to add the main effect in the model");
-        jPanel12.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 100, 100, -1));
+        jPanel_stage2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 100, 100, -1));
 
         jLabel12.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel12.setText("Stage 2 Interactions");
-        jPanel12.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 18, 190, 20));
+        jPanel_stage2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 18, 190, 20));
 
         jLabel15.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel15.setText("Random Location");
         jLabel15.setToolTipText("Check the box(s) of the regressor(s) to  add the interaction effect by random location (intercept + slope(s)) in the model");
-        jPanel12.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(655, 100, 140, -1));
+        jPanel_stage2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(655, 100, 140, -1));
 
         addStageTwoReg.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         addStageTwoReg.setText("Configure Stage 2 Regressors ...");
@@ -2306,17 +2319,17 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 addStageTwoRegActionPerformed(evt);
             }
         });
-        jPanel12.add(addStageTwoReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 295, 260, 40));
+        jPanel_stage2.add(addStageTwoReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 295, 260, 40));
 
         jLabel17.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel17.setText("Random Scale");
         jLabel17.setToolTipText("Check the box(s) of the regressor(s) to add the interaction effect by random  scale in the model");
-        jPanel12.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(799, 100, 110, 20));
+        jPanel_stage2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(799, 100, 110, 20));
 
         jLabel18.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel18.setText("Location X Scale");
         jLabel18.setToolTipText("Check the box(s) of the regressor(s) to add the interaction effect by random location and scale in the model");
-        jPanel12.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 100, 130, 20));
+        jPanel_stage2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 100, 130, 20));
 
         stageTwoLevelTwoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Level-2"));
 
@@ -2336,7 +2349,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         stageTwoRegsGridLvl2.getAccessibleContext().setAccessibleParent(stageTwoRegsGridLvl2);
 
-        jPanel12.add(stageTwoLevelTwoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 330, 610, 170));
+        jPanel_stage2.add(stageTwoLevelTwoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 330, 610, 170));
         stageTwoLevelTwoPanel.getAccessibleContext().setAccessibleName("Level-2 Stage-2");
         stageTwoLevelTwoPanel.getAccessibleContext().setAccessibleDescription("");
 
@@ -2347,7 +2360,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 runTabTwoStageOneTwoActionPerformed(evt);
             }
         });
-        jPanel12.add(runTabTwoStageOneTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 530, 160, 35));
+        jPanel_stage2.add(runTabTwoStageOneTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 530, 160, 35));
 
         enbaleInteractionCheckBox.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         enbaleInteractionCheckBox.setText("Enable 2-way Location X Scale Interaction");
@@ -2357,7 +2370,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 enbaleInteractionCheckBoxActionPerformed(evt);
             }
         });
-        jPanel12.add(enbaleInteractionCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, -1, -1));
+        jPanel_stage2.add(enbaleInteractionCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, -1, -1));
 
         StageTwoOutcomeCombo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         StageTwoOutcomeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -2371,11 +2384,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 StageTwoOutcomeComboActionPerformed(evt);
             }
         });
-        jPanel12.add(StageTwoOutcomeCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 260, 30));
+        jPanel_stage2.add(StageTwoOutcomeCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 260, 30));
 
         jLabel22.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel22.setText("Stage 2 Outcome:");
-        jPanel12.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 210, -1));
+        jPanel_stage2.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 210, -1));
 
         clearStageTwoButton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         clearStageTwoButton.setText("Clear Stage 2");
@@ -2384,11 +2397,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 clearStageTwoButtonActionPerformed(evt);
             }
         });
-        jPanel12.add(clearStageTwoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 530, 140, 35));
-        jPanel12.add(filler1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 570, -1, 80));
-        jPanel12.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, 610, 10));
-        jPanel12.add(jSeparator15, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 660, -1, -1));
-        jPanel12.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 262, 220, 0));
+        jPanel_stage2.add(clearStageTwoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 530, 140, 35));
+        jPanel_stage2.add(filler1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 570, -1, 80));
+        jPanel_stage2.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, 610, 10));
+        jPanel_stage2.add(jSeparator15, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 660, -1, -1));
+        jPanel_stage2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 262, 220, 0));
 
         jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -2422,7 +2435,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel12.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 350, 260, 200));
+        jPanel_stage2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 350, 260, 200));
 
         guiStatesSaveButtonStageTwo.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         guiStatesSaveButtonStageTwo.setText("Save Model");
@@ -2431,7 +2444,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 guiStatesSaveButtonStageTwoActionPerformed(evt);
             }
         });
-        jPanel12.add(guiStatesSaveButtonStageTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 530, 130, 35));
+        jPanel_stage2.add(guiStatesSaveButtonStageTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 530, 130, 35));
 
         stageTwoLevelOnePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Level-1"));
 
@@ -2449,60 +2462,60 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             .addComponent(stageTwoRegsGridLvl1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
         );
 
-        jPanel12.add(stageTwoLevelOnePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 120, 610, 170));
+        jPanel_stage2.add(stageTwoLevelOnePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 120, 610, 170));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel3.setText("Selected Model Configuration");
-        jPanel12.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 25, -1, -1));
+        jPanel_stage2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 25, -1, -1));
         jLabel3.getAccessibleContext().setAccessibleName("");
 
-        jPanel12.add(stageOneOutcomeStageTwoConfigLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 70, -1, -1));
-        jPanel12.add(stageOneModelStageTwoConfigLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, -1, -1));
-        jPanel12.add(stageTwoOutcomeStageTwoConfigLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 110, -1, -1));
-        jPanel12.add(stageTwoModelTypeStageTwoConfigLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 90, -1, -1));
-        jPanel12.add(numResamplingStageTwoConfigLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 130, -1, -1));
-        jPanel12.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 260, 10));
-        jPanel12.add(jSeparator17, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 41, 165, 10));
+        jPanel_stage2.add(stageOneOutcomeStageTwoConfigLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 70, -1, -1));
+        jPanel_stage2.add(stageOneModelStageTwoConfigLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, -1, -1));
+        jPanel_stage2.add(stageTwoOutcomeStageTwoConfigLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 110, -1, -1));
+        jPanel_stage2.add(stageTwoModelTypeStageTwoConfigLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 90, -1, -1));
+        jPanel_stage2.add(numResamplingStageTwoConfigLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 130, -1, -1));
+        jPanel_stage2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 260, 10));
+        jPanel_stage2.add(jSeparator17, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 41, 165, 10));
 
         jLabel33.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel33.setText("Regressor(s)");
         jLabel33.setToolTipText("Check the box(s) of the regressor(s) to add the main effect in the model");
-        jPanel12.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 310, 110, -1));
+        jPanel_stage2.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 310, 110, -1));
 
         jLabel35.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel35.setText("Random Location");
         jLabel35.setToolTipText("Check the box(s) of the regressor(s) to  add the interaction effect by random location (intercept + slope(s)) in the model");
-        jPanel12.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(655, 310, 140, -1));
+        jPanel_stage2.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(655, 310, 140, -1));
 
         jLabel36.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel36.setText("Random Scale");
         jLabel36.setToolTipText("Check the box(s) of the regressor(s) to add the interaction effect by random  scale in the model");
-        jPanel12.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(799, 310, 110, 20));
+        jPanel_stage2.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(799, 310, 110, 20));
 
         jLabel37.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel37.setText("Location X Scale");
         jLabel37.setToolTipText("Check the box(s) of the regressor(s) to add the interaction effect by random location and scale in the model");
-        jPanel12.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 310, 130, 20));
+        jPanel_stage2.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 310, 130, 20));
 
         stageOneModelStageTwoConfigLabel1.setText("Stage 1 model:");
-        jPanel12.add(stageOneModelStageTwoConfigLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, -1, -1));
+        jPanel_stage2.add(stageOneModelStageTwoConfigLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, -1, -1));
 
         stageOneOutcomeStageTwoConfigLabel1.setText("Stage 1 outcome:");
-        jPanel12.add(stageOneOutcomeStageTwoConfigLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, -1, -1));
+        jPanel_stage2.add(stageOneOutcomeStageTwoConfigLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, -1, -1));
 
         stageTwoModelTypeStageTwoConfigLabel1.setText("Stage 2 model type:");
-        jPanel12.add(stageTwoModelTypeStageTwoConfigLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, -1, -1));
+        jPanel_stage2.add(stageTwoModelTypeStageTwoConfigLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, -1, -1));
 
         stageTwoOutcomeStageTwoConfigLabel1.setText("Stage 2 outcome:");
-        jPanel12.add(stageTwoOutcomeStageTwoConfigLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, -1, -1));
+        jPanel_stage2.add(stageTwoOutcomeStageTwoConfigLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, -1, -1));
 
         numResamplingStageTwoConfigLabel1.setText("Number of resamples (stage 2):");
-        jPanel12.add(numResamplingStageTwoConfigLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, -1, -1));
-        jPanel12.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 155, 260, 10));
+        jPanel_stage2.add(numResamplingStageTwoConfigLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, -1, -1));
+        jPanel_stage2.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 155, 260, 10));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel6.setText("ID Variable:");
-        jPanel12.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, -1, -1));
+        jPanel_stage2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, -1, -1));
 
         IDStageTwoVariableCombo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         IDStageTwoVariableCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -2516,19 +2529,21 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 IDStageTwoVariableComboActionPerformed(evt);
             }
         });
-        jPanel12.add(IDStageTwoVariableCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 260, 30));
+        jPanel_stage2.add(IDStageTwoVariableCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 260, 30));
 
         jLabel32.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel32.setText("X");
-        jPanel12.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 310, -1, -1));
+        jPanel_stage2.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 310, -1, -1));
 
         jLabel38.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel38.setText("X");
-        jPanel12.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 100, -1, -1));
+        jPanel_stage2.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 100, -1, -1));
 
-        stageOneTabs.addTab("Stage 2 Configuration", jPanel12);
+        jScrollPane_stage2.setViewportView(jPanel_stage2);
 
-        jPanel3.setPreferredSize(new java.awt.Dimension(1000, 700));
+        stageOneTabs.addTab("Stage 2 Configuration", jScrollPane_stage2);
+
+        jPanel_stage1result.setPreferredSize(new java.awt.Dimension(1000, 700));
 
         jPanel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -2580,28 +2595,28 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
         });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel_stage1resultLayout = new javax.swing.GroupLayout(jPanel_stage1result);
+        jPanel_stage1result.setLayout(jPanel_stage1resultLayout);
+        jPanel_stage1resultLayout.setHorizontalGroup(
+            jPanel_stage1resultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_stage1resultLayout.createSequentialGroup()
                 .addGap(79, 79, 79)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel_stage1resultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel_stage1resultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel_stage1resultLayout.createSequentialGroup()
                             .addGap(308, 308, 308)
                             .addComponent(openStage1OutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(saveStage1OutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel_stage1resultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel8)
                             .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel7))
-                .addContainerGap(814, Short.MAX_VALUE))
+                .addContainerGap(551, Short.MAX_VALUE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        jPanel_stage1resultLayout.setVerticalGroup(
+            jPanel_stage1resultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_stage1resultLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jLabel7)
                 .addGap(18, 18, 18)
@@ -2609,15 +2624,17 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
                 .addGap(9, 9, 9)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel_stage1resultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(openStage1OutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(saveStage1OutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(680, Short.MAX_VALUE))
+                .addContainerGap(277, Short.MAX_VALUE))
         );
 
-        stageOneTabs.addTab("Stage 1 Results", jPanel3);
+        jScrollPane_stage1result.setViewportView(jPanel_stage1result);
 
-        jPanel4.setPreferredSize(new java.awt.Dimension(1000, 700));
+        stageOneTabs.addTab("Stage 1 Results", jScrollPane_stage1result);
+
+        jPanel_stage2result.setPreferredSize(new java.awt.Dimension(1000, 700));
 
         jPanel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel11.setPreferredSize(new java.awt.Dimension(762, 462));
@@ -2670,26 +2687,26 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
         });
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel_stage2resultLayout = new javax.swing.GroupLayout(jPanel_stage2result);
+        jPanel_stage2result.setLayout(jPanel_stage2resultLayout);
+        jPanel_stage2resultLayout.setHorizontalGroup(
+            jPanel_stage2resultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_stage2resultLayout.createSequentialGroup()
                 .addGap(78, 78, 78)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel_stage2resultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel_stage2resultLayout.createSequentialGroup()
                         .addComponent(openStage2OutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(saveStage2OutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel_stage2resultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel11)
                         .addComponent(jLabel9)))
-                .addContainerGap(815, Short.MAX_VALUE))
+                .addContainerGap(552, Short.MAX_VALUE))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        jPanel_stage2resultLayout.setVerticalGroup(
+            jPanel_stage2resultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_stage2resultLayout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(jLabel11)
                 .addGap(18, 18, 18)
@@ -2697,17 +2714,18 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel9)
                 .addGap(7, 7, 7)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel_stage2resultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(openStage2OutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(saveStage2OutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(80, 80, 80))
         );
 
-        stageOneTabs.addTab("Stage 2 Results", jPanel4);
+        jScrollPane_stage2result.setViewportView(jPanel_stage2result);
 
-        jPanel2.setPreferredSize(new java.awt.Dimension(1300, 700));
-        jPanel2.setRequestFocusEnabled(false);
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        stageOneTabs.addTab("Stage 2 Results", jScrollPane_stage2result);
+
+        jPanel_viewmodel.setRequestFocusEnabled(false);
+        jPanel_viewmodel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel9.setPreferredSize(new java.awt.Dimension(1000, 800));
 
@@ -2754,16 +2772,18 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 .addContainerGap(250, Short.MAX_VALUE))
         );
 
-        jPanel2.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1210, 660));
+        jPanel_viewmodel.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1210, 660));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/mixLogo.png"))); // NOI18N
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 550, -1, 40));
+        jPanel_viewmodel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 550, -1, 40));
 
-        stageOneTabs.addTab("View Model", jPanel2);
+        jScrollPane_viewmodel.setViewportView(jPanel_viewmodel);
 
-        jPanel6.setMaximumSize(new java.awt.Dimension(1200, 700));
-        jPanel6.setName(""); // NOI18N
-        jPanel6.setPreferredSize(new java.awt.Dimension(1300, 700));
+        stageOneTabs.addTab("View Model", jScrollPane_viewmodel);
+
+        jPanel_viewdata1.setMaximumSize(new java.awt.Dimension(1200, 700));
+        jPanel_viewdata1.setName(""); // NOI18N
+        jPanel_viewdata1.setPreferredSize(new java.awt.Dimension(1300, 700));
 
         dataTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane4.setViewportView(dataTable);
@@ -2774,33 +2794,35 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         printedFileName.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         printedFileName.setText("filename");
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel_viewdata1Layout = new javax.swing.GroupLayout(jPanel_viewdata1);
+        jPanel_viewdata1.setLayout(jPanel_viewdata1Layout);
+        jPanel_viewdata1Layout.setHorizontalGroup(
+            jPanel_viewdata1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_viewdata1Layout.createSequentialGroup()
                 .addGap(84, 84, 84)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel_viewdata1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 903, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
+                    .addGroup(jPanel_viewdata1Layout.createSequentialGroup()
                         .addComponent(jLabel20)
                         .addGap(31, 31, 31)
                         .addComponent(printedFileName)))
-                .addContainerGap(668, Short.MAX_VALUE))
+                .addContainerGap(405, Short.MAX_VALUE))
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        jPanel_viewdata1Layout.setVerticalGroup(
+            jPanel_viewdata1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_viewdata1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel_viewdata1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
                     .addComponent(printedFileName))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(713, Short.MAX_VALUE))
+                .addContainerGap(310, Short.MAX_VALUE))
         );
 
-        stageOneTabs.addTab("View Data", jPanel6);
+        jScrollPane_viewdata1.setViewportView(jPanel_viewdata1);
+
+        stageOneTabs.addTab("View Data", jScrollPane_viewdata1);
 
         jLabel29.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel29.setText("Imported data file:");
@@ -2811,33 +2833,35 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         dataTable_stageTwo.getTableHeader().setReorderingAllowed(false);
         jScrollPane7.setViewportView(dataTable_stageTwo);
 
-        javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
-        jPanel16.setLayout(jPanel16Layout);
-        jPanel16Layout.setHorizontalGroup(
-            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel16Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel_viewdata2Layout = new javax.swing.GroupLayout(jPanel_viewdata2);
+        jPanel_viewdata2.setLayout(jPanel_viewdata2Layout);
+        jPanel_viewdata2Layout.setHorizontalGroup(
+            jPanel_viewdata2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_viewdata2Layout.createSequentialGroup()
                 .addGap(84, 84, 84)
-                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel_viewdata2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 903, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel16Layout.createSequentialGroup()
+                    .addGroup(jPanel_viewdata2Layout.createSequentialGroup()
                         .addComponent(jLabel29)
                         .addGap(31, 31, 31)
                         .addComponent(printedFileName_stageTwo)))
                 .addContainerGap(668, Short.MAX_VALUE))
         );
-        jPanel16Layout.setVerticalGroup(
-            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel16Layout.createSequentialGroup()
+        jPanel_viewdata2Layout.setVerticalGroup(
+            jPanel_viewdata2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_viewdata2Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel_viewdata2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel29)
                     .addComponent(printedFileName_stageTwo))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(713, Short.MAX_VALUE))
+                .addContainerGap(795, Short.MAX_VALUE))
         );
 
-        stageOneTabs.addTab("View Stage 2 Data", jPanel16);
+        jScrollPane_viewdata2.setViewportView(jPanel_viewdata2);
+
+        stageOneTabs.addTab("View Stage 2 Data", jScrollPane_viewdata2);
 
         jLabel19.setText("Stage Two Outcome:");
 
@@ -2859,62 +2883,62 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         jButton3.setText("?");
 
-        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
-        jPanel14.setLayout(jPanel14Layout);
-        jPanel14Layout.setHorizontalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel14Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel_postestimationLayout = new javax.swing.GroupLayout(jPanel_postestimation);
+        jPanel_postestimation.setLayout(jPanel_postestimationLayout);
+        jPanel_postestimationLayout.setHorizontalGroup(
+            jPanel_postestimationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_postestimationLayout.createSequentialGroup()
                 .addGap(81, 81, 81)
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel14Layout.createSequentialGroup()
+                .addGroup(jPanel_postestimationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel_postestimationLayout.createSequentialGroup()
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel30)
                         .addGap(30, 30, 30)
                         .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel27)
-                    .addGroup(jPanel14Layout.createSequentialGroup()
+                    .addGroup(jPanel_postestimationLayout.createSequentialGroup()
                         .addComponent(jLabel25)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel26))
-                    .addGroup(jPanel14Layout.createSequentialGroup()
+                    .addGroup(jPanel_postestimationLayout.createSequentialGroup()
                         .addComponent(jLabel19)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel24))
-                    .addGroup(jPanel14Layout.createSequentialGroup()
+                    .addGroup(jPanel_postestimationLayout.createSequentialGroup()
                         .addComponent(jLabel28)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(1324, Short.MAX_VALUE))
         );
-        jPanel14Layout.setVerticalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel14Layout.createSequentialGroup()
+        jPanel_postestimationLayout.setVerticalGroup(
+            jPanel_postestimationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_postestimationLayout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(jLabel27)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel_postestimationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel25)
                     .addComponent(jLabel26))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel_postestimationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
                     .addComponent(jLabel24))
                 .addGap(59, 59, 59)
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel_postestimationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel28)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel_postestimationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel30)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3))
-                .addContainerGap(1063, Short.MAX_VALUE))
+                .addContainerGap(1145, Short.MAX_VALUE))
         );
 
-        stageOneTabs.addTab("Postestimation", jPanel14);
+        jScrollPane_postestimation.setViewportView(jPanel_postestimation);
 
-        jPanel15.setPreferredSize(new java.awt.Dimension(1300, 1000));
+        stageOneTabs.addTab("Postestimation", jScrollPane_postestimation);
 
         userGuideDownload.setText("Download MixWild User Guide");
         userGuideDownload.addActionListener(new java.awt.event.ActionListener() {
@@ -2943,29 +2967,29 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
         });
 
-        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
-        jPanel15.setLayout(jPanel15Layout);
-        jPanel15Layout.setHorizontalGroup(
-            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel15Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel_helpLayout = new javax.swing.GroupLayout(jPanel_help);
+        jPanel_help.setLayout(jPanel_helpLayout);
+        jPanel_helpLayout.setHorizontalGroup(
+            jPanel_helpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_helpLayout.createSequentialGroup()
                 .addGap(73, 73, 73)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel15Layout.createSequentialGroup()
+                .addGroup(jPanel_helpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel_helpLayout.createSequentialGroup()
                         .addComponent(online_support_button)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel15Layout.createSequentialGroup()
+                    .addGroup(jPanel_helpLayout.createSequentialGroup()
                         .addComponent(online_support_help_label)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel15Layout.createSequentialGroup()
-                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel31, javax.swing.GroupLayout.DEFAULT_SIZE, 714, Short.MAX_VALUE)
+                    .addGroup(jPanel_helpLayout.createSequentialGroup()
+                        .addGroup(jPanel_helpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(userGuideDownload)
                             .addComponent(exampleDataDownload))
                         .addGap(868, 868, 868))))
         );
-        jPanel15Layout.setVerticalGroup(
-            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel15Layout.createSequentialGroup()
+        jPanel_helpLayout.setVerticalGroup(
+            jPanel_helpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_helpLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(jLabel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
@@ -2979,9 +3003,12 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 .addGap(1413, 1413, 1413))
         );
 
-        stageOneTabs.addTab("Help", jPanel15);
+        jScrollPane_help.setViewportView(jPanel_help);
 
-        getContentPane().add(stageOneTabs, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1660, -1));
+        stageOneTabs.addTab("Help", jScrollPane_help);
+
+        getContentPane().add(stageOneTabs, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        stageOneTabs.getAccessibleContext().setAccessibleName("stageOneTabs");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -3894,7 +3921,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
         } else {
             if (checkTabExistinJTabbedPane(stageOneTabs, "View Data")) {
-                stageOneTabs.remove(jPanel6);
+                stageOneTabs.remove(jScrollPane_viewdata1);
             }
             return;
         }
@@ -3922,7 +3949,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 //            setFirstTabStatus(true);
             if (!checkTabExistinJTabbedPane(stageOneTabs, "View Data") && !checkTabExistinJTabbedPane(stageOneTabs, "View Stage 1 Data")) {
                 int helpTabIdx = stageOneTabs.indexOfTab("Help");
-                stageOneTabs.insertTab("View Data", null, jPanel6, null, helpTabIdx);
+                stageOneTabs.insertTab("View Data", null, jScrollPane_viewdata1, null, helpTabIdx);
             }
             return true;
         } else {
@@ -3953,7 +3980,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                         int viewDataStageOneIdx = stageOneTabs.indexOfTab("View Data");
                         stageOneTabs.setTitleAt(viewDataStageOneIdx, "View Stage 1 Data");
                         int helpTabIdx = stageOneTabs.indexOfTab("Help");
-                        stageOneTabs.insertTab("View Stage 2 Data", null, jPanel16, null, helpTabIdx);
+                        stageOneTabs.insertTab("View Stage 2 Data", null, jScrollPane_viewdata2, null, helpTabIdx);
 
                     }
                     // update Stage 2 Data View tab
@@ -4375,28 +4402,38 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel14;
-    private javax.swing.JPanel jPanel15;
-    private javax.swing.JPanel jPanel16;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JPanel jPanel_help;
+    private javax.swing.JPanel jPanel_modelconfig;
+    private javax.swing.JPanel jPanel_postestimation;
+    private javax.swing.JPanel jPanel_stage1;
+    private javax.swing.JPanel jPanel_stage1result;
+    private javax.swing.JPanel jPanel_stage2;
+    private javax.swing.JPanel jPanel_stage2result;
+    private javax.swing.JPanel jPanel_viewdata1;
+    private javax.swing.JPanel jPanel_viewdata2;
+    private javax.swing.JPanel jPanel_viewmodel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane_help;
+    private javax.swing.JScrollPane jScrollPane_modelconfig;
+    private javax.swing.JScrollPane jScrollPane_postestimation;
+    private javax.swing.JScrollPane jScrollPane_stage1;
+    private javax.swing.JScrollPane jScrollPane_stage1result;
+    private javax.swing.JScrollPane jScrollPane_stage2;
+    private javax.swing.JScrollPane jScrollPane_stage2result;
+    private javax.swing.JScrollPane jScrollPane_viewdata1;
+    private javax.swing.JScrollPane jScrollPane_viewdata2;
+    private javax.swing.JScrollPane jScrollPane_viewmodel;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
@@ -8340,7 +8377,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 System.out.println("NEW MODEL DATA READ");
                 if (validDataset) {
                     filePath.setText(fileName);
-                    stageOneTabs.insertTab("View Data", null, jPanel6, null, 1);
+                    stageOneTabs.insertTab("View Data", null, jScrollPane_viewdata1, null, 1);
                 }
             } catch (IOException ex) {
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -9799,11 +9836,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             if (!checkTabExistinJTabbedPane(stageOneTabs, "View Model")) {
                 int viewModelTabIdx = stageOneTabs.indexOfTab("View Data");
-                stageOneTabs.insertTab("View Model", null, jPanel2, null, viewModelTabIdx);
+                stageOneTabs.insertTab("View Model", null, jScrollPane_viewmodel, null, viewModelTabIdx);
             }
             if (!checkTabExistinJTabbedPane(stageOneTabs, "Stage 1 Results")) {
                 int stage1ResultTabIdx = stageOneTabs.indexOfTab("View Model");
-                stageOneTabs.insertTab("Stage 1 Results", null, jPanel3, null, stage1ResultTabIdx);
+                stageOneTabs.insertTab("Stage 1 Results", null, jScrollPane_stage1result, null, stage1ResultTabIdx);
             }
             if (catchCount == 0) {
                 int defTry = 0;
@@ -10701,19 +10738,19 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 int viewModelTabIdx;
                 if (checkTabExistinJTabbedPane(stageOneTabs, "View Data")) {
                     viewModelTabIdx = stageOneTabs.indexOfTab("View Data");
-                    stageOneTabs.insertTab("View Model", null, jPanel2, null, viewModelTabIdx);
+                    stageOneTabs.insertTab("View Model", null, jScrollPane_viewmodel, null, viewModelTabIdx);
                 } else if (checkTabExistinJTabbedPane(stageOneTabs, "View Stage 1 Data")) {
                     viewModelTabIdx = stageOneTabs.indexOfTab("View Stage 1 Data");
-                    stageOneTabs.insertTab("View Model", null, jPanel2, null, viewModelTabIdx);
+                    stageOneTabs.insertTab("View Model", null, jScrollPane_viewmodel, null, viewModelTabIdx);
                 }
             }
             if (!checkTabExistinJTabbedPane(stageOneTabs, "Stage 2 Results")) {
                 int stage2TabIdx = stageOneTabs.indexOfTab("View Model");
-                stageOneTabs.insertTab("Stage 2 Results", null, jPanel4, null, stage2TabIdx);
+                stageOneTabs.insertTab("Stage 2 Results", null, jScrollPane_stage2result, null, stage2TabIdx);
             }
             if (!checkTabExistinJTabbedPane(stageOneTabs, "Stage 1 Results")) {
                 int stage1ResultTabIdx = stageOneTabs.indexOfTab("Stage 2 Results");
-                stageOneTabs.insertTab("Stage 1 Results", null, jPanel3, null, stage1ResultTabIdx);
+                stageOneTabs.insertTab("Stage 1 Results", null, jScrollPane_stage1result, null, stage1ResultTabIdx);
             }
 
             // jump to "stage 1 result" tab
@@ -11642,21 +11679,21 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 //        stageOneTabs.insertTab("Postestimation", null, jPanel14, null, 1);
 
         if (!checkTabExistinJTabbedPane(stageOneTabs, "Stage 1 Configuration")) {
-            stageOneTabs.insertTab("Stage 1 Configuration", null, jPanel1, null, 1);
+            stageOneTabs.insertTab("Stage 1 Configuration", null, jScrollPane_stage1, null, 1);
         }
 
         int stage2TabIdx = stageOneTabs.indexOfTab("Stage 1 Configuration");
         if (!checkTabExistinJTabbedPane(stageOneTabs, "Stage 2 Configuration") && (includeStageTwoNo() == false)) {
-            stageOneTabs.insertTab("Stage 2 Configuration", null, jPanel12, null, stage2TabIdx + 1);
+            stageOneTabs.insertTab("Stage 2 Configuration", null, jScrollPane_stage2, null, stage2TabIdx + 1);
             stageOneTabs.setEnabledAt(stage2TabIdx + 1, false);
         }
 
         // remove tabs
         if (checkTabExistinJTabbedPane(stageOneTabs, "Stage 2 Configuration") && (includeStageTwoNo() == true)) {
-            stageOneTabs.remove(jPanel12);
+            stageOneTabs.remove(jScrollPane_stage2);
         }
         if (checkTabExistinJTabbedPane(stageOneTabs, "Stage 2 Results") && (includeStageTwoNo() == true)) {
-            stageOneTabs.remove(jPanel4);
+            stageOneTabs.remove(jScrollPane_stage2result);
         }
 
     }
@@ -11952,7 +11989,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             filePath_stageTwo.setEnabled(false);
             fileBrowseButtonStageTwoData.setEnabled(false);
             if (checkTabExistinJTabbedPane(stageOneTabs, "View Stage 2 Data")) {
-                stageOneTabs.remove(jPanel16);
+                stageOneTabs.remove(jScrollPane_viewdata2);
             }
             if (checkTabExistinJTabbedPane(stageOneTabs, "View Stage 1 Data")) {
                 int viewDataStageOneIdx = stageOneTabs.indexOfTab("View Stage 1 Data");
@@ -12004,7 +12041,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     int viewDataStageOneIdx = stageOneTabs.indexOfTab("View Data");
                     stageOneTabs.setTitleAt(viewDataStageOneIdx, "View Stage 1 Data");
                     int helpTabIdx = stageOneTabs.indexOfTab("Help");
-                    stageOneTabs.insertTab("View Stage 2 Data", null, jPanel16, null, helpTabIdx);
+                    stageOneTabs.insertTab("View Stage 2 Data", null, jScrollPane_viewdata2, null, helpTabIdx);
 
                 }
             } catch (IOException ex) {

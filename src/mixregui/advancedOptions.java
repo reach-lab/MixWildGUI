@@ -53,7 +53,7 @@ public class advancedOptions extends javax.swing.JFrame {
      */
     public advancedOptions() {
         initComponents();
-        this.setResizable(false);
+//        this.setResizable(false);
         run32BitCheckBox.setVisible(osWindows);
 
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();

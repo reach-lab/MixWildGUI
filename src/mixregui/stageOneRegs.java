@@ -62,7 +62,7 @@ public class stageOneRegs extends javax.swing.JFrame {
      */
     public stageOneRegs() {
         initComponents();
-        this.setResizable(false);
+//        this.setResizable(false);
 
         //newModel2 = new NewModel();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
