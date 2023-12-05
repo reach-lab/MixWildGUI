@@ -916,7 +916,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
      */
     public mixregGUI() {
         initComponents();
-        this.setTitle("MixWILD-2.2.7");
+        this.setTitle("MixWILD-2.2.9");
         // adjust the frame size to fit screen resolution
 //        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 //        setBounds(0, 0, stageOneTabs.getWidth()/2, (int) Math.round(screenSize.height / 1.5));
@@ -973,7 +973,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         });
 
         //updateMixRegGUI();
-
         // TODO: Fix superuser menu code
         //superUserMenu.setVisible(SUPERUSER_KEY > 2);
 //       IDpos = IDvariableCombo.getSelectedIndex();
@@ -1292,6 +1291,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageOneTabs.setMaximumSize(new java.awt.Dimension(1600, 1600));
         stageOneTabs.setPreferredSize(new java.awt.Dimension(1400, 900));
 
+        jScrollPane_modelconfig.setPreferredSize(new java.awt.Dimension(1603, 1603));
+
+        jPanel_modelconfig.setMinimumSize(new java.awt.Dimension(1600, 1600));
+        jPanel_modelconfig.setPreferredSize(new java.awt.Dimension(1600, 1600));
         jPanel_modelconfig.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         fileBrowseButton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -2295,7 +2298,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         jPanel_stage2.setMinimumSize(new java.awt.Dimension(1000, 700));
         jPanel_stage2.setName(""); // NOI18N
-        jPanel_stage2.setPreferredSize(new java.awt.Dimension(1300, 700));
+        jPanel_stage2.setPreferredSize(new java.awt.Dimension(1600, 1600));
         jPanel_stage2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel14.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
@@ -2543,7 +2546,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         stageOneTabs.addTab("Stage 2 Configuration", jScrollPane_stage2);
 
-        jPanel_stage1result.setPreferredSize(new java.awt.Dimension(1000, 700));
+        jPanel_stage1result.setPreferredSize(new java.awt.Dimension(1600, 1600));
 
         jPanel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -2612,7 +2615,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                             .addComponent(jLabel8)
                             .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel7))
-                .addContainerGap(551, Short.MAX_VALUE))
+                .addContainerGap(759, Short.MAX_VALUE))
         );
         jPanel_stage1resultLayout.setVerticalGroup(
             jPanel_stage1resultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2627,14 +2630,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 .addGroup(jPanel_stage1resultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(openStage1OutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(saveStage1OutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(277, Short.MAX_VALUE))
+                .addContainerGap(1011, Short.MAX_VALUE))
         );
 
         jScrollPane_stage1result.setViewportView(jPanel_stage1result);
 
         stageOneTabs.addTab("Stage 1 Results", jScrollPane_stage1result);
 
-        jPanel_stage2result.setPreferredSize(new java.awt.Dimension(1000, 700));
+        jPanel_stage2result.setPreferredSize(new java.awt.Dimension(1600, 1600));
 
         jPanel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel11.setPreferredSize(new java.awt.Dimension(762, 462));
@@ -2702,7 +2705,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                         .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel11)
                         .addComponent(jLabel9)))
-                .addContainerGap(552, Short.MAX_VALUE))
+                .addContainerGap(760, Short.MAX_VALUE))
         );
         jPanel_stage2resultLayout.setVerticalGroup(
             jPanel_stage2resultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -9081,7 +9084,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
                 try {
                     tryCount = 1;
-                    int withinCount = countLevelOneScaleRandom() + countLevelTwoScaleRandom() ;
+                    int withinCount = countLevelOneScaleRandom() + countLevelTwoScaleRandom();
                     defFile.setAdvancedScaleRandomRegressorCount(String.valueOf(withinCount));
                     System.out.println("From defHelper | Model Scale Random Count: " + defFile.getAdvancedScaleRandomRegressorCount());
                 } catch (Exception ex) {
@@ -9826,11 +9829,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
         }
-//        System.out.print("1!!!!!!!!!!!!!!!!!!!!!");
-//        System.out.print(defFile.getAdvancedResampleCount());
-//        advancedOptions_view.update_trigger_AdvancedOptionsSubmit();
-//        System.out.print("2!!!!!!!!!!!!!!!!!!!!!");
-//        System.out.print(defFile.getAdvancedResampleCount());
+
 
         if (getNotIncludeStageTwo() == true) {
 
@@ -9843,14 +9842,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 stageOneTabs.insertTab("Stage 1 Results", null, jScrollPane_stage1result, null, stage1ResultTabIdx);
             }
             if (catchCount == 0) {
-                int defTry = 0;
                 int defCatch = 0;
                 try {
-                    List<String> defFileOutput;
 
                     defFile.writeStageOneOnlyDefFileToFolder(stageOneTabs.getSize());
-
-                    //defFileOutput = defFile.buildStageOneOnlyDefinitonList();
                     System.out.println("From defHelper | Stage 1 def file created successfully!");
 
                 } catch (Exception ex) {
@@ -9861,18 +9856,15 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     System.out.println("From defHelper | Stage 1 def file failed!");
                 }
 
-                if (defCatch == 0) {
-                    stageOneTabs.setSelectedIndex(3);
-//                    stageOneTabs.setEnabledAt(5, false);
-                }
-
+//                if (defCatch == 0) {
+                // jump to "stage 1 result" tab
+                int stageOneTabIdx = stageOneTabs.indexOfTab("Stage 1 Results");
+                stageOneTabs.setSelectedIndex(stageOneTabIdx);
+//                }
             } else {
 
-                //stageOneTabs.setSelectedIndex(1);
-                //System.out.println("outcome not true!!!!");
-            }
 
-            stageOneTabs.setSelectedIndex(2);
+            }
 
         } else {
             stageOneTabs.setSelectedIndex(2);
@@ -9880,16 +9872,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             System.out.println("outcome not none!!!!");
         }
 
-//        try {
-//            produceStageOneOutput();
-//        } catch (FileNotFoundException ex) {
-//            Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-//            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
-//        }
-//        if (stageTwoNotIncluded == true) {
-//            stageOneTabs.setEnabledAt(2, false);
-//            stageOneTabs.setEnabledAt(4, false);
-//        }
+
         Color darkGreen = new Color(0, 100, 0);
         stageOneModelStageTwoConfigLabel.setText(randomLocationEffects());
         stageOneModelStageTwoConfigLabel.setForeground(darkGreen);
