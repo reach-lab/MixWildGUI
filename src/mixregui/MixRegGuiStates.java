@@ -75,7 +75,7 @@ public class MixRegGuiStates {
     public int stageOnePos;
     public int stageTwoPos;
     public int stageOneClicked;
-    public boolean addStageOneCHecked;
+    public boolean addStageOneChecked;
     public DefaultListModel<String> varList;
     public DefaultListModel<String> levelOneList;
     public DefaultListModel<String> levelTwoList;
@@ -94,15 +94,20 @@ public class MixRegGuiStates {
     public boolean meanSubmodelCheckBox;
     public boolean BSVarianceCheckBox;
     public boolean WSVarianceCheckBox;
+    public boolean SubjectScaleRandomInterceptBox;
+    public boolean WaveWSVarianceInterceptBox;
     public boolean centerRegressorsCheckBox;
     public boolean discardSubjectsCheckBox;
     public boolean resampleCheckBox;
     public boolean adaptiveQuadritureCheckBox;
+    public boolean adaptiveQuadritureWaveVarianceCheckBox;
+    public boolean enableDisaggregateCheckBox;
     public boolean run32BitCheckBox;
     public String convergenceCriteria;
     public int quadriturePoints;
     public int maximumIterations;
     public double ridgeSpinner;
+    public double thresholdRidgeSpinner;
     public int resampleSpinner;
 
     // Association
@@ -179,7 +184,7 @@ public class MixRegGuiStates {
         this.levelTwoListString = saveDefaultListModel(stageOneRegs.levelTwoList);
         this.levelThreeListString = saveDefaultListModel(stageOneRegs.levelThreeList);
 
-        this.addStageOneCHecked = mxr.addStageOneChecked;
+        this.addStageOneChecked = mxr.addStageOneChecked;
         this.isStageOneRegSubmitClicked = stageOneRegs.isSubmitClicked;
 
         this.StageOneLevelOneBoxesSelection = getSelectionBoxes(mxr.levelOneBoxes);
@@ -190,15 +195,20 @@ public class MixRegGuiStates {
         this.meanSubmodelCheckBox = ao.isMeanSubmodelCheckBoxChecked();
         this.BSVarianceCheckBox = ao.isBSVarianceCheckBoxChecked();
         this.WSVarianceCheckBox = ao.isWSVarianceCheckBoxChecked();
+        this.SubjectScaleRandomInterceptBox = ao.isSubjectScaleRandomInterceptBox();
+        this.WaveWSVarianceInterceptBox = ao.isWaveWSVarianceInterceptBox();
         this.centerRegressorsCheckBox = ao.isCenterRegressorsCheckBoxChecked();
         this.discardSubjectsCheckBox = ao.isDiscardSubjectsCheckBoxChecked();
         this.resampleCheckBox = ao.isResampleCheckBoxChecked();
         this.adaptiveQuadritureCheckBox = ao.isAdaptiveQuadritureCheckBoxChecked();
+        this.adaptiveQuadritureWaveVarianceCheckBox = ao.isAdaptiveQuadritureWaveVarianceCheckBox();
         this.run32BitCheckBox = ao.isRun32BitChecked();
+        this.enableDisaggregateCheckBox = ao.isEnableDisaggregateCheckBox();
         this.convergenceCriteria = ao.getConvergenceCriteria();
         this.quadriturePoints = ao.getQuadriturePoints();
         this.maximumIterations = ao.getMaximumIterations();
         this.ridgeSpinner = ao.getRidge();
+        this.thresholdRidgeSpinner = ao.getThresholdRidgeSpinner();
         this.resampleSpinner = ao.getResampleSpinner();
         this.NoAssociationRadio = mxr.getNoAssociationRadio();
         this.LinearAssociationRadio = mxr.getLinearAssociationRadio();
@@ -310,7 +320,7 @@ public class MixRegGuiStates {
             stageOnePos = hmapStates.get("stageOnePos").getInt();
             stageTwoPos = hmapStates.get("stageTwoPos").getInt();
             stageOneClicked = hmapStates.get("stageOneClicked").getInt();
-            addStageOneCHecked = hmapStates.get("addStageOneCHecked").getBoolean();
+            addStageOneChecked = hmapStates.get("addStageOneChecked").getBoolean();
 
             varListString = hmapStates.get("varList").getString();
             varList = loadDefaultListModel(varListString);
@@ -333,15 +343,20 @@ public class MixRegGuiStates {
             meanSubmodelCheckBox = hmapStates.get("meanSubmodelCheckBox").getBoolean();
             BSVarianceCheckBox = hmapStates.get("BSVarianceCheckBox").getBoolean();
             WSVarianceCheckBox = hmapStates.get("WSVarianceCheckBox").getBoolean();
+            SubjectScaleRandomInterceptBox = hmapStates.get("SubjectScaleRandomInterceptBox").getBoolean();
+            WaveWSVarianceInterceptBox = hmapStates.get("WaveWSVarianceInterceptBox").getBoolean();
             centerRegressorsCheckBox = hmapStates.get("centerRegressorsCheckBox").getBoolean();
             discardSubjectsCheckBox = hmapStates.get("discardSubjectsCheckBox").getBoolean();
             resampleCheckBox = hmapStates.get("resampleCheckBox").getBoolean();
             adaptiveQuadritureCheckBox = hmapStates.get("adaptiveQuadritureCheckBox").getBoolean();
+            adaptiveQuadritureWaveVarianceCheckBox = hmapStates.get("adaptiveQuadritureWaveVarianceCheckBox").getBoolean();
             run32BitCheckBox = hmapStates.get("run32BitCheckBox").getBoolean();
+            enableDisaggregateCheckBox = hmapStates.get("enableDisaggregateCheckBox").getBoolean();
             convergenceCriteria = hmapStates.get("convergenceCriteria").getString();
             quadriturePoints = hmapStates.get("quadriturePoints").getInt();
             maximumIterations = hmapStates.get("maximumIterations").getInt();
             ridgeSpinner = hmapStates.get("ridgeSpinner").getDouble();
+            thresholdRidgeSpinner = hmapStates.get("thresholdRidgeSpinner").getDouble();
             resampleSpinner = hmapStates.get("resampleSpinner").getInt();
             NoAssociationRadio = hmapStates.get("NoAssociationRadio").getBoolean();
             LinearAssociationRadio = hmapStates.get("LinearAssociationRadio").getBoolean();
@@ -408,7 +423,7 @@ public class MixRegGuiStates {
         StateObject po25 = new StateObject("varList", varListString);
         StateObject po26 = new StateObject("levelOneList", levelOneListString);
         StateObject po27 = new StateObject("levelTwoList", levelTwoListString);
-        StateObject po28 = new StateObject("addStageOneCHecked", addStageOneCHecked);
+        StateObject po28 = new StateObject("addStageOneChecked", addStageOneChecked);
         StateObject po29 = new StateObject("stageOneClicked", stageOneClicked);
         StateObject po30 = new StateObject("isStageOneRegSubmitClicked", isStageOneRegSubmitClicked);
         StateObject po31 = new StateObject("StageOneLevelOneBoxesSelection", StageOneLevelOneBoxesSelection);
@@ -453,8 +468,13 @@ public class MixRegGuiStates {
         StateObject po70 = new StateObject("randomScaleSpecSelectionInterceptOnly", randomScaleSpecSelectionInterceptOnly);
         StateObject po71 = new StateObject("randomScaleSpecSelectionInterceptSlope", randomScaleSpecSelectionInterceptSlope);
         StateObject po72 = new StateObject("IDLevel2pos", IDLevel2pos);
-        StateObject po73 = new StateObject("levelTwoList", levelThreeListString);
+        StateObject po73 = new StateObject("levelThreeList", levelThreeListString);
         StateObject po74 = new StateObject("StageOneLevelThreeBoxesSelection", StageOneLevelThreeBoxesSelection);
+        StateObject po75 = new StateObject("SubjectScaleRandomInterceptBox", SubjectScaleRandomInterceptBox);
+        StateObject po76 = new StateObject("WaveWSVarianceInterceptBox", WaveWSVarianceInterceptBox);
+        StateObject po77 = new StateObject("thresholdRidgeSpinner", thresholdRidgeSpinner);
+        StateObject po78 = new StateObject("adaptiveQuadritureWaveVarianceCheckBox", adaptiveQuadritureWaveVarianceCheckBox);
+        StateObject po79 = new StateObject("enableDisaggregateCheckBox", enableDisaggregateCheckBox);
 
         hashmap.put(po00.getKey(), po00);
         hashmap.put(po0.getKey(), po0);
@@ -531,6 +551,12 @@ public class MixRegGuiStates {
         hashmap.put(po71.getKey(), po71);
         hashmap.put(po72.getKey(), po72);
         hashmap.put(po73.getKey(), po73);
+        hashmap.put(po74.getKey(), po74);
+        hashmap.put(po75.getKey(), po75);
+        hashmap.put(po76.getKey(), po76);
+        hashmap.put(po77.getKey(), po77);
+        hashmap.put(po78.getKey(), po78);
+        hashmap.put(po79.getKey(), po79);
         return hashmap;
     }
 

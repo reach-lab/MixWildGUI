@@ -703,13 +703,19 @@ public class advancedOptions extends javax.swing.JFrame {
 
 // get the ridge value
     public Double getRidge() {
-
         return (Double) ridgeSpinner.getValue();
-
     }
 
     public void setRidgeSpinner(double value_double) {
         ridgeSpinner.setValue(value_double);
+    }
+
+    public Double getThresholdRidgeSpinner() {
+        return (Double) thresholdRidgeSpinner.getValue();
+    }
+
+    public void setThresholdRidgeSpinner(double value_double) {
+        thresholdRidgeSpinner.setValue(value_double);
     }
 
     public int isCenterRegressorChecked() {
@@ -808,6 +814,22 @@ public class advancedOptions extends javax.swing.JFrame {
         WSVarianceCheckBox.setSelected(turnon);
     }
 
+    boolean isSubjectScaleRandomInterceptBox() {
+        return SubjectScaleRandomInterceptBox.isSelected();
+    }
+
+    public void setSubjectScaleRandomInterceptBox(boolean turnon) {
+        SubjectScaleRandomInterceptBox.setSelected(turnon);
+    }
+
+    boolean isWaveWSVarianceInterceptBox() {
+        return WaveWSVarianceInterceptBox.isSelected();
+    }
+
+    public void setWaveWSVarianceInterceptBox(boolean turnon) {
+        WaveWSVarianceInterceptBox.setSelected(turnon);
+    }
+
     boolean isCenterRegressorsCheckBoxChecked() {
         return centerRegressorsCheckBox.isSelected();
     }
@@ -840,12 +862,28 @@ public class advancedOptions extends javax.swing.JFrame {
         adaptiveQuadritureCheckBox.setSelected(turnon);
     }
 
+    boolean isAdaptiveQuadritureWaveVarianceCheckBox() {
+        return adaptiveQuadritureWaveVarianceCheckBox.isSelected();
+    }
+
+    public void setAdaptiveQuadritureWaveVarianceCheckBox(boolean turnon) {
+        adaptiveQuadritureWaveVarianceCheckBox.setSelected(turnon);
+    }
+
     int getResampleSpinner() {
         return (int) resampleSpinner.getValue();
     }
 
     public void setResampleSpinner(int value_int) {
         resampleSpinner.setValue(value_int);
+    }
+
+    boolean isEnableDisaggregateCheckBox() {
+        return enableDisaggregateCheckBox.isSelected();
+    }
+
+    public void setEnableDisaggregateCheckBox(boolean turnon) {
+        enableDisaggregateCheckBox.setSelected(turnon);
     }
 
     public void update_trigger_AdvancedOptionsSubmit() {

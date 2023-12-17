@@ -916,7 +916,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
      */
     public mixregGUI() {
         initComponents();
-        this.setTitle("MixWILD-2.2.9");
+        this.setTitle("MixWILD-2.3.0");
         // adjust the frame size to fit screen resolution
 //        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 //        setBounds(0, 0, stageOneTabs.getWidth()/2, (int) Math.round(screenSize.height / 1.5));
@@ -2733,7 +2733,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         jPanel9.setPreferredSize(new java.awt.Dimension(1000, 800));
 
         jLabel13.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel13.setText("Your resulting model equation");
+        jLabel13.setText("Your resulting model equation (under construction)");
 
         equationArea.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         equationArea.setBorder(javax.swing.BorderFactory.createTitledBorder(null, " Stage 1 Models", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14))); // NOI18N
@@ -4191,7 +4191,36 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         StageTwoOutcomeCombo.setSelectedIndex(stageTwoPos);
 
         stageOneClicked = mxrStates.stageOneClicked;
-        addStageOneChecked = mxrStates.addStageOneCHecked;
+        addStageOneChecked = mxrStates.addStageOneChecked;
+
+        //update advanced options
+        advancedOptions_view.setMeanSubmodelCheckBox(mxrStates.meanSubmodelCheckBox);
+        advancedOptions_view.setBSVarianceCheckBox(mxrStates.BSVarianceCheckBox);
+        advancedOptions_view.setWSVarianceCheckBox(mxrStates.WSVarianceCheckBox);
+        advancedOptions_view.setSubjectScaleRandomInterceptBox(mxrStates.SubjectScaleRandomInterceptBox);
+        advancedOptions_view.setWaveWSVarianceInterceptBox(mxrStates.WaveWSVarianceInterceptBox);
+        advancedOptions_view.setCenterRegressorsCheckBox(mxrStates.centerRegressorsCheckBox);
+        advancedOptions_view.setDiscardSubjectsCheckBox(mxrStates.discardSubjectsCheckBox);
+        advancedOptions_view.setAdaptiveQuadritureCheckBox(mxrStates.adaptiveQuadritureCheckBox);
+        advancedOptions_view.setAdaptiveQuadritureWaveVarianceCheckBox(mxrStates.adaptiveQuadritureWaveVarianceCheckBox);
+        advancedOptions_view.setResampleCheckBox(mxrStates.resampleCheckBox);
+        advancedOptions_view.setAdaptiveQuadritureCheckBox(mxrStates.adaptiveQuadritureCheckBox);
+        advancedOptions_view.setRun32BitCheckBox(mxrStates.run32BitCheckBox);
+        advancedOptions_view.setConvergenceCriteria(mxrStates.convergenceCriteria);
+        advancedOptions_view.setQuadriturePoints(mxrStates.quadriturePoints);
+        advancedOptions_view.setMaximumIterations(mxrStates.maximumIterations);
+        advancedOptions_view.setRidgeSpinner(mxrStates.ridgeSpinner);
+        advancedOptions_view.setThresholdRidgeSpinner(mxrStates.thresholdRidgeSpinner);
+        advancedOptions_view.setResampleSpinner(mxrStates.resampleSpinner);
+        advancedOptions_view.setEnableDisaggregateCheckBox(mxrStates.enableDisaggregateCheckBox);
+        advancedOptions_view.update_trigger_AdvancedOptionsSubmit();
+        advancedOptions_view.update_trigger_resampleCheckBox();
+        advancedOptions_view.update_trigger_run32BitCheckBox();
+        advancedOptions_view.update_enableDisaggregate();
+        NoAssociationRadio.setSelected(mxrStates.NoAssociationRadio);
+        LinearAssociationRadio.setSelected(mxrStates.LinearAssociationRadio);
+        QuadraticAssociationRadio.setSelected(mxrStates.QuadraticAssociationRadio);
+
         stageOneRegs.varList = mxrStates.varList;
         stageOneRegs.levelOneList = mxrStates.levelOneList;
         stageOneRegs.levelTwoList = mxrStates.levelTwoList;
@@ -4237,28 +4266,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
 
         }
-
-        //update advanced options
-        advancedOptions_view.setMeanSubmodelCheckBox(mxrStates.meanSubmodelCheckBox);
-        advancedOptions_view.setBSVarianceCheckBox(mxrStates.BSVarianceCheckBox);
-        advancedOptions_view.setWSVarianceCheckBox(mxrStates.WSVarianceCheckBox);
-        advancedOptions_view.setCenterRegressorsCheckBox(mxrStates.centerRegressorsCheckBox);
-        advancedOptions_view.setDiscardSubjectsCheckBox(mxrStates.discardSubjectsCheckBox);
-        advancedOptions_view.setResampleCheckBox(mxrStates.resampleCheckBox);
-        advancedOptions_view.setAdaptiveQuadritureCheckBox(mxrStates.adaptiveQuadritureCheckBox);
-        advancedOptions_view.setRun32BitCheckBox(mxrStates.run32BitCheckBox);
-        advancedOptions_view.setConvergenceCriteria(mxrStates.convergenceCriteria);
-        advancedOptions_view.setQuadriturePoints(mxrStates.quadriturePoints);
-        advancedOptions_view.setMaximumIterations(mxrStates.maximumIterations);
-        advancedOptions_view.setRidgeSpinner(mxrStates.ridgeSpinner);
-        advancedOptions_view.setResampleSpinner(mxrStates.resampleSpinner);
-        advancedOptions_view.update_trigger_AdvancedOptionsSubmit();
-        advancedOptions_view.update_trigger_resampleCheckBox();
-        advancedOptions_view.update_trigger_run32BitCheckBox();
-        advancedOptions_view.update_enableDisaggregate();
-        NoAssociationRadio.setSelected(mxrStates.NoAssociationRadio);
-        LinearAssociationRadio.setSelected(mxrStates.LinearAssociationRadio);
-        QuadraticAssociationRadio.setSelected(mxrStates.QuadraticAssociationRadio);
 
         isStageOneSubmitted = mxrStates.isStageOneSubmitted;
         levelTwoSelected = mxrStates.levelTwoSelected;
@@ -9830,7 +9837,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
         }
 
-
         if (getNotIncludeStageTwo() == true) {
 
             if (!checkTabExistinJTabbedPane(stageOneTabs, "View Model")) {
@@ -9863,7 +9869,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 //                }
             } else {
 
-
             }
 
         } else {
@@ -9871,7 +9876,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             stageOneTabs.setEnabledAt(2, true);
             System.out.println("outcome not none!!!!");
         }
-
 
         Color darkGreen = new Color(0, 100, 0);
         stageOneModelStageTwoConfigLabel.setText(randomLocationEffects());
