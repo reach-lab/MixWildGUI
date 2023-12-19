@@ -60,6 +60,8 @@ MixWILD is a free and open-source tool by and for the behavioral researchers. If
 ### Selective papers that use MixWILD ###
 <div style="height:300px;width:680px;border:none;font:12px/18px sans-serif;overflow:auto;">
     <ul>
+      <li>Smith, D. L., Tharaud, J. B., Pridgen, S. A., & Held, P. (2023). <a href="https://psycnet.apa.org/fulltext/2024-31905-001.html">Predicting suicidal ideation 3 months following intensive posttraumatic stress disorder treatment</a>. Psychological Trauma: Theory, Research, Practice, and Policy.</li>
+      <li>Smith, D. L., Kovacevic, M., Montes, M., Pridgen, S., & Held, P. (2022). <a href="https://www.sciencedirect.com/science/article/pii/S0887618522000330">Improving mental, physical, and social functioning through participation in a 3-week cognitive processing therapy-based intensive PTSD treatment</a>. Journal of Anxiety Disorders, 88, 102560.</li>
       <li>Kaden, S. J., & Dalton, E. D. (2022). <a href="https://ijbnpa.biomedcentral.com/articles/10.1186/s12966-021-01121-y">Momentary fluctuations in emotional intelligence and stress predict changes in disordered eating</a>. Journal of American College Health, 1-8.</li>
       <li>Kracht, C. L., Beyl, R. A., Maher, J. P., Katzmarzyk, P. T., & Staiano, A. E. (2021). <a href="https://ijbnpa.biomedcentral.com/articles/10.1186/s12966-021-01121-y">Adolescents’ sedentary time, affect, and contextual factors: An ecological momentary assessment study</a>. International Journal of Behavioral Nutrition and Physical Activity, 18(1), 1-10.
       </li>
