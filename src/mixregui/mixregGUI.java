@@ -78,6 +78,7 @@ import javax.swing.table.DefaultTableModel;
 import org.apache.commons.io.FilenameUtils;
 import java.io.Serializable;
 import java.net.URI;
+import java.util.HashMap;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
@@ -916,7 +917,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
      */
     public mixregGUI() {
         initComponents();
-        this.setTitle("MixWILD-2.3.0");
+        this.setTitle("MixWILD-2.3.1");
         // adjust the frame size to fit screen resolution
 //        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 //        setBounds(0, 0, stageOneTabs.getWidth()/2, (int) Math.round(screenSize.height / 1.5));
@@ -1226,9 +1227,13 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         jPanel_viewmodel = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        equationArea = new javax.swing.JLabel();
+        equationStageOneLabel = new javax.swing.JLabel();
         latexVaraibleScrollPane = new javax.swing.JScrollPane();
-        latexVaraibleTextArea = new javax.swing.JTextArea();
+        latexVaraibleStageOneTextArea = new javax.swing.JTextArea();
+        updateEquationVarTableButton = new javax.swing.JButton();
+        equationStageTwoLabel = new javax.swing.JLabel();
+        latexVaraibleScrollPane1 = new javax.swing.JScrollPane();
+        latexVaraibleStageTwoTextArea = new javax.swing.JTextArea();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane_viewdata1 = new javax.swing.JScrollPane();
         jPanel_viewdata1 = new javax.swing.JPanel();
@@ -2735,47 +2740,80 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         jLabel13.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel13.setText("Your resulting model equation (under construction)");
 
-        equationArea.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        equationArea.setBorder(javax.swing.BorderFactory.createTitledBorder(null, " Stage 1 Models", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14))); // NOI18N
+        equationStageOneLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        equationStageOneLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, " Stage 1 Models", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14))); // NOI18N
 
-        latexVaraibleTextArea.setColumns(20);
-        latexVaraibleTextArea.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        latexVaraibleTextArea.setRows(5);
-        latexVaraibleTextArea.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Variable Name Table", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12))); // NOI18N
-        latexVaraibleScrollPane.setViewportView(latexVaraibleTextArea);
+        latexVaraibleStageOneTextArea.setColumns(20);
+        latexVaraibleStageOneTextArea.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        latexVaraibleStageOneTextArea.setRows(5);
+        latexVaraibleStageOneTextArea.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Variable Name Table", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12))); // NOI18N
+        latexVaraibleScrollPane.setViewportView(latexVaraibleStageOneTextArea);
+
+        updateEquationVarTableButton.setLabel("Update Models");
+        updateEquationVarTableButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateEquationVarTableButtonActionPerformed(evt);
+            }
+        });
+
+        equationStageTwoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        equationStageTwoLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, " Stage 2 Models", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14))); // NOI18N
+
+        latexVaraibleStageTwoTextArea.setColumns(20);
+        latexVaraibleStageTwoTextArea.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        latexVaraibleStageTwoTextArea.setRows(5);
+        latexVaraibleStageTwoTextArea.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Variable Name Table", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12))); // NOI18N
+        latexVaraibleScrollPane1.setViewportView(latexVaraibleStageTwoTextArea);
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel9Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(equationStageOneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 841, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel9Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(equationStageTwoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 841, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(latexVaraibleScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(latexVaraibleScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(348, 348, 348))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel13)
                         .addGap(913, 913, 913))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                        .addComponent(equationArea, javax.swing.GroupLayout.PREFERRED_SIZE, 841, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(latexVaraibleScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(333, 333, 333))))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addComponent(updateEquationVarTableButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addComponent(jLabel13)
+                .addGap(9, 9, 9)
+                .addComponent(updateEquationVarTableButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(latexVaraibleScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(equationStageOneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(equationArea, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(latexVaraibleScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(250, Short.MAX_VALUE))
+                    .addComponent(equationStageTwoLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(latexVaraibleScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
 
-        jPanel_viewmodel.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1210, 660));
+        updateEquationVarTableButton.getAccessibleContext().setAccessibleName("Update Models");
+
+        jPanel_viewmodel.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1290, 810));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/mixLogo.png"))); // NOI18N
         jPanel_viewmodel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 550, -1, 40));
@@ -3430,8 +3468,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             fileBrowseButton.setVisible(true);
             datasetHelpButton.setVisible(true);
 
-            generate_latex_formula();
-            generate_latex_variable_table();
         }
     }//GEN-LAST:event_newDataSetButtonActionPerformed
 
@@ -3874,6 +3910,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private void stageOneLevelTwoIDvariableComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneLevelTwoIDvariableComboActionPerformed
 
     }//GEN-LAST:event_stageOneLevelTwoIDvariableComboActionPerformed
+
+    private void updateEquationVarTableButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateEquationVarTableButtonActionPerformed
+        update_formula_and_variable_table();
+    }//GEN-LAST:event_updateEquationVarTableButtonActionPerformed
 
     // **********************update********************
     private void updateGuiView(MixRegGuiStates mxrStates) {
@@ -4354,7 +4394,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel datasetMissingValuesHelpButton;
     private javax.swing.ButtonGroup dichModelTypeButtonGroup;
     private javax.swing.JCheckBox enbaleInteractionCheckBox;
-    private javax.swing.JLabel equationArea;
+    private javax.swing.JLabel equationStageOneLabel;
+    private javax.swing.JLabel equationStageTwoLabel;
     private javax.swing.JButton exampleDataDownload;
     private javax.swing.JButton fileBrowseButton;
     private javax.swing.JButton fileBrowseButtonStageTwoData;
@@ -4465,7 +4506,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JScrollPane latexVaraibleScrollPane;
-    private javax.swing.JTextArea latexVaraibleTextArea;
+    private javax.swing.JScrollPane latexVaraibleScrollPane1;
+    private javax.swing.JTextArea latexVaraibleStageOneTextArea;
+    private javax.swing.JTextArea latexVaraibleStageTwoTextArea;
     private javax.swing.JLabel level1_BSVar1;
     private javax.swing.JLabel level1_BSVar2;
     private javax.swing.JLabel level1_BWVar1;
@@ -4584,6 +4627,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JButton startStageTwo;
     private javax.swing.JTextField titleField;
     private javax.swing.JLabel titleViewLabel;
+    private javax.swing.JButton updateEquationVarTableButton;
     private javax.swing.JButton updateStage2ConfigButton;
     private javax.swing.JButton userGuideDownload;
     // End of variables declaration//GEN-END:variables
@@ -9874,7 +9918,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         } else {
             stageOneTabs.setSelectedIndex(2);
             stageOneTabs.setEnabledAt(2, true);
-            System.out.println("outcome not none!!!!");
+//            System.out.println("outcome not none!!!!");
         }
 
         Color darkGreen = new Color(0, 100, 0);
@@ -12374,15 +12418,15 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         return stageOneLevelNum;
     }
 
-    private void generate_latex_formula() {
+    private void update_model_equation_stage_one(String stageOneOutcomeLabel, String[] stageOneRegLabelList, String[] stageOneRegEquationNameList, int RLE, int RSE, int association, String[] meanModelVarLabels, String[] BSModelVarLabels, String[] WSModelVarLabels, String[] BWModelVarLabels, String[] ScaleRandomModelVarLabels) {
         int fontsize = 26;
 
-        String[] stageOneModelLatexArray = EquationBuilder.getStageOneModelLatex();
+        String[] stageOneModelLatexArray = EquationBuilder.getStageOneModelLatex(stageOneOutcomeLabel, stageOneRegLabelList, stageOneRegEquationNameList, RLE, RSE, association, meanModelVarLabels, BSModelVarLabels, WSModelVarLabels, BWModelVarLabels, ScaleRandomModelVarLabels);
         String latex1 = stageOneModelLatexArray[0];
         String latex2 = stageOneModelLatexArray[1];
         String latex3 = stageOneModelLatexArray[2];
 
-        int n = 20;
+        int n = 6;
         String space = "\\:";
         String space_str = StringUtils.repeat(space, n);
         latex1 = "Mean Model:" + space_str + latex1;
@@ -12410,27 +12454,28 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 .setIsMaxWidth(true)
                 .setInterLineSpacing(TeXConstants.UNIT_PIXEL, 20f).build();
 
-        equationArea.setLayout(new BoxLayout(equationArea, BoxLayout.Y_AXIS));
+        equationStageOneLabel.setText(null); // remove "rendering" text
+        equationStageOneLabel.setLayout(new BoxLayout(equationStageOneLabel, BoxLayout.Y_AXIS));
         JLabel icon1Label = new JLabel();
         JLabel icon2Label = new JLabel();
         JLabel icon3Label = new JLabel();
         icon1Label.setIcon(icon1);
         icon2Label.setIcon(icon2);
         icon3Label.setIcon(icon3);
-        equationArea.add(Box.createVerticalGlue());
-        equationArea.add(icon1Label);
-        equationArea.add(Box.createVerticalGlue());
-        equationArea.add(icon2Label);
-        equationArea.add(Box.createVerticalGlue());
-        equationArea.add(icon3Label);
-        equationArea.add(Box.createVerticalGlue());
-        equationArea.setAlignmentX(Component.CENTER_ALIGNMENT);
+        equationStageOneLabel.add(Box.createVerticalGlue());
+        equationStageOneLabel.add(icon1Label);
+        equationStageOneLabel.add(Box.createVerticalGlue());
+        equationStageOneLabel.add(icon2Label);
+        equationStageOneLabel.add(Box.createVerticalGlue());
+        equationStageOneLabel.add(icon3Label);
+        equationStageOneLabel.add(Box.createVerticalGlue());
+        equationStageOneLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
     }
 
-    private void generate_latex_variable_table() {
-        latexVaraibleTextArea.setEditable(false);
+    private void update_model_variable_table_stage_one(String stageOneOutcomeLabel, String[] stageOneRegNameList, String[] stageOneRegEquationNameList) {
+        latexVaraibleStageOneTextArea.setEditable(false);
 //        JScrollPane scroll = new JScrollPane(latexVaraibleTextArea);
-        String[] stageOneModelVarArray = EquationBuilder.getStageOneModelVariables();
+        String[] stageOneModelVarArray = EquationBuilder.getStageOneModelVariables(stageOneOutcomeLabel, stageOneRegNameList, stageOneRegEquationNameList);
 //        latexVaraibleTextArea.append(" \n");
         for (int i = 0; i < stageOneModelVarArray.length; i++) {
             String row;
@@ -12439,9 +12484,75 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             } else {
                 row = " " + stageOneModelVarArray[i] + "\n";
             }
-
-            latexVaraibleTextArea.append(row);
+            latexVaraibleStageOneTextArea.append(row);
         }
+    }
+
+    private void update_formula_and_variable_table() {
+        // clear all Jlabel and TextView
+        equationStageOneLabel.removeAll();
+        equationStageOneLabel.setText("Rendering...");
+        latexVaraibleStageOneTextArea.setText("");
+
+        String stageOneOutcomeLabel = getOutcomeLabel();
+        int RLE = getRLE();
+
+        int RSE = -1;
+        if (randomScaleSelectionNo.isSelected()) {
+            RSE = 0;
+        } else if (randomScaleSelectionYes.isSelected()) {
+            if (randomScaleSpecSelectionInterceptOnly.isSelected()) {
+                RSE = 1;
+            } else if (randomScaleSpecSelectionInterceptSlope.isSelected()) {
+                RSE = 2;
+            }
+        }
+
+        int association = -1;
+        if (NoAssociationRadio.isSelected()) {
+            association = 0;
+        } else if (LinearAssociationRadio.isSelected()) {
+            association = 1;
+        } else if (QuadraticAssociationRadio.isSelected()) {
+            association = 2;
+        } else {
+            // pass
+        }
+
+        // TODO: validate required input for generating model equations
+        // stage 1 model: stageOneOutcome, random location, random scale, association
+        // 
+        
+        
+        
+        String[] meanModelVarLabels = ModelMeansLabelsArray();
+        String[] BSModelVarLabels = ModelBSLabelsArray();
+        String[] WSModelVarLabels = ModelWSLabelsArray();
+        String[] BWModelVarLabels = null;
+        String[] ScaleRandomModelVarLabels = null;
+        if (stageOneThreeLevelParticipantLevelThreeRadio.isSelected()) {
+            BWModelVarLabels = ModelBWLabelsArray();
+            ScaleRandomModelVarLabels = ModelScaleRandomLabelsArray();
+        }
+
+        int arraySize = stage_1_regs.levelOneList.size() + stage_1_regs.levelTwoList.size() + stage_1_regs.levelThreeList.size();
+        String[] stageOneRegLabelList = new String[arraySize];
+        String[] stageOneRegEquationNameList = new String[arraySize];
+
+        for (int pos = 0; pos < arraySize; pos++) {
+            if (pos >= 0 && pos < stage_1_regs.levelOneList.size()) {
+                stageOneRegLabelList[pos] = stage_1_regs.levelOneList.get(pos);
+            } else if (pos >= stage_1_regs.levelOneList.size() && pos < stage_1_regs.levelOneList.size() + stage_1_regs.levelTwoList.size()) {
+                stageOneRegLabelList[pos] = stage_1_regs.levelTwoList.get(pos - stage_1_regs.levelOneList.size());
+            } else if (pos >= stage_1_regs.levelOneList.size() + stage_1_regs.levelTwoList.size() && pos < arraySize) {
+                stageOneRegLabelList[pos] = stage_1_regs.levelThreeList.get(pos - stage_1_regs.levelOneList.size() - stage_1_regs.levelTwoList.size());
+            }
+            stageOneRegEquationNameList[pos] = "X_" + Integer.toString(pos + 1);
+        }
+
+        // if pass the check, rendering model 
+        update_model_equation_stage_one(stageOneOutcomeLabel, stageOneRegLabelList, stageOneRegEquationNameList, RLE, RSE, association, meanModelVarLabels, BSModelVarLabels, WSModelVarLabels, BWModelVarLabels, ScaleRandomModelVarLabels);
+        update_model_variable_table_stage_one(stageOneOutcomeLabel, stageOneRegLabelList, stageOneRegEquationNameList);
     }
 
 }
