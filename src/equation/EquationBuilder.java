@@ -38,40 +38,65 @@ public class EquationBuilder {
         for (int i = 0; i < meanModelVarLabels.length; i++) {
             String regLabel = meanModelVarLabels[i];
             String equationVarName = stageOneRegEquationNameList[Arrays.asList(stageOneRegLabelList).indexOf(regLabel)];
-            MeanModelLatex = MeanModelLatex + " + \\beta_" + Integer.toString(i + 1) + " " + equationVarName + "_i_j";
-//            if (RLE == 1)
-        }
-        MeanModelLatex = MeanModelLatex + " + \\nu_i + \\epsilon_i_j";
 
-        
-        // BS model
-        String BSModelLatex = "{\\sigma_{\\nu_i_j}^2} = \\exp(\\alpha_0";
-        for (int i = 0; i < BSModelVarLabels.length; i++) {
-            String regLabel = BSModelVarLabels[i];
-            String equationVarName = stageOneRegEquationNameList[Arrays.asList(stageOneRegLabelList).indexOf(regLabel)];
-            BSModelLatex = BSModelLatex + " + \\alpha_" + Integer.toString(i + 1) + " " + equationVarName + "_i_j";
+            if (RLE == 1) {
+                // check if BSModelVarLabels contains regLabel, -1 means not found
+                int checkBSModelContainReg = Arrays.asList(BSModelVarLabels).indexOf(regLabel);
+                if (checkBSModelContainReg >= 0) {
+                    MeanModelLatex = MeanModelLatex + " + (\\beta_" + Integer.toString(i + 1) + " + $\\nu_{" + Integer.toString(i + 1) + "_i}$" + ")" + " " + equationVarName + "_i_j";
+                } else {
+                    MeanModelLatex = MeanModelLatex + " + \\beta_" + Integer.toString(i + 1) + " " + equationVarName + "_i_j";
+                }
+            } else {
+                MeanModelLatex = MeanModelLatex + " + \\beta_" + Integer.toString(i + 1) + " " + equationVarName + "_i_j";
+            }
+
         }
-        BSModelLatex = BSModelLatex + ")";
-        
-        
+        MeanModelLatex = MeanModelLatex + " + $\\nu_{0_i}$ + \\epsilon_i_j";
+
+        // BS model
+        String BSModelLatex = null;
+        if (RLE == 0) { // If randome location effect has random slope in mean model, no BSV model.
+            BSModelLatex = "{\\sigma_{\\nu_i_j}^2} = \\exp(\\alpha_0";
+            for (int i = 0; i < BSModelVarLabels.length; i++) {
+                String regLabel = BSModelVarLabels[i];
+                String equationVarName = stageOneRegEquationNameList[Arrays.asList(stageOneRegLabelList).indexOf(regLabel)];
+                BSModelLatex = BSModelLatex + " + \\alpha_" + Integer.toString(i + 1) + " " + equationVarName + "_i_j";
+            }
+            BSModelLatex = BSModelLatex + ")";
+        } else {
+            // pass
+        }
+
         // WS model
         String WSModelLatex = "{\\sigma_{\\epsilon_i_j}^2} = \\exp(\\tau_0";
         for (int i = 0; i < WSModelVarLabels.length; i++) {
             String regLabel = WSModelVarLabels[i];
             String equationVarName = stageOneRegEquationNameList[Arrays.asList(stageOneRegLabelList).indexOf(regLabel)];
-            WSModelLatex = WSModelLatex + " + \\tau_" + Integer.toString(i + 1) + " " + equationVarName + "_i_j";
-        }
-        if (RSE == 0){
-            WSModelLatex = WSModelLatex + ")";
-        } else if (RSE > 0){
-            if (association == 0){
-                WSModelLatex = WSModelLatex + " + \\omega_i)";
-            } else if (association == 1){
-                WSModelLatex = WSModelLatex + " + \\tau_\\nu \\nu_i + \\omega_i)";
-            } else if (association == 2){
-                WSModelLatex = WSModelLatex + "+ \\tau_\\nu \\nu_i^2 + \\omega_i)";
+
+            if (RSE == 2) {
+                // check if BSModelVarLabels contains regLabel, -1 means not found
+                int checkWSModelContainReg = Arrays.asList(ScaleRandomModelVarLabels).indexOf(regLabel);
+                if (checkWSModelContainReg >= 0) {
+                    WSModelLatex = WSModelLatex + " + (\\tau_" + Integer.toString(i + 1) + " + $\\omega_{" + Integer.toString(i + 1) + "_i}$" + ")" + " " + equationVarName + "_i_j";
+                } else {
+                    WSModelLatex = WSModelLatex + " + \\tau_" + Integer.toString(i + 1) + " " + equationVarName + "_i_j";
+                }
             } else {
+                WSModelLatex = WSModelLatex + " + \\tau_" + Integer.toString(i + 1) + " " + equationVarName + "_i_j";
+            }
+        }
+        if (RSE == 0) {
             // pass
+        } else if (RSE > 0) {
+            if (association == 0) {
+                WSModelLatex = WSModelLatex + " + $\\omega_{0_i}$";
+            } else if (association == 1) {
+                WSModelLatex = WSModelLatex + " + \\tau_\\nu \\nu_i + $\\omega_{0_i}$";
+            } else if (association == 2) {
+                WSModelLatex = WSModelLatex + " + \\tau_\\nu \\nu_i + \\tau_\\nu \\nu_i^2 + $\\omega_{0_i}$";
+            } else {
+                // pass
             }
         }
         WSModelLatex = WSModelLatex + ")";

@@ -1227,14 +1227,13 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         jPanel_viewmodel = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        equationStageOneLabel = new javax.swing.JLabel();
         latexVaraibleScrollPane = new javax.swing.JScrollPane();
         latexVaraibleStageOneTextArea = new javax.swing.JTextArea();
         updateEquationVarTableButton = new javax.swing.JButton();
         equationStageTwoLabel = new javax.swing.JLabel();
         latexVaraibleScrollPane1 = new javax.swing.JScrollPane();
         latexVaraibleStageTwoTextArea = new javax.swing.JTextArea();
-        jLabel10 = new javax.swing.JLabel();
+        equationStageOneLabel = new javax.swing.JLabel();
         jScrollPane_viewdata1 = new javax.swing.JScrollPane();
         jPanel_viewdata1 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -2740,9 +2739,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         jLabel13.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel13.setText("Your resulting model equation (under construction)");
 
-        equationStageOneLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        equationStageOneLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, " Stage 1 Models", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14))); // NOI18N
-
         latexVaraibleStageOneTextArea.setColumns(20);
         latexVaraibleStageOneTextArea.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         latexVaraibleStageOneTextArea.setRows(5);
@@ -2765,6 +2761,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         latexVaraibleStageTwoTextArea.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Variable Name Table", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12))); // NOI18N
         latexVaraibleScrollPane1.setViewportView(latexVaraibleStageTwoTextArea);
 
+        equationStageOneLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        equationStageOneLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, " Stage 1 Models", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14))); // NOI18N
+
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
@@ -2773,25 +2772,23 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 .addContainerGap()
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel9Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(equationStageOneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 841, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel9Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(equationStageTwoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 841, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(latexVaraibleScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(latexVaraibleScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(348, 348, 348))
+                        .addComponent(updateEquationVarTableButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel13)
-                        .addGap(913, 913, 913))
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(updateEquationVarTableButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(equationStageTwoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 841, Short.MAX_VALUE)
+                                    .addComponent(equationStageOneLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(latexVaraibleScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(latexVaraibleScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(348, 348, 348))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                                .addComponent(jLabel13)
+                                .addGap(913, 913, 913))))))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2800,23 +2797,18 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 .addComponent(jLabel13)
                 .addGap(9, 9, 9)
                 .addComponent(updateEquationVarTableButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(12, 12, 12)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(latexVaraibleScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(equationStageOneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(equationStageTwoLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(latexVaraibleScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(latexVaraibleScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(equationStageOneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(equationStageTwoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(latexVaraibleScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(101, Short.MAX_VALUE))
         );
 
-        updateEquationVarTableButton.getAccessibleContext().setAccessibleName("Update Models");
-
         jPanel_viewmodel.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1290, 810));
-
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/mixLogo.png"))); // NOI18N
-        jPanel_viewmodel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 550, -1, 40));
 
         jScrollPane_viewmodel.setViewportView(jPanel_viewmodel);
 
@@ -4417,7 +4409,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JButton jButton3;
     private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JFrame jFrame1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -12495,6 +12486,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         latexVaraibleStageOneTextArea.setText("");
 
         String stageOneOutcomeLabel = getOutcomeLabel();
+        // RLE: 0 = intercept only, 1 = intercept and slope
         int RLE = getRLE();
 
         int RSE = -1;
@@ -12523,19 +12515,18 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         // stage 1 model: stageOneOutcome, random location, random scale, association
         // 
         
-        
-        
         String[] meanModelVarLabels = ModelMeansLabelsArray();
         String[] BSModelVarLabels = ModelBSLabelsArray();
         String[] WSModelVarLabels = ModelWSLabelsArray();
         String[] BWModelVarLabels = null;
-        String[] ScaleRandomModelVarLabels = null;
+        String[] ScaleRandomModelVarLabels = ModelScaleRandomLabelsArray();
         if (stageOneThreeLevelParticipantLevelThreeRadio.isSelected()) {
             BWModelVarLabels = ModelBWLabelsArray();
-            ScaleRandomModelVarLabels = ModelScaleRandomLabelsArray();
         }
 
+        // stage 1 model regressor labels: level 1 2 3
         int arraySize = stage_1_regs.levelOneList.size() + stage_1_regs.levelTwoList.size() + stage_1_regs.levelThreeList.size();
+            // stageOneRegLabelList, stageOneRegEquationNameList are two parallel lists, containing regressor labels and X names respectively
         String[] stageOneRegLabelList = new String[arraySize];
         String[] stageOneRegEquationNameList = new String[arraySize];
 

@@ -3341,32 +3341,30 @@
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <EmptySpace min="28" max="32767" attributes="0"/>
-                                              <Component id="equationStageOneLabel" min="-2" pref="841" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" attributes="0">
-                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                              <Component id="equationStageTwoLabel" min="-2" pref="841" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="latexVaraibleScrollPane" min="-2" pref="319" max="-2" attributes="0"/>
-                                          <Component id="latexVaraibleScrollPane1" min="-2" pref="319" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="348" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                      <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="913" max="-2" attributes="0"/>
-                                  </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="updateEquationVarTableButton" min="-2" pref="120" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                  <Component id="equationStageTwoLabel" pref="841" max="32767" attributes="0"/>
+                                                  <Component id="equationStageOneLabel" max="32767" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="latexVaraibleScrollPane" min="-2" pref="319" max="-2" attributes="0"/>
+                                                  <Component id="latexVaraibleScrollPane1" min="-2" pref="319" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="348" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="913" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
                                   </Group>
                               </Group>
                           </Group>
@@ -3379,15 +3377,15 @@
                               <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                               <Component id="updateEquationVarTableButton" min="-2" pref="40" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="latexVaraibleScrollPane" min="-2" pref="278" max="-2" attributes="0"/>
-                                  <Component id="equationStageOneLabel" min="-2" pref="287" max="-2" attributes="0"/>
+                                  <Component id="latexVaraibleScrollPane" min="-2" pref="357" max="-2" attributes="0"/>
+                                  <Component id="equationStageOneLabel" min="-2" pref="367" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="equationStageTwoLabel" alignment="1" min="-2" pref="287" max="-2" attributes="0"/>
-                                  <Component id="latexVaraibleScrollPane1" alignment="1" min="-2" pref="278" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="equationStageTwoLabel" min="-2" pref="200" max="-2" attributes="0"/>
+                                  <Component id="latexVaraibleScrollPane1" min="-2" pref="190" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="101" max="32767" attributes="0"/>
                           </Group>
@@ -3401,18 +3399,6 @@
                           <Font name="Dialog" size="14" style="1"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Your resulting model equation (under construction)"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="equationStageOneLabel">
-                      <Properties>
-                        <Property name="horizontalAlignment" type="int" value="0"/>
-                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                            <TitledBorder title=" Stage 1 Models">
-                              <Font PropertyName="font" name="Dialog" size="14" style="1"/>
-                            </TitledBorder>
-                          </Border>
-                        </Property>
                       </Properties>
                     </Component>
                     <Container class="javax.swing.JScrollPane" name="latexVaraibleScrollPane">
@@ -3444,9 +3430,6 @@
                       <Properties>
                         <Property name="label" type="java.lang.String" value="Update Models"/>
                       </Properties>
-                      <AccessibilityProperties>
-                        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Update Models"/>
-                      </AccessibilityProperties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateEquationVarTableButtonActionPerformed"/>
                       </Events>
@@ -3488,20 +3471,20 @@
                         </Component>
                       </SubComponents>
                     </Container>
+                    <Component class="javax.swing.JLabel" name="equationStageOneLabel">
+                      <Properties>
+                        <Property name="horizontalAlignment" type="int" value="0"/>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                            <TitledBorder title=" Stage 1 Models">
+                              <Font PropertyName="font" name="Dialog" size="14" style="1"/>
+                            </TitledBorder>
+                          </Border>
+                        </Property>
+                      </Properties>
+                    </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JLabel" name="jLabel10">
-                  <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/resources/mixLogo.png"/>
-                    </Property>
-                  </Properties>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="190" y="550" width="-1" height="40"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
               </SubComponents>
             </Container>
           </SubComponents>
