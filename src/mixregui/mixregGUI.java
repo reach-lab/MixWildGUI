@@ -117,6 +117,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     static boolean isRandomScale = false;
     static String dataFileNameRef;
     static String dataFileNameRef_stageTwo;
+    static String equationLatex;
     final ImageIcon icon;
     final ImageIcon bigIcon;
     static int iconPositionX;
@@ -1234,6 +1235,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         latexVaraibleScrollPane1 = new javax.swing.JScrollPane();
         latexVaraibleStageTwoTextArea = new javax.swing.JTextArea();
         equationStageOneLabel = new javax.swing.JLabel();
+        saveLatexButton = new javax.swing.JButton();
         jScrollPane_viewdata1 = new javax.swing.JScrollPane();
         jPanel_viewdata1 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -2764,6 +2766,13 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         equationStageOneLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         equationStageOneLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, " Stage 1 Models", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14))); // NOI18N
 
+        saveLatexButton.setText("Save Equation Latex");
+        saveLatexButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveLatexButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
@@ -2773,6 +2782,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addComponent(updateEquationVarTableButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(saveLatexButton)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -2796,7 +2807,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 .addGap(43, 43, 43)
                 .addComponent(jLabel13)
                 .addGap(9, 9, 9)
-                .addComponent(updateEquationVarTableButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateEquationVarTableButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(saveLatexButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(latexVaraibleScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -3907,6 +3920,16 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         update_formula_and_variable_table();
     }//GEN-LAST:event_updateEquationVarTableButtonActionPerformed
 
+    private void saveLatexButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveLatexButtonActionPerformed
+        SystemLogger.LOGGER.log(Level.FINE, "saveEquationLatexButtonPerformed");
+        try {
+            saveEquationLatex();
+        } catch (IOException ex) {
+            Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+            SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
+        }
+    }//GEN-LAST:event_saveLatexButtonActionPerformed
+
     // **********************update********************
     private void updateGuiView(MixRegGuiStates mxrStates) {
         // this method is to update Gui View with Gui state data saved in MixRegGuiStates
@@ -4560,6 +4583,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel randomScaleViewLabel;
     private javax.swing.JLabel rleViewLabel;
     private javax.swing.JButton runTabTwoStageOneTwo;
+    private javax.swing.JButton saveLatexButton;
     private javax.swing.JButton saveStage1OutButton;
     private javax.swing.JButton saveStage2OutButton;
     private javax.swing.JLabel seedHelpButton;
@@ -8134,6 +8158,30 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             } catch (IOException e) {
                 SystemLogger.LOGGER.log(Level.SEVERE, e.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(this, "Stage 1 output could not be Saved!",
+                        "Error!", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+    }
+
+    public void saveEquationLatex() throws IOException {
+
+        FileFilter filter = new FileNameExtensionFilter("TEXT FILE", "txt");
+
+        JFileChooser saver = new JFileChooser("./");
+        saver.setFileFilter(filter);
+        int returnVal = saver.showSaveDialog(this);
+        File file = saver.getSelectedFile();
+        BufferedWriter writer = null;
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            try {
+                writer = new BufferedWriter(new FileWriter(file));
+                writer.write(equationLatex);
+                writer.close();
+                JOptionPane.showMessageDialog(this, "Equation latex code was Saved Successfully!",
+                        "Success!", JOptionPane.INFORMATION_MESSAGE);
+            } catch (IOException e) {
+                SystemLogger.LOGGER.log(Level.SEVERE, e.toString() + "{0}", SystemLogger.getLineNum());
+                JOptionPane.showMessageDialog(this, "Equation latex code could not be Saved!",
                         "Error!", JOptionPane.INFORMATION_MESSAGE);
             }
         }
@@ -12409,22 +12457,29 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         return stageOneLevelNum;
     }
 
-    private void update_model_equation_stage_one(String stageOneOutcomeLabel, String[] stageOneRegLabelList, String[] stageOneRegEquationNameList, int RLE, int RSE, int association, String[] meanModelVarLabels, String[] BSModelVarLabels, String[] WSModelVarLabels, String[] BWModelVarLabels, String[] ScaleRandomModelVarLabels) {
-        int fontsize = 26;
+    private void update_model_equation_stage_one(String stageOneOutcomeLabel, String[] stageOneRegLabelList, String[] stageOneRegEquationNameList, int RLE, int RSE, int association, String[] meanModelVarLabels, String[] BSModelVarLabels, String[] WSModelVarLabels, String[] BWModelVarLabels, String[] ScaleRandomModelVarLabels, DefaultListModel<String> stageOneLvlOneList, DefaultListModel<String> stageOneLvlTwoList, DefaultListModel<String> stageOneLvlThreeList) {
+        int fontsize = 22;
 
-        String[] stageOneModelLatexArray = EquationBuilder.getStageOneModelLatex(stageOneOutcomeLabel, stageOneRegLabelList, stageOneRegEquationNameList, RLE, RSE, association, meanModelVarLabels, BSModelVarLabels, WSModelVarLabels, BWModelVarLabels, ScaleRandomModelVarLabels);
+        String[] stageOneModelLatexArray = EquationBuilder.getStageOneModelLatex(stageOneOutcomeLabel, stageOneRegLabelList, stageOneRegEquationNameList, RLE, RSE, association, meanModelVarLabels, BSModelVarLabels, WSModelVarLabels, BWModelVarLabels, ScaleRandomModelVarLabels, stageOneLvlOneList, stageOneLvlTwoList, stageOneLvlThreeList);
         String latex1 = stageOneModelLatexArray[0];
         String latex2 = stageOneModelLatexArray[1];
         String latex3 = stageOneModelLatexArray[2];
 
-        int n = 6;
+        int n = 2;
         String space = "\\:";
         String space_str = StringUtils.repeat(space, n);
         latex1 = "Mean Model:" + space_str + latex1;
         latex2 = "BSV Model:\\:" + space_str + latex2;
         latex3 = "WSV Model:\\:" + space_str + latex3;
-
+        
+        if (RLE != 0) { // hide BSV model when RLE slope is selected
+            latex2 = "";
+        }
+        
+        equationLatex = latex1 + "\n" + latex2 + "\n" + latex3;
+        
         TeXFormula formula1 = new TeXFormula(latex1);
+//        TeXIcon icon1 = formula1.createTeXIcon(TeXConstants.STYLE_DISPLAY, fontsize, TeXConstants.UNIT_PIXEL, 256f, TeXConstants.ALIGN_CENTER);
         TeXIcon icon1 = formula1.new TeXIconBuilder().setStyle(TeXConstants.STYLE_DISPLAY)
                 .setSize(fontsize)
                 .setWidth(TeXConstants.UNIT_PIXEL, 256f, TeXConstants.ALIGN_CENTER)
@@ -12514,7 +12569,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         // TODO: validate required input for generating model equations
         // stage 1 model: stageOneOutcome, random location, random scale, association
         // 
-        
         String[] meanModelVarLabels = ModelMeansLabelsArray();
         String[] BSModelVarLabels = ModelBSLabelsArray();
         String[] WSModelVarLabels = ModelWSLabelsArray();
@@ -12526,7 +12580,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         // stage 1 model regressor labels: level 1 2 3
         int arraySize = stage_1_regs.levelOneList.size() + stage_1_regs.levelTwoList.size() + stage_1_regs.levelThreeList.size();
-            // stageOneRegLabelList, stageOneRegEquationNameList are two parallel lists, containing regressor labels and X names respectively
+        // stageOneRegLabelList, stageOneRegEquationNameList are two parallel lists, containing regressor labels and X names respectively
         String[] stageOneRegLabelList = new String[arraySize];
         String[] stageOneRegEquationNameList = new String[arraySize];
 
@@ -12542,7 +12596,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         }
 
         // if pass the check, rendering model 
-        update_model_equation_stage_one(stageOneOutcomeLabel, stageOneRegLabelList, stageOneRegEquationNameList, RLE, RSE, association, meanModelVarLabels, BSModelVarLabels, WSModelVarLabels, BWModelVarLabels, ScaleRandomModelVarLabels);
+        update_model_equation_stage_one(stageOneOutcomeLabel, stageOneRegLabelList, stageOneRegEquationNameList, RLE, RSE, association, meanModelVarLabels, BSModelVarLabels, WSModelVarLabels, BWModelVarLabels, ScaleRandomModelVarLabels, stage_1_regs.levelOneList, stage_1_regs.levelTwoList, stage_1_regs.levelThreeList);
         update_model_variable_table_stage_one(stageOneOutcomeLabel, stageOneRegLabelList, stageOneRegEquationNameList);
     }
 
