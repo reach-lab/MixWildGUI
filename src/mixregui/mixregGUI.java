@@ -918,7 +918,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
      */
     public mixregGUI() {
         initComponents();
-        this.setTitle("MixWILD-2.3.1");
+        this.setTitle("MixWILD-2.3.2");
         // adjust the frame size to fit screen resolution
 //        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 //        setBounds(0, 0, stageOneTabs.getWidth()/2, (int) Math.round(screenSize.height / 1.5));
@@ -9146,44 +9146,45 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
-
-                try {
-                    tryCount = 1;
-                    int withinCount = countLevelOneScaleRandom() + countLevelTwoScaleRandom() + countLevelThreeScaleRandom() - countLevelOneDicompScaleRandom();
-                    defFile.setAdvancedScaleRandomRegressorCount(String.valueOf(withinCount));
-                    System.out.println("From defHelper | Model Scale Random Count: " + defFile.getAdvancedScaleRandomRegressorCount());
-                } catch (Exception ex) {
-                    catchCount = 1;
-                    Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                if (getRandomScaleSpecSelectionInterceptSlope()) {
+                    try {
+                        tryCount = 1;
+                        int withinCount = countLevelOneScaleRandom() + countLevelTwoScaleRandom() + countLevelThreeScaleRandom() - countLevelOneDicompScaleRandom();
+                        defFile.setAdvancedScaleRandomRegressorCount(String.valueOf(withinCount));
+                        System.out.println("From defHelper | Model Scale Random Count: " + defFile.getAdvancedScaleRandomRegressorCount());
+                    } catch (Exception ex) {
+                        catchCount = 1;
+                        Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+                        SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
+                        JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                    }
                 }
 
             } else if (stageOneTwoLevelRadio.isSelected()) {
-                try {
-                    tryCount = 1;
-                    int withinCount = countLevelOneBetweenWave() + countLevelTwoBetweenWave();
-                    defFile.setAdvancedBetweenWaveRegressorCount(String.valueOf(withinCount));
-                    System.out.println("From defHelper | Model Between Wave Count: " + defFile.getAdvancedBetweenWaveRegressorCount());
-                } catch (Exception ex) {
-                    catchCount = 1;
-                    Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+//                try {
+//                    tryCount = 1;
+//                    int withinCount = countLevelOneBetweenWave() + countLevelTwoBetweenWave() - countLevelOneDicompBetweenWave();
+//                    defFile.setAdvancedBetweenWaveRegressorCount(String.valueOf(withinCount));
+//                    System.out.println("From defHelper | Model Between Wave Count: " + defFile.getAdvancedBetweenWaveRegressorCount());
+//                } catch (Exception ex) {
+//                    catchCount = 1;
+//                    Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+//                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
+//                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+//                }
+                if (getRandomScaleSpecSelectionInterceptSlope()) {
+                    try {
+                        tryCount = 1;
+                        int withinCount = countLevelOneScaleRandom() + countLevelTwoScaleRandom() - countLevelOneDicompScaleRandom();
+                        defFile.setAdvancedScaleRandomRegressorCount(String.valueOf(withinCount));
+                        System.out.println("From defHelper | Model Scale Random Count: " + defFile.getAdvancedScaleRandomRegressorCount());
+                    } catch (Exception ex) {
+                        catchCount = 1;
+                        Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+                        SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
+                        JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                    }
                 }
-
-                try {
-                    tryCount = 1;
-                    int withinCount = countLevelOneScaleRandom() + countLevelTwoScaleRandom();
-                    defFile.setAdvancedScaleRandomRegressorCount(String.valueOf(withinCount));
-                    System.out.println("From defHelper | Model Scale Random Count: " + defFile.getAdvancedScaleRandomRegressorCount());
-                } catch (Exception ex) {
-                    catchCount = 1;
-                    Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                }
-
             }
 
             //Number of disaggregate means
@@ -9235,17 +9236,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
 
-                //Number of disaggregate Random Slope in within-subject variance
-                try {
-                    tryCount = 1;
-                    defFile.setAdvancedDecomposeScaleRandomRegressorCount(String.valueOf(countLevelOneDicompScaleRandom()));
-                    System.out.println("From defHelper | Stage 1 Scale Random Disagg Regressor Count: " + defFile.getAdvancedDecomposeScaleRandomRegressorCount().toString());
-                } catch (Exception ex) {
-                    catchCount = 1;
-                    Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                }
             }
 
             // ---- Check if the association radio buttons have been selected (Advanced effect of mean) ----
@@ -9344,19 +9334,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
 
-                try {
-                    defFile.setSharedModelScaleRandomRegressorLabels(ModelScaleRandomLabelsArray());
-                    System.out.println("From defHelper | Stage 1 ScaleRandom REGRESSOR LABELS): " + Arrays.toString(defFile.getSharedModelScaleRandomRegressorLabels()));
-//                defFile.setLabelModelWSRegressorsLevelOne(getModelWSLabelsLevelOne());
-//                System.out.println("From defHelper | LEVEL 1 WS REGRESSOR LABELS): " + Arrays.toString(defFile.getLabelModelWSRegressorsLevelOne()));
-//                defFile.setLabelModelWSRegressorsLevelTwo(getModelWSLabelsLevelTwo());
-//                System.out.println("From defHelper | LEVEL 2 WS REGRESSOR LABELS): " + Arrays.toString(defFile.getLabelModelWSRegressorsLevelTwo()));
-                } catch (Exception ex) {
-                    catchCount = 1;
-                    Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                }
             }
 
             // Reads the variable names of variables that have been selected as mean regressors
@@ -9409,30 +9386,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
 
-                // Reads the variable names of variables that have been selected as random slope in WS Variances
-                try {
-                    defFile.setSharedModelScaleRandomRegressorFields(fieldModelScaleRandomArray());
-                    System.out.println("From defHelper | #Stage One random slope in WS Variances Regressors: " + defFile.getSharedModelScaleRandomRegressorFields().length);
-                    System.out.println("From defHelper | Stage One random slope in WS Variances Regressors Selected: " + Arrays.toString(defFile.getSharedModelScaleRandomRegressorFields()));
-                } catch (Exception ex) {
-                    catchCount = 1;
-                    Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                }
-
                 try {
                     defFile.setSharedModelDecomposeBetweenWaveRegressorFields(getBWDecompFieldRegressorLabels_levelOne());
                     System.out.println("From defHelper | #Stage One BW + Disagg. Regressors: " + defFile.getSharedModelDecomposeBetweenWaveRegressorFields().length);
-                } catch (Exception ex) {
-                    Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                }
-
-                try {
-                    defFile.setSharedModelDecomposeScaleRandomRegressorFields(getScaleRandomDecompFieldRegressorLabels_levelOne());
-                    System.out.println("From defHelper | #Stage One Scale Random + Disagg. Regressors: " + defFile.getSharedModelDecomposeScaleRandomRegressorFields().length);
                 } catch (Exception ex) {
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                     SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
@@ -9447,16 +9403,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
-
-                try {
-                    defFile.setSharedModelDecomposeScaleRandomRegressorLabels(getDecompScaleRandomLabelsLevelOne());
-                    System.out.println("From defHelper | Model Decomp + Scale Random Labels: " + Arrays.toString(defFile.getSharedModelDecomposeScaleRandomRegressorLabels()));
-                } catch (Exception ex) {
-                    Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                }
-
             }
 
             try {
@@ -9571,40 +9517,45 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
 
-                try {
-                    tryCount = 1;
-                    int withinCount = countLevelOneScaleRandom() + countLevelTwoScaleRandom() + countLevelThreeScaleRandom() - countLevelOneDicompScaleRandom();
-                    defFile.setAdvancedScaleRandomRegressorCount(String.valueOf(withinCount));
-                    System.out.println("From defHelper | Model Scale Random Count: " + defFile.getAdvancedScaleRandomRegressorCount());
-                } catch (Exception ex) {
-                    catchCount = 1;
-                    Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                }
-            } else if (stageOneTwoLevelRadio.isSelected()) {
-                try {
-                    tryCount = 1;
-                    int withinCount = countLevelOneBetweenWave() + countLevelTwoBetweenWave() - countLevelOneDicompBetweenWave();
-                    defFile.setAdvancedBetweenWaveRegressorCount(String.valueOf(withinCount));
-                    System.out.println("From defHelper | Model Between Wave Count: " + defFile.getAdvancedBetweenWaveRegressorCount());
-                } catch (Exception ex) {
-                    catchCount = 1;
-                    Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                if (getRandomScaleSpecSelectionInterceptSlope()) {
+                    try {
+                        tryCount = 1;
+                        int withinCount = countLevelOneScaleRandom() + countLevelTwoScaleRandom() + countLevelThreeScaleRandom() - countLevelOneDicompScaleRandom();
+                        defFile.setAdvancedScaleRandomRegressorCount(String.valueOf(withinCount));
+                        System.out.println("From defHelper | Model Scale Random Count: " + defFile.getAdvancedScaleRandomRegressorCount());
+                    } catch (Exception ex) {
+                        catchCount = 1;
+                        Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+                        SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
+                        JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                    }
+
                 }
 
-                try {
-                    tryCount = 1;
-                    int withinCount = countLevelOneScaleRandom() + countLevelTwoScaleRandom() - countLevelOneDicompScaleRandom();
-                    defFile.setAdvancedScaleRandomRegressorCount(String.valueOf(withinCount));
-                    System.out.println("From defHelper | Model Scale Random Count: " + defFile.getAdvancedScaleRandomRegressorCount());
-                } catch (Exception ex) {
-                    catchCount = 1;
-                    Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+            } else if (stageOneTwoLevelRadio.isSelected()) {
+//                try {
+//                    tryCount = 1;
+//                    int withinCount = countLevelOneBetweenWave() + countLevelTwoBetweenWave() - countLevelOneDicompBetweenWave();
+//                    defFile.setAdvancedBetweenWaveRegressorCount(String.valueOf(withinCount));
+//                    System.out.println("From defHelper | Model Between Wave Count: " + defFile.getAdvancedBetweenWaveRegressorCount());
+//                } catch (Exception ex) {
+//                    catchCount = 1;
+//                    Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+//                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
+//                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+//                }
+                if (getRandomScaleSpecSelectionInterceptSlope()) {
+                    try {
+                        tryCount = 1;
+                        int withinCount = countLevelOneScaleRandom() + countLevelTwoScaleRandom() - countLevelOneDicompScaleRandom();
+                        defFile.setAdvancedScaleRandomRegressorCount(String.valueOf(withinCount));
+                        System.out.println("From defHelper | Model Scale Random Count: " + defFile.getAdvancedScaleRandomRegressorCount());
+                    } catch (Exception ex) {
+                        catchCount = 1;
+                        Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+                        SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
+                        JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+                    }
                 }
             }
 
@@ -9658,17 +9609,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
 
-                //Number of disaggregate Random Slope in within-subject variance
-                try {
-                    tryCount = 1;
-                    defFile.setAdvancedDecomposeScaleRandomRegressorCount(String.valueOf(countLevelOneDicompScaleRandom()));
-                    System.out.println("From defHelper | Stage 1 Scale Random Disagg Regressor Count: " + defFile.getAdvancedDecomposeScaleRandomRegressorCount().toString());
-                } catch (Exception ex) {
-                    catchCount = 1;
-                    Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                }
             }
 
             //Check if the effect of mean on WS variances options have been selected
@@ -9752,20 +9692,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
-
-                try {
-                    defFile.setSharedModelScaleRandomRegressorLabels(ModelScaleRandomLabelsArray());
-                    System.out.println("From defHelper | Stage 1 ScaleRandom REGRESSOR LABELS): " + Arrays.toString(defFile.getSharedModelScaleRandomRegressorLabels()));
-//                defFile.setLabelModelWSRegressorsLevelOne(getModelWSLabelsLevelOne());
-//                System.out.println("From defHelper | LEVEL 1 WS REGRESSOR LABELS): " + Arrays.toString(defFile.getLabelModelWSRegressorsLevelOne()));
-//                defFile.setLabelModelWSRegressorsLevelTwo(getModelWSLabelsLevelTwo());
-//                System.out.println("From defHelper | LEVEL 2 WS REGRESSOR LABELS): " + Arrays.toString(defFile.getLabelModelWSRegressorsLevelTwo()));
-                } catch (Exception ex) {
-                    catchCount = 1;
-                    Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                }
             }
 
             // count field labels
@@ -9816,18 +9742,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
 
-                // Reads the variable names of variables that have been selected as random slope in WS Variances
-                try {
-                    defFile.setSharedModelScaleRandomRegressorFields(fieldModelScaleRandomArray());
-                    System.out.println("From defHelper | #Stage One random slope in WS Variances Regressors: " + defFile.getSharedModelScaleRandomRegressorFields().length);
-                    System.out.println("From defHelper | Stage One random slope in WS Variances Regressors Selected: " + Arrays.toString(defFile.getSharedModelScaleRandomRegressorFields()));
-                } catch (Exception ex) {
-                    catchCount = 1;
-                    Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                }
-
                 try {
                     defFile.setSharedModelDecomposeBetweenWaveRegressorFields(getBWDecompFieldRegressorLabels_levelOne());
                     System.out.println("From defHelper | #Stage One BW + Disagg. Regressors: " + defFile.getSharedModelDecomposeBetweenWaveRegressorFields().length);
@@ -9838,26 +9752,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 }
 
                 try {
-                    defFile.setSharedModelDecomposeScaleRandomRegressorFields(getScaleRandomDecompFieldRegressorLabels_levelOne());
-                    System.out.println("From defHelper | #Stage One Scale Random + Disagg. Regressors: " + defFile.getSharedModelDecomposeScaleRandomRegressorFields().length);
-                } catch (Exception ex) {
-                    Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                }
-
-                try {
                     defFile.setSharedModelDecomposeBetweenWaveRegressorLabels(getDecompBWLabelsLevelOne());
                     System.out.println("From defHelper | Model Decomp + BW Labels: " + Arrays.toString(defFile.getSharedModelDecomposeBetweenWaveRegressorLabels()));
-                } catch (Exception ex) {
-                    Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                    SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-                }
-
-                try {
-                    defFile.setSharedModelDecomposeScaleRandomRegressorLabels(getDecompScaleRandomLabelsLevelOne());
-                    System.out.println("From defHelper | Model Decomp + Scale Random Labels: " + Arrays.toString(defFile.getSharedModelDecomposeScaleRandomRegressorLabels()));
                 } catch (Exception ex) {
                     Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
                     SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
@@ -9886,6 +9782,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
+
             try {
                 defFile.setSharedModelDecomposeScaleRegressorFields(getWSDecompFieldRegressorLabels_levelOne());
                 System.out.println("From defHelper | #Stage One WS(Scale) + Disagg. Regressors: " + defFile.getSharedModelDecomposeScaleRegressorFields().length);
@@ -9920,6 +9817,69 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             }
         }
 
+        // RSE
+        // RSE - slope selected
+        if (getRandomScaleSpecSelectionInterceptSlope()) {
+            //random slope in WS variance
+
+            //Number of disaggregate Random Slope in within-subject variance
+            try {
+                tryCount = 1;
+                defFile.setAdvancedDecomposeScaleRandomRegressorCount(String.valueOf(countLevelOneDicompScaleRandom()));
+                System.out.println("From defHelper | Stage 1 Scale Random Disagg Regressor Count: " + defFile.getAdvancedDecomposeScaleRandomRegressorCount().toString());
+            } catch (Exception ex) {
+                catchCount = 1;
+                Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+            }
+
+            // Reads the variable names of variables that have been selected as random slope in WS Variances
+            try {
+                defFile.setSharedModelScaleRandomRegressorFields(fieldModelScaleRandomArray());
+                System.out.println("From defHelper | #Stage One random slope in WS Variances Regressors: " + defFile.getSharedModelScaleRandomRegressorFields().length);
+                System.out.println("From defHelper | Stage One random slope in WS Variances Regressors Selected: " + Arrays.toString(defFile.getSharedModelScaleRandomRegressorFields()));
+            } catch (Exception ex) {
+                catchCount = 1;
+                Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+            }
+
+            try {
+                defFile.setSharedModelScaleRandomRegressorLabels(ModelScaleRandomLabelsArray());
+                System.out.println("From defHelper | Stage 1 ScaleRandom REGRESSOR LABELS): " + Arrays.toString(defFile.getSharedModelScaleRandomRegressorLabels()));
+//                defFile.setLabelModelWSRegressorsLevelOne(getModelWSLabelsLevelOne());
+//                System.out.println("From defHelper | LEVEL 1 WS REGRESSOR LABELS): " + Arrays.toString(defFile.getLabelModelWSRegressorsLevelOne()));
+//                defFile.setLabelModelWSRegressorsLevelTwo(getModelWSLabelsLevelTwo());
+//                System.out.println("From defHelper | LEVEL 2 WS REGRESSOR LABELS): " + Arrays.toString(defFile.getLabelModelWSRegressorsLevelTwo()));
+            } catch (Exception ex) {
+                catchCount = 1;
+                Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+            }
+
+            try {
+                defFile.setSharedModelDecomposeScaleRandomRegressorFields(getScaleRandomDecompFieldRegressorLabels_levelOne());
+                System.out.println("From defHelper | #Stage One Scale Random + Disagg. Regressors: " + defFile.getSharedModelDecomposeScaleRandomRegressorFields().length);
+            } catch (Exception ex) {
+                Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+            }
+
+            try {
+                defFile.setSharedModelDecomposeScaleRandomRegressorLabels(getDecompScaleRandomLabelsLevelOne());
+                System.out.println("From defHelper | Model Decomp + Scale Random Labels: " + Arrays.toString(defFile.getSharedModelDecomposeScaleRandomRegressorLabels()));
+            } catch (Exception ex) {
+                Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+            }
+        }
+
+        // stage two
         if (getNotIncludeStageTwo() == true) {
 
             if (!checkTabExistinJTabbedPane(stageOneTabs, "View Model")) {
@@ -12471,13 +12431,13 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         latex1 = "Mean Model:" + space_str + latex1;
         latex2 = "BSV Model:\\:" + space_str + latex2;
         latex3 = "WSV Model:\\:" + space_str + latex3;
-        
+
         if (RLE != 0) { // hide BSV model when RLE slope is selected
             latex2 = "";
         }
-        
+
         equationLatex = latex1 + "\n" + latex2 + "\n" + latex3;
-        
+
         TeXFormula formula1 = new TeXFormula(latex1);
 //        TeXIcon icon1 = formula1.createTeXIcon(TeXConstants.STYLE_DISPLAY, fontsize, TeXConstants.UNIT_PIXEL, 256f, TeXConstants.ALIGN_CENTER);
         TeXIcon icon1 = formula1.new TeXIconBuilder().setStyle(TeXConstants.STYLE_DISPLAY)
