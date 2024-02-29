@@ -15,9 +15,10 @@ MixWILD is a free and open-source tool by and for the behavioral researchers. If
 ## Recommended Steps to Get Started ##
 
 ### 1. Watch introductory video(s)
-- [Video1: simple tutorial about MixWILD](https://www.youtube.com/watch?v=ZqyCxrMG1R8&feature=emb_logo) (13 min)
-- [Video2: intro to the Mixed Effects Location Scale MELS Model](https://www.youtube.com/watch?v=wCEHuv9t1xw) (47 min) 
-- [Video3: SBM workshop (coming soon)]() (X min) 
+- [Video1: conceptual overview to MixWILD and research applications](https://youtu.be/6Kn4imuCDqg) (15 min) (*new*)
+- [Video2: simple tutorial about MixWILD](https://www.youtube.com/watch?v=ZqyCxrMG1R8&feature=emb_logo) (13 min)
+- [Video3: intro to stage 1 modeling, the Mixed Effects Location Scale (MELS) Model](https://www.youtube.com/watch?v=wCEHuv9t1xw) (47 min) 
+- [Video4: intro to stage 2 modeling](https://www.youtube.com/watch?v=cPVYC3pQmiU) (23 min) (*new*)
 
 ### 2. Download MixWILD for Mac or PC ###
 ### Please submit your email prior to downloading the application so we can notify you of major software updates ###
