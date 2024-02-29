@@ -511,7 +511,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                         if (!isNumeric(thiscellvalue)) {
                             validDataset = false;
                             JOptionPane.showMessageDialog(null, "The .csv file should contain only numeric values, except for the headers in the first row."
-                                    + "\n" + "Missing value codes should be numeric only.",
+                                    + "\n" + "Missing value codes should be numeric only."
+                                    + "\n" + "Row: " + x + ", cell value:" + thiscellvalue,
                                     "Dataset Error", JOptionPane.INFORMATION_MESSAGE);
                             break outerloop;
                         }
@@ -918,7 +919,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
      */
     public mixregGUI() {
         initComponents();
-        this.setTitle("MixWILD-2.3.2");
+        this.setTitle("MixWILD-2.3.4");
         // adjust the frame size to fit screen resolution
 //        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 //        setBounds(0, 0, stageOneTabs.getWidth()/2, (int) Math.round(screenSize.height / 1.5));
@@ -8713,7 +8714,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 }
 
                 try {
-                    defFile.setAdvancedAdaptiveQuadSubject(String.valueOf(1));
+                    defFile.setAdvancedAdaptiveQuadSubject(String.valueOf(advancedOptions_view.isAdaptiveQuadritureSubjectChecked()));
                     System.out.println("From defHelper | Adaptive Quadriture Checked?: " + defFile.getAdvancedAdaptiveQuadSubject());
                     //tryCount = 1;
 
@@ -8725,8 +8726,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                                     .getName()).log(Level.SEVERE, null, ex);
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
+                
                 try {
-                    defFile.setAdvancedAdaptiveQuadWave(String.valueOf(1));
+                    defFile.setAdvancedAdaptiveQuadWave(String.valueOf(advancedOptions_view.isAdaptiveQuadritureWaveChecked()));
                     System.out.println("From defHelper | Adaptive Quadriture Checked?: " + defFile.getAdvancedAdaptiveQuadWave());
                     //tryCount = 1;
 

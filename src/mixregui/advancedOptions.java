@@ -431,7 +431,7 @@ public class advancedOptions extends javax.swing.JFrame {
         convergenceCriteria.setText("0.00001");
         quadriturePoints.setValue(11);
 
-        adaptiveQuadritureCheckBox.setSelected(false);
+        adaptiveQuadritureCheckBox.setSelected(true);
         centerRegressorsCheckBox.setSelected(false);
 
         maximumIterations.setValue(200);
