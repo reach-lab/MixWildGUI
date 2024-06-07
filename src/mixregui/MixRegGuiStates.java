@@ -123,6 +123,7 @@ public class MixRegGuiStates {
     public String stageTwoLevelOneString;
     public String stageTwoLevelTwoString;
     public boolean isStageTwoSubmitClicked;
+    public boolean[][] stageTwoMainEffectGridBoxesSelection;
     public boolean[][] stageTwoLevelOneGridBoxesSelection;
     public boolean[][] stageTwoLevelTwoGridBoxesSelection;
     public boolean suppressIntCheckBox;
@@ -220,6 +221,7 @@ public class MixRegGuiStates {
         this.stageTwoLevelOneString = saveDefaultListModel(stageTwoRegs.stageTwoLevelOne);
         this.stageTwoLevelTwoString = saveDefaultListModel(stageTwoRegs.stageTwoLevelTwo);
         this.isStageTwoSubmitClicked = stageTwoRegs.isStageTwoSubmitClicked;
+        this.stageTwoMainEffectGridBoxesSelection = getSelectionBoxes(mxr.stageTwoMainEffectGridBoxes);
         this.stageTwoLevelOneGridBoxesSelection = getSelectionBoxes(mxr.stageTwoLevelOneGridBoxes);
         this.stageTwoLevelTwoGridBoxesSelection = getSelectionBoxes(mxr.stageTwoLevelTwoGridBoxes);
         this.suppressIntCheckBox = mxr.getEnableInteractionCheckBox();
@@ -375,6 +377,7 @@ public class MixRegGuiStates {
             stageTwoLevelTwo = loadDefaultListModel(stageTwoLevelTwoString);
 
             isStageTwoSubmitClicked = hmapStates.get("isStageTwoSubmitClicked").getBoolean();
+            stageTwoMainEffectGridBoxesSelection = hmapStates.get("stageTwoMainEffectGridBoxesSelection").getBox();
             stageTwoLevelOneGridBoxesSelection = hmapStates.get("stageTwoLevelOneGridBoxesSelection").getBox();
             stageTwoLevelTwoGridBoxesSelection = hmapStates.get("stageTwoLevelTwoGridBoxesSelection").getBox();
 
@@ -475,6 +478,7 @@ public class MixRegGuiStates {
         StateObject po77 = new StateObject("thresholdRidgeSpinner", thresholdRidgeSpinner);
         StateObject po78 = new StateObject("adaptiveQuadritureWaveVarianceCheckBox", adaptiveQuadritureWaveVarianceCheckBox);
         StateObject po79 = new StateObject("enableDisaggregateCheckBox", enableDisaggregateCheckBox);
+        StateObject po80 = new StateObject("stageTwoMainEffectGridBoxesSelection", stageTwoMainEffectGridBoxesSelection);
 
         hashmap.put(po00.getKey(), po00);
         hashmap.put(po0.getKey(), po0);
@@ -557,6 +561,7 @@ public class MixRegGuiStates {
         hashmap.put(po77.getKey(), po77);
         hashmap.put(po78.getKey(), po78);
         hashmap.put(po79.getKey(), po79);
+        hashmap.put(po80.getKey(), po80);
         return hashmap;
     }
 
@@ -626,4 +631,5 @@ public class MixRegGuiStates {
             return result;
         }
     }
+
 }

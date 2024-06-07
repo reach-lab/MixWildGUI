@@ -154,6 +154,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     int levelOneRegSize = 0;
     int levelTwoRegSize = 0;
     int levelThreeRegSize = 0;
+    int stageTwoMainEffectRegSize = 0;
     int stageTwoLevelOneRegSize = 0;
     int stageTwoLevelTwoRegSize = 0;
     int stageTwoLevelThreeRegSize = 0;
@@ -176,6 +177,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     ArrayList<ArrayList<JCheckBox>> levelTwoBoxes;
     ArrayList<ArrayList<JCheckBox>> levelThreeBoxes;
     ArrayList<ArrayList<JCheckBox>> stageTwoBoxes;
+    ArrayList<ArrayList<JCheckBox>> stageTwoMainEffectGridBoxes;
     ArrayList<ArrayList<JCheckBox>> stageTwoLevelOneGridBoxes;
     ArrayList<ArrayList<JCheckBox>> stageTwoLevelTwoGridBoxes;
     ArrayList<ArrayList<JCheckBox>> disaggVarianceBoxes;
@@ -201,6 +203,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     ArrayList<String> levelTwoSelected;
     ArrayList<String> levelThreeSelected;
     ArrayList<String> stageTwoSelected;
+    ArrayList<String> stageTwoMainEffectSelected;
     ArrayList<String> stageTwoLevelOneSelected;
     ArrayList<String> stageTwoLevelTwoSelected;
 
@@ -586,6 +589,36 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     }
 
+    public String randomLocationTypeString() {
+
+        String randomLocationTypeText = "NA";
+
+        if (oneRLERadio.isSelected()) {
+            randomLocationTypeText = "Intercept only";
+        } else if (moreThanOneRLERadio.isSelected()) {
+            randomLocationTypeText = "Intercept and slope(s)";
+        }
+        return randomLocationTypeText;
+
+    }
+
+    public String randomScaleTypeString() {
+
+        String randomScaleTypeText = "NA";
+
+        if (randomScaleSelectionNo.isSelected()) {
+            randomScaleTypeText = "Not included";
+        } else {
+            if (randomScaleSpecSelectionInterceptOnly.isSelected()) {
+                randomScaleTypeText = "Intercept only";
+            } else if (randomScaleSpecSelectionInterceptSlope.isSelected()) {
+                randomScaleTypeText = "Intercept and slope(s)";
+            }
+        }
+        return randomScaleTypeText;
+
+    }
+
     public String stageTwoModelTypeString() {
 
         String modelTypeText = "";
@@ -794,6 +827,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageOneLevelOnePanel.setLayout(new BorderLayout());
         stageOneLevelTwoPanel.setLayout(new BorderLayout());
         stageOneLevelThreePanel.setLayout(new BorderLayout());
+        stageTwoMainEffectPanel.setLayout(new BorderLayout());
         stageTwoLevelOnePanel.setLayout(new BorderLayout());
         stageTwoLevelTwoPanel.setLayout(new BorderLayout());
 
@@ -1186,10 +1220,12 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageTwoLevelOnePanel = new javax.swing.JPanel();
         stageTwoRegsGridLvl1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        stageOneOutcomeStageTwoConfigLabel = new javax.swing.JLabel();
         stageOneModelStageTwoConfigLabel = new javax.swing.JLabel();
-        stageTwoOutcomeStageTwoConfigLabel = new javax.swing.JLabel();
+        stageOneOutcomeStageTwoConfigLabel = new javax.swing.JLabel();
         stageTwoModelTypeStageTwoConfigLabel = new javax.swing.JLabel();
+        stageTwoOutcomeStageTwoConfigLabel = new javax.swing.JLabel();
+        randomLocationConfigLabel2 = new javax.swing.JLabel();
+        randomScaleConfigLabel2 = new javax.swing.JLabel();
         numResamplingStageTwoConfigLabel = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator17 = new javax.swing.JSeparator();
@@ -1201,12 +1237,18 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageOneOutcomeStageTwoConfigLabel1 = new javax.swing.JLabel();
         stageTwoModelTypeStageTwoConfigLabel1 = new javax.swing.JLabel();
         stageTwoOutcomeStageTwoConfigLabel1 = new javax.swing.JLabel();
+        randomLocationConfigLabel1 = new javax.swing.JLabel();
+        randomScaleConfigLabel1 = new javax.swing.JLabel();
         numResamplingStageTwoConfigLabel1 = new javax.swing.JLabel();
         jSeparator6 = new javax.swing.JSeparator();
         jLabel6 = new javax.swing.JLabel();
         IDStageTwoVariableCombo = new javax.swing.JComboBox<>();
         jLabel32 = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jSeparator19 = new javax.swing.JSeparator();
+        stageTwoMainEffectPanel = new javax.swing.JPanel();
+        stageTwoRegsGridMain = new javax.swing.JPanel();
         jScrollPane_stage1result = new javax.swing.JScrollPane();
         jPanel_stage1result = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
@@ -2311,16 +2353,16 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         jLabel14.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel14.setText("Regressor(s)");
         jLabel14.setToolTipText("Check the box(s) of the regressor(s) to add the main effect in the model");
-        jPanel_stage2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 100, 100, -1));
+        jPanel_stage2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 348, 100, -1));
 
         jLabel12.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel12.setText("Stage 2 Interactions");
+        jLabel12.setText("Stage 2 Main Effects");
         jPanel_stage2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 18, 190, 20));
 
         jLabel15.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel15.setText("Random Location");
         jLabel15.setToolTipText("Check the box(s) of the regressor(s) to  add the interaction effect by random location (intercept + slope(s)) in the model");
-        jPanel_stage2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(655, 100, 140, -1));
+        jPanel_stage2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 348, 140, -1));
 
         addStageTwoReg.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         addStageTwoReg.setText("Configure Stage 2 Regressors ...");
@@ -2329,17 +2371,17 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 addStageTwoRegActionPerformed(evt);
             }
         });
-        jPanel_stage2.add(addStageTwoReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 295, 260, 40));
+        jPanel_stage2.add(addStageTwoReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 335, 260, 40));
 
         jLabel17.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel17.setText("Random Scale");
         jLabel17.setToolTipText("Check the box(s) of the regressor(s) to add the interaction effect by random  scale in the model");
-        jPanel_stage2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(799, 100, 110, 20));
+        jPanel_stage2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 348, 110, 20));
 
         jLabel18.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel18.setText("Location X Scale");
         jLabel18.setToolTipText("Check the box(s) of the regressor(s) to add the interaction effect by random location and scale in the model");
-        jPanel_stage2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 100, 130, 20));
+        jPanel_stage2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 348, 130, 20));
 
         stageTwoLevelTwoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Level-2"));
 
@@ -2359,7 +2401,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         stageTwoRegsGridLvl2.getAccessibleContext().setAccessibleParent(stageTwoRegsGridLvl2);
 
-        jPanel_stage2.add(stageTwoLevelTwoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 330, 610, 170));
+        jPanel_stage2.add(stageTwoLevelTwoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 578, 610, 170));
         stageTwoLevelTwoPanel.getAccessibleContext().setAccessibleName("Level-2 Stage-2");
         stageTwoLevelTwoPanel.getAccessibleContext().setAccessibleDescription("");
 
@@ -2370,7 +2412,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 runTabTwoStageOneTwoActionPerformed(evt);
             }
         });
-        jPanel_stage2.add(runTabTwoStageOneTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 530, 160, 35));
+        jPanel_stage2.add(runTabTwoStageOneTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 778, 160, 35));
 
         enbaleInteractionCheckBox.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         enbaleInteractionCheckBox.setText("Enable 2-way Location X Scale Interaction");
@@ -2380,7 +2422,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 enbaleInteractionCheckBoxActionPerformed(evt);
             }
         });
-        jPanel_stage2.add(enbaleInteractionCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, -1, -1));
+        jPanel_stage2.add(enbaleInteractionCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 232, -1, -1));
 
         StageTwoOutcomeCombo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         StageTwoOutcomeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -2394,11 +2436,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 StageTwoOutcomeComboActionPerformed(evt);
             }
         });
-        jPanel_stage2.add(StageTwoOutcomeCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 260, 30));
+        jPanel_stage2.add(StageTwoOutcomeCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, 260, 30));
 
         jLabel22.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel22.setText("Stage 2 Outcome:");
-        jPanel_stage2.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 210, -1));
+        jPanel_stage2.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 210, -1));
 
         clearStageTwoButton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         clearStageTwoButton.setText("Clear Stage 2");
@@ -2407,9 +2449,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 clearStageTwoButtonActionPerformed(evt);
             }
         });
-        jPanel_stage2.add(clearStageTwoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 530, 140, 35));
+        jPanel_stage2.add(clearStageTwoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 778, 140, 35));
         jPanel_stage2.add(filler1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 570, -1, 80));
-        jPanel_stage2.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, 610, 10));
+        jPanel_stage2.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 48, 610, 10));
         jPanel_stage2.add(jSeparator15, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 660, -1, -1));
         jPanel_stage2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 262, 220, 0));
 
@@ -2445,7 +2487,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel_stage2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 350, 260, 200));
+        jPanel_stage2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, 260, 200));
 
         guiStatesSaveButtonStageTwo.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         guiStatesSaveButtonStageTwo.setText("Save Model");
@@ -2454,7 +2496,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 guiStatesSaveButtonStageTwoActionPerformed(evt);
             }
         });
-        jPanel_stage2.add(guiStatesSaveButtonStageTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 530, 130, 35));
+        jPanel_stage2.add(guiStatesSaveButtonStageTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 778, 130, 35));
 
         stageTwoLevelOnePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Level-1"));
 
@@ -2472,40 +2514,42 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             .addComponent(stageTwoRegsGridLvl1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
         );
 
-        jPanel_stage2.add(stageTwoLevelOnePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 120, 610, 170));
+        jPanel_stage2.add(stageTwoLevelOnePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 368, 610, 170));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel3.setText("Selected Model Configuration");
         jPanel_stage2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 25, -1, -1));
         jLabel3.getAccessibleContext().setAccessibleName("");
 
-        jPanel_stage2.add(stageOneOutcomeStageTwoConfigLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 70, -1, -1));
         jPanel_stage2.add(stageOneModelStageTwoConfigLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, -1, -1));
-        jPanel_stage2.add(stageTwoOutcomeStageTwoConfigLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 110, -1, -1));
+        jPanel_stage2.add(stageOneOutcomeStageTwoConfigLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 70, -1, -1));
         jPanel_stage2.add(stageTwoModelTypeStageTwoConfigLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 90, -1, -1));
-        jPanel_stage2.add(numResamplingStageTwoConfigLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 130, -1, -1));
-        jPanel_stage2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 260, 10));
+        jPanel_stage2.add(stageTwoOutcomeStageTwoConfigLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 110, -1, -1));
+        jPanel_stage2.add(randomLocationConfigLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 130, -1, -1));
+        jPanel_stage2.add(randomScaleConfigLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, -1, -1));
+        jPanel_stage2.add(numResamplingStageTwoConfigLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 170, -1, -1));
+        jPanel_stage2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 260, 10));
         jPanel_stage2.add(jSeparator17, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 41, 165, 10));
 
         jLabel33.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel33.setText("Regressor(s)");
         jLabel33.setToolTipText("Check the box(s) of the regressor(s) to add the main effect in the model");
-        jPanel_stage2.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 310, 110, -1));
+        jPanel_stage2.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 558, 110, -1));
 
         jLabel35.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel35.setText("Random Location");
         jLabel35.setToolTipText("Check the box(s) of the regressor(s) to  add the interaction effect by random location (intercept + slope(s)) in the model");
-        jPanel_stage2.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(655, 310, 140, -1));
+        jPanel_stage2.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 558, 140, -1));
 
         jLabel36.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel36.setText("Random Scale");
         jLabel36.setToolTipText("Check the box(s) of the regressor(s) to add the interaction effect by random  scale in the model");
-        jPanel_stage2.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(799, 310, 110, 20));
+        jPanel_stage2.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 558, 110, 20));
 
         jLabel37.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel37.setText("Location X Scale");
         jLabel37.setToolTipText("Check the box(s) of the regressor(s) to add the interaction effect by random location and scale in the model");
-        jPanel_stage2.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 310, 130, 20));
+        jPanel_stage2.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 558, 130, 20));
 
         stageOneModelStageTwoConfigLabel1.setText("Stage 1 model:");
         jPanel_stage2.add(stageOneModelStageTwoConfigLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, -1, -1));
@@ -2519,13 +2563,19 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageTwoOutcomeStageTwoConfigLabel1.setText("Stage 2 outcome:");
         jPanel_stage2.add(stageTwoOutcomeStageTwoConfigLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, -1, -1));
 
+        randomLocationConfigLabel1.setText("Random location:");
+        jPanel_stage2.add(randomLocationConfigLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, -1, -1));
+
+        randomScaleConfigLabel1.setText("Random scale:");
+        jPanel_stage2.add(randomScaleConfigLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, -1, -1));
+
         numResamplingStageTwoConfigLabel1.setText("Number of resamples (stage 2):");
-        jPanel_stage2.add(numResamplingStageTwoConfigLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, -1, -1));
-        jPanel_stage2.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 155, 260, 10));
+        jPanel_stage2.add(numResamplingStageTwoConfigLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, -1, -1));
+        jPanel_stage2.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 195, 260, 10));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel6.setText("ID Variable:");
-        jPanel_stage2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, -1, -1));
+        jPanel_stage2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, -1, -1));
 
         IDStageTwoVariableCombo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         IDStageTwoVariableCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -2539,15 +2589,38 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 IDStageTwoVariableComboActionPerformed(evt);
             }
         });
-        jPanel_stage2.add(IDStageTwoVariableCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 260, 30));
+        jPanel_stage2.add(IDStageTwoVariableCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 260, 30));
 
         jLabel32.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel32.setText("X");
-        jPanel_stage2.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 310, -1, -1));
+        jPanel_stage2.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 558, -1, -1));
 
         jLabel38.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel38.setText("X");
-        jPanel_stage2.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 100, -1, -1));
+        jPanel_stage2.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 348, -1, -1));
+
+        jLabel23.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel23.setText("Stage 2 Interactions");
+        jPanel_stage2.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 298, 190, 20));
+        jPanel_stage2.add(jSeparator19, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 328, 610, 10));
+
+        stageTwoMainEffectPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder()));
+
+        stageTwoRegsGridMain.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        stageTwoRegsGridMain.setLayout(new java.awt.BorderLayout());
+
+        javax.swing.GroupLayout stageTwoMainEffectPanelLayout = new javax.swing.GroupLayout(stageTwoMainEffectPanel);
+        stageTwoMainEffectPanel.setLayout(stageTwoMainEffectPanelLayout);
+        stageTwoMainEffectPanelLayout.setHorizontalGroup(
+            stageTwoMainEffectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(stageTwoRegsGridMain, javax.swing.GroupLayout.DEFAULT_SIZE, 606, Short.MAX_VALUE)
+        );
+        stageTwoMainEffectPanelLayout.setVerticalGroup(
+            stageTwoMainEffectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(stageTwoRegsGridMain, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+        );
+
+        jPanel_stage2.add(stageTwoMainEffectPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 58, 610, 170));
 
         jScrollPane_stage2.setViewportView(jPanel_stage2);
 
@@ -3184,6 +3257,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private void clearStageTwoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearStageTwoButtonActionPerformed
         SystemLogger.LOGGER.log(Level.FINE, "jButton1ActionPerformed");
         SystemLogger.LOGGER.log(Level.INFO, "Clear Stage Two");
+        clearStageTwoMainEffectGrid();
         clearStageTwoLevelOneGrid();
         clearStageTwoLevelTwoGrid();
         enbaleInteractionCheckBox.setEnabled(true);
@@ -4446,6 +4520,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
@@ -4510,6 +4585,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JSeparator jSeparator16;
     private javax.swing.JSeparator jSeparator17;
     private javax.swing.JSeparator jSeparator18;
+    private javax.swing.JSeparator jSeparator19;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
@@ -4572,8 +4648,12 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JPanel parentPanel;
     public static javax.swing.JLabel printedFileName;
     public static javax.swing.JLabel printedFileName_stageTwo;
+    private javax.swing.JLabel randomLocationConfigLabel1;
+    private javax.swing.JLabel randomLocationConfigLabel2;
     public static javax.swing.JLabel randomLocationEffectsLabel;
     public static javax.swing.JLabel randomLocationEffectsLabel1;
+    private javax.swing.JLabel randomScaleConfigLabel1;
+    private javax.swing.JLabel randomScaleConfigLabel2;
     private javax.swing.JLabel randomScaleEffectsSpecViewLabel;
     private javax.swing.ButtonGroup randomScaleSelectionGroup;
     private javax.swing.JRadioButton randomScaleSelectionNo;
@@ -4623,6 +4703,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.ButtonGroup stageTwoLevelGroup;
     private javax.swing.JPanel stageTwoLevelOnePanel;
     private javax.swing.JPanel stageTwoLevelTwoPanel;
+    private javax.swing.JPanel stageTwoMainEffectPanel;
     private javax.swing.JLabel stageTwoModelGiantLabel;
     private javax.swing.JLabel stageTwoModelTypeHelpButton;
     private javax.swing.JLabel stageTwoModelTypeLabel;
@@ -4639,6 +4720,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     public static javax.swing.JTextArea stageTwoOutput;
     private javax.swing.JPanel stageTwoRegsGridLvl1;
     private javax.swing.JPanel stageTwoRegsGridLvl2;
+    private javax.swing.JPanel stageTwoRegsGridMain;
     private javax.swing.JRadioButton stageTwoSingleLevel;
     private javax.swing.JButton startStageTwo;
     private javax.swing.JTextField titleField;
@@ -8726,7 +8808,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                                     .getName()).log(Level.SEVERE, null, ex);
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
                 }
-                
+
                 try {
                     defFile.setAdvancedAdaptiveQuadWave(String.valueOf(advancedOptions_view.isAdaptiveQuadritureWaveChecked()));
                     System.out.println("From defHelper | Adaptive Quadriture Checked?: " + defFile.getAdvancedAdaptiveQuadWave());
@@ -9000,6 +9082,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     stage_2_regs.setEnabledStageTwoLevelOneRegVariables(false);
                     stageTwoLevelOnePanel.setEnabled(false);
                     stageTwoRegsGridLvl1.setEnabled(false);
+                    clearStageTwoMainEffectGrid();
                     clearStageTwoLevelOneGrid();
                 } else if (getStageTwoMultiLevel() == true) {
                     stage_2_regs.setEnabledStageTwoLevelOneAddButton(true);
@@ -9011,6 +9094,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 }
 
                 updateGuiView_trigger_randomScaleSelection();
+                updateStageTwoMainEffectGrid(stageTwoLevelOne, stageTwoLevelTwo);
             }
         } else {
 
@@ -9929,6 +10013,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageOneOutcomeStageTwoConfigLabel.setForeground(darkGreen);
         stageTwoOutcomeStageTwoConfigLabel.setText(stageTwoOutcomeTypeString());
         stageTwoOutcomeStageTwoConfigLabel.setForeground(darkGreen);
+        randomLocationConfigLabel2.setText(randomLocationTypeString());
+        randomLocationConfigLabel2.setForeground(darkGreen);
+        randomScaleConfigLabel2.setText(randomScaleTypeString());
+        randomScaleConfigLabel2.setForeground(darkGreen);
         stageTwoModelTypeStageTwoConfigLabel.setText(stageTwoModelTypeString());
         stageTwoModelTypeStageTwoConfigLabel.setForeground(darkGreen);
         numResamplingStageTwoConfigLabel.setText(numResamplingString());
@@ -10814,6 +10902,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageTwoRegs.isStageTwoSubmitClicked = mxrStates.isStageTwoSubmitClicked;
         if (stageTwoRegs.isStageTwoSubmitClicked == true) {
             stage_2_regs.setEnabledStageTwoSubmitButton(true);
+            update_StageTwoMainEffectBoxes(stageTwoRegs.stageTwoLevelOne, stageTwoRegs.stageTwoLevelTwo);
             update_StageTwoLevelOneBoxes(stageTwoRegs.stageTwoLevelOne, mxrStates.stageTwoLevelOneGridBoxesSelection);
             update_StageTwoLevelTwoBoxes(stageTwoRegs.stageTwoLevelTwo, mxrStates.stageTwoLevelTwoGridBoxesSelection);
             enbaleInteractionCheckBox.setSelected(mxrStates.suppressIntCheckBox);
@@ -11061,6 +11150,193 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     }
 
+    private void update_StageTwoMainEffectBoxes(DefaultListModel<String> defaultListModelLvl1, DefaultListModel<String> defaultListModelLvl2) {
+
+        JScrollPane scrollpanel = new JScrollPane(stageTwoRegsGridMain);
+        stageTwoMainEffectSelected = new ArrayList<String>();
+
+        int regSize1 = defaultListModelLvl1.getSize();
+        int regSize2 = defaultListModelLvl2.getSize();
+        int currentSize = 0;
+//        stageTwoMainEffectRegSize = regSize;
+
+        stageTwoRegsGridMain.removeAll();
+
+        stageTwoRegsGridMain.setLayout(new GridBagLayout());
+        GridBagConstraints constraints = new GridBagConstraints();
+
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        constraints.weightx = 1.0;
+        // constraints.weighty = 1.0;
+        constraints.anchor = GridBagConstraints.NORTHEAST;
+        //constraints.gridwidth = 4;
+
+        GridBagConstraints separatorConstraint = new GridBagConstraints();
+        separatorConstraint.weightx = 1.0;
+        separatorConstraint.fill = GridBagConstraints.HORIZONTAL;
+        separatorConstraint.gridwidth = GridBagConstraints.REMAINDER;
+        separatorConstraint.gridx = 0;
+
+        constraints.insets = new Insets(3, 5, 5, 0);
+        separatorConstraint.insets = new Insets(0, 0, 0, 0);
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.weightx = 1;
+
+        stageTwoMainEffectGridBoxes = new ArrayList<ArrayList<JCheckBox>>();
+        //disaggVarianceBoxes = new ArrayList<ArrayList<JCheckBox>>();
+
+        for (int j = 0; j < 2; j++) {
+//            int row = j;
+            constraints.gridx = 1;
+            constraints.anchor = GridBagConstraints.FIRST_LINE_START;
+
+            if (j == 0) { // random location
+                stageTwoMainEffectSelected.add("Random location");
+                JLabel variableText = new JLabel("Random location");
+
+                variableText.setPreferredSize(new Dimension(60, 20));
+                stageTwoRegsGridMain.add(variableText, constraints);
+                stageTwoMainEffectGridBoxes.add(j, new ArrayList<JCheckBox>());
+
+                constraints.gridx = constraints.gridx + 5;
+
+                constraints.anchor = GridBagConstraints.CENTER;
+
+                stageTwoMainEffectGridBoxes.get(j).add(0, new JCheckBox());
+                stageTwoMainEffectGridBoxes.get(j).get(0).setSelected(true);
+                stageTwoMainEffectGridBoxes.get(j).get(0).setEnabled(false);
+                stageTwoMainEffectGridBoxes.get(j).get(0).setVisible(true);
+                constraints.gridx++;
+
+                stageTwoRegsGridMain.add(stageTwoMainEffectGridBoxes.get(j).get(0), constraints);
+
+                constraints.gridy++;
+                separatorConstraint.gridy = separatorConstraint.gridy + 2;
+
+                stageTwoRegsGridMain.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
+                constraints.gridy++;
+            }
+
+            if (j == 1) { // random scale
+
+                if (randomScaleSelectionYes.isSelected()) {
+                    stageTwoMainEffectSelected.add("Random scale");
+                    JLabel variableText = new JLabel("Random scale");
+
+                    variableText.setPreferredSize(new Dimension(60, 20));
+                    stageTwoRegsGridMain.add(variableText, constraints);
+                    stageTwoMainEffectGridBoxes.add(j, new ArrayList<JCheckBox>());
+
+                    constraints.gridx = constraints.gridx + 5;
+
+                    constraints.anchor = GridBagConstraints.CENTER;
+
+                    stageTwoMainEffectGridBoxes.get(j).add(0, new JCheckBox());
+                    stageTwoMainEffectGridBoxes.get(j).get(0).setSelected(true);
+                    stageTwoMainEffectGridBoxes.get(j).get(0).setEnabled(false);
+                    stageTwoMainEffectGridBoxes.get(j).get(0).setVisible(true);
+                    constraints.gridx++;
+
+                    stageTwoRegsGridMain.add(stageTwoMainEffectGridBoxes.get(j).get(0), constraints);
+
+                    constraints.gridy++;
+                    separatorConstraint.gridy = separatorConstraint.gridy + 2;
+
+                    stageTwoRegsGridMain.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
+                    constraints.gridy++;
+                } else {
+                    // pass
+                }
+
+            }
+
+        }
+
+        currentSize = currentSize + stageTwoMainEffectSelected.size();
+
+        for (int j = 0; j < regSize1; j++) {
+//            int row = j;
+            constraints.gridx = 1;
+            constraints.anchor = GridBagConstraints.FIRST_LINE_START;
+            stageTwoMainEffectSelected.add(defaultListModelLvl1.getElementAt(j));
+            JLabel variableText = new JLabel(stageTwoMainEffectSelected.get(currentSize + j));
+//            variableText.setBorder(new LineBorder(Color.BLACK));
+            variableText.setPreferredSize(new Dimension(60, 20));
+            stageTwoRegsGridMain.add(variableText, constraints);
+//            stageTwoRegsGridLvl1.add(new JLabel(stageTwoLevelOneSelected.get(j)), constraints);
+
+            //stageTwoGrid.add(new JLabel(defaultListModel.getElementAt(j)), constraints);
+            stageTwoMainEffectGridBoxes.add(currentSize + j, new ArrayList<JCheckBox>());
+
+            constraints.gridx = constraints.gridx + 5;
+
+            constraints.anchor = GridBagConstraints.CENTER;
+
+            stageTwoMainEffectGridBoxes.get(currentSize + j).add(0, new JCheckBox());
+            stageTwoMainEffectGridBoxes.get(currentSize + j).get(0).setSelected(true);
+            stageTwoMainEffectGridBoxes.get(currentSize + j).get(0).setEnabled(false);
+            stageTwoMainEffectGridBoxes.get(currentSize + j).get(0).setVisible(true);
+            constraints.gridx++;
+
+            stageTwoRegsGridMain.add(stageTwoMainEffectGridBoxes.get(currentSize + j).get(0), constraints);
+
+            constraints.gridy++;
+            separatorConstraint.gridy = separatorConstraint.gridy + 2;
+
+            stageTwoRegsGridMain.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
+            constraints.gridy++;
+
+        }
+
+        currentSize = currentSize + stageTwoMainEffectSelected.size();
+
+        for (int j = 0; j < regSize2; j++) {
+//            int row = j;
+            constraints.gridx = 1;
+            constraints.anchor = GridBagConstraints.FIRST_LINE_START;
+            stageTwoMainEffectSelected.add(defaultListModelLvl2.getElementAt(j));
+            JLabel variableText = new JLabel(stageTwoMainEffectSelected.get(currentSize + j));
+//            variableText.setBorder(new LineBorder(Color.BLACK));
+            variableText.setPreferredSize(new Dimension(60, 20));
+            stageTwoRegsGridMain.add(variableText, constraints);
+//            stageTwoRegsGridLvl1.add(new JLabel(stageTwoLevelOneSelected.get(j)), constraints);
+
+            //stageTwoGrid.add(new JLabel(defaultListModel.getElementAt(j)), constraints);
+            stageTwoMainEffectGridBoxes.add(currentSize + j, new ArrayList<JCheckBox>());
+
+            constraints.gridx = constraints.gridx + 5;
+
+            constraints.anchor = GridBagConstraints.CENTER;
+
+            stageTwoMainEffectGridBoxes.get(currentSize + j).add(0, new JCheckBox());
+            stageTwoMainEffectGridBoxes.get(currentSize + j).get(0).setSelected(true);
+            stageTwoMainEffectGridBoxes.get(currentSize + j).get(0).setEnabled(false);
+            stageTwoMainEffectGridBoxes.get(currentSize + j).get(0).setVisible(true);
+            constraints.gridx++;
+
+            stageTwoRegsGridMain.add(stageTwoMainEffectGridBoxes.get(currentSize + j).get(0), constraints);
+
+            constraints.gridy++;
+            separatorConstraint.gridy = separatorConstraint.gridy + 2;
+
+            stageTwoRegsGridMain.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
+            constraints.gridy++;
+
+        }
+
+        stageTwoMainEffectPanel.removeAll();
+
+        stageTwoMainEffectPanel.add(scrollpanel);
+
+        stageTwoMainEffectPanel.revalidate();
+
+        stageTwoMainEffectPanel.repaint();
+
+        revalidate();
+
+    }
+
     private void update_StageTwoLevelOneBoxes(DefaultListModel<String> defaultListModel, boolean[][] stageTwoLevelOneGridBoxesSelection) {
 
         JScrollPane scrollpanel = new JScrollPane(stageTwoRegsGridLvl1);
@@ -11291,6 +11567,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             jLabel37.setVisible(false);
 
             // reset table
+            updateStageTwoMainEffectGrid(stageTwoLevelOne, stageTwoLevelTwo);
             updateStageTwoLevelOneGrid(stageTwoLevelOne);
             updateStageTwoLevelTwoGrid(stageTwoLevelTwo);
 
@@ -11352,6 +11629,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             jLabel37.setVisible(true);
 
             // reset table
+            updateStageTwoMainEffectGrid(stageTwoLevelOne, stageTwoLevelTwo);
             updateStageTwoLevelOneGrid(stageTwoLevelOne);
             updateStageTwoLevelTwoGrid(stageTwoLevelTwo);
 
@@ -11411,6 +11689,193 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
         }
+    }
+
+    void updateStageTwoMainEffectGrid(DefaultListModel<String> defaultListModelLvl1, DefaultListModel<String> defaultListModelLvl2) {
+
+        JScrollPane scrollpanel = new JScrollPane(stageTwoRegsGridMain);
+        stageTwoMainEffectSelected = new ArrayList<String>();
+
+        int regSize1 = defaultListModelLvl1.getSize();
+        int regSize2 = defaultListModelLvl2.getSize();
+        int currentSize = 0;
+//        stageTwoMainEffectRegSize = regSize;
+
+        stageTwoRegsGridMain.removeAll();
+
+        stageTwoRegsGridMain.setLayout(new GridBagLayout());
+        GridBagConstraints constraints = new GridBagConstraints();
+
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        constraints.weightx = 1.0;
+        // constraints.weighty = 1.0;
+        constraints.anchor = GridBagConstraints.NORTHEAST;
+        //constraints.gridwidth = 4;
+
+        GridBagConstraints separatorConstraint = new GridBagConstraints();
+        separatorConstraint.weightx = 1.0;
+        separatorConstraint.fill = GridBagConstraints.HORIZONTAL;
+        separatorConstraint.gridwidth = GridBagConstraints.REMAINDER;
+        separatorConstraint.gridx = 0;
+
+        constraints.insets = new Insets(3, 5, 5, 0);
+        separatorConstraint.insets = new Insets(0, 0, 0, 0);
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.weightx = 1;
+
+        stageTwoMainEffectGridBoxes = new ArrayList<ArrayList<JCheckBox>>();
+        //disaggVarianceBoxes = new ArrayList<ArrayList<JCheckBox>>();
+
+        for (int j = 0; j < 2; j++) {
+//            int row = j;
+            constraints.gridx = 1;
+            constraints.anchor = GridBagConstraints.FIRST_LINE_START;
+
+            if (j == 0) { // random location
+                stageTwoMainEffectSelected.add("Random location");
+                JLabel variableText = new JLabel("Random location");
+
+                variableText.setPreferredSize(new Dimension(60, 20));
+                stageTwoRegsGridMain.add(variableText, constraints);
+                stageTwoMainEffectGridBoxes.add(j, new ArrayList<JCheckBox>());
+
+                constraints.gridx = constraints.gridx + 5;
+
+                constraints.anchor = GridBagConstraints.CENTER;
+
+                stageTwoMainEffectGridBoxes.get(j).add(0, new JCheckBox());
+                stageTwoMainEffectGridBoxes.get(j).get(0).setSelected(true);
+                stageTwoMainEffectGridBoxes.get(j).get(0).setEnabled(false);
+                stageTwoMainEffectGridBoxes.get(j).get(0).setVisible(true);
+                constraints.gridx++;
+
+                stageTwoRegsGridMain.add(stageTwoMainEffectGridBoxes.get(j).get(0), constraints);
+
+                constraints.gridy++;
+                separatorConstraint.gridy = separatorConstraint.gridy + 2;
+
+                stageTwoRegsGridMain.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
+                constraints.gridy++;
+            }
+
+            if (j == 1) { // random scale
+
+                if (randomScaleSelectionYes.isSelected()) {
+                    stageTwoMainEffectSelected.add("Random scale");
+                    JLabel variableText = new JLabel("Random scale");
+
+                    variableText.setPreferredSize(new Dimension(60, 20));
+                    stageTwoRegsGridMain.add(variableText, constraints);
+                    stageTwoMainEffectGridBoxes.add(j, new ArrayList<JCheckBox>());
+
+                    constraints.gridx = constraints.gridx + 5;
+
+                    constraints.anchor = GridBagConstraints.CENTER;
+
+                    stageTwoMainEffectGridBoxes.get(j).add(0, new JCheckBox());
+                    stageTwoMainEffectGridBoxes.get(j).get(0).setSelected(true);
+                    stageTwoMainEffectGridBoxes.get(j).get(0).setEnabled(false);
+                    stageTwoMainEffectGridBoxes.get(j).get(0).setVisible(true);
+                    constraints.gridx++;
+
+                    stageTwoRegsGridMain.add(stageTwoMainEffectGridBoxes.get(j).get(0), constraints);
+
+                    constraints.gridy++;
+                    separatorConstraint.gridy = separatorConstraint.gridy + 2;
+
+                    stageTwoRegsGridMain.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
+                    constraints.gridy++;
+                } else {
+                    // pass
+                }
+
+            }
+
+        }
+
+        currentSize = stageTwoMainEffectSelected.size();
+
+        for (int j = 0; j < regSize1; j++) {
+//            int row = j;
+            constraints.gridx = 1;
+            constraints.anchor = GridBagConstraints.FIRST_LINE_START;
+            stageTwoMainEffectSelected.add(defaultListModelLvl1.getElementAt(j));
+            JLabel variableText = new JLabel(stageTwoMainEffectSelected.get(currentSize + j));
+//            variableText.setBorder(new LineBorder(Color.BLACK));
+            variableText.setPreferredSize(new Dimension(60, 20));
+            stageTwoRegsGridMain.add(variableText, constraints);
+//            stageTwoRegsGridLvl1.add(new JLabel(stageTwoLevelOneSelected.get(j)), constraints);
+
+            //stageTwoGrid.add(new JLabel(defaultListModel.getElementAt(j)), constraints);
+            stageTwoMainEffectGridBoxes.add(currentSize + j, new ArrayList<JCheckBox>());
+
+            constraints.gridx = constraints.gridx + 5;
+
+            constraints.anchor = GridBagConstraints.CENTER;
+
+            stageTwoMainEffectGridBoxes.get(currentSize + j).add(0, new JCheckBox());
+            stageTwoMainEffectGridBoxes.get(currentSize + j).get(0).setSelected(true);
+            stageTwoMainEffectGridBoxes.get(currentSize + j).get(0).setEnabled(false);
+            stageTwoMainEffectGridBoxes.get(currentSize + j).get(0).setVisible(true);
+            constraints.gridx++;
+
+            stageTwoRegsGridMain.add(stageTwoMainEffectGridBoxes.get(currentSize + j).get(0), constraints);
+
+            constraints.gridy++;
+            separatorConstraint.gridy = separatorConstraint.gridy + 2;
+
+            stageTwoRegsGridMain.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
+            constraints.gridy++;
+
+        }
+
+        currentSize = stageTwoMainEffectSelected.size();
+
+        for (int j = 0; j < regSize2; j++) {
+//            int row = j;
+            constraints.gridx = 1;
+            constraints.anchor = GridBagConstraints.FIRST_LINE_START;
+            stageTwoMainEffectSelected.add(defaultListModelLvl2.getElementAt(j));
+            System.out.println(currentSize);
+            JLabel variableText = new JLabel(stageTwoMainEffectSelected.get(currentSize + j));
+//            variableText.setBorder(new LineBorder(Color.BLACK));
+            variableText.setPreferredSize(new Dimension(60, 20));
+            stageTwoRegsGridMain.add(variableText, constraints);
+//            stageTwoRegsGridLvl1.add(new JLabel(stageTwoLevelOneSelected.get(j)), constraints);
+
+            //stageTwoGrid.add(new JLabel(defaultListModel.getElementAt(j)), constraints);
+            stageTwoMainEffectGridBoxes.add(currentSize + j, new ArrayList<JCheckBox>());
+
+            constraints.gridx = constraints.gridx + 5;
+
+            constraints.anchor = GridBagConstraints.CENTER;
+
+            stageTwoMainEffectGridBoxes.get(currentSize + j).add(0, new JCheckBox());
+            stageTwoMainEffectGridBoxes.get(currentSize + j).get(0).setSelected(true);
+            stageTwoMainEffectGridBoxes.get(currentSize + j).get(0).setEnabled(false);
+            stageTwoMainEffectGridBoxes.get(currentSize + j).get(0).setVisible(true);
+            constraints.gridx++;
+
+            stageTwoRegsGridMain.add(stageTwoMainEffectGridBoxes.get(currentSize + j).get(0), constraints);
+
+            constraints.gridy++;
+            separatorConstraint.gridy = separatorConstraint.gridy + 2;
+
+            stageTwoRegsGridMain.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
+            constraints.gridy++;
+
+        }
+
+        stageTwoMainEffectPanel.removeAll();
+
+        stageTwoMainEffectPanel.add(scrollpanel);
+
+        stageTwoMainEffectPanel.revalidate();
+
+        stageTwoMainEffectPanel.repaint();
+
+        revalidate();
     }
 
     void updateStageTwoLevelOneGrid(DefaultListModel<String> defaultListModel) {
@@ -11855,6 +12320,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     private boolean isNumeric(String thiscellvalue) {
         return thiscellvalue.matches("-?\\d+(\\.\\d+)?");
+    }
+
+    private void clearStageTwoMainEffectGrid() {
+        stageTwoMainEffectPanel.removeAll();
+        stageTwoMainEffectPanel.revalidate();
+        stageTwoMainEffectPanel.repaint();
+
+        updateStageTwoMainEffectGrid(stage_2_regs.stageTwoLevelOne, stage_2_regs.stageTwoLevelTwo);
     }
 
     private void clearStageTwoLevelOneGrid() {
