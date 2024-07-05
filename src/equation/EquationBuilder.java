@@ -17,14 +17,27 @@ import mixregui.stageOneRegs;
 
 public class EquationBuilder {
 
-    public static String[] getStageOneModelVariables(String stageOneOutcomeLabel, String[] stageOneRegNameList, String[] stageOneRegEquationNameList) {
+    public static String[] getStageOneModelVariables(String stageOneOrTwoOutcomeLabel, String[] stageOneOrTwoRegNameList, String[] stageOneOrTwoRegEquationNameList) {
 //        String latex2 = "PA_i_j = \\beta_0 + \\beta_1 Day\\_c_i_j + \\nu_i + \\epsilon_i_j";
 //        String latex3 = "\\int_0^{+\\infty} e^{-x^2}\\mathrm{d}x = \\frac\\sqrt{\\pi}2  \\sum_{n=0}^{\\infty}\\frac{1}{n^2}=\\frac{\\pi^2}6";
-        String[] stageOneModelVarArray = new String[stageOneRegNameList.length + 1];
-        String stageOneOutcomeLatex = "Y_1: " + stageOneOutcomeLabel;
+        String[] stageOneModelVarArray = new String[stageOneOrTwoRegNameList.length + 1];
+        String stageOneOutcomeLatex = "Y_1: " + stageOneOrTwoOutcomeLabel;
         stageOneModelVarArray[0] = stageOneOutcomeLatex;
-        for (int i = 0; i < stageOneRegEquationNameList.length; i++) {
-            stageOneModelVarArray[i + 1] = stageOneRegEquationNameList[i] + ": " + stageOneRegNameList[i];
+        for (int i = 0; i < stageOneOrTwoRegEquationNameList.length; i++) {
+            stageOneModelVarArray[i + 1] = stageOneOrTwoRegEquationNameList[i] + ": " + stageOneOrTwoRegNameList[i];
+        }
+
+        return stageOneModelVarArray;
+    }
+
+    public static String[] getStageTwoModelVariables(String stageOneOrTwoOutcomeLabel, String[] stageOneOrTwoRegNameList, String[] stageOneOrTwoRegEquationNameList) {
+//        String latex2 = "PA_i_j = \\beta_0 + \\beta_1 Day\\_c_i_j + \\nu_i + \\epsilon_i_j";
+//        String latex3 = "\\int_0^{+\\infty} e^{-x^2}\\mathrm{d}x = \\frac\\sqrt{\\pi}2  \\sum_{n=0}^{\\infty}\\frac{1}{n^2}=\\frac{\\pi^2}6";
+        String[] stageOneModelVarArray = new String[stageOneOrTwoRegNameList.length + 1];
+        String stageOneOutcomeLatex = "Y_2: " + stageOneOrTwoOutcomeLabel;
+        stageOneModelVarArray[0] = stageOneOutcomeLatex;
+        for (int i = 0; i < stageOneOrTwoRegEquationNameList.length; i++) {
+            stageOneModelVarArray[i + 1] = stageOneOrTwoRegEquationNameList[i] + ": " + stageOneOrTwoRegNameList[i];
         }
 
         return stageOneModelVarArray;
@@ -69,13 +82,12 @@ public class EquationBuilder {
 
             }
         }
-        
-        if (stageOneLevelThree == false){
+
+        if (stageOneLevelThree == false) {
             MeanModelLatex = MeanModelLatex + " + $\\nu_{0_i}$ + \\epsilon_i_j";
         } else {
             MeanModelLatex = MeanModelLatex + " + $\\nu_{0_i_j}$ + $\\nu_{0_i}$ + \\epsilon_i_j_k";
         }
-        
 
         // BS model
         String BSModelLatex = null;
@@ -155,6 +167,89 @@ public class EquationBuilder {
         stageOneModelLatexArray[0] = MeanModelLatex;
         stageOneModelLatexArray[1] = BSModelLatex;
         stageOneModelLatexArray[2] = WSModelLatex;
+
+        return stageOneModelLatexArray;
+    }
+
+    public static String[] getStageTwoModelLatex(int stageTwoOutcomeLevel, int stageTwoOutcomeType, String[] stageTwoRegLabelList, String[] stageTwoRegEquationNameList, int RLE, int RSE, String[] stageTwoRegressorLabels, String[] randomLocationInteractionLabels, String[] randomScaleInteractionLabels, String[] randomLocationScaleInteractionLabels, boolean twoWayRandomLocationScaleInteraction) {
+//        String latex2 = "PA_i_j = \\beta_0 + \\beta_1 Day\\_c_i_j + \\nu_i + \\epsilon_i_j";
+//        String latex3 = "\\int_0^{+\\infty} e^{-x^2}\\mathrm{d}x = \\frac\\sqrt{\\pi}2  \\sum_{n=0}^{\\infty}\\frac{1}{n^2}=\\frac{\\pi^2}6";
+        //" + \\beta_1 X_1_i_j + \\nu_i + \\epsilon_i_j";
+        String[] stageOneModelLatexArray = new String[1];
+
+        // Stage two model: regressors (lvl1+lvl2), interaction, random effects, error term
+        String modelLatex;
+        String outcomeVarLatex = "Y_2";
+        if (stageTwoOutcomeLevel == 0) {
+            outcomeVarLatex = outcomeVarLatex + "_i";
+        } else {
+            outcomeVarLatex = outcomeVarLatex + "_i_j";
+        }
+
+        if (stageTwoOutcomeType == 1) { // continuous
+            modelLatex = "Y_1_i_j = \\beta_0";
+        } else if (stageTwoOutcomeType == 2 || stageTwoOutcomeType == 4) { //binary or ordinal, multinomial
+            modelLatex = "logit(" + outcomeVarLatex + ") = \\beta_0";
+        } else { // count
+            modelLatex = "log(" + outcomeVarLatex + ") = \\beta_0";
+        }
+
+        // Regressors
+        int index = 1;
+        for (int i = 0; i < stageTwoRegressorLabels.length; i++) {
+            String regLabel;
+            regLabel = stageTwoRegressorLabels[i];
+            String equationVarName = stageTwoRegEquationNameList[Arrays.asList(stageTwoRegLabelList).indexOf(regLabel)];
+            modelLatex = modelLatex + " + \\beta_" + Integer.toString(index) + " " + equationVarName;
+            index++;
+        }
+
+        // Interaction
+        for (int i = 0; i < randomLocationInteractionLabels.length; i++) {
+            String regLabel;
+            regLabel = randomLocationInteractionLabels[i];
+            String equationVarName = stageTwoRegEquationNameList[Arrays.asList(stageTwoRegLabelList).indexOf(regLabel)];
+            modelLatex = modelLatex + " + \\beta_" + Integer.toString(index) + " " + equationVarName + " \\nu_i";
+            index++;
+        }
+
+        for (int i = 0; i < randomScaleInteractionLabels.length; i++) {
+            String regLabel;
+            regLabel = randomScaleInteractionLabels[i];
+            String equationVarName = stageTwoRegEquationNameList[Arrays.asList(stageTwoRegLabelList).indexOf(regLabel)];
+            modelLatex = modelLatex + " + \\beta_" + Integer.toString(index) + " " + equationVarName + " \\omega_i";
+            index++;
+        }
+
+        for (int i = 0; i < randomLocationScaleInteractionLabels.length; i++) {
+            String regLabel;
+            regLabel = randomLocationScaleInteractionLabels[i];
+            
+            String equationVarName = stageTwoRegEquationNameList[Arrays.asList(stageTwoRegLabelList).indexOf(regLabel)];
+            modelLatex = modelLatex + " + \\beta_" + Integer.toString(index) + " " + equationVarName + " \\nu_i  \\omega_i";
+            index++;
+        }
+
+        //Random effects
+        modelLatex = modelLatex + " + \\nu_i";
+
+        if (RSE > 0) {
+            modelLatex = modelLatex + " + \\omega_i";
+            if (twoWayRandomLocationScaleInteraction) {
+                modelLatex = modelLatex + " + \\nu_i \\omega_i";
+            }
+        } else {
+            // pass
+        }
+
+        // Error terms
+        if (stageTwoOutcomeLevel == 0) {
+            modelLatex = modelLatex + " + \\epsilon_i";
+        } else {
+            modelLatex = modelLatex + " + \\epsilon_i_j";
+        }
+
+        stageOneModelLatexArray[0] = modelLatex;
 
         return stageOneModelLatexArray;
     }

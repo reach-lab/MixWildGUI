@@ -118,6 +118,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     static String dataFileNameRef;
     static String dataFileNameRef_stageTwo;
     static String equationLatex;
+    static String equationLatexStageTwo;
     final ImageIcon icon;
     final ImageIcon bigIcon;
     static int iconPositionX;
@@ -6841,6 +6842,44 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         return regLabels;
     }
 
+    public String[] getStageTwoLabelsLevelOne() {
+        System.out.println("*********************************");
+        System.out.println("Means-Labels From level 1 (Labels)");
+
+        String fieldLabel;
+
+        ArrayList<String> regressorLabels = new ArrayList<String>();
+
+        int index = 0;
+        boolean disaggVarianceBoxesSelected;
+
+        for (int p = 0; p < levelOneRegSize; p++) {
+            disaggVarianceBoxesSelected = false;
+            if (disaggregateEnabled == true) {
+                disaggVarianceBoxesSelected = disaggVarianceBoxes.get(p).get(0).isSelected();
+            }
+            if (levelOneBoxes.get(p).get(0).isSelected() && !disaggVarianceBoxesSelected) {
+
+                regressorLabels.add(levelOneSelected.get(p));
+                fieldLabel = levelOneSelected.get(p);
+                System.out.println("From inside mixRegGUI | LEVEL ONE Regressor Fields (Mean): " + regressorLabels.get(index));
+                index++;
+            }
+        }
+
+        String[] regLabels = new String[regressorLabels.size()];
+
+        for (int pos = 0; pos < regLabels.length; pos++) {
+            regLabels[pos] = regressorLabels.get(pos);
+            System.out.println("Reg_LABEL: " + regLabels[pos]);
+
+        }
+
+        System.out.println("From inside mixRegGUI | LEVEL ONE MEAN REGRESSORS: " + Arrays.toString(regLabels));
+        System.out.println("*********************************");
+        return regLabels;
+    }
+
     public String[] getModelMeanDisaggLabelsLevelOne() {
 
         ArrayList<String> regressorLabels = new ArrayList<String>();
@@ -8478,7 +8517,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             try {
                 writer = new BufferedWriter(new FileWriter(file));
-                writer.write(equationLatex);
+                writer.write("Stage One Models: \n" + equationLatex + "\nStage Two " + equationLatexStageTwo);
                 writer.close();
                 JOptionPane.showMessageDialog(this, "Equation latex code was Saved Successfully!",
                         "Success!", JOptionPane.INFORMATION_MESSAGE);
@@ -13173,10 +13212,46 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         equationStageOneLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
     }
 
-    private void update_model_variable_table_stage_one(String stageOneOutcomeLabel, String[] stageOneRegNameList, String[] stageOneRegEquationNameList) {
+    private void update_model_equation_stage_two(int stageTwoOutcomeLevel, int stageTwoOutcomeType, String[] stageTwoRegLabelList, String[] stageTwoRegEquationNameList, int RLE, int RSE, String[] stageTwoRegressorLabels, String[] randomLocationInteractionLabels, String[] randomScaleInteractionLabels, String[] randomLocationScaleInteraction, boolean twoWayRandomLocationScaleInteraction) {
+        int fontsize = 22;
+//        boolean stageOneLevelThree = stageOneThreeLevelParticipantLevelThreeRadio.isSelected();
+        String[] stageTwoModelLatexArray = EquationBuilder.getStageTwoModelLatex(stageTwoOutcomeLevel, stageTwoOutcomeType, stageTwoRegLabelList, stageTwoRegEquationNameList, RLE, RSE, stageTwoRegressorLabels, randomLocationInteractionLabels, randomScaleInteractionLabels, randomLocationScaleInteraction, twoWayRandomLocationScaleInteraction);
+        String latex1 = stageTwoModelLatexArray[0];
+
+        int n = 2;
+        String space = "\\:";
+        String space_str = StringUtils.repeat(space, n);
+        latex1 = "Model:" + space_str + latex1;
+
+        equationLatexStageTwo = latex1;
+
+        TeXFormula formula1 = new TeXFormula(latex1);
+//        TeXIcon icon1 = formula1.createTeXIcon(TeXConstants.STYLE_DISPLAY, fontsize, TeXConstants.UNIT_PIXEL, 256f, TeXConstants.ALIGN_CENTER);
+        TeXIcon icon1 = formula1.new TeXIconBuilder().setStyle(TeXConstants.STYLE_DISPLAY)
+                .setSize(fontsize)
+                .setWidth(TeXConstants.UNIT_PIXEL, 256f, TeXConstants.ALIGN_CENTER)
+                .setIsMaxWidth(true)
+                .setInterLineSpacing(TeXConstants.UNIT_PIXEL, 20f).build();
+
+        equationStageTwoLabel.setText(null); // remove "rendering" text
+        equationStageTwoLabel.setLayout(new BoxLayout(equationStageTwoLabel, BoxLayout.Y_AXIS));
+        JLabel icon1Label = new JLabel();
+
+        icon1Label.setIcon(icon1);
+
+        equationStageTwoLabel.add(Box.createVerticalGlue());
+        equationStageTwoLabel.add(icon1Label);
+        equationStageTwoLabel.add(Box.createVerticalGlue());
+
+        equationStageTwoLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+    }
+
+    private void update_model_variable_table_stage_one(String stageOneOrTwoOutcomeLabel, String[] stageOneorTwoRegNameList, String[] stageOneOrTwoRegEquationNameList) {
+        // Shared by stage one and stage two models
+
         latexVaraibleStageOneTextArea.setEditable(false);
 //        JScrollPane scroll = new JScrollPane(latexVaraibleTextArea);
-        String[] stageOneModelVarArray = EquationBuilder.getStageOneModelVariables(stageOneOutcomeLabel, stageOneRegNameList, stageOneRegEquationNameList);
+        String[] stageOneModelVarArray = EquationBuilder.getStageOneModelVariables(stageOneOrTwoOutcomeLabel, stageOneorTwoRegNameList, stageOneOrTwoRegEquationNameList);
 //        latexVaraibleTextArea.append(" \n");
         for (int i = 0; i < stageOneModelVarArray.length; i++) {
             String row;
@@ -13189,20 +13264,43 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         }
     }
 
+    private void update_model_variable_table_stage_two(String stageOneOrTwoOutcomeLabel, String[] stageOneorTwoRegNameList, String[] stageOneOrTwoRegEquationNameList) {
+        // Shared by stage one and stage two models
+
+        latexVaraibleStageTwoTextArea.setEditable(false);
+//        JScrollPane scroll = new JScrollPane(latexVaraibleTextArea);
+        String[] stageOneModelVarArray = EquationBuilder.getStageTwoModelVariables(stageOneOrTwoOutcomeLabel, stageOneorTwoRegNameList, stageOneOrTwoRegEquationNameList);
+//        latexVaraibleTextArea.append(" \n");
+        for (int i = 0; i < stageOneModelVarArray.length; i++) {
+            String row;
+            if (i == (stageOneModelVarArray.length - 1)) {
+                row = " " + stageOneModelVarArray[i];
+            } else {
+                row = " " + stageOneModelVarArray[i] + "\n";
+            }
+            latexVaraibleStageTwoTextArea.append(row);
+        }
+    }
+
     private void update_formula_and_variable_table() {
         // clear all Jlabel and TextView
         equationStageOneLabel.removeAll();
         equationStageOneLabel.setText("Rendering...");
         latexVaraibleStageOneTextArea.setText("");
 
-        // Config that are currently not supported
-        // 1. stage one outcome is binary/ordinary
+        equationStageTwoLabel.removeAll();
+        equationStageTwoLabel.setText("Rendering...");
+        latexVaraibleStageTwoTextArea.setText("");
+
+        // 0. Config that are currently not supported
+        //    (1) stage one outcome is binary/ordinary
         int stageOneOutcome = getStageOneOutcome();
         if (stageOneOutcome != MixLibrary.STAGE_ONE_OUTCOME_MIXREG) {
             equationStageOneLabel.setText("Currently not supported: stage one outcome is binary/ordinal.");
             return;
         }
 
+        // 1. Stage One Equation
         String stageOneOutcomeLabel = getOutcomeLabel();
         // RLE: 0 = intercept only, 1 = intercept and slope
         int RLE = getRLE();
@@ -13276,12 +13374,50 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             stageOneRegEquationNameList[pos] = "X_" + Integer.toString(pos + 1) + subscript;
 
         }
-//            if (disaggregateEnabled == true && pos < stage_1_regs.levelOneList.size()) { // disaggregate
-//                stageOneRegEquationNameList[pos] = "X_" + Integer.toString(pos + 1);
-//            } else {
-        // if pass the check, rendering model 
+
         update_model_equation_stage_one(stageOneOutcomeLabel, stageOneRegLabelList, stageOneRegTableNameList, stageOneRegEquationNameList, RLE, RSE, association, meanModelVarLabels, meanModelDisaggVarLabels, BSModelVarLabels, BSModelDisaggVarLabels, WSModelVarLabels, WSModelDisaggVarLabels, BWModelVarLabels, BWModelDisaggVarLabels, ScaleRandomModelVarLabels, ScaleRandomDisaggModelVarLabels, stage_1_regs.levelOneList, stage_1_regs.levelTwoList, stage_1_regs.levelThreeList);
         update_model_variable_table_stage_one(stageOneOutcomeLabel, stageOneRegLabelList, stageOneRegTableNameList);
+
+        // 2. Stage Two Equation
+        int stageTwoOutcomeLevel = getStageTwoModelType();
+
+        int stageTwoOutcomeType = getStageTwoOutcomeType();
+
+        String stageTwoOutcomeLabel = getStageTwoOutcomeLabel();
+
+        //
+        String[] stageTwoRegressorLabels = getModelFixedLabelsStageTwo();
+        String[] randomLocationInteractionLabels = getModelLocRanLabelsStageTwo();
+        String[] randomScaleInteractionLabels = getModelScaleLabelsStageTwo();
+        String[] randomLocationScaleInteraction = getModelInteractionLabelsStageTwo();
+
+        boolean twoWayRandomLocationScaleInteraction = enbaleInteractionCheckBox.isSelected();
+
+        // stage 2 model regressor labels: level 1 2
+        int arraySizeStageTwo = stage_2_regs.stageTwoLevelOne.size() + stage_2_regs.stageTwoLevelTwo.size();
+        // stageOneRegLabelList, stageOneRegEquationNameList are two parallel lists, containing regressor labels and X names respectively
+        String[] stageTwoRegLabelList = new String[arraySizeStageTwo];
+        String[] stageTwoRegTableNameList = new String[arraySizeStageTwo];
+        String[] stageTwoRegEquationNameList = new String[arraySizeStageTwo];
+
+        for (int pos = 0; pos < arraySizeStageTwo; pos++) {
+            if (pos < stage_2_regs.stageTwoLevelOne.size()) {
+                stageTwoRegLabelList[pos] = stage_2_regs.stageTwoLevelOne.get(pos);
+            } else {
+                stageTwoRegLabelList[pos] = stage_2_regs.stageTwoLevelTwo.get(pos - stage_2_regs.stageTwoLevelOne.size());
+            }
+            // Variable name in table (i.e., no subscript)
+            stageTwoRegTableNameList[pos] = "X_" + Integer.toString(pos + 1);
+            // Variable name in equation
+            String regLabel = stageTwoRegLabelList[pos];
+            String subscript = getSubscriptStageTwoRegressor(regLabel, stage_2_regs.stageTwoLevelOne, stage_2_regs.stageTwoLevelTwo);
+            stageTwoRegEquationNameList[pos] = "X_" + Integer.toString(pos + 1) + subscript;
+
+        }
+
+        update_model_equation_stage_two(stageTwoOutcomeLevel, stageTwoOutcomeType, stageTwoRegLabelList, stageTwoRegEquationNameList, RLE, RSE, stageTwoRegressorLabels, randomLocationInteractionLabels, randomScaleInteractionLabels, randomLocationScaleInteraction, twoWayRandomLocationScaleInteraction);
+        update_model_variable_table_stage_two(stageTwoOutcomeLabel, stageTwoRegLabelList, stageTwoRegTableNameList);
+
     }
 
     private String getSubscriptStageOneRegressor(String regLabel, DefaultListModel<String> stageOneLvlOneList, DefaultListModel<String> stageOneLvlTwoList, DefaultListModel<String> stageOneLvlThreeList) {
@@ -13318,6 +13454,30 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         }
 
         // Stage one - three level
+        return subscript;
+    }
+
+    private String getSubscriptStageTwoRegressor(String regLabel, DefaultListModel<String> stageTwoLvlOneList, DefaultListModel<String> stageTwoLvlTwoList) {
+        int regressorLevel = 1;
+        String subscript = "";
+
+        if (stageTwoLvlOneList.contains(regLabel)) {
+            regressorLevel = 1;
+        } else if (stageTwoLvlTwoList.contains(regLabel)) {
+            regressorLevel = 2;
+        } else {
+            //pass
+        }
+
+        // Stage two - two level
+        if (regressorLevel == 1) {
+            subscript = "_i_j";
+        } else if (regressorLevel == 2) {
+            subscript = "_i";
+        } else {
+            //pass
+        }
+
         return subscript;
     }
 }
