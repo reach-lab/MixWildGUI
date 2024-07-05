@@ -2377,7 +2377,7 @@ public class MixLibrary implements Serializable {
     public void readStageOneOutputfile() throws FileNotFoundException, IOException {
         mixregGUI.stageOneOutput.setText("");
         String fileName = mixregGUI.defFile.getSharedDataFilename();
-        String outputFilePath = FilenameUtils.removeExtension(fileName) + "_Output_stage1.out";
+        String outputFilePath = FilenameUtils.removeExtension(fileName) + "_Output_stage1_final.out";
         File file = new File(outputFilePath);
         BufferedReader br = null;
         String line = "";
@@ -2392,6 +2392,8 @@ public class MixLibrary implements Serializable {
         br.close();
 
     }
+
+
 
     public void readStageTwoOutputfile() throws FileNotFoundException, IOException {
 

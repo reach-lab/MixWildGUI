@@ -2663,7 +2663,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel7.setText("Results from stage 1 analysis");
 
-        openStage1OutButton.setText("Open Results In Editor");
+        openStage1OutButton.setText("Open Full Results In Editor");
         openStage1OutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 openStage1OutButtonActionPerformed(evt);
@@ -3148,7 +3148,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     private void saveStage1OutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveStage1OutButtonActionPerformed
         SystemLogger.LOGGER.log(Level.FINE, "jButton8ActionPerformed");
-        saveStageOneOutput();
+        try {
+            saveStageOneOutput();
+        } catch (IOException ex) {
+            Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_saveStage1OutButtonActionPerformed
 
     private void outcomeCatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_outcomeCatButtonActionPerformed
@@ -3928,7 +3932,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     private void openStage1OutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openStage1OutButtonActionPerformed
         String fileName = mixregGUI.defFile.getSharedDataFilename();
-        String outputFilePath = FilenameUtils.removeExtension(fileName) + "_Output_stage1.out";
+        String outputFilePath = FilenameUtils.removeExtension(fileName) + "_Output.out";
         File outputfile = new File(outputFilePath);
         try {
             openTextFileInEditor(outputfile);
@@ -8482,8 +8486,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         }
     }
 
-    public void saveStageOneOutput() {
+    public void saveStageOneOutput() throws IOException {
         FileFilter filter = new FileNameExtensionFilter("TEXT FILE", "txt");
+//        String stageOneDetailedOutText = readStageOneDetailedOutputfile();
 
         JFileChooser saver = new JFileChooser("./");
         saver.setFileFilter(filter);
@@ -8503,6 +8508,25 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                         "Error!", JOptionPane.INFORMATION_MESSAGE);
             }
         }
+    }
+
+    public String readStageOneDetailedOutputfile() throws FileNotFoundException, IOException {
+        String stageOneDetailedOutputText = "";
+        String fileName = defFile.getSharedDataFilename();
+        String outputFilePath = FilenameUtils.removeExtension(fileName) + "_Output.out";
+        File file = new File(outputFilePath);
+        BufferedReader br = null;
+        String line = "";
+
+        br = new BufferedReader(new FileReader(file));
+        while ((line = br.readLine()) != null) {
+            //System.out.println(line);
+            stageOneDetailedOutputText = stageOneDetailedOutputText + line + "\n";
+
+        }
+
+        br.close();
+        return stageOneDetailedOutputText;
     }
 
     public void saveEquationLatex() throws IOException {

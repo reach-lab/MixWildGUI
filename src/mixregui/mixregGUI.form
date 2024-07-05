@@ -3220,7 +3220,7 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="openStage1OutButton">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Open Results In Editor"/>
+                    <Property name="text" type="java.lang.String" value="Open Full Results In Editor"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="openStage1OutButtonActionPerformed"/>
