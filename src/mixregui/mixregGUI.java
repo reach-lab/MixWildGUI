@@ -6841,6 +6841,35 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         return regLabels;
     }
 
+    public String[] getModelMeanDisaggLabelsLevelOne() {
+
+        ArrayList<String> regressorLabels = new ArrayList<String>();
+
+        boolean disaggVarianceBoxesSelected;
+
+        for (int p = 0; p < levelOneRegSize; p++) {
+            disaggVarianceBoxesSelected = false;
+            if (disaggregateEnabled == true) {
+                disaggVarianceBoxesSelected = disaggVarianceBoxes.get(p).get(0).isSelected();
+                if (disaggVarianceBoxesSelected) {
+                    regressorLabels.add(levelOneSelected.get(p));
+                }
+            }
+        }
+
+        String[] regLabels = new String[regressorLabels.size()];
+
+        for (int pos = 0; pos < regLabels.length; pos++) {
+            regLabels[pos] = regressorLabels.get(pos);
+            System.out.println("Reg_LABEL: " + regLabels[pos]);
+
+        }
+
+        System.out.println("From inside mixRegGUI | LEVEL ONE MEAN REGRESSORS: " + Arrays.toString(regLabels));
+        System.out.println("*********************************");
+        return regLabels;
+    }
+
     public String[] getModelMeanLabelsLevelTwo() {
         System.out.println("*********************************");
         System.out.println("Means-Labels From level 2 (Labels)");
@@ -6938,6 +6967,24 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         return meanModel;
     }
 
+    public String[] ModelMeansDisaggLabelsArray() {
+
+        System.out.println("*********************************");
+        System.out.println("Means-Labels From stage 1 (Labels)");
+        String[] lvlOneRegDisagg = getModelMeanDisaggLabelsLevelOne();
+
+        int arraySize = lvlOneRegDisagg.length;
+        String[] meanModelDisagg = new String[arraySize];
+
+        for (int pos = 0; pos < arraySize; pos++) {
+
+            meanModelDisagg[pos] = lvlOneRegDisagg[pos];
+
+        }
+
+        return meanModelDisagg;
+    }
+
     public String[] getModelBSLabelsLevelOne() {
         System.out.println("*********************************");
         System.out.println("BS-Labels From level 1 (Labels)");
@@ -6971,6 +7018,35 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         System.out.println("From inside mixRegGUI | LEVEL ONE BS REGRESSORS: " + Arrays.toString(regLabels));
         System.out.println("*********************************");
+        return regLabels;
+    }
+
+    public String[] getModelBSDisaggLabelsLevelOne() {
+
+        String fieldLabel;
+
+        ArrayList<String> regressorLabels = new ArrayList<String>();
+        int index = 0;
+        boolean disaggVarianceBoxesSelected;
+        for (int p = 0; p < levelOneRegSize; p++) {
+            disaggVarianceBoxesSelected = false;
+            if (disaggregateEnabled == true) {
+                disaggVarianceBoxesSelected = disaggVarianceBoxes.get(p).get(1).isSelected();
+                if (disaggVarianceBoxesSelected) {
+                    regressorLabels.add(levelOneSelected.get(p));
+                }
+
+            }
+        }
+
+        String[] regLabels = new String[regressorLabels.size()];
+
+        for (int pos = 0; pos < regLabels.length; pos++) {
+            regLabels[pos] = regressorLabels.get(pos);
+            System.out.println("Reg_LABEL: " + regLabels[pos]);
+
+        }
+
         return regLabels;
     }
 
@@ -7067,6 +7143,22 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         return meanModel;
     }
 
+    public String[] ModelBSDisaggLabelsArray() {
+
+        String[] lvlOneReg = getModelBSDisaggLabelsLevelOne();
+
+        int arraySize = lvlOneReg.length;
+        String[] meanModelDisagg = new String[arraySize];
+
+        for (int pos = 0; pos < arraySize; pos++) {
+
+            meanModelDisagg[pos] = lvlOneReg[pos];
+
+        }
+
+        return meanModelDisagg;
+    }
+
     public String[] getModelWSLabelsLevelOne() {
         System.out.println("*********************************");
         System.out.println("WS-Labels From Level one (Labels)");
@@ -7097,6 +7189,33 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         System.out.println("From inside mixRegGUI | LEVEL ONE WS REGRESSORS: " + Arrays.toString(regLabels));
         System.out.println("*********************************");
+        return regLabels;
+    }
+
+    public String[] getModelWSDisaggLabelsLevelOne() {
+
+        ArrayList<String> regressorLabels = new ArrayList<String>();
+        int index = 0;
+        boolean disaggVarianceBoxesSelected;
+        for (int p = 0; p < levelOneRegSize; p++) {
+            disaggVarianceBoxesSelected = false;
+            if (disaggregateEnabled == true) {
+                disaggVarianceBoxesSelected = disaggVarianceBoxes.get(p).get(2).isSelected();
+                if (disaggVarianceBoxesSelected) {
+                    regressorLabels.add(levelOneSelected.get(p));
+                }
+
+            }
+        }
+
+        String[] regLabels = new String[regressorLabels.size()];
+
+        for (int pos = 0; pos < regLabels.length; pos++) {
+            regLabels[pos] = regressorLabels.get(pos);
+            System.out.println("Reg_LABEL: " + regLabels[pos]);
+
+        }
+
         return regLabels;
     }
 
@@ -7195,6 +7314,22 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         return meanModel;
     }
 
+    public String[] ModelWSDisaggLabelsArray() {
+
+        String[] lvlOneReg = getModelWSDisaggLabelsLevelOne();
+
+        int arraySize = lvlOneReg.length;
+        String[] meanModel = new String[arraySize];
+
+        for (int pos = 0; pos < arraySize; pos++) {
+
+            meanModel[pos] = lvlOneReg[pos];
+
+        }
+
+        return meanModel;
+    }
+
     public String[] getModelBWLabelsLevelOne() {
         System.out.println("*********************************");
         System.out.println("BW-Labels From Level one (Labels)");
@@ -7225,6 +7360,33 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         System.out.println("From inside mixRegGUI | LEVEL ONE BW REGRESSORS: " + Arrays.toString(regLabels));
         System.out.println("*********************************");
+        return regLabels;
+    }
+
+    public String[] getModelBWDisaggLabelsLevelOne() {
+
+        ArrayList<String> regressorLabels = new ArrayList<String>();
+        int index = 0;
+        boolean disaggVarianceBoxesSelected;
+        for (int p = 0; p < levelOneRegSize; p++) {
+            disaggVarianceBoxesSelected = false;
+            if (disaggregateEnabled == true) {
+                disaggVarianceBoxesSelected = disaggVarianceBoxes.get(p).get(4).isSelected();
+                if (disaggVarianceBoxesSelected) {
+                    regressorLabels.add(levelOneSelected.get(p));
+                }
+
+            }
+        }
+
+        String[] regLabels = new String[regressorLabels.size()];
+
+        for (int pos = 0; pos < regLabels.length; pos++) {
+            regLabels[pos] = regressorLabels.get(pos);
+            System.out.println("Reg_LABEL: " + regLabels[pos]);
+
+        }
+
         return regLabels;
     }
 
@@ -7323,6 +7485,21 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         return meanModel;
     }
 
+    public String[] ModelBWDisaggLabelsArray() {
+
+        String[] lvlOneReg = getModelBWDisaggLabelsLevelOne();
+
+        int arraySize = lvlOneReg.length;
+        String[] meanModel = new String[arraySize];
+
+        for (int pos = 0; pos < arraySize; pos++) {
+
+            meanModel[pos] = lvlOneReg[pos];
+
+        }
+        return meanModel;
+    }
+
     public String[] getModelScaleRandomLabelsLevelOne() {
         System.out.println("*********************************");
         System.out.println("ScaleRandom-Labels From Level one (Labels)");
@@ -7353,6 +7530,33 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         System.out.println("From inside mixRegGUI | LEVEL ONE ScaleRandom REGRESSORS: " + Arrays.toString(regLabels));
         System.out.println("*********************************");
+        return regLabels;
+    }
+
+    public String[] getModelScaleRandomDisaggLabelsLevelOne() {
+
+        ArrayList<String> regressorLabels = new ArrayList<String>();
+        int index = 0;
+        boolean disaggVarianceBoxesSelected;
+        for (int p = 0; p < levelOneRegSize; p++) {
+            disaggVarianceBoxesSelected = false;
+            if (disaggregateEnabled == true) {
+                disaggVarianceBoxesSelected = disaggVarianceBoxes.get(p).get(3).isSelected();
+                if (disaggVarianceBoxesSelected) {
+                    regressorLabels.add(levelOneSelected.get(p));
+                }
+
+            }
+        }
+
+        String[] regLabels = new String[regressorLabels.size()];
+
+        for (int pos = 0; pos < regLabels.length; pos++) {
+            regLabels[pos] = regressorLabels.get(pos);
+            System.out.println("Reg_LABEL: " + regLabels[pos]);
+
+        }
+
         return regLabels;
     }
 
@@ -7447,6 +7651,22 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         System.out.println("Inside mixRegGUI | ScaleRandom-Model STAGE 1 labels: " + Arrays.toString(meanModel));
         System.out.println("*********************************");
+
+        return meanModel;
+    }
+
+    public String[] ModelScaleRandomDisaggLabelsArray() {
+
+        String[] lvlOneReg = getModelScaleRandomDisaggLabelsLevelOne();
+
+        int arraySize = lvlOneReg.length;
+        String[] meanModel = new String[arraySize];
+
+        for (int pos = 0; pos < arraySize; pos++) {
+
+            meanModel[pos] = lvlOneReg[pos];
+
+        }
 
         return meanModel;
     }
@@ -12892,10 +13112,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         return stageOneLevelNum;
     }
 
-    private void update_model_equation_stage_one(String stageOneOutcomeLabel, String[] stageOneRegLabelList, String[] stageOneRegEquationNameList, int RLE, int RSE, int association, String[] meanModelVarLabels, String[] BSModelVarLabels, String[] WSModelVarLabels, String[] BWModelVarLabels, String[] ScaleRandomModelVarLabels, DefaultListModel<String> stageOneLvlOneList, DefaultListModel<String> stageOneLvlTwoList, DefaultListModel<String> stageOneLvlThreeList) {
+    private void update_model_equation_stage_one(String stageOneOutcomeLabel, String[] stageOneRegLabelList, String[] stageOneRegTableNameList, String[] stageOneRegEquationNameList, int RLE, int RSE, int association, String[] meanModelVarLabels, String[] meanModelDisaggVarLabels, String[] BSModelVarLabels, String[] BSModelDisaggVarLabels, String[] WSModelVarLabels, String[] WSModelDisaggVarLabels, String[] BWModelVarLabels, String[] BWModelDisaggVarLabels, String[] ScaleRandomModelVarLabels, String[] ScaleRandomDisaggodelVarLabels, DefaultListModel<String> stageOneLvlOneList, DefaultListModel<String> stageOneLvlTwoList, DefaultListModel<String> stageOneLvlThreeList) {
         int fontsize = 22;
 
-        String[] stageOneModelLatexArray = EquationBuilder.getStageOneModelLatex(stageOneOutcomeLabel, stageOneRegLabelList, stageOneRegEquationNameList, RLE, RSE, association, meanModelVarLabels, BSModelVarLabels, WSModelVarLabels, BWModelVarLabels, ScaleRandomModelVarLabels, stageOneLvlOneList, stageOneLvlTwoList, stageOneLvlThreeList);
+        String[] stageOneModelLatexArray = EquationBuilder.getStageOneModelLatex(stageOneOutcomeLabel, stageOneRegLabelList, stageOneRegTableNameList, stageOneRegEquationNameList, RLE, RSE, association, meanModelVarLabels, meanModelDisaggVarLabels, BSModelVarLabels, BSModelDisaggVarLabels, WSModelVarLabels, WSModelDisaggVarLabels, BWModelVarLabels, BWModelDisaggVarLabels, ScaleRandomModelVarLabels, ScaleRandomDisaggodelVarLabels, stageOneLvlOneList, stageOneLvlTwoList, stageOneLvlThreeList);
         String latex1 = stageOneModelLatexArray[0];
         String latex2 = stageOneModelLatexArray[1];
         String latex3 = stageOneModelLatexArray[2];
@@ -12975,6 +13195,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         equationStageOneLabel.setText("Rendering...");
         latexVaraibleStageOneTextArea.setText("");
 
+        // Config that are currently not supported
+        // 1. stage one outcome is binary/ordinary
+        int stageOneOutcome = getStageOneOutcome();
+        if (stageOneOutcome != MixLibrary.STAGE_ONE_OUTCOME_MIXREG) {
+            equationStageOneLabel.setText("Currently not supported: stage one outcome is binary/ordinal.");
+            return;
+        }
+
         String stageOneOutcomeLabel = getOutcomeLabel();
         // RLE: 0 = intercept only, 1 = intercept and slope
         int RLE = getRLE();
@@ -13005,18 +13233,31 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         // stage 1 model: stageOneOutcome, random location, random scale, association
         // 
         String[] meanModelVarLabels = ModelMeansLabelsArray();
+        String[] meanModelDisaggVarLabels = ModelMeansDisaggLabelsArray();
         String[] BSModelVarLabels = ModelBSLabelsArray();
+        String[] BSModelDisaggVarLabels = ModelBSDisaggLabelsArray();
         String[] WSModelVarLabels = ModelWSLabelsArray();
+        String[] WSModelDisaggVarLabels = ModelWSDisaggLabelsArray();
+
+        String[] ScaleRandomModelVarLabels = null;
+        String[] ScaleRandomDisaggModelVarLabels = null;
+        if (RSE == 2) {
+            ScaleRandomModelVarLabels = ModelScaleRandomLabelsArray();
+            ScaleRandomDisaggModelVarLabels = ModelScaleRandomDisaggLabelsArray();
+        }
+
         String[] BWModelVarLabels = null;
-        String[] ScaleRandomModelVarLabels = ModelScaleRandomLabelsArray();
+        String[] BWModelDisaggVarLabels = null;
         if (stageOneThreeLevelParticipantLevelThreeRadio.isSelected()) {
             BWModelVarLabels = ModelBWLabelsArray();
+            BWModelDisaggVarLabels = ModelBWDisaggLabelsArray();
         }
 
         // stage 1 model regressor labels: level 1 2 3
         int arraySize = stage_1_regs.levelOneList.size() + stage_1_regs.levelTwoList.size() + stage_1_regs.levelThreeList.size();
         // stageOneRegLabelList, stageOneRegEquationNameList are two parallel lists, containing regressor labels and X names respectively
         String[] stageOneRegLabelList = new String[arraySize];
+        String[] stageOneRegTableNameList = new String[arraySize];
         String[] stageOneRegEquationNameList = new String[arraySize];
 
         for (int pos = 0; pos < arraySize; pos++) {
@@ -13027,12 +13268,46 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             } else if (pos >= stage_1_regs.levelOneList.size() + stage_1_regs.levelTwoList.size() && pos < arraySize) {
                 stageOneRegLabelList[pos] = stage_1_regs.levelThreeList.get(pos - stage_1_regs.levelOneList.size() - stage_1_regs.levelTwoList.size());
             }
-            stageOneRegEquationNameList[pos] = "X_" + Integer.toString(pos + 1);
-        }
+            // Variable name in table (i.e., no subscript)
+            stageOneRegTableNameList[pos] = "X_" + Integer.toString(pos + 1);
+            // Variable name in equation
+            String regLabel = stageOneRegLabelList[pos];
+            String subscript = getSubscriptStageOneRegressor(regLabel, stage_1_regs.levelOneList, stage_1_regs.levelTwoList, stage_1_regs.levelThreeList);
+            stageOneRegEquationNameList[pos] = "X_" + Integer.toString(pos + 1) + subscript;
 
+        }
+//            if (disaggregateEnabled == true && pos < stage_1_regs.levelOneList.size()) { // disaggregate
+//                stageOneRegEquationNameList[pos] = "X_" + Integer.toString(pos + 1);
+//            } else {
         // if pass the check, rendering model 
-        update_model_equation_stage_one(stageOneOutcomeLabel, stageOneRegLabelList, stageOneRegEquationNameList, RLE, RSE, association, meanModelVarLabels, BSModelVarLabels, WSModelVarLabels, BWModelVarLabels, ScaleRandomModelVarLabels, stage_1_regs.levelOneList, stage_1_regs.levelTwoList, stage_1_regs.levelThreeList);
-        update_model_variable_table_stage_one(stageOneOutcomeLabel, stageOneRegLabelList, stageOneRegEquationNameList);
+        update_model_equation_stage_one(stageOneOutcomeLabel, stageOneRegLabelList, stageOneRegTableNameList, stageOneRegEquationNameList, RLE, RSE, association, meanModelVarLabels, meanModelDisaggVarLabels, BSModelVarLabels, BSModelDisaggVarLabels, WSModelVarLabels, WSModelDisaggVarLabels, BWModelVarLabels, BWModelDisaggVarLabels, ScaleRandomModelVarLabels, ScaleRandomDisaggModelVarLabels, stage_1_regs.levelOneList, stage_1_regs.levelTwoList, stage_1_regs.levelThreeList);
+        update_model_variable_table_stage_one(stageOneOutcomeLabel, stageOneRegLabelList, stageOneRegTableNameList);
     }
 
+    private static String getSubscriptStageOneRegressor(String regLabel, DefaultListModel<String> stageOneLvlOneList, DefaultListModel<String> stageOneLvlTwoList, DefaultListModel<String> stageOneLvlThreeList) {
+        int regressorLevel = 1;
+        String subscript = "";
+
+        if (stageOneLvlOneList.contains(regLabel)) {
+            regressorLevel = 1;
+        } else if (stageOneLvlTwoList.contains(regLabel)) {
+            regressorLevel = 2;
+        } else if (stageOneLvlThreeList.contains(regLabel)) {
+            regressorLevel = 3;
+        } else {
+            //pass
+        }
+
+        // Stage one - two level
+        if (regressorLevel == 1) {
+            subscript = "_i_j";
+        } else if (regressorLevel == 2) {
+            subscript = "_i";
+        } else {
+            //pass
+        }
+
+        // Stage one - three level
+        return subscript;
+    }
 }
