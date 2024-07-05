@@ -13114,8 +13114,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     private void update_model_equation_stage_one(String stageOneOutcomeLabel, String[] stageOneRegLabelList, String[] stageOneRegTableNameList, String[] stageOneRegEquationNameList, int RLE, int RSE, int association, String[] meanModelVarLabels, String[] meanModelDisaggVarLabels, String[] BSModelVarLabels, String[] BSModelDisaggVarLabels, String[] WSModelVarLabels, String[] WSModelDisaggVarLabels, String[] BWModelVarLabels, String[] BWModelDisaggVarLabels, String[] ScaleRandomModelVarLabels, String[] ScaleRandomDisaggodelVarLabels, DefaultListModel<String> stageOneLvlOneList, DefaultListModel<String> stageOneLvlTwoList, DefaultListModel<String> stageOneLvlThreeList) {
         int fontsize = 22;
-
-        String[] stageOneModelLatexArray = EquationBuilder.getStageOneModelLatex(stageOneOutcomeLabel, stageOneRegLabelList, stageOneRegTableNameList, stageOneRegEquationNameList, RLE, RSE, association, meanModelVarLabels, meanModelDisaggVarLabels, BSModelVarLabels, BSModelDisaggVarLabels, WSModelVarLabels, WSModelDisaggVarLabels, BWModelVarLabels, BWModelDisaggVarLabels, ScaleRandomModelVarLabels, ScaleRandomDisaggodelVarLabels, stageOneLvlOneList, stageOneLvlTwoList, stageOneLvlThreeList);
+        boolean stageOneLevelThree = stageOneThreeLevelParticipantLevelThreeRadio.isSelected();
+        String[] stageOneModelLatexArray = EquationBuilder.getStageOneModelLatex(stageOneLevelThree, stageOneOutcomeLabel, stageOneRegLabelList, stageOneRegTableNameList, stageOneRegEquationNameList, RLE, RSE, association, meanModelVarLabels, meanModelDisaggVarLabels, BSModelVarLabels, BSModelDisaggVarLabels, WSModelVarLabels, WSModelDisaggVarLabels, BWModelVarLabels, BWModelDisaggVarLabels, ScaleRandomModelVarLabels, ScaleRandomDisaggodelVarLabels, stageOneLvlOneList, stageOneLvlTwoList, stageOneLvlThreeList);
         String latex1 = stageOneModelLatexArray[0];
         String latex2 = stageOneModelLatexArray[1];
         String latex3 = stageOneModelLatexArray[2];
@@ -13284,7 +13284,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         update_model_variable_table_stage_one(stageOneOutcomeLabel, stageOneRegLabelList, stageOneRegTableNameList);
     }
 
-    private static String getSubscriptStageOneRegressor(String regLabel, DefaultListModel<String> stageOneLvlOneList, DefaultListModel<String> stageOneLvlTwoList, DefaultListModel<String> stageOneLvlThreeList) {
+    private String getSubscriptStageOneRegressor(String regLabel, DefaultListModel<String> stageOneLvlOneList, DefaultListModel<String> stageOneLvlTwoList, DefaultListModel<String> stageOneLvlThreeList) {
         int regressorLevel = 1;
         String subscript = "";
 
@@ -13299,12 +13299,22 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         }
 
         // Stage one - two level
-        if (regressorLevel == 1) {
-            subscript = "_i_j";
-        } else if (regressorLevel == 2) {
-            subscript = "_i";
+        if (stageOneThreeLevelParticipantLevelThreeRadio.isSelected()) {
+            if (regressorLevel == 1) {
+                subscript = "_i_j_k";
+            } else if (regressorLevel == 2) {
+                subscript = "_i_j";
+            } else {
+                subscript = "_i";
+            }
         } else {
-            //pass
+            if (regressorLevel == 1) {
+                subscript = "_i_j";
+            } else if (regressorLevel == 2) {
+                subscript = "_i";
+            } else {
+                //pass
+            }
         }
 
         // Stage one - three level

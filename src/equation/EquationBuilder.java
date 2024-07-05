@@ -30,7 +30,7 @@ public class EquationBuilder {
         return stageOneModelVarArray;
     }
 
-    public static String[] getStageOneModelLatex(String stageOneOutcomeLabel, String[] stageOneRegLabelList, String[] stageOneRegTableNameList, String[] stageOneRegEquationNameList, int RLE, int RSE, int association, String[] meanModelVarLabels, String[] meanModelDisaggVarLabels, String[] BSModelVarLabels, String[] BSModelDisaggVarLabels, String[] WSModelVarLabels, String[] WSModelDisaggVarLabels, String[] BWModelVarLabels, String[] BWModelDisaggVarLabels, String[] ScaleRandomModelVarLabels, String[] ScaleRandomDisaggModelVarLabels, DefaultListModel<String> stageOneLvlOneList, DefaultListModel<String> stageOneLvlTwoList, DefaultListModel<String> stageOneLvlThreeList) {
+    public static String[] getStageOneModelLatex(boolean stageOneLevelThree, String stageOneOutcomeLabel, String[] stageOneRegLabelList, String[] stageOneRegTableNameList, String[] stageOneRegEquationNameList, int RLE, int RSE, int association, String[] meanModelVarLabels, String[] meanModelDisaggVarLabels, String[] BSModelVarLabels, String[] BSModelDisaggVarLabels, String[] WSModelVarLabels, String[] WSModelDisaggVarLabels, String[] BWModelVarLabels, String[] BWModelDisaggVarLabels, String[] ScaleRandomModelVarLabels, String[] ScaleRandomDisaggModelVarLabels, DefaultListModel<String> stageOneLvlOneList, DefaultListModel<String> stageOneLvlTwoList, DefaultListModel<String> stageOneLvlThreeList) {
 //        String latex2 = "PA_i_j = \\beta_0 + \\beta_1 Day\\_c_i_j + \\nu_i + \\epsilon_i_j";
 //        String latex3 = "\\int_0^{+\\infty} e^{-x^2}\\mathrm{d}x = \\frac\\sqrt{\\pi}2  \\sum_{n=0}^{\\infty}\\frac{1}{n^2}=\\frac{\\pi^2}6";
         String[] stageOneModelLatexArray = new String[3];
@@ -69,7 +69,13 @@ public class EquationBuilder {
 
             }
         }
-        MeanModelLatex = MeanModelLatex + " + $\\nu_{0_i}$ + \\epsilon_i_j";
+        
+        if (stageOneLevelThree == false){
+            MeanModelLatex = MeanModelLatex + " + $\\nu_{0_i}$ + \\epsilon_i_j";
+        } else {
+            MeanModelLatex = MeanModelLatex + " + $\\nu_{0_i_j}$ + $\\nu_{0_i}$ + \\epsilon_i_j_k";
+        }
+        
 
         // BS model
         String BSModelLatex = null;
