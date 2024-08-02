@@ -65,6 +65,12 @@ public class EquationBuilder {
 
         }
 
+        if (stageOneLevelThree == false) {
+            MeanModelLatex = MeanModelLatex + " + $\\nu_{0_i}$";
+        } else {
+            MeanModelLatex = MeanModelLatex + " + $\\nu_{0_i_j}$ + $\\nu_{0_i}$";
+        }
+
         if (RLE == 1) {
             // add random slope for variable from BSModelVarLabels
             for (int i = 0; i < BSModelVarLabels.length + BSModelDisaggVarLabels.length; i++) {
@@ -84,9 +90,9 @@ public class EquationBuilder {
         }
 
         if (stageOneLevelThree == false) {
-            MeanModelLatex = MeanModelLatex + " + $\\nu_{0_i}$ + \\epsilon_i_j";
+            MeanModelLatex = MeanModelLatex + " + \\epsilon_i_j";
         } else {
-            MeanModelLatex = MeanModelLatex + " + $\\nu_{0_i_j}$ + $\\nu_{0_i}$ + \\epsilon_i_j_k";
+            MeanModelLatex = MeanModelLatex + " + \\epsilon_i_j_k";
         }
 
         // BS model
@@ -130,6 +136,20 @@ public class EquationBuilder {
 
         }
 
+        if (RSE == 0) {
+            // pass
+        } else if (RSE > 0) {
+            if (association == 0) {
+                WSModelLatex = WSModelLatex + " + $\\omega_{0_i}$";
+            } else if (association == 1) {
+                WSModelLatex = WSModelLatex + " + \\tau_\\nu \\nu_i + $\\omega_{0_i}$";
+            } else if (association == 2) {
+                WSModelLatex = WSModelLatex + " + \\tau_\\nu \\nu_i + \\tau_\\nu \\nu_i^2 + $\\omega_{0_i}$";
+            } else {
+                // pass
+            }
+        }
+
         if (RSE == 2) {
             // add random slope for variable from ScaleRandomModelVarLabels
             for (int i = 0; i < ScaleRandomModelVarLabels.length + ScaleRandomDisaggModelVarLabels.length; i++) {
@@ -149,19 +169,6 @@ public class EquationBuilder {
             }
         }
 
-        if (RSE == 0) {
-            // pass
-        } else if (RSE > 0) {
-            if (association == 0) {
-                WSModelLatex = WSModelLatex + " + $\\omega_{0_i}$";
-            } else if (association == 1) {
-                WSModelLatex = WSModelLatex + " + \\tau_\\nu \\nu_i + $\\omega_{0_i}$";
-            } else if (association == 2) {
-                WSModelLatex = WSModelLatex + " + \\tau_\\nu \\nu_i + \\tau_\\nu \\nu_i^2 + $\\omega_{0_i}$";
-            } else {
-                // pass
-            }
-        }
         WSModelLatex = WSModelLatex + ")";
 
         stageOneModelLatexArray[0] = MeanModelLatex;
@@ -224,7 +231,7 @@ public class EquationBuilder {
         for (int i = 0; i < randomLocationScaleInteractionLabels.length; i++) {
             String regLabel;
             regLabel = randomLocationScaleInteractionLabels[i];
-            
+
             String equationVarName = stageTwoRegEquationNameList[Arrays.asList(stageTwoRegLabelList).indexOf(regLabel)];
             modelLatex = modelLatex + " + \\beta_" + Integer.toString(index) + " " + equationVarName + " \\nu_i  \\omega_i";
             index++;
