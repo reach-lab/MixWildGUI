@@ -27,11 +27,11 @@ MixWILD is a free and open-source tool by and for the behavioral researchers. If
 <br>  
 Latest version
 - [Windows 3.0](https://github.com/reach-lab/MixWildGUI/releases/download/v3.0-windows/MixWILD-win-3.0.exe) 
-- [macOS 3.0](https://github.com/reach-lab/MixWildGUI/releases/download/v2.0-stable/MixWILD-2.0.dmg) (Mac computers with Intel processors/Apple Silicon with Rosetta installed)
+- [macOS 3.0](https://github.com/reach-lab/MixWildGUI/releases/download/v2.0-stable/MixWILD-2.0.dmg)
 
 Previous version
 - [Windows 2.0](https://github.com/reach-lab/MixWildGUI/releases/download/v2.0-stable/MixWILD-2.0.exe)
-- [macOS 2.0](https://github.com/reach-lab/MixWildGUI/releases/download/v2.0-stable/MixWILD-2.0.dmg) (Mac computers with Intel processors/Apple Silicon with Rosetta installed)
+- [macOS 2.0](https://github.com/reach-lab/MixWildGUI/releases/download/v2.0-stable/MixWILD-2.0.dmg)
 
 * macOS version can be used on Mac computers with Intel processors or with Apple Silicon (e.g., M1, M2) that have Rosetta installed.
 
@@ -41,8 +41,8 @@ Previous version
 
 ### 4. Run some basic models on example dataset and ask questions ###
 - Download [example dataset](/resources/dataset/SBM_MixWILD_Example_Data.zip) 
-- MELS model: examine whether a person’s positive mood is related to their negative mood (see user guide page X)
-- MEMLS model: examine whether positive affect (PA) differs on weekend days (vs. weekdays) (see user guide page X)
+- MELS model: examine whether a person’s positive mood is related to their negative mood (see user guide)
+- MEMLS model: examine whether positive affect (PA) differs on weekend days (vs. weekdays) (see user guide)
 
 ---
   
