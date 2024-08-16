@@ -33,7 +33,7 @@ Previous version
 - [Windows 2.0](https://github.com/reach-lab/MixWildGUI/releases/download/v2.0-stable/MixWILD-2.0.exe)
 - [macOS 2.0](https://github.com/reach-lab/MixWildGUI/releases/download/v2.0-stable/MixWILD-2.0.dmg)
 
-* macOS version can be used on Mac computers with Intel processors or with Apple Silicon (e.g., M1, M2) that have Rosetta installed.
+## * macOS version can be used on Mac computers with Intel processors or with Apple Silicon (e.g., M1, M2) that have Rosetta installed. ##
 
 ### 3. Read introductory material ###
 - [User Guide](/resources/user_guide/MixWILD_users_guide_with_appendix_AB.pdf)  
