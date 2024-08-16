@@ -24,11 +24,12 @@ MixWILD is a free and open-source tool by and for the behavioral researchers. If
 ### Please submit your email prior to downloading the application so we can notify you of major software updates ###
 {% include formspree.html %}    
   
-- [Windows](https://github.com/reach-lab/MixWildGUI/releases/download/v3.0-windows/MixWILD-win-3.0.exe) (latest version: 3.0) 
-- [macOS (Intel or Apple Silicon with Rosetta)](https://github.com/reach-lab/MixWildGUI/releases/download/v2.0-stable/MixWILD-2.0.dmg) (latest version: 3.0)
-
-- [Windows](https://github.com/reach-lab/MixWildGUI/releases/download/v2.0-stable/MixWILD-2.0.exe) (previous version: 2.0)  
-- [macOS (Intel or Apple Silicon with Rosetta)](https://github.com/reach-lab/MixWildGUI/releases/download/v2.0-stable/MixWILD-2.0.dmg) (previous version: 2.0)  
+Latest version 3.0
+- [Windows 3.0](https://github.com/reach-lab/MixWildGUI/releases/download/v3.0-windows/MixWILD-win-3.0.exe) 
+- [macOS 3.0](https://github.com/reach-lab/MixWildGUI/releases/download/v2.0-stable/MixWILD-2.0.dmg) (Intel or Apple Silicon with Rosetta)
+Previous version 2.0
+- [Windows 2.0](https://github.com/reach-lab/MixWildGUI/releases/download/v2.0-stable/MixWILD-2.0.exe)
+- [macOS 2.0](https://github.com/reach-lab/MixWildGUI/releases/download/v2.0-stable/MixWILD-2.0.dmg) (Intel or Apple Silicon with Rosetta) 
 
 
 ### 3. Read introductory material ###
