@@ -49,7 +49,13 @@ public class EquationBuilder {
         String[] stageOneModelLatexArray = new String[3];
 
         // mean model
-        String MeanModelLatex = "Y_1_i_j = \\beta_0"; //" + \\beta_1 X_1_i_j + \\nu_i + \\epsilon_i_j";
+        String MeanModelLatex;
+        if (stageOneLevelThree == false) {
+            MeanModelLatex = "Y_{1ij} = \\beta_0"; //" + \\beta_1 X_1_i_j + \\nu_i + \\epsilon_i_j";
+        } else {
+//            MeanModelLatex = "Y_1_i_j_k = \\beta_0";
+            MeanModelLatex = "Y_{1ijk} = \\beta_0";
+        }
         for (int i = 0; i < meanModelVarLabels.length + meanModelDisaggVarLabels.length; i++) {
             String regLabel;
             if (i < meanModelVarLabels.length) {
@@ -90,15 +96,19 @@ public class EquationBuilder {
         }
 
         if (stageOneLevelThree == false) {
-            MeanModelLatex = MeanModelLatex + " + \\epsilon_i_j";
+            MeanModelLatex = MeanModelLatex + " + \\epsilon_{ij}";
         } else {
-            MeanModelLatex = MeanModelLatex + " + \\epsilon_i_j_k";
+            MeanModelLatex = MeanModelLatex + " + \\epsilon_{ijk}";
         }
 
         // BS model
         String BSModelLatex = null;
         if (RLE == 0) { // If randome location effect has random slope in mean model, no BSV model.
-            BSModelLatex = "{\\sigma_{\\nu_i_j}^2} = \\exp(\\alpha_0";
+            if (stageOneLevelThree == false) {
+                BSModelLatex = "{\\sigma_{\\nu_{ij}}^2} = \\exp(\\alpha_0";
+            } else {
+                BSModelLatex = "{\\sigma_{\\nu_{ijk}}^2} = \\exp(\\alpha_0";
+            }
             for (int i = 0; i < BSModelVarLabels.length + BSModelDisaggVarLabels.length; i++) {
                 String regLabel;
                 if (i < BSModelVarLabels.length) {
@@ -119,7 +129,12 @@ public class EquationBuilder {
         }
 
         // WS model
-        String WSModelLatex = "{\\sigma_{\\epsilon_i_j}^2} = \\exp(\\tau_0";
+        String WSModelLatex;
+        if (stageOneLevelThree == false) {
+            WSModelLatex = "{\\sigma_{\\epsilon_{ij}}^2} = \\exp(\\tau_0";
+        } else {
+            WSModelLatex = "{\\sigma_{\\epsilon_{ijk}}^2} = \\exp(\\tau_0";
+        }
         for (int i = 0; i < WSModelVarLabels.length + WSModelDisaggVarLabels.length; i++) {
 
             String regLabel;

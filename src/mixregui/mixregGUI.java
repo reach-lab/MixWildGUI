@@ -1001,6 +1001,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageOneTabs.remove(jScrollPane_stage1result);
         stageOneTabs.remove(jScrollPane_stage2result);
 //        stageOneTabs.remove(jPanel2);
+        stageOneTabs.remove(jScrollPane_viewmodel);
         stageOneTabs.remove(jScrollPane_viewdata1);
         stageOneTabs.remove(jScrollPane_viewdata2);
         stageOneTabs.remove(jScrollPane_postestimation);
@@ -1272,7 +1273,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         jLabel9 = new javax.swing.JLabel();
         jScrollPane_viewmodel = new javax.swing.JScrollPane();
         jPanel_viewmodel = new javax.swing.JPanel();
-        jPanel9 = new javax.swing.JPanel();
+        jScrollPane_model = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         latexVaraibleScrollPane = new javax.swing.JScrollPane();
         latexVaraibleStageOneTextArea = new javax.swing.JTextArea();
@@ -2818,7 +2819,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         jPanel_viewmodel.setRequestFocusEnabled(false);
         jPanel_viewmodel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel9.setPreferredSize(new java.awt.Dimension(1000, 800));
+        jScrollPane_model.setPreferredSize(new java.awt.Dimension(1000, 800));
 
         jLabel13.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel13.setText("Your resulting model equation");
@@ -2889,26 +2890,26 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         jScrollPane8.setViewportView(jPanel2);
 
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
+        javax.swing.GroupLayout jScrollPane_modelLayout = new javax.swing.GroupLayout(jScrollPane_model);
+        jScrollPane_model.setLayout(jScrollPane_modelLayout);
+        jScrollPane_modelLayout.setHorizontalGroup(
+            jScrollPane_modelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jScrollPane_modelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGroup(jScrollPane_modelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jScrollPane_modelLayout.createSequentialGroup()
                         .addComponent(updateEquationVarTableButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(saveLatexButton)
                         .addContainerGap(1014, Short.MAX_VALUE))
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jScrollPane_modelLayout.createSequentialGroup()
+                        .addGroup(jScrollPane_modelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel9Layout.createSequentialGroup()
+                            .addGroup(jScrollPane_modelLayout.createSequentialGroup()
                                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 841, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(latexVaraibleScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel9Layout.createSequentialGroup()
+                            .addGroup(jScrollPane_modelLayout.createSequentialGroup()
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 841, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(latexVaraibleScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -2916,31 +2917,31 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                             .addComponent(jLabel13))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
+        jScrollPane_modelLayout.setVerticalGroup(
+            jScrollPane_modelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jScrollPane_modelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel13)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jScrollPane_modelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(updateEquationVarTableButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(saveLatexButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jScrollPane_modelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(latexVaraibleScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jScrollPane_modelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(latexVaraibleScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(67, Short.MAX_VALUE))
         );
 
-        jPanel_viewmodel.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1290, 810));
+        jPanel_viewmodel.add(jScrollPane_model, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1290, 810));
 
         jScrollPane_viewmodel.setViewportView(jPanel_viewmodel);
 
@@ -4131,6 +4132,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 //            setFirstTabStatus(true);
             if (!checkTabExistinJTabbedPane(stageOneTabs, "View Data") && !checkTabExistinJTabbedPane(stageOneTabs, "View Stage 1 Data")) {
                 int helpTabIdx = stageOneTabs.indexOfTab("Help");
+                stageOneTabs.insertTab("View Model", null, jScrollPane_viewmodel, null, helpTabIdx);
                 stageOneTabs.insertTab("View Data", null, jScrollPane_viewdata1, null, helpTabIdx);
             }
             return true;
@@ -4600,7 +4602,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JPanel jPanel_help;
     private javax.swing.JPanel jPanel_modelconfig;
     private javax.swing.JPanel jPanel_postestimation;
@@ -4620,6 +4621,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane_help;
+    private javax.swing.JPanel jScrollPane_model;
     private javax.swing.JScrollPane jScrollPane_modelconfig;
     private javax.swing.JScrollPane jScrollPane_postestimation;
     private javax.swing.JScrollPane jScrollPane_stage1;
@@ -8886,6 +8888,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 if (validDataset) {
                     filePath.setText(fileName);
                     stageOneTabs.insertTab("View Data", null, jScrollPane_viewdata1, null, 1);
+                    stageOneTabs.insertTab("View Model", null, jScrollPane_viewmodel, null, 1);
                 }
             } catch (IOException ex) {
                 Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
@@ -13534,15 +13537,16 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         // Stage one - two level
         if (stageOneThreeLevelParticipantLevelThreeRadio.isSelected()) {
             if (regressorLevel == 1) {
-                subscript = "_i_j_k";
+                subscript = "_{ijk}";
+//                subscript = "_i_k_j";
             } else if (regressorLevel == 2) {
-                subscript = "_i_j";
+                subscript = "_{ij}";
             } else {
                 subscript = "_i";
             }
         } else {
             if (regressorLevel == 1) {
-                subscript = "_i_j";
+                subscript = "_{ij}";
             } else if (regressorLevel == 2) {
                 subscript = "_i";
             } else {
@@ -13568,7 +13572,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         // Stage two - two level
         if (regressorLevel == 1) {
-            subscript = "_i_j";
+            subscript = "_{ij}";
         } else if (regressorLevel == 2) {
             subscript = "_i";
         } else {
