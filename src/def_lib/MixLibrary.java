@@ -2377,7 +2377,8 @@ public class MixLibrary implements Serializable {
     public void readStageOneOutputfile() throws FileNotFoundException, IOException {
         mixregGUI.stageOneOutput.setText("");
         String fileName = mixregGUI.defFile.getSharedDataFilename();
-        String outputFilePath = FilenameUtils.removeExtension(fileName) + "_Output_stage1_final.out";
+        //String outputFilePath = FilenameUtils.removeExtension(fileName) + "_Output_stage1_final.out";
+        String outputFilePath = FilenameUtils.removeExtension(fileName) + "_Output_stage1.out";
         File file = new File(outputFilePath);
         BufferedReader br = null;
         String line = "";
@@ -2473,15 +2474,15 @@ public class MixLibrary implements Serializable {
         } else {
             SystemLogger.LOGGER.log(Level.INFO, "Operating System : macOS");
 //            LSBOTH_PRE = "resources/macOS/" + LSBOTH_PRE;
-            MIXORS_PRE = "resources/macOS/" + MIXORS_PRE;
+            MIXORS_PRE = "resources/macOS/" + MIXORS_PRE + "64";
             MIXNO = "resources/macOS/" + MIXNO;
             MIXREG = "resources/macOS/" + MIXREG;
             MIXORS = "resources/macOS/" + MIXORS;
             MIXPREG = "resources/macOS/" + MIXPREG;
-//            STAGETWO_ONLY = "resources/macOS/" + STAGETWO_ONLY;
-            STAGETWO_ONLY = "resources/macOS/" + "stage2only.f90";
+            STAGETWO_ONLY = "resources/macOS/" + STAGETWO_ONLY + "64";
+//            STAGETWO_ONLY = "resources/macOS/" + "stage2only.f90";
 //            LSBOTH_PRE_LEVEL3 = "resources/macOS/" + LSBOTH_PRE_LEVEL3;
-//            LSBOTH_PRE_LEVEL3_STAGE2 = "resources/macOS/" + LSBOTH_PRE_LEVEL3_STAGE2;
+            LSBOTH_PRE_LEVEL3_STAGE2 = "resources/macOS/" + LSBOTH_PRE_LEVEL3_STAGE2;
         }
 
         String exeArray[] = {MIXORS_PRE, MIXNO, MIXREG, MIXORS, MIXPREG, STAGETWO_ONLY, LSBOTH_PRE_LEVEL3_STAGE2};
@@ -2511,7 +2512,8 @@ public class MixLibrary implements Serializable {
                 "chmod u+x " + "\"" + definitionFilepath + FilenameUtils.getName(MIXPREG) + "\"",
                 "chmod u+x " + "\"" + definitionFilepath + FilenameUtils.getName(MIXREG) + "\"",
                 "chmod u+x " + "\"" + definitionFilepath + FilenameUtils.getName(MIXORS) + "\"",
-                "chmod u+x " + "\"" + definitionFilepath + FilenameUtils.getName(STAGETWO_ONLY) + "\"", //                "chmod u+x " + "\"" + definitionFilepath + FilenameUtils.getName(LSBOTH_PRE_LEVEL3_STAGE2) + "\""
+                "chmod u+x " + "\"" + definitionFilepath + FilenameUtils.getName(STAGETWO_ONLY) + "\"",
+                "chmod u+x " + "\"" + definitionFilepath + FilenameUtils.getName(LSBOTH_PRE_LEVEL3_STAGE2) + "\"",//                "chmod u+x " + "\"" + definitionFilepath + FilenameUtils.getName(LSBOTH_PRE_LEVEL3_STAGE2) + "\""
             };
             for (String command : commands) {
                 ProcessBuilder pb1 = new ProcessBuilder(
