@@ -24,18 +24,27 @@ MixWILD is a free and open-source tool by and for the behavioral researchers. If
 ### Please submit your email prior to downloading the application so we can notify you of major software updates ###
 {% include formspree.html %}  
   
+
+| #Version | Description | Download links |
+|----------|----------------|----------|
+| 3.0      | Possibility of three-level modeling (e.g., prompt-burst-person), Latex equation display, simplified result output  | [Windows 3.0](https://github.com/reach-lab/MixWildGUI/releases/download/v3.0-windows/MixWILD-win-3.0.exe), [macOS 3.0](https://github.com/reach-lab/MixWildGUI/releases/download/v3.0-macos-aarch64/MixWILD-3.0.dmg) support Apple Silicon (e.g., M1, M2).)|
+|----------|----------------|----------|
+| 2.0      | Stable version of two-level modeling. The current user guide focuses on version 2 | [Windows 2.0](https://github.com/reach-lab/MixWildGUI/releases/download/v2.0-stable/MixWILD-2.0.exe), [macOS 2.0](https://github.com/reach-lab/MixWildGUI/releases/download/v2.0-stable/MixWILD-2.0.dmg) (* support Mac computers with Intel processors or with Apple Silicon (e.g., M1, M2) that have Rosetta installed.)|
+
+
+<!--
 <br>
 Latest version
 - [Windows 3.0](https://github.com/reach-lab/MixWildGUI/releases/download/v3.0-windows/MixWILD-win-3.0.exe) 
 - [macOS 3.0](https://github.com/reach-lab/MixWildGUI/releases/download/v3.0-macos-aarch64/MixWILD-3.0.dmg)
 
-#### * macOS version 3.0 can be used natively with Apple Silicon (e.g., M1, M2). ####
+
 
 Previous version
 - [Windows 2.0](https://github.com/reach-lab/MixWildGUI/releases/download/v2.0-stable/MixWILD-2.0.exe)
 - [macOS 2.0](https://github.com/reach-lab/MixWildGUI/releases/download/v2.0-stable/MixWILD-2.0.dmg)
 
-#### * macOS version 2.0 can be used on Mac computers with Intel processors or with Apple Silicon (e.g., M1, M2) that have Rosetta installed. ####
+#### * macOS version 2.0 can be used on Mac computers with Intel processors or with Apple Silicon (e.g., M1, M2) that have Rosetta installed. #### -->
 
 ### 3. Read introductory material ###
 - [User Guide](/resources/user_guide/MixWILD_users_guide_with_appendix_AB.pdf)  
