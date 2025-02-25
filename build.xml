@@ -9,7 +9,25 @@
 <!-- in the project's Project Properties dialog box.-->
 <project name="mixreg" default="default" basedir=".">
     <description>Builds, tests, and runs the project mixreg.</description>
+
+    <!-- Import NetBeans build script -->
     <import file="nbproject/build-impl.xml"/>
+
+    <!-- Pre- and Post-Build Hooks -->
+    <target name="-pre-init">
+        <!-- Any custom initialization tasks can go here -->
+    </target>
+
+    <target name="-post-jar">
+        <!-- Optional: Copy or move the JAR to a specific location -->
+        <echo>Build completed. The JAR file is located at ${dist.jar}.</echo>
+    </target>
+
+    <target name="-post-clean">
+        <!-- Optional: Custom cleanup tasks -->
+        <echo>Clean completed.</echo>
+    </target>
+
     <!--
 
     There exist several targets which are by default empty and which can be 

@@ -966,6 +966,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         // set tooltip display time
         int delayTimeDesired = 10000; //10 seconds
         javax.swing.ToolTipManager.sharedInstance().setDismissDelay(delayTimeDesired);
+        javax.swing.ToolTipManager.sharedInstance().setInitialDelay(100); // Default is typically 750ms
+        javax.swing.ToolTipManager.sharedInstance().setReshowDelay(100); // Default is typically 500ms
 
         MXRStates = new MixRegGuiStates();
         advancedOptions_view = new advancedOptions();
