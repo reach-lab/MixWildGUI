@@ -956,7 +956,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
      */
     public mixregGUI() {
         initComponents();
-        this.setTitle("MixWILD-3.0.0");
+        this.setTitle("MixWILD-3.0.1");
         // adjust the frame size to fit screen resolution
 //        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 //        setBounds(0, 0, stageOneTabs.getWidth()/2, (int) Math.round(screenSize.height / 1.5));
@@ -8996,7 +8996,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 if (sessionFolderName == null) {
                     defFile.csvToDatConverter(file);
                     if (getIncludeStageTwoDataYes()) {
-                        defFile.csvToDatConverterSecondDataset(file_stageTwo);
+                        defFile.csvToDatConverterSecondDataset(file, file_stageTwo);
                     }
                     sessionFolderName = defFile.getUtcDirPath();
 

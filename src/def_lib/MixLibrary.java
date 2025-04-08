@@ -1706,8 +1706,10 @@ public class MixLibrary implements Serializable {
         }
     }
 
-    public void csvToDatConverterSecondDataset(File csvFileToConvert) throws IOException {
-        String fileName = csvFileToConvert.getAbsolutePath();
+    public void csvToDatConverterSecondDataset(File csvFileToConvert, File csvFileToConvert_stageTwo) throws IOException {
+        String fileName_project = csvFileToConvert.getAbsolutePath();
+        String filePath_project = FilenameUtils.getFullPath(fileName_project);
+        String fileName = csvFileToConvert_stageTwo.getAbsolutePath();
         String fileNameShort = FilenameUtils.removeExtension(fileName);
         String baseName = FilenameUtils.getBaseName(fileName);
         String filePath = FilenameUtils.getFullPath(fileName);
@@ -1720,7 +1722,7 @@ public class MixLibrary implements Serializable {
 
             csvRows.remove(0); // TODO: make sure this isn't removing data
 
-            CSVWriter writer = new CSVWriter(new FileWriter(filePath + utcDirPath + baseName.replace(" ", "_") + ".dat"), ' ', CSVWriter.NO_QUOTE_CHARACTER,
+            CSVWriter writer = new CSVWriter(new FileWriter(filePath_project + utcDirPath + baseName.replace(" ", "_") + ".dat"), ' ', CSVWriter.NO_QUOTE_CHARACTER,
                     CSVWriter.NO_ESCAPE_CHARACTER, CSVWriter.RFC4180_LINE_END);
             writer.writeAll(csvRows);
             writer.close();
