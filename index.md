@@ -21,7 +21,7 @@ MixWILD is a free and open-source tool by and for the behavioral researchers. If
 - [Video4: intro to stage 2 modeling](https://www.youtube.com/watch?v=cPVYC3pQmiU) (23 min) (*new*)
 
 ### 2. Download MixWILD for Mac or PC ###
-Please submit your email prior to downloading the application so we can notify you of ** major software updates **  or ** opportunities to participate in the usability study of MixWILD **
+Please submit your email prior to downloading the application so we can notify you of **major software updates**  or **opportunities to participate in the usability study of MixWILD**
 {% include formspree.html %}  
   
 <br>
