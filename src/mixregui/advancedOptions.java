@@ -55,7 +55,7 @@ public class advancedOptions extends javax.swing.JFrame {
         initComponents();
 //        this.setResizable(false);
         run32BitCheckBox.setVisible(osWindows);
-
+        run32BitCheckBox.setEnabled(false);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
 
@@ -82,8 +82,8 @@ public class advancedOptions extends javax.swing.JFrame {
         adaptiveQuadritureWaveVarianceCheckBox.setSelected(false);
         discardSubjectsCheckBox.setSelected(false);
         thresholdRidgeSpinner.setValue(0.0);
-
         resampleCheckBox.setSelected(true);
+        disaggregateEnabled = false;
 
         //variables to save values:
         if (mixregGUI.notIncludeStageTwo == true) {

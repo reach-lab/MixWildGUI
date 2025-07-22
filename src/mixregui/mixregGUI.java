@@ -517,8 +517,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                         if (!isNumeric(thiscellvalue)) {
                             validDataset = false;
                             JOptionPane.showMessageDialog(null, "The .csv file should contain only numeric values, except for the headers in the first row."
-                                    + "\n" + "Missing value codes should be numeric only."
-                                    + "\n" + "Row: " + x + ", cell value:" + thiscellvalue,
+                                    + "\n" + "- Missing value codes should be numeric only."
+                                    + "\n" + "- Cells with negative signs may be treated as text in Excel. Please try applying a number format to these columns in Excel."
+                                    + "\n\n" + "Row: " + x + ", cell value:" + thiscellvalue,
                                     "Dataset Error", JOptionPane.INFORMATION_MESSAGE);
                             break outerloop;
                         }
@@ -956,7 +957,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
      */
     public mixregGUI() {
         initComponents();
-        this.setTitle("MixWILD-3.0.1");
+        this.setTitle("MixWILD-3.0.2");
         // adjust the frame size to fit screen resolution
 //        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 //        setBounds(0, 0, stageOneTabs.getWidth()/2, (int) Math.round(screenSize.height / 1.5));
