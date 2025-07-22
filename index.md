@@ -1,3 +1,8 @@
+---
+layout: default
+title: Home
+---
+
 ![png](/resources/logo/mixwild_logo-red_large.png)
 
 ### What is this project about? ###
@@ -22,7 +27,8 @@ MixWILD is a free and open-source tool by and for the behavioral researchers. If
 
 ### 2. Download MixWILD for Mac or PC ###
 Please submit your email prior to downloading the application so we can notify you of **major software updates**  or **opportunities to participate in the usability study of MixWILD**
-{% include formspree.html %}  
+<!-- {% include formspree.html %}   -->
+<div style="text-align: left" class="sender-form-field" data-sender-form-id="eVOZGM"></div>
   
 <br>
 
