@@ -278,9 +278,10 @@ public class stageOneRegs extends javax.swing.JFrame {
     }//GEN-LAST:event_stageOneSubmitButtonActionPerformed
 
     private void levelOneAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_levelOneAddButtonActionPerformed
-        SystemLogger.LOGGER.log(Level.FINE, "levelOneAddButtonActionPerformed");
+//        SystemLogger.LOGGER.log(Level.FINE, "levelOneAddButtonActionPerformed");
         if (!AllVariablesList.isSelectionEmpty()) {
             levelOneList.addElement(AllVariablesList.getSelectedValue());
+            SystemLogger.LOGGER.log(Level.FINE, "levelOneAddButtonActionPerformed: {0}", AllVariablesList.getSelectedValue());
             StageOneLevelOneList.setModel(levelOneList);
             //remove the variable once it is added to levelOne regressors
             varList.remove(AllVariablesList.getSelectedIndex());
@@ -296,11 +297,12 @@ public class stageOneRegs extends javax.swing.JFrame {
     }//GEN-LAST:event_levelOneAddButtonActionPerformed
 
     private void addLevelTwoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addLevelTwoButtonActionPerformed
-        SystemLogger.LOGGER.log(Level.FINE, "addLevelTwoButtonActionPerformed");
+//        SystemLogger.LOGGER.log(Level.FINE, "addLevelTwoButtonActionPerformed");
         if (!AllVariablesList.isSelectionEmpty()) {
             stageOneSubmitButton.setEnabled(true);
 
             levelTwoList.addElement(AllVariablesList.getSelectedValue());
+            SystemLogger.LOGGER.log(Level.FINE, "addLevelTwoButtonActionPerformed: {0}", AllVariablesList.getSelectedValue());
             StageOneLevelTwoList.setModel(levelTwoList);
 
             varList.remove(AllVariablesList.getSelectedIndex());
@@ -313,37 +315,32 @@ public class stageOneRegs extends javax.swing.JFrame {
     }//GEN-LAST:event_addLevelTwoButtonActionPerformed
 
     private void removeLevelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeLevelButtonActionPerformed
-        SystemLogger.LOGGER.log(Level.FINE, "removeLevelButtonActionPerformed");
+//        SystemLogger.LOGGER.log(Level.FINE, "removeLevelButtonActionPerformed");
         if (!StageOneLevelOneList.isSelectionEmpty()) {
 
             stageOneSubmitButton.setEnabled(true);
 
             //add an if condition here
             if (!varList.contains(StageOneLevelOneList.getSelectedValue())) {
-
+                SystemLogger.LOGGER.log(Level.FINE, "removeLevelButtonActionPerformed: {0}", StageOneLevelOneList.getSelectedValue());
                 varList.addElement(StageOneLevelOneList.getSelectedValue());
-
             }
-
             AllVariablesList.setModel(varList);
-
             levelOneList.remove(StageOneLevelOneList.getSelectedIndex());
-
         } else {
             JOptionPane.showMessageDialog(null, "Please select a variable from level one.", "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-
         }
 
 
     }//GEN-LAST:event_removeLevelButtonActionPerformed
 
     private void removeLevelTwoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeLevelTwoButtonActionPerformed
-        SystemLogger.LOGGER.log(Level.FINE, "removeLevelTwoButtonActionPerformed");
+//        SystemLogger.LOGGER.log(Level.FINE, "removeLevelTwoButtonActionPerformed");
         if (!StageOneLevelTwoList.isSelectionEmpty()) {
             stageOneSubmitButton.setEnabled(true);
 
             if (!varList.contains(StageOneLevelTwoList.getSelectedValue())) {
-
+                SystemLogger.LOGGER.log(Level.FINE, "removeLevelTwoButtonActionPerformed: {0}", StageOneLevelTwoList.getSelectedValue());
                 varList.addElement(StageOneLevelTwoList.getSelectedValue());
 
             }
@@ -375,11 +372,12 @@ public class stageOneRegs extends javax.swing.JFrame {
     }//GEN-LAST:event_stageOneCancelActionPerformed
 
     private void addLevelThreeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addLevelThreeButtonActionPerformed
-        SystemLogger.LOGGER.log(Level.FINE, "addLevelThreeButtonActionPerformed");
+//        SystemLogger.LOGGER.log(Level.FINE, "addLevelThreeButtonActionPerformed");
         if (!AllVariablesList.isSelectionEmpty()) {
             stageOneSubmitButton.setEnabled(true);
 
             levelThreeList.addElement(AllVariablesList.getSelectedValue());
+            SystemLogger.LOGGER.log(Level.FINE, "addLevelThreeButtonActionPerformed: {0}", AllVariablesList.getSelectedValue());
             StageOneLevelThreeList.setModel(levelThreeList);
 
             varList.remove(AllVariablesList.getSelectedIndex());
@@ -390,12 +388,12 @@ public class stageOneRegs extends javax.swing.JFrame {
     }//GEN-LAST:event_addLevelThreeButtonActionPerformed
 
     private void removeLevelThreeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeLevelThreeButtonActionPerformed
-        SystemLogger.LOGGER.log(Level.FINE, "removeLevelTwoButtonActionPerformed");
+//        SystemLogger.LOGGER.log(Level.FINE, "removeLevelTwoButtonActionPerformed");
         if (!StageOneLevelThreeList.isSelectionEmpty()) {
             stageOneSubmitButton.setEnabled(true);
 
             if (!varList.contains(StageOneLevelThreeList.getSelectedValue())) {
-
+                SystemLogger.LOGGER.log(Level.FINE, "removeLevelTwoButtonActionPerformed: {0}", StageOneLevelThreeList.getSelectedValue());
                 varList.addElement(StageOneLevelThreeList.getSelectedValue());
 
             }
