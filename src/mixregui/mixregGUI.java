@@ -224,6 +224,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     static String outPutStageTwo;
 
+    boolean programmaticChange = false;
+
     public int getRLE() {
         return RLE;
     }
@@ -3435,7 +3437,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_addStageOneButtonActionPerformed
 
     private void stageOneLevelThreeIDvariableComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stageOneLevelThreeIDvariableComboActionPerformed
-        SystemLogger.LOGGER.log(Level.FINE, "stageOneLevelThreeIDvariableComboActionPerformed");
+        if (!programmaticChange) {
+            SystemLogger.LOGGER.log(Level.FINE, "stageOneLevelThreeIDvariableComboActionPerformed");
+        }
     }//GEN-LAST:event_stageOneLevelThreeIDvariableComboActionPerformed
 
     private void stageOneLevelThreeIDvariableComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_stageOneLevelThreeIDvariableComboItemStateChanged
@@ -3447,7 +3451,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_stageOneLevelThreeIDvariableComboItemStateChanged
 
     private void StageOneOutcomeComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StageOneOutcomeComboActionPerformed
-        SystemLogger.LOGGER.log(Level.FINE, "StageOneOutcomeComboActionPerformed");
+        if (!programmaticChange) {
+            SystemLogger.LOGGER.log(Level.FINE, "StageOneOutcomeComboActionPerformed");
+        }
     }//GEN-LAST:event_StageOneOutcomeComboActionPerformed
 
     private void StageOneOutcomeComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_StageOneOutcomeComboItemStateChanged
@@ -3576,7 +3582,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_QuadraticAssociationRadioActionPerformed
 
     private void StageTwoOutcomeComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StageTwoOutcomeComboActionPerformed
-        SystemLogger.LOGGER.log(Level.FINE, "StageTwoOutcomeComboActionPerformed");
+        if (!programmaticChange) {
+            SystemLogger.LOGGER.log(Level.FINE, "StageTwoOutcomeComboActionPerformed");
+        }
     }//GEN-LAST:event_StageTwoOutcomeComboActionPerformed
 
     private void newDataSetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newDataSetButtonActionPerformed
@@ -3762,7 +3770,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         SystemLogger.LOGGER.log(Level.FINE, "newModelSubmitActionPerformed");
         isNewModalConfigSubmitted = true;
         updateGuiView_trigger_NewModelSubmit();
-        SystemLogger.LOGGER.log(Level.INFO, "Submit new model");
+//        SystemLogger.LOGGER.log(Level.INFO, "Submit new model");
         isUpdateStage2ConfigClicked = false;
 
     }//GEN-LAST:event_newModelSubmitActionPerformed
@@ -4793,12 +4801,20 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         int default_pos = 0;
 
+        programmaticChange = true;
         stageOneLevelThreeIDvariableCombo.setSelectedIndex(default_pos);
+        programmaticChange = false;
         if (stageOneThreeLevelParticipantLevelThreeRadio.isSelected()) {
+            programmaticChange = true;
             stageOneLevelTwoIDvariableCombo.setSelectedIndex(++default_pos);
+            programmaticChange = false;
         }
+        programmaticChange = true;
         StageOneOutcomeCombo.setSelectedIndex(++default_pos);
+        programmaticChange = false;
+        programmaticChange = true;
         StageTwoOutcomeCombo.setSelectedIndex(++default_pos);
+        programmaticChange = false;
 
         buttonGroup1.clearSelection();
 
@@ -4831,15 +4847,21 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         int default_pos = 0;
         stageOneLevelThreeIDvariableCombo.setModel(IDlevel3List);
+        programmaticChange = true;
         stageOneLevelThreeIDvariableCombo.setSelectedIndex(default_pos);
+        programmaticChange = false;
 
         if (stageOneThreeLevelParticipantLevelThreeRadio.isSelected()) {
             stageOneLevelTwoIDvariableCombo.setModel(IDlevel2List);
+            programmaticChange = true;
             stageOneLevelTwoIDvariableCombo.setSelectedIndex(++default_pos);
+            programmaticChange = false;
         }
 
         StageOneOutcomeCombo.setModel(StageOneList);
+        programmaticChange = true;
         StageOneOutcomeCombo.setSelectedIndex(++default_pos);
+        programmaticChange = false;
 
     }
 
@@ -4866,10 +4888,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 }
 
                 IDStageTwoVariableCombo.setModel(IDlevel3List);
+                programmaticChange = true;
                 IDStageTwoVariableCombo.setSelectedIndex(0);
+                programmaticChange = false;
 
                 StageTwoOutcomeCombo.setModel(StageTwoList);
+                programmaticChange = true;
                 StageTwoOutcomeCombo.setSelectedIndex(1);
+                programmaticChange = false;
             } else {
                 // No 2nd dataset imported: Use variables from 1st dataset
                 variableNamesCombo_stageTwo = variableNamesCombo;
@@ -4879,7 +4905,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     StageTwoList.addElement(variableNamesComboItem);
                 }
                 StageTwoOutcomeCombo.setModel(StageTwoList);
+                programmaticChange = true;
                 StageTwoOutcomeCombo.setSelectedIndex(2);
+                programmaticChange = false;
             }
         }
     }
@@ -9370,7 +9398,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 }
 
                 // View Update for Model Configuration Tab 
+                programmaticChange = true;
                 stageOneTabs.setSelectedIndex(1);
+                programmaticChange = false;
                 newModelSubmit.setEnabled(false);
                 fileBrowseButton.setEnabled(false);
                 fileBrowseButton.setVisible(false);
@@ -10481,7 +10511,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                             boolean selected = abstractButton.getModel().isSelected();
                             if (disaggregateEnabled == true) {
                                 if (selected) {
-                                    System.out.println("Checkbox selected");
+                                    System.out.println("Stage 1 checkbox selected");
+                                    SystemLogger.LOGGER.log(Level.FINE, "stage_one_checkbox_selected");
                                     tableDisaggVarianceBoxes.get(row).get(column).setEnabled(true);
                                     tableDisaggVarianceBoxes.get(row).get(column).setSelected(false);
                                     System.out.println(tableDisaggVarianceBoxes.size());
