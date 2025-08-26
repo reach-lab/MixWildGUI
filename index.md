@@ -37,6 +37,8 @@ MixWILD is a free and open-source tool by and for the behavioral researchers. If
 | 3.0      | Possibility of three-level modeling;<br>Latex equation display;<br>Simplified result output | (Coming soon) Windows 3.0 <br><br> macOS 3.0 (supports Mac computers with Apple Silicon) |
 | 2.0      | Stable version of two-level modeling;<br>The current user guide focuses on this version | [Windows 2.0](https://github.com/reach-lab/MixWildGUI/releases/download/v2.0-stable/MixWILD-2.0.exe)<br><br>[macOS 2.0](https://github.com/reach-lab/MixWildGUI/releases/download/v2.0-stable/MixWILD-2.0.dmg) (supports Mac computers with Intel processors or Apple Silicon that have Rosetta installed) |
 
+We are developing an R package for MixWILD. For now, you can find instructions for running MIXREGLS in R at the bottom of this [web page](https://voices.uchicago.edu/hedeker/mixwild_mixregls/). 
+
 ![Total Downloads](https://img.shields.io/github/downloads/reach-lab/MixWildGUI/total)
 
 <!--
@@ -86,6 +88,7 @@ Previous version
 ### Selective papers that use MixWILD ###
 <div style="height:300px;width:680px;border:none;font:12px/18px sans-serif;overflow:auto;">
     <ul>
+      <li>Niepel, C., Hausen, J. E., Weber, A. M., & Möller, J. (2025). <a href="https://psycnet.apa.org/fulltext/2026-09039-001.html">Understanding mean-level and intraindividual variability in state academic self-concept: The role of students’ trait expectancies and values. Journal of Educational Psychology.</li>
       <li>Smith, D. L., Tharaud, J. B., Pridgen, S. A., & Held, P. (2023). <a href="https://psycnet.apa.org/fulltext/2024-31905-001.html">Predicting suicidal ideation 3 months following intensive posttraumatic stress disorder treatment</a>. Psychological Trauma: Theory, Research, Practice, and Policy.</li>
       <li>Smith, D. L., Kovacevic, M., Montes, M., Pridgen, S., & Held, P. (2022). <a href="https://www.sciencedirect.com/science/article/pii/S0887618522000330">Improving mental, physical, and social functioning through participation in a 3-week cognitive processing therapy-based intensive PTSD treatment</a>. Journal of Anxiety Disorders, 88, 102560.</li>
       <li>Kaden, S. J., & Dalton, E. D. (2022). <a href="https://ijbnpa.biomedcentral.com/articles/10.1186/s12966-021-01121-y">Momentary fluctuations in emotional intelligence and stress predict changes in disordered eating</a>. Journal of American College Health, 1-8.</li>
