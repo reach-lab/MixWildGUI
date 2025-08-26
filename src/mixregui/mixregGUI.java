@@ -5167,6 +5167,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     boolean selected = abstractButton.getModel().isSelected();
                     if (selected) {
                         scaleChecked = true;
+                        SystemLogger.LOGGER.log(Level.FINE, "stage_two_checkbox_selected");
                         if (randomChecked == true) {
                             if (!suppressed) {
                                 stageTwoLevelTwoGridBoxes.get(row).get(3).setEnabled(true);
@@ -5192,7 +5193,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
                     if (selected) {
                         randomChecked = true;
-
+                        SystemLogger.LOGGER.log(Level.FINE, "stage_two_checkbox_selected");
                         if (scaleChecked == true) {
                             if (!suppressed) {
                                 stageTwoLevelTwoGridBoxes.get(row).get(3).setEnabled(true);
@@ -10509,14 +10510,26 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                             //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
                             AbstractButton abstractButton = (AbstractButton) e.getSource();
                             boolean selected = abstractButton.getModel().isSelected();
+
+                            // Always log, regardless of disaggregateEnabled
+                            if (selected) {
+                                System.out.println("Stage 1 checkbox selected");
+                                SystemLogger.LOGGER.log(Level.FINE, "stage_one_checkbox_selected");
+                            } else {
+                                System.out.println("Stage 1 checkbox deselected");
+                                SystemLogger.LOGGER.log(Level.FINE, "stage_one_checkbox_deselected");
+                            }
+
                             if (disaggregateEnabled == true) {
                                 if (selected) {
                                     System.out.println("Stage 1 checkbox selected");
                                     SystemLogger.LOGGER.log(Level.FINE, "stage_one_checkbox_selected");
+
                                     tableDisaggVarianceBoxes.get(row).get(column).setEnabled(true);
                                     tableDisaggVarianceBoxes.get(row).get(column).setSelected(false);
                                     System.out.println(tableDisaggVarianceBoxes.size());
                                 } else {
+//                                    System.out.println("Stage 1 checkbox not selected");
                                     tableDisaggVarianceBoxes.get(row).get(column).setEnabled(false);
                                     tableDisaggVarianceBoxes.get(row).get(column).setSelected(false);
                                 }
@@ -10565,6 +10578,24 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     }
 
                 } else if (stageOneTableLevel == 2) {
+                    tableGrid.add(tableBoxes.get(j).get(k), constraints);
+
+                    // Add this to enable logging for level 2:
+                    tableBoxes.get(j).get(k).addActionListener(actionListener); // if you want the general listener
+                    tableBoxes.get(j).get(k).addActionListener(new ActionListener() {
+                        public void actionPerformed(ActionEvent e) {
+                            AbstractButton abstractButton = (AbstractButton) e.getSource();
+                            boolean selected = abstractButton.getModel().isSelected();
+                            if (selected) {
+                                System.out.println("Stage 1 level 2 checkbox selected");
+                                SystemLogger.LOGGER.log(Level.FINE, "stage_one_checkbox_selected");
+                            } else {
+                                System.out.println("Stage 1 level 2 checkbox deselected");
+                                SystemLogger.LOGGER.log(Level.FINE, "stage_one_checkbox_deselected");
+                            }
+                        }
+                    });
+
                     if (stageOneTwoLevelRadio.isSelected()) { // two-level
                         if (k == 1) {
                             if (RLE_selected == MixLibrary.STAGE_ONE_RLE_SLOPE) {
@@ -11288,7 +11319,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }
 
     private void update_StageTwoLevelTwoBoxes(DefaultListModel<String> defaultListModel, boolean[][] stageTwoGridBoxesSelection) {
-
+//        SystemLogger.LOGGER.log(Level.INFO, "TEST: Checkbox clicked - INFO level");
+//        SystemLogger.LOGGER.log(Level.FINE, "stage_two_checkbox_selected - FINE level");
         JScrollPane scrollpanel = new JScrollPane(stageTwoRegsGridLvl2);
         stageTwoLevelTwoSelected = new ArrayList<String>();
 
@@ -11450,6 +11482,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     AbstractButton abstractButton = (AbstractButton) e.getSource();
                     boolean selected = abstractButton.getModel().isSelected();
                     if (selected) {
+                        SystemLogger.LOGGER.log(Level.FINE, "stage_two_checkbox_selected");
                         scaleChecked = true;
                         if (randomChecked == true) {
                             if (!suppressed) {
@@ -11476,7 +11509,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
                     if (selected) {
                         randomChecked = true;
-
+                        SystemLogger.LOGGER.log(Level.FINE, "stage_two_checkbox_selected");
                         if (scaleChecked == true) {
                             if (!suppressed) {
                                 stageTwoLevelTwoGridBoxes.get(row).get(3).setEnabled(true);
@@ -11834,6 +11867,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     boolean selected = abstractButton.getModel().isSelected();
                     if (selected) {
                         scaleChecked = true;
+                        SystemLogger.LOGGER.log(Level.FINE, "stage_two_checkbox_selected");
                         if (randomChecked == true) {
                             if (!suppressed) {
                                 stageTwoLevelOneGridBoxes.get(row).get(3).setEnabled(true);
@@ -11859,7 +11893,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
                     if (selected) {
                         randomChecked = true;
-
+                        SystemLogger.LOGGER.log(Level.FINE, "stage_two_checkbox_selected");
                         if (scaleChecked == true) {
                             if (!suppressed) {
                                 stageTwoLevelOneGridBoxes.get(row).get(3).setEnabled(true);
@@ -12369,6 +12403,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     AbstractButton abstractButton = (AbstractButton) e.getSource();
                     boolean selected = abstractButton.getModel().isSelected();
                     if (selected) {
+                        SystemLogger.LOGGER.log(Level.FINE, "stage_two_checkbox_selected");
                         scaleChecked = true;
                         if (randomChecked == true) {
                             if (!suppressed) {
@@ -12394,6 +12429,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     boolean selected = abstractButton.getModel().isSelected();
 
                     if (selected) {
+                        SystemLogger.LOGGER.log(Level.FINE, "stage_two_checkbox_selected");
                         randomChecked = true;
 
                         if (scaleChecked == true) {
