@@ -959,7 +959,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
      */
     public mixregGUI() {
         initComponents();
-        this.setTitle("MixWILD-3.0.2");
+        this.setTitle("MixWILD-3.0.4");
         // adjust the frame size to fit screen resolution
 //        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 //        setBounds(0, 0, stageOneTabs.getWidth()/2, (int) Math.round(screenSize.height / 1.5));
@@ -13521,11 +13521,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 stageOneRegLabelList[pos] = stage_1_regs.levelThreeList.get(pos - stage_1_regs.levelOneList.size() - stage_1_regs.levelTwoList.size());
             }
             // Variable name in table (i.e., no subscript)
-            stageOneRegTableNameList[pos] = "X_" + Integer.toString(pos + 1);
+            stageOneRegTableNameList[pos] = "X_{" + Integer.toString(pos + 1) + "}";
             // Variable name in equation
             String regLabel = stageOneRegLabelList[pos];
             String subscript = getSubscriptStageOneRegressor(regLabel, stage_1_regs.levelOneList, stage_1_regs.levelTwoList, stage_1_regs.levelThreeList);
-            stageOneRegEquationNameList[pos] = "X_" + Integer.toString(pos + 1) + subscript;
+            stageOneRegEquationNameList[pos] = "X_{" + Integer.toString(pos + 1) + "}" + subscript;
 
         }
 //        System.out.println("3");
@@ -13576,11 +13576,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 stageTwoRegLabelList[pos] = stage_2_regs.stageTwoLevelTwo.get(pos - stage_2_regs.stageTwoLevelOne.size());
             }
             // Variable name in table (i.e., no subscript)
-            stageTwoRegTableNameList[pos] = "X_" + Integer.toString(pos + 1);
+            stageTwoRegTableNameList[pos] = "X_{" + Integer.toString(pos + 1) + "}";
             // Variable name in equation
             String regLabel = stageTwoRegLabelList[pos];
             String subscript = getSubscriptStageTwoRegressor(regLabel, stage_2_regs.stageTwoLevelOne, stage_2_regs.stageTwoLevelTwo);
-            stageTwoRegEquationNameList[pos] = "X_" + Integer.toString(pos + 1) + subscript;
+            stageTwoRegEquationNameList[pos] = "X_{" + Integer.toString(pos + 1) + "}" + subscript;
 
         }
         System.out.println("4");
@@ -13612,13 +13612,13 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             } else if (regressorLevel == 2) {
                 subscript = "_{ij}";
             } else {
-                subscript = "_i";
+                subscript = "_{i}";
             }
         } else {
             if (regressorLevel == 1) {
                 subscript = "_{ij}";
             } else if (regressorLevel == 2) {
-                subscript = "_i";
+                subscript = "_{i}";
             } else {
                 //pass
             }

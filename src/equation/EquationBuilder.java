@@ -61,12 +61,12 @@ public class EquationBuilder {
             if (i < meanModelVarLabels.length) {
                 regLabel = meanModelVarLabels[i];
                 String equationVarName = stageOneRegEquationNameList[Arrays.asList(stageOneRegLabelList).indexOf(regLabel)];
-                MeanModelLatex = MeanModelLatex + " + \\beta_" + Integer.toString(i + 1) + " " + equationVarName;
+                MeanModelLatex = MeanModelLatex + " + \\beta_{" + Integer.toString(i + 1) + "}" + " " + equationVarName;
             } else { // disaggregate
                 regLabel = meanModelDisaggVarLabels[i];
                 String equationVarName = stageOneRegEquationNameList[Arrays.asList(stageOneRegLabelList).indexOf(regLabel)];
                 String tableVarName = stageOneRegTableNameList[Arrays.asList(stageOneRegLabelList).indexOf(regLabel)];
-                MeanModelLatex = MeanModelLatex + " + \\beta_" + Integer.toString(i + 1) + " (" + equationVarName + " - " + tableVarName + "_i)";
+                MeanModelLatex = MeanModelLatex + " + \\beta_{" + Integer.toString(i + 1)+ "}" + " (" + equationVarName + " - " + tableVarName + "_i)";
             }
 
         }
@@ -114,12 +114,12 @@ public class EquationBuilder {
                 if (i < BSModelVarLabels.length) {
                     regLabel = BSModelVarLabels[i];
                     String equationVarName = stageOneRegEquationNameList[Arrays.asList(stageOneRegLabelList).indexOf(regLabel)];
-                    BSModelLatex = BSModelLatex + " + \\alpha_" + Integer.toString(i + 1) + " " + equationVarName;
+                    BSModelLatex = BSModelLatex + " + \\alpha_{" + Integer.toString(i + 1) + "}" + " " + equationVarName;
                 } else {
                     regLabel = BSModelDisaggVarLabels[i];
                     String equationVarName = stageOneRegEquationNameList[Arrays.asList(stageOneRegLabelList).indexOf(regLabel)];
                     String tableVarName = stageOneRegTableNameList[Arrays.asList(stageOneRegLabelList).indexOf(regLabel)];
-                    BSModelLatex = BSModelLatex + " + \\alpha_" + Integer.toString(i + 1) + " (" + equationVarName + " - " + tableVarName + "_i)";
+                    BSModelLatex = BSModelLatex + " + \\alpha_{" + Integer.toString(i + 1) + "}" + " (" + equationVarName + " - " + tableVarName + "_i)";
                 }
 
             }
@@ -141,12 +141,12 @@ public class EquationBuilder {
             if (i < WSModelVarLabels.length) {
                 regLabel = WSModelVarLabels[i];
                 String equationVarName = stageOneRegEquationNameList[Arrays.asList(stageOneRegLabelList).indexOf(regLabel)];
-                WSModelLatex = WSModelLatex + " + \\tau_" + Integer.toString(i + 1) + " " + equationVarName;
+                WSModelLatex = WSModelLatex + " + \\tau_{" + Integer.toString(i + 1) + "}" + " " + equationVarName;
             } else {
                 regLabel = WSModelDisaggVarLabels[i];
                 String equationVarName = stageOneRegEquationNameList[Arrays.asList(stageOneRegLabelList).indexOf(regLabel)];
                 String tableVarName = stageOneRegTableNameList[Arrays.asList(stageOneRegLabelList).indexOf(regLabel)];
-                WSModelLatex = WSModelLatex + " + \\tau_" + Integer.toString(i + 1) + " (" + equationVarName + " - " + tableVarName + "_i)";
+                WSModelLatex = WSModelLatex + " + \\tau_{" + Integer.toString(i + 1) + "}" + " (" + equationVarName + " - " + tableVarName + "_i)";
             }
 
         }
@@ -222,7 +222,7 @@ public class EquationBuilder {
             String regLabel;
             regLabel = stageTwoRegressorLabels[i];
             String equationVarName = stageTwoRegEquationNameList[Arrays.asList(stageTwoRegLabelList).indexOf(regLabel)];
-            modelLatex = modelLatex + " + \\beta_" + Integer.toString(index) + " " + equationVarName;
+            modelLatex = modelLatex + " + \\beta_{" + Integer.toString(index) + "}" + " " + equationVarName;
             index++;
         }
 
@@ -231,7 +231,7 @@ public class EquationBuilder {
             String regLabel;
             regLabel = randomLocationInteractionLabels[i];
             String equationVarName = stageTwoRegEquationNameList[Arrays.asList(stageTwoRegLabelList).indexOf(regLabel)];
-            modelLatex = modelLatex + " + \\beta_" + Integer.toString(index) + " " + equationVarName + " \\nu_i";
+            modelLatex = modelLatex + " + \\beta_{" + Integer.toString(index) + "}" + " " + equationVarName + " \\nu_i";
             index++;
         }
 
@@ -239,7 +239,7 @@ public class EquationBuilder {
             String regLabel;
             regLabel = randomScaleInteractionLabels[i];
             String equationVarName = stageTwoRegEquationNameList[Arrays.asList(stageTwoRegLabelList).indexOf(regLabel)];
-            modelLatex = modelLatex + " + \\beta_" + Integer.toString(index) + " " + equationVarName + " \\omega_i";
+            modelLatex = modelLatex + " + \\beta_{" + Integer.toString(index) + "}" + " " + equationVarName + " \\omega_i";
             index++;
         }
 
@@ -248,7 +248,7 @@ public class EquationBuilder {
             regLabel = randomLocationScaleInteractionLabels[i];
 
             String equationVarName = stageTwoRegEquationNameList[Arrays.asList(stageTwoRegLabelList).indexOf(regLabel)];
-            modelLatex = modelLatex + " + \\beta_" + Integer.toString(index) + " " + equationVarName + " \\nu_i  \\omega_i";
+            modelLatex = modelLatex + " + \\beta_{" + Integer.toString(index) + "}" + " " + equationVarName + " \\nu_i  \\omega_i";
             index++;
         }
 
