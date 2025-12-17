@@ -1602,17 +1602,17 @@
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="stageOneLevelTwoIDVariableLabel" min="-2" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="stageOneLevelThreeIDvariableCombo" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="StageOneOutcomeCombo" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="addStageOneButton" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="addStageOneButton" alignment="0" max="-2" attributes="0"/>
                                                   <Component id="jSeparator10" alignment="0" max="32767" attributes="0"/>
                                                   <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   <Component id="jSeparator9" alignment="0" max="32767" attributes="0"/>
                                                   <Component id="stageOneLevelThreeIDVariableLabel" min="-2" max="-2" attributes="0"/>
                                                   <Component id="jSeparator7" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="advancedOptionsButton" alignment="0" max="32767" attributes="0"/>
                                                   <Component id="jSeparator11" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="stageOneLevelTwoIDvariableCombo" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="stageOneLevelTwoIDvariableCombo" alignment="0" max="-2" attributes="0"/>
+                                                  <Component id="StageOneOutcomeCombo" alignment="0" max="-2" attributes="0"/>
+                                                  <Component id="advancedOptionsButton" alignment="0" max="-2" attributes="0"/>
+                                                  <Component id="stageOneLevelThreeIDvariableCombo" alignment="0" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -1675,6 +1675,9 @@
                             <StringItem index="3" value="Item 4"/>
                           </StringArray>
                         </Property>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[262, 29]"/>
+                        </Property>
                       </Properties>
                       <Events>
                         <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="StageOneOutcomeComboItemStateChanged"/>
@@ -1704,6 +1707,9 @@
                             <StringItem index="2" value="Item 3"/>
                             <StringItem index="3" value="Item 4"/>
                           </StringArray>
+                        </Property>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[262, 29]"/>
                         </Property>
                       </Properties>
                       <Events>
@@ -1743,6 +1749,9 @@
                           <Font name="Dialog" size="14" style="1"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Options ..."/>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[262, 30]"/>
+                        </Property>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="advancedOptionsButtonActionPerformed"/>
@@ -1935,6 +1944,9 @@
                             <StringItem index="2" value="Item 3"/>
                             <StringItem index="3" value="Item 4"/>
                           </StringArray>
+                        </Property>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[262, 29]"/>
                         </Property>
                       </Properties>
                       <Events>

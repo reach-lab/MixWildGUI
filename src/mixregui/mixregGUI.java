@@ -959,7 +959,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
      */
     public mixregGUI() {
         initComponents();
-        this.setTitle("MixWILD-3.0.4");
+        this.setTitle("MixWILD-3.0.5");
         // adjust the frame size to fit screen resolution
 //        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 //        setBounds(0, 0, stageOneTabs.getWidth()/2, (int) Math.round(screenSize.height / 1.5));
@@ -1999,6 +1999,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         StageOneOutcomeCombo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         StageOneOutcomeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        StageOneOutcomeCombo.setPreferredSize(new java.awt.Dimension(262, 29));
         StageOneOutcomeCombo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 StageOneOutcomeComboItemStateChanged(evt);
@@ -2015,6 +2016,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         stageOneLevelThreeIDvariableCombo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         stageOneLevelThreeIDvariableCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        stageOneLevelThreeIDvariableCombo.setPreferredSize(new java.awt.Dimension(262, 29));
         stageOneLevelThreeIDvariableCombo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 stageOneLevelThreeIDvariableComboItemStateChanged(evt);
@@ -2039,6 +2041,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         advancedOptionsButton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         advancedOptionsButton.setText("Options ...");
+        advancedOptionsButton.setPreferredSize(new java.awt.Dimension(262, 30));
         advancedOptionsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 advancedOptionsButtonActionPerformed(evt);
@@ -2123,6 +2126,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         stageOneLevelTwoIDvariableCombo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         stageOneLevelTwoIDvariableCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        stageOneLevelTwoIDvariableCombo.setPreferredSize(new java.awt.Dimension(262, 29));
         stageOneLevelTwoIDvariableCombo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 stageOneLevelTwoIDvariableComboItemStateChanged(evt);
@@ -2149,17 +2153,17 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                             .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(stageOneLevelTwoIDVariableLabel)
                                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(stageOneLevelThreeIDvariableCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(StageOneOutcomeCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(addStageOneButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(addStageOneButton)
                                     .addComponent(jSeparator10)
                                     .addComponent(jLabel2)
                                     .addComponent(jSeparator9)
                                     .addComponent(stageOneLevelThreeIDVariableLabel)
                                     .addComponent(jSeparator7)
-                                    .addComponent(advancedOptionsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jSeparator11)
-                                    .addComponent(stageOneLevelTwoIDvariableCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                    .addComponent(stageOneLevelTwoIDvariableCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(StageOneOutcomeCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(advancedOptionsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(stageOneLevelThreeIDvariableCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(associationPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -8623,8 +8627,33 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         BufferedWriter writer = null;
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             try {
+                String cleanStageOne = equationLatex
+                        .replace("\\:\\:", "")   // remove \:\:
+                        .replace("\\:", "")      // remove single \:
+                        .replaceAll(" +", " ");  // remove extra spaces if any
+
+                String cleanStageTwo = equationLatexStageTwo
+                        .replace("\\:\\:", "")
+                        .replace("\\:", "")
+                        .replaceAll(" +", " ");
+
+                String userLatexStageOne = latexVaraibleStageOneTextArea.getText();
+                String userLatexStageTwo = latexVaraibleStageTwoTextArea.getText();
+                
+                
                 writer = new BufferedWriter(new FileWriter(file));
-                writer.write("Stage One Models: \n" + equationLatex + "\nStage Two " + equationLatexStageTwo);
+                writer.write("Stage One Models\n");
+                writer.write(cleanStageOne + "\n\n");
+                
+                writer.write("Variable Name Table - Stage One\n");
+                writer.write(userLatexStageOne + "\n\n\n");
+                
+                writer.write("Stage Two Model\n");
+                writer.write(cleanStageTwo + "\n\n");
+          
+                writer.write("Variable Name Table - Stage Two\n");
+                writer.write(userLatexStageTwo + "\n\n\n");
+
                 writer.close();
                 JOptionPane.showMessageDialog(this, "Equation latex code was Saved Successfully!",
                         "Success!", JOptionPane.INFORMATION_MESSAGE);
@@ -13322,21 +13351,21 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 //        TeXIcon icon1 = formula1.createTeXIcon(TeXConstants.STYLE_DISPLAY, fontsize, TeXConstants.UNIT_PIXEL, 256f, TeXConstants.ALIGN_CENTER);
         TeXIcon icon1 = formula1.new TeXIconBuilder().setStyle(TeXConstants.STYLE_DISPLAY)
                 .setSize(fontsize)
-                .setWidth(TeXConstants.UNIT_PIXEL, 256f, TeXConstants.ALIGN_CENTER)
+                .setWidth(TeXConstants.UNIT_PIXEL, 1200f, TeXConstants.ALIGN_CENTER)
                 .setIsMaxWidth(true)
                 .setInterLineSpacing(TeXConstants.UNIT_PIXEL, 20f).build();
 
         TeXFormula formula2 = new TeXFormula(latex2);
         TeXIcon icon2 = formula2.new TeXIconBuilder().setStyle(TeXConstants.STYLE_DISPLAY)
                 .setSize(fontsize)
-                .setWidth(TeXConstants.UNIT_PIXEL, 256f, TeXConstants.ALIGN_CENTER)
+                .setWidth(TeXConstants.UNIT_PIXEL, 1200f, TeXConstants.ALIGN_CENTER)
                 .setIsMaxWidth(true)
                 .setInterLineSpacing(TeXConstants.UNIT_PIXEL, 20f).build();
 
         TeXFormula formula3 = new TeXFormula(latex3);
         TeXIcon icon3 = formula3.new TeXIconBuilder().setStyle(TeXConstants.STYLE_DISPLAY)
                 .setSize(fontsize)
-                .setWidth(TeXConstants.UNIT_PIXEL, 256f, TeXConstants.ALIGN_CENTER)
+                .setWidth(TeXConstants.UNIT_PIXEL, 1200f, TeXConstants.ALIGN_CENTER)
                 .setIsMaxWidth(true)
                 .setInterLineSpacing(TeXConstants.UNIT_PIXEL, 20f).build();
 
@@ -13583,11 +13612,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             stageTwoRegEquationNameList[pos] = "X_{" + Integer.toString(pos + 1) + "}" + subscript;
 
         }
-        System.out.println("4");
+
         update_model_equation_stage_two(stageTwoOutcomeLevel, stageTwoOutcomeType, stageTwoRegLabelList, stageTwoRegEquationNameList, RLE, RSE, stageTwoRegressorLabels, randomLocationInteractionLabels, randomScaleInteractionLabels, randomLocationScaleInteraction, twoWayRandomLocationScaleInteraction);
         update_model_variable_table_stage_two(stageTwoOutcomeLabel, stageTwoRegLabelList, stageTwoRegTableNameList);
         jLabel39.setText("");
-        System.out.println("5");
+
     }
 
     private String getSubscriptStageOneRegressor(String regLabel, DefaultListModel<String> stageOneLvlOneList, DefaultListModel<String> stageOneLvlTwoList, DefaultListModel<String> stageOneLvlThreeList) {
