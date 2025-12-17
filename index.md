@@ -88,6 +88,7 @@ Previous version
 ### Selective papers that use MixWILD ###
 <div style="height:300px;width:680px;border:none;font:12px/18px sans-serif;overflow:auto;">
     <ul>
+      <li>Forchuk, C., Mongrain, M., Mirbozorgi, B., & Gargala, D. (2025). <a href="https://link.springer.com/article/10.1007/s12671-025-02729-y">Less reactivity, more stability: Affective benefits of decentering from stress in ecological momentary assessment</a>. Mindfulness.</li>
       <li>Niepel, C., Hausen, J. E., Weber, A. M., & Möller, J. (2025). <a href="https://psycnet.apa.org/fulltext/2026-09039-001.html">Understanding mean-level and intraindividual variability in state academic self-concept: The role of students’ trait expectancies and values</a>. Journal of Educational Psychology.</li>
       <li>Smith, D. L., Tharaud, J. B., Pridgen, S. A., & Held, P. (2023). <a href="https://psycnet.apa.org/fulltext/2024-31905-001.html">Predicting suicidal ideation 3 months following intensive posttraumatic stress disorder treatment</a>. Psychological Trauma: Theory, Research, Practice, and Policy.</li>
       <li>Smith, D. L., Kovacevic, M., Montes, M., Pridgen, S., & Held, P. (2022). <a href="https://www.sciencedirect.com/science/article/pii/S0887618522000330">Improving mental, physical, and social functioning through participation in a 3-week cognitive processing therapy-based intensive PTSD treatment</a>. Journal of Anxiety Disorders, 88, 102560.</li>
