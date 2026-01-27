@@ -13036,8 +13036,15 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 }
 
                 if (colname.contains(" ")) {
-                    validDataset = false;
+                    validDataset_stageTwo = false;
                     JOptionPane.showMessageDialog(null, String.format("The header of .csv file should contain no space. Please modify the header [%s] and import again.", colname),
+                            "Dataset Error", JOptionPane.INFORMATION_MESSAGE);
+                    break;
+                }
+                
+                if (colname.length() > 20) {
+                    validDataset_stageTwo = false;
+                    JOptionPane.showMessageDialog(null, String.format("The variable name length should be less than 20 characters. Please modify the variable name [%s] and import again.", colname),
                             "Dataset Error", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 }
