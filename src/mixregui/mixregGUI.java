@@ -488,6 +488,13 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                             "Dataset Error", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 }
+
+                if (colname.length() > 20) {
+                    validDataset = false;
+                    JOptionPane.showMessageDialog(null, String.format("The variable name length should be less than 20 characters. Please modify the variable name [%s] and import again.", colname),
+                            "Dataset Error", JOptionPane.INFORMATION_MESSAGE);
+                    break;
+                }
                 validDataset = true;
             }
         }
@@ -959,7 +966,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
      */
     public mixregGUI() {
         initComponents();
-        this.setTitle("MixWILD-3.0.5");
+        this.setTitle("MixWILD-3.0.6");
         // adjust the frame size to fit screen resolution
 //        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 //        setBounds(0, 0, stageOneTabs.getWidth()/2, (int) Math.round(screenSize.height / 1.5));
@@ -8628,8 +8635,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             try {
                 String cleanStageOne = equationLatex
-                        .replace("\\:\\:", "")   // remove \:\:
-                        .replace("\\:", "")      // remove single \:
+                        .replace("\\:\\:", "") // remove \:\:
+                        .replace("\\:", "") // remove single \:
                         .replaceAll(" +", " ");  // remove extra spaces if any
 
                 String cleanStageTwo = equationLatexStageTwo
@@ -8639,18 +8646,17 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
                 String userLatexStageOne = latexVaraibleStageOneTextArea.getText();
                 String userLatexStageTwo = latexVaraibleStageTwoTextArea.getText();
-                
-                
+
                 writer = new BufferedWriter(new FileWriter(file));
                 writer.write("Stage One Models\n");
                 writer.write(cleanStageOne + "\n\n");
-                
+
                 writer.write("Variable Name Table - Stage One\n");
                 writer.write(userLatexStageOne + "\n\n\n");
-                
+
                 writer.write("Stage Two Model\n");
                 writer.write(cleanStageTwo + "\n\n");
-          
+
                 writer.write("Variable Name Table - Stage Two\n");
                 writer.write(userLatexStageTwo + "\n\n\n");
 
