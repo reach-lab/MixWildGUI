@@ -491,7 +491,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
                 if (colname.length() > 20) {
                     validDataset = false;
-                    JOptionPane.showMessageDialog(null, String.format("The variable name length should be less than 20 characters. Please modify the variable name [%s] and import again.", colname),
+                    JOptionPane.showMessageDialog(null, String.format("The variable name length exceeds the 20-character limit. Please shorten the variable name [%s] and any other long names before re-importing.", colname),
                             "Dataset Error", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 }
@@ -13044,7 +13044,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 
                 if (colname.length() > 20) {
                     validDataset_stageTwo = false;
-                    JOptionPane.showMessageDialog(null, String.format("The variable name length should be less than 20 characters. Please modify the variable name [%s] and import again.", colname),
+                    JOptionPane.showMessageDialog(null, String.format("The variable name length exceeds the 20-character limit. Please shorten the variable name [%s] and any other long names before re-importing.", colname),
                             "Dataset Error", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 }
