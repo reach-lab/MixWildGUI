@@ -489,9 +489,9 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                     break;
                 }
 
-                if (colname.length() > 20) {
+                if (colname.length() > 16) {
                     validDataset = false;
-                    JOptionPane.showMessageDialog(null, String.format("The variable name length exceeds the 20-character limit. Please shorten the variable name [%s] and any other long names before re-importing.", colname),
+                    JOptionPane.showMessageDialog(null, String.format("The variable name length exceeds the 16-character limit. Please shorten the variable name [%s] and any other long names before re-importing.", colname),
                             "Dataset Error", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 }
@@ -1265,6 +1265,13 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         jSeparator19 = new javax.swing.JSeparator();
         stageTwoMainEffectPanel = new javax.swing.JPanel();
         stageTwoRegsGridMain = new javax.swing.JPanel();
+        jLabel40 = new javax.swing.JLabel();
+        StageTwoLevelOneRegRandSlopeCombo = new javax.swing.JComboBox<>();
+        stageTwoRandSlopeHelpButton = new javax.swing.JLabel();
+        stageTwoRandSlopeHelpButton2 = new javax.swing.JLabel();
+        stageTwoRandSlopeHelpButton5 = new javax.swing.JLabel();
+        stageTwoRandSlopeHelpButton6 = new javax.swing.JLabel();
+        stageTwoRandSlopeHelpButton7 = new javax.swing.JLabel();
         jScrollPane_stage1result = new javax.swing.JScrollPane();
         jPanel_stage1result = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
@@ -2512,7 +2519,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel_stage2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, 260, 200));
+        jPanel_stage2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 480, 260, 200));
 
         guiStatesSaveButtonStageTwo.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         guiStatesSaveButtonStageTwo.setText("Save Model");
@@ -2646,6 +2653,59 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         );
 
         jPanel_stage2.add(stageTwoMainEffectPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 58, 610, 170));
+
+        jLabel40.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel40.setText("Random Slope in Stage 2 Model:");
+        jPanel_stage2.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 410, 260, -1));
+
+        StageTwoLevelOneRegRandSlopeCombo.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        StageTwoLevelOneRegRandSlopeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        StageTwoLevelOneRegRandSlopeCombo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                StageTwoLevelOneRegRandSlopeComboItemStateChanged(evt);
+            }
+        });
+        StageTwoLevelOneRegRandSlopeCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StageTwoLevelOneRegRandSlopeComboActionPerformed(evt);
+            }
+        });
+        jPanel_stage2.add(StageTwoLevelOneRegRandSlopeCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 430, 260, 30));
+
+        stageTwoRandSlopeHelpButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon4 - Copy.png"))); // NOI18N
+        stageTwoRandSlopeHelpButton.setToolTipText("<html><pre>Random scale parameters allow subjects to have individual estimates of the \nwithin-subject variance, and this is the distinguishing feature of a mixed-eefects locatio nscale model.\nFor random scale models, a linear or quadratic association is also possible.<pre>");
+        stageTwoRandSlopeHelpButton.setMaximumSize(new java.awt.Dimension(16, 16));
+        stageTwoRandSlopeHelpButton.setMinimumSize(new java.awt.Dimension(16, 16));
+        stageTwoRandSlopeHelpButton.setPreferredSize(new java.awt.Dimension(16, 16));
+        jPanel_stage2.add(stageTwoRandSlopeHelpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 410, 20, 20));
+
+        stageTwoRandSlopeHelpButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon4 - Copy.png"))); // NOI18N
+        stageTwoRandSlopeHelpButton2.setToolTipText("<html><pre>Random scale parameters allow subjects to have individual estimates of the \nwithin-subject variance, and this is the distinguishing feature of a mixed-eefects locatio nscale model.\nFor random scale models, a linear or quadratic association is also possible.<pre>");
+        stageTwoRandSlopeHelpButton2.setMaximumSize(new java.awt.Dimension(16, 16));
+        stageTwoRandSlopeHelpButton2.setMinimumSize(new java.awt.Dimension(16, 16));
+        stageTwoRandSlopeHelpButton2.setPreferredSize(new java.awt.Dimension(16, 16));
+        jPanel_stage2.add(stageTwoRandSlopeHelpButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 348, 20, 20));
+
+        stageTwoRandSlopeHelpButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon4 - Copy.png"))); // NOI18N
+        stageTwoRandSlopeHelpButton5.setToolTipText("<html><pre>Random scale parameters allow subjects to have individual estimates of the \nwithin-subject variance, and this is the distinguishing feature of a mixed-eefects locatio nscale model.\nFor random scale models, a linear or quadratic association is also possible.<pre>");
+        stageTwoRandSlopeHelpButton5.setMaximumSize(new java.awt.Dimension(16, 16));
+        stageTwoRandSlopeHelpButton5.setMinimumSize(new java.awt.Dimension(16, 16));
+        stageTwoRandSlopeHelpButton5.setPreferredSize(new java.awt.Dimension(16, 16));
+        jPanel_stage2.add(stageTwoRandSlopeHelpButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 348, 20, 20));
+
+        stageTwoRandSlopeHelpButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon4 - Copy.png"))); // NOI18N
+        stageTwoRandSlopeHelpButton6.setToolTipText("<html><pre>Random scale parameters allow subjects to have individual estimates of the \nwithin-subject variance, and this is the distinguishing feature of a mixed-eefects locatio nscale model.\nFor random scale models, a linear or quadratic association is also possible.<pre>");
+        stageTwoRandSlopeHelpButton6.setMaximumSize(new java.awt.Dimension(16, 16));
+        stageTwoRandSlopeHelpButton6.setMinimumSize(new java.awt.Dimension(16, 16));
+        stageTwoRandSlopeHelpButton6.setPreferredSize(new java.awt.Dimension(16, 16));
+        jPanel_stage2.add(stageTwoRandSlopeHelpButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 348, 20, 20));
+
+        stageTwoRandSlopeHelpButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon4 - Copy.png"))); // NOI18N
+        stageTwoRandSlopeHelpButton7.setToolTipText("<html><pre>Random scale parameters allow subjects to have individual estimates of the \nwithin-subject variance, and this is the distinguishing feature of a mixed-eefects locatio nscale model.\nFor random scale models, a linear or quadratic association is also possible.<pre>");
+        stageTwoRandSlopeHelpButton7.setMaximumSize(new java.awt.Dimension(16, 16));
+        stageTwoRandSlopeHelpButton7.setMinimumSize(new java.awt.Dimension(16, 16));
+        stageTwoRandSlopeHelpButton7.setPreferredSize(new java.awt.Dimension(16, 16));
+        jPanel_stage2.add(stageTwoRandSlopeHelpButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 348, 20, 20));
 
         jScrollPane_stage2.setViewportView(jPanel_stage2);
 
@@ -4077,6 +4137,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         }
     }//GEN-LAST:event_saveLatexButtonActionPerformed
 
+    private void StageTwoLevelOneRegRandSlopeComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_StageTwoLevelOneRegRandSlopeComboItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_StageTwoLevelOneRegRandSlopeComboItemStateChanged
+
+    private void StageTwoLevelOneRegRandSlopeComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StageTwoLevelOneRegRandSlopeComboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_StageTwoLevelOneRegRandSlopeComboActionPerformed
+
     // **********************update********************
     private void updateGuiView(MixRegGuiStates mxrStates) {
         // this method is to update Gui View with Gui state data saved in MixRegGuiStates
@@ -4538,6 +4606,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel StageOneModelTypeLabel;
     private javax.swing.JComboBox<String> StageOneOutcomeCombo;
     private javax.swing.JRadioButton StageOneProbitRadio;
+    private javax.swing.JComboBox<String> StageTwoLevelOneRegRandSlopeCombo;
     private javax.swing.JComboBox<String> StageTwoOutcomeCombo;
     private javax.swing.JButton addStageOneButton;
     private javax.swing.JButton addStageTwoReg;
@@ -4612,6 +4681,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -4796,6 +4866,11 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private javax.swing.JLabel stageTwoOutcomeTypeHelpButton;
     private javax.swing.JLabel stageTwoOutcomeTypeLabel;
     public static javax.swing.JTextArea stageTwoOutput;
+    private javax.swing.JLabel stageTwoRandSlopeHelpButton;
+    private javax.swing.JLabel stageTwoRandSlopeHelpButton2;
+    private javax.swing.JLabel stageTwoRandSlopeHelpButton5;
+    private javax.swing.JLabel stageTwoRandSlopeHelpButton6;
+    private javax.swing.JLabel stageTwoRandSlopeHelpButton7;
     private javax.swing.JPanel stageTwoRegsGridLvl1;
     private javax.swing.JPanel stageTwoRegsGridLvl2;
     private javax.swing.JPanel stageTwoRegsGridMain;
@@ -9418,6 +9493,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 stage_2_regs = new stageTwoRegs();
                 update_trigger_stageTwoOutcomeCat();
                 update_trigger_stageTwoIDCombo();
+                update_trigger_stageTwoLevelOneRandSlopeComb();
+
                 if (getIncludeStageTwoDataYes() == true) {
                     try {
                         defFile.setAdvancedMultipleDataFiles("1");
@@ -11007,6 +11084,18 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
                 JOptionPane.showMessageDialog(stageOneTabs, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
+
+            try {
+                String levelOneReg = StageTwoLevelOneRegRandSlopeCombo.getSelectedItem().toString();
+                int pos = Arrays.asList(variableNamesCombo_stageTwo).indexOf(levelOneReg);
+                defFile.setAdvancedStageTwoMultilevelRandomSlope(String.valueOf(pos + 1));
+                System.out.println("From defHelper | Stage Two Level One Regressor with Random Slope: " + defFile.getAdvancedStageTwoMultilevelRandomSlope());
+            } catch (Exception ex) {
+                catchCount = 1;
+                Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
+                JOptionPane.showMessageDialog(stageOneTabs, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+            }
         }
 
         try {
@@ -11629,8 +11718,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             constraints.anchor = GridBagConstraints.FIRST_LINE_START;
 
             if (j == 0) { // random location
-                stageTwoMainEffectSelected.add("Random location");
-                JLabel variableText = new JLabel("Random location");
+                stageTwoMainEffectSelected.add("Stage 1 random location");
+                JLabel variableText = new JLabel("Stage 1 random location");
 
                 variableText.setPreferredSize(new Dimension(60, 20));
                 stageTwoRegsGridMain.add(variableText, constraints);
@@ -11658,8 +11747,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             if (j == 1) { // random scale
 
                 if (randomScaleSelectionYes.isSelected()) {
-                    stageTwoMainEffectSelected.add("Random scale");
-                    JLabel variableText = new JLabel("Random scale");
+                    stageTwoMainEffectSelected.add("Stage 1 random scale");
+                    JLabel variableText = new JLabel("Stage 1 random scale");
 
                     variableText.setPreferredSize(new Dimension(60, 20));
                     stageTwoRegsGridMain.add(variableText, constraints);
@@ -12171,8 +12260,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             constraints.anchor = GridBagConstraints.FIRST_LINE_START;
 
             if (j == 0) { // random location
-                stageTwoMainEffectSelected.add("Random location");
-                JLabel variableText = new JLabel("Random location");
+                stageTwoMainEffectSelected.add("Stage 1 random location");
+                JLabel variableText = new JLabel("Stage 1 random location");
 
                 variableText.setPreferredSize(new Dimension(60, 20));
                 stageTwoRegsGridMain.add(variableText, constraints);
@@ -12200,8 +12289,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             if (j == 1) { // random scale
 
                 if (randomScaleSelectionYes.isSelected()) {
-                    stageTwoMainEffectSelected.add("Random scale");
-                    JLabel variableText = new JLabel("Random scale");
+                    stageTwoMainEffectSelected.add("Stage 1 random scale");
+                    JLabel variableText = new JLabel("Stage 1 random scale");
 
                     variableText.setPreferredSize(new Dimension(60, 20));
                     stageTwoRegsGridMain.add(variableText, constraints);
@@ -12505,6 +12594,38 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageTwoLevelOnePanel.revalidate();
         stageTwoLevelOnePanel.repaint();
 
+    }
+
+    void update_trigger_stageTwoLevelOneRandSlopeComb() {
+        outComeType = getStageTwoOutcomeType();
+        int stageTwoModelType = getStageTwoModelType();
+
+        if (((outComeType == MixLibrary.STAGE_TWO_OUTCOME_NORMAL) || (outComeType == MixLibrary.STAGE_TWO_OUTCOME_ORDINAL)) && (stageTwoModelType == MixLibrary.STAGE_TWO_MODEL_TYPE_MULTILEVEL)) {
+            jLabel40.setVisible(true);
+            StageTwoLevelOneRegRandSlopeCombo.setEnabled(true);
+            StageTwoLevelOneRegRandSlopeCombo.setVisible(true);
+
+            DefaultComboBoxModel<String> comboModel = new DefaultComboBoxModel<>();
+
+            int stageTwoLevelOneRegNum = stage_2_regs.stageTwoLevelOne.size();
+            if (stageTwoLevelOneRegNum > 0) {
+                comboModel.addElement("No Random Slope");
+                for (int i = 0; i < stage_2_regs.stageTwoLevelOne.getSize(); i++) {
+                    comboModel.addElement(stage_2_regs.stageTwoLevelOne.getElementAt(i));
+                }
+
+            } else {
+                comboModel.addElement("-- Select Level-1 Regressors First --");
+//                StageTwoLevelOneRegRandSlopeCombo.setEnabled(false);
+            }
+            StageTwoLevelOneRegRandSlopeCombo.setModel(comboModel);
+            StageTwoLevelOneRegRandSlopeCombo.setSelectedIndex(0);
+
+        } else {
+            jLabel40.setVisible(false);
+            StageTwoLevelOneRegRandSlopeCombo.setEnabled(false);
+            StageTwoLevelOneRegRandSlopeCombo.setVisible(false);
+        }
     }
 
     public int getRandomLocationSelection() {
@@ -13041,10 +13162,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                             "Dataset Error", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 }
-                
-                if (colname.length() > 20) {
+
+                if (colname.length() > 16) {
                     validDataset_stageTwo = false;
-                    JOptionPane.showMessageDialog(null, String.format("The variable name length exceeds the 20-character limit. Please shorten the variable name [%s] and any other long names before re-importing.", colname),
+                    JOptionPane.showMessageDialog(null, String.format("The variable name length exceeds the 16-character limit. Please shorten the variable name [%s] and any other long names before re-importing.", colname),
                             "Dataset Error", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 }

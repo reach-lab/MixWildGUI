@@ -232,6 +232,7 @@ public class stageTwoRegs extends javax.swing.JFrame {
         mixregGUI.mxr.updateStageTwoLevelTwoGrid(stageTwoLevelTwo);
         mixregGUI.mxr.updateStageTwoLevelOneGrid(stageTwoLevelOne);
         mixregGUI.mxr.updateStageTwoMainEffectGrid(stageTwoLevelOne, stageTwoLevelTwo);
+        mixregGUI.mxr.update_trigger_stageTwoLevelOneRandSlopeComb();
         this.dispose();
     }//GEN-LAST:event_stageTwoSubmitButtonActionPerformed
 

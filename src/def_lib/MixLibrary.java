@@ -323,6 +323,7 @@ public class MixLibrary implements Serializable {
 
     private String advancedUseStageTwo; // STAGE2
     private String advancedStageTwoMultilevel; // MULTI2ND
+    private String advancedStageTwoMultilevelRandSlope; //
     private String advancedMultipleDataFiles; // SEPFILE
     private String advancedStageOneLevelNum; // no3
 
@@ -412,6 +413,7 @@ public class MixLibrary implements Serializable {
 
                 advancedVariable.add(getAdvancedUseStageTwo()); // stage2
                 advancedVariable.add(getAdvancedStageTwoMultilevel()); // multi2nd
+                advancedVariable.add(getAdvancedStageTwoMultilevelRandomSlope()); // 
                 advancedVariable.add(getAdvancedMultipleDataFiles()); // sepfile
                 advancedVariable.add(getAdvancedStageOneLevelNum()); // no3
             }
@@ -1832,6 +1834,16 @@ public class MixLibrary implements Serializable {
         return advancedGammaTrans;
     }
 
+    public void setAdvancedStageTwoMultilevelRandomSlope(String value) {
+        advancedStageTwoMultilevelRandSlope = value;
+    }
+    
+    public String getAdvancedStageTwoMultilevelRandomSlope() {
+        if (advancedStageTwoMultilevelRandSlope == null) {
+            advancedStageTwoMultilevelRandSlope = "0";
+        }
+        return advancedStageTwoMultilevelRandSlope;
+    }
 //    public int getStageOneLevelNum() {
 //        return stageOneLevelNum;
 //    }
@@ -1957,12 +1969,12 @@ public class MixLibrary implements Serializable {
             String newDefFilePrefix = dataFileSample.substring(0, dataFileSample.lastIndexOf(File.separator)) + "/";
 
             if (stageOneLevelNum == 3) {
-                newDefFile = new File(newDefFilePrefix + "mixregls_3level_2stage");
+                newDefFile = new File(newDefFilePrefix + "mixregls_3level_2stage_slope");
             } else {
                 if (getStageOneOutcome() == STAGE_ONE_OUTCOME_MIXOR) {
                     newDefFile = new File(newDefFilePrefix + "mixors_random_mixblank");
                 } else {
-                    newDefFile = new File(newDefFilePrefix + "mixregls_3level_2stage");
+                    newDefFile = new File(newDefFilePrefix + "mixregls_3level_2stage_slope");
                 }
             }
             //newDefFile = new File(newDefFilePrefix + "MixWild");
@@ -2117,12 +2129,12 @@ public class MixLibrary implements Serializable {
             String newDefFilePrefix = dataFileSample.substring(0, dataFileSample.lastIndexOf(File.separator)) + "/";
             // this one is run for stage 2
             if (stageOneLevelNum == 3) {
-                newDefFile = new File(newDefFilePrefix + "mixregls_3level_2stage");
+                newDefFile = new File(newDefFilePrefix + "mixregls_3level_2stage_slope");
             } else {
                 if (getStageOneOutcome() == STAGE_ONE_OUTCOME_MIXOR) {
                     newDefFile = new File(newDefFilePrefix + "mixors_random_mixblank");
                 } else {
-                    newDefFile = new File(newDefFilePrefix + "mixregls_3level_2stage");
+                    newDefFile = new File(newDefFilePrefix + "mixregls_3level_2stage_slope");
                 }
             }
 
@@ -2186,7 +2198,7 @@ public class MixLibrary implements Serializable {
             defFileName = "mixors_random_mixblank" + system_bit_extension;
         } else {
 //            defFileName = "lsboth_random_mixblank" + system_bit_extension;
-            defFileName = "mixregls_3level_2stage";
+            defFileName = "mixregls_3level_2stage_slope";
         }
 //        if (stageOneLevelNum == 3) {
 //            defFileName = "mixregls_3level";
@@ -2318,7 +2330,7 @@ public class MixLibrary implements Serializable {
                 terminalVal = exitVal;
                 Process p2;
                 if (getOSName().contains("windows")) {
-                    String[] executable_array = {"mixors_random_mixblank", "mixno", "mixreg", "mixors", "mixpreg", "stage2only", "mixors_random_mixblank64", "stage2only64", "mixregls_3level_2stage"};
+                    String[] executable_array = {"mixors_random_mixblank", "mixno", "mixreg", "mixors", "mixpreg", "stage2only", "mixors_random_mixblank64", "stage2only_slope", "mixregls_3level_2stage_slope"};
                     for (int i = 0; i < executable_array.length; i++) {
                         String executableFile = executable_array[i];
                         String command = "cmd /c dir && cd " + "\"" + definitionFilepath + "\"" + " && del /f " + "\"" + executableFile + ".exe" + "\"";
@@ -2395,8 +2407,6 @@ public class MixLibrary implements Serializable {
 
     }
 
-
-
     public void readStageTwoOutputfile() throws FileNotFoundException, IOException {
 
         mixregGUI.stageTwoOutput.setText("");
@@ -2440,9 +2450,9 @@ public class MixLibrary implements Serializable {
         String MIXREG = "mixreg";
         String MIXORS = "mixors";
         String MIXPREG = "mixpreg";
-        String STAGETWO_ONLY = "stage2only";
+        String STAGETWO_ONLY = "stage2only_slope";
 //        String LSBOTH_PRE_LEVEL3 = "mixregls_3level";
-        String LSBOTH_PRE_LEVEL3_STAGE2 = "mixregls_3level_2stage";
+        String LSBOTH_PRE_LEVEL3_STAGE2 = "mixregls_3level_2stage_slope";
         if (win32) {
             STAGETWO_ONLY = "stage2only";
         }
@@ -2468,7 +2478,7 @@ public class MixLibrary implements Serializable {
                 MIXREG = "resources/Windows64/" + MIXREG + ".exe";
                 MIXORS = "resources/Windows64/" + MIXORS + ".exe";
                 MIXPREG = "resources/Windows64/" + MIXPREG + ".exe";
-                STAGETWO_ONLY = "resources/Windows64/" + STAGETWO_ONLY + "64" + ".exe";
+                STAGETWO_ONLY = "resources/Windows64/" + STAGETWO_ONLY + ".exe";
 //                LSBOTH_PRE_LEVEL3 = "resources/Windows64/" + LSBOTH_PRE_LEVEL3 + ".exe";
                 LSBOTH_PRE_LEVEL3_STAGE2 = "resources/Windows64/" + LSBOTH_PRE_LEVEL3_STAGE2 + ".exe";
             }
@@ -2481,9 +2491,9 @@ public class MixLibrary implements Serializable {
             MIXORS = "resources/macOS/" + MIXORS;
             MIXPREG = "resources/macOS/" + MIXPREG;
 //            STAGETWO_ONLY = "resources/macOS/" + STAGETWO_ONLY;
-            STAGETWO_ONLY = "resources/macOS/" + "stage2only.f90";
+            STAGETWO_ONLY = "resources/macOS/" + "stage2only_slope.f90";
 //            LSBOTH_PRE_LEVEL3 = "resources/macOS/" + LSBOTH_PRE_LEVEL3;
-//            LSBOTH_PRE_LEVEL3_STAGE2 = "resources/macOS/" + LSBOTH_PRE_LEVEL3_STAGE2;
+//            LSBOTH_PRE_LEVEL3_STAGE2 = "resources/macOS/" + LSBOTH_PRE_LEVEL3_STAGE2+  ".f90";
         }
 
         String exeArray[] = {MIXORS_PRE, MIXNO, MIXREG, MIXORS, MIXPREG, STAGETWO_ONLY, LSBOTH_PRE_LEVEL3_STAGE2};
