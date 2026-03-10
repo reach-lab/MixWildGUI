@@ -2392,7 +2392,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         jPanel_stage2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 18, 190, 20));
 
         jLabel15.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel15.setText("Random Location");
+        jLabel15.setText("Stage 1 Location");
         jLabel15.setToolTipText("Check the box(s) of the regressor(s) to  add the interaction effect by random location (intercept + slope(s)) in the model");
         jPanel_stage2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 348, 140, -1));
 
@@ -2406,14 +2406,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         jPanel_stage2.add(addStageTwoReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 335, 260, 40));
 
         jLabel17.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel17.setText("Random Scale");
+        jLabel17.setText("Stage 1 Scale");
         jLabel17.setToolTipText("Check the box(s) of the regressor(s) to add the interaction effect by random  scale in the model");
         jPanel_stage2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 348, 110, 20));
 
         jLabel18.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel18.setText("Location X Scale");
+        jLabel18.setText("Stage 1 Location X Scale");
         jLabel18.setToolTipText("Check the box(s) of the regressor(s) to add the interaction effect by random location and scale in the model");
-        jPanel_stage2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 348, 130, 20));
+        jPanel_stage2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 348, 180, 20));
 
         stageTwoLevelTwoPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Level-2"));
 
@@ -2424,7 +2424,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageTwoLevelTwoPanel.setLayout(stageTwoLevelTwoPanelLayout);
         stageTwoLevelTwoPanelLayout.setHorizontalGroup(
             stageTwoLevelTwoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(stageTwoRegsGridLvl2, javax.swing.GroupLayout.DEFAULT_SIZE, 598, Short.MAX_VALUE)
+            .addComponent(stageTwoRegsGridLvl2, javax.swing.GroupLayout.DEFAULT_SIZE, 648, Short.MAX_VALUE)
         );
         stageTwoLevelTwoPanelLayout.setVerticalGroup(
             stageTwoLevelTwoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2433,7 +2433,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         stageTwoRegsGridLvl2.getAccessibleContext().setAccessibleParent(stageTwoRegsGridLvl2);
 
-        jPanel_stage2.add(stageTwoLevelTwoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 578, 610, 170));
+        jPanel_stage2.add(stageTwoLevelTwoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 598, 660, 170));
         stageTwoLevelTwoPanel.getAccessibleContext().setAccessibleName("Level-2 Stage-2");
         stageTwoLevelTwoPanel.getAccessibleContext().setAccessibleDescription("");
 
@@ -2444,7 +2444,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 runTabTwoStageOneTwoActionPerformed(evt);
             }
         });
-        jPanel_stage2.add(runTabTwoStageOneTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 778, 160, 35));
+        jPanel_stage2.add(runTabTwoStageOneTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 798, 160, 35));
 
         enbaleInteractionCheckBox.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         enbaleInteractionCheckBox.setText("Enable 2-way Location X Scale Interaction");
@@ -2481,7 +2481,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 clearStageTwoButtonActionPerformed(evt);
             }
         });
-        jPanel_stage2.add(clearStageTwoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 778, 140, 35));
+        jPanel_stage2.add(clearStageTwoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 798, 140, 35));
         jPanel_stage2.add(filler1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 570, -1, 80));
         jPanel_stage2.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 48, 610, 10));
         jPanel_stage2.add(jSeparator15, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 660, -1, -1));
@@ -2528,7 +2528,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 guiStatesSaveButtonStageTwoActionPerformed(evt);
             }
         });
-        jPanel_stage2.add(guiStatesSaveButtonStageTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 778, 130, 35));
+        jPanel_stage2.add(guiStatesSaveButtonStageTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 798, 130, 35));
 
         stageTwoLevelOnePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Level-1"));
 
@@ -2539,14 +2539,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageTwoLevelOnePanel.setLayout(stageTwoLevelOnePanelLayout);
         stageTwoLevelOnePanelLayout.setHorizontalGroup(
             stageTwoLevelOnePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(stageTwoRegsGridLvl1, javax.swing.GroupLayout.DEFAULT_SIZE, 598, Short.MAX_VALUE)
+            .addComponent(stageTwoRegsGridLvl1, javax.swing.GroupLayout.DEFAULT_SIZE, 648, Short.MAX_VALUE)
         );
         stageTwoLevelOnePanelLayout.setVerticalGroup(
             stageTwoLevelOnePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(stageTwoRegsGridLvl1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
         );
 
-        jPanel_stage2.add(stageTwoLevelOnePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 368, 610, 170));
+        jPanel_stage2.add(stageTwoLevelOnePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 388, 660, 170));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel3.setText("Selected Model Configuration");
@@ -2566,22 +2566,22 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         jLabel33.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel33.setText("Regressor(s)");
         jLabel33.setToolTipText("Check the box(s) of the regressor(s) to add the main effect in the model");
-        jPanel_stage2.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 558, 110, -1));
+        jPanel_stage2.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 568, 110, -1));
 
         jLabel35.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel35.setText("Random Location");
+        jLabel35.setText("Stage 1 Location");
         jLabel35.setToolTipText("Check the box(s) of the regressor(s) to  add the interaction effect by random location (intercept + slope(s)) in the model");
-        jPanel_stage2.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 558, 140, -1));
+        jPanel_stage2.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 568, 140, -1));
 
         jLabel36.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel36.setText("Random Scale");
+        jLabel36.setText("Stage 1 Scale");
         jLabel36.setToolTipText("Check the box(s) of the regressor(s) to add the interaction effect by random  scale in the model");
-        jPanel_stage2.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 558, 110, 20));
+        jPanel_stage2.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 568, 110, 20));
 
         jLabel37.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel37.setText("Location X Scale");
+        jLabel37.setText("Stage 1 Location X Scale");
         jLabel37.setToolTipText("Check the box(s) of the regressor(s) to add the interaction effect by random location and scale in the model");
-        jPanel_stage2.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 558, 130, 20));
+        jPanel_stage2.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 568, 190, 20));
 
         stageOneModelStageTwoConfigLabel1.setText("Stage 1 model:");
         jPanel_stage2.add(stageOneModelStageTwoConfigLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, -1, -1));
@@ -2595,10 +2595,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageTwoOutcomeStageTwoConfigLabel1.setText("Stage 2 outcome:");
         jPanel_stage2.add(stageTwoOutcomeStageTwoConfigLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, -1, -1));
 
-        randomLocationConfigLabel1.setText("Random location:");
+        randomLocationConfigLabel1.setText("Stage 1 location:");
         jPanel_stage2.add(randomLocationConfigLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, -1, -1));
 
-        randomScaleConfigLabel1.setText("Random scale:");
+        randomScaleConfigLabel1.setText("Stage 1 scale:");
         jPanel_stage2.add(randomScaleConfigLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, -1, -1));
 
         numResamplingStageTwoConfigLabel1.setText("Number of resamples (stage 2):");
@@ -2625,7 +2625,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         jLabel32.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel32.setText("X");
-        jPanel_stage2.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 558, -1, -1));
+        jPanel_stage2.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 568, -1, -1));
 
         jLabel38.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel38.setText("X");
@@ -2634,7 +2634,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         jLabel23.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel23.setText("Stage 2 Interactions");
         jPanel_stage2.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 298, 190, 20));
-        jPanel_stage2.add(jSeparator19, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 328, 610, 10));
+        jPanel_stage2.add(jSeparator19, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 328, 640, 10));
 
         stageTwoMainEffectPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder()));
 
@@ -2673,39 +2673,43 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         jPanel_stage2.add(StageTwoLevelOneRegRandSlopeCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 430, 260, 30));
 
         stageTwoRandSlopeHelpButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon4 - Copy.png"))); // NOI18N
-        stageTwoRandSlopeHelpButton.setToolTipText("<html><pre>Random scale parameters allow subjects to have individual estimates of the \nwithin-subject variance, and this is the distinguishing feature of a mixed-eefects locatio nscale model.\nFor random scale models, a linear or quadratic association is also possible.<pre>");
+        stageTwoRandSlopeHelpButton.setToolTipText("<html><pre>Associations between time-varying\ncovariates and the outcome in stage 2 model.<pre>");
         stageTwoRandSlopeHelpButton.setMaximumSize(new java.awt.Dimension(16, 16));
         stageTwoRandSlopeHelpButton.setMinimumSize(new java.awt.Dimension(16, 16));
         stageTwoRandSlopeHelpButton.setPreferredSize(new java.awt.Dimension(16, 16));
         jPanel_stage2.add(stageTwoRandSlopeHelpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 410, 20, 20));
 
         stageTwoRandSlopeHelpButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon4 - Copy.png"))); // NOI18N
-        stageTwoRandSlopeHelpButton2.setToolTipText("<html><pre>Random scale parameters allow subjects to have individual estimates of the \nwithin-subject variance, and this is the distinguishing feature of a mixed-eefects locatio nscale model.\nFor random scale models, a linear or quadratic association is also possible.<pre>");
+        stageTwoRandSlopeHelpButton2.setToolTipText("<html><pre>Stage 2 Level 1 Regressors.<pre>");
         stageTwoRandSlopeHelpButton2.setMaximumSize(new java.awt.Dimension(16, 16));
         stageTwoRandSlopeHelpButton2.setMinimumSize(new java.awt.Dimension(16, 16));
         stageTwoRandSlopeHelpButton2.setPreferredSize(new java.awt.Dimension(16, 16));
-        jPanel_stage2.add(stageTwoRandSlopeHelpButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 348, 20, 20));
+        jPanel_stage2.add(stageTwoRandSlopeHelpButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 370, 20, 20));
+        stageTwoRandSlopeHelpButton2.getAccessibleContext().setAccessibleDescription("Check the box(s) of the regressor(s) to add the main effect in the model");
 
         stageTwoRandSlopeHelpButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon4 - Copy.png"))); // NOI18N
-        stageTwoRandSlopeHelpButton5.setToolTipText("<html><pre>Random scale parameters allow subjects to have individual estimates of the \nwithin-subject variance, and this is the distinguishing feature of a mixed-eefects locatio nscale model.\nFor random scale models, a linear or quadratic association is also possible.<pre>");
+        stageTwoRandSlopeHelpButton5.setToolTipText("<html><pre>Random Location (intercept) effect is defined as the degree to which\na subject deviates from the population average. It typically represents a subject-level\nmean effect, over and above the effects of covariates on the mean, and accounts for the\nnon-independence of observations within subjects<pre>");
         stageTwoRandSlopeHelpButton5.setMaximumSize(new java.awt.Dimension(16, 16));
         stageTwoRandSlopeHelpButton5.setMinimumSize(new java.awt.Dimension(16, 16));
         stageTwoRandSlopeHelpButton5.setPreferredSize(new java.awt.Dimension(16, 16));
-        jPanel_stage2.add(stageTwoRandSlopeHelpButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 348, 20, 20));
+        jPanel_stage2.add(stageTwoRandSlopeHelpButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 370, 20, 20));
+        stageTwoRandSlopeHelpButton5.getAccessibleContext().setAccessibleDescription("Check the box(s) of the regressor(s) to  add the interaction effect by random location (intercept + slope(s)) in the model");
 
         stageTwoRandSlopeHelpButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon4 - Copy.png"))); // NOI18N
-        stageTwoRandSlopeHelpButton6.setToolTipText("<html><pre>Random scale parameters allow subjects to have individual estimates of the \nwithin-subject variance, and this is the distinguishing feature of a mixed-eefects locatio nscale model.\nFor random scale models, a linear or quadratic association is also possible.<pre>");
+        stageTwoRandSlopeHelpButton6.setToolTipText("<html><pre>Three-way interaction effect between regressor, random location, and random scale.<pre>");
         stageTwoRandSlopeHelpButton6.setMaximumSize(new java.awt.Dimension(16, 16));
         stageTwoRandSlopeHelpButton6.setMinimumSize(new java.awt.Dimension(16, 16));
         stageTwoRandSlopeHelpButton6.setPreferredSize(new java.awt.Dimension(16, 16));
-        jPanel_stage2.add(stageTwoRandSlopeHelpButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 348, 20, 20));
+        jPanel_stage2.add(stageTwoRandSlopeHelpButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 370, 20, 20));
+        stageTwoRandSlopeHelpButton6.getAccessibleContext().setAccessibleDescription("Check the box(s) of the regressor(s) to add the interaction effect by random location and scale in the model");
 
         stageTwoRandSlopeHelpButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon4 - Copy.png"))); // NOI18N
-        stageTwoRandSlopeHelpButton7.setToolTipText("<html><pre>Random scale parameters allow subjects to have individual estimates of the \nwithin-subject variance, and this is the distinguishing feature of a mixed-eefects locatio nscale model.\nFor random scale models, a linear or quadratic association is also possible.<pre>");
+        stageTwoRandSlopeHelpButton7.setToolTipText("<html><pre>Random scale parameters allow subjects to have individual estimates of the \nwithin-subject variance, and this is the distinguishing feature of a mixed-effects location scale model.\nFor random scale models, a linear or quadratic association is also possible.<pre>");
         stageTwoRandSlopeHelpButton7.setMaximumSize(new java.awt.Dimension(16, 16));
         stageTwoRandSlopeHelpButton7.setMinimumSize(new java.awt.Dimension(16, 16));
         stageTwoRandSlopeHelpButton7.setPreferredSize(new java.awt.Dimension(16, 16));
-        jPanel_stage2.add(stageTwoRandSlopeHelpButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 348, 20, 20));
+        jPanel_stage2.add(stageTwoRandSlopeHelpButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 370, 20, 20));
+        stageTwoRandSlopeHelpButton7.getAccessibleContext().setAccessibleDescription("Check the box(s) of the regressor(s) to add the interaction effect by random  scale in the model");
 
         jScrollPane_stage2.setViewportView(jPanel_stage2);
 
@@ -11068,6 +11072,20 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         //**********************************************************************
         // Reads selected ID variable and outcome variable from the first two comboboxes
         //String[] idOutcome = {String.valueOf(IDvariableCombo.getSelectedIndex() + 1), String.valueOf(StageOneVariableCombo.getSelectedIndex() + 1)};
+        if (getStageTwoOutcomeType() == MixLibrary.STAGE_TWO_OUTCOME_NORMAL || getStageTwoOutcomeType() == MixLibrary.STAGE_TWO_OUTCOME_ORDINAL) {
+            try {
+                String levelOneReg = StageTwoLevelOneRegRandSlopeCombo.getSelectedItem().toString();
+                int pos = Arrays.asList(variableNamesCombo_stageTwo).indexOf(levelOneReg);
+                defFile.setAdvancedStageTwoMultilevelRandomSlope(String.valueOf(pos + 1));
+                System.out.println("From defHelper | Stage Two Level One Regressor with Random Slope: " + defFile.getAdvancedStageTwoMultilevelRandomSlope());
+            } catch (Exception ex) {
+                catchCount = 1;
+                Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
+                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
+                JOptionPane.showMessageDialog(stageOneTabs, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
+            }
+        }
+
         if (getStageTwoOutcomeType() == MixLibrary.STAGE_TWO_OUTCOME_ORDINAL || getStageTwoOutcomeType() == MixLibrary.STAGE_TWO_OUTCOME_NOMINAL) {
 
             try {
@@ -11085,17 +11103,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
                 JOptionPane.showMessageDialog(stageOneTabs, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
             }
 
-            try {
-                String levelOneReg = StageTwoLevelOneRegRandSlopeCombo.getSelectedItem().toString();
-                int pos = Arrays.asList(variableNamesCombo_stageTwo).indexOf(levelOneReg);
-                defFile.setAdvancedStageTwoMultilevelRandomSlope(String.valueOf(pos + 1));
-                System.out.println("From defHelper | Stage Two Level One Regressor with Random Slope: " + defFile.getAdvancedStageTwoMultilevelRandomSlope());
-            } catch (Exception ex) {
-                catchCount = 1;
-                Logger.getLogger(getName()).log(Level.SEVERE, null, ex);
-                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
-                JOptionPane.showMessageDialog(stageOneTabs, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE, icon);
-            }
         }
 
         try {
@@ -11718,8 +11725,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             constraints.anchor = GridBagConstraints.FIRST_LINE_START;
 
             if (j == 0) { // random location
-                stageTwoMainEffectSelected.add("Stage 1 random location");
-                JLabel variableText = new JLabel("Stage 1 random location");
+                stageTwoMainEffectSelected.add("Stage 1 location");
+                JLabel variableText = new JLabel("Stage 1 location");
 
                 variableText.setPreferredSize(new Dimension(60, 20));
                 stageTwoRegsGridMain.add(variableText, constraints);
@@ -11747,8 +11754,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             if (j == 1) { // random scale
 
                 if (randomScaleSelectionYes.isSelected()) {
-                    stageTwoMainEffectSelected.add("Stage 1 random scale");
-                    JLabel variableText = new JLabel("Stage 1 random scale");
+                    stageTwoMainEffectSelected.add("Stage 1 scale");
+                    JLabel variableText = new JLabel("Stage 1 scale");
 
                     variableText.setPreferredSize(new Dimension(60, 20));
                     stageTwoRegsGridMain.add(variableText, constraints);
@@ -12260,8 +12267,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             constraints.anchor = GridBagConstraints.FIRST_LINE_START;
 
             if (j == 0) { // random location
-                stageTwoMainEffectSelected.add("Stage 1 random location");
-                JLabel variableText = new JLabel("Stage 1 random location");
+                stageTwoMainEffectSelected.add("Stage 1 location");
+                JLabel variableText = new JLabel("Stage 1 location");
 
                 variableText.setPreferredSize(new Dimension(60, 20));
                 stageTwoRegsGridMain.add(variableText, constraints);
@@ -12289,8 +12296,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             if (j == 1) { // random scale
 
                 if (randomScaleSelectionYes.isSelected()) {
-                    stageTwoMainEffectSelected.add("Stage 1 random scale");
-                    JLabel variableText = new JLabel("Stage 1 random scale");
+                    stageTwoMainEffectSelected.add("Stage 1 scale");
+                    JLabel variableText = new JLabel("Stage 1 scale");
 
                     variableText.setPreferredSize(new Dimension(60, 20));
                     stageTwoRegsGridMain.add(variableText, constraints);

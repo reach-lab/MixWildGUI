@@ -2393,7 +2393,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="sansserif" size="14" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Random Location"/>
+                    <Property name="text" type="java.lang.String" value="Stage 1 Location"/>
                     <Property name="toolTipText" type="java.lang.String" value="Check the box(s) of the regressor(s) to  add the interaction effect by random location (intercept + slope(s)) in the model"/>
                   </Properties>
                   <Constraints>
@@ -2423,7 +2423,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="sansserif" size="14" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Random Scale"/>
+                    <Property name="text" type="java.lang.String" value="Stage 1 Scale"/>
                     <Property name="toolTipText" type="java.lang.String" value="Check the box(s) of the regressor(s) to add the interaction effect by random  scale in the model"/>
                   </Properties>
                   <Constraints>
@@ -2437,12 +2437,12 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="sansserif" size="14" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Location X Scale"/>
+                    <Property name="text" type="java.lang.String" value="Stage 1 Location X Scale"/>
                     <Property name="toolTipText" type="java.lang.String" value="Check the box(s) of the regressor(s) to add the interaction effect by random location and scale in the model"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="920" y="348" width="130" height="20"/>
+                      <AbsoluteConstraints x="920" y="348" width="180" height="20"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -2464,14 +2464,14 @@
                   </AccessibilityProperties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="430" y="578" width="610" height="170"/>
+                      <AbsoluteConstraints x="430" y="598" width="660" height="170"/>
                     </Constraint>
                   </Constraints>
 
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="stageTwoRegsGridLvl2" alignment="0" pref="598" max="32767" attributes="0"/>
+                          <Component id="stageTwoRegsGridLvl2" alignment="0" pref="648" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
@@ -2511,7 +2511,7 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="880" y="778" width="160" height="35"/>
+                      <AbsoluteConstraints x="880" y="798" width="160" height="35"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -2584,7 +2584,7 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="740" y="778" width="140" height="35"/>
+                      <AbsoluteConstraints x="740" y="798" width="140" height="35"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -2705,7 +2705,7 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="610" y="778" width="130" height="35"/>
+                      <AbsoluteConstraints x="610" y="798" width="130" height="35"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -2723,14 +2723,14 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="430" y="368" width="610" height="170"/>
+                      <AbsoluteConstraints x="430" y="388" width="660" height="170"/>
                     </Constraint>
                   </Constraints>
 
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="stageTwoRegsGridLvl1" alignment="0" pref="598" max="32767" attributes="0"/>
+                          <Component id="stageTwoRegsGridLvl1" alignment="0" pref="648" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
@@ -2842,7 +2842,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="450" y="558" width="110" height="-1"/>
+                      <AbsoluteConstraints x="450" y="568" width="110" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -2851,12 +2851,12 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="sansserif" size="14" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Random Location"/>
+                    <Property name="text" type="java.lang.String" value="Stage 1 Location"/>
                     <Property name="toolTipText" type="java.lang.String" value="Check the box(s) of the regressor(s) to  add the interaction effect by random location (intercept + slope(s)) in the model"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="660" y="558" width="140" height="-1"/>
+                      <AbsoluteConstraints x="660" y="568" width="140" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -2865,12 +2865,12 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="sansserif" size="14" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Random Scale"/>
+                    <Property name="text" type="java.lang.String" value="Stage 1 Scale"/>
                     <Property name="toolTipText" type="java.lang.String" value="Check the box(s) of the regressor(s) to add the interaction effect by random  scale in the model"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="800" y="558" width="110" height="20"/>
+                      <AbsoluteConstraints x="800" y="568" width="110" height="20"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -2879,12 +2879,12 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="sansserif" size="14" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Location X Scale"/>
+                    <Property name="text" type="java.lang.String" value="Stage 1 Location X Scale"/>
                     <Property name="toolTipText" type="java.lang.String" value="Check the box(s) of the regressor(s) to add the interaction effect by random location and scale in the model"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="920" y="558" width="130" height="20"/>
+                      <AbsoluteConstraints x="920" y="568" width="190" height="20"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -2930,7 +2930,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="randomLocationConfigLabel1">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Random location:"/>
+                    <Property name="text" type="java.lang.String" value="Stage 1 location:"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -2940,7 +2940,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="randomScaleConfigLabel1">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Random scale:"/>
+                    <Property name="text" type="java.lang.String" value="Stage 1 scale:"/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -3014,7 +3014,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="590" y="558" width="-1" height="-1"/>
+                      <AbsoluteConstraints x="590" y="568" width="-1" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -3047,7 +3047,7 @@
                 <Component class="javax.swing.JSeparator" name="jSeparator19">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="430" y="328" width="610" height="10"/>
+                      <AbsoluteConstraints x="430" y="328" width="640" height="10"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -3140,7 +3140,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/resources/icon4 - Copy.png"/>
                     </Property>
-                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;pre&gt;Random scale parameters allow subjects to have individual estimates of the &#xa;within-subject variance, and this is the distinguishing feature of a mixed-eefects locatio nscale model.&#xa;For random scale models, a linear or quadratic association is also possible.&lt;pre&gt;"/>
+                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;pre&gt;Associations between time-varying&#xa;covariates and the outcome in stage 2 model.&lt;pre&gt;"/>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[16, 16]"/>
                     </Property>
@@ -3162,7 +3162,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/resources/icon4 - Copy.png"/>
                     </Property>
-                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;pre&gt;Random scale parameters allow subjects to have individual estimates of the &#xa;within-subject variance, and this is the distinguishing feature of a mixed-eefects locatio nscale model.&#xa;For random scale models, a linear or quadratic association is also possible.&lt;pre&gt;"/>
+                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;pre&gt;Stage 2 Level 1 Regressors.&lt;pre&gt;"/>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[16, 16]"/>
                     </Property>
@@ -3173,9 +3173,12 @@
                       <Dimension value="[16, 16]"/>
                     </Property>
                   </Properties>
+                  <AccessibilityProperties>
+                    <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Check the box(s) of the regressor(s) to add the main effect in the model"/>
+                  </AccessibilityProperties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="430" y="348" width="20" height="20"/>
+                      <AbsoluteConstraints x="490" y="370" width="20" height="20"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -3184,7 +3187,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/resources/icon4 - Copy.png"/>
                     </Property>
-                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;pre&gt;Random scale parameters allow subjects to have individual estimates of the &#xa;within-subject variance, and this is the distinguishing feature of a mixed-eefects locatio nscale model.&#xa;For random scale models, a linear or quadratic association is also possible.&lt;pre&gt;"/>
+                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;pre&gt;Random Location (intercept) effect is defined as the degree to which&#xa;a subject deviates from the population average. It typically represents a subject-level&#xa;mean effect, over and above the effects of covariates on the mean, and accounts for the&#xa;non-independence of observations within subjects&lt;pre&gt;"/>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[16, 16]"/>
                     </Property>
@@ -3195,9 +3198,12 @@
                       <Dimension value="[16, 16]"/>
                     </Property>
                   </Properties>
+                  <AccessibilityProperties>
+                    <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Check the box(s) of the regressor(s) to  add the interaction effect by random location (intercept + slope(s)) in the model"/>
+                  </AccessibilityProperties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="640" y="348" width="20" height="20"/>
+                      <AbsoluteConstraints x="710" y="370" width="20" height="20"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -3206,7 +3212,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/resources/icon4 - Copy.png"/>
                     </Property>
-                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;pre&gt;Random scale parameters allow subjects to have individual estimates of the &#xa;within-subject variance, and this is the distinguishing feature of a mixed-eefects locatio nscale model.&#xa;For random scale models, a linear or quadratic association is also possible.&lt;pre&gt;"/>
+                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;pre&gt;Three-way interaction effect between regressor, random location, and random scale.&lt;pre&gt;"/>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[16, 16]"/>
                     </Property>
@@ -3217,9 +3223,12 @@
                       <Dimension value="[16, 16]"/>
                     </Property>
                   </Properties>
+                  <AccessibilityProperties>
+                    <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Check the box(s) of the regressor(s) to add the interaction effect by random location and scale in the model"/>
+                  </AccessibilityProperties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="900" y="348" width="20" height="20"/>
+                      <AbsoluteConstraints x="990" y="370" width="20" height="20"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -3228,7 +3237,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/resources/icon4 - Copy.png"/>
                     </Property>
-                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;pre&gt;Random scale parameters allow subjects to have individual estimates of the &#xa;within-subject variance, and this is the distinguishing feature of a mixed-eefects locatio nscale model.&#xa;For random scale models, a linear or quadratic association is also possible.&lt;pre&gt;"/>
+                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;pre&gt;Random scale parameters allow subjects to have individual estimates of the &#xa;within-subject variance, and this is the distinguishing feature of a mixed-effects location scale model.&#xa;For random scale models, a linear or quadratic association is also possible.&lt;pre&gt;"/>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[16, 16]"/>
                     </Property>
@@ -3239,9 +3248,12 @@
                       <Dimension value="[16, 16]"/>
                     </Property>
                   </Properties>
+                  <AccessibilityProperties>
+                    <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Check the box(s) of the regressor(s) to add the interaction effect by random  scale in the model"/>
+                  </AccessibilityProperties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="780" y="348" width="20" height="20"/>
+                      <AbsoluteConstraints x="840" y="370" width="20" height="20"/>
                     </Constraint>
                   </Constraints>
                 </Component>
