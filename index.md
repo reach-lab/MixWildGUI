@@ -88,6 +88,7 @@ Previous version
 ### Selective papers that use MixWILD ###
 <div style="height:300px;width:680px;border:none;font:12px/18px sans-serif;overflow:auto;">
     <ul>
+      <li>Torrents, C., Garcías de Ves, S., Bourke, M., & Richard, V. (2026). <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0313553">Nurturing creativity in comfort; Gently pushing the boundaries within a zone of safety</a>. PLoS One, 21(3), e0313553.</li>
       <li>Rogers, A. H., Zvolensky, M. J., Aaron, R. V., Lackner, J. M., Smit, T., Bakhshaie, J., & Gerhart, J. I. (2026). <a href="https://www.sciencedirect.com/science/article/pii/S000579672600029X?casa_token=bm1ZbHp7Mw4AAAAA:3pGZjzSHDfYJQg-XI_CxwJdEpiMHC4Db5YQCy04T0Nd87FrmpJyJPaBr3oiJ-D8jshkawNYHjJc"> Emotion Regulation Variability and Chronic Pain: An Ecological Momentary Assessment Study.</a>. Behaviour Research and Therapy, 104977.</li>
       <li>Whitaker, M., Okifuji, A., & Deboeck, P. (2026). <a href="https://link.springer.com/article/10.1007/s10865-026-00638-6"> How am I doing? It varies: mixed-effects location scale modeling to examine intra-individual variability in health-related research</a>. Journal of Behavioral Medicine, 1-15.</li>
       <li>Forchuk, C., Mongrain, M., Mirbozorgi, B., & Gargala, D. (2025). <a href="https://link.springer.com/article/10.1007/s12671-025-02729-y">Less reactivity, more stability: Affective benefits of decentering from stress in ecological momentary assessment</a>. Mindfulness.</li>
