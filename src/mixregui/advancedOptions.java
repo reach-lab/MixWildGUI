@@ -1107,7 +1107,9 @@ public class advancedOptions extends javax.swing.JFrame {
             jLabel13.setEnabled(true);
             WaveWSVarianceInterceptBox.setEnabled(true);
             jLabel14.setEnabled(true);
+            adaptiveQuadritureCheckBox.setSelected(false);
             adaptiveQuadritureWaveVarianceCheckBox.setEnabled(true);
+            adaptiveQuadritureWaveVarianceCheckBox.setSelected(false);
         } else {
             jLabel13.setEnabled(false);
             WaveWSVarianceInterceptBox.setEnabled(false);

@@ -11882,8 +11882,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         if (suppressed) {
             jLabel18.setVisible(false);
+            stageTwoRandSlopeHelpButton6.setVisible(false);
         } else {
             jLabel18.setVisible(true);
+            stageTwoRandSlopeHelpButton6.setVisible(false);
         }
 
         stageTwoRegsGridLvl1.setLayout(new GridBagLayout());
@@ -12099,6 +12101,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             jLabel18.setVisible(false);
             jLabel37.setVisible(false);
+            stageTwoRandSlopeHelpButton6.setVisible(false);
 
             // reset table
             updateStageTwoMainEffectGrid(stageTwoLevelOne, stageTwoLevelTwo);
@@ -12161,6 +12164,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
             jLabel18.setVisible(true);
             jLabel37.setVisible(true);
+            stageTwoRandSlopeHelpButton6.setVisible(true);
 
             // reset table
             updateStageTwoMainEffectGrid(stageTwoLevelOne, stageTwoLevelTwo);
@@ -12424,8 +12428,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         if (suppressed) {
             jLabel18.setVisible(false);
+            stageTwoRandSlopeHelpButton6.setVisible(false);
         } else {
             jLabel18.setVisible(true);
+            stageTwoRandSlopeHelpButton6.setVisible(true);
         }
 
         stageTwoRegsGridLvl1.setLayout(new GridBagLayout());
@@ -12611,6 +12617,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             jLabel40.setVisible(true);
             StageTwoLevelOneRegRandSlopeCombo.setEnabled(true);
             StageTwoLevelOneRegRandSlopeCombo.setVisible(true);
+            stageTwoRandSlopeHelpButton.setVisible(true);
 
             DefaultComboBoxModel<String> comboModel = new DefaultComboBoxModel<>();
 
@@ -12632,6 +12639,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             jLabel40.setVisible(false);
             StageTwoLevelOneRegRandSlopeCombo.setEnabled(false);
             StageTwoLevelOneRegRandSlopeCombo.setVisible(false);
+            stageTwoRandSlopeHelpButton.setVisible(false);
         }
     }
 
@@ -13413,8 +13421,10 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     private void updateGuiView_trigger_randomScaleSelection() {
         if (!isRandomScale) {
             jLabel17.setVisible(false);
+            stageTwoRandSlopeHelpButton7.setVisible(false);
             jLabel36.setVisible(false);
             jLabel18.setVisible(false);
+            stageTwoRandSlopeHelpButton6.setVisible(false);
             jLabel37.setVisible(false);
             enbaleInteractionCheckBox.setVisible(false);
         } else {
