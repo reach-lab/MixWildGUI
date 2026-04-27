@@ -2491,9 +2491,9 @@ public class MixLibrary implements Serializable {
             MIXORS = "resources/macOS/" + MIXORS;
             MIXPREG = "resources/macOS/" + MIXPREG;
 //            STAGETWO_ONLY = "resources/macOS/" + STAGETWO_ONLY;
-            STAGETWO_ONLY = "resources/macOS/" + "stage2only_slope.f90";
+            STAGETWO_ONLY = "resources/macOS/" + STAGETWO_ONLY;
 //            LSBOTH_PRE_LEVEL3 = "resources/macOS/" + LSBOTH_PRE_LEVEL3;
-//            LSBOTH_PRE_LEVEL3_STAGE2 = "resources/macOS/" + LSBOTH_PRE_LEVEL3_STAGE2+  ".f90";
+            LSBOTH_PRE_LEVEL3_STAGE2 = "resources/macOS/" + LSBOTH_PRE_LEVEL3_STAGE2;
         }
 
         String exeArray[] = {MIXORS_PRE, MIXNO, MIXREG, MIXORS, MIXPREG, STAGETWO_ONLY, LSBOTH_PRE_LEVEL3_STAGE2};
@@ -2523,7 +2523,8 @@ public class MixLibrary implements Serializable {
                 "chmod u+x " + "\"" + definitionFilepath + FilenameUtils.getName(MIXPREG) + "\"",
                 "chmod u+x " + "\"" + definitionFilepath + FilenameUtils.getName(MIXREG) + "\"",
                 "chmod u+x " + "\"" + definitionFilepath + FilenameUtils.getName(MIXORS) + "\"",
-                "chmod u+x " + "\"" + definitionFilepath + FilenameUtils.getName(STAGETWO_ONLY) + "\"", //                "chmod u+x " + "\"" + definitionFilepath + FilenameUtils.getName(LSBOTH_PRE_LEVEL3_STAGE2) + "\""
+                "chmod u+x " + "\"" + definitionFilepath + FilenameUtils.getName(STAGETWO_ONLY) + "\"", 
+                "chmod u+x " + "\"" + definitionFilepath + FilenameUtils.getName(LSBOTH_PRE_LEVEL3_STAGE2) + "\""//                "chmod u+x " + "\"" + definitionFilepath + FilenameUtils.getName(LSBOTH_PRE_LEVEL3_STAGE2) + "\""
             };
             for (String command : commands) {
                 ProcessBuilder pb1 = new ProcessBuilder(
