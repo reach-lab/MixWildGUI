@@ -4190,6 +4190,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             // Trigger: Include Stage 2 Data file or not
             updateGuiView_trigger_IncludeStageTwoData();
             // Triger: Click to modify stage 2 config or not
+            isUpdateStage2ConfigClicked = mxrStates.isUpdateStage2ConfigClicked;
             updateGuiView_trigger_updateStage2Config();
             // Trigger: New model submitted or not
             isNewModalConfigSubmitted = mxrStates.isNewModalConfigSubmitted;
@@ -4210,9 +4211,17 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
             update_StageTwoStates(mxrStates);
         }
 
-        //hide load button temprarily
-        guiStatesLoadButtonModalConfig.setVisible(
-                false);
+        // Hide the startup launch buttons — a model is loaded so they are no longer needed.
+        newDataSetButton.setVisible(false);
+        loadModelByBrowseButton.setVisible(false);
+        loadModelByBrowseButton.setEnabled(false);
+
+        // Restore updateStage2ConfigButton visibility: visible only when a model has been
+        // submitted but the user has not yet clicked "Update Stage 2" in this session.
+        updateStage2ConfigButton.setVisible(isNewModalConfigSubmitted && !isUpdateStage2ConfigClicked);
+
+        // Hide the load button — it is only needed at startup.
+        guiStatesLoadButtonModalConfig.setVisible(false);
 
     }
 
