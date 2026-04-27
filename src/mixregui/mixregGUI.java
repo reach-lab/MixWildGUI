@@ -5101,228 +5101,366 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }
 
     //Update stage 2 table with selected regressors
+//    public void updateStageTwoLevelTwoGrid(DefaultListModel<String> defaultListModel) {
+//
+//        JScrollPane scrollpanel = new JScrollPane(stageTwoRegsGridLvl2);
+//        stageTwoLevelTwoSelected = new ArrayList<String>();
+//
+//        int regSize = defaultListModel.getSize();
+//        stageTwoLevelTwoRegSize = regSize;
+//
+//        stageTwoRegsGridLvl2.removeAll();
+//
+//        if (suppressed) {
+//            jLabel37.setVisible(false);
+//        } else {
+//            jLabel37.setVisible(true);
+//        }
+//
+//        stageTwoRegsGridLvl2.setLayout(new GridBagLayout());
+//        GridBagConstraints constraints = new GridBagConstraints();
+//
+//        constraints.gridx = 0;
+//        constraints.gridy = 0;
+//        constraints.weightx = 1.0;
+//        constraints.anchor = GridBagConstraints.NORTHEAST;
+//
+//        GridBagConstraints separatorConstraint = new GridBagConstraints();
+//        separatorConstraint.weightx = 1.0;
+//        separatorConstraint.fill = GridBagConstraints.HORIZONTAL;
+//        separatorConstraint.gridwidth = GridBagConstraints.REMAINDER;
+//        separatorConstraint.gridx = 0;
+//
+//        constraints.insets = new Insets(3, 5, 5, 0);
+//        constraints.fill = GridBagConstraints.HORIZONTAL;
+//        separatorConstraint.insets = new Insets(0, 0, 0, 0);
+//        constraints.weightx = 1;
+//
+//        stageTwoLevelTwoGridBoxes = new ArrayList<ArrayList<JCheckBox>>();
+//        //disaggVarianceBoxes = new ArrayList<ArrayList<JCheckBox>>();
+//
+//        for (int j = 0; j < regSize; j++) {
+//            int row = j;
+//            constraints.gridx = 1;
+//            constraints.anchor = GridBagConstraints.FIRST_LINE_START;
+//            stageTwoLevelTwoSelected.add(defaultListModel.getElementAt(j));
+//            JLabel variableText = new JLabel(stageTwoLevelTwoSelected.get(j));
+//            variableText.setPreferredSize(new Dimension(60, 20));
+//            stageTwoRegsGridLvl2.add(variableText, constraints);
+//
+//            stageTwoLevelTwoGridBoxes.add(j, new ArrayList<JCheckBox>());
+//
+//            for (int k = 0; k < 4; k++) {
+//
+//                if (k == 1) {
+//                    constraints.gridx = constraints.gridx + 5;
+//                } else {
+//                    constraints.gridx++;
+//                }
+//
+//                constraints.anchor = GridBagConstraints.CENTER;
+//
+//                if (k == 3) {
+//                    if (suppressed) {
+//                        JLabel placeHolder3 = new JLabel(" ");
+//                        placeHolder3.setPreferredSize(new Dimension(20, 20));
+//                        stageTwoRegsGridLvl2.add(placeHolder3, constraints);
+//                        stageTwoLevelTwoGridBoxes.get(j).add(k, new JCheckBox());
+//                        stageTwoLevelTwoGridBoxes.get(j).get(k).setEnabled(false);
+//                    } else {
+//                        stageTwoLevelTwoGridBoxes.get(j).add(k, new JCheckBox());
+//                        stageTwoLevelTwoGridBoxes.get(j).get(k).setEnabled(false);
+//                    }
+//                } else {
+//                    stageTwoLevelTwoGridBoxes.get(j).add(k, new JCheckBox());
+//                    if (suppressed) {
+//                        stageTwoLevelTwoGridBoxes.get(j).get(k).setEnabled(false);
+//                    } else {
+//                        stageTwoLevelTwoGridBoxes.get(j).get(k).setEnabled(true);
+//                    }
+//                }
+//
+//                if (k == 0) {
+//                    stageTwoLevelTwoGridBoxes.get(j).get(k).setSelected(true);
+//                    stageTwoLevelTwoGridBoxes.get(j).get(k).setVisible(false);
+//                    constraints.gridx++;
+//
+//                    if (isRandomScale) {
+//                        JLabel placeHolder1 = new JLabel(" ");
+//                        placeHolder1.setPreferredSize(new Dimension(60, 20));
+//                        stageTwoRegsGridLvl2.add(placeHolder1, constraints);
+//                    }
+//                }
+//
+//                if (k == 3) {
+//                    if (suppressed) {
+//                        // do nothing
+//                    } else {
+//                        stageTwoRegsGridLvl2.add(stageTwoLevelTwoGridBoxes.get(j).get(k), constraints);
+//                    }
+//                } else {
+//                    stageTwoRegsGridLvl2.add(stageTwoLevelTwoGridBoxes.get(j).get(k), constraints);
+//                }
+//
+//            }
+//
+//            constraints.gridy++;
+//
+//            separatorConstraint.gridy = separatorConstraint.gridy + 2;
+//
+//            stageTwoRegsGridLvl2.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
+//            constraints.gridy++;
+//
+//            stageTwoLevelTwoGridBoxes.get(row).get(1).setEnabled(true);
+//            stageTwoLevelTwoGridBoxes.get(row).get(2).setEnabled(true);
+//
+//            if (!isRandomScale) {
+//                stageTwoLevelTwoGridBoxes.get(row).get(2).setVisible(false);
+//            }
+//
+////            stageTwoLevelTwoGridBoxes.get(j).get(0).addActionListener(new ActionListener() {
+////                public void actionPerformed(ActionEvent e) {
+////                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+////                    AbstractButton abstractButton = (AbstractButton) e.getSource();
+////                    boolean selected = abstractButton.getModel().isSelected();
+////                    if (selected) {
+////                        System.out.println("Checkbox selected");
+////                        //disaggVarianceBoxes.get(row).get(column).setEnabled(true);
+////                        stageTwoLevelTwoGridBoxes.get(row).get(1).setEnabled(true);
+////                        stageTwoLevelTwoGridBoxes.get(row).get(1).setSelected(false);
+////                        stageTwoLevelTwoGridBoxes.get(row).get(2).setEnabled(true);
+////                        stageTwoLevelTwoGridBoxes.get(row).get(2).setSelected(false);
+////                        randomChecked = false;
+////                        scaleChecked = false;
+//////                        System.out.println(disaggVarianceBoxes.size());
+////                    } else {
+////                        //disaggVarianceBoxes.get(row).get(column).setEnabled(false);
+////                        stageTwoLevelTwoGridBoxes.get(row).get(1).setEnabled(false);
+////                        stageTwoLevelTwoGridBoxes.get(row).get(1).setSelected(false);
+////                        stageTwoLevelTwoGridBoxes.get(row).get(2).setEnabled(false);
+////                        stageTwoLevelTwoGridBoxes.get(row).get(2).setSelected(false);
+////                        stageTwoLevelTwoGridBoxes.get(row).get(3).setSelected(false);
+////                        stageTwoLevelTwoGridBoxes.get(row).get(3).setEnabled(false);
+////                        randomChecked = false;
+////                        scaleChecked = false;
+//////                        suppressIntCheckBox.setEnabled(false);
+//////                        suppressIntCheckBox.setSelected(false);
+////
+////                    }
+////
+////                }
+////            });
+//            stageTwoLevelTwoGridBoxes.get(j).get(1).addActionListener(new ActionListener() {
+//                public void actionPerformed(ActionEvent e) {
+//                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//                    AbstractButton abstractButton = (AbstractButton) e.getSource();
+//                    boolean selected = abstractButton.getModel().isSelected();
+//                    if (selected) {
+//                        scaleChecked = true;
+//                        SystemLogger.LOGGER.log(Level.FINE, "stage_two_checkbox_selected");
+//                        if (randomChecked == true) {
+//                            if (!suppressed) {
+//                                stageTwoLevelTwoGridBoxes.get(row).get(3).setEnabled(true);
+//                                stageTwoLevelTwoGridBoxes.get(row).get(3).setSelected(false);
+//                            }
+//                        }
+//
+//                    } else {
+//                        scaleChecked = false;
+//                        if (!suppressed) {
+//                            stageTwoLevelTwoGridBoxes.get(row).get(3).setEnabled(false);
+//                            stageTwoLevelTwoGridBoxes.get(row).get(3).setSelected(false);
+//                        }
+//                    }
+//                }
+//            });
+//
+//            stageTwoLevelTwoGridBoxes.get(j).get(2).addActionListener(new ActionListener() {
+//                public void actionPerformed(ActionEvent e) {
+//                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//                    AbstractButton abstractButton = (AbstractButton) e.getSource();
+//                    boolean selected = abstractButton.getModel().isSelected();
+//
+//                    if (selected) {
+//                        randomChecked = true;
+//                        SystemLogger.LOGGER.log(Level.FINE, "stage_two_checkbox_selected");
+//                        if (scaleChecked == true) {
+//                            if (!suppressed) {
+//                                stageTwoLevelTwoGridBoxes.get(row).get(3).setEnabled(true);
+//                                stageTwoLevelTwoGridBoxes.get(row).get(3).setSelected(false);
+//                            }
+//                        }
+//
+//                    } else {
+//                        randomChecked = false;
+//                        if (!suppressed) {
+//                            stageTwoLevelTwoGridBoxes.get(row).get(3).setEnabled(false);
+//                            stageTwoLevelTwoGridBoxes.get(row).get(3).setSelected(false);
+//                        }
+//
+//                    }
+//                }
+//            });
+//
+//            stageTwoLevelTwoGridBoxes.get(j).get(3).addActionListener(new ActionListener() {
+//                public void actionPerformed(ActionEvent e) {
+//                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//                    AbstractButton abstractButton = (AbstractButton) e.getSource();
+//                    boolean selected = abstractButton.getModel().isSelected();
+//
+////                    randomChecked = false;
+////                    scaleChecked = false;
+////
+////                    enbaleInteractionCheckBox.setEnabled(true);
+//                }
+//            });
+//
+//        }
+//
+//        stageTwoLevelTwoPanel.removeAll();
+//        stageTwoLevelTwoPanel.add(scrollpanel);
+//
+//        stageTwoLevelTwoPanel.revalidate();
+//        stageTwoLevelTwoPanel.repaint();
+//
+//    }
     public void updateStageTwoLevelTwoGrid(DefaultListModel<String> defaultListModel) {
 
         JScrollPane scrollpanel = new JScrollPane(stageTwoRegsGridLvl2);
-        stageTwoLevelTwoSelected = new ArrayList<String>();
+        stageTwoLevelTwoSelected = new ArrayList<>();
 
         int regSize = defaultListModel.getSize();
         stageTwoLevelTwoRegSize = regSize;
 
         stageTwoRegsGridLvl2.removeAll();
 
-        if (suppressed) {
-            jLabel37.setVisible(false);
-        } else {
-            jLabel37.setVisible(true);
-        }
+        jLabel37.setVisible(!suppressed);
 
         stageTwoRegsGridLvl2.setLayout(new GridBagLayout());
-        GridBagConstraints constraints = new GridBagConstraints();
 
-        constraints.gridx = 0;
-        constraints.gridy = 0;
-        constraints.weightx = 1.0;
-        constraints.anchor = GridBagConstraints.NORTHEAST;
+        GridBagConstraints c = new GridBagConstraints();
+        c.gridy = 0;
+        c.weightx = 1.0;
+        c.fill = GridBagConstraints.HORIZONTAL;
 
-        GridBagConstraints separatorConstraint = new GridBagConstraints();
-        separatorConstraint.weightx = 1.0;
-        separatorConstraint.fill = GridBagConstraints.HORIZONTAL;
-        separatorConstraint.gridwidth = GridBagConstraints.REMAINDER;
-        separatorConstraint.gridx = 0;
+        GridBagConstraints sepC = new GridBagConstraints();
+        sepC.weightx = 1.0;
+        sepC.fill = GridBagConstraints.HORIZONTAL;
+        sepC.gridwidth = GridBagConstraints.REMAINDER;
+        sepC.gridx = 0;
+        sepC.gridy = 1;
+        sepC.insets = new Insets(0, 0, 0, 0);
 
-        constraints.insets = new Insets(3, 5, 5, 0);
-        constraints.fill = GridBagConstraints.HORIZONTAL;
-        separatorConstraint.insets = new Insets(0, 0, 0, 0);
-        constraints.weightx = 1;
-
-        stageTwoLevelTwoGridBoxes = new ArrayList<ArrayList<JCheckBox>>();
-        //disaggVarianceBoxes = new ArrayList<ArrayList<JCheckBox>>();
+        stageTwoLevelTwoGridBoxes = new ArrayList<>();
 
         for (int j = 0; j < regSize; j++) {
-            int row = j;
-            constraints.gridx = 1;
-            constraints.anchor = GridBagConstraints.FIRST_LINE_START;
+            final int row = j;
+
+            // Label — insets reset every iteration to avoid inheriting CB3's insets
+            c.gridx = 1;
+            c.anchor = GridBagConstraints.FIRST_LINE_START;
+            c.insets = new Insets(3, 5, 5, 0); // reset every row
             stageTwoLevelTwoSelected.add(defaultListModel.getElementAt(j));
             JLabel variableText = new JLabel(stageTwoLevelTwoSelected.get(j));
-            variableText.setPreferredSize(new Dimension(60, 20));
-            stageTwoRegsGridLvl2.add(variableText, constraints);
+            variableText.setPreferredSize(new Dimension(80, 20)); // fixed width to prevent label from pushing checkboxes
+            stageTwoRegsGridLvl2.add(variableText, c);
 
-            stageTwoLevelTwoGridBoxes.add(j, new ArrayList<JCheckBox>());
+            stageTwoLevelTwoGridBoxes.add(j, new ArrayList<>());
+            c.anchor = GridBagConstraints.CENTER;
 
             for (int k = 0; k < 4; k++) {
-
-                if (k == 1) {
-                    constraints.gridx = constraints.gridx + 5;
-                } else {
-                    constraints.gridx++;
+                switch (k) {
+                    case 0:
+                        c.gridx = 2;
+                        c.insets = new Insets(3, 5, 5, 0);
+                        break;
+                    case 1: // CB1
+                        c.gridx = 2;
+                        c.insets = new Insets(3, 110, 5, 0); // left controls label→CB1 gap
+                        break;
+                    case 2: // CB2
+                        c.gridx = 3;
+                        c.insets = new Insets(3, 40, 5, 0); // left controls CB1→CB2 gap
+                        break;
+                    case 3: // CB3
+                        c.gridx = 4;
+                        c.insets = new Insets(3, 50, 5, 0); // left controls CB2→CB3 gap
+                        break;
                 }
 
-                constraints.anchor = GridBagConstraints.CENTER;
-
-                if (k == 3) {
-                    if (suppressed) {
-                        JLabel placeHolder3 = new JLabel(" ");
-                        placeHolder3.setPreferredSize(new Dimension(20, 20));
-                        stageTwoRegsGridLvl2.add(placeHolder3, constraints);
-                        stageTwoLevelTwoGridBoxes.get(j).add(k, new JCheckBox());
-                        stageTwoLevelTwoGridBoxes.get(j).get(k).setEnabled(false);
-                    } else {
-                        stageTwoLevelTwoGridBoxes.get(j).add(k, new JCheckBox());
-                        stageTwoLevelTwoGridBoxes.get(j).get(k).setEnabled(false);
-                    }
-                } else {
-                    stageTwoLevelTwoGridBoxes.get(j).add(k, new JCheckBox());
-                    if (suppressed) {
-                        stageTwoLevelTwoGridBoxes.get(j).get(k).setEnabled(false);
-                    } else {
-                        stageTwoLevelTwoGridBoxes.get(j).get(k).setEnabled(true);
-                    }
-                }
+                JCheckBox box = new JCheckBox();
+                stageTwoLevelTwoGridBoxes.get(j).add(k, box);
 
                 if (k == 0) {
-                    stageTwoLevelTwoGridBoxes.get(j).get(k).setSelected(true);
-                    stageTwoLevelTwoGridBoxes.get(j).get(k).setVisible(false);
-                    constraints.gridx++;
+                    box.setSelected(true);
+                    box.setVisible(false);
+                    box.setEnabled(false);
+                    stageTwoRegsGridLvl2.add(box, c);
 
                     if (isRandomScale) {
-                        JLabel placeHolder1 = new JLabel(" ");
-                        placeHolder1.setPreferredSize(new Dimension(60, 20));
-                        stageTwoRegsGridLvl2.add(placeHolder1, constraints);
+                        c.gridx++;
+                        JLabel placeholder = new JLabel(" ");
+                        placeholder.setPreferredSize(new Dimension(60, 20));
+                        stageTwoRegsGridLvl2.add(placeholder, c);
                     }
-                }
-
-                if (k == 3) {
-                    if (suppressed) {
-                        // do nothing
+                } else if (k == 3) {
+                    box.setEnabled(false);
+                    if (!suppressed) {
+                        stageTwoRegsGridLvl2.add(box, c);
                     } else {
-                        stageTwoRegsGridLvl2.add(stageTwoLevelTwoGridBoxes.get(j).get(k), constraints);
+                        JLabel placeholder = new JLabel(" ");
+                        placeholder.setPreferredSize(new Dimension(20, 20));
+                        stageTwoRegsGridLvl2.add(placeholder, c);
                     }
                 } else {
-                    stageTwoRegsGridLvl2.add(stageTwoLevelTwoGridBoxes.get(j).get(k), constraints);
+                    // CB1 and CB2
+                    box.setEnabled(!suppressed);
+                    stageTwoRegsGridLvl2.add(box, c);
                 }
-
             }
 
-            constraints.gridy++;
-
-            separatorConstraint.gridy = separatorConstraint.gridy + 2;
-
-            stageTwoRegsGridLvl2.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
-            constraints.gridy++;
-
+            // Post-loop overrides
             stageTwoLevelTwoGridBoxes.get(row).get(1).setEnabled(true);
             stageTwoLevelTwoGridBoxes.get(row).get(2).setEnabled(true);
-
             if (!isRandomScale) {
                 stageTwoLevelTwoGridBoxes.get(row).get(2).setVisible(false);
             }
 
-//            stageTwoLevelTwoGridBoxes.get(j).get(0).addActionListener(new ActionListener() {
-//                public void actionPerformed(ActionEvent e) {
-//                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//                    AbstractButton abstractButton = (AbstractButton) e.getSource();
-//                    boolean selected = abstractButton.getModel().isSelected();
-//                    if (selected) {
-//                        System.out.println("Checkbox selected");
-//                        //disaggVarianceBoxes.get(row).get(column).setEnabled(true);
-//                        stageTwoLevelTwoGridBoxes.get(row).get(1).setEnabled(true);
-//                        stageTwoLevelTwoGridBoxes.get(row).get(1).setSelected(false);
-//                        stageTwoLevelTwoGridBoxes.get(row).get(2).setEnabled(true);
-//                        stageTwoLevelTwoGridBoxes.get(row).get(2).setSelected(false);
-//                        randomChecked = false;
-//                        scaleChecked = false;
-////                        System.out.println(disaggVarianceBoxes.size());
-//                    } else {
-//                        //disaggVarianceBoxes.get(row).get(column).setEnabled(false);
-//                        stageTwoLevelTwoGridBoxes.get(row).get(1).setEnabled(false);
-//                        stageTwoLevelTwoGridBoxes.get(row).get(1).setSelected(false);
-//                        stageTwoLevelTwoGridBoxes.get(row).get(2).setEnabled(false);
-//                        stageTwoLevelTwoGridBoxes.get(row).get(2).setSelected(false);
-//                        stageTwoLevelTwoGridBoxes.get(row).get(3).setSelected(false);
-//                        stageTwoLevelTwoGridBoxes.get(row).get(3).setEnabled(false);
-//                        randomChecked = false;
-//                        scaleChecked = false;
-////                        suppressIntCheckBox.setEnabled(false);
-////                        suppressIntCheckBox.setSelected(false);
-//
-//                    }
-//
-//                }
-//            });
-            stageTwoLevelTwoGridBoxes.get(j).get(1).addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                    AbstractButton abstractButton = (AbstractButton) e.getSource();
-                    boolean selected = abstractButton.getModel().isSelected();
-                    if (selected) {
-                        scaleChecked = true;
-                        SystemLogger.LOGGER.log(Level.FINE, "stage_two_checkbox_selected");
-                        if (randomChecked == true) {
-                            if (!suppressed) {
-                                stageTwoLevelTwoGridBoxes.get(row).get(3).setEnabled(true);
-                                stageTwoLevelTwoGridBoxes.get(row).get(3).setSelected(false);
-                            }
-                        }
-
-                    } else {
-                        scaleChecked = false;
-                        if (!suppressed) {
-                            stageTwoLevelTwoGridBoxes.get(row).get(3).setEnabled(false);
-                            stageTwoLevelTwoGridBoxes.get(row).get(3).setSelected(false);
-                        }
-                    }
+            // Action listeners
+            stageTwoLevelTwoGridBoxes.get(j).get(1).addActionListener(e -> {
+                boolean selected = ((AbstractButton) e.getSource()).getModel().isSelected();
+                scaleChecked = selected;
+                if (!suppressed) {
+                    boolean enable = selected && randomChecked;
+                    stageTwoLevelTwoGridBoxes.get(row).get(3).setEnabled(enable);
+                    stageTwoLevelTwoGridBoxes.get(row).get(3).setSelected(false);
                 }
             });
 
-            stageTwoLevelTwoGridBoxes.get(j).get(2).addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                    AbstractButton abstractButton = (AbstractButton) e.getSource();
-                    boolean selected = abstractButton.getModel().isSelected();
-
-                    if (selected) {
-                        randomChecked = true;
-                        SystemLogger.LOGGER.log(Level.FINE, "stage_two_checkbox_selected");
-                        if (scaleChecked == true) {
-                            if (!suppressed) {
-                                stageTwoLevelTwoGridBoxes.get(row).get(3).setEnabled(true);
-                                stageTwoLevelTwoGridBoxes.get(row).get(3).setSelected(false);
-                            }
-                        }
-
-                    } else {
-                        randomChecked = false;
-                        if (!suppressed) {
-                            stageTwoLevelTwoGridBoxes.get(row).get(3).setEnabled(false);
-                            stageTwoLevelTwoGridBoxes.get(row).get(3).setSelected(false);
-                        }
-
-                    }
+            stageTwoLevelTwoGridBoxes.get(j).get(2).addActionListener(e -> {
+                boolean selected = ((AbstractButton) e.getSource()).getModel().isSelected();
+                randomChecked = selected;
+                if (!suppressed) {
+                    boolean enable = selected && scaleChecked;
+                    stageTwoLevelTwoGridBoxes.get(row).get(3).setEnabled(enable);
+                    stageTwoLevelTwoGridBoxes.get(row).get(3).setSelected(false);
                 }
             });
 
-            stageTwoLevelTwoGridBoxes.get(j).get(3).addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                    AbstractButton abstractButton = (AbstractButton) e.getSource();
-                    boolean selected = abstractButton.getModel().isSelected();
-
-//                    randomChecked = false;
-//                    scaleChecked = false;
-//
-//                    enbaleInteractionCheckBox.setEnabled(true);
-                }
+            stageTwoLevelTwoGridBoxes.get(j).get(3).addActionListener(e -> {
+                // reserved for future use
             });
 
+            // Separator row
+            c.gridy += 2;
+            sepC.gridy = c.gridy - 1;
+            stageTwoRegsGridLvl2.add(new JSeparator(JSeparator.HORIZONTAL), sepC);
         }
 
         stageTwoLevelTwoPanel.removeAll();
         stageTwoLevelTwoPanel.add(scrollpanel);
-
         stageTwoLevelTwoPanel.revalidate();
         stageTwoLevelTwoPanel.repaint();
-
     }
 
     public int countLevelOneBeta() {
@@ -11450,228 +11588,139 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
     }
 
     private void update_StageTwoLevelTwoBoxes(DefaultListModel<String> defaultListModel, boolean[][] stageTwoGridBoxesSelection) {
-//        SystemLogger.LOGGER.log(Level.INFO, "TEST: Checkbox clicked - INFO level");
-//        SystemLogger.LOGGER.log(Level.FINE, "stage_two_checkbox_selected - FINE level");
+
         JScrollPane scrollpanel = new JScrollPane(stageTwoRegsGridLvl2);
-        stageTwoLevelTwoSelected = new ArrayList<String>();
+        stageTwoLevelTwoSelected = new ArrayList<>();
 
         int regSize = defaultListModel.getSize();
         stageTwoLevelTwoRegSize = regSize;
 
         stageTwoRegsGridLvl2.removeAll();
 
-        if (suppressed) {
-            jLabel37.setVisible(false);
-        } else {
-            jLabel37.setVisible(true);
-        }
+        jLabel37.setVisible(!suppressed);
 
         stageTwoRegsGridLvl2.setLayout(new GridBagLayout());
-        GridBagConstraints constraints = new GridBagConstraints();
 
-        constraints.gridx = 0;
-        constraints.gridy = 0;
-        constraints.weightx = 1.0;
-        // constraints.weighty = 1.0;
-        constraints.anchor = GridBagConstraints.NORTHEAST;
-        //constraints.gridwidth = 4;
+        GridBagConstraints c = new GridBagConstraints();
+        c.gridy = 0;
+        c.weightx = 1.0;
+        c.fill = GridBagConstraints.HORIZONTAL;
 
-        GridBagConstraints separatorConstraint = new GridBagConstraints();
-        separatorConstraint.weightx = 1.0;
-        separatorConstraint.fill = GridBagConstraints.HORIZONTAL;
-        separatorConstraint.gridwidth = GridBagConstraints.REMAINDER;
-        separatorConstraint.gridx = 0;
+        GridBagConstraints sepC = new GridBagConstraints();
+        sepC.weightx = 1.0;
+        sepC.fill = GridBagConstraints.HORIZONTAL;
+        sepC.gridwidth = GridBagConstraints.REMAINDER;
+        sepC.gridx = 0;
+        sepC.gridy = 1;
+        sepC.insets = new Insets(0, 0, 0, 0);
 
-        constraints.insets = new Insets(3, 5, 5, 0);
-        separatorConstraint.insets = new Insets(0, 0, 0, 0);
-        constraints.fill = GridBagConstraints.HORIZONTAL;
-        constraints.weightx = 1;
-
-        stageTwoLevelTwoGridBoxes = new ArrayList<ArrayList<JCheckBox>>();
-        //disaggVarianceBoxes = new ArrayList<ArrayList<JCheckBox>>();
+        stageTwoLevelTwoGridBoxes = new ArrayList<>();
 
         for (int j = 0; j < regSize; j++) {
-            int row = j;
-            constraints.gridx = 1;
-            constraints.anchor = GridBagConstraints.FIRST_LINE_START;
+            final int row = j;
+
+            // Label — insets reset every iteration to avoid inheriting CB3's insets
+            c.gridx = 1;
+            c.anchor = GridBagConstraints.FIRST_LINE_START;
+            c.insets = new Insets(3, 5, 5, 0); // reset every row
             stageTwoLevelTwoSelected.add(defaultListModel.getElementAt(j));
             JLabel variableText = new JLabel(stageTwoLevelTwoSelected.get(j));
-//            variableText.setBorder(new LineBorder(Color.BLACK));
-            variableText.setPreferredSize(new Dimension(60, 20));
-            stageTwoRegsGridLvl2.add(variableText, constraints);
-//            stageTwoRegsGridLvl2.add(new JLabel(stageTwoLevelTwoSelected.get(j)), constraints);
+            variableText.setPreferredSize(new Dimension(80, 20)); // fixed width to prevent label from pushing checkboxes
+            stageTwoRegsGridLvl2.add(variableText, c);
 
-            //stageTwoGrid.add(new JLabel(defaultListModel.getElementAt(j)), constraints);
-            stageTwoLevelTwoGridBoxes.add(j, new ArrayList<JCheckBox>());
+            stageTwoLevelTwoGridBoxes.add(j, new ArrayList<>());
+            c.anchor = GridBagConstraints.CENTER;
 
             for (int k = 0; k < 4; k++) {
-
-                if (k == 1) {
-                    constraints.gridx = constraints.gridx + 5;
-                } else {
-                    constraints.gridx++;
+                switch (k) {
+                    case 0:
+                        c.gridx = 2;
+                        c.insets = new Insets(3, 5, 5, 0);
+                        break;
+                    case 1: // CB1
+                        c.gridx = 2;
+                        c.insets = new Insets(3, 110, 5, 0); // left controls label→CB1 gap
+                        break;
+                    case 2: // CB2
+                        c.gridx = 3;
+                        c.insets = new Insets(3, 40, 5, 0); // left controls CB1→CB2 gap
+                        break;
+                    case 3: // CB3
+                        c.gridx = 4;
+                        c.insets = new Insets(3, 50, 5, 0); // left controls CB2→CB3 gap
+                        break;
                 }
 
-                constraints.anchor = GridBagConstraints.CENTER;
+                JCheckBox box = new JCheckBox();
+                stageTwoLevelTwoGridBoxes.get(j).add(k, box);
 
-                if (k == 3) {
-                    if (suppressed) {
-                        JLabel placeHolder3 = new JLabel(" ");
-                        placeHolder3.setPreferredSize(new Dimension(20, 20));
-                        stageTwoRegsGridLvl2.add(placeHolder3, constraints);
-                        stageTwoLevelTwoGridBoxes.get(j).add(k, new JCheckBox());
-                        stageTwoLevelTwoGridBoxes.get(j).get(k).setEnabled(false);
-                    } else {
-                        stageTwoLevelTwoGridBoxes.get(j).add(k, new JCheckBox());
-                        stageTwoLevelTwoGridBoxes.get(j).get(k).setEnabled(false);
-                    }
-                } else {
-                    stageTwoLevelTwoGridBoxes.get(j).add(k, new JCheckBox());
-                    if (suppressed) {
-                        stageTwoLevelTwoGridBoxes.get(j).get(k).setEnabled(false);
-                    } else {
-                        stageTwoLevelTwoGridBoxes.get(j).get(k).setEnabled(true);
-                    }
+                // restore saved selection state
+                if (stageTwoGridBoxesSelection[j][k]) {
+                    box.setSelected(true);
                 }
-                if (stageTwoGridBoxesSelection[j][k] == true) {
-                    stageTwoLevelTwoGridBoxes.get(j).get(k).setSelected(true);
-                }
+
                 if (k == 0) {
-                    stageTwoLevelTwoGridBoxes.get(j).get(k).setSelected(true);
-                    stageTwoLevelTwoGridBoxes.get(j).get(k).setVisible(false);
-                    constraints.gridx++;
+                    box.setSelected(true);
+                    box.setVisible(false);
+                    box.setEnabled(false);
+                    stageTwoRegsGridLvl2.add(box, c);
 
                     if (isRandomScale) {
-                        JLabel placeHolder1 = new JLabel(" ");
-                        placeHolder1.setPreferredSize(new Dimension(60, 20));
-                        stageTwoRegsGridLvl2.add(placeHolder1, constraints);
+                        c.gridx++;
+                        JLabel placeholder = new JLabel(" ");
+                        placeholder.setPreferredSize(new Dimension(60, 20));
+                        stageTwoRegsGridLvl2.add(placeholder, c);
                     }
-                }
-
-                if (k == 3) {
-                    if (suppressed) {
-                        // do nothing
+                } else if (k == 3) {
+                    box.setEnabled(false);
+                    if (!suppressed) {
+                        stageTwoRegsGridLvl2.add(box, c);
                     } else {
-                        stageTwoRegsGridLvl2.add(stageTwoLevelTwoGridBoxes.get(j).get(k), constraints);
+                        JLabel placeholder = new JLabel(" ");
+                        placeholder.setPreferredSize(new Dimension(20, 20));
+                        stageTwoRegsGridLvl2.add(placeholder, c);
                     }
                 } else {
-                    stageTwoRegsGridLvl2.add(stageTwoLevelTwoGridBoxes.get(j).get(k), constraints);
+                    // CB1 and CB2
+                    box.setEnabled(!suppressed);
+                    stageTwoRegsGridLvl2.add(box, c);
                 }
-
             }
 
-            constraints.gridy++;
-
-            separatorConstraint.gridy = separatorConstraint.gridy + 2;
-
-            stageTwoRegsGridLvl2.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
-            //System.out.println("after seperator");
-            constraints.gridy++;
-
+            // Post-loop overrides
             if (!isRandomScale) {
                 stageTwoLevelTwoGridBoxes.get(row).get(2).setVisible(false);
             }
 
-//            stageTwoLevelTwoGridBoxes.get(row).get(1).setEnabled(true);
-//            stageTwoLevelTwoGridBoxes.get(row).get(2).setEnabled(true);
-//            stageTwoLevelTwoGridBoxes.get(row).get(3).setEnabled(false);
-//            stageTwoLevelTwoGridBoxes.get(j).get(0).addActionListener(new ActionListener() {
-//                public void actionPerformed(ActionEvent e) {
-//                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//                    AbstractButton abstractButton = (AbstractButton) e.getSource();
-//                    boolean selected = abstractButton.getModel().isSelected();
-//                    if (selected) {
-//                        System.out.println("Checkbox selected");
-//                        //disaggVarianceBoxes.get(row).get(column).setEnabled(true);
-//                        stageTwoLevelTwoGridBoxes.get(row).get(1).setEnabled(true);
-//                        stageTwoLevelTwoGridBoxes.get(row).get(1).setSelected(false);
-//                        stageTwoLevelTwoGridBoxes.get(row).get(2).setEnabled(true);
-//                        stageTwoLevelTwoGridBoxes.get(row).get(2).setSelected(false);
-//                        randomChecked = false;
-//                        scaleChecked = false;
-////                        System.out.println(disaggVarianceBoxes.size());
-//                    } else {
-//                        //disaggVarianceBoxes.get(row).get(column).setEnabled(false);
-//                        stageTwoLevelTwoGridBoxes.get(row).get(1).setEnabled(false);
-//                        stageTwoLevelTwoGridBoxes.get(row).get(1).setSelected(false);
-//                        stageTwoLevelTwoGridBoxes.get(row).get(2).setEnabled(false);
-//                        stageTwoLevelTwoGridBoxes.get(row).get(2).setSelected(false);
-//                        stageTwoLevelTwoGridBoxes.get(row).get(3).setSelected(false);
-//                        stageTwoLevelTwoGridBoxes.get(row).get(3).setEnabled(false);
-//                        randomChecked = false;
-//                        scaleChecked = false;
-//                        enbaleInteractionCheckBox.setEnabled(false);
-//                        enbaleInteractionCheckBox.setSelected(false);
-//
-//                    }
-//
-//                }
-//            });
-            stageTwoLevelTwoGridBoxes.get(j).get(1).addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                    AbstractButton abstractButton = (AbstractButton) e.getSource();
-                    boolean selected = abstractButton.getModel().isSelected();
-                    if (selected) {
-                        SystemLogger.LOGGER.log(Level.FINE, "stage_two_checkbox_selected");
-                        scaleChecked = true;
-                        if (randomChecked == true) {
-                            if (!suppressed) {
-                                stageTwoLevelTwoGridBoxes.get(row).get(3).setEnabled(true);
-                                stageTwoLevelTwoGridBoxes.get(row).get(3).setSelected(false);
-                            }
-                        }
-
-                    } else {
-                        scaleChecked = false;
-                        if (!suppressed) {
-                            stageTwoLevelTwoGridBoxes.get(row).get(3).setEnabled(false);
-                            stageTwoLevelTwoGridBoxes.get(row).get(3).setSelected(false);
-                        }
-                    }
+            // Action listeners
+            stageTwoLevelTwoGridBoxes.get(j).get(1).addActionListener(e -> {
+                boolean selected = ((AbstractButton) e.getSource()).getModel().isSelected();
+                scaleChecked = selected;
+                if (!suppressed) {
+                    boolean enable = selected && randomChecked;
+                    stageTwoLevelTwoGridBoxes.get(row).get(3).setEnabled(enable);
+                    stageTwoLevelTwoGridBoxes.get(row).get(3).setSelected(false);
                 }
             });
 
-            stageTwoLevelTwoGridBoxes.get(j).get(2).addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                    AbstractButton abstractButton = (AbstractButton) e.getSource();
-                    boolean selected = abstractButton.getModel().isSelected();
-
-                    if (selected) {
-                        randomChecked = true;
-                        SystemLogger.LOGGER.log(Level.FINE, "stage_two_checkbox_selected");
-                        if (scaleChecked == true) {
-                            if (!suppressed) {
-                                stageTwoLevelTwoGridBoxes.get(row).get(3).setEnabled(true);
-                                stageTwoLevelTwoGridBoxes.get(row).get(3).setSelected(false);
-                            }
-                        }
-
-                    } else {
-                        randomChecked = false;
-                        if (!suppressed) {
-                            stageTwoLevelTwoGridBoxes.get(row).get(3).setEnabled(false);
-                            stageTwoLevelTwoGridBoxes.get(row).get(3).setSelected(false);
-                        }
-
-                    }
+            stageTwoLevelTwoGridBoxes.get(j).get(2).addActionListener(e -> {
+                boolean selected = ((AbstractButton) e.getSource()).getModel().isSelected();
+                randomChecked = selected;
+                if (!suppressed) {
+                    boolean enable = selected && scaleChecked;
+                    stageTwoLevelTwoGridBoxes.get(row).get(3).setEnabled(enable);
+                    stageTwoLevelTwoGridBoxes.get(row).get(3).setSelected(false);
                 }
             });
 
-            stageTwoLevelTwoGridBoxes.get(j).get(3).addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                    AbstractButton abstractButton = (AbstractButton) e.getSource();
-                    boolean selected = abstractButton.getModel().isSelected();
-
-//                    randomChecked = false;
-//                    scaleChecked = false;
-//
-//                    enbaleInteractionCheckBox.setEnabled(true);
-                }
+            stageTwoLevelTwoGridBoxes.get(j).get(3).addActionListener(e -> {
+                // reserved for future use
             });
 
+            // Separator row
+            c.gridy += 2;
+            sepC.gridy = c.gridy - 1;
+            stageTwoRegsGridLvl2.add(new JSeparator(JSeparator.HORIZONTAL), sepC);
         }
 
         stageTwoLevelTwoPanel.removeAll();
@@ -11680,8 +11729,240 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageTwoLevelTwoPanel.repaint();
 
         revalidate();
-
     }
+//    private void update_StageTwoLevelTwoBoxes(DefaultListModel<String> defaultListModel, boolean[][] stageTwoGridBoxesSelection) {
+////        SystemLogger.LOGGER.log(Level.INFO, "TEST: Checkbox clicked - INFO level");
+////        SystemLogger.LOGGER.log(Level.FINE, "stage_two_checkbox_selected - FINE level");
+//        JScrollPane scrollpanel = new JScrollPane(stageTwoRegsGridLvl2);
+//        stageTwoLevelTwoSelected = new ArrayList<String>();
+//
+//        int regSize = defaultListModel.getSize();
+//        stageTwoLevelTwoRegSize = regSize;
+//
+//        stageTwoRegsGridLvl2.removeAll();
+//
+//        if (suppressed) {
+//            jLabel37.setVisible(false);
+//        } else {
+//            jLabel37.setVisible(true);
+//        }
+//
+//        stageTwoRegsGridLvl2.setLayout(new GridBagLayout());
+//        GridBagConstraints constraints = new GridBagConstraints();
+//
+//        constraints.gridx = 0;
+//        constraints.gridy = 0;
+//        constraints.weightx = 1.0;
+//        // constraints.weighty = 1.0;
+//        constraints.anchor = GridBagConstraints.NORTHEAST;
+//        //constraints.gridwidth = 4;
+//
+//        GridBagConstraints separatorConstraint = new GridBagConstraints();
+//        separatorConstraint.weightx = 1.0;
+//        separatorConstraint.fill = GridBagConstraints.HORIZONTAL;
+//        separatorConstraint.gridwidth = GridBagConstraints.REMAINDER;
+//        separatorConstraint.gridx = 0;
+//
+//        constraints.insets = new Insets(3, 5, 5, 0);
+//        separatorConstraint.insets = new Insets(0, 0, 0, 0);
+//        constraints.fill = GridBagConstraints.HORIZONTAL;
+//        constraints.weightx = 1;
+//
+//        stageTwoLevelTwoGridBoxes = new ArrayList<ArrayList<JCheckBox>>();
+//        //disaggVarianceBoxes = new ArrayList<ArrayList<JCheckBox>>();
+//
+//        for (int j = 0; j < regSize; j++) {
+//            int row = j;
+//            constraints.gridx = 1;
+//            constraints.anchor = GridBagConstraints.FIRST_LINE_START;
+//            stageTwoLevelTwoSelected.add(defaultListModel.getElementAt(j));
+//            JLabel variableText = new JLabel(stageTwoLevelTwoSelected.get(j));
+////            variableText.setBorder(new LineBorder(Color.BLACK));
+//            variableText.setPreferredSize(new Dimension(60, 20));
+//            stageTwoRegsGridLvl2.add(variableText, constraints);
+////            stageTwoRegsGridLvl2.add(new JLabel(stageTwoLevelTwoSelected.get(j)), constraints);
+//
+//            //stageTwoGrid.add(new JLabel(defaultListModel.getElementAt(j)), constraints);
+//            stageTwoLevelTwoGridBoxes.add(j, new ArrayList<JCheckBox>());
+//
+//            for (int k = 0; k < 4; k++) {
+//
+//                if (k == 1) {
+//                    constraints.gridx = constraints.gridx + 5;
+//                } else {
+//                    constraints.gridx++;
+//                }
+//
+//                constraints.anchor = GridBagConstraints.CENTER;
+//
+//                if (k == 3) {
+//                    if (suppressed) {
+//                        JLabel placeHolder3 = new JLabel(" ");
+//                        placeHolder3.setPreferredSize(new Dimension(20, 20));
+//                        stageTwoRegsGridLvl2.add(placeHolder3, constraints);
+//                        stageTwoLevelTwoGridBoxes.get(j).add(k, new JCheckBox());
+//                        stageTwoLevelTwoGridBoxes.get(j).get(k).setEnabled(false);
+//                    } else {
+//                        stageTwoLevelTwoGridBoxes.get(j).add(k, new JCheckBox());
+//                        stageTwoLevelTwoGridBoxes.get(j).get(k).setEnabled(false);
+//                    }
+//                } else {
+//                    stageTwoLevelTwoGridBoxes.get(j).add(k, new JCheckBox());
+//                    if (suppressed) {
+//                        stageTwoLevelTwoGridBoxes.get(j).get(k).setEnabled(false);
+//                    } else {
+//                        stageTwoLevelTwoGridBoxes.get(j).get(k).setEnabled(true);
+//                    }
+//                }
+//                if (stageTwoGridBoxesSelection[j][k] == true) {
+//                    stageTwoLevelTwoGridBoxes.get(j).get(k).setSelected(true);
+//                }
+//                if (k == 0) {
+//                    stageTwoLevelTwoGridBoxes.get(j).get(k).setSelected(true);
+//                    stageTwoLevelTwoGridBoxes.get(j).get(k).setVisible(false);
+//                    constraints.gridx++;
+//
+//                    if (isRandomScale) {
+//                        JLabel placeHolder1 = new JLabel(" ");
+//                        placeHolder1.setPreferredSize(new Dimension(60, 20));
+//                        stageTwoRegsGridLvl2.add(placeHolder1, constraints);
+//                    }
+//                }
+//
+//                if (k == 3) {
+//                    if (suppressed) {
+//                        // do nothing
+//                    } else {
+//                        stageTwoRegsGridLvl2.add(stageTwoLevelTwoGridBoxes.get(j).get(k), constraints);
+//                    }
+//                } else {
+//                    stageTwoRegsGridLvl2.add(stageTwoLevelTwoGridBoxes.get(j).get(k), constraints);
+//                }
+//
+//            }
+//
+//            constraints.gridy++;
+//
+//            separatorConstraint.gridy = separatorConstraint.gridy + 2;
+//
+//            stageTwoRegsGridLvl2.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
+//            //System.out.println("after seperator");
+//            constraints.gridy++;
+//
+//            if (!isRandomScale) {
+//                stageTwoLevelTwoGridBoxes.get(row).get(2).setVisible(false);
+//            }
+//
+////            stageTwoLevelTwoGridBoxes.get(row).get(1).setEnabled(true);
+////            stageTwoLevelTwoGridBoxes.get(row).get(2).setEnabled(true);
+////            stageTwoLevelTwoGridBoxes.get(row).get(3).setEnabled(false);
+////            stageTwoLevelTwoGridBoxes.get(j).get(0).addActionListener(new ActionListener() {
+////                public void actionPerformed(ActionEvent e) {
+////                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+////                    AbstractButton abstractButton = (AbstractButton) e.getSource();
+////                    boolean selected = abstractButton.getModel().isSelected();
+////                    if (selected) {
+////                        System.out.println("Checkbox selected");
+////                        //disaggVarianceBoxes.get(row).get(column).setEnabled(true);
+////                        stageTwoLevelTwoGridBoxes.get(row).get(1).setEnabled(true);
+////                        stageTwoLevelTwoGridBoxes.get(row).get(1).setSelected(false);
+////                        stageTwoLevelTwoGridBoxes.get(row).get(2).setEnabled(true);
+////                        stageTwoLevelTwoGridBoxes.get(row).get(2).setSelected(false);
+////                        randomChecked = false;
+////                        scaleChecked = false;
+//////                        System.out.println(disaggVarianceBoxes.size());
+////                    } else {
+////                        //disaggVarianceBoxes.get(row).get(column).setEnabled(false);
+////                        stageTwoLevelTwoGridBoxes.get(row).get(1).setEnabled(false);
+////                        stageTwoLevelTwoGridBoxes.get(row).get(1).setSelected(false);
+////                        stageTwoLevelTwoGridBoxes.get(row).get(2).setEnabled(false);
+////                        stageTwoLevelTwoGridBoxes.get(row).get(2).setSelected(false);
+////                        stageTwoLevelTwoGridBoxes.get(row).get(3).setSelected(false);
+////                        stageTwoLevelTwoGridBoxes.get(row).get(3).setEnabled(false);
+////                        randomChecked = false;
+////                        scaleChecked = false;
+////                        enbaleInteractionCheckBox.setEnabled(false);
+////                        enbaleInteractionCheckBox.setSelected(false);
+////
+////                    }
+////
+////                }
+////            });
+//            stageTwoLevelTwoGridBoxes.get(j).get(1).addActionListener(new ActionListener() {
+//                public void actionPerformed(ActionEvent e) {
+//                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//                    AbstractButton abstractButton = (AbstractButton) e.getSource();
+//                    boolean selected = abstractButton.getModel().isSelected();
+//                    if (selected) {
+//                        SystemLogger.LOGGER.log(Level.FINE, "stage_two_checkbox_selected");
+//                        scaleChecked = true;
+//                        if (randomChecked == true) {
+//                            if (!suppressed) {
+//                                stageTwoLevelTwoGridBoxes.get(row).get(3).setEnabled(true);
+//                                stageTwoLevelTwoGridBoxes.get(row).get(3).setSelected(false);
+//                            }
+//                        }
+//
+//                    } else {
+//                        scaleChecked = false;
+//                        if (!suppressed) {
+//                            stageTwoLevelTwoGridBoxes.get(row).get(3).setEnabled(false);
+//                            stageTwoLevelTwoGridBoxes.get(row).get(3).setSelected(false);
+//                        }
+//                    }
+//                }
+//            });
+//
+//            stageTwoLevelTwoGridBoxes.get(j).get(2).addActionListener(new ActionListener() {
+//                public void actionPerformed(ActionEvent e) {
+//                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//                    AbstractButton abstractButton = (AbstractButton) e.getSource();
+//                    boolean selected = abstractButton.getModel().isSelected();
+//
+//                    if (selected) {
+//                        randomChecked = true;
+//                        SystemLogger.LOGGER.log(Level.FINE, "stage_two_checkbox_selected");
+//                        if (scaleChecked == true) {
+//                            if (!suppressed) {
+//                                stageTwoLevelTwoGridBoxes.get(row).get(3).setEnabled(true);
+//                                stageTwoLevelTwoGridBoxes.get(row).get(3).setSelected(false);
+//                            }
+//                        }
+//
+//                    } else {
+//                        randomChecked = false;
+//                        if (!suppressed) {
+//                            stageTwoLevelTwoGridBoxes.get(row).get(3).setEnabled(false);
+//                            stageTwoLevelTwoGridBoxes.get(row).get(3).setSelected(false);
+//                        }
+//
+//                    }
+//                }
+//            });
+//
+//            stageTwoLevelTwoGridBoxes.get(j).get(3).addActionListener(new ActionListener() {
+//                public void actionPerformed(ActionEvent e) {
+//                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//                    AbstractButton abstractButton = (AbstractButton) e.getSource();
+//                    boolean selected = abstractButton.getModel().isSelected();
+//
+////                    randomChecked = false;
+////                    scaleChecked = false;
+////
+////                    enbaleInteractionCheckBox.setEnabled(true);
+//                }
+//            });
+//
+//        }
+//
+//        stageTwoLevelTwoPanel.removeAll();
+//        stageTwoLevelTwoPanel.add(scrollpanel);
+//        stageTwoLevelTwoPanel.revalidate();
+//        stageTwoLevelTwoPanel.repaint();
+//
+//        revalidate();
+//
+//    }
 
     private void update_StageTwoMainEffectBoxes(DefaultListModel<String> defaultListModelLvl1, DefaultListModel<String> defaultListModelLvl2) {
 
@@ -11870,194 +12151,340 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
     }
 
+//    private void update_StageTwoLevelOneBoxes(DefaultListModel<String> defaultListModel, boolean[][] stageTwoLevelOneGridBoxesSelection) {
+//
+//        JScrollPane scrollpanel = new JScrollPane(stageTwoRegsGridLvl1);
+//        stageTwoLevelOneSelected = new ArrayList<String>();
+//
+//        int regSize = defaultListModel.getSize();
+//        stageTwoLevelOneRegSize = regSize;
+//
+//        stageTwoRegsGridLvl1.removeAll();
+//
+//        if (suppressed) {
+//            jLabel18.setVisible(false);
+//            stageTwoRandSlopeHelpButton6.setVisible(false);
+//        } else {
+//            jLabel18.setVisible(true);
+//            stageTwoRandSlopeHelpButton6.setVisible(false);
+//        }
+//
+//        stageTwoRegsGridLvl1.setLayout(new GridBagLayout());
+//        GridBagConstraints constraints = new GridBagConstraints();
+//
+//        constraints.gridx = 0;
+//        constraints.gridy = 0;
+//        constraints.weightx = 1.0;
+//        // constraints.weighty = 1.0;
+//        constraints.anchor = GridBagConstraints.NORTHEAST;
+//        //constraints.gridwidth = 4;
+//
+//        GridBagConstraints separatorConstraint = new GridBagConstraints();
+//        separatorConstraint.weightx = 1.0;
+//        separatorConstraint.fill = GridBagConstraints.HORIZONTAL;
+//        separatorConstraint.gridwidth = GridBagConstraints.REMAINDER;
+//        separatorConstraint.gridx = 0;
+//
+//        constraints.insets = new Insets(3, 5, 5, 0);
+//        separatorConstraint.insets = new Insets(0, 0, 0, 0);
+//        constraints.fill = GridBagConstraints.HORIZONTAL;
+//        constraints.weightx = 1;
+//
+//        stageTwoLevelOneGridBoxes = new ArrayList<ArrayList<JCheckBox>>();
+//        //disaggVarianceBoxes = new ArrayList<ArrayList<JCheckBox>>();
+//
+//        for (int j = 0; j < regSize; j++) {
+//            int row = j;
+//            constraints.gridx = 1;
+//            constraints.anchor = GridBagConstraints.FIRST_LINE_START;
+//            stageTwoLevelOneSelected.add(defaultListModel.getElementAt(j));
+//            JLabel variableText = new JLabel(stageTwoLevelOneSelected.get(j));
+////            variableText.setBorder(new LineBorder(Color.BLACK));
+//            variableText.setPreferredSize(new Dimension(60, 20));
+//            stageTwoRegsGridLvl1.add(variableText, constraints);
+////            stageTwoRegsGridLvl1.add(new JLabel(stageTwoLevelOneSelected.get(j)), constraints);
+//
+//            //stageTwoGrid.add(new JLabel(defaultListModel.getElementAt(j)), constraints);
+//            stageTwoLevelOneGridBoxes.add(j, new ArrayList<JCheckBox>());
+//
+//            for (int k = 0; k < 4; k++) {
+//
+//                if (k == 1) {
+//                    constraints.gridx = constraints.gridx + 5;
+//                } else {
+//                    constraints.gridx++;
+//                }
+//
+//                constraints.anchor = GridBagConstraints.CENTER;
+//
+//                if (k == 3) {
+//                    if (suppressed) {
+//                        JLabel placeHolder3 = new JLabel(" ");
+//                        placeHolder3.setPreferredSize(new Dimension(20, 20));
+//                        stageTwoRegsGridLvl1.add(placeHolder3, constraints);
+//                        stageTwoLevelOneGridBoxes.get(j).add(k, new JCheckBox());
+//                        stageTwoLevelOneGridBoxes.get(j).get(k).setEnabled(false);
+//                    } else {
+//                        stageTwoLevelOneGridBoxes.get(j).add(k, new JCheckBox());
+//                        stageTwoLevelOneGridBoxes.get(j).get(k).setEnabled(false);
+//                    }
+//                } else {
+//                    stageTwoLevelOneGridBoxes.get(j).add(k, new JCheckBox());
+//                    if (suppressed) {
+//                        stageTwoLevelOneGridBoxes.get(j).get(k).setEnabled(false);
+//                    } else {
+//                        stageTwoLevelOneGridBoxes.get(j).get(k).setEnabled(true);
+//                    }
+//                }
+//                if (stageTwoLevelOneGridBoxesSelection[j][k] == true) {
+//                    stageTwoLevelOneGridBoxes.get(j).get(k).setSelected(true);
+//                }
+//                if (k == 0) {
+//                    stageTwoLevelOneGridBoxes.get(j).get(k).setSelected(true);
+//                    stageTwoLevelOneGridBoxes.get(j).get(k).setVisible(false);
+//                    constraints.gridx++;
+//
+//                    if (isRandomScale) {
+//                        JLabel placeHolder1 = new JLabel(" ");
+//                        placeHolder1.setPreferredSize(new Dimension(60, 20));
+//                        stageTwoRegsGridLvl1.add(placeHolder1, constraints);
+//                    }
+//                }
+//
+//                if (k == 3) {
+//                    if (suppressed) {
+//                        // do nothing
+//                    } else {
+//                        stageTwoRegsGridLvl1.add(stageTwoLevelOneGridBoxes.get(j).get(k), constraints);
+//                    }
+//                } else {
+//                    stageTwoRegsGridLvl1.add(stageTwoLevelOneGridBoxes.get(j).get(k), constraints);
+//                }
+//
+//            }
+//
+//            constraints.gridy++;
+//
+//            separatorConstraint.gridy = separatorConstraint.gridy + 2;
+//
+//            stageTwoRegsGridLvl1.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
+//            constraints.gridy++;
+//
+//            if (!isRandomScale) {
+//                stageTwoLevelOneGridBoxes.get(row).get(2).setVisible(false);
+//            }
+//
+//            stageTwoLevelOneGridBoxes.get(j).get(1).addActionListener(new ActionListener() {
+//                public void actionPerformed(ActionEvent e) {
+//                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//                    AbstractButton abstractButton = (AbstractButton) e.getSource();
+//                    boolean selected = abstractButton.getModel().isSelected();
+//                    if (selected) {
+//                        scaleChecked = true;
+//                        SystemLogger.LOGGER.log(Level.FINE, "stage_two_checkbox_selected");
+//                        if (randomChecked == true) {
+//                            if (!suppressed) {
+//                                stageTwoLevelOneGridBoxes.get(row).get(3).setEnabled(true);
+//                                stageTwoLevelOneGridBoxes.get(row).get(3).setSelected(false);
+//                            }
+//                        }
+//
+//                    } else {
+//                        scaleChecked = false;
+//                        if (!suppressed) {
+//                            stageTwoLevelOneGridBoxes.get(row).get(3).setEnabled(false);
+//                            stageTwoLevelOneGridBoxes.get(row).get(3).setSelected(false);
+//                        }
+//                    }
+//                }
+//            });
+//
+//            stageTwoLevelOneGridBoxes.get(j).get(2).addActionListener(new ActionListener() {
+//                public void actionPerformed(ActionEvent e) {
+//                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//                    AbstractButton abstractButton = (AbstractButton) e.getSource();
+//                    boolean selected = abstractButton.getModel().isSelected();
+//
+//                    if (selected) {
+//                        randomChecked = true;
+//                        SystemLogger.LOGGER.log(Level.FINE, "stage_two_checkbox_selected");
+//                        if (scaleChecked == true) {
+//                            if (!suppressed) {
+//                                stageTwoLevelOneGridBoxes.get(row).get(3).setEnabled(true);
+//                                stageTwoLevelOneGridBoxes.get(row).get(3).setSelected(false);
+//                            }
+//                        }
+//
+//                    } else {
+//                        randomChecked = false;
+//                        if (!suppressed) {
+//                            stageTwoLevelOneGridBoxes.get(row).get(3).setEnabled(false);
+//                            stageTwoLevelOneGridBoxes.get(row).get(3).setSelected(false);
+//                        }
+//
+//                    }
+//                }
+//            });
+//
+//            stageTwoLevelOneGridBoxes.get(j).get(3).addActionListener(new ActionListener() {
+//                public void actionPerformed(ActionEvent e) {
+//                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//                    AbstractButton abstractButton = (AbstractButton) e.getSource();
+//                    boolean selected = abstractButton.getModel().isSelected();
+//
+////                    randomChecked = false;
+////                    scaleChecked = false;
+////
+////                    enbaleInteractionCheckBox.setEnabled(true);
+//                }
+//            });
+//
+//        }
+//
+//        stageTwoLevelOnePanel.removeAll();
+//        stageTwoLevelOnePanel.add(scrollpanel);
+//        stageTwoLevelOnePanel.revalidate();
+//        stageTwoLevelOnePanel.repaint();
+//
+//        revalidate();
+//
+//    }
     private void update_StageTwoLevelOneBoxes(DefaultListModel<String> defaultListModel, boolean[][] stageTwoLevelOneGridBoxesSelection) {
 
         JScrollPane scrollpanel = new JScrollPane(stageTwoRegsGridLvl1);
-        stageTwoLevelOneSelected = new ArrayList<String>();
+        stageTwoLevelOneSelected = new ArrayList<>();
 
         int regSize = defaultListModel.getSize();
         stageTwoLevelOneRegSize = regSize;
 
         stageTwoRegsGridLvl1.removeAll();
 
-        if (suppressed) {
-            jLabel18.setVisible(false);
-            stageTwoRandSlopeHelpButton6.setVisible(false);
-        } else {
-            jLabel18.setVisible(true);
-            stageTwoRandSlopeHelpButton6.setVisible(false);
-        }
+        boolean show = !suppressed;
+        jLabel18.setVisible(show);
+        stageTwoRandSlopeHelpButton6.setVisible(false);
 
         stageTwoRegsGridLvl1.setLayout(new GridBagLayout());
-        GridBagConstraints constraints = new GridBagConstraints();
 
-        constraints.gridx = 0;
-        constraints.gridy = 0;
-        constraints.weightx = 1.0;
-        // constraints.weighty = 1.0;
-        constraints.anchor = GridBagConstraints.NORTHEAST;
-        //constraints.gridwidth = 4;
+        GridBagConstraints c = new GridBagConstraints();
+        c.gridy = 0;
+        c.weightx = 1.0;
+        c.fill = GridBagConstraints.HORIZONTAL;
 
-        GridBagConstraints separatorConstraint = new GridBagConstraints();
-        separatorConstraint.weightx = 1.0;
-        separatorConstraint.fill = GridBagConstraints.HORIZONTAL;
-        separatorConstraint.gridwidth = GridBagConstraints.REMAINDER;
-        separatorConstraint.gridx = 0;
+        GridBagConstraints sepC = new GridBagConstraints();
+        sepC.weightx = 1.0;
+        sepC.fill = GridBagConstraints.HORIZONTAL;
+        sepC.gridwidth = GridBagConstraints.REMAINDER;
+        sepC.gridx = 0;
+        sepC.gridy = 1;
+        sepC.insets = new Insets(0, 0, 0, 0);
 
-        constraints.insets = new Insets(3, 5, 5, 0);
-        separatorConstraint.insets = new Insets(0, 0, 0, 0);
-        constraints.fill = GridBagConstraints.HORIZONTAL;
-        constraints.weightx = 1;
-
-        stageTwoLevelOneGridBoxes = new ArrayList<ArrayList<JCheckBox>>();
-        //disaggVarianceBoxes = new ArrayList<ArrayList<JCheckBox>>();
+        stageTwoLevelOneGridBoxes = new ArrayList<>();
 
         for (int j = 0; j < regSize; j++) {
-            int row = j;
-            constraints.gridx = 1;
-            constraints.anchor = GridBagConstraints.FIRST_LINE_START;
+            final int row = j;
+
+            // Label — insets reset every iteration to avoid inheriting CB3's insets
+            c.gridx = 1;
+            c.anchor = GridBagConstraints.FIRST_LINE_START;
+            c.insets = new Insets(3, 5, 5, 0); // reset every row
             stageTwoLevelOneSelected.add(defaultListModel.getElementAt(j));
             JLabel variableText = new JLabel(stageTwoLevelOneSelected.get(j));
-//            variableText.setBorder(new LineBorder(Color.BLACK));
-            variableText.setPreferredSize(new Dimension(60, 20));
-            stageTwoRegsGridLvl1.add(variableText, constraints);
-//            stageTwoRegsGridLvl1.add(new JLabel(stageTwoLevelOneSelected.get(j)), constraints);
+            variableText.setPreferredSize(new Dimension(80, 20)); // fixed width to prevent label from pushing checkboxes
+            stageTwoRegsGridLvl1.add(variableText, c);
 
-            //stageTwoGrid.add(new JLabel(defaultListModel.getElementAt(j)), constraints);
-            stageTwoLevelOneGridBoxes.add(j, new ArrayList<JCheckBox>());
+            stageTwoLevelOneGridBoxes.add(j, new ArrayList<>());
+            c.anchor = GridBagConstraints.CENTER;
 
             for (int k = 0; k < 4; k++) {
-
-                if (k == 1) {
-                    constraints.gridx = constraints.gridx + 5;
-                } else {
-                    constraints.gridx++;
+                switch (k) {
+                    case 0:
+                        c.gridx = 2;
+                        c.insets = new Insets(3, 5, 5, 0);
+                        break;
+                    case 1: // CB1
+                        c.gridx = 2;
+                        c.insets = new Insets(3, 110, 5, 0); // left controls label→CB1 gap (label width 80 + left 90 = 170 total)
+                        break;
+                    case 2: // CB2
+                        c.gridx = 3;
+                        c.insets = new Insets(3, 40, 5, 0); // left controls CB1→CB2 gap
+                        break;
+                    case 3: // CB3
+                        c.gridx = 4;
+                        c.insets = new Insets(3, 50, 5, 0); // left controls CB2→CB3 gap
+                        break;
                 }
 
-                constraints.anchor = GridBagConstraints.CENTER;
+                JCheckBox box = new JCheckBox();
+                stageTwoLevelOneGridBoxes.get(j).add(k, box);
 
-                if (k == 3) {
-                    if (suppressed) {
-                        JLabel placeHolder3 = new JLabel(" ");
-                        placeHolder3.setPreferredSize(new Dimension(20, 20));
-                        stageTwoRegsGridLvl1.add(placeHolder3, constraints);
-                        stageTwoLevelOneGridBoxes.get(j).add(k, new JCheckBox());
-                        stageTwoLevelOneGridBoxes.get(j).get(k).setEnabled(false);
-                    } else {
-                        stageTwoLevelOneGridBoxes.get(j).add(k, new JCheckBox());
-                        stageTwoLevelOneGridBoxes.get(j).get(k).setEnabled(false);
-                    }
-                } else {
-                    stageTwoLevelOneGridBoxes.get(j).add(k, new JCheckBox());
-                    if (suppressed) {
-                        stageTwoLevelOneGridBoxes.get(j).get(k).setEnabled(false);
-                    } else {
-                        stageTwoLevelOneGridBoxes.get(j).get(k).setEnabled(true);
-                    }
+                // restore saved selection state
+                if (stageTwoLevelOneGridBoxesSelection[j][k]) {
+                    box.setSelected(true);
                 }
-                if (stageTwoLevelOneGridBoxesSelection[j][k] == true) {
-                    stageTwoLevelOneGridBoxes.get(j).get(k).setSelected(true);
-                }
+
                 if (k == 0) {
-                    stageTwoLevelOneGridBoxes.get(j).get(k).setSelected(true);
-                    stageTwoLevelOneGridBoxes.get(j).get(k).setVisible(false);
-                    constraints.gridx++;
+                    box.setSelected(true);
+                    box.setVisible(false);
+                    box.setEnabled(false);
+                    stageTwoRegsGridLvl1.add(box, c);
 
                     if (isRandomScale) {
-                        JLabel placeHolder1 = new JLabel(" ");
-                        placeHolder1.setPreferredSize(new Dimension(60, 20));
-                        stageTwoRegsGridLvl1.add(placeHolder1, constraints);
+                        c.gridx++;
+                        JLabel placeholder = new JLabel(" ");
+                        placeholder.setPreferredSize(new Dimension(60, 20));
+                        stageTwoRegsGridLvl1.add(placeholder, c);
                     }
-                }
-
-                if (k == 3) {
-                    if (suppressed) {
-                        // do nothing
+                } else if (k == 3) {
+                    box.setEnabled(false);
+                    if (!suppressed) {
+                        stageTwoRegsGridLvl1.add(box, c);
                     } else {
-                        stageTwoRegsGridLvl1.add(stageTwoLevelOneGridBoxes.get(j).get(k), constraints);
+                        JLabel placeholder = new JLabel(" ");
+                        placeholder.setPreferredSize(new Dimension(20, 20));
+                        stageTwoRegsGridLvl1.add(placeholder, c);
                     }
                 } else {
-                    stageTwoRegsGridLvl1.add(stageTwoLevelOneGridBoxes.get(j).get(k), constraints);
+                    // CB1 and CB2
+                    box.setEnabled(!suppressed);
+                    stageTwoRegsGridLvl1.add(box, c);
                 }
-
             }
 
-            constraints.gridy++;
-
-            separatorConstraint.gridy = separatorConstraint.gridy + 2;
-
-            stageTwoRegsGridLvl1.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
-            constraints.gridy++;
-
+            // Post-loop overrides
             if (!isRandomScale) {
                 stageTwoLevelOneGridBoxes.get(row).get(2).setVisible(false);
             }
 
-            stageTwoLevelOneGridBoxes.get(j).get(1).addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                    AbstractButton abstractButton = (AbstractButton) e.getSource();
-                    boolean selected = abstractButton.getModel().isSelected();
-                    if (selected) {
-                        scaleChecked = true;
-                        SystemLogger.LOGGER.log(Level.FINE, "stage_two_checkbox_selected");
-                        if (randomChecked == true) {
-                            if (!suppressed) {
-                                stageTwoLevelOneGridBoxes.get(row).get(3).setEnabled(true);
-                                stageTwoLevelOneGridBoxes.get(row).get(3).setSelected(false);
-                            }
-                        }
-
-                    } else {
-                        scaleChecked = false;
-                        if (!suppressed) {
-                            stageTwoLevelOneGridBoxes.get(row).get(3).setEnabled(false);
-                            stageTwoLevelOneGridBoxes.get(row).get(3).setSelected(false);
-                        }
-                    }
+            // Action listeners
+            stageTwoLevelOneGridBoxes.get(j).get(1).addActionListener(e -> {
+                boolean selected = ((AbstractButton) e.getSource()).getModel().isSelected();
+                scaleChecked = selected;
+                if (!suppressed) {
+                    boolean enable = selected && randomChecked;
+                    stageTwoLevelOneGridBoxes.get(row).get(3).setEnabled(enable);
+                    stageTwoLevelOneGridBoxes.get(row).get(3).setSelected(false);
                 }
             });
 
-            stageTwoLevelOneGridBoxes.get(j).get(2).addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                    AbstractButton abstractButton = (AbstractButton) e.getSource();
-                    boolean selected = abstractButton.getModel().isSelected();
-
-                    if (selected) {
-                        randomChecked = true;
-                        SystemLogger.LOGGER.log(Level.FINE, "stage_two_checkbox_selected");
-                        if (scaleChecked == true) {
-                            if (!suppressed) {
-                                stageTwoLevelOneGridBoxes.get(row).get(3).setEnabled(true);
-                                stageTwoLevelOneGridBoxes.get(row).get(3).setSelected(false);
-                            }
-                        }
-
-                    } else {
-                        randomChecked = false;
-                        if (!suppressed) {
-                            stageTwoLevelOneGridBoxes.get(row).get(3).setEnabled(false);
-                            stageTwoLevelOneGridBoxes.get(row).get(3).setSelected(false);
-                        }
-
-                    }
+            stageTwoLevelOneGridBoxes.get(j).get(2).addActionListener(e -> {
+                boolean selected = ((AbstractButton) e.getSource()).getModel().isSelected();
+                randomChecked = selected;
+                if (!suppressed) {
+                    boolean enable = selected && scaleChecked;
+                    stageTwoLevelOneGridBoxes.get(row).get(3).setEnabled(enable);
+                    stageTwoLevelOneGridBoxes.get(row).get(3).setSelected(false);
                 }
             });
 
-            stageTwoLevelOneGridBoxes.get(j).get(3).addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                    AbstractButton abstractButton = (AbstractButton) e.getSource();
-                    boolean selected = abstractButton.getModel().isSelected();
-
-//                    randomChecked = false;
-//                    scaleChecked = false;
-//
-//                    enbaleInteractionCheckBox.setEnabled(true);
-                }
+            stageTwoLevelOneGridBoxes.get(j).get(3).addActionListener(e -> {
+                // reserved for future use
             });
 
+            // Separator row
+            c.gridy += 2;
+            sepC.gridy = c.gridy - 1;
+            stageTwoRegsGridLvl1.add(new JSeparator(JSeparator.HORIZONTAL), sepC);
         }
 
         stageTwoLevelOnePanel.removeAll();
@@ -12066,7 +12493,6 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageTwoLevelOnePanel.repaint();
 
         revalidate();
-
     }
 
     private void remove_last_checkbox_from_panel(javax.swing.JPanel panelName) {
@@ -12415,198 +12841,340 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         revalidate();
     }
+//
+//    void updateStageTwoLevelOneGrid(DefaultListModel<String> defaultListModel) {
+//
+//        JScrollPane scrollpanel = new JScrollPane(stageTwoRegsGridLvl1);
+//        stageTwoLevelOneSelected = new ArrayList<String>();
+//
+//        int regSize = defaultListModel.getSize();
+//        stageTwoLevelOneRegSize = regSize;
+//
+//        stageTwoRegsGridLvl1.removeAll();
+//
+//        if (suppressed) {
+//            jLabel18.setVisible(false);
+//            stageTwoRandSlopeHelpButton6.setVisible(false);
+//        } else {
+//            jLabel18.setVisible(true);
+//            stageTwoRandSlopeHelpButton6.setVisible(true);
+//        }
+//
+//        stageTwoRegsGridLvl1.setLayout(new GridBagLayout());
+//        GridBagConstraints constraints = new GridBagConstraints();
+//
+//        constraints.gridx = 0;
+//        constraints.gridy = 0;
+//        constraints.weightx = 1.0;
+//        constraints.anchor = GridBagConstraints.NORTHEAST;
+//
+//        GridBagConstraints separatorConstraint = new GridBagConstraints();
+//        separatorConstraint.weightx = 1.0;
+//        separatorConstraint.fill = GridBagConstraints.HORIZONTAL;
+//        separatorConstraint.gridwidth = GridBagConstraints.REMAINDER;
+//        separatorConstraint.gridx = 0;
+//
+//        constraints.insets = new Insets(3, 5, 5, 0);
+//        constraints.fill = GridBagConstraints.HORIZONTAL;
+//        separatorConstraint.insets = new Insets(0, 0, 0, 0);
+//        constraints.weightx = 1;
+//
+//        stageTwoLevelOneGridBoxes = new ArrayList<ArrayList<JCheckBox>>();
+//
+//        for (int j = 0; j < regSize; j++) {
+//            int row = j;
+//            constraints.gridx = 1;
+//            constraints.anchor = GridBagConstraints.FIRST_LINE_START;
+//            stageTwoLevelOneSelected.add(defaultListModel.getElementAt(j));
+//            JLabel variableText = new JLabel(stageTwoLevelOneSelected.get(j));
+//            variableText.setPreferredSize(new Dimension(60, 20));
+//            stageTwoRegsGridLvl1.add(variableText, constraints);
+//
+//            stageTwoLevelOneGridBoxes.add(j, new ArrayList<JCheckBox>());
+//
+//            for (int k = 0; k < 4; k++) {
+//
+//                if (k == 1) {
+//                    constraints.gridx = constraints.gridx + 5;
+//                } else {
+//                    constraints.gridx++;
+//                }
+//
+//                constraints.anchor = GridBagConstraints.CENTER;
+//
+//                if (k == 3) {
+//                    if (suppressed) {
+//                        JLabel placeHolder3 = new JLabel(" ");
+//                        placeHolder3.setPreferredSize(new Dimension(20, 20));
+//                        stageTwoRegsGridLvl1.add(placeHolder3, constraints);
+//                        stageTwoLevelOneGridBoxes.get(j).add(k, new JCheckBox());
+//                        stageTwoLevelOneGridBoxes.get(j).get(k).setEnabled(false);
+//                    } else {
+//                        stageTwoLevelOneGridBoxes.get(j).add(k, new JCheckBox());
+//                        stageTwoLevelOneGridBoxes.get(j).get(k).setEnabled(false);
+//                    }
+//                } else {
+//                    stageTwoLevelOneGridBoxes.get(j).add(k, new JCheckBox());
+//                    if (suppressed) {
+//                        stageTwoLevelOneGridBoxes.get(j).get(k).setEnabled(false);
+//                    } else {
+//                        stageTwoLevelOneGridBoxes.get(j).get(k).setEnabled(true);
+//                    }
+//                }
+//
+//                if (k == 0) {
+//                    stageTwoLevelOneGridBoxes.get(j).get(k).setSelected(true);
+//                    stageTwoLevelOneGridBoxes.get(j).get(k).setVisible(false);
+//                    constraints.gridx++;
+//
+//                    if (isRandomScale) {
+//                        JLabel placeHolder1 = new JLabel(" ");
+//                        placeHolder1.setPreferredSize(new Dimension(60, 20));
+//                        stageTwoRegsGridLvl1.add(placeHolder1, constraints);
+//                    }
+//                }
+//
+//                if (k == 3) {
+//                    if (suppressed) {
+//                        // do nothing
+//                    } else {
+//                        stageTwoRegsGridLvl1.add(stageTwoLevelOneGridBoxes.get(j).get(k), constraints);
+//                    }
+//                } else {
+//                    stageTwoRegsGridLvl1.add(stageTwoLevelOneGridBoxes.get(j).get(k), constraints);
+//                }
+//
+//            }
+//
+//            constraints.gridy++;
+//
+//            separatorConstraint.gridy = separatorConstraint.gridy + 2;
+//
+//            stageTwoRegsGridLvl1.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
+//            constraints.gridy++;
+//
+//            stageTwoLevelOneGridBoxes.get(row).get(1).setEnabled(true);
+//            stageTwoLevelOneGridBoxes.get(row).get(2).setEnabled(true);
+//
+//            if (!isRandomScale) {
+//                stageTwoLevelOneGridBoxes.get(row).get(2).setVisible(false);
+//            }
+//
+//            stageTwoLevelOneGridBoxes.get(j).get(1).addActionListener(new ActionListener() {
+//                public void actionPerformed(ActionEvent e) {
+//                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//                    AbstractButton abstractButton = (AbstractButton) e.getSource();
+//                    boolean selected = abstractButton.getModel().isSelected();
+//                    if (selected) {
+//                        SystemLogger.LOGGER.log(Level.FINE, "stage_two_checkbox_selected");
+//                        scaleChecked = true;
+//                        if (randomChecked == true) {
+//                            if (!suppressed) {
+//                                stageTwoLevelOneGridBoxes.get(row).get(3).setEnabled(true);
+//                                stageTwoLevelOneGridBoxes.get(row).get(3).setSelected(false);
+//                            }
+//                        }
+//
+//                    } else {
+//                        scaleChecked = false;
+//                        if (!suppressed) {
+//                            stageTwoLevelOneGridBoxes.get(row).get(3).setEnabled(false);
+//                            stageTwoLevelOneGridBoxes.get(row).get(3).setSelected(false);
+//                        }
+//                    }
+//                }
+//            });
+//
+//            stageTwoLevelOneGridBoxes.get(j).get(2).addActionListener(new ActionListener() {
+//                public void actionPerformed(ActionEvent e) {
+//                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//                    AbstractButton abstractButton = (AbstractButton) e.getSource();
+//                    boolean selected = abstractButton.getModel().isSelected();
+//
+//                    if (selected) {
+//                        SystemLogger.LOGGER.log(Level.FINE, "stage_two_checkbox_selected");
+//                        randomChecked = true;
+//
+//                        if (scaleChecked == true) {
+//                            if (!suppressed) {
+//                                stageTwoLevelOneGridBoxes.get(row).get(3).setEnabled(true);
+//                                stageTwoLevelOneGridBoxes.get(row).get(3).setSelected(false);
+//                            }
+//                        }
+//
+//                    } else {
+//                        randomChecked = false;
+//                        if (!suppressed) {
+//                            stageTwoLevelOneGridBoxes.get(row).get(3).setEnabled(false);
+//                            stageTwoLevelOneGridBoxes.get(row).get(3).setSelected(false);
+//                        }
+//
+//                    }
+//                }
+//            });
+//
+//            stageTwoLevelOneGridBoxes.get(j).get(3).addActionListener(new ActionListener() {
+//                public void actionPerformed(ActionEvent e) {
+//                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//                    AbstractButton abstractButton = (AbstractButton) e.getSource();
+//                    boolean selected = abstractButton.getModel().isSelected();
+//
+////                    randomChecked = false;
+////                    scaleChecked = false;
+////
+////                    enbaleInteractionCheckBox.setEnabled(true);
+//                }
+//            });
+//
+//        }
+//
+//        stageTwoLevelOnePanel.removeAll();
+//        stageTwoLevelOnePanel.add(scrollpanel);
+//        stageTwoLevelOnePanel.revalidate();
+//        stageTwoLevelOnePanel.repaint();
+//
+//    }
 
     void updateStageTwoLevelOneGrid(DefaultListModel<String> defaultListModel) {
 
         JScrollPane scrollpanel = new JScrollPane(stageTwoRegsGridLvl1);
-        stageTwoLevelOneSelected = new ArrayList<String>();
+        stageTwoLevelOneSelected = new ArrayList<>();
 
         int regSize = defaultListModel.getSize();
         stageTwoLevelOneRegSize = regSize;
 
         stageTwoRegsGridLvl1.removeAll();
 
-        if (suppressed) {
-            jLabel18.setVisible(false);
-            stageTwoRandSlopeHelpButton6.setVisible(false);
-        } else {
-            jLabel18.setVisible(true);
-            stageTwoRandSlopeHelpButton6.setVisible(true);
-        }
+        boolean show = !suppressed;
+        jLabel18.setVisible(show);
+        stageTwoRandSlopeHelpButton6.setVisible(show);
 
         stageTwoRegsGridLvl1.setLayout(new GridBagLayout());
-        GridBagConstraints constraints = new GridBagConstraints();
 
-        constraints.gridx = 0;
-        constraints.gridy = 0;
-        constraints.weightx = 1.0;
-        constraints.anchor = GridBagConstraints.NORTHEAST;
+        GridBagConstraints c = new GridBagConstraints();
+        c.gridy = 0;
+        c.weightx = 1.0;
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.insets = new Insets(3, 5, 5, 0); // right=10, controls gap between label and CB1
 
-        GridBagConstraints separatorConstraint = new GridBagConstraints();
-        separatorConstraint.weightx = 1.0;
-        separatorConstraint.fill = GridBagConstraints.HORIZONTAL;
-        separatorConstraint.gridwidth = GridBagConstraints.REMAINDER;
-        separatorConstraint.gridx = 0;
+        GridBagConstraints sepC = new GridBagConstraints();
+        sepC.weightx = 1.0;
+        sepC.fill = GridBagConstraints.HORIZONTAL;
+        sepC.gridwidth = GridBagConstraints.REMAINDER;
+        sepC.gridx = 0;
+        sepC.gridy = 1;
+        sepC.insets = new Insets(0, 0, 0, 0);
 
-        constraints.insets = new Insets(3, 5, 5, 0);
-        constraints.fill = GridBagConstraints.HORIZONTAL;
-        separatorConstraint.insets = new Insets(0, 0, 0, 0);
-        constraints.weightx = 1;
-
-        stageTwoLevelOneGridBoxes = new ArrayList<ArrayList<JCheckBox>>();
+        stageTwoLevelOneGridBoxes = new ArrayList<>();
 
         for (int j = 0; j < regSize; j++) {
-            int row = j;
-            constraints.gridx = 1;
-            constraints.anchor = GridBagConstraints.FIRST_LINE_START;
+            final int row = j;
+
+            // --- Label (col 1): shorter preferred width to reduce gap before CB1 ---
+            c.gridx = 1;
+            c.anchor = GridBagConstraints.FIRST_LINE_START;
+            c.insets = new Insets(3, 5, 5, 0);
             stageTwoLevelOneSelected.add(defaultListModel.getElementAt(j));
             JLabel variableText = new JLabel(stageTwoLevelOneSelected.get(j));
-            variableText.setPreferredSize(new Dimension(60, 20));
-            stageTwoRegsGridLvl1.add(variableText, constraints);
+            variableText.setPreferredSize(new Dimension(80, 20)); // was 60 — reduced by ~4 chars (~40px)
+            stageTwoRegsGridLvl1.add(variableText, c);
 
-            stageTwoLevelOneGridBoxes.add(j, new ArrayList<JCheckBox>());
+            stageTwoLevelOneGridBoxes.add(j, new ArrayList<>());
+            c.anchor = GridBagConstraints.CENTER;
 
             for (int k = 0; k < 4; k++) {
-
-                if (k == 1) {
-                    constraints.gridx = constraints.gridx + 5;
-                } else {
-                    constraints.gridx++;
+                switch (k) {
+                    case 0:
+                        // CB0 (hidden/always-selected): col 2
+                        c.gridx = 2;
+                        break;
+                    case 1: // CB1
+                        c.gridx = 2;
+                        c.insets = new Insets(3, 110, 5, 0); // left=10, adjust this to shift CB1 left/right
+                        break;
+                    case 2: // CB2
+                        c.gridx = 3;
+                        c.insets = new Insets(3, 40, 5, 0); // left=40, controls gap between CB1 and CB2
+                        break;
+                    case 3: // CB3
+                        c.gridx = 4;
+                        c.insets = new Insets(3, 50, 5, 0); // left=40, controls gap between CB2 and CB3
+                        break;
                 }
 
-                constraints.anchor = GridBagConstraints.CENTER;
+                JCheckBox box = new JCheckBox();
+                stageTwoLevelOneGridBoxes.get(j).add(k, box);
 
                 if (k == 3) {
-                    if (suppressed) {
-                        JLabel placeHolder3 = new JLabel(" ");
-                        placeHolder3.setPreferredSize(new Dimension(20, 20));
-                        stageTwoRegsGridLvl1.add(placeHolder3, constraints);
-                        stageTwoLevelOneGridBoxes.get(j).add(k, new JCheckBox());
-                        stageTwoLevelOneGridBoxes.get(j).get(k).setEnabled(false);
+                    box.setEnabled(false);
+                    if (!suppressed) {
+                        stageTwoRegsGridLvl1.add(box, c);
                     } else {
-                        stageTwoLevelOneGridBoxes.get(j).add(k, new JCheckBox());
-                        stageTwoLevelOneGridBoxes.get(j).get(k).setEnabled(false);
+                        JLabel placeholder = new JLabel(" ");
+                        placeholder.setPreferredSize(new Dimension(20, 20));
+                        stageTwoRegsGridLvl1.add(placeholder, c);
                     }
-                } else {
-                    stageTwoLevelOneGridBoxes.get(j).add(k, new JCheckBox());
-                    if (suppressed) {
-                        stageTwoLevelOneGridBoxes.get(j).get(k).setEnabled(false);
-                    } else {
-                        stageTwoLevelOneGridBoxes.get(j).get(k).setEnabled(true);
-                    }
-                }
-
-                if (k == 0) {
-                    stageTwoLevelOneGridBoxes.get(j).get(k).setSelected(true);
-                    stageTwoLevelOneGridBoxes.get(j).get(k).setVisible(false);
-                    constraints.gridx++;
+                } else if (k == 0) {
+                    box.setSelected(true);
+                    box.setVisible(false);
+                    box.setEnabled(false);
+                    stageTwoRegsGridLvl1.add(box, c);
 
                     if (isRandomScale) {
-                        JLabel placeHolder1 = new JLabel(" ");
-                        placeHolder1.setPreferredSize(new Dimension(60, 20));
-                        stageTwoRegsGridLvl1.add(placeHolder1, constraints);
-                    }
-                }
-
-                if (k == 3) {
-                    if (suppressed) {
-                        // do nothing
-                    } else {
-                        stageTwoRegsGridLvl1.add(stageTwoLevelOneGridBoxes.get(j).get(k), constraints);
+                        c.gridx++;
+                        JLabel placeholder = new JLabel(" ");
+                        placeholder.setPreferredSize(new Dimension(60, 20));
+                        stageTwoRegsGridLvl1.add(placeholder, c);
                     }
                 } else {
-                    stageTwoRegsGridLvl1.add(stageTwoLevelOneGridBoxes.get(j).get(k), constraints);
+                    // CB1 and CB2
+                    box.setEnabled(!suppressed);
+                    stageTwoRegsGridLvl1.add(box, c);
                 }
-
             }
 
-            constraints.gridy++;
-
-            separatorConstraint.gridy = separatorConstraint.gridy + 2;
-
-            stageTwoRegsGridLvl1.add(new JSeparator(JSeparator.HORIZONTAL), separatorConstraint);
-            constraints.gridy++;
-
+            // Post-loop overrides
             stageTwoLevelOneGridBoxes.get(row).get(1).setEnabled(true);
             stageTwoLevelOneGridBoxes.get(row).get(2).setEnabled(true);
-
             if (!isRandomScale) {
                 stageTwoLevelOneGridBoxes.get(row).get(2).setVisible(false);
             }
 
-            stageTwoLevelOneGridBoxes.get(j).get(1).addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                    AbstractButton abstractButton = (AbstractButton) e.getSource();
-                    boolean selected = abstractButton.getModel().isSelected();
-                    if (selected) {
-                        SystemLogger.LOGGER.log(Level.FINE, "stage_two_checkbox_selected");
-                        scaleChecked = true;
-                        if (randomChecked == true) {
-                            if (!suppressed) {
-                                stageTwoLevelOneGridBoxes.get(row).get(3).setEnabled(true);
-                                stageTwoLevelOneGridBoxes.get(row).get(3).setSelected(false);
-                            }
-                        }
-
-                    } else {
-                        scaleChecked = false;
-                        if (!suppressed) {
-                            stageTwoLevelOneGridBoxes.get(row).get(3).setEnabled(false);
-                            stageTwoLevelOneGridBoxes.get(row).get(3).setSelected(false);
-                        }
-                    }
+            // Action listeners
+            stageTwoLevelOneGridBoxes.get(j).get(1).addActionListener(e -> {
+                boolean selected = ((AbstractButton) e.getSource()).getModel().isSelected();
+                scaleChecked = selected;
+                if (!suppressed) {
+                    boolean enable = selected && randomChecked;
+                    stageTwoLevelOneGridBoxes.get(row).get(3).setEnabled(enable);
+                    stageTwoLevelOneGridBoxes.get(row).get(3).setSelected(false);
                 }
             });
 
-            stageTwoLevelOneGridBoxes.get(j).get(2).addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                    AbstractButton abstractButton = (AbstractButton) e.getSource();
-                    boolean selected = abstractButton.getModel().isSelected();
-
-                    if (selected) {
-                        SystemLogger.LOGGER.log(Level.FINE, "stage_two_checkbox_selected");
-                        randomChecked = true;
-
-                        if (scaleChecked == true) {
-                            if (!suppressed) {
-                                stageTwoLevelOneGridBoxes.get(row).get(3).setEnabled(true);
-                                stageTwoLevelOneGridBoxes.get(row).get(3).setSelected(false);
-                            }
-                        }
-
-                    } else {
-                        randomChecked = false;
-                        if (!suppressed) {
-                            stageTwoLevelOneGridBoxes.get(row).get(3).setEnabled(false);
-                            stageTwoLevelOneGridBoxes.get(row).get(3).setSelected(false);
-                        }
-
-                    }
+            stageTwoLevelOneGridBoxes.get(j).get(2).addActionListener(e -> {
+                boolean selected = ((AbstractButton) e.getSource()).getModel().isSelected();
+                randomChecked = selected;
+                if (!suppressed) {
+                    boolean enable = selected && scaleChecked;
+                    stageTwoLevelOneGridBoxes.get(row).get(3).setEnabled(enable);
+                    stageTwoLevelOneGridBoxes.get(row).get(3).setSelected(false);
                 }
             });
 
-            stageTwoLevelOneGridBoxes.get(j).get(3).addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                    AbstractButton abstractButton = (AbstractButton) e.getSource();
-                    boolean selected = abstractButton.getModel().isSelected();
-
-//                    randomChecked = false;
-//                    scaleChecked = false;
-//
-//                    enbaleInteractionCheckBox.setEnabled(true);
-                }
+            stageTwoLevelOneGridBoxes.get(j).get(3).addActionListener(e -> {
+                // reserved for future use
             });
 
+            // Separator row
+            c.gridy += 2;
+            sepC.gridy = c.gridy - 1;
+            stageTwoRegsGridLvl1.add(new JSeparator(JSeparator.HORIZONTAL), sepC);
         }
 
         stageTwoLevelOnePanel.removeAll();
         stageTwoLevelOnePanel.add(scrollpanel);
         stageTwoLevelOnePanel.revalidate();
         stageTwoLevelOnePanel.repaint();
-
     }
 
     void update_trigger_stageTwoLevelOneRandSlopeComb() {
