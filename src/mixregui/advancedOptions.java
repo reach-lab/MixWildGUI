@@ -54,8 +54,7 @@ public class advancedOptions extends javax.swing.JFrame {
     public advancedOptions() {
         initComponents();
 //        this.setResizable(false);
-        run32BitCheckBox.setVisible(osWindows);
-        run32BitCheckBox.setEnabled(false);
+
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
 
@@ -73,6 +72,8 @@ public class advancedOptions extends javax.swing.JFrame {
 //        centerRegressorsCheckBox.setToolTipText("Tool tip here");
 
         //set default selections
+        run32BitCheckBox.setVisible(osWindows);
+        run32BitCheckBox.setEnabled(false);
         meanSubmodelCheckBox.setSelected(true);
         BSVarianceCheckBox.setSelected(true);
         WSVarianceCheckBox.setSelected(true);
@@ -424,21 +425,48 @@ public class advancedOptions extends javax.swing.JFrame {
         // TODO add your handling code here:
         SystemLogger.LOGGER.log(Level.FINE, "advancedOptions_resetButtonActionPerformed");
 
-        meanSubmodelCheckBox.setSelected(false);
-        BSVarianceCheckBox.setSelected(false);
-        WSVarianceCheckBox.setSelected(false);
-
-        convergenceCriteria.setText("0.00001");
-        quadriturePoints.setValue(11);
-
+//        meanSubmodelCheckBox.setSelected(false);
+//        BSVarianceCheckBox.setSelected(false);
+//        WSVarianceCheckBox.setSelected(false);
+//
+//        convergenceCriteria.setText("0.00001");
+//        quadriturePoints.setValue(11);
+//
+//        adaptiveQuadritureCheckBox.setSelected(true);
+//        centerRegressorsCheckBox.setSelected(false);
+//
+//        maximumIterations.setValue(200);
+//        // missingValuesCheckBox.setSelected(false);
+//        //standardizedCoeff.setSelected(false);
+//        ridgeSpinner.setValue(0.15);
+//        resampleSpinner.setValue(500);
+        //set default selections
+        run32BitCheckBox.setVisible(osWindows);
+        run32BitCheckBox.setEnabled(false);
+        meanSubmodelCheckBox.setSelected(true);
+        BSVarianceCheckBox.setSelected(true);
+        WSVarianceCheckBox.setSelected(true);
+        SubjectScaleRandomInterceptBox.setSelected(true);
+        WaveWSVarianceInterceptBox.setSelected(true);
         adaptiveQuadritureCheckBox.setSelected(true);
-        centerRegressorsCheckBox.setSelected(false);
+        adaptiveQuadritureWaveVarianceCheckBox.setSelected(false);
+        discardSubjectsCheckBox.setSelected(false);
+        thresholdRidgeSpinner.setValue(0.0);
+        resampleCheckBox.setSelected(true);
+        disaggregateEnabled = false;
 
-        maximumIterations.setValue(200);
-        // missingValuesCheckBox.setSelected(false);
-        //standardizedCoeff.setSelected(false);
-        ridgeSpinner.setValue(0.15);
-        resampleSpinner.setValue(500);
+        //variables to save values:
+        if (mixregGUI.notIncludeStageTwo == true) {
+
+            resampleSpinner.setEnabled(false);
+            resampleCheckBox.setEnabled(false);
+
+        } else {
+
+            resampleSpinner.setEnabled(true);
+            resampleCheckBox.setEnabled(true);
+
+        }
 
     }//GEN-LAST:event_advancedOptions_resetButtonActionPerformed
 

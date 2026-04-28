@@ -2367,7 +2367,7 @@
                       <Font name="sansserif" size="14" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Regressor(s)"/>
-                    <Property name="toolTipText" type="java.lang.String" value="Check the box(s) of the regressor(s) to add the main effect in the model"/>
+                    <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -2394,7 +2394,7 @@
                       <Font name="sansserif" size="14" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Stage 1 Location"/>
-                    <Property name="toolTipText" type="java.lang.String" value="Check the box(s) of the regressor(s) to  add the interaction effect by random location (intercept + slope(s)) in the model"/>
+                    <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -2424,7 +2424,7 @@
                       <Font name="sansserif" size="14" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Stage 1 Scale"/>
-                    <Property name="toolTipText" type="java.lang.String" value="Check the box(s) of the regressor(s) to add the interaction effect by random  scale in the model"/>
+                    <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -2438,7 +2438,7 @@
                       <Font name="sansserif" size="14" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Stage 1 Location X Scale"/>
-                    <Property name="toolTipText" type="java.lang.String" value="Check the box(s) of the regressor(s) to add the interaction effect by random location and scale in the model"/>
+                    <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -3140,7 +3140,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/resources/icon4 - Copy.png"/>
                     </Property>
-                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;pre&gt;Associations between time-varying&#xa;covariates and the outcome in stage 2 model.&lt;pre&gt;"/>
+                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;pre&gt;The setting allows the effect (slope) of a regressor (predictor variable) on the Stage 2 Outcome to vary across level-2 unit (i.e., subject). &#xa;It&#x2019;s just like the setting of typical random slope in a regular multilevel model. Currently, the software only allows one variable with random slope in the Stage 2 Model.&lt;pre&gt;"/>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[16, 16]"/>
                     </Property>
@@ -3162,7 +3162,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/resources/icon4 - Copy.png"/>
                     </Property>
-                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;pre&gt;Stage 2 Level 1 Regressors.&lt;pre&gt;"/>
+                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;pre&gt;A regressor is an independent (predictor) variable in a regression model that is used to explain or predict variation in the Stage 2 dependent (outcome) variable.&lt;pre&gt;"/>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[16, 16]"/>
                     </Property>
@@ -3187,7 +3187,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/resources/icon4 - Copy.png"/>
                     </Property>
-                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;pre&gt;Random Location (intercept) effect is defined as the degree to which&#xa;a subject deviates from the population average. It typically represents a subject-level&#xa;mean effect, over and above the effects of covariates on the mean, and accounts for the&#xa;non-independence of observations within subjects&lt;pre&gt;"/>
+                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;pre&gt;Stage 1 Location variable is a random mean effect of Stage 1 Outcome (i.e., the average subject-level of Stage 1 Outcome) that estimated from Stage 1 Model. &#xa;Here we provide an option in Stage 2 Model setting that allows for creating a two-way interaction between the estimated Stage 1 Location effect regressor(s) and another regressor. &lt;pre&gt;&#xa;"/>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[16, 16]"/>
                     </Property>
@@ -3212,7 +3212,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/resources/icon4 - Copy.png"/>
                     </Property>
-                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;pre&gt;Three-way interaction effect between regressor, random location, and random scale.&lt;pre&gt;"/>
+                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;pre&gt;Here we provide an option in Stage 2 Model setting that allows for creating a three-way interaction between the estimated Stage 1 Location, Scale effect regressor(s) and another regressor. &lt;pre&gt;"/>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[16, 16]"/>
                     </Property>
@@ -3237,7 +3237,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/resources/icon4 - Copy.png"/>
                     </Property>
-                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;pre&gt;Random scale parameters allow subjects to have individual estimates of the &#xa;within-subject variance, and this is the distinguishing feature of a mixed-effects location scale model.&#xa;For random scale models, a linear or quadratic association is also possible.&lt;pre&gt;"/>
+                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;pre&gt;Stage 1 Scale variable is a random within-subject variability in Stage 1 Outcome (i.e., a measurement of the within-subject variance of Stage 1 Outcome) that estimated from Stage 1 Model. &#xa;Here we provide an option in Stage 2 Model setting that allows for creating a two-way interaction between the estimated Stage 1 Scale effect regressor(s) and another regressor. &lt;pre&gt;"/>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[16, 16]"/>
                     </Property>
