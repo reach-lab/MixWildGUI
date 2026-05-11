@@ -966,7 +966,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
      */
     public mixregGUI() {
         initComponents();
-        this.setTitle("MixWILD-3.0.6");
+        this.setTitle("MixWILD-3.0.7");
         // adjust the frame size to fit screen resolution
 //        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 //        setBounds(0, 0, stageOneTabs.getWidth()/2, (int) Math.round(screenSize.height / 1.5));
@@ -2447,8 +2447,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         jPanel_stage2.add(runTabTwoStageOneTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 798, 160, 35));
 
         enbaleInteractionCheckBox.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        enbaleInteractionCheckBox.setText("Enable 2-way Location X Scale Interaction");
-        enbaleInteractionCheckBox.setToolTipText("<html><pre>The interaction(s) of location by scale are automatically specified in the default Stage 2 model, \nbut this option can be disabled by checking this box, which limits the model to show the main effects of random effects only <pre>");
+        enbaleInteractionCheckBox.setText("Enable Location X Scale Interaction");
+        enbaleInteractionCheckBox.setToolTipText("<html><pre>Check this box to allow a three-way interaction effect on the Stage 2 outcome between the selected random location effect(s), random scale effect(s), and a user-specified regressor. \n\nFor example, this option allows an interaction of the form: random location × random scale × regressor A\n\nWhen this option is left unchecked, the model includes only two-way interaction effects between each selected random effect and the user-specified regressor. \n\nFor example, the default setting may include: random location × regressor A and/or random scale × regressor A\n\nIn sum, the checked option additionally allows the combined interaction (three-way) among random location, random scale, \nand the selected regressor, whereas the unchecked option estimates interactions involving a single random effect and the selected regressor. <pre>");
         enbaleInteractionCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 enbaleInteractionCheckBoxActionPerformed(evt);
@@ -2565,22 +2565,22 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         jLabel33.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel33.setText("Regressor(s)");
-        jLabel33.setToolTipText("Check the box(s) of the regressor(s) to add the main effect in the model");
+        jLabel33.setToolTipText("");
         jPanel_stage2.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 568, 110, -1));
 
         jLabel35.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel35.setText("Stage 1 Location");
-        jLabel35.setToolTipText("Check the box(s) of the regressor(s) to  add the interaction effect by random location (intercept + slope(s)) in the model");
+        jLabel35.setToolTipText("");
         jPanel_stage2.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 568, 140, -1));
 
         jLabel36.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel36.setText("Stage 1 Scale");
-        jLabel36.setToolTipText("Check the box(s) of the regressor(s) to add the interaction effect by random  scale in the model");
+        jLabel36.setToolTipText("");
         jPanel_stage2.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 568, 110, 20));
 
         jLabel37.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabel37.setText("Stage 1 Location X Scale");
-        jLabel37.setToolTipText("Check the box(s) of the regressor(s) to add the interaction effect by random location and scale in the model");
+        jLabel37.setToolTipText("");
         jPanel_stage2.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 568, 190, 20));
 
         stageOneModelStageTwoConfigLabel1.setText("Stage 1 model:");
@@ -2673,14 +2673,14 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         jPanel_stage2.add(StageTwoLevelOneRegRandSlopeCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 430, 260, 30));
 
         stageTwoRandSlopeHelpButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon4 - Copy.png"))); // NOI18N
-        stageTwoRandSlopeHelpButton.setToolTipText("<html><pre>The setting allows the effect (slope) of a regressor (predictor variable) on the Stage 2 Outcome to vary across level-2 unit (i.e., subject). \nIt’s just like the setting of typical random slope in a regular multilevel model. Currently, the software only allows one variable with random slope in the Stage 2 Model.<pre>");
+        stageTwoRandSlopeHelpButton.setToolTipText("<html><pre>The setting allows the effect (slope) of a regressor (predictor variable) \non the Stage 2 Outcome to vary across level-2 unit (i.e., subject). \n\nIt’s just like the setting of typical random slope in a regular multilevel model. \n\nCurrently, the software only allows one variable with random slope in the Stage 2 Model.<pre>");
         stageTwoRandSlopeHelpButton.setMaximumSize(new java.awt.Dimension(16, 16));
         stageTwoRandSlopeHelpButton.setMinimumSize(new java.awt.Dimension(16, 16));
         stageTwoRandSlopeHelpButton.setPreferredSize(new java.awt.Dimension(16, 16));
         jPanel_stage2.add(stageTwoRandSlopeHelpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 410, 20, 20));
 
         stageTwoRandSlopeHelpButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon4 - Copy.png"))); // NOI18N
-        stageTwoRandSlopeHelpButton2.setToolTipText("<html><pre>A regressor is an independent (predictor) variable in a regression model that is used to explain or predict variation in the Stage 2 dependent (outcome) variable.<pre>");
+        stageTwoRandSlopeHelpButton2.setToolTipText("<html><pre>A regressor is an independent (predictor) variable \nin a regression model that is used to explain or predict variation \nin the Stage 2 dependent (outcome) variable.<pre>");
         stageTwoRandSlopeHelpButton2.setMaximumSize(new java.awt.Dimension(16, 16));
         stageTwoRandSlopeHelpButton2.setMinimumSize(new java.awt.Dimension(16, 16));
         stageTwoRandSlopeHelpButton2.setPreferredSize(new java.awt.Dimension(16, 16));
@@ -2688,7 +2688,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageTwoRandSlopeHelpButton2.getAccessibleContext().setAccessibleDescription("Check the box(s) of the regressor(s) to add the main effect in the model");
 
         stageTwoRandSlopeHelpButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon4 - Copy.png"))); // NOI18N
-        stageTwoRandSlopeHelpButton5.setToolTipText("<html><pre>Stage 1 Location variable is a random mean effect of Stage 1 Outcome (i.e., the average subject-level of Stage 1 Outcome) that estimated from Stage 1 Model. \nHere we provide an option in Stage 2 Model setting that allows for creating a two-way interaction between the estimated Stage 1 Location effect regressor(s) and another regressor. <pre>\n");
+        stageTwoRandSlopeHelpButton5.setToolTipText("<html><pre>Stage 1 Location variable is a random mean effect of Stage 1 Outcome \n(i.e., the average subject-level of Stage 1 Outcome) that is estimated \nfrom the Stage 1 Model.\n\nHere we provide an option in the Stage 2 Model setting that allows \nfor creating a two-way interaction between the estimated Stage 1 Location \neffect regressor(s) and another regressor.<pre>");
         stageTwoRandSlopeHelpButton5.setMaximumSize(new java.awt.Dimension(16, 16));
         stageTwoRandSlopeHelpButton5.setMinimumSize(new java.awt.Dimension(16, 16));
         stageTwoRandSlopeHelpButton5.setPreferredSize(new java.awt.Dimension(16, 16));
@@ -2696,7 +2696,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageTwoRandSlopeHelpButton5.getAccessibleContext().setAccessibleDescription("Check the box(s) of the regressor(s) to  add the interaction effect by random location (intercept + slope(s)) in the model");
 
         stageTwoRandSlopeHelpButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon4 - Copy.png"))); // NOI18N
-        stageTwoRandSlopeHelpButton6.setToolTipText("<html><pre>Here we provide an option in Stage 2 Model setting that allows for creating a three-way interaction between the estimated Stage 1 Location, Scale effect regressor(s) and another regressor. <pre>");
+        stageTwoRandSlopeHelpButton6.setToolTipText("<html><pre>Here we provide an option in the Stage 2 Model setting that allows for creating \na three-way interaction between the estimated Stage 1 Location, Scale effect \nregressor(s) and another regressor.<pre>");
         stageTwoRandSlopeHelpButton6.setMaximumSize(new java.awt.Dimension(16, 16));
         stageTwoRandSlopeHelpButton6.setMinimumSize(new java.awt.Dimension(16, 16));
         stageTwoRandSlopeHelpButton6.setPreferredSize(new java.awt.Dimension(16, 16));
@@ -2704,7 +2704,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         stageTwoRandSlopeHelpButton6.getAccessibleContext().setAccessibleDescription("Check the box(s) of the regressor(s) to add the interaction effect by random location and scale in the model");
 
         stageTwoRandSlopeHelpButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icon4 - Copy.png"))); // NOI18N
-        stageTwoRandSlopeHelpButton7.setToolTipText("<html><pre>Stage 1 Scale variable is a random within-subject variability in Stage 1 Outcome (i.e., a measurement of the within-subject variance of Stage 1 Outcome) that estimated from Stage 1 Model. \nHere we provide an option in Stage 2 Model setting that allows for creating a two-way interaction between the estimated Stage 1 Scale effect regressor(s) and another regressor. <pre>");
+        stageTwoRandSlopeHelpButton7.setToolTipText("<html><pre>Stage 1 Scale variable is a random within-subject variability in Stage 1 Outcome \n(i.e., a measurement of the within-subject variance of Stage 1 Outcome) that is estimated \nfrom the Stage 1 Model.\n\nHere we provide an option in the Stage 2 Model setting that allows for creating a two-way interaction \nbetween the estimated Stage 1 Scale effect regressor(s) and another regressor.<pre>");
         stageTwoRandSlopeHelpButton7.setMaximumSize(new java.awt.Dimension(16, 16));
         stageTwoRandSlopeHelpButton7.setMinimumSize(new java.awt.Dimension(16, 16));
         stageTwoRandSlopeHelpButton7.setPreferredSize(new java.awt.Dimension(16, 16));
@@ -5343,7 +5343,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         stageTwoRegsGridLvl2.removeAll();
 
-        jLabel37.setVisible(!suppressed);
+        boolean show = !suppressed;
+        jLabel37.setVisible(show);
 
         stageTwoRegsGridLvl2.setLayout(new GridBagLayout());
 
@@ -9727,6 +9728,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
                 updateGuiView_trigger_randomScaleSelection();
                 updateStageTwoMainEffectGrid(stageTwoLevelOne, stageTwoLevelTwo);
+                updateStageTwoLevelOneGrid(stageTwoLevelOne);
+                updateStageTwoLevelTwoGrid(stageTwoLevelTwo);
             }
         } else {
 
@@ -11606,7 +11609,8 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
 
         stageTwoRegsGridLvl2.removeAll();
 
-        jLabel37.setVisible(!suppressed);
+        boolean show = !suppressed;
+        jLabel37.setVisible(show);
 
         stageTwoRegsGridLvl2.setLayout(new GridBagLayout());
 

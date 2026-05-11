@@ -2520,8 +2520,8 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Dialog" size="14" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Enable 2-way Location X Scale Interaction"/>
-                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;pre&gt;The interaction(s) of location by scale are automatically specified in the default Stage 2 model, &#xa;but this option can be disabled by checking this box, which limits the model to show the main effects of random effects only &lt;pre&gt;"/>
+                    <Property name="text" type="java.lang.String" value="Enable Location X Scale Interaction"/>
+                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;pre&gt;Check this box to allow a three-way interaction effect on the Stage 2 outcome between the selected random location effect(s), random scale effect(s), and a user-specified regressor. &#xa;&#xa;For example, this option allows an interaction of the form: random location &#xd7; random scale &#xd7; regressor A&#xa;&#xa;When this option is left unchecked, the model includes only two-way interaction effects between each selected random effect and the user-specified regressor. &#xa;&#xa;For example, the default setting may include: random location &#xd7; regressor A and/or random scale &#xd7; regressor A&#xa;&#xa;In sum, the checked option additionally allows the combined interaction (three-way) among random location, random scale, &#xa;and the selected regressor, whereas the unchecked option estimates interactions involving a single random effect and the selected regressor. &lt;pre&gt;"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="enbaleInteractionCheckBoxActionPerformed"/>
@@ -2838,7 +2838,7 @@
                       <Font name="sansserif" size="14" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Regressor(s)"/>
-                    <Property name="toolTipText" type="java.lang.String" value="Check the box(s) of the regressor(s) to add the main effect in the model"/>
+                    <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -2852,7 +2852,7 @@
                       <Font name="sansserif" size="14" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Stage 1 Location"/>
-                    <Property name="toolTipText" type="java.lang.String" value="Check the box(s) of the regressor(s) to  add the interaction effect by random location (intercept + slope(s)) in the model"/>
+                    <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -2866,7 +2866,7 @@
                       <Font name="sansserif" size="14" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Stage 1 Scale"/>
-                    <Property name="toolTipText" type="java.lang.String" value="Check the box(s) of the regressor(s) to add the interaction effect by random  scale in the model"/>
+                    <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -2880,7 +2880,7 @@
                       <Font name="sansserif" size="14" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Stage 1 Location X Scale"/>
-                    <Property name="toolTipText" type="java.lang.String" value="Check the box(s) of the regressor(s) to add the interaction effect by random location and scale in the model"/>
+                    <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -3140,7 +3140,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/resources/icon4 - Copy.png"/>
                     </Property>
-                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;pre&gt;The setting allows the effect (slope) of a regressor (predictor variable) on the Stage 2 Outcome to vary across level-2 unit (i.e., subject). &#xa;It&#x2019;s just like the setting of typical random slope in a regular multilevel model. Currently, the software only allows one variable with random slope in the Stage 2 Model.&lt;pre&gt;"/>
+                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;pre&gt;The setting allows the effect (slope) of a regressor (predictor variable) &#xa;on the Stage 2 Outcome to vary across level-2 unit (i.e., subject). &#xa;&#xa;It&#x2019;s just like the setting of typical random slope in a regular multilevel model. &#xa;&#xa;Currently, the software only allows one variable with random slope in the Stage 2 Model.&lt;pre&gt;"/>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[16, 16]"/>
                     </Property>
@@ -3162,7 +3162,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/resources/icon4 - Copy.png"/>
                     </Property>
-                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;pre&gt;A regressor is an independent (predictor) variable in a regression model that is used to explain or predict variation in the Stage 2 dependent (outcome) variable.&lt;pre&gt;"/>
+                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;pre&gt;A regressor is an independent (predictor) variable &#xa;in a regression model that is used to explain or predict variation &#xa;in the Stage 2 dependent (outcome) variable.&lt;pre&gt;"/>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[16, 16]"/>
                     </Property>
@@ -3187,7 +3187,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/resources/icon4 - Copy.png"/>
                     </Property>
-                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;pre&gt;Stage 1 Location variable is a random mean effect of Stage 1 Outcome (i.e., the average subject-level of Stage 1 Outcome) that estimated from Stage 1 Model. &#xa;Here we provide an option in Stage 2 Model setting that allows for creating a two-way interaction between the estimated Stage 1 Location effect regressor(s) and another regressor. &lt;pre&gt;&#xa;"/>
+                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;pre&gt;Stage 1 Location variable is a random mean effect of Stage 1 Outcome &#xa;(i.e., the average subject-level of Stage 1 Outcome) that is estimated &#xa;from the Stage 1 Model.&#xa;&#xa;Here we provide an option in the Stage 2 Model setting that allows &#xa;for creating a two-way interaction between the estimated Stage 1 Location &#xa;effect regressor(s) and another regressor.&lt;pre&gt;"/>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[16, 16]"/>
                     </Property>
@@ -3212,7 +3212,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/resources/icon4 - Copy.png"/>
                     </Property>
-                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;pre&gt;Here we provide an option in Stage 2 Model setting that allows for creating a three-way interaction between the estimated Stage 1 Location, Scale effect regressor(s) and another regressor. &lt;pre&gt;"/>
+                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;pre&gt;Here we provide an option in the Stage 2 Model setting that allows for creating &#xa;a three-way interaction between the estimated Stage 1 Location, Scale effect &#xa;regressor(s) and another regressor.&lt;pre&gt;"/>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[16, 16]"/>
                     </Property>
@@ -3237,7 +3237,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/resources/icon4 - Copy.png"/>
                     </Property>
-                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;pre&gt;Stage 1 Scale variable is a random within-subject variability in Stage 1 Outcome (i.e., a measurement of the within-subject variance of Stage 1 Outcome) that estimated from Stage 1 Model. &#xa;Here we provide an option in Stage 2 Model setting that allows for creating a two-way interaction between the estimated Stage 1 Scale effect regressor(s) and another regressor. &lt;pre&gt;"/>
+                    <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;pre&gt;Stage 1 Scale variable is a random within-subject variability in Stage 1 Outcome &#xa;(i.e., a measurement of the within-subject variance of Stage 1 Outcome) that is estimated &#xa;from the Stage 1 Model.&#xa;&#xa;Here we provide an option in the Stage 2 Model setting that allows for creating a two-way interaction &#xa;between the estimated Stage 1 Scale effect regressor(s) and another regressor.&lt;pre&gt;"/>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[16, 16]"/>
                     </Property>
