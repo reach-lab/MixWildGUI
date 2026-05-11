@@ -2520,7 +2520,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Dialog" size="14" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Enable Location X Scale Interaction"/>
+                    <Property name="text" type="java.lang.String" value="Enable Stage 1 Location X Scale Interaction"/>
                     <Property name="toolTipText" type="java.lang.String" value="&lt;html&gt;&lt;pre&gt;Check this box to allow a three-way interaction effect on the Stage 2 outcome between the selected random location effect(s), random scale effect(s), and a user-specified regressor. &#xa;&#xa;For example, this option allows an interaction of the form: random location &#xd7; random scale &#xd7; regressor A&#xa;&#xa;When this option is left unchecked, the model includes only two-way interaction effects between each selected random effect and the user-specified regressor. &#xa;&#xa;For example, the default setting may include: random location &#xd7; regressor A and/or random scale &#xd7; regressor A&#xa;&#xa;In sum, the checked option additionally allows the combined interaction (three-way) among random location, random scale, &#xa;and the selected regressor, whereas the unchecked option estimates interactions involving a single random effect and the selected regressor. &lt;pre&gt;"/>
                   </Properties>
                   <Events>

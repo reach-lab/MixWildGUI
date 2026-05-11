@@ -966,7 +966,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
      */
     public mixregGUI() {
         initComponents();
-        this.setTitle("MixWILD-3.0.7");
+        this.setTitle("MixWILD-3.0.8");
         // adjust the frame size to fit screen resolution
 //        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 //        setBounds(0, 0, stageOneTabs.getWidth()/2, (int) Math.round(screenSize.height / 1.5));
@@ -2447,7 +2447,7 @@ public class mixregGUI extends javax.swing.JFrame implements Serializable {
         jPanel_stage2.add(runTabTwoStageOneTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 798, 160, 35));
 
         enbaleInteractionCheckBox.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        enbaleInteractionCheckBox.setText("Enable Location X Scale Interaction");
+        enbaleInteractionCheckBox.setText("Enable Stage 1 Location X Scale Interaction");
         enbaleInteractionCheckBox.setToolTipText("<html><pre>Check this box to allow a three-way interaction effect on the Stage 2 outcome between the selected random location effect(s), random scale effect(s), and a user-specified regressor. \n\nFor example, this option allows an interaction of the form: random location × random scale × regressor A\n\nWhen this option is left unchecked, the model includes only two-way interaction effects between each selected random effect and the user-specified regressor. \n\nFor example, the default setting may include: random location × regressor A and/or random scale × regressor A\n\nIn sum, the checked option additionally allows the combined interaction (three-way) among random location, random scale, \nand the selected regressor, whereas the unchecked option estimates interactions involving a single random effect and the selected regressor. <pre>");
         enbaleInteractionCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
