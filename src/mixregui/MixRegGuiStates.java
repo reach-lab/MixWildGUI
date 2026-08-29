@@ -1,7 +1,647 @@
+///*
+//To be added:
+//
+//
+//stageOneLevelTwoIDvariableCombo
+//stageOneLevelThreeIDvariableCombo
+//
+//Random slope in WS variances
+//
+// */
+//package mixregui;
+//
+//import java.io.File;
+//import java.io.FileInputStream;
+//import java.io.FileNotFoundException;
+//import java.io.FileOutputStream;
+//import java.io.IOException;
+//import java.io.ObjectInputStream;
+//import java.io.ObjectOutputStream;
+//import java.util.ArrayList;
+//import java.util.HashMap;
+//import java.util.logging.Level;
+//import java.util.logging.Logger;
+//import javax.swing.DefaultListModel;
+//import javax.swing.JCheckBox;
+//import javax.swing.JFileChooser;
+//import static mixregui.mixregGUI.logFilePath;
+//
+///**
+// *
+// * @author jixin
+// */
+//public class MixRegGuiStates {
+//
+//    // gui states of New Model Configuration Tab
+//    public File file;
+//    public File file_stageTwo;
+//    public String filepath;
+//    public String filepath_stageTwo;
+//    public String title;
+//    public boolean missingValuePresent;
+//    public boolean missingValueAbsent;
+//    public String newModelMissingValueCode;
+//    public boolean stageOneTwoLevelRadio;
+//    public boolean stageOneThreeLevelParticipantLevelThreeRadio;
+//    public boolean stageOneContinuousRadio;
+//    public boolean stageOneDichotomousRadio;
+//    public boolean stageOneOrdinalRadio;
+//    public boolean stageOneProbitRadio;
+//    public boolean stageOneLogisticRadio;
+//    public boolean oneRLERadio;
+//    public boolean moreThanOneRLERadio;
+//    public boolean randomScaleSelectionYes;
+//    public boolean randomScaleSelectionNo;
+//    public boolean randomScaleSpecSelectionInterceptOnly;
+//    public boolean randomScaleSpecSelectionInterceptSlope;
+//    public boolean includeStageTwoYes;
+//    public boolean includeStageTwoNo;
+//    public boolean includeStageTwoDataYes;
+//    public boolean includeStageTwoDataNo;
+//    public boolean stageTwoSingleLevel;
+//    public boolean stageTwoMultiLevel;
+//    public boolean stageTwoContinuousRadio;
+//    public boolean stageTwoDichotomousRadio;
+//    public boolean stageTwoCountRadio;
+//    public boolean stageTwoMultinomialRadio;
+//    public String seedTextBox;
+//    public boolean isNewModalConfigSubmitted;
+//
+//    // gui states of Stage One
+//    public boolean isStageOneSubmitted;
+//    public boolean isStageTwoSubmitted;
+//    public int IDLevel3pos;
+//    public int IDLevel2pos;
+//    public int stageOnePos;
+//    public int stageTwoPos;
+//    public int stageOneClicked;
+//    public boolean addStageOneChecked;
+//    public DefaultListModel<String> varList;
+//    public DefaultListModel<String> levelOneList;
+//    public DefaultListModel<String> levelTwoList;
+//    public DefaultListModel<String> levelThreeList;
+//    public String varListString;
+//    public String levelOneListString;
+//    public String levelTwoListString;
+//    public String levelThreeListString;
+//    public boolean isStageOneRegSubmitClicked;
+//    public boolean[][] StageOneLevelOneBoxesSelection;
+//    public boolean[][] disaggVarianceBoxesSelection;
+//    public boolean[][] StageOneLevelTwoBoxesSelection;
+//    public boolean[][] StageOneLevelThreeBoxesSelection;
+//
+//    // advanced options
+//    public boolean meanSubmodelCheckBox;
+//    public boolean BSVarianceCheckBox;
+//    public boolean WSVarianceCheckBox;
+//    public boolean SubjectScaleRandomInterceptBox;
+//    public boolean WaveWSVarianceInterceptBox;
+//    public boolean centerRegressorsCheckBox;
+//    public boolean discardSubjectsCheckBox;
+//    public boolean resampleCheckBox;
+//    public boolean adaptiveQuadritureCheckBox;
+//    public boolean adaptiveQuadritureWaveVarianceCheckBox;
+//    public boolean enableDisaggregateCheckBox;
+//    public boolean run32BitCheckBox;
+//    public String convergenceCriteria;
+//    public int quadriturePoints;
+//    public int maximumIterations;
+//    public double ridgeSpinner;
+//    public double thresholdRidgeSpinner;
+//    public int resampleSpinner;
+//
+//    // Association
+//    public boolean NoAssociationRadio;
+//    public boolean LinearAssociationRadio;
+//    public boolean QuadraticAssociationRadio;
+//
+//    // gui states of Stage Two
+//    public DefaultListModel<String> stageTwoListModel;
+//    public DefaultListModel<String> stageTwoLevelOne;
+//    public DefaultListModel<String> stageTwoLevelTwo;
+//    public String stageTwoListModelString;
+//    public String stageTwoLevelOneString;
+//    public String stageTwoLevelTwoString;
+//    public boolean isStageTwoSubmitClicked;
+//    public boolean[][] stageTwoMainEffectGridBoxesSelection;
+//    public boolean[][] stageTwoLevelOneGridBoxesSelection;
+//    public boolean[][] stageTwoLevelTwoGridBoxesSelection;
+//    public boolean suppressIntCheckBox;
+//
+//    public ArrayList<String> levelTwoSelected;
+//
+//    public String sessionFolderName;
+//    public String logFilePath;
+//
+//    // init default
+//    MixRegGuiStates() {
+//    }
+//
+//    // init a snapshot of mixregGui states
+//    MixRegGuiStates(mixregGUI mxr, advancedOptions ao) {
+////        System.out.print(mxr.file.getAbsolutePath());
+////        this.filepath = mxr.file.getAbsolutePath();
+//        this.file = mxr.file;
+//        this.file_stageTwo = mxr.file_stageTwo;
+//        this.filepath = mxr.getFilePath();
+//        this.filepath_stageTwo = mxr.getFilePath_stageTwo();
+//        this.title = mxr.getTitle();
+//        this.missingValuePresent = mxr.getMissingValuePresent();
+//        this.missingValueAbsent = mxr.getMissingValueAbsent();
+//        this.newModelMissingValueCode = mxr.getNewModelMissingValueCode();
+//        this.stageOneTwoLevelRadio = mxr.getStageOneTwoLevelRadio();
+//        this.stageOneThreeLevelParticipantLevelThreeRadio = mxr.getStageOneThreeLevelParticipantLevelThreeRadio();
+//        this.stageOneContinuousRadio = mxr.getStageOneContinuousRadio();
+//        this.stageOneDichotomousRadio = mxr.getStageOneDichotomousRadio();
+//        this.stageOneOrdinalRadio = mxr.getStageOneOrdinalRadio();
+//        this.stageOneProbitRadio = mxr.getStageOneProbit();
+//        this.stageOneLogisticRadio = mxr.getStageOneLogistic();
+//        this.oneRLERadio = mxr.getOneRLERadio();
+//        this.moreThanOneRLERadio = mxr.getMoreThanOneRLERadio();
+//        this.randomScaleSelectionYes = mxr.getRandomScaleSelectionYes();
+//        this.randomScaleSelectionNo = mxr.getRandomScaleSelectionNo();
+//        this.randomScaleSpecSelectionInterceptOnly = mxr.getRandomScaleSpecSelectionInterceptOnly();
+//        this.randomScaleSpecSelectionInterceptSlope = mxr.getRandomScaleSpecSelectionInterceptSlope();
+//        this.includeStageTwoYes = mxr.getIncludeStageTwoYes();
+//        this.includeStageTwoNo = mxr.getIncludeStageTwoNo();
+//        this.includeStageTwoDataYes = mxr.getIncludeStageTwoDataYes();
+//        this.includeStageTwoDataNo = mxr.getIncludeStageTwoDataNo();
+//        this.stageTwoSingleLevel = mxr.getStageTwoSingleLevel();
+//        this.stageTwoMultiLevel = mxr.getStageTwoMultiLevel();
+//        this.stageTwoContinuousRadio = mxr.getStageTwoContinuousRadio();
+//        this.stageTwoDichotomousRadio = mxr.getStageTwoDichotomousRadio();
+//        this.stageTwoCountRadio = mxr.getCountRadio();
+//        this.stageTwoMultinomialRadio = mxr.getMultinomialRadio();
+//        this.seedTextBox = mxr.getSeedTextBox();
+//        this.isNewModalConfigSubmitted = mxr.isNewModalConfigSubmitted;
+//        this.IDLevel3pos = mixregGUI.IDLevel3pos;
+//        this.IDLevel2pos = mixregGUI.IDLevel2pos;
+//        this.stageOnePos = mixregGUI.stageOnePos;
+//        this.stageTwoPos = mixregGUI.stageTwoPos;
+//        this.stageOneClicked = mxr.stageOneClicked;
+//
+//        this.varListString = saveDefaultListModel(stageOneRegs.varList);
+//        this.levelOneListString = saveDefaultListModel(stageOneRegs.levelOneList);
+//        this.levelTwoListString = saveDefaultListModel(stageOneRegs.levelTwoList);
+//        this.levelThreeListString = saveDefaultListModel(stageOneRegs.levelThreeList);
+//
+//        this.addStageOneChecked = mxr.addStageOneChecked;
+//        this.isStageOneRegSubmitClicked = stageOneRegs.isSubmitClicked;
+//
+//        this.StageOneLevelOneBoxesSelection = getSelectionBoxes(mxr.levelOneBoxes);
+//        this.disaggVarianceBoxesSelection = getSelectionBoxes(mxr.disaggVarianceBoxes);
+//        this.StageOneLevelTwoBoxesSelection = getSelectionBoxes(mxr.levelTwoBoxes);
+//        this.StageOneLevelThreeBoxesSelection = getSelectionBoxes(mxr.levelThreeBoxes);
+//
+//        this.meanSubmodelCheckBox = ao.isMeanSubmodelCheckBoxChecked();
+//        this.BSVarianceCheckBox = ao.isBSVarianceCheckBoxChecked();
+//        this.WSVarianceCheckBox = ao.isWSVarianceCheckBoxChecked();
+//        this.SubjectScaleRandomInterceptBox = ao.isSubjectScaleRandomInterceptBox();
+//        this.WaveWSVarianceInterceptBox = ao.isWaveWSVarianceInterceptBox();
+//        this.centerRegressorsCheckBox = ao.isCenterRegressorsCheckBoxChecked();
+//        this.discardSubjectsCheckBox = ao.isDiscardSubjectsCheckBoxChecked();
+//        this.resampleCheckBox = ao.isResampleCheckBoxChecked();
+//        this.adaptiveQuadritureCheckBox = ao.isAdaptiveQuadritureCheckBoxChecked();
+//        this.adaptiveQuadritureWaveVarianceCheckBox = ao.isAdaptiveQuadritureWaveVarianceCheckBox();
+//        this.run32BitCheckBox = ao.isRun32BitChecked();
+//        this.enableDisaggregateCheckBox = ao.isEnableDisaggregateCheckBox();
+//        this.convergenceCriteria = ao.getConvergenceCriteria();
+//        this.quadriturePoints = ao.getQuadriturePoints();
+//        this.maximumIterations = ao.getMaximumIterations();
+//        this.ridgeSpinner = ao.getRidge();
+//        this.thresholdRidgeSpinner = ao.getThresholdRidgeSpinner();
+//        this.resampleSpinner = ao.getResampleSpinner();
+//        this.NoAssociationRadio = mxr.getNoAssociationRadio();
+//        this.LinearAssociationRadio = mxr.getLinearAssociationRadio();
+//        this.QuadraticAssociationRadio = mxr.getQuadraticAssociationRadio();
+//        this.isStageOneSubmitted = mxr.isStageOneSubmitted;
+//        this.isStageTwoSubmitted = mxr.isStageTwoSubmitted;
+//
+//        this.stageTwoListModelString = saveDefaultListModel(stageTwoRegs.stageTwoListModel);
+//        this.stageTwoLevelOneString = saveDefaultListModel(stageTwoRegs.stageTwoLevelOne);
+//        this.stageTwoLevelTwoString = saveDefaultListModel(stageTwoRegs.stageTwoLevelTwo);
+//        this.isStageTwoSubmitClicked = stageTwoRegs.isStageTwoSubmitClicked;
+//        this.stageTwoMainEffectGridBoxesSelection = getSelectionBoxes(mxr.stageTwoMainEffectGridBoxes);
+//        this.stageTwoLevelOneGridBoxesSelection = getSelectionBoxes(mxr.stageTwoLevelOneGridBoxes);
+//        this.stageTwoLevelTwoGridBoxesSelection = getSelectionBoxes(mxr.stageTwoLevelTwoGridBoxes);
+//        this.suppressIntCheckBox = mxr.getEnableInteractionCheckBox();
+//        this.levelTwoSelected = mxr.levelTwoSelected;
+//        this.sessionFolderName = mxr.sessionFolderName;
+//
+//        this.logFilePath = mixregGUI.logFilePath;
+//    }
+//
+//    public void writeAllStates(mixregGUI mxr) {
+//        HashMap<String, StateObject> hmapStates = this.createStatesHashMap();
+//
+//        // user open filechooser and select save path
+//        JFileChooser fileChooser_save = new JFileChooser();
+//        fileChooser_save.setSelectedFile(new File("configuration.mw"));
+//        int option = fileChooser_save.showSaveDialog(mxr);
+//        if (option == JFileChooser.APPROVE_OPTION) {
+//            File save_filename = fileChooser_save.getSelectedFile();
+//
+//            try {
+//                FileOutputStream fos = new FileOutputStream(save_filename);
+//                ObjectOutputStream oos = new ObjectOutputStream(fos);
+//                oos.writeObject(hmapStates);
+//                oos.close();
+//                fos.close();
+//                System.out.printf("Gui states are saved in configuration.mw");
+//            } catch (IOException ioe) {
+//                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ioe);
+//                SystemLogger.LOGGER.log(Level.SEVERE, ioe.toString() + "{0}", SystemLogger.getLineNum());
+//            }
+//        }
+//    }
+//
+//    public boolean readAllStates(mixregGUI mxr) throws NullPointerException {
+//        boolean read_success = false;
+//        HashMap<String, StateObject> hmapStates = null;
+//
+//        JFileChooser fileChooser_load = new JFileChooser();
+//        fileChooser_load.setSelectedFile(new File("configuration.mw"));
+//        int option = fileChooser_load.showOpenDialog(mxr);
+//        if (option == JFileChooser.APPROVE_OPTION) {
+//            File load_filename = fileChooser_load.getSelectedFile();
+//            try {
+//                FileInputStream fis = new FileInputStream(load_filename);
+//                ObjectInputStream ois = new ObjectInputStream(fis);
+//                hmapStates = (HashMap) ois.readObject();
+//                ois.close();
+//                fis.close();
+//            } catch (ClassNotFoundException c) {
+//                System.out.println("Class not found");
+//                SystemLogger.LOGGER.log(Level.SEVERE, c.toString() + "{0}", SystemLogger.getLineNum());
+//            } catch (FileNotFoundException ex) {
+//                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+//                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
+//            } catch (IOException ex) {
+//                Logger.getLogger(mixregGUI.class.getName()).log(Level.SEVERE, null, ex);
+//                SystemLogger.LOGGER.log(Level.SEVERE, ex.toString() + "{0}", SystemLogger.getLineNum());
+//            }
+//        }
+//
+//        if (hmapStates != null) {
+//            // gui states of New Model Configuration Tab
+//            file = hmapStates.get("file").getFile();
+//            file_stageTwo = hmapStates.get("file_stageTwo").getFile();
+//            filepath = hmapStates.get("filepath").getString();
+//            filepath_stageTwo = hmapStates.get("filepath_stageTwo").getString();
+//            title = hmapStates.get("titleField").getString();
+//            missingValuePresent = hmapStates.get("missingValuePresent").getBoolean();
+//            missingValueAbsent = hmapStates.get("missingValueAbsent").getBoolean();
+//            newModelMissingValueCode = hmapStates.get("newModelMissingValueCode").getString();
+//            stageOneTwoLevelRadio = hmapStates.get("stageOneTwoLevelRadio").getBoolean();
+//            stageOneThreeLevelParticipantLevelThreeRadio = hmapStates.get("stageOneThreeLevelParticipantLevelThreeRadio").getBoolean();
+//            stageOneContinuousRadio = hmapStates.get("stageOneContinuousRadio").getBoolean();
+//            stageOneDichotomousRadio = hmapStates.get("stageOneDichotomousRadio").getBoolean();
+//            stageOneOrdinalRadio = hmapStates.get("stageOneOrdinalRadio").getBoolean();
+//            stageOneProbitRadio = hmapStates.get("stageOneProbitRadio").getBoolean();
+//            stageOneLogisticRadio = hmapStates.get("stageOneLogisticRadio").getBoolean();
+//            oneRLERadio = hmapStates.get("oneRLERadio").getBoolean();
+//            moreThanOneRLERadio = hmapStates.get("moreThanOneRLERadio").getBoolean();
+//            randomScaleSelectionYes = hmapStates.get("randomScaleSelectionYes").getBoolean();
+//            randomScaleSelectionNo = hmapStates.get("randomScaleSelectionNo").getBoolean();
+//            randomScaleSpecSelectionInterceptOnly = hmapStates.get("randomScaleSpecSelectionInterceptOnly").getBoolean();
+//            randomScaleSpecSelectionInterceptSlope = hmapStates.get("randomScaleSpecSelectionInterceptSlope").getBoolean();
+//            includeStageTwoYes = hmapStates.get("includeStageTwoYes").getBoolean();
+//            includeStageTwoNo = hmapStates.get("includeStageTwoNo").getBoolean();
+//            includeStageTwoDataYes = hmapStates.get("includeStageTwoDataYes").getBoolean();
+//            includeStageTwoDataNo = hmapStates.get("includeStageTwoDataNo").getBoolean();
+//            stageTwoSingleLevel = hmapStates.get("stageTwoSingleLevel").getBoolean();
+//            stageTwoMultiLevel = hmapStates.get("stageTwoMultiLevel").getBoolean();
+//            stageTwoContinuousRadio = hmapStates.get("continuousRadio").getBoolean();
+//            stageTwoDichotomousRadio = hmapStates.get("dichotomousRadio").getBoolean();
+//            stageTwoCountRadio = hmapStates.get("countRadio").getBoolean();
+//            stageTwoMultinomialRadio = hmapStates.get("multinomialRadio").getBoolean();
+//            seedTextBox = hmapStates.get("seedTextBox").getString();
+//            isNewModalConfigSubmitted = hmapStates.get("isNewModalConfigSubmitted").getBoolean();
+//            IDLevel3pos = hmapStates.get("IDLevel3pos").getInt();
+//            IDLevel2pos = hmapStates.get("IDLevel2pos").getInt();
+//            stageOnePos = hmapStates.get("stageOnePos").getInt();
+//            stageTwoPos = hmapStates.get("stageTwoPos").getInt();
+//            stageOneClicked = hmapStates.get("stageOneClicked").getInt();
+//            addStageOneChecked = hmapStates.get("addStageOneChecked").getBoolean();
+//
+//            varListString = hmapStates.get("varList").getString();
+//            varList = loadDefaultListModel(varListString);
+//            levelOneListString = hmapStates.get("levelOneList").getString();
+//            levelOneList = loadDefaultListModel(levelOneListString);
+//            levelTwoListString = hmapStates.get("levelTwoList").getString();
+//            levelTwoList = loadDefaultListModel(levelTwoListString);
+//            levelThreeListString = hmapStates.get("levelThreeList").getString();
+//            levelThreeList = loadDefaultListModel(levelThreeListString);
+//
+//            isStageOneRegSubmitClicked = hmapStates.get("isStageOneRegSubmitClicked").getBoolean();
+////        levelOneBoxes = hmapStates.get("levelOneBoxes").getBox();
+////        disaggVarianceBoxes = hmapStates.get("disaggVarianceBoxes").getBox();
+////        levelTwoBoxes = hmapStates.get("levelTwoBoxes").getBox();
+//            StageOneLevelOneBoxesSelection = hmapStates.get("StageOneLevelOneBoxesSelection").getBox();
+//            disaggVarianceBoxesSelection = hmapStates.get("disaggVarianceBoxesSelection").getBox();
+//            StageOneLevelTwoBoxesSelection = hmapStates.get("StageOneLevelTwoBoxesSelection").getBox();
+//            StageOneLevelThreeBoxesSelection = hmapStates.get("StageOneLevelThreeBoxesSelection").getBox();
+//
+//            meanSubmodelCheckBox = hmapStates.get("meanSubmodelCheckBox").getBoolean();
+//            BSVarianceCheckBox = hmapStates.get("BSVarianceCheckBox").getBoolean();
+//            WSVarianceCheckBox = hmapStates.get("WSVarianceCheckBox").getBoolean();
+//            SubjectScaleRandomInterceptBox = hmapStates.get("SubjectScaleRandomInterceptBox").getBoolean();
+//            WaveWSVarianceInterceptBox = hmapStates.get("WaveWSVarianceInterceptBox").getBoolean();
+//            centerRegressorsCheckBox = hmapStates.get("centerRegressorsCheckBox").getBoolean();
+//            discardSubjectsCheckBox = hmapStates.get("discardSubjectsCheckBox").getBoolean();
+//            resampleCheckBox = hmapStates.get("resampleCheckBox").getBoolean();
+//            adaptiveQuadritureCheckBox = hmapStates.get("adaptiveQuadritureCheckBox").getBoolean();
+//            adaptiveQuadritureWaveVarianceCheckBox = hmapStates.get("adaptiveQuadritureWaveVarianceCheckBox").getBoolean();
+//            run32BitCheckBox = hmapStates.get("run32BitCheckBox").getBoolean();
+//            enableDisaggregateCheckBox = hmapStates.get("enableDisaggregateCheckBox").getBoolean();
+//            convergenceCriteria = hmapStates.get("convergenceCriteria").getString();
+//            quadriturePoints = hmapStates.get("quadriturePoints").getInt();
+//            maximumIterations = hmapStates.get("maximumIterations").getInt();
+//            ridgeSpinner = hmapStates.get("ridgeSpinner").getDouble();
+//            thresholdRidgeSpinner = hmapStates.get("thresholdRidgeSpinner").getDouble();
+//            resampleSpinner = hmapStates.get("resampleSpinner").getInt();
+//            NoAssociationRadio = hmapStates.get("NoAssociationRadio").getBoolean();
+//            LinearAssociationRadio = hmapStates.get("LinearAssociationRadio").getBoolean();
+//            QuadraticAssociationRadio = hmapStates.get("QuadraticAssociationRadio").getBoolean();
+//            isStageOneSubmitted = hmapStates.get("isStageOneSubmitted").getBoolean();
+//            isStageTwoSubmitted = hmapStates.get("isStageTwoSubmitted").getBoolean();
+//
+////        stageTwoListModel = hmapStates.get("stageTwoListModel").getStringList();
+//            stageTwoListModelString = hmapStates.get("stageTwoListModel").getString();
+//            stageTwoListModel = loadDefaultListModel(stageTwoListModelString);
+//
+//            stageTwoLevelOneString = hmapStates.get("stageTwoLevelOne").getString();
+//            stageTwoLevelOne = loadDefaultListModel(stageTwoLevelOneString);
+////        stageTwoLevelTwo = hmapStates.get("stageTwoLevelTwo").getStringList();
+//            stageTwoLevelTwoString = hmapStates.get("stageTwoLevelTwo").getString();
+//            stageTwoLevelTwo = loadDefaultListModel(stageTwoLevelTwoString);
+//
+//            isStageTwoSubmitClicked = hmapStates.get("isStageTwoSubmitClicked").getBoolean();
+//            stageTwoMainEffectGridBoxesSelection = hmapStates.get("stageTwoMainEffectGridBoxesSelection").getBox();
+//            stageTwoLevelOneGridBoxesSelection = hmapStates.get("stageTwoLevelOneGridBoxesSelection").getBox();
+//            stageTwoLevelTwoGridBoxesSelection = hmapStates.get("stageTwoLevelTwoGridBoxesSelection").getBox();
+//
+//            suppressIntCheckBox = hmapStates.get("suppressIntCheckBox").getBoolean();
+//            levelTwoSelected = hmapStates.get("levelTwoSelected").getStringArrayList();
+//
+//            sessionFolderName = hmapStates.get("sessionFolderName").getString();
+//            logFilePath = hmapStates.get("logFilePath").getString();
+//
+//            read_success = true;
+//        } else {
+//            System.out.println("Loading Cancelled by User.");
+//        }
+//
+//        return read_success;
+//    }
+//
+//    public HashMap<String, StateObject> createStatesHashMap() {
+//        HashMap<String, StateObject> hashmap = new HashMap<>();
+//        StateObject po00 = new StateObject("file", file);
+//        StateObject po0 = new StateObject("filepath", filepath);
+//        StateObject po1 = new StateObject("titleField", title);
+//        StateObject po2 = new StateObject("missingValuePresent", missingValuePresent);
+//        StateObject po3 = new StateObject("missingValueAbsent", missingValueAbsent);
+//        StateObject po4 = new StateObject("newModelMissingValueCode", newModelMissingValueCode);
+//        StateObject po5 = new StateObject("stageOneContinuousRadio", stageOneContinuousRadio);
+//        StateObject po6 = new StateObject("stageOneDichotomousRadio", stageOneDichotomousRadio);
+//        StateObject po7 = new StateObject("stageOneOrdinalRadio", stageOneOrdinalRadio);
+//        StateObject po8 = new StateObject("oneRLERadio", oneRLERadio);
+//        StateObject po9 = new StateObject("moreThanOneRLERadio", moreThanOneRLERadio);
+//        StateObject po10 = new StateObject("randomScaleSelectionYes", randomScaleSelectionYes);
+//        StateObject po11 = new StateObject("randomScaleSelectionNo", randomScaleSelectionNo);
+//        StateObject po12 = new StateObject("includeStageTwoYes", includeStageTwoYes);
+//        StateObject po13 = new StateObject("includeStageTwoNo", includeStageTwoNo);
+//        StateObject po14 = new StateObject("stageTwoSingleLevel", stageTwoSingleLevel);
+//        StateObject po15 = new StateObject("stageTwoMultiLevel", stageTwoMultiLevel);
+//        StateObject po16 = new StateObject("continuousRadio", stageTwoContinuousRadio);
+//        StateObject po17 = new StateObject("dichotomousRadio", stageTwoDichotomousRadio);
+//        StateObject po18 = new StateObject("countRadio", stageTwoCountRadio);
+//        StateObject po19 = new StateObject("multinomialRadio", stageTwoMultinomialRadio);
+//        StateObject po20 = new StateObject("seedTextBox", seedTextBox);
+//        StateObject po21 = new StateObject("isNewModalConfigSubmitted", isNewModalConfigSubmitted);
+//        StateObject po22 = new StateObject("IDLevel3pos", IDLevel3pos);
+//        StateObject po23 = new StateObject("stageOnePos", stageOnePos);
+//        StateObject po24 = new StateObject("stageTwoPos", stageTwoPos);
+//        StateObject po25 = new StateObject("varList", varListString);
+//        StateObject po26 = new StateObject("levelOneList", levelOneListString);
+//        StateObject po27 = new StateObject("levelTwoList", levelTwoListString);
+//        StateObject po28 = new StateObject("addStageOneChecked", addStageOneChecked);
+//        StateObject po29 = new StateObject("stageOneClicked", stageOneClicked);
+//        StateObject po30 = new StateObject("isStageOneRegSubmitClicked", isStageOneRegSubmitClicked);
+//        StateObject po31 = new StateObject("StageOneLevelOneBoxesSelection", StageOneLevelOneBoxesSelection);
+//        StateObject po32 = new StateObject("disaggVarianceBoxesSelection", disaggVarianceBoxesSelection);
+//        StateObject po33 = new StateObject("StageOneLevelTwoBoxesSelection", StageOneLevelTwoBoxesSelection);
+//        StateObject po34 = new StateObject("meanSubmodelCheckBox", meanSubmodelCheckBox);
+//        StateObject po35 = new StateObject("BSVarianceCheckBox", BSVarianceCheckBox);
+//        StateObject po36 = new StateObject("WSVarianceCheckBox", WSVarianceCheckBox);
+//        StateObject po37 = new StateObject("centerRegressorsCheckBox", centerRegressorsCheckBox);
+//        StateObject po38 = new StateObject("discardSubjectsCheckBox", discardSubjectsCheckBox);
+//        StateObject po39 = new StateObject("resampleCheckBox", resampleCheckBox);
+//        StateObject po40 = new StateObject("adaptiveQuadritureCheckBox", adaptiveQuadritureCheckBox);
+//        StateObject po41 = new StateObject("run32BitCheckBox", run32BitCheckBox);
+//        StateObject po42 = new StateObject("convergenceCriteria", convergenceCriteria);
+//        StateObject po43 = new StateObject("quadriturePoints", quadriturePoints);
+//        StateObject po44 = new StateObject("maximumIterations", maximumIterations);
+//        StateObject po45 = new StateObject("ridgeSpinner", ridgeSpinner);
+//        StateObject po46 = new StateObject("resampleSpinner", resampleSpinner);
+//        StateObject po47 = new StateObject("NoAssociationRadio", NoAssociationRadio);
+//        StateObject po48 = new StateObject("LinearAssociationRadio", LinearAssociationRadio);
+//        StateObject po49 = new StateObject("QuadraticAssociationRadio", QuadraticAssociationRadio);
+//        StateObject po50 = new StateObject("isStageOneSubmitted", isStageOneSubmitted);
+//        StateObject po51 = new StateObject("isStageTwoSubmitted", isStageTwoSubmitted);
+//        StateObject po52 = new StateObject("stageTwoListModel", stageTwoListModelString);
+//        StateObject po53 = new StateObject("stageTwoLevelOne", stageTwoLevelOneString);
+//        StateObject po54 = new StateObject("stageTwoLevelTwo", stageTwoLevelTwoString);
+//        StateObject po55 = new StateObject("isStageTwoSubmitClicked", isStageTwoSubmitClicked);
+//        StateObject po56 = new StateObject("stageTwoLevelOneGridBoxesSelection", stageTwoLevelOneGridBoxesSelection);
+//        StateObject po57 = new StateObject("stageTwoLevelTwoGridBoxesSelection", stageTwoLevelTwoGridBoxesSelection);
+//        StateObject po58 = new StateObject("suppressIntCheckBox", suppressIntCheckBox);
+//        StateObject po59 = new StateObject("levelTwoSelected", levelTwoSelected, 0);
+//        StateObject po60 = new StateObject("sessionFolderName", sessionFolderName);
+//        StateObject po61 = new StateObject("stageOneProbitRadio", stageOneProbitRadio);
+//        StateObject po62 = new StateObject("stageOneLogisticRadio", stageOneLogisticRadio);
+//        StateObject po63 = new StateObject("includeStageTwoDataYes", includeStageTwoDataYes);
+//        StateObject po64 = new StateObject("includeStageTwoDataNo", includeStageTwoDataNo);
+//        StateObject po65 = new StateObject("filepath_stageTwo", filepath_stageTwo);
+//        StateObject po66 = new StateObject("file_stageTwo", file_stageTwo);
+//        StateObject po67 = new StateObject("logFilePath", logFilePath);
+//        StateObject po68 = new StateObject("stageOneTwoLevelRadio", stageOneTwoLevelRadio);
+//        StateObject po69 = new StateObject("stageOneThreeLevelParticipantLevelThreeRadio", stageOneThreeLevelParticipantLevelThreeRadio);
+//        StateObject po70 = new StateObject("randomScaleSpecSelectionInterceptOnly", randomScaleSpecSelectionInterceptOnly);
+//        StateObject po71 = new StateObject("randomScaleSpecSelectionInterceptSlope", randomScaleSpecSelectionInterceptSlope);
+//        StateObject po72 = new StateObject("IDLevel2pos", IDLevel2pos);
+//        StateObject po73 = new StateObject("levelThreeList", levelThreeListString);
+//        StateObject po74 = new StateObject("StageOneLevelThreeBoxesSelection", StageOneLevelThreeBoxesSelection);
+//        StateObject po75 = new StateObject("SubjectScaleRandomInterceptBox", SubjectScaleRandomInterceptBox);
+//        StateObject po76 = new StateObject("WaveWSVarianceInterceptBox", WaveWSVarianceInterceptBox);
+//        StateObject po77 = new StateObject("thresholdRidgeSpinner", thresholdRidgeSpinner);
+//        StateObject po78 = new StateObject("adaptiveQuadritureWaveVarianceCheckBox", adaptiveQuadritureWaveVarianceCheckBox);
+//        StateObject po79 = new StateObject("enableDisaggregateCheckBox", enableDisaggregateCheckBox);
+//        StateObject po80 = new StateObject("stageTwoMainEffectGridBoxesSelection", stageTwoMainEffectGridBoxesSelection);
+//
+//        hashmap.put(po00.getKey(), po00);
+//        hashmap.put(po0.getKey(), po0);
+//        hashmap.put(po1.getKey(), po1);
+//        hashmap.put(po2.getKey(), po2);
+//        hashmap.put(po3.getKey(), po3);
+//        hashmap.put(po4.getKey(), po4);
+//        hashmap.put(po5.getKey(), po5);
+//        hashmap.put(po6.getKey(), po6);
+//        hashmap.put(po7.getKey(), po7);
+//        hashmap.put(po8.getKey(), po8);
+//        hashmap.put(po9.getKey(), po9);
+//        hashmap.put(po10.getKey(), po10);
+//        hashmap.put(po11.getKey(), po11);
+//        hashmap.put(po12.getKey(), po12);
+//        hashmap.put(po13.getKey(), po13);
+//        hashmap.put(po14.getKey(), po14);
+//        hashmap.put(po15.getKey(), po15);
+//        hashmap.put(po16.getKey(), po16);
+//        hashmap.put(po17.getKey(), po17);
+//        hashmap.put(po18.getKey(), po18);
+//        hashmap.put(po19.getKey(), po19);
+//        hashmap.put(po20.getKey(), po20);
+//        hashmap.put(po21.getKey(), po21);
+//        hashmap.put(po22.getKey(), po22);
+//        hashmap.put(po23.getKey(), po23);
+//        hashmap.put(po24.getKey(), po24);
+//        hashmap.put(po25.getKey(), po25);
+//        hashmap.put(po26.getKey(), po26);
+//        hashmap.put(po27.getKey(), po27);
+//        hashmap.put(po28.getKey(), po28);
+//        hashmap.put(po29.getKey(), po29);
+//        hashmap.put(po30.getKey(), po30);
+//        hashmap.put(po31.getKey(), po31);
+//        hashmap.put(po32.getKey(), po32);
+//        hashmap.put(po33.getKey(), po33);
+//        hashmap.put(po34.getKey(), po34);
+//        hashmap.put(po35.getKey(), po35);
+//        hashmap.put(po36.getKey(), po36);
+//        hashmap.put(po37.getKey(), po37);
+//        hashmap.put(po38.getKey(), po38);
+//        hashmap.put(po39.getKey(), po39);
+//        hashmap.put(po40.getKey(), po40);
+//        hashmap.put(po41.getKey(), po41);
+//        hashmap.put(po42.getKey(), po42);
+//        hashmap.put(po43.getKey(), po43);
+//        hashmap.put(po44.getKey(), po44);
+//        hashmap.put(po45.getKey(), po45);
+//        hashmap.put(po46.getKey(), po46);
+//        hashmap.put(po47.getKey(), po47);
+//        hashmap.put(po48.getKey(), po48);
+//        hashmap.put(po49.getKey(), po49);
+//        hashmap.put(po50.getKey(), po50);
+//        hashmap.put(po51.getKey(), po51);
+//        hashmap.put(po52.getKey(), po52);
+//        hashmap.put(po53.getKey(), po53);
+//        hashmap.put(po54.getKey(), po54);
+//        hashmap.put(po55.getKey(), po55);
+//        hashmap.put(po56.getKey(), po56);
+//        hashmap.put(po57.getKey(), po57);
+//        hashmap.put(po58.getKey(), po58);
+//        hashmap.put(po59.getKey(), po59);
+//        hashmap.put(po60.getKey(), po60);
+//        hashmap.put(po61.getKey(), po61);
+//        hashmap.put(po62.getKey(), po62);
+//        hashmap.put(po63.getKey(), po63);
+//        hashmap.put(po64.getKey(), po64);
+//        hashmap.put(po65.getKey(), po65);
+//        hashmap.put(po66.getKey(), po66);
+//        hashmap.put(po67.getKey(), po67);
+//        hashmap.put(po68.getKey(), po68);
+//        hashmap.put(po69.getKey(), po69);
+//        hashmap.put(po70.getKey(), po70);
+//        hashmap.put(po71.getKey(), po71);
+//        hashmap.put(po72.getKey(), po72);
+//        hashmap.put(po73.getKey(), po73);
+//        hashmap.put(po74.getKey(), po74);
+//        hashmap.put(po75.getKey(), po75);
+//        hashmap.put(po76.getKey(), po76);
+//        hashmap.put(po77.getKey(), po77);
+//        hashmap.put(po78.getKey(), po78);
+//        hashmap.put(po79.getKey(), po79);
+//        hashmap.put(po80.getKey(), po80);
+//        return hashmap;
+//    }
+//
+//    private String saveDefaultListModel(DefaultListModel<String> list) {
+//        String oneString = "";
+//
+//        if (list != null) {
+//            for (int i = 0; i < list.getSize(); i++) {
+//                String item = list.elementAt(i);
+//                if (i == list.getSize() - 1) {
+//                    oneString = oneString + item;
+//                } else {
+//                    oneString = oneString + item + ",";
+//                }
+//            }
+//        }
+//        return oneString;
+//    }
+//
+//    private DefaultListModel<String> loadDefaultListModel(String savedString) {
+//        DefaultListModel<String> result = new DefaultListModel<>();
+//
+//        if (savedString.length() > 0) {
+//            String[] arr = savedString.split(",");
+//
+//            for (String item : arr) {
+//                result.addElement(item);
+//            }
+//        }
+//        return result;
+//    }
+////    public boolean getMissingValuePresent() {
+////        return missingvaluePresent;
+////    }
+////
+////    public void setMissingValuePresent(boolean turnon) {
+////        this.missingvaluePresent = turnon;
+////    }
+////    
+////    public String getTitle() {
+////        return title;
+////    }
+////
+////    public void setTitle(String title) {
+////        this.title = title;
+////    }
+//
+//    private boolean[][] getSelectionBoxes(ArrayList<ArrayList<JCheckBox>> Boxes) {
+//
+//        if (Boxes == null) {
+//            return null;
+//        } else {
+//            int rows = Boxes.size();
+//            boolean[][] result = null;
+//            if (rows != 0) {
+//                int cols = Boxes.get(0).size();
+//                result = new boolean[rows][cols];
+//
+//                for (int i = 0; i < rows; i++) {
+//                    for (int j = 0; j < cols; j++) {
+//                        result[i][j] = Boxes.get(i).get(j).isSelected();
+//                    }
+//                }
+//            } else {
+//                return null;
+//            }
+//            return result;
+//        }
+//    }
+//
+//}
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+To be added:
+
+
+stageOneLevelTwoIDvariableCombo
+stageOneLevelThreeIDvariableCombo
+
+Random slope in WS variances
+
  */
 package mixregui;
 
@@ -36,6 +676,8 @@ public class MixRegGuiStates {
     public boolean missingValuePresent;
     public boolean missingValueAbsent;
     public String newModelMissingValueCode;
+    public boolean stageOneTwoLevelRadio;
+    public boolean stageOneThreeLevelParticipantLevelThreeRadio;
     public boolean stageOneContinuousRadio;
     public boolean stageOneDichotomousRadio;
     public boolean stageOneOrdinalRadio;
@@ -45,6 +687,8 @@ public class MixRegGuiStates {
     public boolean moreThanOneRLERadio;
     public boolean randomScaleSelectionYes;
     public boolean randomScaleSelectionNo;
+    public boolean randomScaleSpecSelectionInterceptOnly;
+    public boolean randomScaleSpecSelectionInterceptSlope;
     public boolean includeStageTwoYes;
     public boolean includeStageTwoNo;
     public boolean includeStageTwoDataYes;
@@ -57,39 +701,49 @@ public class MixRegGuiStates {
     public boolean stageTwoMultinomialRadio;
     public String seedTextBox;
     public boolean isNewModalConfigSubmitted;
+    public boolean isUpdateStage2ConfigClicked;
 
     // gui states of Stage One
     public boolean isStageOneSubmitted;
     public boolean isStageTwoSubmitted;
-    public int IDpos;
+    public int IDLevel3pos;
+    public int IDLevel2pos;
     public int stageOnePos;
     public int stageTwoPos;
     public int stageOneClicked;
-    public boolean addStageOneCHecked;
+    public boolean addStageOneChecked;
     public DefaultListModel<String> varList;
     public DefaultListModel<String> levelOneList;
     public DefaultListModel<String> levelTwoList;
+    public DefaultListModel<String> levelThreeList;
     public String varListString;
     public String levelOneListString;
     public String levelTwoListString;
+    public String levelThreeListString;
     public boolean isStageOneRegSubmitClicked;
     public boolean[][] StageOneLevelOneBoxesSelection;
     public boolean[][] disaggVarianceBoxesSelection;
     public boolean[][] StageOneLevelTwoBoxesSelection;
+    public boolean[][] StageOneLevelThreeBoxesSelection;
 
     // advanced options
     public boolean meanSubmodelCheckBox;
     public boolean BSVarianceCheckBox;
     public boolean WSVarianceCheckBox;
+    public boolean SubjectScaleRandomInterceptBox;
+    public boolean WaveWSVarianceInterceptBox;
     public boolean centerRegressorsCheckBox;
     public boolean discardSubjectsCheckBox;
     public boolean resampleCheckBox;
     public boolean adaptiveQuadritureCheckBox;
+    public boolean adaptiveQuadritureWaveVarianceCheckBox;
+    public boolean enableDisaggregateCheckBox;
     public boolean run32BitCheckBox;
     public String convergenceCriteria;
     public int quadriturePoints;
     public int maximumIterations;
     public double ridgeSpinner;
+    public double thresholdRidgeSpinner;
     public int resampleSpinner;
 
     // Association
@@ -105,6 +759,7 @@ public class MixRegGuiStates {
     public String stageTwoLevelOneString;
     public String stageTwoLevelTwoString;
     public boolean isStageTwoSubmitClicked;
+    public boolean[][] stageTwoMainEffectGridBoxesSelection;
     public boolean[][] stageTwoLevelOneGridBoxesSelection;
     public boolean[][] stageTwoLevelTwoGridBoxesSelection;
     public boolean suppressIntCheckBox;
@@ -130,6 +785,8 @@ public class MixRegGuiStates {
         this.missingValuePresent = mxr.getMissingValuePresent();
         this.missingValueAbsent = mxr.getMissingValueAbsent();
         this.newModelMissingValueCode = mxr.getNewModelMissingValueCode();
+        this.stageOneTwoLevelRadio = mxr.getStageOneTwoLevelRadio();
+        this.stageOneThreeLevelParticipantLevelThreeRadio = mxr.getStageOneThreeLevelParticipantLevelThreeRadio();
         this.stageOneContinuousRadio = mxr.getStageOneContinuousRadio();
         this.stageOneDichotomousRadio = mxr.getStageOneDichotomousRadio();
         this.stageOneOrdinalRadio = mxr.getStageOneOrdinalRadio();
@@ -139,6 +796,8 @@ public class MixRegGuiStates {
         this.moreThanOneRLERadio = mxr.getMoreThanOneRLERadio();
         this.randomScaleSelectionYes = mxr.getRandomScaleSelectionYes();
         this.randomScaleSelectionNo = mxr.getRandomScaleSelectionNo();
+        this.randomScaleSpecSelectionInterceptOnly = mxr.getRandomScaleSpecSelectionInterceptOnly();
+        this.randomScaleSpecSelectionInterceptSlope = mxr.getRandomScaleSpecSelectionInterceptSlope();
         this.includeStageTwoYes = mxr.getIncludeStageTwoYes();
         this.includeStageTwoNo = mxr.getIncludeStageTwoNo();
         this.includeStageTwoDataYes = mxr.getIncludeStageTwoDataYes();
@@ -151,7 +810,9 @@ public class MixRegGuiStates {
         this.stageTwoMultinomialRadio = mxr.getMultinomialRadio();
         this.seedTextBox = mxr.getSeedTextBox();
         this.isNewModalConfigSubmitted = mxr.isNewModalConfigSubmitted;
-        this.IDpos = mixregGUI.IDpos;
+        this.isUpdateStage2ConfigClicked = mxr.isUpdateStage2ConfigClicked;
+        this.IDLevel3pos = mixregGUI.IDLevel3pos;
+        this.IDLevel2pos = mixregGUI.IDLevel2pos;
         this.stageOnePos = mixregGUI.stageOnePos;
         this.stageTwoPos = mixregGUI.stageTwoPos;
         this.stageOneClicked = mxr.stageOneClicked;
@@ -159,26 +820,33 @@ public class MixRegGuiStates {
         this.varListString = saveDefaultListModel(stageOneRegs.varList);
         this.levelOneListString = saveDefaultListModel(stageOneRegs.levelOneList);
         this.levelTwoListString = saveDefaultListModel(stageOneRegs.levelTwoList);
+        this.levelThreeListString = saveDefaultListModel(stageOneRegs.levelThreeList);
 
-        this.addStageOneCHecked = mxr.addStageOneCHecked;
+        this.addStageOneChecked = mxr.addStageOneChecked;
         this.isStageOneRegSubmitClicked = stageOneRegs.isSubmitClicked;
 
         this.StageOneLevelOneBoxesSelection = getSelectionBoxes(mxr.levelOneBoxes);
         this.disaggVarianceBoxesSelection = getSelectionBoxes(mxr.disaggVarianceBoxes);
         this.StageOneLevelTwoBoxesSelection = getSelectionBoxes(mxr.levelTwoBoxes);
+        this.StageOneLevelThreeBoxesSelection = getSelectionBoxes(mxr.levelThreeBoxes);
 
         this.meanSubmodelCheckBox = ao.isMeanSubmodelCheckBoxChecked();
         this.BSVarianceCheckBox = ao.isBSVarianceCheckBoxChecked();
         this.WSVarianceCheckBox = ao.isWSVarianceCheckBoxChecked();
+        this.SubjectScaleRandomInterceptBox = ao.isSubjectScaleRandomInterceptBox();
+        this.WaveWSVarianceInterceptBox = ao.isWaveWSVarianceInterceptBox();
         this.centerRegressorsCheckBox = ao.isCenterRegressorsCheckBoxChecked();
         this.discardSubjectsCheckBox = ao.isDiscardSubjectsCheckBoxChecked();
         this.resampleCheckBox = ao.isResampleCheckBoxChecked();
         this.adaptiveQuadritureCheckBox = ao.isAdaptiveQuadritureCheckBoxChecked();
+        this.adaptiveQuadritureWaveVarianceCheckBox = ao.isAdaptiveQuadritureWaveVarianceCheckBox();
         this.run32BitCheckBox = ao.isRun32BitChecked();
+        this.enableDisaggregateCheckBox = ao.isEnableDisaggregateCheckBox();
         this.convergenceCriteria = ao.getConvergenceCriteria();
         this.quadriturePoints = ao.getQuadriturePoints();
         this.maximumIterations = ao.getMaximumIterations();
         this.ridgeSpinner = ao.getRidge();
+        this.thresholdRidgeSpinner = ao.getThresholdRidgeSpinner();
         this.resampleSpinner = ao.getResampleSpinner();
         this.NoAssociationRadio = mxr.getNoAssociationRadio();
         this.LinearAssociationRadio = mxr.getLinearAssociationRadio();
@@ -190,12 +858,13 @@ public class MixRegGuiStates {
         this.stageTwoLevelOneString = saveDefaultListModel(stageTwoRegs.stageTwoLevelOne);
         this.stageTwoLevelTwoString = saveDefaultListModel(stageTwoRegs.stageTwoLevelTwo);
         this.isStageTwoSubmitClicked = stageTwoRegs.isStageTwoSubmitClicked;
+        this.stageTwoMainEffectGridBoxesSelection = getSelectionBoxes(mxr.stageTwoMainEffectGridBoxes);
         this.stageTwoLevelOneGridBoxesSelection = getSelectionBoxes(mxr.stageTwoLevelOneGridBoxes);
         this.stageTwoLevelTwoGridBoxesSelection = getSelectionBoxes(mxr.stageTwoLevelTwoGridBoxes);
-        this.suppressIntCheckBox = mxr.getSuppressIntCheckBox();
+        this.suppressIntCheckBox = mxr.getEnableInteractionCheckBox();
         this.levelTwoSelected = mxr.levelTwoSelected;
         this.sessionFolderName = mxr.sessionFolderName;
-        
+
         this.logFilePath = mixregGUI.logFilePath;
     }
 
@@ -260,6 +929,8 @@ public class MixRegGuiStates {
             missingValuePresent = hmapStates.get("missingValuePresent").getBoolean();
             missingValueAbsent = hmapStates.get("missingValueAbsent").getBoolean();
             newModelMissingValueCode = hmapStates.get("newModelMissingValueCode").getString();
+            stageOneTwoLevelRadio = hmapStates.get("stageOneTwoLevelRadio").getBoolean();
+            stageOneThreeLevelParticipantLevelThreeRadio = hmapStates.get("stageOneThreeLevelParticipantLevelThreeRadio").getBoolean();
             stageOneContinuousRadio = hmapStates.get("stageOneContinuousRadio").getBoolean();
             stageOneDichotomousRadio = hmapStates.get("stageOneDichotomousRadio").getBoolean();
             stageOneOrdinalRadio = hmapStates.get("stageOneOrdinalRadio").getBoolean();
@@ -269,6 +940,8 @@ public class MixRegGuiStates {
             moreThanOneRLERadio = hmapStates.get("moreThanOneRLERadio").getBoolean();
             randomScaleSelectionYes = hmapStates.get("randomScaleSelectionYes").getBoolean();
             randomScaleSelectionNo = hmapStates.get("randomScaleSelectionNo").getBoolean();
+            randomScaleSpecSelectionInterceptOnly = hmapStates.get("randomScaleSpecSelectionInterceptOnly").getBoolean();
+            randomScaleSpecSelectionInterceptSlope = hmapStates.get("randomScaleSpecSelectionInterceptSlope").getBoolean();
             includeStageTwoYes = hmapStates.get("includeStageTwoYes").getBoolean();
             includeStageTwoNo = hmapStates.get("includeStageTwoNo").getBoolean();
             includeStageTwoDataYes = hmapStates.get("includeStageTwoDataYes").getBoolean();
@@ -281,11 +954,13 @@ public class MixRegGuiStates {
             stageTwoMultinomialRadio = hmapStates.get("multinomialRadio").getBoolean();
             seedTextBox = hmapStates.get("seedTextBox").getString();
             isNewModalConfigSubmitted = hmapStates.get("isNewModalConfigSubmitted").getBoolean();
-            IDpos = hmapStates.get("IDpos").getInt();
+            isUpdateStage2ConfigClicked = hmapStates.get("isUpdateStage2ConfigClicked").getBoolean();
+            IDLevel3pos = hmapStates.get("IDLevel3pos").getInt();
+            IDLevel2pos = hmapStates.get("IDLevel2pos").getInt();
             stageOnePos = hmapStates.get("stageOnePos").getInt();
             stageTwoPos = hmapStates.get("stageTwoPos").getInt();
             stageOneClicked = hmapStates.get("stageOneClicked").getInt();
-            addStageOneCHecked = hmapStates.get("addStageOneCHecked").getBoolean();
+            addStageOneChecked = hmapStates.get("addStageOneChecked").getBoolean();
 
             varListString = hmapStates.get("varList").getString();
             varList = loadDefaultListModel(varListString);
@@ -293,6 +968,8 @@ public class MixRegGuiStates {
             levelOneList = loadDefaultListModel(levelOneListString);
             levelTwoListString = hmapStates.get("levelTwoList").getString();
             levelTwoList = loadDefaultListModel(levelTwoListString);
+            levelThreeListString = hmapStates.get("levelThreeList").getString();
+            levelThreeList = loadDefaultListModel(levelThreeListString);
 
             isStageOneRegSubmitClicked = hmapStates.get("isStageOneRegSubmitClicked").getBoolean();
 //        levelOneBoxes = hmapStates.get("levelOneBoxes").getBox();
@@ -301,19 +978,25 @@ public class MixRegGuiStates {
             StageOneLevelOneBoxesSelection = hmapStates.get("StageOneLevelOneBoxesSelection").getBox();
             disaggVarianceBoxesSelection = hmapStates.get("disaggVarianceBoxesSelection").getBox();
             StageOneLevelTwoBoxesSelection = hmapStates.get("StageOneLevelTwoBoxesSelection").getBox();
+            StageOneLevelThreeBoxesSelection = hmapStates.get("StageOneLevelThreeBoxesSelection").getBox();
 
             meanSubmodelCheckBox = hmapStates.get("meanSubmodelCheckBox").getBoolean();
             BSVarianceCheckBox = hmapStates.get("BSVarianceCheckBox").getBoolean();
             WSVarianceCheckBox = hmapStates.get("WSVarianceCheckBox").getBoolean();
+            SubjectScaleRandomInterceptBox = hmapStates.get("SubjectScaleRandomInterceptBox").getBoolean();
+            WaveWSVarianceInterceptBox = hmapStates.get("WaveWSVarianceInterceptBox").getBoolean();
             centerRegressorsCheckBox = hmapStates.get("centerRegressorsCheckBox").getBoolean();
             discardSubjectsCheckBox = hmapStates.get("discardSubjectsCheckBox").getBoolean();
             resampleCheckBox = hmapStates.get("resampleCheckBox").getBoolean();
             adaptiveQuadritureCheckBox = hmapStates.get("adaptiveQuadritureCheckBox").getBoolean();
+            adaptiveQuadritureWaveVarianceCheckBox = hmapStates.get("adaptiveQuadritureWaveVarianceCheckBox").getBoolean();
             run32BitCheckBox = hmapStates.get("run32BitCheckBox").getBoolean();
+            enableDisaggregateCheckBox = hmapStates.get("enableDisaggregateCheckBox").getBoolean();
             convergenceCriteria = hmapStates.get("convergenceCriteria").getString();
             quadriturePoints = hmapStates.get("quadriturePoints").getInt();
             maximumIterations = hmapStates.get("maximumIterations").getInt();
             ridgeSpinner = hmapStates.get("ridgeSpinner").getDouble();
+            thresholdRidgeSpinner = hmapStates.get("thresholdRidgeSpinner").getDouble();
             resampleSpinner = hmapStates.get("resampleSpinner").getInt();
             NoAssociationRadio = hmapStates.get("NoAssociationRadio").getBoolean();
             LinearAssociationRadio = hmapStates.get("LinearAssociationRadio").getBoolean();
@@ -332,6 +1015,7 @@ public class MixRegGuiStates {
             stageTwoLevelTwo = loadDefaultListModel(stageTwoLevelTwoString);
 
             isStageTwoSubmitClicked = hmapStates.get("isStageTwoSubmitClicked").getBoolean();
+            stageTwoMainEffectGridBoxesSelection = hmapStates.get("stageTwoMainEffectGridBoxesSelection").getBox();
             stageTwoLevelOneGridBoxesSelection = hmapStates.get("stageTwoLevelOneGridBoxesSelection").getBox();
             stageTwoLevelTwoGridBoxesSelection = hmapStates.get("stageTwoLevelTwoGridBoxesSelection").getBox();
 
@@ -340,12 +1024,12 @@ public class MixRegGuiStates {
 
             sessionFolderName = hmapStates.get("sessionFolderName").getString();
             logFilePath = hmapStates.get("logFilePath").getString();
-            
+
             read_success = true;
         } else {
             System.out.println("Loading Cancelled by User.");
         }
-        
+
         return read_success;
     }
 
@@ -374,13 +1058,14 @@ public class MixRegGuiStates {
         StateObject po19 = new StateObject("multinomialRadio", stageTwoMultinomialRadio);
         StateObject po20 = new StateObject("seedTextBox", seedTextBox);
         StateObject po21 = new StateObject("isNewModalConfigSubmitted", isNewModalConfigSubmitted);
-        StateObject po22 = new StateObject("IDpos", IDpos);
+        StateObject po21b = new StateObject("isUpdateStage2ConfigClicked", isUpdateStage2ConfigClicked);
+        StateObject po22 = new StateObject("IDLevel3pos", IDLevel3pos);
         StateObject po23 = new StateObject("stageOnePos", stageOnePos);
         StateObject po24 = new StateObject("stageTwoPos", stageTwoPos);
         StateObject po25 = new StateObject("varList", varListString);
         StateObject po26 = new StateObject("levelOneList", levelOneListString);
         StateObject po27 = new StateObject("levelTwoList", levelTwoListString);
-        StateObject po28 = new StateObject("addStageOneCHecked", addStageOneCHecked);
+        StateObject po28 = new StateObject("addStageOneChecked", addStageOneChecked);
         StateObject po29 = new StateObject("stageOneClicked", stageOneClicked);
         StateObject po30 = new StateObject("isStageOneRegSubmitClicked", isStageOneRegSubmitClicked);
         StateObject po31 = new StateObject("StageOneLevelOneBoxesSelection", StageOneLevelOneBoxesSelection);
@@ -420,6 +1105,19 @@ public class MixRegGuiStates {
         StateObject po65 = new StateObject("filepath_stageTwo", filepath_stageTwo);
         StateObject po66 = new StateObject("file_stageTwo", file_stageTwo);
         StateObject po67 = new StateObject("logFilePath", logFilePath);
+        StateObject po68 = new StateObject("stageOneTwoLevelRadio", stageOneTwoLevelRadio);
+        StateObject po69 = new StateObject("stageOneThreeLevelParticipantLevelThreeRadio", stageOneThreeLevelParticipantLevelThreeRadio);
+        StateObject po70 = new StateObject("randomScaleSpecSelectionInterceptOnly", randomScaleSpecSelectionInterceptOnly);
+        StateObject po71 = new StateObject("randomScaleSpecSelectionInterceptSlope", randomScaleSpecSelectionInterceptSlope);
+        StateObject po72 = new StateObject("IDLevel2pos", IDLevel2pos);
+        StateObject po73 = new StateObject("levelThreeList", levelThreeListString);
+        StateObject po74 = new StateObject("StageOneLevelThreeBoxesSelection", StageOneLevelThreeBoxesSelection);
+        StateObject po75 = new StateObject("SubjectScaleRandomInterceptBox", SubjectScaleRandomInterceptBox);
+        StateObject po76 = new StateObject("WaveWSVarianceInterceptBox", WaveWSVarianceInterceptBox);
+        StateObject po77 = new StateObject("thresholdRidgeSpinner", thresholdRidgeSpinner);
+        StateObject po78 = new StateObject("adaptiveQuadritureWaveVarianceCheckBox", adaptiveQuadritureWaveVarianceCheckBox);
+        StateObject po79 = new StateObject("enableDisaggregateCheckBox", enableDisaggregateCheckBox);
+        StateObject po80 = new StateObject("stageTwoMainEffectGridBoxesSelection", stageTwoMainEffectGridBoxesSelection);
 
         hashmap.put(po00.getKey(), po00);
         hashmap.put(po0.getKey(), po0);
@@ -444,6 +1142,7 @@ public class MixRegGuiStates {
         hashmap.put(po19.getKey(), po19);
         hashmap.put(po20.getKey(), po20);
         hashmap.put(po21.getKey(), po21);
+        hashmap.put(po21b.getKey(), po21b);
         hashmap.put(po22.getKey(), po22);
         hashmap.put(po23.getKey(), po23);
         hashmap.put(po24.getKey(), po24);
@@ -490,6 +1189,19 @@ public class MixRegGuiStates {
         hashmap.put(po65.getKey(), po65);
         hashmap.put(po66.getKey(), po66);
         hashmap.put(po67.getKey(), po67);
+        hashmap.put(po68.getKey(), po68);
+        hashmap.put(po69.getKey(), po69);
+        hashmap.put(po70.getKey(), po70);
+        hashmap.put(po71.getKey(), po71);
+        hashmap.put(po72.getKey(), po72);
+        hashmap.put(po73.getKey(), po73);
+        hashmap.put(po74.getKey(), po74);
+        hashmap.put(po75.getKey(), po75);
+        hashmap.put(po76.getKey(), po76);
+        hashmap.put(po77.getKey(), po77);
+        hashmap.put(po78.getKey(), po78);
+        hashmap.put(po79.getKey(), po79);
+        hashmap.put(po80.getKey(), po80);
         return hashmap;
     }
 
@@ -559,4 +1271,5 @@ public class MixRegGuiStates {
             return result;
         }
     }
+
 }

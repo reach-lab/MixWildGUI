@@ -35,6 +35,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import mixregui.SystemLogger;
+//import static mixregui.mixregGUI.isRandomScale;
+//import static mixregui.stageOneRegs.levelOneList;
 
 /**
  * All the advanced functions to support the model
@@ -43,16 +45,15 @@ import mixregui.SystemLogger;
  */
 public class advancedOptions extends javax.swing.JFrame {
 
-    MixLibrary defFile3;
     boolean osWindows = System.getProperty("os.name").toLowerCase().contains("windows");
+    static boolean disaggregateEnabled = false;
 
     /**
      * Creates new form advancedOptions
      */
     public advancedOptions() {
         initComponents();
-        this.setResizable(false);
-        run32BitCheckBox.setVisible(osWindows);
+//        this.setResizable(false);
 
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
@@ -71,13 +72,19 @@ public class advancedOptions extends javax.swing.JFrame {
 //        centerRegressorsCheckBox.setToolTipText("Tool tip here");
 
         //set default selections
+        run32BitCheckBox.setVisible(osWindows);
+        run32BitCheckBox.setEnabled(false);
         meanSubmodelCheckBox.setSelected(true);
         BSVarianceCheckBox.setSelected(true);
         WSVarianceCheckBox.setSelected(true);
-        adaptiveQuadritureCheckBox.setSelected(true);
+        SubjectScaleRandomInterceptBox.setSelected(true);
+        WaveWSVarianceInterceptBox.setSelected(true);
+        adaptiveQuadritureCheckBox.setSelected(false);
+        adaptiveQuadritureWaveVarianceCheckBox.setSelected(false);
         discardSubjectsCheckBox.setSelected(false);
-
+        thresholdRidgeSpinner.setValue(0.0);
         resampleCheckBox.setSelected(true);
+        disaggregateEnabled = false;
 
         //variables to save values:
         if (mixregGUI.notIncludeStageTwo == true) {
@@ -91,6 +98,7 @@ public class advancedOptions extends javax.swing.JFrame {
             resampleCheckBox.setEnabled(true);
 
         }
+
     }
 
     /**
@@ -116,6 +124,12 @@ public class advancedOptions extends javax.swing.JFrame {
         quadriturePoints = new javax.swing.JSpinner();
         jSeparator1 = new javax.swing.JSeparator();
         convergenceCriteria = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        SubjectScaleRandomInterceptBox = new javax.swing.JCheckBox();
+        jLabel13 = new javax.swing.JLabel();
+        WaveWSVarianceInterceptBox = new javax.swing.JCheckBox();
+        jLabel14 = new javax.swing.JLabel();
+        adaptiveQuadritureWaveVarianceCheckBox = new javax.swing.JCheckBox();
         jPanel2 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -131,14 +145,21 @@ public class advancedOptions extends javax.swing.JFrame {
         discardSubjectsCheckBox = new javax.swing.JCheckBox();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
+        jLabel16 = new javax.swing.JLabel();
+        thresholdRidgeSpinner = new javax.swing.JSpinner();
         advancedOptionsSubmit = new javax.swing.JButton();
         advancedOptions_resetButton = new javax.swing.JButton();
         advancedOptionsCancel = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         run32BitCheckBox = new javax.swing.JCheckBox();
+        jPanel4 = new javax.swing.JPanel();
+        enableDisaggregateCheckBox = new javax.swing.JCheckBox();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Options ...");
+        setBounds(new java.awt.Rectangle(0, 10, 0, 0));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -147,16 +168,17 @@ public class advancedOptions extends javax.swing.JFrame {
         jLabel1.setText("Mean Intercept:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 7, -1, -1));
 
+        meanSubmodelCheckBox.setSelected(true);
         meanSubmodelCheckBox.setToolTipText("Include submodel intercepts (Default is on)");
         meanSubmodelCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 meanSubmodelCheckBoxActionPerformed(evt);
             }
         });
-        jPanel1.add(meanSubmodelCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 7, -1, -1));
+        jPanel1.add(meanSubmodelCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, -1, -1));
 
         jLabel2.setText("BS Variance Intercept:  ");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 36, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 37, -1, -1));
 
         BSVarianceCheckBox.setToolTipText("Include submodel intercepts (default is on)");
         BSVarianceCheckBox.addActionListener(new java.awt.event.ActionListener() {
@@ -164,10 +186,10 @@ public class advancedOptions extends javax.swing.JFrame {
                 BSVarianceCheckBoxActionPerformed(evt);
             }
         });
-        jPanel1.add(BSVarianceCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 36, -1, -1));
+        jPanel1.add(BSVarianceCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, -1, -1));
 
         jLabel3.setText("WS Variance Intercept:  ");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 65, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 67, -1, -1));
 
         WSVarianceCheckBox.setToolTipText("Include submodel intercepts (default is on)");
         WSVarianceCheckBox.addActionListener(new java.awt.event.ActionListener() {
@@ -175,16 +197,16 @@ public class advancedOptions extends javax.swing.JFrame {
                 WSVarianceCheckBoxActionPerformed(evt);
             }
         });
-        jPanel1.add(WSVarianceCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 65, -1, -1));
+        jPanel1.add(WSVarianceCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, -1, -1));
 
         jLabel4.setText("Convergence Criteria:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 106, -1, 30));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, 30));
 
         jLabel5.setText("Quadrature Points:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 136, -1, 50));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, 30));
 
-        jLabel6.setText("Adaptive Quadrature:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
+        jLabel6.setText("Adaptive Quadrature of Subject Variance:");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, 30));
 
         adaptiveQuadritureCheckBox.setToolTipText("Adaptive quadrature, usually on to maximize convergence");
         adaptiveQuadritureCheckBox.addActionListener(new java.awt.event.ActionListener() {
@@ -192,44 +214,77 @@ public class advancedOptions extends javax.swing.JFrame {
                 adaptiveQuadritureCheckBoxActionPerformed(evt);
             }
         });
-        jPanel1.add(adaptiveQuadritureCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, -1, -1));
+        jPanel1.add(adaptiveQuadritureCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 235, -1, -1));
 
         quadriturePoints.setModel(new javax.swing.SpinnerNumberModel(11, 1, 255, 1));
         quadriturePoints.setToolTipText("Number of quadrature points (usually set to 10 or 11, however more points may be necessary for complex models)");
-        jPanel1.add(quadriturePoints, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 150, 90, -1));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 240, -1));
+        jPanel1.add(quadriturePoints, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 90, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 270, -1));
 
         convergenceCriteria.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        convergenceCriteria.setText("0.00001");
+        convergenceCriteria.setText("0.0001");
         convergenceCriteria.setToolTipText("Convergence requirement for the maximum correction (change to aid in convergence)");
         convergenceCriteria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 convergenceCriteriaActionPerformed(evt);
             }
         });
-        jPanel1.add(convergenceCriteria, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 110, 90, -1));
+        jPanel1.add(convergenceCriteria, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 90, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 21, 260, 230));
+        jLabel8.setText("Subject Scale Random Intercept:  ");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 97, -1, -1));
+
+        SubjectScaleRandomInterceptBox.setToolTipText("Include submodel intercepts (default is on)");
+        SubjectScaleRandomInterceptBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SubjectScaleRandomInterceptBoxActionPerformed(evt);
+            }
+        });
+        jPanel1.add(SubjectScaleRandomInterceptBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, -1, -1));
+
+        jLabel13.setText("Wave WS Variance Intercept:");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 127, -1, -1));
+
+        WaveWSVarianceInterceptBox.setToolTipText("Include submodel intercepts (default is on)");
+        WaveWSVarianceInterceptBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                WaveWSVarianceInterceptBoxActionPerformed(evt);
+            }
+        });
+        jPanel1.add(WaveWSVarianceInterceptBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, -1, -1));
+
+        jLabel14.setText("Adaptive Quadrature of Wave Variance:");
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, -1, 30));
+
+        adaptiveQuadritureWaveVarianceCheckBox.setToolTipText("Adaptive quadrature, usually on to maximize convergence");
+        adaptiveQuadritureWaveVarianceCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adaptiveQuadritureWaveVarianceCheckBoxActionPerformed(evt);
+            }
+        });
+        jPanel1.add(adaptiveQuadritureWaveVarianceCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 265, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 21, 290, 320));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel7.setText("Maximum Iterations:");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 12, -1, -1));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 7, -1, -1));
 
         jLabel11.setText("Ridge:");
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 46, -1, 20));
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 37, -1, 20));
 
         maximumIterations.setModel(new javax.swing.SpinnerNumberModel(200, 1, null, 100));
         maximumIterations.setToolTipText("Maximum number of iterations");
-        jPanel2.add(maximumIterations, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 69, -1));
+        jPanel2.add(maximumIterations, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 7, 69, -1));
 
         ridgeSpinner.setModel(new javax.swing.SpinnerNumberModel(0.1d, 0.0d, 1.0d, 0.01d));
         ridgeSpinner.setToolTipText("Initial value for a ridge (a numeric value that adds to the diagonal of the second derivative matrix, which can aid in convergence of the solution; usually set to 0 or some small fractional value)");
-        jPanel2.add(ridgeSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 70, -1));
+        jPanel2.add(ridgeSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 37, 70, -1));
 
         jLabel15.setText("Standardize All Regressors?");
-        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 67, -1, -1));
 
         centerRegressorsCheckBox.setToolTipText("Center and scale all variables");
         centerRegressorsCheckBox.addActionListener(new java.awt.event.ActionListener() {
@@ -237,14 +292,14 @@ public class advancedOptions extends javax.swing.JFrame {
                 centerRegressorsCheckBoxActionPerformed(evt);
             }
         });
-        jPanel2.add(centerRegressorsCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, -1, -1));
+        jPanel2.add(centerRegressorsCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 67, -1, -1));
 
         jLabel9.setText("Resample Stage 2:");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, 30));
 
         resampleSpinner.setModel(new javax.swing.SpinnerNumberModel(500, 1, 10000, 1));
         resampleSpinner.setToolTipText("Select the number of resamples for stage 2");
-        jPanel2.add(resampleSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, 70, -1));
+        jPanel2.add(resampleSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 205, 70, -1));
 
         resampleCheckBox.setToolTipText("Select to resample stage 2 analysis");
         resampleCheckBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -253,13 +308,13 @@ public class advancedOptions extends javax.swing.JFrame {
                 resampleCheckBoxActionPerformed(evt);
             }
         });
-        jPanel2.add(resampleCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, -1, -1));
+        jPanel2.add(resampleCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 175, -1, -1));
 
         jLabel10.setText("No. of  Samples:");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 110, 20));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 110, 30));
 
         jLabel12.setText("Discard Subjects with no Variance?");
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 230, -1));
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 97, 230, -1));
 
         discardSubjectsCheckBox.setToolTipText("Discard all the subjects with no variance");
         discardSubjectsCheckBox.addActionListener(new java.awt.event.ActionListener() {
@@ -267,11 +322,18 @@ public class advancedOptions extends javax.swing.JFrame {
                 discardSubjectsCheckBoxActionPerformed(evt);
             }
         });
-        jPanel2.add(discardSubjectsCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, -1, -1));
+        jPanel2.add(discardSubjectsCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 97, -1, -1));
         jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 142, 240, 0));
-        jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 280, 10));
+        jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 270, 10));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(294, 21, 300, 230));
+        jLabel16.setText("Threshold of Standard Deviation");
+        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 127, 230, -1));
+
+        thresholdRidgeSpinner.setModel(new javax.swing.SpinnerNumberModel(0.1d, 0.0d, 1.0d, 0.01d));
+        thresholdRidgeSpinner.setToolTipText("Initial value for a ridge (a numeric value that adds to the diagonal of the second derivative matrix, which can aid in convergence of the solution; usually set to 0 or some small fractional value)");
+        jPanel2.add(thresholdRidgeSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 127, 70, -1));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(314, 21, 290, 320));
 
         advancedOptionsSubmit.setText("Submit");
         advancedOptionsSubmit.addActionListener(new java.awt.event.ActionListener() {
@@ -279,7 +341,7 @@ public class advancedOptions extends javax.swing.JFrame {
                 advancedOptionsSubmitActionPerformed(evt);
             }
         });
-        getContentPane().add(advancedOptionsSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 310, 90, -1));
+        getContentPane().add(advancedOptionsSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 460, 93, -1));
 
         advancedOptions_resetButton.setText("Reset");
         advancedOptions_resetButton.addActionListener(new java.awt.event.ActionListener() {
@@ -287,7 +349,7 @@ public class advancedOptions extends javax.swing.JFrame {
                 advancedOptions_resetButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(advancedOptions_resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 310, 90, -1));
+        getContentPane().add(advancedOptions_resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 460, 90, -1));
 
         advancedOptionsCancel.setText("Cancel");
         advancedOptionsCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -295,7 +357,7 @@ public class advancedOptions extends javax.swing.JFrame {
                 advancedOptionsCancelActionPerformed(evt);
             }
         });
-        getContentPane().add(advancedOptionsCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 310, 90, -1));
+        getContentPane().add(advancedOptionsCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 460, 90, -1));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -308,7 +370,22 @@ public class advancedOptions extends javax.swing.JFrame {
         });
         jPanel3.add(run32BitCheckBox);
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 570, 40));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 573, 40));
+
+        jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        enableDisaggregateCheckBox.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        enableDisaggregateCheckBox.setText("Enable disaggregation (decomposition) of level-1 regressors\n");
+        enableDisaggregateCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                enableDisaggregateCheckBoxActionPerformed(evt);
+            }
+        });
+        jPanel4.add(enableDisaggregateCheckBox);
+
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 573, 40));
+        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 490, -1, 10));
+        getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 220, 10, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -348,21 +425,48 @@ public class advancedOptions extends javax.swing.JFrame {
         // TODO add your handling code here:
         SystemLogger.LOGGER.log(Level.FINE, "advancedOptions_resetButtonActionPerformed");
 
-        meanSubmodelCheckBox.setSelected(false);
-        BSVarianceCheckBox.setSelected(false);
-        WSVarianceCheckBox.setSelected(false);
-
-        convergenceCriteria.setText("0.00001");
-        quadriturePoints.setValue(11);
-
+//        meanSubmodelCheckBox.setSelected(false);
+//        BSVarianceCheckBox.setSelected(false);
+//        WSVarianceCheckBox.setSelected(false);
+//
+//        convergenceCriteria.setText("0.00001");
+//        quadriturePoints.setValue(11);
+//
+//        adaptiveQuadritureCheckBox.setSelected(true);
+//        centerRegressorsCheckBox.setSelected(false);
+//
+//        maximumIterations.setValue(200);
+//        // missingValuesCheckBox.setSelected(false);
+//        //standardizedCoeff.setSelected(false);
+//        ridgeSpinner.setValue(0.15);
+//        resampleSpinner.setValue(500);
+        //set default selections
+        run32BitCheckBox.setVisible(osWindows);
+        run32BitCheckBox.setEnabled(false);
+        meanSubmodelCheckBox.setSelected(true);
+        BSVarianceCheckBox.setSelected(true);
+        WSVarianceCheckBox.setSelected(true);
+        SubjectScaleRandomInterceptBox.setSelected(true);
+        WaveWSVarianceInterceptBox.setSelected(true);
         adaptiveQuadritureCheckBox.setSelected(false);
-        centerRegressorsCheckBox.setSelected(false);
+        adaptiveQuadritureWaveVarianceCheckBox.setSelected(false);
+        discardSubjectsCheckBox.setSelected(false);
+        thresholdRidgeSpinner.setValue(0.0);
+        resampleCheckBox.setSelected(true);
+        disaggregateEnabled = false;
 
-        maximumIterations.setValue(200);
-        // missingValuesCheckBox.setSelected(false);
-        //standardizedCoeff.setSelected(false);
-        ridgeSpinner.setValue(0.15);
-        resampleSpinner.setValue(500);
+        //variables to save values:
+        if (mixregGUI.notIncludeStageTwo == true) {
+
+            resampleSpinner.setEnabled(false);
+            resampleCheckBox.setEnabled(false);
+
+        } else {
+
+            resampleSpinner.setEnabled(true);
+            resampleCheckBox.setEnabled(true);
+
+        }
 
     }//GEN-LAST:event_advancedOptions_resetButtonActionPerformed
 
@@ -392,6 +496,22 @@ public class advancedOptions extends javax.swing.JFrame {
     private void convergenceCriteriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_convergenceCriteriaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_convergenceCriteriaActionPerformed
+
+    private void enableDisaggregateCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enableDisaggregateCheckBoxActionPerformed
+        update_enableDisaggregate();
+    }//GEN-LAST:event_enableDisaggregateCheckBoxActionPerformed
+
+    private void SubjectScaleRandomInterceptBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubjectScaleRandomInterceptBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SubjectScaleRandomInterceptBoxActionPerformed
+
+    private void WaveWSVarianceInterceptBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WaveWSVarianceInterceptBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_WaveWSVarianceInterceptBoxActionPerformed
+
+    private void adaptiveQuadritureWaveVarianceCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adaptiveQuadritureWaveVarianceCheckBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_adaptiveQuadritureWaveVarianceCheckBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -430,29 +550,40 @@ public class advancedOptions extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox BSVarianceCheckBox;
+    private javax.swing.JCheckBox SubjectScaleRandomInterceptBox;
     private javax.swing.JCheckBox WSVarianceCheckBox;
+    private javax.swing.JCheckBox WaveWSVarianceInterceptBox;
     private javax.swing.JCheckBox adaptiveQuadritureCheckBox;
+    private javax.swing.JCheckBox adaptiveQuadritureWaveVarianceCheckBox;
     private javax.swing.JButton advancedOptionsCancel;
     private javax.swing.JButton advancedOptionsSubmit;
     private javax.swing.JButton advancedOptions_resetButton;
     private javax.swing.JCheckBox centerRegressorsCheckBox;
     private javax.swing.JTextField convergenceCriteria;
     private javax.swing.JCheckBox discardSubjectsCheckBox;
+    private javax.swing.JCheckBox enableDisaggregateCheckBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -463,6 +594,7 @@ public class advancedOptions extends javax.swing.JFrame {
     private javax.swing.JSpinner resampleSpinner;
     private javax.swing.JSpinner ridgeSpinner;
     private javax.swing.JCheckBox run32BitCheckBox;
+    private javax.swing.JSpinner thresholdRidgeSpinner;
     // End of variables declaration//GEN-END:variables
 
 //check if mean sub model is checked in advanced options    
@@ -507,6 +639,34 @@ public class advancedOptions extends javax.swing.JFrame {
         return checked;
     }
 
+    // check if BS variance is checked
+    public int isWSWaveVarianceInterceptChecked() {
+
+        int checked = 0;
+
+        if (WaveWSVarianceInterceptBox.isSelected() == true) {
+            checked = 0;
+        } else {
+            checked = 1;
+        }
+
+        return checked;
+    }
+
+    // check if BS variance is checked
+    public int isSubjectScaleRandomInterceptChecked() {
+
+        int checked = 0;
+
+        if (SubjectScaleRandomInterceptBox.isSelected() == true) {
+            checked = 0;
+        } else {
+            checked = 1;
+        }
+
+        return checked;
+    }
+
 // get the convergence criteria
     public String getConvergenceCriteria() {
 
@@ -529,10 +689,24 @@ public class advancedOptions extends javax.swing.JFrame {
     }
 
 // check if adaptive quadriture is checked
-    public int isAdaptiveQuadritureChecked() {
+    public int isAdaptiveQuadritureSubjectChecked() {
         int checked = 0;
 
         if (adaptiveQuadritureCheckBox.isSelected() == true) {
+            checked = 1;
+        } else {
+
+            checked = 0;
+        }
+
+        return checked;
+    }
+
+    // check if adaptive quadriture is checked
+    public int isAdaptiveQuadritureWaveChecked() {
+        int checked = 0;
+
+        if (adaptiveQuadritureWaveVarianceCheckBox.isSelected() == true) {
             checked = 1;
         } else {
 
@@ -557,13 +731,19 @@ public class advancedOptions extends javax.swing.JFrame {
 
 // get the ridge value
     public Double getRidge() {
-
         return (Double) ridgeSpinner.getValue();
-
     }
 
     public void setRidgeSpinner(double value_double) {
         ridgeSpinner.setValue(value_double);
+    }
+
+    public Double getThresholdRidgeSpinner() {
+        return (Double) thresholdRidgeSpinner.getValue();
+    }
+
+    public void setThresholdRidgeSpinner(double value_double) {
+        thresholdRidgeSpinner.setValue(value_double);
     }
 
     public int isCenterRegressorChecked() {
@@ -611,6 +791,12 @@ public class advancedOptions extends javax.swing.JFrame {
         return check;
     }
 
+    public Double getDiscardSubjectsCutoffCheck() {
+
+        return (Double) thresholdRidgeSpinner.getValue();
+
+    }
+
     public boolean isRun32BitChecked() {
 
         boolean run32 = false;
@@ -656,6 +842,22 @@ public class advancedOptions extends javax.swing.JFrame {
         WSVarianceCheckBox.setSelected(turnon);
     }
 
+    boolean isSubjectScaleRandomInterceptBox() {
+        return SubjectScaleRandomInterceptBox.isSelected();
+    }
+
+    public void setSubjectScaleRandomInterceptBox(boolean turnon) {
+        SubjectScaleRandomInterceptBox.setSelected(turnon);
+    }
+
+    boolean isWaveWSVarianceInterceptBox() {
+        return WaveWSVarianceInterceptBox.isSelected();
+    }
+
+    public void setWaveWSVarianceInterceptBox(boolean turnon) {
+        WaveWSVarianceInterceptBox.setSelected(turnon);
+    }
+
     boolean isCenterRegressorsCheckBoxChecked() {
         return centerRegressorsCheckBox.isSelected();
     }
@@ -688,12 +890,28 @@ public class advancedOptions extends javax.swing.JFrame {
         adaptiveQuadritureCheckBox.setSelected(turnon);
     }
 
+    boolean isAdaptiveQuadritureWaveVarianceCheckBox() {
+        return adaptiveQuadritureWaveVarianceCheckBox.isSelected();
+    }
+
+    public void setAdaptiveQuadritureWaveVarianceCheckBox(boolean turnon) {
+        adaptiveQuadritureWaveVarianceCheckBox.setSelected(turnon);
+    }
+
     int getResampleSpinner() {
         return (int) resampleSpinner.getValue();
     }
 
     public void setResampleSpinner(int value_int) {
         resampleSpinner.setValue(value_int);
+    }
+
+    boolean isEnableDisaggregateCheckBox() {
+        return enableDisaggregateCheckBox.isSelected();
+    }
+
+    public void setEnableDisaggregateCheckBox(boolean turnon) {
+        enableDisaggregateCheckBox.setSelected(turnon);
     }
 
     public void update_trigger_AdvancedOptionsSubmit() {
@@ -727,6 +945,16 @@ public class advancedOptions extends javax.swing.JFrame {
         try {
             mixregGUI.defFile.setAdvancedDiscardNoVariance(getDiscardSubjectsCheck());
             System.out.println("DISCARD SUBJECTS: " + mixregGUI.defFile.getAdvancedDiscardNoVariance());
+            tryCount = 1;
+        } catch (Exception ex) {
+            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+            catchCount = 1;
+        }
+
+        try {
+            mixregGUI.defFile.setAdvancedDiscardCutoff(String.valueOf(getDiscardSubjectsCutoffCheck()));
+            System.out.println("DISCARD SUBJECTS W/ CUTOFF: " + mixregGUI.defFile.getAdvancedDiscardCutoff());
             tryCount = 1;
         } catch (Exception ex) {
             Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
@@ -790,8 +1018,42 @@ public class advancedOptions extends javax.swing.JFrame {
         }
 
         try {
-            mixregGUI.defFile.setAdvancedAdaptiveQuad(String.valueOf(isAdaptiveQuadritureChecked()));
-            System.out.println("From defHelper | Adaptive Quadriture Checked?: " + mixregGUI.defFile.getAdvancedAdaptiveQuad());
+            mixregGUI.defFile.setWSWaveVarianceIntercept(String.valueOf(isWSWaveVarianceInterceptChecked()));
+//            mixregGUI.defFile.setModelWithinInt(String.valueOf(isWSVarianceChecked()));
+            System.out.println("From defHelper | WSWaveVarianceIntercept Checked?: " + mixregGUI.defFile.getWSWaveVarianceIntercept());
+//            System.out.println("From defHelper | WS SubModel Checked?: " + mixregGUI.defFile.getModelWithinInt());
+            tryCount = 1;
+        } catch (Exception ex) {
+            catchCount = 1;
+            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+        try {
+            mixregGUI.defFile.setSubjectScaleRandomIntercept(String.valueOf(isSubjectScaleRandomInterceptChecked()));
+//            mixregGUI.defFile.setModelWithinInt(String.valueOf(isWSVarianceChecked()));
+            System.out.println("From defHelper | SubjectScaleRandomIntercept Checked?: " + mixregGUI.defFile.getSubjectScaleRandomIntercept());
+//            System.out.println("From defHelper | WS SubModel Checked?: " + mixregGUI.defFile.getModelWithinInt());
+            tryCount = 1;
+        } catch (Exception ex) {
+            catchCount = 1;
+            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+        try {
+            mixregGUI.defFile.setAdvancedAdaptiveQuadSubject(String.valueOf(isAdaptiveQuadritureSubjectChecked()));
+            System.out.println("From defHelper | Adaptive Quadriture Subject Checked?: " + mixregGUI.defFile.getAdvancedAdaptiveQuadSubject());
+            tryCount = 1;
+        } catch (Exception ex) {
+            catchCount = 1;
+            Logger.getLogger(advancedOptions.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Caution!", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+        try {
+            mixregGUI.defFile.setAdvancedAdaptiveQuadWave(String.valueOf(isAdaptiveQuadritureWaveChecked()));
+            System.out.println("From defHelper | Adaptive Quadriture Wave Checked?: " + mixregGUI.defFile.getAdvancedAdaptiveQuadWave());
             tryCount = 1;
         } catch (Exception ex) {
             catchCount = 1;
@@ -846,5 +1108,43 @@ public class advancedOptions extends javax.swing.JFrame {
         } else {
             mixregGUI.defFile.win32 = Boolean.FALSE;
         }
+    }
+
+    public void update_enableDisaggregate() {
+        if (enableDisaggregateCheckBox.isSelected()) {
+            disaggregateEnabled = true;
+        } else {
+            disaggregateEnabled = false;
+        }
+//        mixregGUI.mxr.updateStageOneLevelOneGrid(levelOneList);
+        mixregGUI.mxr.update_StageOneLevelXTableBoxes(1, stageOneRegs.levelOneList, null, null);
+    }
+
+    public void update_stageOneLevel3_advanced_options(int stageOneLevelNum) {
+        if (mixregGUI.isRandomScale) {
+            jLabel8.setEnabled(true);
+            SubjectScaleRandomInterceptBox.setEnabled(true);
+            SubjectScaleRandomInterceptBox.setSelected(true);
+        } else {
+            jLabel8.setEnabled(false);
+            SubjectScaleRandomInterceptBox.setEnabled(false);
+            SubjectScaleRandomInterceptBox.setSelected(false);
+        }
+
+        if (stageOneLevelNum == 3) {
+            jLabel13.setEnabled(true);
+            WaveWSVarianceInterceptBox.setEnabled(true);
+            jLabel14.setEnabled(true);
+            adaptiveQuadritureCheckBox.setSelected(false);
+            adaptiveQuadritureWaveVarianceCheckBox.setEnabled(true);
+            adaptiveQuadritureWaveVarianceCheckBox.setSelected(false);
+        } else {
+            jLabel13.setEnabled(false);
+            WaveWSVarianceInterceptBox.setEnabled(false);
+            jLabel14.setEnabled(false);
+            adaptiveQuadritureCheckBox.setSelected(false);
+            adaptiveQuadritureWaveVarianceCheckBox.setEnabled(false);
+        }
+
     }
 }

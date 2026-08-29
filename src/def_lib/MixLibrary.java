@@ -137,6 +137,7 @@ public class MixLibrary implements Serializable {
     /**
      * MixWILD V2.0 Initialization Parameters
      */
+    private int stageOneLevelNum;
     private int stageOneOutcome;
     private int stageOneRandomLocationEffects;
     private int stageOneRandomScale;
@@ -162,8 +163,9 @@ public class MixLibrary implements Serializable {
      * STAGE_ONE_RLE_LOCATION or STAGE_ONE_RLE_SLOPE
      * @param stageOneRandomScale STAGE_ONE_SCALE_NO or STAGE_ONE_SCALE_YES
      */
-    public MixLibrary(int stageOneOutcome, int stageOneRandomLocationEffects,
+    public MixLibrary(int stageOneLevelNum, int stageOneOutcome, int stageOneRandomLocationEffects,
             int stageOneRandomScale) {
+        this.stageOneLevelNum = stageOneLevelNum;
         this.stageOneOutcome = stageOneOutcome;
         this.stageOneRandomLocationEffects = stageOneRandomLocationEffects;
         this.stageOneRandomScale = stageOneRandomScale;
@@ -187,8 +189,9 @@ public class MixLibrary implements Serializable {
      * STAGE_TWO_OUTCOME_ORDINAL or STAGE_TWO_OUTCOME_COUNT or
      * STAGE_TWO_OUTCOME_NOMINAL
      */
-    public MixLibrary(int stageOneOutcome, int stageOneRandomLocationEffects,
+    public MixLibrary(int stageOneLevelNum, int stageOneOutcome, int stageOneRandomLocationEffects,
             int stageOneRandomScale, int stageTwoModelType, int stageTwoOutcomeType, boolean stageTwoNewDataIncluded) {
+        this.stageOneLevelNum = stageOneLevelNum;
         this.stageOneOutcome = stageOneOutcome;
         this.stageOneRandomLocationEffects = stageOneRandomLocationEffects;
         this.stageOneRandomScale = stageOneRandomScale;
@@ -212,20 +215,28 @@ public class MixLibrary implements Serializable {
     private String[] sharedModelMeanRegressorFields; // LINE 8 for MIXOR, LINE 7 for MIXREG
     private String[] sharedModelRandomRegressorFields; // LINE 9 for MIXOR, LINE 8 for MIXREG
     private String[] sharedModelScaleRegressorFields; // LINE 10 for MIXOR, LINE 9 for MIXREG
+    private String[] sharedModelBetweenWaveRegressorFields; // LINE 11 for LEVEL THREE
+    private String[] sharedModelScaleRandomRegressorFields; // LINE 12 for LEVEL THREE
 
     private String[] sharedModelDecomposeMeanRegressorFields; // LINE 11 for MIXOR, LINE 10 for MIXREG
     private String[] sharedModelDecomposeRandomRegressorFields; // LINE 12 for MIXOR, LINE 11 for MIXREG
     private String[] sharedModelDecomposeScaleRegressorFields; // LINE 13 for MIXOR, LINE 12 for MIXREG
+    private String[] sharedModelDecomposeBetweenWaveRegressorFields; // LINE 15 for LEVEL THREE
+    private String[] sharedModelDecomposeScaleRandomRegressorFields; // LINE 16 for LEVEL THREE
 
     private String sharedModelStageOneOutcomeLabel; // LINE 15 for MIXOR, LINE 13 for MIXREG
 
     private String[] sharedModelMeanRegressorLabels; // LINE 16 for MIXOR, LINE 14 for MIXREG
     private String[] sharedModelRandomRegressorLabels; // LINE 17 for MIXOR, LINE 15 for MIXREG
     private String[] sharedModelScaleRegressorLabels; // LINE 18 for MIXOR, LINE 16 for MIXREG
+    private String[] sharedModelBetweenWaveRegressorLabels; // LINE 21 for LEVEL THREE
+    private String[] sharedModelScaleRandomRegressorLabels; // LINE 22 for LEVEL THREE
 
     private String[] sharedModelDecomposeMeanRegressorLabels; // LINE 19 for MIXOR, LINE 17 for MIXREG
     private String[] sharedModelDecomposeRandomRegressorLabels; // LINE 20 for MIXOR, LINE 18 for MIXREG
     private String[] sharedModelDecomposeScaleRegressorLabels; // LINE 21 for MIXOR, LINE 19 for MIXREG
+    private String[] sharedModelDecomposeBetweenWaveRegressorLabels; // LINE 26 for LEVEL THREE
+    private String[] sharedModelDecomposeScaleRandomRegressorLabels; // LINE 27 for LEVEL THREE
 
     /**
      * MixWILD V2.0 MIXOR Parameters
@@ -271,20 +282,27 @@ public class MixLibrary implements Serializable {
     private String advancedMeanRegressorCount; // P
     private String advancedRandomRegressorCount; // R
     private String advancedScaleRegressorCount; // S
+    private String advancedBetweenWaveRegressorCount; // T (stage one, three level)
+    private String advancedScaleRandomRegressorCount; // RS stage one, three level)
 
     private String advancedStageOneOutcomeValueCount; // NULL if MIXREG - MAXJ
 
     private String advancedMeanIntercept; // NULL if MIXOR - PNINT
     private String advancedRandomIntercept; // RNINT
     private String advancedScaleIntercept; // NULL if MIXOR - SNINT
+    private String WSWaveVarianceIntercept;
+    private String subjectScaleRandomIntercept;
 
     private String advancedDecomposeMeanRegressorCount; // P1
     private String advancedDecomposeRandomRegressorCount; // R1
     private String advancedDecomposeScaleRegressorCount; // S1
+    private String advancedDecomposeBetweenWaveRegressorCount; // T1
+    private String advancedDecomposeScaleRandomRegressorCount; // RS1
 
     private String advancedConvergenceCriteria; //CONV
     private String advancedQuadPoints; // QP
-    private String advancedAdaptiveQuad; // AQ
+    private String advancedAdaptiveQuadSubject; // AQ
+    private String advancedAdaptiveQuadWave; // AQWAVE
     private String advancedMaxIterations; // MAXIT
     private String advancedMissingValueCode; // YMISS
     private String advancedCenterScaleVariables; // NULL if MIXOR - NCENT
@@ -292,8 +310,12 @@ public class MixLibrary implements Serializable {
     private String advancedInitialRidge; // RIDGEIN
     private String advancedLogisticProbitRegression; // NULL if MIXREG - NFN 
     private String advancedDiscardNoVariance; // NULL if MIXOR - DISCARD0
+    private String advancedDiscardCutoff; // NULL if MIXOR - DISCARD0
     private String advancedUseMLS; // ALWAYS 1 for MIXOR - MLS
     private String advancedCovarianceMatrix; // NULL if MIXOR - CHOL
+    private String advancedWaves; // waves
+    private String advancedGammaTrans; // gammatrans
+
     private String advancedResampleCount; // NREPS
     private String advancedRandomScaleCutoff; // NULL if MIXOR - CUTOFF
     private String advancedUseRandomScale; // NORS
@@ -301,7 +323,9 @@ public class MixLibrary implements Serializable {
 
     private String advancedUseStageTwo; // STAGE2
     private String advancedStageTwoMultilevel; // MULTI2ND
+    private String advancedStageTwoMultilevelRandSlope; //
     private String advancedMultipleDataFiles; // SEPFILE
+    private String advancedStageOneLevelNum; // no3
 
     /**
      * MixWILD V2.0 MIXREG Stage 2 Advanced Parameters
@@ -340,37 +364,58 @@ public class MixLibrary implements Serializable {
                 advancedVariable.add(getAdvancedMeanRegressorCount());
                 advancedVariable.add(getAdvancedRandomRegressorCount());
                 advancedVariable.add(getAdvancedScaleRegressorCount());
+//                if (stageOneLevelNum == 3) { // when stage one has three levels
+                advancedVariable.add(getAdvancedBetweenWaveRegressorCount()); // T
+                advancedVariable.add(getAdvancedScaleRandomRegressorCount());// RS
+//                }
 
                 advancedVariable.add(getAdvancedMeanIntercept());
                 advancedVariable.add(getAdvancedRandomIntercept());
                 advancedVariable.add(getAdvancedScaleIntercept());
+//                if (stageOneLevelNum == 3) { // when stage one has three levels
+                advancedVariable.add(getWSWaveVarianceIntercept());// tnint 
+                advancedVariable.add(getSubjectScaleRandomIntercept());// rsnint 
+//                }
 
                 advancedVariable.add(getAdvancedDecomposeMeanRegressorCount());
                 advancedVariable.add(getAdvancedDecomposeRandomRegressorCount());
                 advancedVariable.add(getAdvancedDecomposeScaleRegressorCount());
+//                if (stageOneLevelNum == 3) { // when stage one has three levels
+                advancedVariable.add(getAdvancedDecomposeBetweenWaveRegressorCount()); // T1
+                advancedVariable.add(getAdvancedDecomposeScaleRandomRegressorCount());// RS1
+//                }
 
                 advancedVariable.add(getAdvancedConvergenceCriteria());
                 advancedVariable.add(getAdvancedQuadPoints());
-                advancedVariable.add(getAdvancedAdaptiveQuad());
-                advancedVariable.add(getAdvancedMaxIterations());
-                advancedVariable.add(getAdvancedMissingValueCode());
-                advancedVariable.add(getAdvancedCenterScaleVariables());
+                advancedVariable.add(getAdvancedAdaptiveQuadSubject());
+//                if (stageOneLevelNum == 3) { // when stage one has three levels
+                advancedVariable.add(getAdvancedAdaptiveQuadWave()); // aqwave
+//                }
+                advancedVariable.add(getAdvancedMaxIterations()); // maxit
+                advancedVariable.add(getAdvancedMissingValueCode()); // yMiss
+                advancedVariable.add(getAdvancedCenterScaleVariables()); // ncent
 
-                advancedVariable.add(getAdvancedRandomScaleAssociation());
-                advancedVariable.add(getAdvancedInitialRidge());
-                advancedVariable.add(getAdvancedDiscardNoVariance());
-                advancedVariable.add(getAdvancedUseMLS());
-                advancedVariable.add(getAdvancedCovarianceMatrix());
-                advancedVariable.add(getAdvancedResampleCount());
-//                System.out.print("^^^^^^^^^^^^^^^");
-//                System.out.print(getAdvancedResampleCount());
-                advancedVariable.add(getAdvancedRandomScaleCutoff());
-                advancedVariable.add(getAdvancedUseRandomScale());
-                advancedVariable.add(getAdvancedResamplingSeed());
+                advancedVariable.add(getAdvancedRandomScaleAssociation()); //ncov
+                advancedVariable.add(getAdvancedInitialRidge()); // ridgein
+                advancedVariable.add(getAdvancedDiscardNoVariance()); // discard0
+                advancedVariable.add(getAdvancedDiscardCutoff()); // discard_cutoff 
+                advancedVariable.add(getAdvancedUseMLS()); // mls
+                advancedVariable.add(getAdvancedCovarianceMatrix()); // chol
+//                if (stageOneLevelNum == 3) { // when stage one has three levels
+                advancedVariable.add(getAdvancedWaveCount()); // waves
+                advancedVariable.add(getAdvancedGammatransCount());// gammatrans
+//                }
 
-                advancedVariable.add(getAdvancedUseStageTwo());
-                advancedVariable.add(getAdvancedStageTwoMultilevel());
-                advancedVariable.add(getAdvancedMultipleDataFiles());
+                advancedVariable.add(getAdvancedResampleCount()); // nreps
+//                advancedVariable.add(getAdvancedRandomScaleCutoff()); // ?  
+//                advancedVariable.add(getAdvancedUseRandomScale()); // ?
+                advancedVariable.add(getAdvancedResamplingSeed()); // myseed
+
+                advancedVariable.add(getAdvancedUseStageTwo()); // stage2
+                advancedVariable.add(getAdvancedStageTwoMultilevel()); // multi2nd
+                advancedVariable.add(getAdvancedStageTwoMultilevelRandomSlope()); // 
+                advancedVariable.add(getAdvancedMultipleDataFiles()); // sepfile
+                advancedVariable.add(getAdvancedStageOneLevelNum()); // no3
             }
 
             if (stageOneOutcome == STAGE_ONE_OUTCOME_MIXOR) {
@@ -388,7 +433,7 @@ public class MixLibrary implements Serializable {
 
                 advancedVariable.add(getAdvancedConvergenceCriteria());  //10
                 advancedVariable.add(getAdvancedQuadPoints());  //11
-                advancedVariable.add(getAdvancedAdaptiveQuad());  //12
+                advancedVariable.add(getAdvancedAdaptiveQuadSubject());  //12
                 advancedVariable.add(getAdvancedMaxIterations());  //13
                 advancedVariable.add(getAdvancedMissingValueCode());  //14
 
@@ -453,8 +498,7 @@ public class MixLibrary implements Serializable {
         newDefinitionFile.add(FilenameUtils.getName(getSharedDataFilename())); // LINE 3
         newDefinitionFile.add(getSharedOutputPrefix()); // LINE 4
         newDefinitionFile.add(Arrays.toString(getSharedAdvancedOptions()).replaceAll(",", " ")); // LINE 5
-//        System.out.print(Arrays.toString(getSharedAdvancedOptions()).replaceAll(",", " "));
-//        System.out.print("\n");
+
         if (getStageOneOutcome() == STAGE_ONE_OUTCOME_MIXOR) {
             newDefinitionFile.add(Arrays.toString(getMixorModelCovarianceThresholdParameters()).replaceAll(",", " ")); // LINE 6/-
         }
@@ -465,23 +509,41 @@ public class MixLibrary implements Serializable {
         newDefinitionFile.add(Arrays.toString(getSharedModelRandomRegressorFields()).replaceAll(",", " ")); // LINE 9/8
         newDefinitionFile.add(Arrays.toString(getSharedModelScaleRegressorFields()).replaceAll(",", " ")); // LINE 10/9
 
+        if (getStageOneOutcome() == STAGE_ONE_OUTCOME_MIXREG) { // when stage one has three levels
+            newDefinitionFile.add(Arrays.toString(getSharedModelBetweenWaveRegressorFields()).replaceAll(",", " ")); // T parameters; LINE 10 in three level
+            newDefinitionFile.add(Arrays.toString(getSharedModelScaleRandomRegressorFields()).replaceAll(",", " "));// RS parameters; LINE 11 in three level
+        }
+
         newDefinitionFile.add(Arrays.toString(getSharedModelDecomposeMeanRegressorFields()).replaceAll(",", " ")); // LINE 11/10
         newDefinitionFile.add(Arrays.toString(getSharedModelDecomposeRandomRegressorFields()).replaceAll(",", " ")); // LINE 12/11
         newDefinitionFile.add(Arrays.toString(getSharedModelDecomposeScaleRegressorFields()).replaceAll(",", " ")); // LINE 13/12
+
+        if (getStageOneOutcome() == STAGE_ONE_OUTCOME_MIXREG) { // when stage one has three levels
+            newDefinitionFile.add(Arrays.toString(getSharedModelDecomposeBetweenWaveRegressorFields()).replaceAll(",", " ")); // T1 parameters; LINE 15 in three level
+            newDefinitionFile.add(Arrays.toString(getSharedModelDecomposeScaleRandomRegressorFields()).replaceAll(",", " "));// RS1 parameters; LINE 16 in three level
+        }
 
         if (getStageOneOutcome() == STAGE_ONE_OUTCOME_MIXOR) {
             newDefinitionFile.add(getMixorModelStageOneOutcomeLevels()); // LINE 14/-
         }
 
         newDefinitionFile.add(getSharedModelStageOneOutcomeLabel()); // LINE 15/13
-
         newDefinitionFile.add(Arrays.toString(getSharedModelMeanRegressorLabels()).replaceAll(",", " ")); // LINE 16/14
         newDefinitionFile.add(Arrays.toString(getSharedModelRandomRegressorLabels()).replaceAll(",", " ")); // LINE 17/15
         newDefinitionFile.add(Arrays.toString(getSharedModelScaleRegressorLabels()).replaceAll(",", " ")); // LINE 18/16
+        if (getStageOneOutcome() == STAGE_ONE_OUTCOME_MIXREG) { // when stage one has three levels
+            newDefinitionFile.add(Arrays.toString(getSharedModelBetweenWaveRegressorLabels()).replaceAll(",", " ")); // T parameters; LINE 21 in three level
+            newDefinitionFile.add(Arrays.toString(getSharedModelScaleRandomRegressorLabels()).replaceAll(",", " "));// RS parameters; LINE 22 in three level
+        }
 
         newDefinitionFile.add(Arrays.toString(getSharedModelDecomposeMeanRegressorLabels()).replaceAll(",", " ")); // LINE 19/17
         newDefinitionFile.add(Arrays.toString(getSharedModelDecomposeRandomRegressorLabels()).replaceAll(",", " ")); // LINE 20/18
         newDefinitionFile.add(Arrays.toString(getSharedModelDecomposeScaleRegressorLabels()).replaceAll(",", " ")); // LINE 21/19
+
+        if (getStageOneOutcome() == STAGE_ONE_OUTCOME_MIXREG) { // when stage one has three levels
+            newDefinitionFile.add(Arrays.toString(getSharedModelDecomposeBetweenWaveRegressorLabels()).replaceAll(",", " ")); // T1 parameters; LINE 26 in three level
+            newDefinitionFile.add(Arrays.toString(getSharedModelDecomposeScaleRandomRegressorLabels()).replaceAll(",", " "));// RS1 parameters; LINE 27 in three level
+        }
 
         /**
          * Appending Stage 2 (Optional)
@@ -893,6 +955,28 @@ public class MixLibrary implements Serializable {
         this.sharedModelScaleRegressorFields = sharedModelScaleRegressorFields;
     }
 
+    public String[] getSharedModelBetweenWaveRegressorFields() {
+        if (sharedModelBetweenWaveRegressorFields == null) {
+            sharedModelBetweenWaveRegressorFields = new String[0];
+        }
+        return sharedModelBetweenWaveRegressorFields;
+    }
+
+    public void setSharedModelBetweenWaveRegressorFields(String[] sharedModelBetweenWaveRegressorFields) {
+        this.sharedModelBetweenWaveRegressorFields = sharedModelBetweenWaveRegressorFields;
+    }
+
+    public String[] getSharedModelScaleRandomRegressorFields() {
+        if (sharedModelScaleRandomRegressorFields == null) {
+            sharedModelScaleRandomRegressorFields = new String[0];
+        }
+        return sharedModelScaleRandomRegressorFields;
+    }
+
+    public void setSharedModelScaleRandomRegressorFields(String[] sharedModelScaleRandomRegressorFields) {
+        this.sharedModelScaleRandomRegressorFields = sharedModelScaleRandomRegressorFields;
+    }
+
     public String[] getSharedModelDecomposeMeanRegressorFields() {
         return sharedModelDecomposeMeanRegressorFields;
     }
@@ -915,6 +999,28 @@ public class MixLibrary implements Serializable {
 
     public void setSharedModelDecomposeScaleRegressorFields(String[] sharedModelDecomposeScaleRegressorFields) {
         this.sharedModelDecomposeScaleRegressorFields = sharedModelDecomposeScaleRegressorFields;
+    }
+
+    public String[] getSharedModelDecomposeBetweenWaveRegressorFields() {
+        if (sharedModelDecomposeBetweenWaveRegressorFields == null) {
+            sharedModelDecomposeBetweenWaveRegressorFields = new String[0];
+        }
+        return sharedModelDecomposeBetweenWaveRegressorFields;
+    }
+
+    public void setSharedModelDecomposeBetweenWaveRegressorFields(String[] sharedModelDecomposeBetweenWaveRegressorFields) {
+        this.sharedModelDecomposeBetweenWaveRegressorFields = sharedModelDecomposeBetweenWaveRegressorFields;
+    }
+
+    public String[] getSharedModelDecomposeScaleRandomRegressorFields() {
+        if (sharedModelDecomposeScaleRandomRegressorFields == null) {
+            sharedModelDecomposeScaleRandomRegressorFields = new String[0];
+        }
+        return sharedModelDecomposeScaleRandomRegressorFields;
+    }
+
+    public void setSharedModelDecomposeScaleRandomRegressorFields(String[] sharedModelDecomposeScaleRandomRegressorFields) {
+        this.sharedModelDecomposeScaleRandomRegressorFields = sharedModelDecomposeScaleRandomRegressorFields;
     }
 
     public String getSharedModelStageOneOutcomeLabel() {
@@ -949,6 +1055,28 @@ public class MixLibrary implements Serializable {
         this.sharedModelScaleRegressorLabels = sharedModelScaleRegressorLabels;
     }
 
+    public String[] getSharedModelBetweenWaveRegressorLabels() {
+        if (sharedModelBetweenWaveRegressorLabels == null) {
+            sharedModelBetweenWaveRegressorLabels = new String[0];
+        }
+        return sharedModelBetweenWaveRegressorLabels;
+    }
+
+    public void setSharedModelBetweenWaveRegressorLabels(String[] sharedModelBetweenWaveRegressorLabels) {
+        this.sharedModelBetweenWaveRegressorLabels = sharedModelBetweenWaveRegressorLabels;
+    }
+
+    public String[] getSharedModelScaleRandomRegressorLabels() {
+        if (sharedModelScaleRandomRegressorLabels == null) {
+            sharedModelScaleRandomRegressorLabels = new String[0];
+        }
+        return sharedModelScaleRandomRegressorLabels;
+    }
+
+    public void setSharedModelScaleRandomRegressorLabels(String[] sharedModelScaleRandomRegressorLabels) {
+        this.sharedModelScaleRandomRegressorLabels = sharedModelScaleRandomRegressorLabels;
+    }
+
     public String[] getSharedModelDecomposeMeanRegressorLabels() {
         return sharedModelDecomposeMeanRegressorLabels;
     }
@@ -971,6 +1099,28 @@ public class MixLibrary implements Serializable {
 
     public void setSharedModelDecomposeScaleRegressorLabels(String[] sharedModelDecomposeScaleRegressorLabels) {
         this.sharedModelDecomposeScaleRegressorLabels = sharedModelDecomposeScaleRegressorLabels;
+    }
+
+    public String[] getSharedModelDecomposeBetweenWaveRegressorLabels() {
+        if (sharedModelDecomposeBetweenWaveRegressorLabels == null) {
+            sharedModelDecomposeBetweenWaveRegressorLabels = new String[0];
+        }
+        return sharedModelDecomposeBetweenWaveRegressorLabels;
+    }
+
+    public void setSharedModelDecomposeBetweenWaveRegressorLabels(String[] sharedModelDecomposeBetweenWaveRegressorLabels) {
+        this.sharedModelDecomposeBetweenWaveRegressorLabels = sharedModelDecomposeBetweenWaveRegressorLabels;
+    }
+
+    public String[] getSharedModelDecomposeScaleRandomRegressorLabels() {
+        if (sharedModelDecomposeScaleRandomRegressorLabels == null) {
+            sharedModelDecomposeScaleRandomRegressorLabels = new String[0];
+        }
+        return sharedModelDecomposeScaleRandomRegressorLabels;
+    }
+
+    public void setSharedModelDecomposeScaleRandomRegressorLabels(String[] sharedModelDecomposeScaleRandomRegressorLabels) {
+        this.sharedModelDecomposeScaleRandomRegressorLabels = sharedModelDecomposeScaleRandomRegressorLabels;
     }
 
     public String[] getMixorModelCovarianceThresholdParameters() {
@@ -1150,6 +1300,28 @@ public class MixLibrary implements Serializable {
         this.advancedScaleRegressorCount = advancedScaleRegressorCount;
     }
 
+    public String getAdvancedBetweenWaveRegressorCount() {
+        if (advancedBetweenWaveRegressorCount == null) {
+            advancedBetweenWaveRegressorCount = "0";
+        }
+        return advancedBetweenWaveRegressorCount;
+    }
+
+    public void setAdvancedBetweenWaveRegressorCount(String advancedBetweenWaveRegressorCount) {
+        this.advancedBetweenWaveRegressorCount = advancedBetweenWaveRegressorCount;
+    }
+
+    public String getAdvancedScaleRandomRegressorCount() {
+        if (advancedScaleRandomRegressorCount == null) {
+            advancedScaleRandomRegressorCount = "0";
+        }
+        return advancedScaleRandomRegressorCount;
+    }
+
+    public void setAdvancedScaleRandomRegressorCount(String advancedScaleRandomRegressorCount) {
+        this.advancedScaleRandomRegressorCount = advancedScaleRandomRegressorCount;
+    }
+
     public String getAdvancedStageOneOutcomeValueCount() {
         return advancedStageOneOutcomeValueCount;
     }
@@ -1182,6 +1354,22 @@ public class MixLibrary implements Serializable {
         this.advancedScaleIntercept = advancedScaleIntercept;
     }
 
+    public String getWSWaveVarianceIntercept() {
+        return WSWaveVarianceIntercept;
+    }
+
+    public void setWSWaveVarianceIntercept(String WSWaveVarianceIntercept) {
+        this.WSWaveVarianceIntercept = WSWaveVarianceIntercept;
+    }
+
+    public String getSubjectScaleRandomIntercept() {
+        return subjectScaleRandomIntercept;
+    }
+
+    public void setSubjectScaleRandomIntercept(String subjectScaleRandomIntercept) {
+        this.subjectScaleRandomIntercept = subjectScaleRandomIntercept;
+    }
+
     public String getAdvancedDecomposeMeanRegressorCount() {
         return advancedDecomposeMeanRegressorCount;
     }
@@ -1206,6 +1394,28 @@ public class MixLibrary implements Serializable {
         this.advancedDecomposeScaleRegressorCount = advancedDecomposeScaleRegressorCount;
     }
 
+    public String getAdvancedDecomposeBetweenWaveRegressorCount() {
+        if (advancedDecomposeBetweenWaveRegressorCount == null) {
+            advancedDecomposeBetweenWaveRegressorCount = "0";
+        }
+        return advancedDecomposeBetweenWaveRegressorCount;
+    }
+
+    public void setAdvancedDecomposeBetweenWaveRegressorCount(String advancedDecomposeBetweenWaveRegressorCount) {
+        this.advancedDecomposeBetweenWaveRegressorCount = advancedDecomposeBetweenWaveRegressorCount;
+    }
+
+    public String getAdvancedDecomposeScaleRandomRegressorCount() {
+        if (advancedDecomposeScaleRandomRegressorCount == null) {
+            advancedDecomposeScaleRandomRegressorCount = "0";
+        }
+        return advancedDecomposeScaleRandomRegressorCount;
+    }
+
+    public void setAdvancedDecomposeScaleRandomRegressorCount(String advancedDecomposeScaleRandomRegressorCount) {
+        this.advancedDecomposeScaleRandomRegressorCount = advancedDecomposeScaleRandomRegressorCount;
+    }
+
     public String getAdvancedConvergenceCriteria() {
         return advancedConvergenceCriteria;
     }
@@ -1222,12 +1432,20 @@ public class MixLibrary implements Serializable {
         this.advancedQuadPoints = advancedQuadPoints;
     }
 
-    public String getAdvancedAdaptiveQuad() {
-        return advancedAdaptiveQuad;
+    public String getAdvancedAdaptiveQuadSubject() {
+        return advancedAdaptiveQuadSubject;
     }
 
-    public void setAdvancedAdaptiveQuad(String advancedAdaptiveQuad) {
-        this.advancedAdaptiveQuad = advancedAdaptiveQuad;
+    public void setAdvancedAdaptiveQuadSubject(String advancedAdaptiveQuadSubject) {
+        this.advancedAdaptiveQuadSubject = advancedAdaptiveQuadSubject;
+    }
+
+    public String getAdvancedAdaptiveQuadWave() {
+        return advancedAdaptiveQuadWave;
+    }
+
+    public void setAdvancedAdaptiveQuadWave(String advancedAdaptiveQuadWave) {
+        this.advancedAdaptiveQuadWave = advancedAdaptiveQuadWave;
     }
 
     public String getAdvancedMaxIterations() {
@@ -1288,6 +1506,14 @@ public class MixLibrary implements Serializable {
         this.advancedDiscardNoVariance = advancedDiscardNoVariance;
     }
 
+    public String getAdvancedDiscardCutoff() {
+        return advancedDiscardCutoff;
+    }
+
+    public void setAdvancedDiscardCutoff(String advancedDiscardCutoff) {
+        this.advancedDiscardCutoff = advancedDiscardCutoff;
+    }
+
     public String getAdvancedUseMLS() {
         if (advancedUseMLS == null) {
             advancedUseMLS = Integer.toString(stageOneRandomLocationEffects);
@@ -1300,7 +1526,11 @@ public class MixLibrary implements Serializable {
     }
 
     public String getAdvancedCovarianceMatrix() {
-        if (advancedCovarianceMatrix == null) {
+
+        String mls = getAdvancedUseMLS();
+        if (mls.equals("0")) {
+            advancedCovarianceMatrix = "2";
+        } else {
             advancedCovarianceMatrix = "0";
         }
         return advancedCovarianceMatrix;
@@ -1376,6 +1606,19 @@ public class MixLibrary implements Serializable {
 
     public void setAdvancedMultipleDataFiles(String advancedMultipleDataFiles) {
         this.advancedMultipleDataFiles = advancedMultipleDataFiles;
+    }
+
+    public String getAdvancedStageOneLevelNum() {
+        if (this.stageOneLevelNum == 3) {
+            advancedStageOneLevelNum = "0";
+        } else {
+            advancedStageOneLevelNum = "1";
+        }
+        return advancedStageOneLevelNum;
+    }
+
+    public void setStageOneLevelNum(String advancedStageOneLevelNum) {
+        this.advancedStageOneLevelNum = advancedStageOneLevelNum;
     }
 
     public String getAdvancedStageTwoFixedRegressorCount() {
@@ -1464,9 +1707,11 @@ public class MixLibrary implements Serializable {
             writer.close();
         }
     }
-    
-        public void csvToDatConverterSecondDataset(File csvFileToConvert) throws IOException {
-        String fileName = csvFileToConvert.getAbsolutePath();
+
+    public void csvToDatConverterSecondDataset(File csvFileToConvert, File csvFileToConvert_stageTwo) throws IOException {
+        String fileName_project = csvFileToConvert.getAbsolutePath();
+        String filePath_project = FilenameUtils.getFullPath(fileName_project);
+        String fileName = csvFileToConvert_stageTwo.getAbsolutePath();
         String fileNameShort = FilenameUtils.removeExtension(fileName);
         String baseName = FilenameUtils.getBaseName(fileName);
         String filePath = FilenameUtils.getFullPath(fileName);
@@ -1479,7 +1724,7 @@ public class MixLibrary implements Serializable {
 
             csvRows.remove(0); // TODO: make sure this isn't removing data
 
-            CSVWriter writer = new CSVWriter(new FileWriter(filePath + utcDirPath + baseName.replace(" ", "_") + ".dat"), ' ', CSVWriter.NO_QUOTE_CHARACTER,
+            CSVWriter writer = new CSVWriter(new FileWriter(filePath_project + utcDirPath + baseName.replace(" ", "_") + ".dat"), ' ', CSVWriter.NO_QUOTE_CHARACTER,
                     CSVWriter.NO_ESCAPE_CHARACTER, CSVWriter.RFC4180_LINE_END);
             writer.writeAll(csvRows);
             writer.close();
@@ -1566,6 +1811,42 @@ public class MixLibrary implements Serializable {
         this.labelModelWSRegressorsLevelTwo = labelModelWSRegressorsLevelTwo;
     }
 
+    private String getAdvancedWaveCount() {
+        if (advancedWaves == null) {
+            advancedWaves = "1";
+        }
+        return advancedWaves;
+    }
+
+    public void setAdvancedWaveCount(String advancedWaves) {
+        this.advancedWaves = advancedWaves;
+    }
+
+    private String getAdvancedGammatransCount() {
+        advancedGammaTrans = "1";
+        if (stageOneLevelNum == 3) {
+            if (getAdvancedBetweenWaveRegressorCount().equals("0") && getAdvancedDecomposeBetweenWaveRegressorCount().equals("0")) {
+                advancedGammaTrans = "1";
+            } else {
+                advancedGammaTrans = "0";
+            }
+        }
+        return advancedGammaTrans;
+    }
+
+    public void setAdvancedStageTwoMultilevelRandomSlope(String value) {
+        advancedStageTwoMultilevelRandSlope = value;
+    }
+    
+    public String getAdvancedStageTwoMultilevelRandomSlope() {
+        if (advancedStageTwoMultilevelRandSlope == null) {
+            advancedStageTwoMultilevelRandSlope = "0";
+        }
+        return advancedStageTwoMultilevelRandSlope;
+    }
+//    public int getStageOneLevelNum() {
+//        return stageOneLevelNum;
+//    }
     /**
      * Ancillary classes
      */
@@ -1600,7 +1881,7 @@ public class MixLibrary implements Serializable {
             myFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
             myFrame.setSize(windowPanelDim.width / 2, windowPanelDim.height - 50);
-            myFrame.setResizable(false);
+//            myFrame.setResizable(false);
             myPane = new JEditorPane();
             myPane.setSize(windowPanelDim.width / 2 - 20, windowPanelDim.height - 50);
             myPane.setContentType("text/plain");
@@ -1608,12 +1889,14 @@ public class MixLibrary implements Serializable {
             myPane.setLayout(new BorderLayout(windowPanelDim.width / 2 - 20, windowPanelDim.height - 50));
             myPane.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
             String newline = System.getProperty("line.separator");
-            try {
-                myPane.setText(String.join(newline, buildDefinitionList()).replace("[", "").replace("]", ""));
-            } catch (Exception e) {
-                SystemLogger.LOGGER.log(Level.SEVERE, e.toString());
-                //myPane.setText(String.join(newline, buildDefinitionList()()).replace("[", "").replace("]", ""));
-            }
+//            try {
+            String defContent = String.join(newline, buildDefinitionList()).replace("[", "").replace("]", "");
+            myPane.setText(defContent);
+            System.out.println(defContent);
+//            } catch (Exception e) {
+//                SystemLogger.LOGGER.log(Level.SEVERE, e.toString());
+            //myPane.setText(String.join(newline, buildDefinitionList()()).replace("[", "").replace("]", ""));
+//            }
 
             JButton proceedButton = new JButton("Proceed");
             JButton saveDefFile = new JButton("Save Def File");
@@ -1684,10 +1967,15 @@ public class MixLibrary implements Serializable {
 
             String dataFileSample = new File(this.getSharedDataFilename()).getAbsolutePath();
             String newDefFilePrefix = dataFileSample.substring(0, dataFileSample.lastIndexOf(File.separator)) + "/";
-            if (getStageOneOutcome() == STAGE_ONE_OUTCOME_MIXOR) {
-                newDefFile = new File(newDefFilePrefix + "mixors_random_mixblank");
+
+            if (stageOneLevelNum == 3) {
+                newDefFile = new File(newDefFilePrefix + "mixregls_3level_2stage_slope");
             } else {
-                newDefFile = new File(newDefFilePrefix + "lsboth_random_mixblank");
+                if (getStageOneOutcome() == STAGE_ONE_OUTCOME_MIXOR) {
+                    newDefFile = new File(newDefFilePrefix + "mixors_random_mixblank");
+                } else {
+                    newDefFile = new File(newDefFilePrefix + "mixregls_3level_2stage_slope");
+                }
             }
             //newDefFile = new File(newDefFilePrefix + "MixWild");
 //            
@@ -1737,7 +2025,7 @@ public class MixLibrary implements Serializable {
         }
     }
 
-    public void writeDefFileToFolder(Dimension windowPanelDim) {
+    public void writeStageOneTwoDefFileToFolder(Dimension windowPanelDim) {
 
         try {
 
@@ -1749,7 +2037,7 @@ public class MixLibrary implements Serializable {
             myFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
             myFrame.setSize(windowPanelDim.width / 2, windowPanelDim.height - 50);
-            myFrame.setResizable(false);
+//            myFrame.setResizable(false);
 
             myPane = new JEditorPane();
             myPane.setSize(windowPanelDim.width / 2 - 30, windowPanelDim.height - 50);
@@ -1816,7 +2104,7 @@ public class MixLibrary implements Serializable {
 
                 public void actionPerformed(ActionEvent e) {
 
-                    SystemLogger.LOGGER.log(Level.INFO, "Save Definition File");
+                    SystemLogger.LOGGER.log(Level.INFO, "Stage 1 and 2 SaveDefFile performed");
 
                     try {
                         saveDefFileLocally();
@@ -1834,18 +2122,22 @@ public class MixLibrary implements Serializable {
             Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
             myFrame.setLocation(dim.width / 2 - myFrame.getSize().width / 2, dim.height / 2 - myFrame.getSize().height / 2);
 
-            Document defDoc = myPane.getDocument();
-            int length = defDoc.getLength();
-
+//            Document defDoc = myPane.getDocument();
+//            int length = defDoc.getLength();
             //File newDefFile = new File("MIXREGLS_MIXREG_KEY");
             String dataFileSample = new File(this.getSharedDataFilename()).getAbsolutePath();
             String newDefFilePrefix = dataFileSample.substring(0, dataFileSample.lastIndexOf(File.separator)) + "/";
             // this one is run for stage 2
-            if (getStageOneOutcome() == STAGE_ONE_OUTCOME_MIXOR) {
-                newDefFile = new File(newDefFilePrefix + "mixors_random_mixblank");
+            if (stageOneLevelNum == 3) {
+                newDefFile = new File(newDefFilePrefix + "mixregls_3level_2stage_slope");
             } else {
-                newDefFile = new File(newDefFilePrefix + "lsboth_random_mixblank");
+                if (getStageOneOutcome() == STAGE_ONE_OUTCOME_MIXOR) {
+                    newDefFile = new File(newDefFilePrefix + "mixors_random_mixblank");
+                } else {
+                    newDefFile = new File(newDefFilePrefix + "mixregls_3level_2stage_slope");
+                }
             }
+
 //            if (selectedModel == DefinitionHelper.MIXREGLS_MIXREG_KEY) {
 //                newDefFile = new File(newDefFilePrefix + "MIXREGLS_RANDOM_MIXREG");
 //            } else if (selectedModel == DefinitionHelper.MIXREGLS_MIXOR_KEY) {
@@ -1858,7 +2150,6 @@ public class MixLibrary implements Serializable {
 //
 //                newDefFile = new File(newDefFilePrefix + "MIXREGMLS_RANDOM_MIXOR");
 //            }
-
             FileWriter out = new FileWriter(newDefFile + ".def");
             out.write(myPane.getText());
             out.close();
@@ -1894,6 +2185,7 @@ public class MixLibrary implements Serializable {
         ////// selectedModel = getSelectedModel();
         String absoluteJavaPath = System.getProperty("user.dir");
 
+        // choose the right executable
         ////// String defFileName = executableModel(selectedModel);
         boolean isWindows = getOSName().contains("windows");
         String defFileName;
@@ -1905,12 +2197,17 @@ public class MixLibrary implements Serializable {
         if (stageOneOutcome == STAGE_ONE_OUTCOME_MIXOR) {
             defFileName = "mixors_random_mixblank" + system_bit_extension;
         } else {
-            defFileName = "lsboth_random_mixblank" + system_bit_extension;
+//            defFileName = "lsboth_random_mixblank" + system_bit_extension;
+            defFileName = "mixregls_3level_2stage_slope";
         }
+//        if (stageOneLevelNum == 3) {
+//            defFileName = "mixregls_3level";
+//        }
         if (isWindows) {
             defFileName = defFileName + ".exe";
         }
 
+        //
         progressWindow = new JFrame("Please wait ...");
         modelingProgressLogging("Please wait ...");
 
@@ -1919,7 +2216,7 @@ public class MixLibrary implements Serializable {
         defFileFlow.setAlignment(FlowLayout.TRAILING);
         progressWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         progressWindow.setSize(630, 680);
-        progressWindow.setResizable(false);
+//        progressWindow.setResizable(false);
 
         progressPane = new JTextArea(30, 80);
         DefaultCaret caret = (DefaultCaret) progressPane.getCaret();
@@ -2033,7 +2330,7 @@ public class MixLibrary implements Serializable {
                 terminalVal = exitVal;
                 Process p2;
                 if (getOSName().contains("windows")) {
-                    String[] executable_array = {"lsboth_random_mixblank", "mixors_random_mixblank", "mixno", "mixreg", "mixors", "mixpreg", "stage2only", "lsboth_random_mixblank64", "mixors_random_mixblank64", "stage2only64"};
+                    String[] executable_array = {"mixors_random_mixblank", "mixno", "mixreg", "mixors", "mixpreg", "stage2only", "mixors_random_mixblank64", "stage2only_slope", "mixregls_3level_2stage_slope"};
                     for (int i = 0; i < executable_array.length; i++) {
                         String executableFile = executable_array[i];
                         String command = "cmd /c dir && cd " + "\"" + definitionFilepath + "\"" + " && del /f " + "\"" + executableFile + ".exe" + "\"";
@@ -2094,7 +2391,7 @@ public class MixLibrary implements Serializable {
     public void readStageOneOutputfile() throws FileNotFoundException, IOException {
         mixregGUI.stageOneOutput.setText("");
         String fileName = mixregGUI.defFile.getSharedDataFilename();
-        String outputFilePath = FilenameUtils.removeExtension(fileName) + "_Output_stage1.out";
+        String outputFilePath = FilenameUtils.removeExtension(fileName) + "_Output_stage1_final.out";
         File file = new File(outputFilePath);
         BufferedReader br = null;
         String line = "";
@@ -2147,13 +2444,15 @@ public class MixLibrary implements Serializable {
     private void copyExecutable(String absoluteDirectoryPath) throws FileNotFoundException, IOException {
         String modelPath;
 
-        String LSBOTH_PRE = "lsboth_random_mixblank";
+//        String LSBOTH_PRE = "lsboth_random_mixblank";
         String MIXORS_PRE = "mixors_random_mixblank";
         String MIXNO = "mixno";
         String MIXREG = "mixreg";
         String MIXORS = "mixors";
         String MIXPREG = "mixpreg";
-        String STAGETWO_ONLY = "stage2only64";
+        String STAGETWO_ONLY = "stage2only_slope";
+//        String LSBOTH_PRE_LEVEL3 = "mixregls_3level";
+        String LSBOTH_PRE_LEVEL3_STAGE2 = "mixregls_3level_2stage_slope";
         if (win32) {
             STAGETWO_ONLY = "stage2only";
         }
@@ -2162,35 +2461,42 @@ public class MixLibrary implements Serializable {
             System.out.print(win32);
             if (win32) {
                 SystemLogger.LOGGER.log(Level.INFO, "Operating System : win32");
-                LSBOTH_PRE = "resources/Windows32/" + LSBOTH_PRE + ".exe";
+//                LSBOTH_PRE = "resources/Windows32/" + LSBOTH_PRE + ".exe";
                 MIXORS_PRE = "resources/Windows32/" + MIXORS_PRE + ".exe";
                 MIXNO = "resources/Windows32/" + MIXNO + ".exe";
                 MIXREG = "resources/Windows32/" + MIXREG + ".exe";
                 MIXORS = "resources/Windows32/" + MIXORS + ".exe";
                 MIXPREG = "resources/Windows32/" + MIXPREG + ".exe";
                 STAGETWO_ONLY = "resources/Windows32/" + STAGETWO_ONLY + ".exe";
+//                LSBOTH_PRE_LEVEL3 = "resources/Windows32/" + LSBOTH_PRE_LEVEL3 + ".exe";
+                LSBOTH_PRE_LEVEL3_STAGE2 = "resources/Windows32/" + LSBOTH_PRE_LEVEL3_STAGE2 + ".exe";
             } else {
                 SystemLogger.LOGGER.log(Level.INFO, "Operating System : win64");
-                LSBOTH_PRE = "resources/Windows64/" + LSBOTH_PRE + "64" + ".exe";
+//                LSBOTH_PRE = "resources/Windows64/" + LSBOTH_PRE + "64" + ".exe";
                 MIXORS_PRE = "resources/Windows64/" + MIXORS_PRE + "64" + ".exe";
                 MIXNO = "resources/Windows64/" + MIXNO + ".exe";
                 MIXREG = "resources/Windows64/" + MIXREG + ".exe";
                 MIXORS = "resources/Windows64/" + MIXORS + ".exe";
                 MIXPREG = "resources/Windows64/" + MIXPREG + ".exe";
                 STAGETWO_ONLY = "resources/Windows64/" + STAGETWO_ONLY + ".exe";
+//                LSBOTH_PRE_LEVEL3 = "resources/Windows64/" + LSBOTH_PRE_LEVEL3 + ".exe";
+                LSBOTH_PRE_LEVEL3_STAGE2 = "resources/Windows64/" + LSBOTH_PRE_LEVEL3_STAGE2 + ".exe";
             }
         } else {
             SystemLogger.LOGGER.log(Level.INFO, "Operating System : macOS");
-            LSBOTH_PRE = "resources/macOS/" + LSBOTH_PRE;
+//            LSBOTH_PRE = "resources/macOS/" + LSBOTH_PRE;
             MIXORS_PRE = "resources/macOS/" + MIXORS_PRE;
             MIXNO = "resources/macOS/" + MIXNO;
             MIXREG = "resources/macOS/" + MIXREG;
             MIXORS = "resources/macOS/" + MIXORS;
             MIXPREG = "resources/macOS/" + MIXPREG;
+//            STAGETWO_ONLY = "resources/macOS/" + STAGETWO_ONLY;
             STAGETWO_ONLY = "resources/macOS/" + STAGETWO_ONLY;
+//            LSBOTH_PRE_LEVEL3 = "resources/macOS/" + LSBOTH_PRE_LEVEL3;
+            LSBOTH_PRE_LEVEL3_STAGE2 = "resources/macOS/" + LSBOTH_PRE_LEVEL3_STAGE2;
         }
 
-        String exeArray[] = {LSBOTH_PRE, MIXORS_PRE, MIXNO, MIXREG, MIXORS, MIXPREG, STAGETWO_ONLY};
+        String exeArray[] = {MIXORS_PRE, MIXNO, MIXREG, MIXORS, MIXPREG, STAGETWO_ONLY, LSBOTH_PRE_LEVEL3_STAGE2};
 
         for (String exe : exeArray) {
             InputStream stream = getClass().getClassLoader().getResourceAsStream(exe);
@@ -2200,6 +2506,7 @@ public class MixLibrary implements Serializable {
             int read;
             byte[] bytes = new byte[4096];
 
+            System.out.print(exe);
             while ((read = stream.read(bytes)) > 0) {
                 //System.out.println("Working on output stream");
                 outputStream.write(bytes, 0, read);
@@ -2209,13 +2516,16 @@ public class MixLibrary implements Serializable {
         }
 
         if (!getOSName().contains("windows")) {
-            String[] commands = {"chmod u+x " + "\"" + definitionFilepath + FilenameUtils.getName(LSBOTH_PRE) + "\"",
+            String[] commands = {
+                //                "chmod u+x " + "\"" + definitionFilepath + FilenameUtils.getName(LSBOTH_PRE) + "\"",
                 "chmod u+x " + "\"" + definitionFilepath + FilenameUtils.getName(MIXORS_PRE) + "\"",
                 "chmod u+x " + "\"" + definitionFilepath + FilenameUtils.getName(MIXNO) + "\"",
                 "chmod u+x " + "\"" + definitionFilepath + FilenameUtils.getName(MIXPREG) + "\"",
                 "chmod u+x " + "\"" + definitionFilepath + FilenameUtils.getName(MIXREG) + "\"",
                 "chmod u+x " + "\"" + definitionFilepath + FilenameUtils.getName(MIXORS) + "\"",
-                "chmod u+x " + "\"" + definitionFilepath + FilenameUtils.getName(STAGETWO_ONLY) + "\""};
+                "chmod u+x " + "\"" + definitionFilepath + FilenameUtils.getName(STAGETWO_ONLY) + "\"", 
+                "chmod u+x " + "\"" + definitionFilepath + FilenameUtils.getName(LSBOTH_PRE_LEVEL3_STAGE2) + "\""//                "chmod u+x " + "\"" + definitionFilepath + FilenameUtils.getName(LSBOTH_PRE_LEVEL3_STAGE2) + "\""
+            };
             for (String command : commands) {
                 ProcessBuilder pb1 = new ProcessBuilder(
                         "bash",
