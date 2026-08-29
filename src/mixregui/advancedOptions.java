@@ -79,7 +79,7 @@ public class advancedOptions extends javax.swing.JFrame {
         WSVarianceCheckBox.setSelected(true);
         SubjectScaleRandomInterceptBox.setSelected(true);
         WaveWSVarianceInterceptBox.setSelected(true);
-        adaptiveQuadritureCheckBox.setSelected(true);
+        adaptiveQuadritureCheckBox.setSelected(false);
         adaptiveQuadritureWaveVarianceCheckBox.setSelected(false);
         discardSubjectsCheckBox.setSelected(false);
         thresholdRidgeSpinner.setValue(0.0);
@@ -175,7 +175,7 @@ public class advancedOptions extends javax.swing.JFrame {
                 meanSubmodelCheckBoxActionPerformed(evt);
             }
         });
-        jPanel1.add(meanSubmodelCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 7, -1, -1));
+        jPanel1.add(meanSubmodelCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, -1, -1));
 
         jLabel2.setText("BS Variance Intercept:  ");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 37, -1, -1));
@@ -186,7 +186,7 @@ public class advancedOptions extends javax.swing.JFrame {
                 BSVarianceCheckBoxActionPerformed(evt);
             }
         });
-        jPanel1.add(BSVarianceCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 37, -1, -1));
+        jPanel1.add(BSVarianceCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, -1, -1));
 
         jLabel3.setText("WS Variance Intercept:  ");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 67, -1, -1));
@@ -197,7 +197,7 @@ public class advancedOptions extends javax.swing.JFrame {
                 WSVarianceCheckBoxActionPerformed(evt);
             }
         });
-        jPanel1.add(WSVarianceCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 67, -1, -1));
+        jPanel1.add(WSVarianceCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, -1, -1));
 
         jLabel4.setText("Convergence Criteria:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, 30));
@@ -214,22 +214,22 @@ public class advancedOptions extends javax.swing.JFrame {
                 adaptiveQuadritureCheckBoxActionPerformed(evt);
             }
         });
-        jPanel1.add(adaptiveQuadritureCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 235, -1, -1));
+        jPanel1.add(adaptiveQuadritureCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 235, -1, -1));
 
         quadriturePoints.setModel(new javax.swing.SpinnerNumberModel(11, 1, 255, 1));
         quadriturePoints.setToolTipText("Number of quadrature points (usually set to 10 or 11, however more points may be necessary for complex models)");
-        jPanel1.add(quadriturePoints, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 205, 90, -1));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 240, -1));
+        jPanel1.add(quadriturePoints, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 90, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 270, -1));
 
         convergenceCriteria.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        convergenceCriteria.setText("0.00001");
+        convergenceCriteria.setText("0.0001");
         convergenceCriteria.setToolTipText("Convergence requirement for the maximum correction (change to aid in convergence)");
         convergenceCriteria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 convergenceCriteriaActionPerformed(evt);
             }
         });
-        jPanel1.add(convergenceCriteria, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 175, 90, -1));
+        jPanel1.add(convergenceCriteria, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 90, -1));
 
         jLabel8.setText("Subject Scale Random Intercept:  ");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 97, -1, -1));
@@ -240,7 +240,7 @@ public class advancedOptions extends javax.swing.JFrame {
                 SubjectScaleRandomInterceptBoxActionPerformed(evt);
             }
         });
-        jPanel1.add(SubjectScaleRandomInterceptBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 97, -1, -1));
+        jPanel1.add(SubjectScaleRandomInterceptBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, -1, -1));
 
         jLabel13.setText("Wave WS Variance Intercept:");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 127, -1, -1));
@@ -251,7 +251,7 @@ public class advancedOptions extends javax.swing.JFrame {
                 WaveWSVarianceInterceptBoxActionPerformed(evt);
             }
         });
-        jPanel1.add(WaveWSVarianceInterceptBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 127, -1, -1));
+        jPanel1.add(WaveWSVarianceInterceptBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, -1, -1));
 
         jLabel14.setText("Adaptive Quadrature of Wave Variance:");
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, -1, 30));
@@ -262,9 +262,9 @@ public class advancedOptions extends javax.swing.JFrame {
                 adaptiveQuadritureWaveVarianceCheckBoxActionPerformed(evt);
             }
         });
-        jPanel1.add(adaptiveQuadritureWaveVarianceCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 265, -1, -1));
+        jPanel1.add(adaptiveQuadritureWaveVarianceCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 265, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 21, 270, 320));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 21, 290, 320));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -324,7 +324,7 @@ public class advancedOptions extends javax.swing.JFrame {
         });
         jPanel2.add(discardSubjectsCheckBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 97, -1, -1));
         jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 142, 240, 0));
-        jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 280, 10));
+        jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 270, 10));
 
         jLabel16.setText("Threshold of Standard Deviation");
         jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 127, 230, -1));
@@ -333,7 +333,7 @@ public class advancedOptions extends javax.swing.JFrame {
         thresholdRidgeSpinner.setToolTipText("Initial value for a ridge (a numeric value that adds to the diagonal of the second derivative matrix, which can aid in convergence of the solution; usually set to 0 or some small fractional value)");
         jPanel2.add(thresholdRidgeSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 127, 70, -1));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(304, 21, 290, 320));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(314, 21, 290, 320));
 
         advancedOptionsSubmit.setText("Submit");
         advancedOptionsSubmit.addActionListener(new java.awt.event.ActionListener() {
@@ -448,7 +448,7 @@ public class advancedOptions extends javax.swing.JFrame {
         WSVarianceCheckBox.setSelected(true);
         SubjectScaleRandomInterceptBox.setSelected(true);
         WaveWSVarianceInterceptBox.setSelected(true);
-        adaptiveQuadritureCheckBox.setSelected(true);
+        adaptiveQuadritureCheckBox.setSelected(false);
         adaptiveQuadritureWaveVarianceCheckBox.setSelected(false);
         discardSubjectsCheckBox.setSelected(false);
         thresholdRidgeSpinner.setValue(0.0);
@@ -1142,6 +1142,7 @@ public class advancedOptions extends javax.swing.JFrame {
             jLabel13.setEnabled(false);
             WaveWSVarianceInterceptBox.setEnabled(false);
             jLabel14.setEnabled(false);
+            adaptiveQuadritureCheckBox.setSelected(false);
             adaptiveQuadritureWaveVarianceCheckBox.setEnabled(false);
         }
 
